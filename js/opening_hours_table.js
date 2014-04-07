@@ -54,13 +54,14 @@ var OpeningHoursTable = {
     pad: function (n) { return n < 10 ? '0'+n : n; },
 
     plural: function (n, trans_base) {
-        if (n == 1) {
+        return i18n.t(trans_base, {count: n}); // Correct i18next plural function call
+        /*if (n == 1) {
             return i18n.t(trans_base); // singular form
         } else if (n < 2) { // FIXME: Is this correct for Russian?
             return i18n.t(trans_base + ' many');
         } else {
             return i18n.t(trans_base + '_plural');
-        }
+        }*/
     },
 
     printDate: function (date) {
