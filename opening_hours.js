@@ -1313,6 +1313,24 @@
 				"День Незалежності України"  : [  8, 24 ],
 			}
 		},
+		'si': {
+			'PH': { // http://www.vlada.si/o_sloveniji/politicni_sistem/prazniki/
+				'novo leto'                                  : [  1,  1 ],
+				'Prešernov dan, slovenski kulturni praznik'  : [  2,  8 ],
+				'velikonočna nedelja'                        : [ 'easter',  0 ],
+				'velikonočni ponedeljek'                     : [ 'easter',  1 ],
+				'dan upora proti okupatorju'                 : [  4,  27 ],
+				'praznik dela 1'                               : [  5, 1 ],
+				'praznik dela 2'                               : [  5, 2 ],
+				'binkoštna nedelja - binkošti'               : [ 'easter',  49 ],
+				'dan državnosti'                             : [  6, 25 ],
+				'Marijino vnebovzetje'                       : [  8, 15 ],
+				'dan reformacije'                            : [ 10, 31 ],
+				'dan spomina na mrtve'                       : [ 11,  1 ],
+				'božič'                                      : [ 12, 25 ],
+				'dan samostojnosti in enotnosti'             : [ 12, 26 ],
+			},
+		},
 	};
 	// }}}
 
