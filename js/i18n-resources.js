@@ -145,8 +145,9 @@ var resources = { // English is fallback language.
                 "de": "Duits",
                 "ru": "Russisch",
                 "pt": "Portugees",
-                "it": "Italiaan",
+                "it": "Italiaans",
                 "uk": "Oekraïens",
+                "nl": "Nederlands",
                 "choose": "Kies taal",
             },
 
