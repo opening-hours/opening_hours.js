@@ -1,4 +1,6 @@
 /*
+ * @source: https://github.com/ypid/opening_hours.js/blob/master/opening_hours.js
+ * @source: ./opening_hours.js
  * For information see https://github.com/ypid/opening_hours.js
  * and the docs directory which contains internal documentation and design.
  */

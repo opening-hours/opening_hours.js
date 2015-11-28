@@ -35,10 +35,12 @@
   - [Test it yourself (the geeky way)](#test-it-yourself-the-geeky-way)
 - [Performance](#performance)
 - [Used by other projects](#used-by-other-projects)
+  - [YoHours](#yohours)
 - [Related links](#related-links)
 - [ToDo](#todo)
 - [How to contribute](#how-to-contribute)
-  - [Translating](#translating)
+  - [Translating the evaluation tool and the map](#translating-the-evaluation-tool-and-the-map)
+  - [Translating error messages and warnings](#translating-error-messages-and-warnings)
   - [Holidays](#holidays-1)
   - [Core code](#core-code)
     - [Commit hooks](#commit-hooks)
@@ -601,7 +603,7 @@ Testing is much easier by now. Have a look at the [evaluation tool][ohlib.evalua
 
 Simple node.js based benchmark is bundled. You can run it with `node benchmark.js` or with `make benchmark`.
 
-On author's Intel Core i5-2540M CPU @ 2.60GHz (Linux: 3.16.0-4-amd64, nodejs: v0.10.29) library allows ~9k/sec constructor calls and ~3k/sec openIntervals() calls with one week period. This may further improve in future.
+On author's Intel Core i5-2540M CPU @ 2.60GHz (Linux: 3.16.0-4-amd64, nodejs: v0.10.29) library allows ~1k/sec constructor calls and ~7k/sec openIntervals() calls with one week period. This may further improve in future.
 
 ## Used by other projects
 
@@ -661,13 +663,17 @@ List of features which can make writing easier:
 
 You can contribute in the usual manner as known from git (and GitHub). Just fork, change and make a pull request.
 
-### Translating
+### Translating the evaluation tool and the map
 
 This project uses http://i18next.com/ for translation.
 
 Translations can be made in the file [js/i18n-resources.js][ohlib.js/i18n-resources.js]. Just copy the whole English block, change the language code to the one you are adding and make your translation. You can open the [index.html](/index.html) to see the result of your work. ~~To complete your localization add the translated language name to the other languages~~ (you don’t have to do this anymore. Importing that form somewhere, WIP, see gen_word_error_correction.js). Week and month names are translated by [moment.js][moment-lib].
 
 Note that this resource file does also provide the localization for the [opening_hours_map]. This can also be tested by cloning the project and linking your modified opening_hours.js working copy to the opening_hours.js directory (after renaming it) inside the opening_hours_map project. Or just follow the installation instructions from the [opening_hours_map].
+
+### Translating error messages and warnings
+
+Translations for error messages and warnings for the opening_hours.js library can be made in the file [locales/core.js][ohlib.js/locales/core.js]. You are encouraged to test your translations. Checkout the [Makefile][ohlib.Makefile] and the [test framework][ohlib.test.js] for how this can be done.
 
 ### Holidays
 
@@ -744,6 +750,7 @@ Contributor                                        | Contribution
 [Niels Elgaard Larsen](https://github.com/elgaard) | Public holidays for Denmark.
 [Adrian Fita](https://github.com/afita/)           | Public and school holidays for Romania.
 [sanderd17][] and [marcgemis][]                    | Public holidays for Belgium.
+[marcgemis][]                                      | Dutch localization.
 
 [sanderd17]: https://github.com/sanderd17
 [marcgemis]: https://github.com/marcgemis
@@ -752,7 +759,7 @@ Contributor                                        | Contribution
 
 * [Netzwolf](http://www.netzwolf.info/) (He developed the first and very feature complete JS implementation for opening_hours (time_domain.js). His implementation did not create selector code to go through time as this library does (which is a more advanced design). time_domain.js has been withdrawn in favor of opening_hours.js but a few parts where reused (mainly the input tolerance and the online evaluation for the [evaluation tool][ohlib.evaluation-tool]). It was also very useful as prove and motivation that all those complex things used in the [opening_hours syntax][oh:specification] are possible to evaluate with software :) )
 * Also thanks to FOSSGIS for hosting a public instance of this service. See the [wiki][fossgis-project].
-* The [favicon.png](/favicon.png) is based on the file ic_action_add_alarm.png from the [Android Design Icons](https://developer.android.com/downloads/design/Android_Design_Icons_20131106.zip) which is licensed under [Creative Commons Attribution 2.5](https://creativecommons.org/licenses/by/2.5/). It represents a clock next to the most common opening_hours value (by far) which is `24/7` and a check mark.
+* The [favicon.png](/img/favicon.png) is based on the file ic_action_add_alarm.png from the [Android Design Icons](https://developer.android.com/downloads/design/Android_Design_Icons_20131106.zip) which is licensed under [Creative Commons Attribution 2.5](https://creativecommons.org/licenses/by/2.5/). It represents a clock next to the most common opening_hours value (by far) which is `24/7` and a check mark.
 
 ## License
 
@@ -782,7 +789,10 @@ Edit: This does also work on npmjs in this short version … -->
 [ohlib.library-api]: #library-api
 [ohlib.testing]: #testing
 
+[ohlib.js/locales/core.js]: /locales/core.js
 [ohlib.opening_hours.js]: /opening_hours.js
+[ohlib.test.js]: /test.js
+[ohlib.Makefile]: /Makefile
 [ohlib.js/i18n-resources.js]: /js/i18n-resources.js
 [ohlib.npmjs]: https://www.npmjs.org/package/opening_hours
 [ohlib.convert-ical-to-json]: /convert_ical_to_json

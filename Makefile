@@ -90,14 +90,15 @@ doctoc:
 	doctoc README.md --title '**Table of Contents**'
 
 .PHONY: release
-release: doctoc check-diff-uglifyjs-log package.json check qa-source-code qa-https-everywhere
+## First source file is referenced!
+release: package.json doctoc check-diff-uglifyjs-log check qa-source-code qa-https-everywhere
 	git status
 	read continue
-	editor $<
+	editor "$<"
 	jq --raw-output '.version' $<
 	read continue
 	$(MAKE) $(MAKE_OPTIONS) check-package.json
-	git commit --all --message="Released version $(jq --raw-output '.version' $<)."
+	git commit --all --message="Released version $(shell jq --raw-output '.version' '$<')."
 	git tag --sign --local-user C505B5C93B0DB3D338A1B6005FE92C12EE88E1F0 "v$(jq --raw-output '.version' $<)"
 	git push --follow-tags
 	npm publish
@@ -261,6 +262,7 @@ osm-tag-data-get-taginfo: $(OH_RELATED_TAGS)
 
 # Testing:
 export.happy_hours.json:
+export.opening_hours.json:
 export.lit.json:
 
 export.%.json:

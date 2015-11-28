@@ -9,7 +9,7 @@ var opening_hours = require(opening_hours_lib);
 /* }}} */
 
 var tests = 3;
-var iterations = 40000;
+var iterations = 2000;
 
 // Pinned to this value:
 // Does differ from the optimal value. See test.js: value_perfectly_valid
