@@ -21,9 +21,9 @@ div.open {
     border-radius: 5px;
 }
 div.unknown {
-    background: #94d7b3;
+    background: rgba(100, 180, 150, 0.85);
     margin-left: -2px;
-    border: 1px solid #aaa;
+    border: 1px solid #000;
     border-radius: 5px;
 }
 div.closed      { background: rgba(224, 224, 224, 0.85) }
