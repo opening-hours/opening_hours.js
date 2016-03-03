@@ -1,33 +1,36 @@
 tr.today td.day { text-decoration: underline }
 td {
-    background: #E0E0E0;
-    padding: 0 10px;
-}
-td.workday { background: #cf9 }
-td.weekend { background: #fc9 }
-td.times {
-    width: 400px;
-    padding: 3px 0px 1px 2px;
-    background:#E0E0E0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAAeCAYAAAD0O81IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAEBSURBVHja7NWxDQAgDAOw9P+jw8YJCIEHrxkaVUnbAABnOQIAGGAAMMAAgAEGAAMMABhgAPh4gGem8i7JS7q5n37dT7/6uCrPAHtg99OvPvQrzwDL88Dy9CtPvwbYAT2wPvQrT7/yDLA8DyxPv/p1PwPsgB5Ynn7l6VeeAZbngfXrfvp1PwOsEA8sT7/y9CvPAHtgD6xf99OvPgywPA8sT7/y9CvPAHtg99OvPvQrzwDL88Dy9CtPvwbYAT2wPvQrT7/yDLA8DyxPv/p1PwPsgB5Ynn7l6VeeAZbngfXrfvp1PwMMABhgADDAAIABBgADDAAGGAAwwADwogUAAP//AwD7Ihe8uFAOdQAAAABJRU5ErkJggg==) no-repeat scroll 0 0 / 100% 100%;
+	background: #E0E0E0; 
+	padding: 0 10px}
+td.workday {background: #cf9}
+td.weekend {background: #fc9}
+td.times { 
+	width: 400px; 
+	padding: 3px 0px 1px 2px;
+	background:#E0E0E0 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAAeCAYAAAD0O81IAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAEBSURBVHja7NWxDQAgDAOw9P+jw8YJCIEHrxkaVUnbAABnOQIAGGAAMMAAgAEGAAMMABhgAPh4gGem8i7JS7q5n37dT7/6uCrPAHtg99OvPvQrzwDL88Dy9CtPvwbYAT2wPvQrT7/yDLA8DyxPv/p1PwPsgB5Ynn7l6VeeAZbngfXrfvp1PwOsEA8sT7/y9CvPAHtgD6xf99OvPgywPA8sT7/y9CvPAHtg99OvPvQrzwDL88Dy9CtPvwbYAT2wPvQrT7/yDLA8DyxPv/p1PwPsgB5Ynn7l6VeeAZbngfXrfvp1PwMMABhgADDAAIABBgADDAAGGAAwwADwogUAAP//AwD7Ihe8uFAOdQAAAABJRU5ErkJggg==) no-repeat center left / 100% 80%;
 }
 div.timebar {
-    height: 20px;
-    display: inline-block;
+	height: 20px; 
+	display: inline-block
 }
 div.open {
-    background: rgba(255, 255, 255, 0.85);
-    margin-left: -2px;
-    border: 1px solid #000;
-    border-radius: 5px;
+	background: rgba(255, 255, 255, 0.85); 
+	margin-left: -2px; 
+	border: 1px solid #000; 
+	border-radius: 5px;
 }
 div.unknown {
-    background: #94d7b3;
-    margin-left: -2px;
-    border: 1px solid #aaa;
-    border-radius: 5px;
+	background: rgba(100, 180, 150, 0.85);
+	margin-left: -2px; 
+	border: 1px solid #000; 
+	border-radius: 5px 
 }
-div.closed      { background: rgba(224, 224, 224, 0.85) }
-p.open          { color: #4a0 }
-p.unknown       { color: #94d7b3 }
-p.closed        { color: #a40 }
-span.oh-times   { background: #88ccff }
+div.closed {
+	background: rgba(224, 224, 224, 0.85);
+	border-top: 2px solid #e0e0e0;
+	border-bottom: 2px solid #e0e0e0;
+	}
+p.open 		{color: #4a0}
+p.unknown {color: #94d7b3}
+p.closed 	{color: #a40}
+span.oh-times { background: #88ccff }
