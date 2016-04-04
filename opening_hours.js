@@ -1385,6 +1385,23 @@
                 },
             },
         }, /* }}} */
+        'pl': { /* {{{ */
+            'PH': { // https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
+                'Nowy Rok'                       : [ 1, 1 ],
+                'Trzech Króli'                   : [ 1, 10 ],
+                'Niedziela Wielkanocna'          : [ 'easter', 0 ],
+                'Poniedziałek Wielkanocny'       : [ 'easter', 1 ],
+                'Święto Pracy'                   : [ 5, 1 ],
+                'Święto Narodowe Trzeciego Maja' : [ 5, 3 ],
+                'Zielone Świątki'                : [ 'easter', 49 ],
+                'Boże Ciało'                     : [ 'easter', 60 ],
+                'Wniebowzięcie NMP'              : [ 8, 15 ],
+                'Wszystkich Świętych'            : [ 11, 1 ],
+                'Święto Niepodległości'          : [ 11, 11 ],
+                '1. dzień Bożego Narodzenia'     : [ 12, 25 ],
+                '2. dzień Bożego Narodzenia'     : [ 12, 26 ]
+            }
+        }, /* }}} */
         'ru': { /* {{{ */
             'PH': { // https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B0%D0%B7%D0%B4%D0%BD%D0%B8%D0%BA%D0%B8_%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D0%B8
                 "1. Новогодние каникулы":     [ 1, 1 ],
