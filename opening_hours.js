@@ -2793,48 +2793,19 @@
                     2015: [ 12, 19, /* to */  1,  3 ],
                 },
             ],
-            'GB':[
-                {
-                    name: 'New Years Day',
-                    2016: [1,1],
-                    2017: [1,2],
+        'gb':{
+            'England & Wales':{
+                'PH':{
+                    'New Years day': [1,1],
+                    'Good friday': [easter, -2],
+                    'Easter Monday': [easter,1],
+                    'Early May bank holiday": [firstMayMonday,0],
+                    'Spring bank holiday': [lastMayMonday,0],
+                    'Summer bank holiday': [lastAugustMonday,0],
+                    'Christmas': [12,25],
+                    'Boxing day': [12,26]
                 },
-                {
-                    name: 'Good Friday',
-                    2016: [3,25]
-                    2017: [4,14]
-                },
-                {
-                    name: "Easter Monday",
-                    2016: [3,28]
-                    2017: [4,17]
-                },
-                {
-                    name: "Early May bank holiday",
-                    2016: [5,2]
-                    2017: [5,1]
-                },
-                {
-                    name: "Spring bank holiday",
-                    2016: [5,30]
-                    2017: [5,29]
-                },
-                {
-                    name: "Summer bank holiday",
-                    2016: [8,29]
-                    2017: [8,28]
-                },
-                {
-                    name: "Christmas Day",
-                    2016: [12,27]
-                    2017: [12,25]
-                },
-                {
-                    name: "Boxing Day",
-                    2016: [12,26]
-                    2017: [12,26]
-                },
-            ],
+            },
         }, /* }}} */
     };
     /* }}} */
