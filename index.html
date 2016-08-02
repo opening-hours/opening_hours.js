@@ -53,8 +53,25 @@
         <div id="user"><!-- {{{ -->
             <form id="check" action="#">
                 <!-- User input {{{ -->
-                <p>
+                <p><span class="hd">
                     <script type="text/javascript">
+                        document.write(i18n.t('words.date') + ' ' + i18n.t('words.and') + ' ' + i18n.t('words.time.time') + ':</span>');
+                        document.write('<input id="dd" size="3" name="dd" value="02" onblur="Evaluate()"/>.');
+                        document.write('<select id="mm" name="mm" onchange="Evaluate()">');
+                        for (var i = 0; i < moment.monthsShort().length; i++) {
+                            document.write('<option value="monthNumber' + i + '">' + moment.monthsShort(i) + '</option>');
+                        }
+                        document.write('</select>');
+                    </script>
+
+                    <input id="yyyy" size="5" name="yyyy" value="2013" onblur="Evaluate()" />
+                    &#160;
+                    <input size="3" name="HH" value="22" onblur="Evaluate()" />:<input size="3" name="MM" value="21" onblur="Evaluate()" />
+                    &#160;
+                    <input size="10" name="wday" readonly="readonly" />
+                    <input size="3"  name="week" readonly="readonly" />
+                </p>
+                <p><script type="text/javascript">
                     var buttons = [
                         [ 3600 * 24 * 365, 1, 'words.time.year'    ],
                         [ 3600 * 24      , 1, 'words.time.day'     ],
@@ -76,30 +93,11 @@
                         }
                     }
                     </script>
-                </p>
+                </p>                
 
-                <p>
+                <p><span class="hd">
                     <script type="text/javascript">
-                        document.write(i18n.t('words.date') + ' ' + i18n.t('words.and') + ' ' + i18n.t('words.time.time') + ':<br />');
-                        document.write('<input id="dd" size="3" name="dd" value="02" onblur="Evaluate()"/>.');
-                        document.write('<select id="mm" name="mm" onchange="Evaluate()">');
-                        for (var i = 0; i < moment.monthsShort().length; i++) {
-                            document.write('<option value="monthNumber' + i + '">' + moment.monthsShort(i) + '</option>');
-                        }
-                        document.write('</select>');
-                    </script>
-
-                    <input id="yyyy" size="5" name="yyyy" value="2013" onblur="Evaluate()" />
-                    &#160;
-                    <input size="3" name="HH" value="22" onblur="Evaluate()" />:<input size="3" name="MM" value="21" onblur="Evaluate()" />
-                    &#160;
-                    <input size="10" name="wday" readonly="readonly" />
-                    <input size="3"  name="week" readonly="readonly" />
-                </p>
-
-                <p>
-                    <script type="text/javascript">
-                        document.write(i18n.t('words.position') + ':<br />');
+                        document.write(i18n.t('words.position') + ':</span>');
                         document.write(i18n.t('words.lat') + ': <input size="7" id="lat" value="' + default_lat + '" onblur="Evaluate()" /> ');
                         document.write(i18n.t('words.lon') + ': <input size="7" id="lon" value="' + default_lon + '"  onblur="Evaluate()" /> ');
                         document.write(i18n.t('words.country') + ': <input size="3" id="cc" readonly="readonly" /> ');
@@ -108,9 +106,9 @@
                     </script>
                 </p>
 
-                <p>
+                <p><span class="hd">
                     <script type="text/javascript">
-                        document.write(i18n.t('words.mode') + ': <select id="mode" name="mode" onchange="Evaluate()">');
+                        document.write(i18n.t('words.mode') + ': </span><select id="mode" name="mode" onchange="Evaluate()">');
                         for (var i = 0; i <= 2; i++) {
                             document.write('<option value="' + i + '">' + i18n.t('texts.mode ' + i) + '</option>');
                         }
@@ -118,26 +116,27 @@
                     </script>
                 </p>
 
-                <p>
+                <p><span class="hd">
                     <script type="text/javascript">
                         document.write(i18n.t('texts.value for') + ' <q>opening_hours</q>:'
-                                + '<br />');
+                                + '</span>');
                     </script>
                     <input id="expression"
                         onKeyUp="return submitenter(this,event)"
-                        style="width:100%"
+                        
                         name="expression"
                         value="Mo-Fr 10:00-20:00; PH off"
                         onblur="Evaluate()"
                     />
+                    <span class="hd">
                     <script type="text/javascript">
-                        document.write(i18n.t('texts.value to compare') + ':<br />');
+                        document.write(i18n.t('texts.value to compare') + ':</span>');
                     </script>
                     <input
                         id="diff_value"
                         type="text"
                         onKeyUp="return submitenter(this,event)"
-                        style="width:100%"
+                        
                         onblur="Evaluate()"
                     />
                 </p>
