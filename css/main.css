@@ -32,4 +32,5 @@ noscript { color: #AA4400 }
     color:#710B12;
 }
 .hd q {display:inline}
-#expression, #diff_value { width:100% }
+#expression, #diff_value, .w100 { width:100% }
+.nostyle {border:none;}
