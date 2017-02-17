@@ -2790,6 +2790,19 @@
                     2015: [ 12, 19, /* to */  1,  3 ],
                 },
             ],
+        'gb':{
+            'England & Wales':{
+                'PH':{
+                    'New Years day': [1,1],
+                    'Good friday': [easter, -2],
+                    'Easter Monday': [easter,1],
+                    'Early May bank holiday": [firstMayMonday,0],
+                    'Spring bank holiday': [lastMayMonday,0],
+                    'Summer bank holiday': [lastAugustMonday,0],
+                    'Christmas': [12,25],
+                    'Boxing day': [12,26]
+                },
+            },
         }, /* }}} */
         'se': { /* {{{ */
             'PH': {
