@@ -3323,6 +3323,7 @@
                 'Deň vzniku Slovenskej republiky'                : [  1,  1 ],
                 'Zjavenie Pána'                                  : [  1,  6 ],
                 'Veľký piatok'                                   : [ 'easter', -2 ],
+                'Veľkonočná nedeľa'                              : [ 'easter',  0 ], 
                 'Veľkonočný pondelok'                            : [ 'easter',  1 ],
                 'Sviatok práce'                                  : [  5,  1 ],
                 'Deň víťazstva nad fašizmom'                     : [  5,  8 ],
