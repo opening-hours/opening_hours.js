@@ -27,4 +27,4 @@ PH:  # https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz
 
 Zürich:
   _state_code: zh
-  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3755&lon=8.5412&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3723144&lon=8.5423238&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'

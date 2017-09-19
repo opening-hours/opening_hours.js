@@ -1,18 +1,17 @@
 ---
-place_id: '173829749'
+place_id: '173365411'
 licence: Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright
 osm_type: relation
-osm_id: '1690941'
-lat: '47.3774435'
-lon: '8.52850906156786'
-display_name: Bezirk Zürich, Zürich, Schweiz
+osm_id: '1690227'
+lat: '47.3723144'
+lon: '8.5423238'
+display_name: Zürich, Schweiz
 address:
   country: Schweiz
   country_code: ch
-  county: Bezirk Zürich
   state: Zürich
 boundingbox:
-  - '47.3202203'
-  - '47.4346662'
-  - '8.4480061'
-  - '8.6254413'
+  - '47.1594376'
+  - '47.6944722'
+  - '8.3576804'
+  - '8.9849407'
