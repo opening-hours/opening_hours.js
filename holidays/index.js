@@ -20,3 +20,4 @@ export {default as si} from "./si.yaml";
 export {default as sk} from "./sk.yaml";
 export {default as ua} from "./ua.yaml";
 export {default as us} from "./us.yaml";
+export {default as ie} from "./ie.yaml";

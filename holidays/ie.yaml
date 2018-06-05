@@ -1,0 +1,16 @@
+---
+
+# https://www.timeanddate.com/holidays/ireland/
+#_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=53.1424&lon=-7.6921&zoom=18&addressdetails=1&accept-language=en'
+PH:
+  'New Year’s Day': [1, 1]
+  'St Patrick’s Day': [3, 17]
+  'Good Friday': [easter, -2]
+  'Easter Monday': [easter, 1]
+  'May Bank Holiday': [firstMayMonday, 0]
+  'June Bank Holiday': [firstJuneMonday, 0]
+  'August Bank Holiday': [firstAugustMonday, 0]
+  'October Bank Holiday': [lastOctoberMonday, 0]
+  'Christmas': [12, 25]
+  'St Stephens Day': [12, 26]
+  'Bank Holiday': [12, 27]
