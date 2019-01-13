@@ -1,0 +1,22 @@
+---
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=35.6803200&lon=139.7436850&&zoom=18&addressdetails=1&accept-language=ja'
+
+PH: # https://ja.wikipedia.org/w/index.php?title=%E5%9B%BD%E6%B0%91%E3%81%AE%E4%BC%91%E6%97%A5
+    - {'name': '元日', 'fixed_date': [1, 1]}
+    - {'name': '成人の日', 'variable_date': firstJanuaryMonday, 'offset': +7}
+    - {'name': '建国記念の日', 'fixed_date': [2, 11]}
+    - {'name': '春分の日', 'variable_date': [3, 20], 'only_years': [2020, 2021, 2024, 2025, 2026]}
+    - {'name': '春分の日', 'variable_date': [3, 21]}
+    - {'name': '昭和の日', 'fixed_date': [4, 29]}
+    - {'name': '憲法記念日', 'fixed_date': [5, 3]}
+    - {'name': 'みどりの日', 'fixed_date': [5, 4]}
+    - {'name': 'こどもの日', 'fixed_date': [5, 5]}
+    - {'name': '海の日', 'variable_date': firstJulyMonday, 'offset': +14}
+    - {'name': '山の日', 'fixed_date': [8, 11]}
+    - {'name': '敬老の日', 'variable_date': firstOctoberMonday, 'offset': +14}
+    - {'name': '秋分の日', 'variable_date': [9, 22], 'only_years': [2020, 2024, 2028]}
+    - {'name': '秋分の日', 'variable_date': [9, 23]}
+    - {'name': '体育の日', 'variable_date': firstDecemberMonday, 'offset': +7}
+    - {'name': '文化の日', 'fixed_date': [11, 3]}
+    - {'name': '勤労感謝の日', 'fixed_date': [11, 23]}
+    - {'name': '天皇誕生日', 'fixed_date': [12, 23]}
