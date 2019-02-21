@@ -1,0 +1,17 @@
+---
+place_id: '198313079'
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright
+osm_type: relation
+osm_id: '1684821'
+lat: '46.896808'
+lon: '7.49578006349234'
+display_name: Bern, Schweiz
+address:
+  country: Schweiz
+  country_code: ch
+  state: Bern
+boundingbox:
+  - '46.6708539'
+  - '47.1226847'
+  - '7.082645'
+  - '7.7323487'
