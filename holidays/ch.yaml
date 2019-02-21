@@ -27,4 +27,104 @@ PH:  # https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz
 
 Zürich:
   _state_code: zh
-  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3723144&lon=8.5423238&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.4276&lon=8.6710&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Bern:
+  _state_code: be
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.8386&lon=7.6575&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+
+Luzern:
+  _state_code: lu
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.0313&lon=8.1752&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Uri:
+  _state_code: ur
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.7610&lon=8.6778&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Schwyz:
+  _state_code: sz
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.0538&lon=8.6971&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Obwalden:
+  _state_code: ow
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.8670&lon=8.2748&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Nidwalden:
+  _state_code: nw
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.8959&lon=8.3965&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Glarus:
+  _state_code: gl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.9856&lon=9.0619&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Zug:
+  _state_code: zg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.1648&lon=8.5480&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Fribourg:
+  _state_code: fr
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.7234&lon=7.0615&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Solothurn:
+  _state_code: so
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.2890&lon=7.6859&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Basel-Stadt:
+  _state_code: bs
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.5601&lon=7.6242&zoom=12&addressdetails=1&accept-language=de,fr,it,rm'
+
+Basel-Landschaft:
+  _state_code: bl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.4512&lon=7.6436&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Schaffhausen:
+  _state_code: sh
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.6806&lon=8.6404&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Appenzell Ausserrhoden:
+  _state_code: ar
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3581&lon=9.4112&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Appenzell Innerrhoden:
+  _state_code: ai
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3391&lon=9.4640&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+St. Gallen:
+  _state_code: sg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.2093&lon=9.2340&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+
+Grisons:
+  _state_code: gr
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.6190&lon=9.5717&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+
+Aargau:
+  _state_code: ag
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3811&lon=8.0859&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Thurgau:
+  _state_code: tg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.5359&lon=9.0854&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
+
+Ticino:
+  _state_code: ti
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.2283&lon=8.7698&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+
+Vaud:
+  _state_code: vd
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.5881&lon=6.6577&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+
+Valais:
+  _state_code: vs
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.2576&lon=7.6246&zoom=9&addressdetails=1&accept-language=de,fr,it,rm'
+
+Neuchâtel:
+  _state_code: ne
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.0063&lon=6.7602&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Geneva:
+  _state_code: ge
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.2467&lon=6.1331&zoom=11&addressdetails=1&accept-language=de,fr,it,rm'
+
+Jura:
+  _state_code: ju
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.3281&lon=7.2002&zoom=10&addressdetails=1&accept-language=de,fr,it,rm'
