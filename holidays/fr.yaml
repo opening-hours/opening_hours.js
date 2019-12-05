@@ -1,15 +1,19 @@
 ---
 
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.60333&lon=1.88920&zoom=18&addressdetails=1&accept-language=fr,en'
+
 # https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_en_France
 PH:
   - {'name': 'Jour de l''an', 'fixed_date': [1, 1]}
   - {'name': 'Vendredi saint', 'variable_date': easter, 'offset': -2, 'only_states': [Moselle, Bas-Rhin, Haut-Rhin, Guadeloupe, Martinique, 'Polynésie française']}
   - {'name': 'Lundi de Pâques', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Abolition de l''esclavage (Mayotte)', 'fixed_date': [4, 27], 'only_states': [Mayotte]}
   - {'name': 'Saint-Pierre-Chanel', 'fixed_date': [4, 28], 'only_states': [Wallis-et-Futuna]}
   - {'name': 'Fête du Travail', 'fixed_date': [5, 1]}
   - {'name': 'Fête de la Victoire', 'fixed_date': [5, 8]}
   - {'name': 'Abolition de l''esclavage (Martinique)', 'fixed_date': [5, 22], 'only_states': [Martinique]}
   - {'name': 'Abolition de l''esclavage (Guadeloupe)', 'fixed_date': [5, 27], 'only_states': [Guadeloupe]}
+  - {'name': 'Abolition de l''esclavage (Saint-Martin)', 'fixed_date': [5, 28], 'only_states': [Saint-Martin (France)]}
   - {'name': 'Jeudi de l''Ascension', 'variable_date': easter, 'offset': 39}
   - {'name': 'Lundi de Pentecôte', 'variable_date': easter, 'offset': 50}
   - {'name': 'Abolition de l''esclavage (Guyane)', 'fixed_date': [6, 10], 'only_states': [Guyane]}
@@ -19,8 +23,779 @@ PH:
   - {'name': 'Fête du Territoire', 'fixed_date': [7, 29], 'only_states': [Wallis-et-Futuna]}
   - {'name': 'Assomption', 'fixed_date': [8, 15]}
   - {'name': 'Fête de la citoyenneté', 'fixed_date': [9, 24], 'only_states': [Nouvelle-Calédonie]}
+  - {'name': 'Abolition de l''esclavage (Saint-Barthélemy)', 'fixed_date': [10, 9], 'only_states': [Saint-Barthélemy]}
   - {'name': 'Toussaint', 'fixed_date': [11, 1]}
   - {'name': 'Armistice', 'fixed_date': [11, 11]}
   - {'name': 'Abolition de l''esclavage (Réunion)', 'fixed_date': [12, 20], 'only_states': [Réunion]}
   - {'name': 'Noël', 'fixed_date': [12, 25]}
   - {'name': 'Saint-Étienne ', 'fixed_date': [12, 26], 'only_states': [Moselle, Bas-Rhin, Haut-Rhin]}
+
+# Vacances scolaires
+# ------------------
+# Dates: https://www.data.gouv.fr/fr/datasets/le-calendrier-scolaire/
+# Référentiel géographique: https://www.data.gouv.fr/fr/datasets/referentiel-geographique-francais-communes-unites-urbaines-aires-urbaines-departements-academies-regions-1/
+# (Données sous Licence Ouverte d'Etalab)
+# Code ISO des régions (state_code): https://fr.wikipedia.org/wiki/ISO_3166-2:FR
+
+# Zone A:
+# -------
+#  Région Auvergne-Rhône-Alpes (Académies de Clermont-Ferrand, Grenoble, Lyon)
+Auvergne-Rhône-Alpes:
+  _state_code: ara
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.29683&lon=4.65952&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 11, 2, 25]
+      '2019': [2, 17, 3, 3]
+      '2020': [2, 23, 3, 8]
+      '2021': [2, 7, 2, 21]
+    - name: Vacances de Printemps
+      '2018': [4, 8, 4, 22]
+      '2019': [4, 14, 4, 28]
+      '2020': [4, 19, 5, 3]
+      '2021': [4, 11, 4, 25]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Bourgogne-Franche-Comté (Académies de Besançon, Dijon)
+Bourgogne-Franche-Comté:
+  _state_code: bfc
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.05104&lon=5.07415&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 11, 2, 25]
+      '2019': [2, 17, 3, 3]
+      '2020': [2, 23, 3, 8]
+      '2021': [2, 7, 2, 21]
+    - name: Vacances de Printemps
+      '2018': [4, 8, 4, 22]
+      '2019': [4, 14, 4, 28]
+      '2020': [4, 19, 5, 3]
+      '2021': [4, 11, 4, 25]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Nouvelle-Aquitaine (Académies de Bordeaux, Limoges, Poitiers)
+Nouvelle-Aquitaine:
+  _state_code: naq
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.40381&lon=0.37580&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 11, 2, 25]
+      '2019': [2, 17, 3, 3]
+      '2020': [2, 23, 3, 8]
+      '2021': [2, 7, 2, 21]
+    - name: Vacances de Printemps
+      '2018': [4, 8, 4, 22]
+      '2019': [4, 14, 4, 28]
+      '2020': [4, 19, 5, 3]
+      '2021': [4, 11, 4, 25]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie#  Région Nouvelle-Aquitaine (Académies de Bordeaux, Limoges, Poitiers)
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+# Zone B:
+# -------
+#  Région Bretagne (Académie de Rennes)
+Bretagne:
+  _state_code: bre
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=48.26397&lon=-2.91946&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Centre-Val de Loire (Académie de Orléans-Tours)
+Centre-Val de Loire:
+  _state_code: cvl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.54920&lon=1.73285&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Grand Est (Académies de Nancy-Metz, Reims, Strasbourg)
+Grand Est:
+  _state_code: ges
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=48.48446&lon=6.11390&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Hauts-de-France (Académies de Amiens, Lille)
+Hauts-de-France:
+  _state_code: hdf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=50.10235&lon=2.72565&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Normandie (Académies de Caen, Rouen)
+Normandie:
+  _state_code: nor
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=49.06786&lon=0.31476&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Pays de la Loire (Académie de Nantes)
+Pays de la Loire:
+  _state_code: pdl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.65949&lon=-0.81744&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Provence-Alpes-Côte d'Azur (Académies de Aix-Marseille, Nice)
+Provence-Alpes-Côte d'Azur:
+  _state_code: pac
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=44.05800&lon=6.06508&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 10, 2, 24]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 21, 3, 7]
+    - name: Vacances de Printemps
+      '2018': [4, 22, 5, 6]
+      '2019': [4, 7, 4, 22]
+      '2020': [4, 12, 4, 26]
+      '2021': [4, 25, 5, 9]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+# Zone C:
+# -------
+
+#  Région Île-de-France (Académies de Créteil, Paris, Versailles)
+Île-de-France:
+  _state_code: idf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=48.64424&lon=2.75425&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 18, 3, 4]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 9, 2, 23]
+      '2021': [2, 14, 2, 28]
+    - name: Vacances de Printemps
+      '2018': [4, 15, 4, 29]
+      '2019': [4, 21, 5, 5]
+      '2020': [4, 5, 4, 19]
+      '2021': [4, 18, 5, 2]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+#  Région Occitanie (Académies de Montpellier, Toulouse)
+Occitanie:
+  _state_code: occ
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=43.64875&lon=2.34406&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 18, 3, 4]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 9, 2, 23]
+      '2021': [2, 14, 2, 28]
+    - name: Vacances de Printemps
+      '2018': [4, 15, 4, 29]
+      '2019': [4, 21, 5, 5]
+      '2020': [4, 5, 4, 19]
+      '2021': [4, 18, 5, 2]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 14, 5, 16]
+    - name: Vacances d'Été
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 18, 11, 1]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+# Corse et Outre-Mer:
+# -------------------
+
+Corse:
+  _state_code: cor
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.18794&lon=9.06936&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 27, 3, 11]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 16, 3, 1]
+    - name: Vacances de Printemps
+      '2018': [4, 24, 5, 6]
+      '2019': [4, 21, 5, 5]
+      '2020': [4, 19, 5, 3]
+    - name: Pont de l'Ascension
+      '2018': [5, 10, 5, 10]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+    - name: Vacances d'Été
+      '2018': [7, 11, 9, 4]
+      '2019': [7, 7, 9, 2]
+      '2020': [7, 5, 8, 31]
+    - name: Vacances de la Toussaint
+      '2018': [10, 24, 11, 4]
+      '2019': [10, 20, 11, 3]
+      # '2020': [10, 18, 11, 1] calendrier pas encore défini
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      # '2020': [12, 20, 1, 3] calendrier pas encore défini
+
+# Académie de Guadeloupe (Guadeloupe, Saint-Martin, Saint-Barthélémy):
+Guadeloupe:
+  _state_code: gua
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=16.24885&lon=-61.56407&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de Carnaval
+      '2018': [2, 9, 2, 21]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 16, 3, 1]
+    - name: Vacances de Pâques
+      '2018': [3, 25, 4, 8]
+      '2019': [4, 19, 5, 1]
+      '2020': [4, 9, 4, 22]
+    - name: Pont de l'Ascension
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+    - name: Grandes Vacances
+      '2018': [7, 7, 9, 3]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+
+Saint-Martin (France):
+  _state_code: mf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=18.08136&lon=-63.04570&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de Carnaval
+      '2018': [2, 9, 2, 21]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 16, 3, 1]
+    - name: Vacances de Pâques
+      '2018': [3, 25, 4, 8]
+      '2019': [4, 19, 5, 1]
+      '2020': [4, 9, 4, 22]
+    - name: Pont de l'Ascension
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+    - name: Grandes Vacances
+      '2018': [7, 7, 9, 3]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+
+Saint-Barthélemy:
+  _state_code: bl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=17.89684&lon=-62.83098&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de Carnaval
+      '2018': [2, 9, 2, 21]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 16, 3, 1]
+    - name: Vacances de Pâques
+      '2018': [3, 25, 4, 8]
+      '2019': [4, 19, 5, 1]
+      '2020': [4, 9, 4, 22]
+    - name: Pont de l'Ascension
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+    - name: Grandes Vacances
+      '2018': [7, 7, 9, 3]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      # '2020': [10, 20, 11, 3] calendrier pas encore défini
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 6]
+      '2019': [12, 22, 1, 5]
+      # '2020': [12, 20, 1, 3] calendrier pas encore défini
+
+# Académie de Guyane:
+Guyane:
+  _state_code: guf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=4.00398&lon=-52.99930&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de Carnaval
+      '2018': [2, 11, 2, 25]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 16, 3, 1]
+      '2021': [2, 14, 2, 28]
+    - name: Vacances de Pâques
+      '2018': [3, 30, 4, 15]
+      '2019': [4, 19, 5, 1]
+      '2020': [4, 10, 4, 26]
+      '2021': [4, 2, 4, 18]
+    - name: Pont de l'Ascension
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+      '2021': [5, 13, 5, 16]
+    - name: Grandes Vacances
+      '2018': [7, 8, 9, 2]
+      '2019': [7, 9, 9, 1]
+      '2020': [7, 5, 8, 31]
+      '2021': [7, 4, 8, 31]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 25, 11, 8]
+      # '2021': [10, 20, 11, 3] calendrier pas encore défini
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 5]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+      # '2021': [12, 20, 1, 3] calendrier pas encore défini
+
+# Académie de Martinique:
+Martinique:
+  _state_code: mtq
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=14.61118&lon=-60.96110&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de Carnaval
+      '2018': [2, 8, 2, 18]
+      '2019': [2, 24, 3, 10]
+      '2020': [2, 23, 3, 8]
+    - name: Vacances de Pâques
+      '2018': [3, 25, 4, 8]
+      '2019': [4, 14, 4, 28]
+      '2020': [4, 5, 4, 19]
+    - name: Pont de l'Ascension
+      '2018': [5, 8, 5, 13]
+      '2019': [5, 30, 6, 2]
+      '2020': [5, 21, 5, 24]
+    - name: Grandes Vacances
+      '2018': [7, 7, 9, 3]
+      '2019': [7, 7, 9, 1]
+      '2020': [7, 5, 8, 31]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 21, 11, 4]
+      '2019': [10, 20, 11, 3]
+      '2020': [10, 25, 11, 8]
+    - name: Vacances de Noël
+      '2018': [12, 23, 1, 5]
+      '2019': [12, 22, 1, 5]
+      '2020': [12, 20, 1, 3]
+
+# Académie de Mayotte:
+Mayotte:
+  _state_code: may
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-12.82304&lon=45.15294&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de Carnaval
+      '2018': [2, 25, 3, 11]
+      '2019': [2, 24, 3, 10]
+      '2020': [3, 1, 3, 15]
+    - name: Vacances de Pâques
+      '2018': [5, 6, 5, 13]
+      '2019': [4, 27, 5, 5]
+      '2020': [5, 3, 5, 10]
+    - name: Pont de l'Ascension
+      '2020': [5, 21, 5, 24]
+    - name: Grandes Vacances
+      '2018': [7, 8, 8, 22]
+      '2019': [7, 7, 8, 22]
+      '2020': [7, 5, 8, 23]
+    - name: Vacances de la Toussaint
+      '2018': [10, 7, 10, 21]
+      '2019': [10, 13, 10, 27]
+      # '2020': [10, 25, 11, 8] calendrier pas encore défini
+    - name: Vacances de Noël
+      '2018': [12, 9, 1, 6]
+      '2019': [12, 15, 1, 12]
+      # '2020': [12, 20, 1, 3] calendrier pas encore défini
+
+# Académie de La Réunion:
+La Réunion:
+  _state_code: lre
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-21.13113&lon=55.52768&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances après 3ème période
+      '2018': [3, 11, 3, 25]
+      '2019': [3, 10, 3, 24]
+      '2020': [3, 8, 3, 22]
+    - name: Vacances après 4ème période
+      '2018': [5, 6, 5, 16]
+      '2019': [5, 8, 5, 19]
+      '2020': [5, 1, 5, 13]
+    - name: Vacances hiver austral
+      '2018': [7, 8, 8, 16]
+      '2019': [7, 7, 8, 15]
+      '2020': [7, 5, 8, 13]
+    - name: Vacances après 1ère période
+      '2018': [10, 14, 10, 28]
+      '2019': [10, 13, 10, 27]
+      # '2020': [10, 13, 11, 27] calendrier pas encore défini
+    - name: Vacances été austral
+      '2018': [12, 23, 1, 27]
+      '2019': [12, 20, 1, 26]
+      # '2020': [12, 20, 1, 26] calendrier pas encore défini
+
+# Académie de Nouméa:
+Nouvelle-Calédonie:
+  _state_code: nc
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-21.30203&lon=165.48900&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances 1ère période
+      '2018': [4, 7, 4, 15]
+      '2019': [4, 6, 4, 14]
+      '2020': [4, 4, 4, 13]
+    - name: Vacances 2ème période
+      '2018': [6, 9, 6, 24]
+      '2019': [6, 8, 6, 23]
+      '2020': [6, 6, 6, 21]
+    - name: Vacances 3ème période
+      '2018': [8, 11, 8, 26]
+      '2019': [8, 10, 8, 25]
+      '2020': [8, 8, 8, 23]
+    - name: Vacances 4ème période
+      '2018': [10, 13, 10, 18]
+      '2019': [10, 12, 10, 27]
+      '2020': [10, 10, 10, 25]
+    - name: Vacances d'Été
+      '2018': [12, 15, 2, 17]
+      '2019': [12, 14, 2, 16]
+      '2020': [12, 12, 2, 14]
+
+# Vice-rectorat de Polynésie Française:
+# (Vacances 1er degré)
+Polynésie française:
+  _state_code: pf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-17.02449&lon=-144.64284&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances de février
+      '2018': [2, 18, 2, 25]
+      '2019': [2, 17, 2, 24]
+      '2020': [2, 16, 2, 23]
+    - name: Vacances d'avril
+      '2018': [3, 30, 4, 15]
+      '2019': [4, 7, 4, 22]
+      '2020': [3, 29, 4, 13]
+    - name: Vacances de mai
+      '2018': [5, 20, 5, 27]
+      '2019': [5, 26, 6, 2]
+      '2020': [5, 17, 5, 24]
+    - name: Grandes Vacances
+      '2018': [7, 7, 8, 15]
+      '2019': [7, 7, 8, 13]
+      '2020': [7, 5, 8, 9]
+    - name: Vacances de septembre
+      '2018': [9, 16, 9, 23]
+      '2019': [9, 15, 9, 22]
+      # '2020': [9, 4, 9, 13] calendrier pas encore défini
+    - name: Vacances d'octobre-novembre
+      '2018': [10, 28, 11, 11]
+      '2019': [10, 27, 11, 11]
+      # '2020': [10, 6, 11, 21] calendrier pas encore défini
+    - name: Vacances de Noël
+      '2018': [12, 16, 1, 13]
+      '2019': [12, 15, 1, 12]
+      # '2020': [12, 8, 1, 23] calendrier pas encore défini
+
+
+#  Collectivité territoriale de Saint-Pierre-et-Miquelon:
+Saint-Pierre-et-Miquelon:
+  _state_code: pm
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.83747&lon=-56.21089&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances d'Hiver
+      '2018': [2, 24, 3, 11]
+      '2019': [2, 16, 3, 3]
+      '2020': [2, 22, 3, 8]
+    - name: Vacances de Printemps
+      '2018': [4, 28, 5, 13]
+      '2019': [4, 20, 5, 5]
+      '2020': [4, 18, 5, 3]
+    - name: Pont de l'Ascension
+      '2020': [5, 21, 5, 24]
+    - name: Vacances d'Été
+      '2018': [6, 30, 9, 6]
+      '2019': [7, 4, 9, 4]
+      '2020': [7, 4, 9, 2]  # reprise des cours officielle pas encore définie
+    - name: Vacances de la Toussaint
+      '2018': [10, 27, 11, 4]
+      '2019': [10, 26, 11, 5]
+      # '2020': [10, 18, 11, 1] calendrier pas encore défini
+    - name: Vacances de Noël
+      '2018': [12, 22, 1, 6]
+      '2019': [12, 21, 1, 5]
+      # '2020': [12, 20, 1, 3] calendrier pas encore défini
+
+# Vice-rectorat de Wallis-et-Futuna:
+Wallis-et-Futuna:
+  _state_code: wf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-13.29915&lon=-176.20450&zoom=18&addressdetails=1&accept-language=fr,en'
+  SH:
+    - name: Vacances 1ère période
+      '2018': [4, 1, 4, 15]
+      '2019': [3, 31, 4, 14]
+      '2020': [3, 29, 4, 13]
+    - name: Vacances 2ème période
+      '2018': [6, 8, 6, 24]
+      '2019': [6, 9, 6, 23]
+      '2020': [6, 5, 6, 21]
+    - name: Vacances 3ème période
+      '2018': [8, 10, 8, 26]
+      '2019': [8, 11, 8, 25]
+      '2020': [8, 9, 8, 23]
+    - name: Vacances 4ème période
+      '2018': [10, 14, 10, 28]
+      '2019': [10, 13, 10, 27]
+      '2020': [10, 11, 10, 25]
+    - name: Vacances d'Été
+      '2018': [12, 16, 2, 10]
+      '2019': [12, 15, 2, 9]
+      '2020': [12, 13, 2, 8]

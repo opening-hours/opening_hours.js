@@ -1,0 +1,21 @@
+---
+place_id: 133231382
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 240446257
+lat: '-21.3047115'
+lon: '165.4846495'
+display_name: Route du Col des Roussettes, Houaïlou, Province Nord, Nouvelle-Calédonie, 98816, France
+address:
+  country: France
+  country_code: fr
+  county: Province Nord
+  postcode: '98816'
+  road: Route du Col des Roussettes
+  state: Nouvelle-Calédonie
+  village: Houaïlou
+boundingbox:
+  - '-21.3354081'
+  - '-21.2966002'
+  - '165.4440169'
+  - '165.4887547'

@@ -1,0 +1,21 @@
+---
+place_id: 184687411
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 526745624
+lat: '18.0788384'
+lon: '-63.0485467'
+display_name: Route de Pic Paradis, Colombier, Saint-Martin (France), 97150, France
+address:
+  country: France
+  country_code: fr
+  postcode: '97150'
+  road: Route de Pic Paradis
+  state: Saint-Martin (France)
+  suburb: Colombier
+  town: Saint-Martin (France)
+boundingbox:
+  - '18.0772921'
+  - '18.079211'
+  - '-63.0509598'
+  - '-63.0484875'

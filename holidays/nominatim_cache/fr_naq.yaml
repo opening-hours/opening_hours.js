@@ -1,0 +1,23 @@
+---
+place_id: 275965074
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 392727772
+lat: '45.4028048171533'
+lon: '0.377347842694811'
+display_name: Chemin des Fontaines, La Pouyade, Cherval, Périgueux, Dordogne, Nouvelle-Aquitaine, France métropolitaine, 24320,
+  France
+address:
+  country: France
+  country_code: fr
+  county: Périgueux
+  postcode: '24320'
+  road: Chemin des Fontaines
+  state: Nouvelle-Aquitaine
+  suburb: La Pouyade
+  village: Cherval
+boundingbox:
+  - '45.4021268'
+  - '45.4056206'
+  - '0.3773001'
+  - '0.3807171'

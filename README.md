@@ -109,7 +109,7 @@ npm install
 If you are a web developer and want to use this library you can do so by including the current version from here:
 
 ```
-http://openingh.openstreetmap.de/opening_hours.js/opening_hours+deps.min.js
+https://openingh.openstreetmap.de/opening_hours.js/opening_hours+deps.min.js
 ```
 
 To get started checkout the [simple_index.html](/examples/simple_index.html) file.
@@ -827,7 +827,7 @@ Edit: This does also work on npmjs in this short version … -->
 
 [moment-lib]: https://momentjs.com/
 
-[evaluation tool]: http://openingh.openstreetmap.de/evaluation_tool/
+[evaluation tool]: https://openingh.openstreetmap.de/evaluation_tool/
 
 [schulferien.org]: http://www.schulferien.org/iCal/
 

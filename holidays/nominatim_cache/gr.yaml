@@ -1,0 +1,23 @@
+---
+place_id: 108892009
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 140958607
+lat: '38.9983679'
+lon: '21.9899484'
+display_name: Κ. Ροβολιαρίου, Ροβολιάρι, Δήμος Μακρακώμης, Περιφερειακή Ενότητα Φθιώτιδας, Περιφέρεια Στερεάς Ελλάδας, Θεσσαλία
+    - Στερεά Ελλάδα, 35011, Ελλάδα
+address:
+  country: Ελλάδα
+  country_code: gr
+  # county: Δήμος Μακρακώμης
+  # postcode: 35011
+  # state: Θεσσαλία - Στερεά Ελλάδα
+  # state_district: Περιφέρεια Στερεάς Ελλάδας
+  # suburb: Κ. Ροβολιαρίου
+  # village: Ροβολιάρι
+boundingbox:
+  - '38.9875702'
+  - '39.0068618'
+  - '21.9871825'
+  - '22.0086369'

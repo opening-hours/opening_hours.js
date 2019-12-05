@@ -1,0 +1,17 @@
+---
+place_id: 198773602
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: relation
+osm_id: 3406826
+lat: '46.8374544'
+lon: '-56.2120555'
+display_name: Saint-Pierre-et-Miquelon, France
+address:
+  country: France
+  country_code: fr
+  state: Saint-Pierre-et-Miquelon
+boundingbox:
+  - '46.5507173'
+  - '47.365'
+  - '-56.6972961'
+  - '-55.9033333'

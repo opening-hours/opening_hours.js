@@ -53,9 +53,7 @@ https://www.openstreetmap.org/#map=15/49.5487/9.8160
 You can now use the `&lat=49.5487&lon=9.8160` parameters and use them instead of the once in the example Nominatim query shown above. Note that you should include this Nominatim URL for each defined state using the `_nominatim_url` key (see below).
 The `_nominatim_url` is intended to make testing of the holiday definitions easier.
 
-You could also do a [Nominatim search][] directly using: https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Berlin&&zoom=18&addressdetails=1&limit=1&accept-language=de,en
-and then do the [Nominatim reverse geocoding][] using the returned coordinates. But note that the `_nominatim_url` needs to be
-a [Nominatim reverse geocoding][] query because of different attributes being returned.
+You can also specify `_nominatim_url` as a [Nominatim search][] directly using: https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Berlin&&zoom=18&addressdetails=1&limit=1&accept-language=de,en
 
 ## Holiday definition format
 

@@ -1,0 +1,21 @@
+---
+place_id: 162741880
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 387191210
+lat: '14.6118687'
+lon: '-60.9628037'
+display_name: Morne Coco, Ducos, Fort-de-France, Martinique, 97224, France
+address:
+  country: France
+  country_code: fr
+  county: Fort-de-France
+  neighbourhood: Morne Coco
+  postcode: '97224'
+  state: Martinique
+  town: Ducos
+boundingbox:
+  - '14.6018761'
+  - '14.6136465'
+  - '-60.9704248'
+  - '-60.9627072'

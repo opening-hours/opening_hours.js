@@ -1,0 +1,23 @@
+---
+place_id: 187263427
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 544539846
+lat: '44.0597967487388'
+lon: '6.0692863884362'
+display_name: accaparé, Les Graniers, Mirabeau, Digne-les-Bains, Alpes-de-Haute-Provence, Provence-Alpes-Côte d'Azur, France
+  métropolitaine, 04510, France
+address:
+  country: France
+  country_code: fr
+  county: Digne-les-Bains
+  postcode: '04510'
+  road: accaparé
+  state: Provence-Alpes-Côte d'Azur
+  suburb: Les Graniers
+  village: Mirabeau
+boundingbox:
+  - '44.05973'
+  - '44.0617849'
+  - '6.0692249'
+  - '6.0716935'

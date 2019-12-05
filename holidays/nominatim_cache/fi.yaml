@@ -1,0 +1,20 @@
+---
+place_id: 198688754
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: relation
+osm_id: 2522178
+lat: '63.5567679'
+lon: '27.1892281'
+display_name: Iisalmi, Ylä-Savon seutukunta, Pohjois-Savo, Itä-Suomen aluehallintovirasto, Itä-Suomi, Manner-Suomi, Suomi
+address:
+  country: Suomi
+  country_code: fi
+  # city: Iisalmi
+  # county: Ylä-Savon seutukunta
+  # state: Itä-Suomi
+  # state_district: Itä-Suomen aluehallintovirasto
+boundingbox:
+  - '63.2993286'
+  - '63.6888409'
+  - '26.7944519'
+  - '27.6626707'

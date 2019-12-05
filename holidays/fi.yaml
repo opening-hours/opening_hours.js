@@ -1,0 +1,21 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=63.4965&lon=26.8429&zoom=18&addressdetails=1&accept-language=fi,sv,en'
+
+# https://almanakka.helsinki.fi/fi/julkaisut/24-suomi/juhlap%C3%A4iv%C3%A4t-ja-liputus.html
+
+# https://en.wikipedia.org/wiki/Public_holidays_in_Finland
+
+PH:
+  - {'name': 'uudenvuodenpäivä - nyårsdagen', 'fixed_date': [1, 1]}
+  - {'name': 'loppiainen - trettondedagen', 'fixed_date': [1, 6]}
+  - {'name': 'pitkäperjantai - långfredagen', 'variable_date': easter, 'offset': -2}
+  - {'name': 'pääsiäispäivä - påskdagen', 'variable_date': easter}
+  - {'name': 'toinen pääsiäispäivä - annandag påsk', 'variable_date': easter, 'offset': 1}
+  - {'name': 'vappu - första maj', 'fixed_date': [5, 1]}
+  - {'name': 'helluntai - pingst', 'variable_date': easter, 'offset': 49}
+  - {'name': 'juhannuspäivä - midsommarafton', 'variable_date': nextSaturday20Jun}
+  - {'name': 'pyhäinpäivä - alla helgons dag', 'variable_date': nextSaturday31Oct}
+  - {'name': 'itsenäisyyspäivä - självständighetsdagen', 'fixed_date': [12, 6]}
+  - {'name': 'joulupäivä - juldagen', 'fixed_date': [12, 25]}
+  - {'name': 'toinen joulupäivä - annandag jul', 'fixed_date': [12, 26]}

@@ -13,7 +13,7 @@
     "opening_hours"
   ],
   "license": "LGPL-3.0",
-  "homepage": "http://openingh.openstreetmap.de/evaluation_tool/",
+  "homepage": "https://openingh.openstreetmap.de/evaluation_tool/",
   "ignore": [
     "**/.*",
     "node_modules",

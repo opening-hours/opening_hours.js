@@ -2,6 +2,14 @@
 
 ## https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 
+dist: 'xenial'
+
+addons:
+  apt:
+    packages:
+      ## Install Java8 as required by vnu.jar
+      - 'openjdk-8-jre'
+
 language: 'node_js'
 node_js:
   - '6'
@@ -10,15 +18,13 @@ node_js:
   - '9'
   - '10'
   - '11'
+  - '12'
   - 'node'
 
 install:
   - 'make dependencies-user-wide-get'
   - 'make dependencies-get'
-  - 'sudo apt-get update -qq'
-  - 'sudo apt-get install -qq oracle-java8-installer'
-  - 'sudo update-java-alternatives -s java-8-oracle'
-  - 'sudo pip install html5validator yq'
+  - 'pip install --user html5validator yq'
 
 script:
   - "make check-full"

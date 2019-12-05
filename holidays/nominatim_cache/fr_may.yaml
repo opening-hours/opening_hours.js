@@ -1,0 +1,19 @@
+---
+place_id: 256809070
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: node
+osm_id: 6356029031
+lat: '-12.8365395'
+lon: '45.1716714'
+display_name: Tsararano, Mayotte, 97670, France
+address:
+  country: France
+  country_code: fr
+  postcode: '97670'
+  state: Mayotte
+  village: Tsararano
+boundingbox:
+  - '-12.8765395'
+  - '-12.7965395'
+  - '45.1316714'
+  - '45.2116714'

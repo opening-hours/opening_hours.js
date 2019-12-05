@@ -1,0 +1,21 @@
+---
+place_id: 264102925
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: node
+osm_id: 5885476886
+lat: '42.1815443'
+lon: '9.0682839'
+display_name: Bergeries de Gialicatapiano, Vivario, Corte, Haute-Corse, Corse, France métropolitaine, 20219, France
+address:
+  country: France
+  country_code: fr
+  county: Corte
+  locality: Bergeries de Gialicatapiano
+  postcode: '20219'
+  state: Corse
+  village: Vivario
+boundingbox:
+  - '42.1615443'
+  - '42.2015443'
+  - '9.0482839'
+  - '9.0882839'

@@ -1,0 +1,22 @@
+---
+place_id: 123710660
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 206156878
+lat: '43.6534349'
+lon: '2.3415377'
+display_name: Impasse du Fraysse, Le Fieu, Lacrouzette, Castres, Tarn, Occitanie, France métropolitaine, 81210, France
+address:
+  country: France
+  country_code: fr
+  county: Castres
+  postcode: '81210'
+  road: Impasse du Fraysse
+  state: Occitanie
+  suburb: Le Fieu
+  village: Lacrouzette
+boundingbox:
+  - '43.6524749'
+  - '43.6550762'
+  - '2.339585'
+  - '2.3434381'

@@ -1,0 +1,21 @@
+---
+place_id: 144460348
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 297713983
+lat: '50.1004352151215'
+lon: '2.7236337275586'
+display_name: D 107, Miraumont, Péronne, Somme, Hauts-de-France, France métropolitaine, 80300, France
+address:
+  country: France
+  country_code: fr
+  county: Péronne
+  postcode: '80300'
+  road: D 107
+  state: Hauts-de-France
+  village: Miraumont
+boundingbox:
+  - '50.1001602'
+  - '50.1092477'
+  - '2.7123568'
+  - '2.7238949'

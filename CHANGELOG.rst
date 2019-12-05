@@ -63,6 +63,11 @@ Contributors
 * [sommerluk_] - Lukas Sommer
 * [Discostu36_] - Michael
 * [debyos_] - Gábor Babos
+* [StephanGeorg_] - Stephan Georg
+* [hariskar_] - Haris K
+* [Virtakuono_] - Juho Häppölä
+* [blef00fr_]
+
 
 Thanks very much to all contributors!
 
@@ -109,6 +114,10 @@ Thanks very much to all contributors!
 .. _sommerluk: https://github.com/sommerluk
 .. _Discostu36: https://github.com/Discostu36
 .. _debyos: https://github.com/debyos
+.. _StephanGeorg: https://github.com/StephanGeorg
+.. _hariskar: https://github.com/hariskar
+.. _Virtakuono: https://github.com/Virtakuono
+.. _blef00fr: https://github.com/blef00fr
 
 Supporters
 ~~~~~~~~~~
@@ -133,19 +142,23 @@ Added
 
 * Public holiday definitions added:
 
-  * England and Wales [skifans_, simon04_]
-  * Norway [Gazer75_]
   * Australia [yourock17_, ypid_]
+  * England and Wales [skifans_, simon04_]
+  * Finland [Virtakuono_]
+  * Greece [hariskar_]
   * Ireland [Gerw88_, ypid_]
   * Ivory Coast [sommerluk_, ypid_]
+  * Norway [Gazer75_]
 
 * Added Easter Sunday to Slovak holidays. [chiak597_]
 * Localizations added: Hungarian [urbalazs_, debyos_]
 
 * School holiday definitions added:
 
-  * Germany 2017 until 2024 [ypid_]
   * Austria [simon04_]
+  * France [blef00fr_, ypid_]
+  * Germany 2017 until 2024 [ypid_]
+  * Greece [hariskar_, ypid_]
 
 * Translate error tolerance warnings into German. [ypid_]
 * Add additional warnings:
@@ -171,6 +184,10 @@ Added
 
 Changed
 ~~~~~~~
+
+* Public holiday definitions updated:
+
+  * Germany [StephanGeorg_]
 
 * Migrated to use `ES2015 modules`_ and rollup_ for module bundling. [simon04_]
 * Increased NodeJS version requirement to ``6.0.0``. Technically, the code should still work with ``4.0.0`` but support has been dropped because ``npm-install-peers`` depends on ``6.0.0``. [ypid_]

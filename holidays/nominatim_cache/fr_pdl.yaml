@@ -1,0 +1,23 @@
+---
+place_id: 110495869
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 153239734
+lat: '47.657148314902'
+lon: '-0.817879638401725'
+display_name: La Pyrie, La Chapelle-sur-Oudon, Le Lion-d'Angers, Segré, Maine-et-Loire, Pays de la Loire, France métropolitaine,
+  49500, France
+address:
+  city_district: La Chapelle-sur-Oudon
+  country: France
+  country_code: fr
+  county: Segré
+  postcode: '49500'
+  state: Pays de la Loire
+  suburb: La Pyrie
+  village: Le Lion-d'Angers
+boundingbox:
+  - '47.6570088'
+  - '47.658966'
+  - '-0.8226636'
+  - '-0.8091502'

@@ -1,0 +1,21 @@
+---
+place_id: 97482490
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 101086970
+lat: '48.6421753357843'
+lon: '2.75396495491643'
+display_name: Chemin des Roses, Yèbles, Melun, Seine-et-Marne, Île-de-France, France métropolitaine, 77390, France
+address:
+  country: France
+  country_code: fr
+  county: Melun
+  path: Chemin des Roses
+  postcode: '77390'
+  state: Île-de-France
+  village: Yèbles
+boundingbox:
+  - '48.6402738'
+  - '48.6433611'
+  - '2.7352135'
+  - '2.7739286'

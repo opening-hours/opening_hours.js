@@ -2141,7 +2141,7 @@ var OpeningHoursBuilder = function() {};
 
 /**
  * Class OpeningHoursParser, creates DateRange/Week/Day objects from opening_hours string
- * Based on a subpart of grammar defined at http://wiki.openstreetmap.org/wiki/Key:opening_hours/specification
+ * Based on a subpart of grammar defined at https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification
  */
 var OpeningHoursParser = function() {
 //CONSTANTS

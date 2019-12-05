@@ -1,0 +1,21 @@
+---
+place_id: 129861547
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 227021421
+lat: '48.2649320549035'
+lon: '-2.91929773881902'
+display_name: Coetmorvan, Merléac, Saint-Brieuc, Côtes-d'Armor, Bretagne, France métropolitaine, 22460, France
+address:
+  country: France
+  country_code: fr
+  county: Saint-Brieuc
+  postcode: '22460'
+  state: Bretagne
+  suburb: Coetmorvan
+  village: Merléac
+boundingbox:
+  - '48.2640213'
+  - '48.2652126'
+  - '-2.9203682'
+  - '-2.9154828'

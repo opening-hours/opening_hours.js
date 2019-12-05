@@ -1,0 +1,22 @@
+---
+place_id: 87048683
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 41705591
+lat: '45.2917728'
+lon: '4.6592044'
+display_name: Chemin des Traverses, Savas, Tournon-sur-Rhône, Ardèche, Auvergne-Rhône-Alpes, France métropolitaine, 07430,
+  France
+address:
+  country: France
+  country_code: fr
+  county: Tournon-sur-Rhône
+  postcode: '07430'
+  road: Chemin des Traverses
+  state: Auvergne-Rhône-Alpes
+  village: Savas
+boundingbox:
+  - '45.2911475'
+  - '45.2918532'
+  - '4.6581809'
+  - '4.6642771'

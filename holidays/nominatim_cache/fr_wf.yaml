@@ -1,0 +1,19 @@
+---
+place_id: 89800125
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 53586327
+lat: '-13.2987550896755'
+lon: '-176.199474096783'
+display_name: RT 2, Lavegahau, Wallis-et-Futuna, France, Wallis-et-Futuna (eaux territoriales)
+address:
+  country: France, Wallis-et-Futuna (eaux territoriales)
+  country_code: fr
+  road: RT 2
+  state: Wallis-et-Futuna
+  village: Lavegahau
+boundingbox:
+  - '-13.3057979'
+  - '-13.2948908'
+  - '-176.1995685'
+  - '-176.1987089'

@@ -1,0 +1,39 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Greece&&zoom=18&addressdetails=1&limit=1&accept-language=el,en'
+
+# https://el.wikipedia.org/wiki/%CE%95%CF%80%CE%AF%CF%83%CE%B7%CE%BC%CE%B5%CF%82_%CE%B1%CF%81%CE%B3%CE%AF%CE%B5%CF%82_%CF%83%CF%84%CE%B7%CE%BD_%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1
+
+PH:
+  - {'name': 'Πρωτοχρονιά', 'fixed_date': [1, 1]}
+  - {'name': 'Θεοφάνια', 'fixed_date': [1, 6]}
+  - {'name': 'Καθαρά Δευτέρα', 'variable_date': orthodox easter, 'offset': -48}
+  - {'name': '25η Μαρτίου', 'fixed_date': [03, 25]}
+  - {'name': 'Μεγάλη Παρασκευή', 'variable_date': orthodox easter, 'offset': -2}
+  - {'name': 'Πάσχα', 'variable_date': orthodox easter, 'offset': 0}
+  - {'name': 'Δευτέρα του Πάσχα', 'variable_date': orthodox easter, 'offset': +1}
+  - {'name': 'Πρωτομαγιά', 'fixed_date': [5, 1]}
+  - {'name': 'Κοίμηση της Θεοτόκου', 'fixed_date': [8, 15]}
+  - {'name': '28η Οκτωβρίου', 'fixed_date': [10, 28]}
+  - {'name': 'Χριστούγεννα', 'fixed_date': [12, 25]}
+  - {'name': '2η μέρα Χριστουγέννων', 'fixed_date': [12, 26]}
+
+SH:
+  - name: 'Τριών Ιεραρχών'
+    '2019': [1, 30, 1, 30]
+    '2020': [1, 30, 1, 30]
+  - name: 'Πάσχα'
+    '2019': [4, 22, 5, 6]
+    '2020': [4, 13, 4, 26]
+  - name: 'Αγίου Πνεύματος'
+    '2019': [6, 17, 6, 17]
+    '2020': [6, 8, 6, 8]
+  - name: 'Καλοκαίρι'
+    '2019': [7, 1, 8, 31]
+    '2020': [7, 1, 8, 31]
+  - name: 'Πολυτεχνείο'
+    '2019': [11, 17, 11, 17]
+  - name: 'Χριστούγεννα'
+    '2018': [12, 24, 1, 7]
+    '2019': [12, 24, 1, 7]
+    '2020': [12, 24, 1, 7]

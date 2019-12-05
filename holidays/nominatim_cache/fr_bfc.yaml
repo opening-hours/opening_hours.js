@@ -1,0 +1,23 @@
+---
+place_id: 150182742
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 325743872
+lat: '47.0513539206973'
+lon: '5.07618887543289'
+display_name: Route de Montmain, Les Granges de Bagnot, Bagnot, Beaune, Côte-d'Or, Bourgogne-Franche-Comté, France métropolitaine,
+  21700, France
+address:
+  country: France
+  country_code: fr
+  county: Beaune
+  postcode: '21700'
+  road: Route de Montmain
+  state: Bourgogne-Franche-Comté
+  suburb: Les Granges de Bagnot
+  village: Bagnot
+boundingbox:
+  - '47.0384768'
+  - '47.0570882'
+  - '5.0709171'
+  - '5.0776946'

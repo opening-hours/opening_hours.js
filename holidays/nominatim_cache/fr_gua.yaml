@@ -1,0 +1,24 @@
+---
+place_id: 46945934
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: node
+osm_id: 3510727021
+lat: '16.2454607'
+lon: '-61.5636177'
+display_name: PA Hervers, Impasse Augustin Fresnel, Zone Industrielle de Jarry Houëlbourg, Baie-Mahault, Basse-Terre, Guadeloupe,
+  97122, France
+address:
+  address29: PA Hervers
+  country: France
+  country_code: fr
+  county: Basse-Terre
+  industrial: Zone Industrielle de Jarry Houëlbourg
+  postcode: '97122'
+  road: Impasse Augustin Fresnel
+  state: Guadeloupe
+  town: Baie-Mahault
+boundingbox:
+  - '16.2453607'
+  - '16.2455607'
+  - '-61.5637177'
+  - '-61.5635177'

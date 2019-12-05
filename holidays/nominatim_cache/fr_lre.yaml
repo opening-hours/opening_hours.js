@@ -1,0 +1,21 @@
+---
+place_id: 103838559
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 123145941
+lat: '-21.1337265'
+lon: '55.5276573'
+display_name: GR R2, Le Tampon, Saint-Pierre, La Réunion, 97430, France
+address:
+  country: France
+  country_code: fr
+  county: Saint-Pierre
+  path: GR R2
+  postcode: '97430'
+  state: La Réunion
+  town: Le Tampon
+boundingbox:
+  - '-21.1610779'
+  - '-21.1111299'
+  - '55.4953735'
+  - '55.5709079'

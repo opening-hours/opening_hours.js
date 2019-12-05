@@ -1,0 +1,20 @@
+---
+place_id: 198736239
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: relation
+osm_id: 2961532
+lat: '48.5008'
+lon: '6.112'
+display_name: Omelmont, Nancy, Meurthe-et-Moselle, Grand Est, France métropolitaine, 54330, France
+address:
+  city: Omelmont
+  country: France
+  country_code: fr
+  county: Nancy
+  postcode: '54330'
+  state: Grand Est
+boundingbox:
+  - '48.4812149'
+  - '48.508714'
+  - '6.0986132'
+  - '6.137285'

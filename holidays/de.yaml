@@ -5,6 +5,7 @@ _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=49.
 PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
   - {'name': 'Neujahrstag', 'fixed_date': [1, 1]}
   - {'name': 'Heilige Drei Könige', 'fixed_date': [1, 6], 'only_states': [Baden-Württemberg, Bayern, Sachsen-Anhalt]}
+  - {'name': 'Frauentag', 'fixed_date': [3, 8], 'only_states': [Berlin]}
   - {'name': 'Tag der Arbeit', 'fixed_date': [5, 1]}
   - {'name': 'Karfreitag', 'variable_date': easter, 'offset': -2}
   - {'name': 'Ostersonntag', 'variable_date': easter, 'only_states': [Brandenburg]}
@@ -14,6 +15,7 @@ PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
   - {'name': 'Pfingstmontag', 'variable_date': easter, 'offset': 50}
   - {'name': 'Fronleichnam', 'variable_date': easter, 'offset': 60, 'only_states': [Baden-Württemberg, Bayern, Hessen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland]}
   - {'name': 'Mariä Himmelfahrt', 'fixed_date': [8, 15], 'only_states': [Saarland]}
+  - {'name': 'Weltkindertag', 'fixed_date': [9, 20], 'only_states': [Thüringen]}
   - {'name': 'Tag der Deutschen Einheit', 'fixed_date': [10, 3]}
   - {'name': 'Reformationstag', 'fixed_date': [10, 31], 'only_states': [Brandenburg, Bremen, Hamburg, Mecklenburg-Vorpommern, Niedersachsen, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen]}
   - {'name': 'Allerheiligen', 'fixed_date': [11, 1], 'only_states': [Baden-Württemberg, Bayern, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland]}

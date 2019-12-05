@@ -31,6 +31,7 @@ if sys.version_info[0] == 2:
 from ruamel import yaml
 #  import requests
 import urllib.request
+import urllib.parse
 
 from hc.yaml import dump_holidays_as_yaml
 
@@ -53,10 +54,23 @@ KEEP_STATE_LEVEL_ADDRESS_ATTRS = [
 ]
 
 
-def handle_nominatim_url(nominatim_url, country_holiday_def_file, state=None):
+def handle_country_holiday_def_file(def_file):
+    c_def = yaml.safe_load(open(def_file, 'r', encoding='utf-8'))
+    if type(c_def.get('_nominatim_url')) == str:
+        handle_nominatim_url(c_def['_nominatim_url'], def_file)
+    for r_name, r_def in c_def.items():
+        if type(r_def) == dict and type(r_def.get('_nominatim_url')) == str:
+            handle_nominatim_url(
+                r_def['_nominatim_url'],
+                def_file,
+                state=r_def.get('_state_code', r_name),
+            )
+
+
+def handle_nominatim_url(nominatim_url, def_file, state=None):
     LOG.debug('Calling handle_nominatim_url for {}, state: {}'.format(nominatim_url, state))
     level = 'state' if type(state) in [str, int] else 'country'
-    country_code_re = re.match(r'.*?(?P<cc>\w+)\.', country_holiday_def_file)
+    country_code_re = re.match(r'.*?(?P<cc>\w+)\.', def_file)
     country_code = country_code_re.group('cc')
     cache_file = '{}{}.yaml'.format(
         country_code,
@@ -66,42 +80,61 @@ def handle_nominatim_url(nominatim_url, country_holiday_def_file, state=None):
     LOG.debug('nominatim_file: {}'.format(nominatim_file))
 
     if not os.path.exists(nominatim_file):
-        LOG.info('Writing file {}'.format(nominatim_file))
         LOG.info('Loading {}'.format(nominatim_url))
         # Caused http.client.BadStatusLine exception with wired encoding in them.
         #  nominatim_data = json.loads(requests.get(nominatim_url).text)
         req = urllib.request.Request(nominatim_url, headers={'User-Agent': 'curl/7.38.0'})
         nominatim_data = json.loads(urllib.request.urlopen(req).read().decode('utf-8'))
+        if isinstance(nominatim_data, list):
+            # We expect that the URL was for geocoding and not reverse geocoding.
+            parsed_url = urllib.parse.urlparse(nominatim_url)
+            url_qs = urllib.parse.parse_qs(parsed_url.query)
+            reverse_geocoding_qs = {
+                'format': 'json',
+                'lat': nominatim_data[0]['lat'],
+                'lon': nominatim_data[0]['lon'],
+                'zoom': 18,
+                'addressdetails': 1,
+                'accept-language': url_qs['accept-language'],
+            }
+            parsed_url = list(parsed_url)
+            parsed_url[2] = '/reverse'
+            parsed_url[4] = urllib.parse.urlencode(reverse_geocoding_qs, doseq=True, safe=",")
+            correct_nominatim_url = urllib.parse.urlunparse(parsed_url)
+            return handle_nominatim_url(correct_nominatim_url, def_file)
+
         nominatim_data = OrderedDict(sorted(
             nominatim_data.items(),
             key=lambda k: NOMINATIM_SORTING.get(k[0], k[0])))
 
-        with open(nominatim_file, 'w') as nominatim_fh:
-            if level == 'country':
-                nominatim_data = yaml.load(
-                    dump_holidays_as_yaml(nominatim_data, add_vspacing=False),
-                    Loader=yaml.RoundTripLoader,
-                )
-                nominatim_old_address = deepcopy(nominatim_data['address'])
-                nominatim_data['address'] = OrderedDict()
-                address_attrs_commented_out = []
-                for address_attr in sorted(nominatim_old_address.keys()):
-                    if address_attr in KEEP_STATE_LEVEL_ADDRESS_ATTRS:
-                        nominatim_data['address'][address_attr] = nominatim_old_address[address_attr]
-                    else:
-                        address_attrs_commented_out.append('{}: {}'.format(
-                            address_attr,
-                            nominatim_old_address[address_attr],
-                        ))
-                nominatim_data.yaml_set_comment_before_after_key(
-                    'boundingbox',
-                    before='\n'.join(address_attrs_commented_out),
-                    indent=2,
-                )
+        if level == 'country':
+            nominatim_data = yaml.load(
+                dump_holidays_as_yaml(nominatim_data, add_vspacing=False),
+                Loader=yaml.RoundTripLoader,
+            )
+            nominatim_old_address = deepcopy(nominatim_data['address'])
+            nominatim_data['address'] = OrderedDict()
+            address_attrs_commented_out = []
+            for address_attr in sorted(nominatim_old_address.keys()):
+                if address_attr in KEEP_STATE_LEVEL_ADDRESS_ATTRS:
+                    nominatim_data['address'][address_attr] = nominatim_old_address[address_attr]
+                else:
+                    address_attrs_commented_out.append('{}: {}'.format(
+                        address_attr,
+                        nominatim_old_address[address_attr],
+                    ))
+            nominatim_data.yaml_set_comment_before_after_key(
+                'boundingbox',
+                before='\n'.join(address_attrs_commented_out),
+                indent=2,
+            )
 
-            nominatim_data['address'] = OrderedDict(sorted(nominatim_data['address'].items()))
-            nominatim_yaml = dump_holidays_as_yaml(nominatim_data, add_vspacing=False)
-            LOG.debug(nominatim_yaml)
+        nominatim_data['address'] = OrderedDict(sorted(nominatim_data['address'].items()))
+        nominatim_yaml = dump_holidays_as_yaml(nominatim_data, add_vspacing=False)
+        LOG.debug(nominatim_yaml)
+
+        with open(nominatim_file, 'w') as nominatim_fh:
+            LOG.info('Writing file {}'.format(nominatim_file))
             nominatim_fh.write(nominatim_yaml)
 
 
@@ -171,17 +204,11 @@ def main():  # pylint: disable=too-many-branches
         import requests_cache
         requests_cache.install_cache('requests_cache')
 
-    for country_holiday_def_file in iglob('*.yaml'):
-        c_def = yaml.safe_load(open(country_holiday_def_file, 'r', encoding='utf-8'))
-        if type(c_def.get('_nominatim_url')) == str:
-            handle_nominatim_url(c_def['_nominatim_url'], country_holiday_def_file)
-        for r_name, r_def in c_def.items():
-            if type(r_def) == dict and type(r_def.get('_nominatim_url')) == str:
-                handle_nominatim_url(
-                    r_def['_nominatim_url'],
-                    country_holiday_def_file,
-                    state=r_def.get('_state_code', r_name),
-                )
+    if args.input_file:
+        handle_country_holiday_def_file(args.input_file)
+    else:
+        for def_file in iglob('*.yaml'):
+            handle_country_holiday_def_file(def_file)
 
 if __name__ == '__main__':
     main()

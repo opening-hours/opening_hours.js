@@ -1,0 +1,22 @@
+---
+place_id: 185050487
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 521341548
+lat: '47.5518673146385'
+lon: '1.73408123207213'
+display_name: Rue Édouard Payen, Montrieux-en-Sologne, Romorantin-Lanthenay, Loir-et-Cher, Centre-Val de Loire, France métropolitaine,
+  41210, France
+address:
+  country: France
+  country_code: fr
+  county: Romorantin-Lanthenay
+  postcode: '41210'
+  road: Rue Édouard Payen
+  state: Centre-Val de Loire
+  village: Montrieux-en-Sologne
+boundingbox:
+  - '47.5503046'
+  - '47.5543998'
+  - '1.727511'
+  - '1.73743'

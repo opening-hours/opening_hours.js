@@ -15,6 +15,8 @@
 ## You should have received a copy of the GNU Affero General Public License
 ## along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+## Script for generating PH/SH files for https://github.com/anschuetz/linuxmuster
+
 script_url="https://github.com/opening-hours/opening_hours.js/blob/master/PH_SH_batch_exporter.sh"
 
 print_header()
@@ -41,20 +43,20 @@ gen_sh() {
 
 for state in by be bb hb hh he mv ni nw rp sn
 do
-    gen_sh "$state" "$(date +%Y)" "2023"
+    gen_sh "$state" "2017" "2023"
 done
 
 # Only defined until 2019, lazy …
 for state in bw st
 do
-    gen_sh "$state" "$(date +%Y)" "2019"
+    gen_sh "$state" "2017" "2019"
 done
 
 for state in bw by be bb hb hh he mv ni nw rp sn st sl sh th
 do
     filepath="feiertage_${state}.conf"
     echo "Generating $filepath …"
-    ./PH_SH_exporter.js /tmp/PH_SH_export.list --from "$(date +%Y)" --to 2042 --public-holidays --state $state --omit-date-hyphens
+    ./PH_SH_exporter.js /tmp/PH_SH_export.list --from "2017" --to 2042 --public-holidays --state $state --omit-date-hyphens
     (
         print_header
         cat /tmp/PH_SH_export.list

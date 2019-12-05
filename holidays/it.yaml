@@ -13,7 +13,6 @@ PH:
   - {'name': 'Festa della Repubblica', 'fixed_date': [6, 2]}
   - {'name': 'Assunzione di Maria', 'fixed_date': [8, 15]}
   - {'name': 'Ognissanti', 'fixed_date': [11, 1]}
-  - {'name': 'Festa dell’unità nazionale', 'variable_date': firstSeptemberSunday}
   - {'name': 'Immacolata Concezione', 'fixed_date': [12, 8]}
   - {'name': 'Natale di Gesù', 'fixed_date': [12, 25]}
   - {'name': 'Santo Stefano', 'fixed_date': [12, 26]}

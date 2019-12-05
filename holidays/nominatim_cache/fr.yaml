@@ -1,0 +1,22 @@
+---
+place_id: 147691567
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 313991558
+lat: '46.6039313'
+lon: '1.8893065'
+display_name: D 51, Le Moulin de Baudry, Sarzay, La Châtre, Indre, Centre-Val de Loire, France métropolitaine, 36230, France
+address:
+  country: France
+  country_code: fr
+  # county: La Châtre
+  # postcode: 36230
+  # road: D 51
+  # state: Centre-Val de Loire
+  # suburb: Le Moulin de Baudry
+  # village: Sarzay
+boundingbox:
+  - '46.5944601'
+  - '46.6043737'
+  - '1.8465511'
+  - '1.9009457'

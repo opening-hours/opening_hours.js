@@ -189,7 +189,7 @@ function Evaluate (offset, reset) {
         var it = oh.getIterator(date);
     } catch (err) {
         crashed = err;
-        show_warnings_or_errors.innerHTML = '<p>' + i18n.t('texts.filter.error') + ':<br />'
+        show_warnings_or_errors.innerHTML = '<p class="error">' + i18n.t('texts.filter.error') + ':<br />'
             + '<textarea rows="' + crashed.split('\n').length + 1 + '" style="width: 100%" name="WarnErrors" readonly="readonly">' + crashed
             + '</textarea></p>';
         show_time_table.innerHTML = '';
@@ -331,7 +331,7 @@ function Evaluate (offset, reset) {
 
         var warnings = oh.getWarnings();
         if (warnings.length > 0) {
-            show_warnings_or_errors.innerHTML += '<p>' + i18n.t('texts.filter.error') + ':<br />'
+            show_warnings_or_errors.innerHTML += '<p class="warning">' + i18n.t('texts.filter.error') + ':<br />'
                 + '<textarea rows="' + (warnings.length + 1)
                 + '" style="width: 100%" name="WarnErrors" readonly="readonly">' + warnings.join('\n')
                 + '</textarea></p>';

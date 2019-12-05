@@ -157,7 +157,7 @@ qa-source-code:
 
 .PHONY: qa-https-everywhere
 qa-https-everywhere:
-	$(REPO_SOURCE_FILES) | xargs --null sed --regexp-extended --in-place 's#http(:\\?/\\?/)(momentjs\.com|overpass-turbo\.eu|www\.gnu\.org|stackoverflow\.com|(:?www\.)?openstreetmap\.(org|de)|nominatim\.openstreetmap\.org|taginfo\.openstreetmap\.org|wiki\.openstreetmap\.org|josm.openstreetmap.de|www.openstreetmap.org\\/copyright|github\.com|xkcd\.com|www\.heise\.de|www\.readthedocs\.org|askubuntu\.com|xpra\.org|docker\.com|linuxcontainers\.org|www\.ecma-international\.org|www\.w3\.org|example\.com|www\.example\.com)#https\1\2#g;'
+	$(REPO_SOURCE_FILES) | xargs --null sed --regexp-extended --in-place 's#http(:\\?/\\?/)((:?www\.)?momentjs\.com|overpass-turbo\.eu|gnu\.org|stackoverflow\.com|openstreetmap\.(org|de)|nominatim\.openstreetmap\.org|taginfo\.openstreetmap\.org|wiki\.openstreetmap\.org|josm\.openstreetmap\.de|www\.openstreetmap\.org\\/copyright|github\.com|xkcd\.com|heise\.de|readthedocs\.org|askubuntu\.com|xpra\.org|docker\.com|linuxcontainers\.org|ecma-international\.org|w3\.org|example\.com|fsf\.org|jquery\.com|openingh\.openstreetmap\.de)#https\1\2#g;'
 	$(REPO_SOURCE_FILES) | xargs --null sed -i 's#http://overpass-api\.de#https://overpass-api.de#g;'
 	$(REPO_SOURCE_FILES) | xargs --null sed --regexp-extended --in-place 's#http://(\w+\.wikipedia\.org)#https://\1#g;'
 	test -f index.html && git checkout index.html

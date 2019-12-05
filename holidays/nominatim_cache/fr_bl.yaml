@@ -1,0 +1,20 @@
+---
+place_id: 239421886
+licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+osm_type: way
+osm_id: 24552759
+lat: '17.898035119474'
+lon: '-62.830675038479'
+display_name: Morne de Dépoudré, Saint-Barthélemy, 97133, France
+address:
+  country: France
+  country_code: fr
+  neighbourhood: Morne de Dépoudré
+  postcode: '97133'
+  state: Saint-Barthélemy
+  town: Saint-Barthélemy
+boundingbox:
+  - '17.8980334'
+  - '17.9012471'
+  - '-62.8337719'
+  - '-62.8292748'

@@ -4,9 +4,9 @@
     "project": {
         "name": "opening_hours evaluation tool",
         "description": "Advanced opening_hours testing tool",
-        "project_url": "http://openingh.openstreetmap.de/evaluation_tool/",
+        "project_url": "https://openingh.openstreetmap.de/evaluation_tool/",
         "doc_url": "https://github.com/opening-hours/opening_hours.js",
-        "icon_url": "http://openingh.openstreetmap.de/evaluation_tool/img/favicon.png",
+        "icon_url": "https://openingh.openstreetmap.de/evaluation_tool/img/favicon.png",
         "contact_name": "Robin Schneider",
         "contact_email": "ypid@riseup.net"
     },

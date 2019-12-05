@@ -110,7 +110,7 @@ function write_config_file(filepath, oh_value, nominatim_data, from_date, to_dat
                 getISODate(holiday_entry[0], 0, argv['omit-date-hyphens']),
             ];
             if (oh_value === 'SH') { /* Add end date */
-                output_line[0] += '-' + getISODate(holiday_entry[1], -1, argv['omit-date-hyphens']);
+                output_line[0] += '--' + getISODate(holiday_entry[1], -1, argv['omit-date-hyphens']);
             }
 
             output_line.push(holiday_entry[3]);
