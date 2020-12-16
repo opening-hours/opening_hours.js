@@ -327,6 +327,12 @@ This API is useful for one-shot checks, but for iteration over intervals you sho
 
     Checks whether the facility is open at the given *date*. You may omit *date* to use current date.
 
+*   `var is_open_soon = oh.getFutureState(minutes);`
+
+    Checks whether the facility is open after a defined number of minutes. In combination with getState (now), for example, you could
+    output "is now open, but will close soon" or "is now closed, but will open soon".
+    If you don't specify a parameter, the default time is 60 minutes.
+
 *   `var unknown = oh.getUnknown(date);`
 
     Checks whether the opening state is conditional or unknown at the given *date*. You may omit *date* to use current date.

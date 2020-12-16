@@ -3744,6 +3744,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return it.getState();
     };
 
+    this.getFutureState = function(minutes = 60) {
+        var date = new Date();
+        date.setUTCMinutes(date.getUTCMinutes()+minutes);
+        var it = this.getIterator(date);
+        return it.getState();
+    };
+
     this.getUnknown = function(date) {
         var it = this.getIterator(date);
         return it.getUnknown();
