@@ -148,6 +148,22 @@ de:
       'off': "geschlossen"
       SH: "Schulferien"
       PH: "Feiertags"
+eo:
+  opening_hours:
+    texts:
+      'assuming ok for ko': '"__ko__" estas interpretita kiel "__ok__".'
+      'please use ok for ko': 'Bonvolu uzi la esprimon "__ok__" anstataŭ "__ko__".'
+      'please use English abbreviation ok for ko': 'Bonvolu uzi la anglan mallongigon "__ok__" für "__ko__".'
+    pretty:
+      'off': "fermita"
+      SH: "lernejaj ferioj"
+      PH: "festotagoj"
+fi:
+  opening_hours:
+    pretty:
+      'off': "suljettu"
+      SH: "koululomat"
+      PH: "lailliset vapaapäivät"
 fr:
   opening_hours:
     texts:
