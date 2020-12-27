@@ -243,6 +243,7 @@ Changed
 * Merge country into state holidays. This avoids repeating country-wide holidays.
   [simon04_]
 * Update simple HTML usage example for using the library in a website. [KristjanESPERANTO_, ypid_]
+* Replaced moment.js with Date.toLocaleString (#250)
 
 .. _ES2015 modules: http://exploringjs.com/es6/ch_modules.html
 .. _rollup: http://rollupjs.org/
