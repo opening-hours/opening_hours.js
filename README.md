@@ -746,7 +746,7 @@ You can contribute in the usual manner as known from git (and GitHub). Just fork
 
 This project uses http://i18next.com/ for translation.
 
-Translations can be made in the file [js/i18n-resources.js][ohlib.js/i18n-resources.js]. Just copy the whole English block, change the language code to the one you are adding and make your translation. You can open the [index.html](/index.html) to see the result of your work. ~~To complete your localization add the translated language name to the other languages~~ (you don’t have to do this anymore. Importing that form somewhere, WIP, see gen_word_error_correction.js). Week and month names are translated by [moment.js][moment-lib].
+Translations can be made in the file [js/i18n-resources.js][ohlib.js/i18n-resources.js]. Just copy the whole English block, change the language code to the one you are adding and make your translation. You can open the [index.html](/index.html) to see the result of your work. ~~To complete your localization add the translated language name to the other languages~~ (you don’t have to do this anymore. Importing that form somewhere, WIP, see gen_word_error_correction.js). Week and month names are translated by the browser using the `Date.toLocaleString` function.
 
 Note that this resource file does also provide the localization for the [opening_hours_map]. This can also be tested by cloning the project and linking your modified opening_hours.js working copy to the opening_hours.js directory (after renaming it) inside the opening_hours_map project. Or just follow the installation instructions from the [opening_hours_map].
 
@@ -862,8 +862,6 @@ Edit: This does also work on npmjs in this short version … -->
 [ohlib.github]: https://github.com/opening-hours/opening_hours.js
 
 [hc]: https://gitlab.com/ypid/hc
-
-[moment-lib]: https://momentjs.com/
 
 [evaluation tool]: https://openingh.openstreetmap.de/evaluation_tool/
 
