@@ -1269,9 +1269,16 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         months.forEach(function (month, key) {
                             prettified_group_value[i][1] = prettified_group_value[i][1].replace(new RegExp(month, 'g'), months_local[key]);
                         });
-                    } else {
-                        prettified_group_value[i][1] = i18n.t(['opening_hours:pretty.' + prettified_group_value[i][1], prettified_group_value[i][1]]);
                     }
+
+                    // replace defined 'pretty-strings' from resources by testing each sub-element (divided by ',') in group-value
+                    var split_group_values = prettified_group_value[i][1].split(',');
+                    split_group_values.forEach(function (item) {
+                        var t_value = i18n.t(['opening_hours:pretty.' + item, item]);
+                        if(t_value !== item) {
+                            prettified_group_value[i][1] = prettified_group_value[i][1].replace(new RegExp(item, 'g'), t_value);
+                        }
+                    });
                 }
                 if (global_locale !== locale) {
                     i18n.setLng(global_locale);
