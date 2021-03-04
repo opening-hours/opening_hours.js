@@ -50,6 +50,7 @@
     "check-updates": " npm-check-updates --reject colors --upgrade"
   },
   "dependencies": {
+    "i18next-client": "^1.11.5",
     "suncalc": "^1.8.0"
   },
   "devDependencies": {
@@ -67,7 +68,6 @@
     "glob": "^7.1.6",
     "https": "^1.0.0",
     "husky": "^5.1.2",
-    "i18next-client": "^1.11.5",
     "js-yaml": "^4.0.0",
     "line-reader": "^0.4.0",
     "npm-check-updates": "^11.1.10",
