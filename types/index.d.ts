@@ -36,7 +36,7 @@ declare module 'opening_hours' {
   }
   export default opening_hours
 
-  export declare class opening_hours_iterator {
+  export class opening_hours_iterator {
     getDate(): Date
     setDate(date: Date): void
     getState(date?: Date): boolean
@@ -73,13 +73,13 @@ declare module 'opening_hours' {
     locale: string
   }
 
-  export declare enum mode {
+  export enum mode {
     time_ranges = 0,
     points_in_time = 1,
     both = 2,
   }
 
-  export declare enum warnings_severity {
+  export enum warnings_severity {
     warning = 4,
     notice = 5,
     info = 6,
