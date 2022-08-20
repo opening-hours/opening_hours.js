@@ -1,0 +1,24 @@
+---
+
+'Jersey':
+  _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=49.2&lon=-2.1&zoom=11&addressdetails=1&accept-language=en
+
+PH: # http://www.gov.je/leisure/events/whatson/pages/bankholidaydates.aspx
+ - {'name': '75th Anniversary of VE Day', '2020': [5, 8]}
+ - {'name': 'Boxing Day (substitute day)', '2020': [12, 28]}
+ - {'name': 'New Year’s Day', 'fixed_date': [1, 1]}
+ - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+ - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
+ - {'name': 'Early May bank holiday', 'variable_date': firstMayMonday}
+ - {'name': 'Liberation Day', 'fixed_date': [5, 9]}
+ - {'name': 'Spring bank holiday', 'variable_date': lastMayMonday}
+ - {'name': 'Summer bank holiday', 'variable_date': lastAugustMonday}
+ - {'name': 'Corn Riots Anniversary', '2021': [9, 27]}
+ - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+ - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+ - {'name': 'Christmas Day (substitute day)', '2021': [12, 27]}
+ - {'name': 'Boxing Day (substitute day)', '2021': [12, 28]}
+ - {'name': 'New Year’s Day (substitute day)', '2022': [1, 3]}
+# proposed, pending approval - {'name': '​Spring bank holiday', '2022': [6, 2]}
+# proposed, pending approval - {'name': '​​Queen's Platinum Jubilee', '2022': [6, 3]}
+ - {'name': 'Christmas Day (substitute day)', '2022': [12, 27]}
