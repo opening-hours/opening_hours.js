@@ -334,7 +334,7 @@ Hauts-de-France:
   _state_code: hdf
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=50.10235&lon=2.72565&zoom=18&addressdetails=1&accept-language=fr,en'
   SH:
-     - name: Vacances d'Hiver
+    - name: Vacances d'Hiver
       '2018': [2, 25, 3, 11]
       '2019': [2, 10, 2, 24]
       '2020': [2, 16, 3, 1]
