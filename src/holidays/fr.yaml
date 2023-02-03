@@ -36,6 +36,7 @@ PH:
 # Référentiel géographique: https://www.data.gouv.fr/fr/datasets/referentiel-geographique-francais-communes-unites-urbaines-aires-urbaines-departements-academies-regions-1/
 # (Données sous Licence Ouverte d'Etalab)
 # Code ISO des régions (state_code): https://fr.wikipedia.org/wiki/ISO_3166-2:FR
+# Attention c'est souvent la date de rentrée qui est communiquée par l'éducation nationale alors qu'ici on rentre le dernier jour de vacances
 
 # Zone A:
 # -------
@@ -797,7 +798,7 @@ Corse:
       '2020': [7, 5, 8, 31]
       '2021': [7, 8, 8, 30]  # reprise des cours officielle pas encore définie
       '2022': [7, 8, 8, 31]  # 2022 ending date not available on 2021-11-15
-      '2023': [7, 8, 9, 3] # reprise des cours officielle pas encore définie
+      '2023': [7, 8, 9, 3]  # reprise des cours officielle pas encore définie
     - name: Vacances de la Toussaint
       '2018': [10, 24, 11, 4]
       '2019': [10, 20, 11, 3]
@@ -837,7 +838,7 @@ Guadeloupe:
       '2020': [7, 5, 8, 31]
       '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
       '2022': [7, 7, 8, 31]  # 2022 ending date not available on 2021-11-15
-      '2023': [7, 8, 9, 3] # vérifier la date de rentrée
+      '2023': [7, 8, 9, 3]  # vérifier la date de rentrée
     - name: Vacances de la Toussaint
       '2018': [10, 21, 11, 4]
       '2019': [10, 20, 11, 3]
@@ -872,7 +873,7 @@ Saint-Martin (France):
       '2019': [7, 7, 9, 1]
       '2020': [7, 5, 8, 31]
       '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
-      '2023': [7, 8, 9, 3] # vérifier la date de rentrée
+      '2023': [7, 8, 9, 3]  # vérifier la date de rentrée
     - name: Vacances de la Toussaint
       '2018': [10, 21, 11, 4]
       '2019': [10, 20, 11, 3]
@@ -906,7 +907,7 @@ Saint-Barthélemy:
       '2019': [7, 7, 9, 1]
       '2020': [7, 5, 8, 31]
       '2021': [7, 6, 8, 30]  # reprise des cours officielle pas encore définie
-      '2023': [7, 8, 9, 3] # vérifier la date de rentrée
+      '2023': [7, 8, 9, 3]  # vérifier la date de rentrée
     - name: Vacances de la Toussaint
       '2018': [10, 21, 11, 4]
       '2019': [10, 20, 11, 3]
@@ -947,7 +948,7 @@ Guyane:
       '2020': [7, 5, 8, 31]
       '2021': [7, 4, 8, 31]  # reprise des cours officielle pas encore définie
       '2022': [7, 9, 8, 31]  # 2022 ending date not available on 2021-11-15
-      '2023': [7, 8, 9, 3] # vérifier la date de rentrée
+      '2023': [7, 8, 9, 3]  # vérifier la date de rentrée
     - name: Vacances de la Toussaint
       '2018': [10, 21, 11, 4]
       '2019': [10, 20, 11, 3]
@@ -988,9 +989,9 @@ Martinique:
       '2018': [7, 7, 9, 3]
       '2019': [7, 7, 9, 1]
       '2020': [7, 5, 8, 31]
-      '2021': [7, 7, 8, 30]  
-      '2022': [7, 7, 8, 31] 
-      '2023': [7, 8, 9, 3] # vérifier la date de rentrée
+      '2021': [7, 7, 8, 30]
+      '2022': [7, 7, 8, 31]
+      '2023': [7, 8, 9, 3]  # vérifier la date de rentrée
     - name: Vacances de la Toussaint
       '2018': [10, 21, 11, 4]
       '2019': [10, 20, 11, 3]
@@ -1110,8 +1111,8 @@ Nouvelle-Calédonie:
       '2019': [12, 14, 2, 16]
       '2020': [12, 18, 2, 14]
       '2021': [12, 18, 2, 13]
-      '2022': [12, 17, 2, 12] 
-      '2023': [12, 16, 2, 11] # date de rentrée à vérfier
+      '2022': [12, 17, 2, 12]
+      '2023': [12, 16, 2, 11]  # date de rentrée à vérfier
 
 # Vice-rectorat de Polynésie Française:
 # (Vacances 1er degré)
