@@ -51,6 +51,8 @@ de:
       public holiday: >-
         Es wurde keine Regel für "PH" (feiertags) angegeben.
         Dies ist nicht sehr aussagekräftig.{{-part2}} Bitte füge die Regel "PH off" an, wenn die Einrichtung an allen Feiertagen geschlossen ist oder schreibe "Sa,Su,PH 12:00-16:00" um auszudrücken, dass Samstags, Sonntags und feiertags von 12:00-16:00 geöffnet ist.
+        Bei einer Öffnungszeit wie "Fr-Sa 18:00-06:00" ist Vorsicht geboten, da "PH off" auf 00:00-24:00 zutrifft.
+        Hier kann "Fr-Sa 18:00-06:00; PH 18:00-06:00 off" verwendet werden.
         Falls die Einrichtung täglich und an Feiertagen geöffnet ist, kann dies explizit mittels "Mo-Su,PH" ausgedrückt werden.
         Wenn du dir im Unklaren bist, versuche die Öffnungszeit zu klären.
         Falls das nicht möglich ist, lass die Angabe weg und ignoriere diese Warnung.

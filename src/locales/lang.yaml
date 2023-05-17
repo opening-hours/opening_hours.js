@@ -33,7 +33,14 @@
 'empty comment': 'You have used an empty comment. Please either write something in the comment or use the keyword unknown instead.'
 'separator_for_readability': 'You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.'
 'strange 24/7': 'You used 24/7 in a way that is probably not interpreted as "24 hours 7 days a week". For correctness you might want to use "open" or "closed" for this rule and then write your exceptions which should achieve the same goal and is more clear e.g. "open; Mo 12:00-14:00 off".'
-'public holiday': 'There was no PH (public holiday) specified. This is not very explicit.{{part2}} Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00. If the amenity is open everyday including public holidays then you can make this explicit by writing "Mo-Su,PH". If you are not certain try to find it out. If you can’t then do not add PH to the value and ignore this warning.'
+'public holiday': >-
+  There was no PH (public holiday) specified.
+  This is not very explicit.{{part2}} Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00.
+  Be careful with opening hours like "Fr-Sa 18:00-06:00" because "PH off" applies to 00:00-24:00.
+  So "Fr-Sa 18:00-06:00; PH 18:00-06:00 off" is probably what you want.
+  If the amenity is open everyday including public holidays then you can make this explicit by writing "Mo-Su,PH".
+  If you are not certain try to find it out.
+  If you can’t then do not add PH to the value and ignore this warning.
 'public holiday part2': ' Unfortunately the tag key (e.g. "opening_hours", or "lit") is unknown to opening_hours.js. This warning only applies to the key {{keys}}. If your value is for that key than read on. If not you can ignore the following.'
 'additional_rule_separator not used after time wrapping midnight': >-
   This rule overwrites parts of the previous rule.
