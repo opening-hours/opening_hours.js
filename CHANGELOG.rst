@@ -180,6 +180,13 @@ Added
   * Croatian
   * France
 
+Changed
+~~~~~~~
+
+* School holiday definitions updated:
+
+  * Hungarian
+
 Fixed
 ~~~~~
 
