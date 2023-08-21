@@ -192,3 +192,10 @@ ru:
       'off': "закрыто"
       SH: "каникулы"
       PH: "праздник"
+
+it:
+  opening_hours:
+    pretty:
+      'off': "chiuso"
+      SH: "festività scolastiche"
+      PH: "festività"
