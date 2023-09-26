@@ -171,13 +171,13 @@ fi:
 fr:
   opening_hours:
     texts:
-      'assuming ok for ko': 'S''il vous plaît utiliser "<ok>" pour "<ko>".'
-      'please use ok for ko': 'S''il vous plaît utiliser "{{-ok}}" pour "{{ko}}".'
-      'please use English abbreviation ok for ko': 'S''il vous plaît utiliser l''abréviation "{{-ok}}" pour "{{ko}}".'
+      'assuming ok for ko': 'suppose "{{ok}}" pour "{{ko}}".'
+      'please use ok for ko': 'S''il vous plaît utilisez "{{ok}}" pour "{{ko}}".'
+      'please use English abbreviation ok for ko': 'S''il vous plaît utiliseé l''abréviation "{{ok}}" pour "{{ko}}".'
     pretty:
       'off': "fermé"
       SH: "vacances scolaires"
-      PH: "vacances publiques"
+      PH: "jours fériés"
 nl:
   opening_hours:
     texts:
