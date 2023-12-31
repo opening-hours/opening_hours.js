@@ -2,13 +2,15 @@
 
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.60377&lon=-58.38159&zoom=16&addressdetails=1&accept-language=es'
 
-# https://www.argentina.gob.ar/interior/feriados-nacionales-2022
+# https://www.argentina.gob.ar/interior/feriados-nacionales-2023
 
 PH:
   - {'name': 'Año Nuevo', 'fixed_date': [1, 1]}
+  - {'name': 'Carnaval', 'variable_date': easter, 'offset': -48}
+  - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
   - {'name': 'Día Nacional de la Memoria por la Verdad y la Justicia', 'fixed_date': [3, 24]}
+  - {'name': 'Viernes Santo', 'variable_date': easter, 'offset': -2}
   - {'name': 'Día del Veterano y de los Caídos en la Guerra de Malvinas', 'fixed_date': [4, 2]}
-  # Viernes Santo
   - {'name': 'Día del Trabajador', 'fixed_date': [5, 1]}
   - {'name': 'Día de la Revolución de Mayo', 'fixed_date': [5, 25]}
   - {'name': 'Paso a la Inmortalidad del General Manuel Belgrano', 'fixed_date': [6, 20]}
