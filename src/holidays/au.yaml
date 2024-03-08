@@ -25,13 +25,25 @@ PH:
     - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
-    # Reconciliation day is recently new https://www.cmtedd.act.gov.au/open_government/inform/act_government_media_releases/rachel-stephen-smith-mla-media-releases/2017/reconciliation-day-public-holiday-an-australian-first
     - {'name': 'Reconciliation Day', 'variable_date': lastMayMonday}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'Kings Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Family and Community Day', 'variable_date': lastSeptemberMonday}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://www.education.act.gov.au/public-school-life/term_dates_and_public_holidays
+  SH:
+    - name: Autumn
+      '2024': [4, 15, 4, 26]
+      '2025': [4, 14, 4, 25]
+    - name: Winter
+      '2024': [7, 8, 7, 19]
+      '2025': [7, 7, 7, 18]
+    - name: Spring
+      '2024': [9, 30, 10, 11]
+      '2025': [9, 29, 10, 10]
+    - name: Summer
+      '2024': [12, 18, 1, 31]
 
 'New South Wales':
   _state_code: nsw
@@ -44,10 +56,25 @@ PH:
     - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'Kings Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://www.nsw.gov.au/about-nsw/school-holidays, entered based on Eastern division
+  SH:
+    - name: Autumn
+      '2024': [4, 15, 4, 26]
+      '2025': [4, 14, 4, 24]
+    - name: Winter
+      '2024': [7, 8, 7, 19]
+      '2025': [7, 7, 7, 18]
+    - name: Spring
+      '2024': [9, 30, 10, 11]
+      '2025': [9, 29, 10, 10]
+    - name: Summer
+      '2024': [12, 18, 1, 30]
+      '2025': [12, 22, 1, 26]
+
 
 'Northern Territory':
   _state_code: nt
@@ -60,10 +87,31 @@ PH:
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
     - {'name': 'May Day', 'variable_date': firstMayMonday}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'Kings Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Picnic Day', 'variable_date': firstAugustMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://nt.gov.au/learning/primary-and-secondary-students/school-term-dates-in-nt
+  SH:
+    - name: Autumn
+      '2024': [4, 8, 4, 15]
+      '2025': [4, 7, 4, 11]
+      '2026': [4, 3, 4, 10]
+      '2027': [4, 5, 4, 9]
+    - name: Winter
+      '2024': [6, 24, 7, 15]
+      '2025': [6, 23, 7, 14]
+      '2026': [6, 22, 7, 13]
+      '2026': [6, 21, 7, 12]
+    - name: Spring
+      '2024': [9, 23, 10, 7]
+      '2025': [9, 22, 10, 3]
+      '2026': [9, 21, 10, 2]
+      '2027': [9, 20, 10, 1]
+    - name: Summer
+      '2024': [12, 13, 1, 28]
+      '2025': [12, 15, 1, 27]
+      '2026': [12, 14, 1, 26]
 
 Queensland:
   _state_code: qld
@@ -76,9 +124,22 @@ Queensland:
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
     - {'name': 'Labour Day', 'variable_date': firstMayMonday}
-    - {'name': 'Queens Birthday', 'variable_date': firstOctoberMonday}
+    - {'name': 'Kings Birthday', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://education.qld.gov.au/about-us/calendar/future-dates
+  SH:
+    - name: Autumn
+      '2024': [3, 29, 4, 12]
+      '2025': [4, 7, 4, 19]
+    - name: Winter
+      '2024': [6, 24, 7, 5]
+      '2025': [6, 30, 7, 11]
+    - name: Spring
+      '2024': [9, 16, 9, 27]
+      '2025': [9, 22, 10, 6]
+    - name: Summer
+      '2024': [12, 16, 1, 24]
 
 'South Australia':
   _state_code: sa
@@ -91,10 +152,24 @@ Queensland:
     - {'name': 'Easter Saturday', 'variable_date': easter, 'offset': -1}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'Kings Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+    # South Australia celebrates Proclamation Day instead of Boxing Day
+    - {'name': 'Proclamation Day', 'fixed_date': [12, 26]}
+  # https://www.education.sa.gov.au/students/term-dates-south-australian-state-schools
+  SH:
+    - name: Autumn
+      '2024': [4, 15, 4, 28]
+      '2025': [4, 14, 4, 25]
+    - name: Winter
+      '2024': [7, 8, 7, 21]
+      '2025': [7, 7, 7, 18]
+    - name: Spring
+      '2024': [9, 30, 10, 13]
+      '2025': [9, 29, 10, 10]
+    - name: Summer
+      '2024': [12, 16, 1, 24]
 
 Tasmania:
   _state_code: tas
@@ -106,9 +181,22 @@ Tasmania:
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'Kings Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://www.decyp.tas.gov.au/learning/term-dates/
+  SH:
+    - name: Autumn
+      '2024': [4, 13, 4, 28]
+      '2025': [4, 12, 4, 27]
+    - name: Winter
+      '2024': [7, 6, 7, 21]
+      '2025': [7, 5, 7, 20]
+    - name: Spring
+      '2024': [9, 28, 10, 13]
+      '2025': [9, 27, 10, 12]
+    - name: Summer
+      '2024': [12, 20, 2, 5]
 
 Victoria:
   _state_code: vic
@@ -122,11 +210,25 @@ Victoria:
     - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'ANZAC Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'Kings Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'AFL Grand Final', 'variable_date': lastSeptemberFriday}
     - {'name': 'Melbourne Cup', 'variable_date': firstNovemberTuesday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://www.vic.gov.au/school-term-dates-and-holidays-victoria
+  SH:
+    - name: Autumn
+      '2024': [3, 29, 4, 12]
+      '2025': [4, 5, 4, 19]
+    - name: Winter
+      '2024': [6, 29, 7, 12]
+      '2025': [7, 4, 7, 18]
+    - name: Spring
+      '2024': [9, 21, 10, 4]
+      '2025': [9, 20, 10, 3]
+    - name: Summer
+      '2024': [12, 21, 1, 27]
+      '2025': [12, 20, 1, 23]
 
 'Western Australia':
   _state_code: wa
@@ -141,3 +243,17 @@ Victoria:
     - {'name': 'Western Australia Day', 'variable_date': firstJuneMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+  # https://www.education.wa.edu.au/future-term-dates
+  SH:
+    - name: Autumn
+      '2024': [3, 29, 4, 14]
+      '2025': [4, 12, 4, 27]
+    - name: Winter
+      '2024': [6, 29, 7, 14]
+      '2025': [7, 5, 7, 20]
+    - name: Spring
+      '2024': [9, 21, 10, 6]
+      '2025': [9, 27, 10, 12]
+    - name: Summer
+      '2024': [12, 13, 2, 4]
+      '2025': [12, 19, 2, 1]
