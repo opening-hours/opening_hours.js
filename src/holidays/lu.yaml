@@ -1,0 +1,53 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Luxembourg&zoom=18&addressdetails=1&limit=1&accept-language=lb,fr,de,en'
+
+# Source: https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+# Source: https://luxembourg.public.lu/en/living/quality-of-life/jours-feries-legaux.html
+PH:
+  - {'name': 'Neijoerschdag - Neujahr - Nouvel An', 'fixed_date': [1, 1]}
+  - {'name': 'Ouschterméindeg - Ostermontag - Lundi de Pâques', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Dag vun der Aarbecht - Tag der Arbeit - Premier Mai', 'fixed_date': [5, 1]}
+  - {'name': 'Europadag - Europatag - Journée de l'Europe', 'fixed_date': [5, 1]}
+  - {'name': 'Christi Himmelfaart - Christi Himmelfahrt - Ascension', 'variable_date': easter, 'offset': 39}
+  - {'name': 'Péngschtméindeg - Pfingstmontag - Lundi de Pentecôte', 'variable_date': easter, 'offset': 50}
+  - {'name': 'Nationalfeierdag - Nationalfeiertag - Fête nationale', 'fixed_date': [6, 23]}
+  - {'name': 'Mariä Himmelfaart - Maria Himmelfahrt - Assomption', 'fixed_date': [8, 15]}
+  - {'name': 'Allerhellgen - Weihnachten - Allerheiligen - Toussaint', 'fixed_date': [11, 1]}
+  - {'name': 'Chrëschtdag - Noël', 'fixed_date': [12, 25]}
+  - {'name': 'Stiefesdag - Zweiter Weihnachtsfeiertag - St. Etienne', 'fixed_date': [12, 26]}
+
+# Source: https://guichet.public.lu/en/citoyens/outils/calendrier-scolaire.html
+SH:
+  - name: 'Allerhellegen - Allerheiligenurlaub - Congé de la Toussaint'
+    '2023': [10, 28, 11, 5]
+    '2024': [10, 26, 11, 3]
+    '2025': [11, 1, 11, 9]
+  - name: 'Fest vum Hellege Nikolaus (nëmme fir Grondausbildung) - Nikolausfest (nur für die Grundschule) - Fête de Saint Nicolas (uniquement pour l'enseignement fondamental)'
+    '2023': [12, 6]
+    '2024': [12, 6]
+    '2025': [12, 6]
+  - name: 'Chrëschtdag Vakanz - Weihnachtsferien - Vacances de Noël'
+    '2023': [12, 23, 1, 7]
+    '2024': [12, 21, 1, 5]
+    '2025': [12, 20, 1, 4]
+  - name: 'Karneval Vakanz - Karnevalsferien - Congé de Carnaval'
+    '2024': [2, 10, 2, 18]
+    '2025': [2, 15, 2, 23]
+    '2026': [2, 14, 2, 22]
+  - name: 'Ouschtervakanz - Osterferien - Vacances de Pâques'
+    '2024': [3, 30, 4, 14]
+    '2025': [4, 5, 4, 20]
+    '2026': [3, 28, 4, 12]
+  - name: 'Päischtvakanz - Pfingstferien - Congé de la Pentecôte'
+    '2024': [5, 25, 6, 2]
+    '2025': [5, 24, 6, 1]
+    '2026': [5, 23, 5, 31]
+  - name: 'Gebuertsdag vum Grand-Duc - Geburtstag des Großherzogs - l'anniversaire du Grand-Duc'
+    '2025': [6, 23]
+    '2026': [6, 23]
+  - name: 'Summervakanz - Sommerferien - Vacances d’été'
+    '2024': [7, 16, 9, 15]
+    '2025': [7, 16, 9, 14]
+    '2026': [7, 16, 9, 14]
+
