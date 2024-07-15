@@ -11,6 +11,7 @@ PH:
   - {'name': 'påskdagen', 'variable_date': easter}
   - {'name': 'annandag påsk', 'variable_date': easter, 'offset': 1}
   - {'name': 'första maj', 'fixed_date': [5, 1]}
+  - {'name': 'Kristi himmelsfärdsdag', 'variable_date': easter, 'offset': 39}
   - {'name': 'pingstdagen', 'variable_date': easter, 'offset': 49}
   - {'name': 'nationaldagen', 'fixed_date': [6, 6]}
   - {'name': 'midsommardagen', 'variable_date': nextSaturday20Jun}
