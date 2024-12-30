@@ -346,8 +346,8 @@ Changed
 * Change directory layout of the project. [napei_, ypid_]
 * Switch from i18next-client to i18next dependency (no longer as peer dependency). [fodor0205_, ypid_]
 
-.. _ES2015 modules: http://exploringjs.com/es6/ch_modules.html
-.. _rollup: http://rollupjs.org/
+.. _ES2015 modules: https://exploringjs.com/es6/ch_modules.html
+.. _rollup: https://rollupjs.org/
 
 Fixed
 ~~~~~

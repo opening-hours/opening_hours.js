@@ -58,7 +58,7 @@ You can also specify `_nominatim_url` as a [Nominatim search][] directly using: 
 ## Holiday definition format
 
 Data format version `3.0.0`. The data format will probably need to be adapted to support more holiday definitions in the future.
-The data format versioning complies with [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The data format versioning complies with [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 Each country has it’s own [YAML] file below [./holidays/][ohlib.holidays] with
 the `address.country_code` as the file name. Lets take a look at the
