@@ -692,7 +692,7 @@ A node.js based test framework is bundled. You can run it with `node test/test.j
 
 Included in the `test` directory are the log outputs of the previous testing runs. By comparing to these logs and assuming that the checkedd-in logs are always passing, it allows the developer to validate if the number of passed tests have changed since the last feature implementation.
 
-The current results of this test are also tracked in the repository and can be viewed [here](/test.en.log). Note that this file uses [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code) which can be interpreted by cat in the terminal. `make check` compares the test output with the output from the last commit and shows you a diff.
+The current results of this test are also tracked in the repository and can be viewed [here](test/test.en.log). Note that this file uses [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code) which can be interpreted by cat in the terminal. `make check` compares the test output with the output from the last commit and shows you a diff.
 
 ### Testing with real data
 
