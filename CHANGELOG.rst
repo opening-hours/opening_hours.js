@@ -188,12 +188,18 @@ Changed
   * Hungarian
 
 * [Evaluation tool] Optimize "Error and warning messages" layout
+* [chore] Update CI in `ci.yml` (#468)
+  * Replace deprecated `set-output`
+  * Test with maintained node versions
+  * Update actions
+* [chore] Update `husky` (#468)
 
 Fixed
 ~~~~~
 
 * JOSM remote control was not working because it was trying to be accessed as https://localhost:8111/. Switch to HTTP.
-* Fix `yamlToJson.mjs`
+
+* [chore] Fix `yamlToJson.mjs` (#468)
 
 v3.8.0_ - 2022-05-18
 --------------------
