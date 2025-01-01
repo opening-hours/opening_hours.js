@@ -183,9 +183,13 @@ Added
 Changed
 ~~~~~~~
 
+* Public holiday definitions updated:
+
+  * Swedish and Finnish (#465)
+
 * School holiday definitions updated:
 
-  * Hungarian
+  * Hungarian (#466)
 
 * [Evaluation tool] Optimize "Error and warning messages" layout
 * [chore] Update CI in `ci.yml` (#468)
