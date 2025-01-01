@@ -39,7 +39,8 @@
     "build": "make build",
     "test-quick": "make check",
     "test": "make check-full",
-    "eslint": "eslint src/**/*.js types/*.d.ts",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "osm-tag-data-check": "make osm-tag-data-check",
     "benchmark": "make benchmark",
     "interactive_testing": "make run-interactive_testing",
@@ -56,20 +57,20 @@
     "suncalc": "^1.9.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.17.0",
     "@rollup/plugin-commonjs": "^22.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-yaml": "^3.1.0",
-    "@typescript-eslint/eslint-plugin": "^5.25.0",
-    "@typescript-eslint/parser": "^5.25.0",
     "assert": "^2.0.0",
     "colors": "^0.6.2",
     "country-language": "^0.1.7",
     "doctoc": "^2.2.0",
     "esbuild": "^0.14.39",
-    "eslint": "^8.15.0",
+    "eslint": "^9.17.0",
     "full-icu": "^1.4.0",
     "glob": "^8.0.3",
+    "globals": "^15.14.0",
     "https": "^1.0.0",
     "husky": "^9.1.7",
     "js-yaml": "^4.1.0",
@@ -82,9 +83,10 @@
     "sprintf-js": "1.1.2",
     "terser": "^5.13.1",
     "timekeeper": "^2.2.0",
-    "typescript": "^4.6.4"
+    "typescript": "^4.9.5",
+    "typescript-eslint": "^8.18.2"
   },
   "engines": {
-    "node": ">=10.0.0"
+    "node": ">=12"
   }
 }

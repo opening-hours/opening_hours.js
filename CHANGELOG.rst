@@ -7,8 +7,8 @@ Changelog
 
 All notable changes to opening_hours.js will be documented in this file.
 
-This project adheres to `Semantic Versioning <http://semver.org/spec/v2.0.0.html>`__
-and `human-readable changelog <http://keepachangelog.com/en/0.3.0/>`__.
+This project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`__
+and `human-readable changelog <https://keepachangelog.com/en/0.3.0/>`__.
 
 Note that most of the v2.X.Z releases have not been added to the changelog yet.
 
@@ -192,7 +192,7 @@ Changed
   * Replace deprecated `set-output`
   * Test with maintained node versions
   * Update actions
-* [chore] Update `husky` (#468)
+* [chore] Upgrade `husky` and ESLint (#468)
 
 Fixed
 ~~~~~
