@@ -10,6 +10,9 @@
   "maintainers": [
     "Robin Schneider <ypid@riseup.net>"
   ],
+  "contributors": [
+    "https://github.com/opening-hours/opening_hours.js/graphs/contributors"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/opening-hours/opening_hours.js"
