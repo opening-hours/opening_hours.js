@@ -4,9 +4,13 @@
 # SPDX-License-Identifier: CC0-1.0
 
 name: Continuous Integration
+
 "on":
   - "push"
   - "pull_request"
+
+env:
+  npm_config_cache: /tmp/npm-cache
 
 jobs:
   build:
@@ -16,45 +20,29 @@ jobs:
       matrix:
         node-version:
           # Support policy: We support every Node.js version that is still "maintained".
-          # Testing unmaintained versions serves no purpose.
-          - "10.x"
-
-          # 12 is in Debian stable but not supported by upstream anymore. Keep it for now.
-          - "12.x"
-
-          - "14.x"
-          - "15.x"
-
-          # TODO: Does not work without updating integration tests? Needs work.
-          # - "16.x"
-          # - "17.x"
-          # - "18.x"
+          # See: https://nodejs.org/en/about/releases/
+          - "18.x"
+          - "20.x"
+          - "22.x"
+          - "23.x"
 
     steps:
-      - uses: actions/checkout@v3
-
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Add ~/.local/bin to $PATH
-        run: 'printf "%s/.local/bin\n" "${HOME}" >> ${GITHUB_PATH}'
-
-      - name: Get npm cache directory
-        id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
-      - uses: actions/cache@v3
-        # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
-        id: npm-cache
+      - id: npm-cache
+        name: Restore npm cache
+        uses: actions/cache@v4
         with:
-          path: ${{ steps.npm-cache-dir.outputs.dir }}
-          key: ${{ runner.os }}-node-${{ matrix.node-version }}-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-${{ matrix.node-version }}-
+          key: npm-cache-${{ github.ref_name }}
+          path: ${{ env.npm_config_cache }}
 
       - name: Install dependencies
         run: make dependencies-get
 
-      - run: make check-full
+      - name: Run full test suite
+        run: make check-full
