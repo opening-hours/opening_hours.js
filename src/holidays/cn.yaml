@@ -3,23 +3,24 @@
 _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=%E4%B8%AD%E5%9B%BD&&zoom=18&addressdetails=1&limit=1&accept-language=zh,en'
 
 PH:  # https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期#中华人民共和国年节及纪念日列表
-  - {'name': '元旦', 'fixed_date': [1,1]}
-  - {'name': '妇女节', 'fixed_date':[3,8] }
-  - {'name': '劳动节', 'fixed_date':[5,1]}
-  - {'name': '青年节', 'fixed_date':[5,4] }
-  - {'name': '儿童节', 'fixed_date':[6,1]}
-  - {'name': '国庆节', 'fixed_date':[10,1] }
-  - {'name': '国庆节休息日', 'fixed_date':［10,2]}
-  - {'name': '国庆节休息日', 'fixed_date':[10,3]}
+  - {'name': '元旦', 'fixed_date': [1, 1]}
+  - {'name': '妇女节', 'fixed_date':[3, 8]}
+  - {'name': '劳动节', 'fixed_date':[5, 1]}
+  - {'name': '青年节', 'fixed_date':[5, 4]}
+  - {'name': '儿童节', 'fixed_date':[6, 1]}
+  - {'name': '国庆节', 'fixed_date':[10, 1]}
+  - {'name': '国庆节休息日', 'fixed_date': [10, 2]}
+
+  - {'name': '国庆节休息日', 'fixed_date': [10, 3]}
 西藏自治区:
   _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&state=%E8%A5%BF%E8%97%8F%E8%87%AA%E6%B2%BB%E5%8C%BA&zoom=1&addressdetails=1&limit=1&accept-language=zh,en'
   PH:
-    - {'name': '元旦', 'fixed_date': [1,1]}
-    - {'name': '西藏百万农奴解放纪念日', 'fixed_date': [3,28]}
-    - {'name': '妇女节', 'fixed_date':[3,8] }
-    - {'name': '劳动节', 'fixed_date':[5,1]}
-    - {'name': '青年节', 'fixed_date':[5,4] }
-    - {'name': '儿童节', 'fixed_date':[6,1]}
-    - {'name': '国庆节', 'fixed_date':[10,1] }
-    - {'name': '国庆节休息日', 'fixed_date':［10,2]}
-    - {'name': '国庆节休息日', 'fixed_date':［10,3]}
+    - {'name': '元旦', 'fixed_date': [1, 1]}
+    - {'name': '西藏百万农奴解放纪念日', 'fixed_date': [3, 28]}
+    - {'name': '妇女节', 'fixed_date':[3, 8]}
+    - {'name': '劳动节', 'fixed_date':[5, 1]}
+    - {'name': '青年节', 'fixed_date':[5, 4]}
+    - {'name': '儿童节', 'fixed_date':[6, 1]}
+    - {'name': '国庆节', 'fixed_date':[10, 1]}
+    - {'name': '国庆节休息日', 'fixed_date': [10, 2]}
+    - {'name': '国庆节休息日', 'fixed_date': [10, 3]}
