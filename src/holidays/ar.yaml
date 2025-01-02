@@ -2,16 +2,28 @@
 
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.60377&lon=-58.38159&zoom=16&addressdetails=1&accept-language=es'
 
-# https://www.argentina.gob.ar/interior/feriados-nacionales-2022
+# https://www.argentina.gob.ar/feriados
 
 PH:
   - {'name': 'Año Nuevo', 'fixed_date': [1, 1]}
+  - {'name': 'Carnaval', 'variable_date': easter, 'offset': -48}
+  - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
   - {'name': 'Día Nacional de la Memoria por la Verdad y la Justicia', 'fixed_date': [3, 24]}
+  - {'name': 'Viernes Santo', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Feriado con fines turísticos', 'fixed_date': [4, 1]}
   - {'name': 'Día del Veterano y de los Caídos en la Guerra de Malvinas', 'fixed_date': [4, 2]}
-  # Viernes Santo
   - {'name': 'Día del Trabajador', 'fixed_date': [5, 1]}
   - {'name': 'Día de la Revolución de Mayo', 'fixed_date': [5, 25]}
+  # Paso a la Inmortalidad del Gral. Don Martín Miguel de Güemes - 17 de Junio - Dia variable, si cae martes o miecoles se mueve al lunes, si cae jueves o viernes se mueve al lunes siguiente. TODO
+  - {'name': 'Paso a la Inmortalidad del Gral. Don Martín Miguel de Güemes', 'fixed_date': [6, 17]}
   - {'name': 'Paso a la Inmortalidad del General Manuel Belgrano', 'fixed_date': [6, 20]}
+  - {'name': 'Feriado con fines turísticos', 'fixed_date': [6, 21]}
   - {'name': 'Día de la Independencia', 'fixed_date': [7, 9]}
+  # Paso a la Inmortalidad del Gral. José de San Martín - 17 de Agosto - Dia variable, si cae martes o miecoles se mueve al lunes, si cae jueves o viernes se mueve al lunes siguiente. TODO
+  - {'name': 'Paso a la Inmortalidad del Gral. José de San Martín', 'fixed_date': [8, 17]}  
+  - {'name': 'Feriado con fines turísticos', 'fixed_date': [10, 11]}
+  - {'name': 'Día del Respeto a la Diversidad Cultural', 'fixed_date': [10, 12]}
+  # Día de la Soberanía Nacional - 20 de noviembre - Dia variable, si cae martes o miecoles se mueve al lunes, si cae jueves o viernes se mueve al lunes siguiente. TODO
+  - {'name': 'Día de la Soberanía Nacional', 'fixed_date': [11, 18]}
   - {'name': 'Inmaculada Concepción de María', 'fixed_date': [12, 8]}
   - {'name': 'Navidad', 'fixed_date': [12, 25]}
