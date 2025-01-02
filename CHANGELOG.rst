@@ -189,6 +189,7 @@ Changed
 
 * School holiday definitions updated:
 
+  * German (#468)
   * Hungarian (#466)
 
 * [Evaluation tool] Optimize "Error and warning messages" layout
