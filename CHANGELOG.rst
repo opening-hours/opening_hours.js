@@ -173,22 +173,28 @@ Added
 
 * Public holiday definitions added:
 
+  * Chinese (#406)
   * Croatian
+  * Luxembourg (#460)
+  * Namibian (#452)
 
 * School holiday definitions added:
 
   * Croatian
   * France
+  * Luxembourg (#460)
 
 Changed
 ~~~~~~~
 
 * Public holiday definitions updated:
 
+  * Argentina (#456)
   * Swedish and Finnish (#465)
 
 * School holiday definitions updated:
 
+  * Belgium (#457)
   * German (#468)
   * Hungarian (#466)
 
