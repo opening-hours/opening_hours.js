@@ -20,7 +20,7 @@ PH:
   - {'name': 'Feriado con fines turísticos', 'fixed_date': [6, 21]}
   - {'name': 'Día de la Independencia', 'fixed_date': [7, 9]}
   # Paso a la Inmortalidad del Gral. José de San Martín - 17 de Agosto - Dia variable, si cae martes o miecoles se mueve al lunes, si cae jueves o viernes se mueve al lunes siguiente. TODO
-  - {'name': 'Paso a la Inmortalidad del Gral. José de San Martín', 'fixed_date': [8, 17]}  
+  - {'name': 'Paso a la Inmortalidad del Gral. José de San Martín', 'fixed_date': [8, 17]}
   - {'name': 'Feriado con fines turísticos', 'fixed_date': [10, 11]}
   - {'name': 'Día del Respeto a la Diversidad Cultural', 'fixed_date': [10, 12]}
   # Día de la Soberanía Nacional - 20 de noviembre - Dia variable, si cae martes o miecoles se mueve al lunes, si cae jueves o viernes se mueve al lunes siguiente. TODO
