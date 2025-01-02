@@ -8,7 +8,7 @@ PH:
   - {'name': 'Neijoerschdag - Neujahr - Nouvel An', 'fixed_date': [1, 1]}
   - {'name': 'Ouschterméindeg - Ostermontag - Lundi de Pâques', 'variable_date': easter, 'offset': 1}
   - {'name': 'Dag vun der Aarbecht - Tag der Arbeit - Premier Mai', 'fixed_date': [5, 1]}
-  - {'name': 'Europadag - Europatag - Journée de l'Europe', 'fixed_date': [5, 1]}
+  - {'name': "Europadag - Europatag - Journée de l'Europe", 'fixed_date': [5, 1]}
   - {'name': 'Christi Himmelfaart - Christi Himmelfahrt - Ascension', 'variable_date': easter, 'offset': 39}
   - {'name': 'Péngschtméindeg - Pfingstmontag - Lundi de Pentecôte', 'variable_date': easter, 'offset': 50}
   - {'name': 'Nationalfeierdag - Nationalfeiertag - Fête nationale', 'fixed_date': [6, 23]}
@@ -23,7 +23,7 @@ SH:
     '2023': [10, 28, 11, 5]
     '2024': [10, 26, 11, 3]
     '2025': [11, 1, 11, 9]
-  - name: 'Fest vum Hellege Nikolaus (nëmme fir Grondausbildung) - Nikolausfest (nur für die Grundschule) - Fête de Saint Nicolas (uniquement pour l'enseignement fondamental)'
+  - name: "Fest vum Hellege Nikolaus (nëmme fir Grondausbildung) - Nikolausfest (nur für die Grundschule) - Fête de Saint Nicolas (uniquement pour l'enseignement fondamental)"
     '2023': [12, 6]
     '2024': [12, 6]
     '2025': [12, 6]
@@ -43,11 +43,10 @@ SH:
     '2024': [5, 25, 6, 2]
     '2025': [5, 24, 6, 1]
     '2026': [5, 23, 5, 31]
-  - name: 'Gebuertsdag vum Grand-Duc - Geburtstag des Großherzogs - l'anniversaire du Grand-Duc'
+  - name: "Gebuertsdag vum Grand-Duc - Geburtstag des Großherzogs - l'anniversaire du Grand-Duc"
     '2025': [6, 23]
     '2026': [6, 23]
   - name: 'Summervakanz - Sommerferien - Vacances d’été'
     '2024': [7, 16, 9, 15]
     '2025': [7, 16, 9, 14]
     '2026': [7, 16, 9, 14]
-
