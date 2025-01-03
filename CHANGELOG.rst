@@ -210,7 +210,7 @@ Fixed
 ~~~~~
 
 * JOSM remote control was not working because it was trying to be accessed as https://localhost:8111/. Switch to HTTP.
-
+* [Evaluation tool] Fix timebar wrap on certain zoom levels in Firefox (issue #419)
 * [chore] Fix `yamlToJson.mjs` (#468)
 
 v3.8.0_ - 2022-05-18
