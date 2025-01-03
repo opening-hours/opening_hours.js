@@ -204,6 +204,7 @@ Changed
   * Test with maintained node versions
   * Update actions
 * [chore] Upgrade `colors`, `husky` and `eslint` (#468)
+* [chore] Update dependencies (#468)
 
 Fixed
 ~~~~~
