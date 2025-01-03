@@ -49,7 +49,7 @@
     "prepublishOnly": "pinst --disable",
     "postpublish": "pinst --enable",
     "readme": "doctoc README.md --title \"## Table of Contents\"",
-    "check-updates": " npm-check-updates --reject colors --upgrade"
+    "check-updates": "npm-check-updates --reject colors --upgrade"
   },
   "dependencies": {
     "i18next": "^21.8.3",
@@ -63,7 +63,7 @@
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-yaml": "^3.1.0",
     "assert": "^2.0.0",
-    "colors": "^0.6.2",
+    "colors": "^1.4.0",
     "country-language": "^0.1.7",
     "doctoc": "^2.2.0",
     "esbuild": "^0.14.39",

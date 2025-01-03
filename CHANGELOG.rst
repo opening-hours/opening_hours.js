@@ -203,7 +203,7 @@ Changed
   * Replace deprecated `set-output`
   * Test with maintained node versions
   * Update actions
-* [chore] Upgrade `husky` and ESLint (#468)
+* [chore] Upgrade `colors`, `husky` and `eslint` (#468)
 
 Fixed
 ~~~~~

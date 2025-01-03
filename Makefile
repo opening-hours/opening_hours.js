@@ -95,7 +95,6 @@ dependencies-get: package.json
 	npm install
 	pip3 install --user yamllint yq
 
-# colors above v0.6.1 broke the 'bold' option. For what we need this package, v0.6.1 is more than sufficient.
 .PHONY: update-dependency-versions
 update-dependency-versions: package.json
 	npm run check-updates
@@ -168,7 +167,7 @@ check-opening_hours.min.js:
 check-diff-%: build/% test/test.js
 	@rm -rf "test/test.$(CHECK_LANG).log"
 	@echo "Testing to reproduce test/test.$(CHECK_LANG).log using $<."
-	@NODE_ICU_DATA=$(NODE_ICU_DATA) $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
+	@NODE_ICU_DATA=$(NODE_ICU_DATA) FORCE_COLOR=true $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
 	if git diff --quiet --exit-code HEAD -- "test/test.$(CHECK_LANG).log"; then \
 		echo "Test results for $< ($(CHECK_LANG)) are exactly the same as on development system. So far, so good ;)"; \
 	else \
