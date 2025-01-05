@@ -73,7 +73,6 @@
     "globals": "^15.14.0",
     "https": "^1.0.0",
     "husky": "^9.1.7",
-    "js-yaml": "^4.1.0",
     "line-reader": "^0.4.0",
     "npm-check-updates": "^17.1.13",
     "optimist": "^0.6.1",
@@ -84,7 +83,8 @@
     "terser": "^5.37.0",
     "timekeeper": "^2.3.1",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.19.0"
+    "typescript-eslint": "^8.19.0",
+    "yaml": "^2.7.0"
   },
   "engines": {
     "node": ">=12"

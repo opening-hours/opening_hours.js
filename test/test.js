@@ -65,7 +65,7 @@ var colors        = require('colors');
 var sprintf       = require('sprintf-js').sprintf;
 var timekeeper    = require('timekeeper');
 var glob          = require('glob');
-var yaml          = require('js-yaml');
+var YAML          = require('yaml');
 var fs            = require('fs');
 /* }}} */
 
@@ -97,7 +97,7 @@ var test = new opening_hours_test();
 var nominatim_by_loc = {};
 for (var nominatim_file of glob.sync("src/holidays/nominatim_cache/*.yaml")) {
     var country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
-    nominatim_by_loc[country_state] = yaml.load(fs.readFileSync(nominatim_file));
+    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, "utf8"));
 }
 
 var nominatim_default = nominatim_by_loc.de_bw;

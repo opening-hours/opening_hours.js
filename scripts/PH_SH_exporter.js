@@ -23,7 +23,7 @@
 var opening_hours = require('../build/opening_hours.js');
 var fs            = require('fs');
 var glob          = require('glob');
-var yaml          = require('js-yaml');
+var YAML          = require('yaml');
 /* }}} */
 
 /* Parameter handling {{{ */
@@ -76,7 +76,7 @@ if (!(argv['public-holidays'] || argv['school-holidays'] || argv['all-locations'
 let nominatim_by_loc = {};
 for (let nominatim_file of glob.sync("src/holidays/nominatim_cache/*.yaml")) {
     let country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
-    nominatim_by_loc[country_state] = yaml.load(fs.readFileSync(nominatim_file));
+    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, "utf8"));
 }
 
 /* }}} */

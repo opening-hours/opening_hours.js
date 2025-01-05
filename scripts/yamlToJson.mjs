@@ -3,14 +3,14 @@
 
 import process from "node:process";
 import { readFileSync, writeFileSync } from "node:fs";
-import jsYaml from "js-yaml";
+import { parse } from "yaml";
 
 const [, , input, output] = process.argv;
 const out = output || `${input.split(".")[0]}.json`;
 
 console.log(`Converting ${input} to ${out}`);
 
-const loadedYaml = jsYaml.load(readFileSync(input, { encoding: "utf-8" }));
+const loadedYaml = parse(readFileSync(input, { encoding: "utf-8" }));
 const jsonOutput = JSON.stringify(loadedYaml, null, 2);
 
 writeFileSync(out, jsonOutput);
