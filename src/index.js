@@ -1,7 +1,3 @@
-/* jshint laxbreak: true */
-/* jshint boss: true */
-/* jshint loopfunc: true */
-
 import * as holiday_definitions from './holidays/index';
 import word_error_correction from './locales/word_error_correction.yaml';
 import lang from './locales/lang.yaml';
