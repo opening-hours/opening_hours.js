@@ -66,8 +66,8 @@ list:
 
 ## defaults {{{
 .PHONY: build
-build: build/opening_hours.min.js \
-		build/opening_hours+deps.min.js
+build: build/opening_hours.js \
+		build/opening_hours+deps.js
 
 .PHONY: check
 check: qa-quick check-fast check-package.json
@@ -153,7 +153,7 @@ check-test: check-opening_hours.js
 check-fast: check-diff-opening_hours.js
 
 .PHONY: check-all-diff
-check-all-diff: check-all-lang-diff check-diff-opening_hours.min.js
+check-all-diff: check-all-lang-diff check-diff-opening_hours.js
 
 .PHONY: check-all-lang-diff
 check-all-lang-diff:
@@ -486,14 +486,6 @@ build/opening_hours.js:
 
 build/opening_hours+deps.js:
 	DEPS=YES node_modules/.bin/rollup -c
-
-build/opening_hours.min.js:
-build/opening_hours+deps.min.js:
-
-# TODO: Figure out why this generates a broken minified version: TypeError: opening_hours is not a constructor
-# ./node_modules/.bin/esbuild --bundle "$<" --outfile="$@"
-build/%.min.js: build/%.js
-	./node_modules/.bin/terser --output "$@" --comments '/github.com/' "$<"
 
 README.html:
 
