@@ -58,10 +58,19 @@ default: list
 
 ## help {{{
 .PHONY: list
-# https://stackoverflow.com/a/26339924/2239985
+# List all available targets in the Makefile by:
+# 1. Using grep to find lines that start with non-comment, non-whitespace chars and contain ':'
+# 2. Extracting the target names before the ':' using cut
+# 3. Sorting the target names alphabetically
+# 4. Adding 4 spaces indentation at the start of each line for pretty printing
+# 5. Removing duplicate lines using uniq
 list:
 	@echo "This Makefile has the following targets:"
-	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sed 's/^/    /'
+	@grep '^[^#[:space:]].*:' Makefile \
+		| cut -d: -f1 \
+		| sort \
+		| sed 's/^/    /' \
+		| uniq
 ## }}}
 
 ## defaults {{{
