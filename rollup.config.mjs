@@ -1,10 +1,11 @@
 import {readFileSync} from 'fs';
 import common from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import terser from '@rollup/plugin-terser';
 import yaml from '@rollup/plugin-yaml';
 
-var banner = readFileSync('./src/banner.js', 'utf-8');
-var dependencies = process.env.DEPS === 'YES';
+const banner = readFileSync('./src/banner.js', 'utf-8');
+const dependencies = process.env.DEPS === 'YES';
 
 function recursivelyDeleteNominatimUrl(data) {
     if (typeof data === 'object') {
@@ -14,11 +15,11 @@ function recursivelyDeleteNominatimUrl(data) {
     return data;
 }
 
-var yamlPlugin = yaml({
+const yamlPlugin = yaml({
     transform(data) {
         return recursivelyDeleteNominatimUrl(data);
     }
-})
+});
 
 export default {
     input: './src/index',
@@ -33,14 +34,26 @@ export default {
         'i18next',
         'suncalc'
     ],
-    output: {
-        name: 'opening_hours',
-        banner: banner,
-        globals: dependencies ? {} : {
-            'i18next': 'i18next',
-            'suncalc': 'SunCalc'
+    output: [
+        {
+            name: 'opening_hours',
+            banner: banner,
+            file: 'build/' + (dependencies ? 'opening_hours+deps.js' : 'opening_hours.js'),
+            globals: dependencies ? {} : {
+                'i18next': 'i18next',
+                'suncalc': 'SunCalc'
+            },
+            format: 'umd',
         },
-        format: 'umd',
-        file: 'build/' + (dependencies ? 'opening_hours+deps.js' : 'opening_hours.js'),
-    }
+        {
+            name: 'opening_hours',
+            file: 'build/' + (dependencies ? 'opening_hours+deps.min.js' : 'opening_hours.min.js'),
+            globals: dependencies ? {} : {
+                'i18next': 'i18next',
+                'suncalc': 'SunCalc'
+            },
+            format: 'umd',
+            plugins: [terser()],
+        }
+    ]
 };

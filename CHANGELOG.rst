@@ -205,6 +205,7 @@ Changed
 * [chore] Upgrade `colors`, `husky` and `eslint` (#468)
 * [chore] Update dependencies (#468)
 * [chore] Update year in copyright notices (#468)
+* [chore] Move minification into rollup and remove `esbuild` (#468)
 
 Fixed
 ~~~~~
