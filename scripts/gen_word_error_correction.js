@@ -20,7 +20,7 @@
 
 var moment = require('moment');
 var CountryLanguage = require('country-language');
-var fs = require('fs');
+var fs = require('node:fs');
 
 /* https://stackoverflow.com/a/1961068/2239985 */
 Array.prototype.getUnique = function(){
