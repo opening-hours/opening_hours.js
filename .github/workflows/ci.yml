@@ -13,9 +13,24 @@ env:
   npm_config_cache: /tmp/npm-cache
 
 jobs:
-  build:
-    runs-on: "ubuntu-latest"
+  code-style-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: "Checkout code"
+        uses: actions/checkout@v4
+      - name: "Use Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "npm"
+      - name: "Install dependencies"
+        run: npm install
+      - name: "Run linter tests"
+        run: npm run lint
 
+  build:
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
@@ -25,7 +40,6 @@ jobs:
           - "20.x"
           - "22.x"
           - "23.x"
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -33,16 +47,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
-
       - id: npm-cache
         name: Restore npm cache
         uses: actions/cache@v4
         with:
           key: npm-cache-${{ github.ref_name }}
           path: ${{ env.npm_config_cache }}
-
       - name: Install dependencies
         run: make dependencies-get
-
       - name: Run full test suite
         run: make check-full
