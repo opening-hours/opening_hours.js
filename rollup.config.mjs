@@ -54,6 +54,7 @@ export default {
             },
             format: 'umd',
             plugins: [terser()],
+            sourcemap: true,
         }
     ]
 };
