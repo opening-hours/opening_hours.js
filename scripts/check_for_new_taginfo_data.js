@@ -30,8 +30,8 @@ if (typeof argv.E === 'number') {
 /* }}} */
 
 /* Required modules {{{ */
-var https = require('https');
-var fs   = require('fs');
+var https = require('node:https');
+var fs   = require('node:fs');
 /* }}} */
 
 /* Helper functions {{{ */

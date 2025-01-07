@@ -21,7 +21,7 @@
 
 /* Required modules {{{ */
 var opening_hours = require('../build/opening_hours.js');
-var fs            = require('fs');
+var fs            = require('node:fs');
 var glob          = require('glob');
 var YAML          = require('yaml');
 /* }}} */
