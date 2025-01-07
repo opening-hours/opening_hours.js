@@ -203,8 +203,8 @@ benchmark-opening_hours.js:
 benchmark-opening_hours.min.js:
 
 # .PHONY: benchmark
-benchmark-%.js: build/%.js scripts/benchmark.js
-	$(NODEJS) scripts/benchmark.js "../$<"
+benchmark-%.js: build/%.js scripts/benchmark.mjs
+	$(NODEJS) scripts/benchmark.mjs "../$<"
 
 .PHONY: check-package.json
 check-package.json: package.json
