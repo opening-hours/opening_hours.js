@@ -68,6 +68,7 @@ declare module 'opening_hours' {
     sep_one_day_between: string
     zero_pad_month_and_week_numbers: boolean
     locale: string
+    date_format: string
   }
 
   export enum mode {
