@@ -1178,11 +1178,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
         // otherwise use Date.toLocaleString, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
         var _is_en_or_all = (user_conf['locale'] === 'en' || user_conf['locale'] === 'all') && user_conf['date_format'] === 'short';
         var months_local = _is_en_or_all ? months : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function(month) {
-            return new Date(2018, month - 1, 1).toLocaleString(user_conf['locale'], {month: $user_conf['date_format']});
+            return new Date(2018, month - 1, 1).toLocaleString(user_conf['locale'], {month: user_conf['date_format']});
         });
         var weekdays_local = _is_en_or_all ? weekdays : [1, 2, 3, 4, 5, 6, 7].map(function(weekday) {
             // 2017-01-01 is Sunday
-            return new Date(2017, 0, weekday).toLocaleString(user_conf['locale'], {weekday: $user_conf['date_format']});
+            return new Date(2017, 0, weekday).toLocaleString(user_conf['locale'], {weekday: user_conf['date_format']});
         });
 
         for (var nrule = 0; nrule < new_tokens.length; nrule++) {
