@@ -531,9 +531,9 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
 - Supports 24/7 keyword (`24/7`, which means always open. Use [state keywords][ohlib.states] to express always closed.)
 
-  - **WARN:** 24/7 is handled as a synonym for `00:00-24:00`, so `Mo-Fr 24/7` (though not really correct, because of that you should avoid it or replace it with "open". A warning will be given if you use it anyway for that purpose) will be handled correctly
+  - **WARN:** 24/7 is handled as a synonym for `00:00-24:00`, so it can be misused like `Mo-Fr 24/7` and still interpreted (but it is not really correct, you should avoid it or replace it with "open". A warning will be given if you use it anyway for that purpose)
 
-    *The use of 24/7 as synonym is never needed and should be avoided in cases where it does not mean 24/7.* In cases where a facility is really open 24 hours 7 days a week thats where this value is for.
+    *The use of 24/7 in such way is never needed, you should use `24/7` only when it applies to the entire week.* In cases where a facility is really open 24 hours 7 days a week thats where this value is for.
 
 - **WARN:** Supports omitting time range (`Mo-Fr; Tu off`)
 

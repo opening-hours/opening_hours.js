@@ -210,6 +210,8 @@ Changed
 * [chore] Add code-style-check to CI (#468)
 * [chore] Change benchmark script to esm (#468)
 
+* [Evaluation tool] Optimize "Error and warning messages" layout
+
 Fixed
 ~~~~~
 
