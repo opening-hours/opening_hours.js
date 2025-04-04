@@ -1,6 +1,6 @@
 ---
 
-# http://www.vlada.si/o_sloveniji/politicni_sistem/prazniki/
+# https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/
 PH:
   - {'name': 'novo leto', 'fixed_date': [1, 1]}
   - {'name': 'Prešernov dan, slovenski kulturni praznik', 'fixed_date': [2, 8]}

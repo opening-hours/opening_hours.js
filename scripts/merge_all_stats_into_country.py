@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # encoding: utf-8
 # @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
-# @author Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
+# @author Copyright (C) 2015-2025 Robin Schneider <ypid@riseup.net>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU Affero General Public License as

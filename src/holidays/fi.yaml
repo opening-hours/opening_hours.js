@@ -13,8 +13,9 @@ PH:
   - {'name': 'pääsiäispäivä - påskdagen', 'variable_date': easter}
   - {'name': 'toinen pääsiäispäivä - annandag påsk', 'variable_date': easter, 'offset': 1}
   - {'name': 'vappu - första maj', 'fixed_date': [5, 1]}
+  - {'name': 'helatorstai - Kristi himmelsfärdsdag', 'variable_date': easter, 'offset': 39}
   - {'name': 'helluntai - pingst', 'variable_date': easter, 'offset': 49}
-  - {'name': 'juhannuspäivä - midsommarafton', 'variable_date': nextSaturday20Jun}
+  - {'name': 'juhannuspäivä - midsommardagen', 'variable_date': nextSaturday20Jun}
   - {'name': 'pyhäinpäivä - alla helgons dag', 'variable_date': nextSaturday31Oct}
   - {'name': 'itsenäisyyspäivä - självständighetsdagen', 'fixed_date': [12, 6]}
   - {'name': 'joulupäivä - juldagen', 'fixed_date': [12, 25]}

@@ -11,7 +11,7 @@ __version__ = '0.1.0'
 
 __license__ = 'AGPL-3.0'
 __author__ = 'Robin Schneider <ypid@riseup.net>'
-__copyright__ = 'Copyright (C) 2017-2020 Robin Schneider <ypid@riseup.net>'
+__copyright__ = 'Copyright (C) 2017-2025 Robin Schneider <ypid@riseup.net>'
 
 __all__ = ['main']
 

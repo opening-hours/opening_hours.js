@@ -1447,13 +1447,13 @@ With [1m[34mwarnings[39m[22m:
 "Complex example used in README and benchmark" for "Mo,Tu,Th,Fr 12:00-18:00; Sa,PH 12:00-17:00; Th[3] off; Th[-1] off": [1m[32mPASSED[39m[22m
 "Complex example used in README and benchmark" for "Mo,Tu,Th,Fr 12:00-18:00; Sa,PH 12:00-17:00; Th[3],Th[-1] off": [1m[32mPASSED[39m[22m
 "Warnings corrected to additional rule (real world example)" for "Mo-Fr 09:00-12:00, Mo,Tu,Th 15:00-18:00": [1m[32mPASSED[39m[22m
-"Warnings corrected to additional rule (real world example)" for "Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr": [1m[35mCRASHED[39m[22m, reason: TypeError: Cannot read property '0' of undefined
+"Warnings corrected to additional rule (real world example)" for "Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr": [1m[35mCRASHED[39m[22m, reason: TypeError: Cannot read properties of undefined (reading '0')
 "Real world example: Was not processed right." for "Mo off, Tu 14:00-18:00, We-Sa 10:00-18:00": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right." for "Mo geschl., Tu 14:00-18:00, We-Sa 10:00-18:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo geschl <--- (Please use "off" for "geschl". Example: "Mo-Fr 08:00-12:00; Tu off".)
 	*Mo geschl. <--- (Please omit ".".)
-"Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [1m[35mCRASHED[39m[22m, reason: TypeError: Cannot read property '0' of undefined
+"Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [1m[35mCRASHED[39m[22m, reason: TypeError: Cannot read properties of undefined (reading '0')
 "Real world example: Was not processed right." for "Mo off; Tu 14:00-18:00; We-Sa 10:00-18:00": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right (month range/monthday range)" for "Aug,Dec 25-easter": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
@@ -1500,7 +1500,7 @@ With [1m[34mwarnings[39m[22m:
 "Real world example: Was not processed right (test over a full year)" for "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30; Nov off; Dec off": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right (test over a full year)" for "Nov-Mar off; Apr,May,Sep,Oct Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul,Aug Tu-Su 10:00-17:00": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right (test over a full year)" for "Nov-Mar off; Apr,May,Sep,Oct 10:00-14:30; Jun 09:00-16:00; Jul,Aug 10:00-17:00; Mo off": [1m[32mPASSED[39m[22m
-"Real world example: Was not processed right" for "Tu 10:00-12:00, Fr 16:00-18:00; unknown": [1m[35mCRASHED[39m[22m, reason: TypeError: Cannot read property '0' of undefined
+"Real world example: Was not processed right" for "Tu 10:00-12:00, Fr 16:00-18:00; unknown": [1m[35mCRASHED[39m[22m, reason: TypeError: Cannot read properties of undefined (reading '0')
 "Real world example: Problem with <additional_rule_separator> in holiday parser" for "PH; Aug-Sep 00:00-24:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)

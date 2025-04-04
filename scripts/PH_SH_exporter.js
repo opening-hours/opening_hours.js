@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Info, license and author {{{
  * @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
- * @author Copyright (C) 2015-2020 Robin Schneider <ypid@riseup.net>
+ * @author Copyright (C) 2015-2025 Robin Schneider <ypid@riseup.net>
  *
  * Written for: https://github.com/anschuetz/linuxmuster/issues/1#issuecomment-110888829
  *
@@ -21,9 +21,9 @@
 
 /* Required modules {{{ */
 var opening_hours = require('../build/opening_hours.js');
-var fs            = require('fs');
+var fs            = require('node:fs');
 var glob          = require('glob');
-var yaml          = require('js-yaml');
+var YAML          = require('yaml');
 /* }}} */
 
 /* Parameter handling {{{ */
@@ -76,7 +76,7 @@ if (!(argv['public-holidays'] || argv['school-holidays'] || argv['all-locations'
 let nominatim_by_loc = {};
 for (let nominatim_file of glob.sync("src/holidays/nominatim_cache/*.yaml")) {
     let country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
-    nominatim_by_loc[country_state] = yaml.load(fs.readFileSync(nominatim_file));
+    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, "utf8"));
 }
 
 /* }}} */

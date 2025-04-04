@@ -2,7 +2,7 @@
 
 # Key is the token name except wrong_words.
 
-# Initially taken form http://www.netzwolf.info/j/osm/time_domain.js Credits go to Netzwolf.
+# Initially taken form https://www.netzwolf.info/j/osm/time_domain.js Credits go to Netzwolf.
 
 'assuming ok for ko':
   daytime: sunrise-sunset
@@ -155,12 +155,12 @@
 'please use English abbreviation ok for so':
   so: Su
 'please use English abbreviation ok for ko':
-  # weekday: Good source: http://www.omniglot.com/language/time/days.htm
+  # weekday: Good source: https://www.omniglot.com/language/time/days.htm
   sun: Su
   sundays?: Su
   mon: Mo
   mondays?: Mo
-  tues?: Tu  # Used here:  http://www.westerhambeauty.co.uk/contact.php
+  tues?: Tu  # Used here:  https://westerhambeauty.co.uk/contact
   tuesdays?: Tu
   weds?: We
   wednesdays?: We
@@ -321,7 +321,7 @@
   domeniche?: Su
   lun: Mo
   lunedì?: Mo
-  mar?: Tu  # Used here:  http://www.westerhambeauty.co.uk/contact.php
+  mar?: Tu  # Used here:  https://westerhambeauty.co.uk/contact
   martedì?: Tu
   mer?: We
   mercoledì?: We

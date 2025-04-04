@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Info, license and author {{{
  * @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
- * @author Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
+ * @author Copyright (C) 2015-2025 Robin Schneider <ypid@riseup.net>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as
@@ -33,10 +33,10 @@
 
 /* Required modules {{{ */
 var opening_hours = require('../build/opening_hours.js');
-var fs            = require('fs');
+var fs            = require('node:fs');
 var colors        = require('colors');
 var sprintf       = require('sprintf-js').sprintf;
-var assert        = require('assert');
+var assert        = require('node:assert');
 /* }}} */
 
 var test_framework = new opening_hours_test();

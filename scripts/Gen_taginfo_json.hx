@@ -1,7 +1,7 @@
 /**
  *
  * @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
- * @author Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
+ * @author Copyright (C) 2015-2025 Robin Schneider <ypid@riseup.net>
  *
  *  Generate taginfo.json for this project.
  *  See: https://wiki.openstreetmap.org/wiki/Taginfo/Projects

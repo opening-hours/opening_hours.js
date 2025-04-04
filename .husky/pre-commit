@@ -1,6 +1,4 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
 git stash -q --keep-index
 
 # # Redirect output to stderr.

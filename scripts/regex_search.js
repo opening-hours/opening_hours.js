@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 /*
- * SPDX-FileCopyrightText: 2015 Robin Schneider <ypid@riseup.net>
+ * SPDX-FileCopyrightText: 2015-2025 Robin Schneider <ypid@riseup.net>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
 var opening_hours = require('../build/opening_hours.js');
-var fs = require('fs');
-var readline = require('readline');
+var fs = require('node:fs');
+var readline = require('node:readline');
 var colors = require('colors');
 
 var page_width = 20;

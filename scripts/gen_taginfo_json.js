@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Info, license and author {{{
  * @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
- * @author Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
+ * @author Copyright (C) 2015-2025 Robin Schneider <ypid@riseup.net>
  *
  * Written for: https://wiki.openstreetmap.org/wiki/Taginfo/Projects
  *
@@ -20,7 +20,7 @@
  * }}} */
 
 /* Required modules {{{ */
-var fs = require('fs');
+var fs = require('node:fs');
 /* }}} */
 
 /* Parameter handling {{{ */

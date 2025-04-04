@@ -2,7 +2,7 @@
 
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.9808038&lon=12.7662312&zoom=18&addressdetails=1&accept-language=it,en'
 
-# http://www.governo.it/Presidenza/ufficio_cerimoniale/cerimoniale/giornate.html
+# https://presidenza.governo.it/ufficio_cerimoniale/cerimoniale/giornate.html
 PH:
   - {'name': 'Capodanno', 'fixed_date': [1, 1]}
   - {'name': 'Epifania', 'fixed_date': [1, 6]}
