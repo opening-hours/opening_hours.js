@@ -187,6 +187,8 @@ Changed
 
   * Hungarian
 
+* [Evaluation tool] Optimize "Error and warning messages" layout
+
 Fixed
 ~~~~~
 

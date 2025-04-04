@@ -12,9 +12,10 @@ p.value_explanation {
     padding: 6px 10px;
     border-radius: 5px;
 }
-/* See http://clrs.cc/ */
-.error       { background: #ff851b } /* Orange */
-.warning     { background: #ffdc00 } /* Yellow */
+/* See https://clrs.cc/ */
+.error       { background: #ff851b; padding: 3px; } /* Orange */
+.warning     { background: #ffdc00; padding: 3px; } /* Yellow */
+div.warning_error_message { margin: 5px 0 0 0; padding: 5px; background-color : white; opacity: 0.8; font-family: monospace;}
 span.year    { background: #ff851b } /* Orange */
 span.week    { background: #ffdc00 } /* Yellow */
 span.month   { background: #88ff88 }
