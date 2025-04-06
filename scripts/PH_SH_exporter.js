@@ -35,7 +35,7 @@ var optimist = require('optimist')
     .demand('f')
     .describe('t', 'Until year (including)')
     .demand('t')
-    .describe('p', 'Export public holidays. Can not be used togehter with --school-holidays.')
+    .describe('p', 'Export public holidays. Can not be used together with --school-holidays.')
     // .default('p', true)
     .describe('s', 'Export school holidays. Can not be used together with --public-holidays.')
     .describe('c', 'Country (for which the holidays apply). Defaults to Germany.')
@@ -112,7 +112,7 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
         oh = new opening_hours(oh_value, nominatim_data);
     } catch (err) {
         var error_message = 'Error creating new opening_hours(\'' + oh_value + '\', ' + JSON.stringify(nominatim_data) + '): ';
-        error_message += 'Error: ' + err + '. Please file a issue at https://github.com/opening-hours/opening_hours.js/issues';
+        error_message += 'Error: ' + err + '. Please file an issue at https://github.com/opening-hours/opening_hours.js/issues';
         console.error(error_message);
         process.exit(0);
     }

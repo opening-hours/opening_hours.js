@@ -604,7 +604,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
     - [Switzerland][ph-ch]
     - [Ukraine][ph-ua]
     - [United states][ph-us] (Some special cases are [currently not handled](https://github.com/opening-hours/opening_hours.js/issues/69#issuecomment-74103181))
-    - [Vietnam][ph-vn] (Some public holidays cannot currently be calulated by the library and are missing. See https://github.com/opening-hours/opening_hours.js/pull/388)
+    - [Vietnam][ph-vn] (Some public holidays cannot currently be calculated by the library and are missing. See https://github.com/opening-hours/opening_hours.js/pull/388)
 
   - **EXT:** Supports limited calculations based on public holidays (e.g. `Sa,PH -1 day open`). The only two possibilities are currently +1 and -1. All other cases are not handled. This seems to be enough because the only thing which is really used is -1.
 
@@ -846,7 +846,7 @@ Note that there is a git pre-commit hook used to run and compare the test framew
 
 #### Documentation
 
-All functions are documented, which should help contributers to get started.
+All functions are documented, which should help contributors to get started.
 
 The documentation looks like this:
 
@@ -867,7 +867,7 @@ The opening brackets `{{{` (and the corresponding closing onces) are used to fol
 
 ## Authors
 
-| Autor                                         | Contact            | Note                                                                                                                                                                                                                                                                                                                  |
+| Author                                        | Contact            | Note                                                                                                                                                                                                                                                                                                                  |
 | --------------------------------------------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [Dmitry Marakasov](https://github.com/AMDmi3) | <amdmi3@amdmi3.ru> | Initial coding and design and all basic features like time ranges, week ranges, month ranges and week ranges.                                                                                                                                                                                                         |
 | [Robin Schneider](https://me.ypid.de/)        | <ypid@riseup.net>  | Maintainer (since September 2013). Added support for years, holidays, unknown, comments, open end, fallback/additional rules (and more), wrote getWarnings, prettifyValue, translated demo page to English and German and extended it to enter values yourself (now called [evaluation tool][ohlib.evaluation-tool]). |
