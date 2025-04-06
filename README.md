@@ -892,6 +892,19 @@ As of version 3.4, opening_hours.js is licensed under the [GNU Lesser General Pu
 
 Note that the original work from Dmitry Marakasov is published under the BSD 2-clause "Simplified" (BSD-2-Clause) license which is included in this repository under the commit hash [b2e11df02c76338a3a32ec0d4e964330d48bdd2d](https://github.com/opening-hours/opening_hours.js/tree/b2e11df02c76338a3a32ec0d4e964330d48bdd2d).
 
+https://reuse.software is used. The year of initial publication is used and not updated. When you as new author make copyrightable changes, you are free of course to add a `SPDX-FileCopyrightText` line to the file(s) you changed with the year of the contribution. Please use a format like this:
+
+```
+SPDX-FileCopyrightText: © 2021 Humble Hacker <hh@example.org>
+```
+
+Existing files use year ranges. They will be updated at some point to year of initial publication for consistency reasons.
+
+See also:
+
+* https://reuse.software/faq/#years-copyright
+* https://matija.suklje.name/how-and-why-to-properly-write-copyright-statements-in-your-code#why-not-bump-the-year-on-change
+
 <!-- Links {{{ -->
 
 [nominatim]: https://wiki.openstreetmap.org/wiki/Nominatim#Reverse_Geocoding_.2F_Address_lookup
