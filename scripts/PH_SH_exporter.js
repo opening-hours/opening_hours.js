@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Info, license and author {{{
  * @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
- * @author Copyright (C) 2015-2020 Robin Schneider <ypid@riseup.net>
+ * @author Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
  *
  * Written for: https://github.com/anschuetz/linuxmuster/issues/1#issuecomment-110888829
  *
