@@ -1,0 +1,7 @@
+# https://reuse.software/spec-3.3/
+
+version = 1
+SPDX-PackageName = "opening_hours"
+SPDX-PackageSupplier = "Robin Schneider <ypid@riseup.net>"
+SPDX-PackageDownloadLocation = "https://github.com/opening-hours/opening_hours.js"
+annotations = []

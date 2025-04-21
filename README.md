@@ -1,13 +1,13 @@
 <!--
-SPDX-FileCopyrightText: 2012-2013 Dmitry Marakasov
-SPDX-FileCopyrightText: 2013-2021 Robin Schneider <ypid@riseup.net>
+SPDX-FileCopyrightText: © 2012 Dmitry Marakasov
+SPDX-FileCopyrightText: © 2013 Robin Schneider <ypid@riseup.net>
 
 SPDX-License-Identifier: LGPL-3.0-only
 
 This file is based on work under the following copyright and permission
 notice:
 
-    Copyright (c) 2012-2013 Dmitry Marakasov
+    Copyright (c) 2012 Dmitry Marakasov
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
@@ -531,9 +531,9 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
 - Supports 24/7 keyword (`24/7`, which means always open. Use [state keywords][ohlib.states] to express always closed.)
 
-  - **WARN:** 24/7 is handled as a synonym for `00:00-24:00`, so `Mo-Fr 24/7` (though not really correct, because of that you should avoid it or replace it with "open". A warning will be given if you use it anyway for that purpose) will be handled correctly
+  - **WARN:** 24/7 is handled as a synonym for `00:00-24:00`, so it can be misused like `Mo-Fr 24/7` and still interpreted (but it is not really correct, you should avoid it or replace it with "open". A warning will be given if you use it anyway for that purpose)
 
-    *The use of 24/7 as synonym is never needed and should be avoided in cases where it does not mean 24/7.* In cases where a facility is really open 24 hours 7 days a week thats where this value is for.
+    *The use of 24/7 in such way is never needed, you should use `24/7` only when it applies to the entire week.* In cases where a facility is really open 24 hours 7 days a week thats where this value is for.
 
 - **WARN:** Supports omitting time range (`Mo-Fr; Tu off`)
 
@@ -891,6 +891,17 @@ Refer to the [Changelog](https://github.com/opening-hours/opening_hours.js/blob/
 As of version 3.4, opening_hours.js is licensed under the [GNU Lesser General Public License v3.0](<https://tldrlegal.com/license/gnu-lesser-general-public-license-v3-(lgpl-3)>) only.
 
 Note that the original work from Dmitry Marakasov is published under the BSD 2-clause "Simplified" (BSD-2-Clause) license which is included in this repository under the commit hash [b2e11df02c76338a3a32ec0d4e964330d48bdd2d](https://github.com/opening-hours/opening_hours.js/tree/b2e11df02c76338a3a32ec0d4e964330d48bdd2d).
+
+<https://reuse.software> is used. The year of initial publication is used and not updated. When you as new author make copyrightable changes, you are free of course to add a `SPDX-FileCopyrightText` line to the file(s) you changed with the year of the contribution. Please use a format like this:
+
+```
+SPDX-FileCopyrightText: © 2021 Humble Hacker <hh@example.org>
+```
+
+See also:
+
+- <https://reuse.software/faq/#years-copyright>
+- <https://matija.suklje.name/how-and-why-to-properly-write-copyright-statements-in-your-code#why-not-bump-the-year-on-change>
 
 <!-- Links {{{ -->
 

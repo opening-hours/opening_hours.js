@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /*
- * SPDX-FileCopyrightText: 2012 Dmitry Marakasov
- * SPDX-FileCopyrightText: 2014-2015,2017-2018 Robin `ypid` Schneider <ypid@riseup.net>
+ * SPDX-FileCopyrightText: © 2012 Dmitry Marakasov
+ * SPDX-FileCopyrightText: © 2014 Robin Schneider <ypid@riseup.net>
  *
  * SPDX-License-Identifier: LGPL-3.0-only
  *
