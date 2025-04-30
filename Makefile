@@ -128,7 +128,7 @@ doctoc:
 
 ## Build files which are needed to host the evaluation tool on a webserver.
 .PHONY: ready-for-hosting
-ready-for-hosting: dependencies-get build/opening_hours+deps.min.js
+ready-for-hosting: dependencies-get build/opening_hours+deps.js
 
 ## command line programs {{{
 .PHONY: run-regex_search
