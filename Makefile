@@ -102,7 +102,6 @@ osm-tag-data-rm: osm-tag-data-taginfo-rm osm-tag-data-overpass-rm
 dependencies-get: package.json
 	git submodule update --init --recursive
 	npm install
-	pip3 install --user yamllint yq
 
 .PHONY: update-dependency-versions
 update-dependency-versions: package.json
