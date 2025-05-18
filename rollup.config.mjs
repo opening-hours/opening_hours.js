@@ -1,10 +1,8 @@
-import {readFileSync} from 'fs';
 import common from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import yaml from '@rollup/plugin-yaml';
 
-const banner = readFileSync('./src/banner.js', 'utf-8');
 const dependencies = process.env.DEPS === 'YES';
 
 function recursivelyDeleteNominatimUrl(data) {
@@ -37,7 +35,6 @@ export default {
     output: [
         {
             name: 'opening_hours',
-            banner: banner,
             file: 'build/' + (dependencies ? 'opening_hours+deps.js' : 'opening_hours.js'),
             globals: dependencies ? {} : {
                 'i18next': 'i18next',
@@ -53,7 +50,13 @@ export default {
                 'suncalc': 'SunCalc'
             },
             format: 'umd',
-            plugins: [terser()],
+            plugins: [
+                terser({
+                    format: {
+                        comments: /@preserve|@license|@cc_on|SPDX-FileCopyrightText|©|\(c\)/i,
+                    },
+                }),
+            ],
             sourcemap: true,
         }
     ]
