@@ -614,7 +614,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
     - Austria
     - Croatian
-    - Germany, see [hc]
+    - Germany, see [hc] and [scripts/update_german_sh.mjs](scripts/update_german_sh.mjs)
     - Hungary
     - Romania
 
