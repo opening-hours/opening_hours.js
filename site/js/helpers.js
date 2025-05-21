@@ -271,7 +271,7 @@ function Evaluate (offset, reset) {
         }
         value_explanation += '</p></div>';
         if (YoHoursChecker.canRead(value)) {
-            value_explanation = i18next.t('texts.refer to yohours', { href: 'http://github.pavie.info/yohours/?oh=' + value })
+            value_explanation = i18next.t('texts.refer to yohours', { href: 'https://projets.pavie.info/yohours/?oh=' + value })
             + '<br>'
             + value_explanation;
         }

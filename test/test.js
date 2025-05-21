@@ -65,7 +65,7 @@ var colors        = require('colors');
 var sprintf       = require('sprintf-js').sprintf;
 var timekeeper    = require('timekeeper');
 var glob          = require('glob');
-var yaml          = require('js-yaml');
+var YAML          = require('yaml');
 var fs            = require('fs');
 /* }}} */
 
@@ -97,7 +97,7 @@ var test = new opening_hours_test();
 var nominatim_by_loc = {};
 for (var nominatim_file of glob.sync("src/holidays/nominatim_cache/*.yaml")) {
     var country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
-    nominatim_by_loc[country_state] = yaml.load(fs.readFileSync(nominatim_file));
+    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, "utf8"));
 }
 
 var nominatim_default = nominatim_by_loc.de_bw;
@@ -787,7 +787,7 @@ test.addTest('Variable days: public holidays', [
         [ '2014-12-26 00:00', '2014-12-27 00:00', false, '2. Weihnachtstag' ],
     ], 1000 * 60 * 60 * 24 * (20 + 2 * 2), 0, false, nominatim_default, 'not only test');
 
-// http://www.schulferien.org/Kalender_mit_Ferien/kalender_2014_ferien_Baden_Wuerttemberg.html
+// https://www.schulferien.org/Kalender_mit_Ferien/kalender_2014_ferien_Baden_Wuerttemberg.html
 test.addTest('Variable days: school holidays', [
         'SH',
     ], '2014-01-01 0:00', '2015-02-01 0:00', [
@@ -799,7 +799,7 @@ test.addTest('Variable days: school holidays', [
         [ '2014-12-22 00:00', '2015-01-06 00:00', false, 'Weihnachtsferien' ],
     ], 1000 * 60 * 60 * 24 * (4 + 12 + 12 + 1 + 31 + 13 + 4 + 15), 0, false, nominatim_default, 'not only test');
 
-// http://www.schulferien.org/Kalender_mit_Ferien/kalender_2015_ferien_Baden_Wuerttemberg.html
+// https://www.schulferien.org/Kalender_mit_Ferien/kalender_2015_ferien_Baden_Wuerttemberg.html
 // https://github.com/opening-hours/opening_hours.js/issues/83
 test.addTest('Variable days: school holidays', [
         'SH',
@@ -2460,13 +2460,14 @@ test.addTest('Variable days: Swedish public holidays.', [
     [ '2015-04-05 00:00', '2015-04-06 00:00', false, 'påskdagen' ],
     [ '2015-04-06 00:00', '2015-04-07 00:00', false, 'annandag påsk' ],
     [ '2015-05-01 00:00', '2015-05-02 00:00', false, 'första maj' ],
+    [ '2015-05-14 00:00', '2015-05-15 00:00', false, 'Kristi himmelsfärdsdag' ],
     [ '2015-05-24 00:00', '2015-05-25 00:00', false, 'pingstdagen' ],
     [ '2015-06-06 00:00', '2015-06-07 00:00', false, 'nationaldagen' ],
     [ '2015-06-20 00:00', '2015-06-21 00:00', false, 'midsommardagen' ],
     [ '2015-10-31 00:00', '2015-11-01 00:00', false, 'alla helgons dag' ],
     [ '2015-12-25 00:00', '2015-12-26 00:00', false, 'juldagen' ],
     [ '2015-12-26 00:00', '2015-12-27 00:00', false, 'annandag jul' ],
-], 1000 * 60 * 60 * 24 * 12, 0, false, nominatim_by_loc.se, 'not last test');
+], 1000 * 60 * 60 * 24 * 13, 0, false, nominatim_by_loc.se, 'not last test');
 
 test.addTest('Variable days: Weekday in given week.', [
     'PH',
@@ -2912,7 +2913,7 @@ test.addTest('Week range limit', [
         'week 02-53',
         'week 02-53 00:00-24:00',
     ], '2012-01-01 0:00', '2014-01-01 0:00', [
-        [ '2012-01-01 00:00', '2012-01-02 00:00' ], // Checked against http://www.schulferien.org/kalenderwoche/kalenderwochen_2012.html
+        [ '2012-01-01 00:00', '2012-01-02 00:00' ], // Checked against https://www.schulferien.org/deutschland/kalender/woche/2012/
         [ '2012-01-09 00:00', '2012-12-31 00:00' ],
         [ '2013-01-07 00:00', '2013-12-30 00:00' ],
     ], 1000 * 60 * 60 * 24 * (365 * 2 - 2 * 7 - 2/* FIXME: ??? */ + /* 2012 is leap year */ 1), 0, false, {}, 'not only test');
@@ -3070,7 +3071,7 @@ var week_range_result = [
         [ '2015-01-19 00:00', '2015-04-20 00:00' ],
         [ '2016-01-25 00:00', '2016-04-25 00:00' ],
         [ '2017-01-23 00:00', '2017-04-24 00:00' ],
-        // Checked against http://www.schulferien.org/kalenderwoche/kalenderwochen_2017.html
+        // Checked against https://www.schulferien.org/deutschland/kalender/woche/2017/
     ], 1000 * 60 * 60 * (24 * 7 * 6 * (16 - 3) - /* daylight saving */ 6), 0 ];
 
 test.addTest('Week range (beginning in last year)', [
@@ -3107,7 +3108,7 @@ test.addTest('Week range first week', [
         [ '2022-01-03 00:00', '2022-01-10 00:00' ],
         [ '2023-01-02 00:00', '2023-01-09 00:00' ],
         [ '2024-01-01 00:00', '2024-01-08 00:00' ],
-        // Checked against http://www.schulferien.org/kalenderwoche/kalenderwochen_2024.html
+        // Checked against https://www.schulferien.org/deutschland/kalender/woche/2024/
     ], 1000 * 60 * 60 * 24 * 7 * 12, 0, false, {}, 'not only test');
 
 test.addTest('Week range first week', [

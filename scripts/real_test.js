@@ -33,10 +33,10 @@
 
 /* Required modules {{{ */
 var opening_hours = require('../build/opening_hours.js');
-var fs            = require('fs');
+var fs            = require('node:fs');
 var colors        = require('colors');
 var sprintf       = require('sprintf-js').sprintf;
-var assert        = require('assert');
+var assert        = require('node:assert');
 /* }}} */
 
 var test_framework = new opening_hours_test();

@@ -20,7 +20,7 @@
  * }}} */
 
 /* Required modules {{{ */
-var fs = require('fs');
+var fs = require('node:fs');
 /* }}} */
 
 /* Parameter handling {{{ */

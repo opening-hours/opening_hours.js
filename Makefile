@@ -58,16 +58,25 @@ default: list
 
 ## help {{{
 .PHONY: list
-# https://stackoverflow.com/a/26339924/2239985
+# List all available targets in the Makefile by:
+# 1. Using grep to find lines that start with non-comment, non-whitespace chars and contain ':'
+# 2. Extracting the target names before the ':' using cut
+# 3. Sorting the target names alphabetically
+# 4. Adding 4 spaces indentation at the start of each line for pretty printing
+# 5. Removing duplicate lines using uniq
 list:
 	@echo "This Makefile has the following targets:"
-	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | sed 's/^/    /'
+	@grep '^[^#[:space:]].*:' Makefile \
+		| cut -d: -f1 \
+		| sort \
+		| sed 's/^/    /' \
+		| uniq
 ## }}}
 
 ## defaults {{{
 .PHONY: build
-build: build/opening_hours.min.js \
-		build/opening_hours+deps.min.js
+build: build/opening_hours.js \
+		build/opening_hours+deps.js
 
 .PHONY: check
 check: qa-quick check-fast check-package.json
@@ -93,9 +102,7 @@ osm-tag-data-rm: osm-tag-data-taginfo-rm osm-tag-data-overpass-rm
 dependencies-get: package.json
 	git submodule update --init --recursive
 	npm install
-	pip3 install --user yamllint yq
 
-# colors above v0.6.1 broke the 'bold' option. For what we need this package, v0.6.1 is more than sufficient.
 .PHONY: update-dependency-versions
 update-dependency-versions: package.json
 	npm run check-updates
@@ -154,7 +161,7 @@ check-test: check-opening_hours.js
 check-fast: check-diff-opening_hours.js
 
 .PHONY: check-all-diff
-check-all-diff: check-all-lang-diff check-diff-opening_hours.min.js
+check-all-diff: check-all-lang-diff check-diff-opening_hours.js
 
 .PHONY: check-all-lang-diff
 check-all-lang-diff:
@@ -168,7 +175,7 @@ check-opening_hours.min.js:
 check-diff-%: build/% test/test.js
 	@rm -rf "test/test.$(CHECK_LANG).log"
 	@echo "Testing to reproduce test/test.$(CHECK_LANG).log using $<."
-	@NODE_ICU_DATA=$(NODE_ICU_DATA) $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
+	@NODE_ICU_DATA=$(NODE_ICU_DATA) FORCE_COLOR=true $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
 	if git diff --quiet --exit-code HEAD -- "test/test.$(CHECK_LANG).log"; then \
 		echo "Test results for $< ($(CHECK_LANG)) are exactly the same as on development system. So far, so good ;)"; \
 	else \
@@ -195,12 +202,12 @@ benchmark-opening_hours.js:
 benchmark-opening_hours.min.js:
 
 # .PHONY: benchmark
-benchmark-%.js: build/%.js scripts/benchmark.js
-	$(NODEJS) scripts/benchmark.js "../$<"
+benchmark-%.js: build/%.js scripts/benchmark.mjs
+	$(NODEJS) scripts/benchmark.mjs "../$<"
 
 .PHONY: check-package.json
 check-package.json: package.json
-	./node_modules/package-json-validator/bin/pjv --warnings --recommendations --filename "$<"
+	./node_modules/package-json-validator/lib/bin/pjv.mjs --warnings --recommendations --filename "$<"
 
 .PHONY: check-holidays
 check-holidays: scripts/PH_SH_exporter.js
@@ -482,19 +489,13 @@ osm-tag-data-gen-stats-sort:
 	done
 ## }}}
 
-build/opening_hours.js:
+build/opening_hours.js: build/opening_hours.min.js
+build/opening_hours.min.js:
 	DEPS=NO node_modules/.bin/rollup -c
 
-build/opening_hours+deps.js:
-	DEPS=YES node_modules/.bin/rollup -c
-
-build/opening_hours.min.js:
+build/opening_hours+deps.js: build/opening_hours+deps.min.js
 build/opening_hours+deps.min.js:
-
-# TODO: Figure out why this generates a broken minified version: TypeError: opening_hours is not a constructor
-# ./node_modules/.bin/esbuild --bundle "$<" --outfile="$@"
-build/%.min.js: build/%.js
-	./node_modules/.bin/terser --output "$@" --comments '/github.com/' "$<"
+	DEPS=YES node_modules/.bin/rollup -c
 
 README.html:
 

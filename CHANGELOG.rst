@@ -7,8 +7,8 @@ Changelog
 
 All notable changes to opening_hours.js will be documented in this file.
 
-This project adheres to `Semantic Versioning <http://semver.org/spec/v2.0.0.html>`__
-and `human-readable changelog <http://keepachangelog.com/en/0.3.0/>`__.
+This project adheres to `Semantic Versioning <https://semver.org/spec/v2.0.0.html>`__
+and `human-readable changelog <https://keepachangelog.com/en/0.3.0/>`__.
 
 Note that most of the v2.X.Z releases have not been added to the changelog yet.
 
@@ -173,27 +173,51 @@ Added
 
 * Public holiday definitions added:
 
+  * Chinese (#406)
   * Croatian
+  * Luxembourg (#460)
+  * Namibian (#452)
 
 * School holiday definitions added:
 
   * Croatian
   * France
+  * Luxembourg (#460)
 
 Changed
 ~~~~~~~
 
+* Public holiday definitions updated:
+
+  * Argentina (#456)
+  * Swedish and Finnish (#465)
+
 * School holiday definitions updated:
 
-  * Hungarian
+  * Belgium (#457)
+  * German (#468)
+  * Hungarian (#466)
 
 * [Evaluation tool] Optimize "Error and warning messages" layout
+* [chore] Update CI in `ci.yml` (#468)
+  * Replace deprecated `set-output`
+  * Test with maintained node versions
+  * Update actions
+* [chore] Upgrade `colors`, `husky` and `eslint` (#468)
+* [chore] Update dependencies (#468)
+* [chore] Move minification into rollup and remove `esbuild` (#468)
+* [chore] Also build sourcemap to minified files (#468)
+* [chore] Add code-style-check to CI (#468)
+* [chore] Change benchmark script to esm (#468)
 
 Fixed
 ~~~~~
 
 * JOSM remote control was not working because it was trying to be accessed as https://localhost:8111/. Switch to HTTP.
-
+* [Evaluation tool] Fix timebar wrap on certain zoom levels in Firefox (issue #419)
+* [Evaluation tool] Fix Russian and Ukrainian pluralization by updating `i18next` and using API version V4 (#468)
+* [chore] Drop `yamlToJson.mjs` (#468) - There are better tools like https://mikefarah.gitbook.io/yq that do this. No need to maintain our own.
+* [chore] Fix `make list` (#468)
 
 v3.8.0_ - 2022-05-18
 --------------------
@@ -340,8 +364,8 @@ Changed
 * Change directory layout of the project. [napei_, ypid_]
 * Switch from i18next-client to i18next dependency (no longer as peer dependency). [fodor0205_, ypid_]
 
-.. _ES2015 modules: http://exploringjs.com/es6/ch_modules.html
-.. _rollup: http://rollupjs.org/
+.. _ES2015 modules: https://exploringjs.com/es6/ch_modules.html
+.. _rollup: https://rollupjs.org/
 
 Fixed
 ~~~~~

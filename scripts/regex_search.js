@@ -7,8 +7,8 @@
  */
 
 var opening_hours = require('../build/opening_hours.js');
-var fs = require('fs');
-var readline = require('readline');
+var fs = require('node:fs');
+var readline = require('node:readline');
 var colors = require('colors');
 
 var page_width = 20;
