@@ -578,33 +578,41 @@ Almost everything from opening_hours definition is supported, as well as some ex
   - Countries with PH definition:
 
     - Argentina
-    - Japanese
     - [Australia][ph-au]
     - [Austria][ph-at] ([footnotes][ph-at] are ignored)
     - [Belgium][ph-be] (See [issue #115](https://github.com/opening-hours/opening_hours.js/issues/115) for details)
     - [Brazil][ph-br]
     - [Canada][ph-ca]
-    - [Croatian][ph-hr]
+    - China (Only fixed-date holidays. See https://github.com/opening-hours/opening_hours.js/issues/408)
+    - [Croatia][ph-hr]
     - [Czech Republic][ph-cz]
     - [Denmark][ph-dk]
     - [England and Wales][ph-gb]
     - [France][ph-fr]
+    - Finland
     - [Germany][ph-de] ([footnotes][ph-de] are ignored)
+    - Greece
     - [Hungary][ph-hu]
     - [Ireland][ph-ie]
     - [Italy][ph-it] (Without the Saint Patron day, see [comment](https://github.com/opening-hours/opening_hours.js/pull/74#issuecomment-76194891))
     - [Ivory Coast][ph-ci] (Without the four islamic holidays because they can not be calculated and depend on subjective ad-hoc definition)
+    - Japan
+    - Luxembourg
+    - Namibia
     - [Netherlands][ph-ne]
     - [New Zealand][ph-nz] (Provincial holiday is not handled. See [PR #333](https://github.com/opening-hours/opening_hours.js/pull/333) for details.)
+    - Norway
     - [Poland][ph-nl]
     - [Romania][ph-ro]
     - [Russian][ph-ru]
-    - [Slovenian][ph-si]
+    - Slovakia
+    - [Slovenia][ph-si]
+    - Spain
     - [Sweden][ph-se]
     - [Switzerland][ph-ch]
     - [Ukraine][ph-ua]
     - [United states][ph-us] (Some special cases are [currently not handled](https://github.com/opening-hours/opening_hours.js/issues/69#issuecomment-74103181))
-    - [Vietnam][ph-vn] (Some public holidays cannot currently be calculated by the library and are missing. See https://github.com/opening-hours/opening_hours.js/pull/388)
+    - [Vietnam][ph-vn] (Lunar calendar-based public holidays cannot currently be calculated by the library and are missing. See https://github.com/opening-hours/opening_hours.js/pull/388)
 
   - **EXT:** Supports limited calculations based on public holidays (e.g. `Sa,PH -1 day open`). The only two possibilities are currently +1 and -1. All other cases are not handled. This seems to be enough because the only thing which is really used is -1.
 
@@ -612,11 +620,15 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
   - Countries with SH definition:
 
-    - Austria
-    - Croatian
-    - Germany, see [hc]
-    - Hungary
-    - Romania
+    - Austria (national until 2024, regional until 2021)
+    - Belgium (good until 2026)
+    - Croatia (good until 2022&ndash;2023)
+    - France (good until 2025)
+    - Germany, see [hc] (good until 2025)
+    - Greece (good until 2020)
+    - Hungary (good until 2024&ndash;2025)
+    - Luxembourg (good until 2025&ndash;2026)
+    - Romania (good until 2021)
 
 - There can be two cases which need to be separated (this applies for PH and SH):
 
