@@ -1,6 +1,6 @@
 {
   "name": "opening_hours",
-  "version": "3.9.0-dev",
+  "version": "3.9.0-beta.0",
   "authors": [
     "Robin Schneider <ypid@riseup.net>",
     "Dmitry Marakasov <amdmi3@amdmi3.ru>",
