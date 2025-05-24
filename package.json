@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/opening-hours/opening_hours.js"
+    "url": "git+https://github.com/opening-hours/opening_hours.js.git"
   },
   "bugs": "https://github.com/opening-hours/opening_hours.js/issues?state=open",
   "keywords": [
