@@ -36,10 +36,9 @@ jobs:
         node-version:
           # Support policy: We support every Node.js version that is still "maintained".
           # See: https://nodejs.org/en/about/releases/
-          - "18.x"
           - "20.x"
           - "22.x"
-          - "23.x"
+          - "24.x"
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -210,6 +210,7 @@ Changed
 * [chore] Add code-style-check to CI (#468)
 * [chore] Change benchmark script to esm (#468)
 * [ci] switch to LTS Node.js version for code style check in workflow (#488)
+* [ci] update supported Node.js versions in CI workflow (#488)
 
 Fixed
 ~~~~~
