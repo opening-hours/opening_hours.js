@@ -577,7 +577,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
   - Countries with PH definition:
 
-    - Argentina
+    - [Argentina][ph-ar]
     - [Australia][ph-au]
     - [Austria][ph-at] ([footnotes][ph-at] are ignored)
     - [Belgium][ph-be] (See [issue #115](https://github.com/opening-hours/opening_hours.js/issues/115) for details)
@@ -951,6 +951,7 @@ Edit: This does also work on npmjs in this short version … -->
 [hc]: https://gitlab.com/ypid/hc
 [evaluation tool]: https://openingh.openstreetmap.de/evaluation_tool/
 [schulferien.org]: https://www.schulferien.org/deutschland/ical/
+[ph-ar]: https://en.wikipedia.org/wiki/Public_holidays_in_Argentina
 [ph-at]: https://de.wikipedia.org/wiki/Feiertage_in_%C3%96sterreich
 [ph-au]: https://en.wikipedia.org/wiki/Public_holidays_in_Australia
 [ph-be]: https://de.wikipedia.org/wiki/Feiertage_in_Belgien
