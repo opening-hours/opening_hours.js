@@ -226,21 +226,15 @@ check-html:
 
 ## release {{{
 
-.PHONY: release-versionbump
-release-versionbump: package.json bower.json CHANGELOG.rst
-	editor $?
-	sh -c 'git commit --all --message "Release version $$(jq --raw-output '.version' '$<')"'
-
-.PHONY: release-prepare
-release-prepare: package.json taginfo.json check-holidays update-dependency-versions doctoc check
+# Run `npx commit-and-tag-version`.
 
 .PHONY: release-local
-release-local: package.json release-versionbump check-package.json
-	git tag --sign --local-user "$(RELEASE_OPENPGP_FINGERPRINT)" --message "Released version $(shell jq --raw-output '.version' $<)" "v$(shell jq --raw-output '.version' $<)"
+release-local: package.json
+	git tag --sign --local-user "$(RELEASE_OPENPGP_FINGERPRINT)" --message "chore(release): $(shell jq --raw-output '.version' $<)" "v$(shell jq --raw-output '.version' $<)"
 
 .PHONY: release-publish
-## First source file is referenced!
-## Might be better: https://docs.npmjs.com/cli/version
+# First source file is referenced!
+# Might be better: https://docs.npmjs.com/cli/version
 release-publish:
 	git push --follow-tags
 	npm publish

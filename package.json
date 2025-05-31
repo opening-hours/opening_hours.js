@@ -64,7 +64,10 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-yaml": "^4.1.2",
     "colors": "^1.4.0",
+    "commit-and-tag-version": "^12.5.1",
+    "commitizen": "^4.3.1",
     "country-language": "^0.1.7",
+    "cz-conventional-changelog": "^3.3.0",
     "doctoc": "^2.2.1",
     "eslint": "^9.24.0",
     "full-icu": "^1.5.0",
@@ -87,5 +90,10 @@
   },
   "engines": {
     "node": ">=12"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
