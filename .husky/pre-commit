@@ -1,10 +1,6 @@
 #!/bin/sh
-git stash -q --keep-index
 
 # # Redirect output to stderr.
 # exec 1>&2
 
-npm run test-quick
-git add test/test.*.log
-
-git stash pop -q
+make check
