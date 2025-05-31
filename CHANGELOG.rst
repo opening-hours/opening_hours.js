@@ -209,6 +209,7 @@ Changed
 * [chore] Also build sourcemap to minified files (#468)
 * [chore] Add code-style-check to CI (#468)
 * [chore] Change benchmark script to esm (#468)
+* [ci] switch to LTS Node.js version for code style check in workflow (#488)
 
 Fixed
 ~~~~~
