@@ -1,13 +1,12 @@
 <!--
-SPDX-FileCopyrightText: © 2012 Dmitry Marakasov
 SPDX-FileCopyrightText: © 2013 Robin Schneider <ypid@riseup.net>
 
 SPDX-License-Identifier: LGPL-3.0-only
 
-This file is based on work under the following copyright and permission
-notice:
+This file is based on work under the following copyright and BSD-2-Clause
+permission notice:
 
-    Copyright (c) 2012 Dmitry Marakasov
+    SPDX-FileCopyrightText: © 2012 Dmitry Marakasov <amdmi3@amdmi3.ru>
     All rights reserved.
 
     Redistribution and use in source and binary forms, with or without
