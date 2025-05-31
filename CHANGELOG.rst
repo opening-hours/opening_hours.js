@@ -164,7 +164,7 @@ Thanks for helping by allowing employees to work on the project during work hour
 master_ - unreleased
 --------------------
 
-.. _master: https://github.com/opening-hours/opening_hours.js/compare/v3.7.0...master
+.. _master: https://github.com/opening-hours/opening_hours.js/compare/v3.8.0...master
 
 `v3.9.0 milestone <https://github.com/opening-hours/opening_hours.js/issues?q=milestone%3Av3.9.0+is%3Aclosed>`__
 
