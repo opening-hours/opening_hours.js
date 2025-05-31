@@ -624,7 +624,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
     - Belgium (good until 2026)
     - Croatia (good until 2022&ndash;2023)
     - France (good until 2025)
-    - Germany, see [hc] (good until 2025)
+    - Germany, see [hc] and [scripts/update_german_sh.mjs](scripts/update_german_sh.mjs) (good until 2026)
     - Greece (good until 2020)
     - Hungary (good until 2024&ndash;2025)
     - Luxembourg (good until 2025&ndash;2026)
