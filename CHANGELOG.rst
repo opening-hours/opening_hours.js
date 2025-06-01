@@ -189,6 +189,8 @@ Added
   * France
   * Luxembourg (#460)
 
+* Script to update german school holidays [scripts/update_german_sh.mjs](scripts/update_german_sh.mjs) (#492)
+
 Changed
 ~~~~~~~
 
