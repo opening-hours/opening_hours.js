@@ -1,7 +1,12 @@
-## Source: https://de.wikipedia.org/wiki/ISO_3166-2:DE
-## The Unicode glyph ♡ is used as separator because it is expected that ♡ will
-## never be used in keys or values in OSM where key is something like ISO_3166-2
-## or int_name.
+# SPDX-FileCopyrightText: © 2015 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+#
+# List of OSM tags which use the syntax of opening_hours.
+# Source: https://de.wikipedia.org/wiki/ISO_3166-2:DE
+# The Unicode glyph ♡ is used as separator because it is expected that ♡ will
+# never be used in keys or values in OSM where key is something like ISO_3166-2
+# or int_name.
 ISO3166-2♡DE-SL
 ISO3166-2♡DE-BW
 ISO3166-2♡DE-BY
@@ -18,7 +23,7 @@ ISO3166-2♡DE-SN
 ISO3166-2♡DE-ST
 ISO3166-2♡DE-SH
 ISO3166-2♡DE-TH
-##
+#
 # int_name♡Deutschland
 int_name♡Österreich
 int_name♡Schweiz

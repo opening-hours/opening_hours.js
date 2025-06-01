@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: © 2015 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: CC0-1.0
+#
 # List of OSM tags which use the syntax of opening_hours.
 # This file is used by the Makefile
 opening_hours

@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-# encoding: utf-8
+
+# SPDX-FileCopyrightText: © 2014 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: LGPL-3.0-only
+
 """Search over OSM opening_hours like values and see if they can be parsed."""
 
 # modules {{{
