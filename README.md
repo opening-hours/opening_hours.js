@@ -587,7 +587,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
     - [Croatia][ph-hr]
     - [Czech Republic][ph-cz]
     - [Denmark][ph-dk]
-    - [England and Wales][ph-gb]
+    - [England, Wales, Scotland and Northern Ireland][ph-gb]
     - [France][ph-fr]
     - Finland
     - [Germany][ph-de] ([footnotes][ph-de] are ignored)
