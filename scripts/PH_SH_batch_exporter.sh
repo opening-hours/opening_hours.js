@@ -17,7 +17,7 @@
 
 ## Script for generating PH/SH files for https://github.com/anschuetz/linuxmuster
 
-script_url="https://github.com/opening-hours/opening_hours.js/blob/master/PH_SH_batch_exporter.sh"
+script_url="https://github.com/opening-hours/opening_hours.js/blob/main/PH_SH_batch_exporter.sh"
 
 print_header()
 {
