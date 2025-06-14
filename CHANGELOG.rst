@@ -161,10 +161,15 @@ Thanks for helping by allowing employees to work on the project during work hour
 .. _iMi digital: https://www.imi-digital.de/
 .. _AddisMap: https://www.addismap.com/
 
-master_ - unreleased
+main_ - unreleased
 --------------------
 
-.. _master: https://github.com/opening-hours/opening_hours.js/compare/v3.9.0...master
+.. _main: https://github.com/opening-hours/opening_hours.js/compare/v3.9.0...main
+
+Changed
+~~~~~~~
+
+* chore: change default git branch from `master` to `main`
 
 v3.9.0_ - 2025-05-31
 --------------------

@@ -1,6 +1,6 @@
 {
     "data_format": 1,
-    "data_url": "https://raw.githubusercontent.com/opening-hours/opening_hours.js/master/taginfo.json",
+    "data_url": "https://raw.githubusercontent.com/opening-hours/opening_hours.js/main/taginfo.json",
     "project": {
         "name": "opening_hours evaluation tool",
         "description": "Advanced opening_hours testing tool",

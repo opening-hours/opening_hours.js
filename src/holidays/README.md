@@ -183,8 +183,8 @@ Two years in the past should be more then enough for the typical use cases of th
 * Please also add the source for this information (in form of an URL) as comment. Like shown in the examples above. Usually Wikipedia in the local language is a great source.
 * You can use `make check-holidays` to check all regions of all countries.
 
-[ohlib.holidays]: https://github.com/opening-hours/opening_hours.js/tree/master/holidays
-[ohlib.holidays.de.yaml]: https://github.com/opening-hours/opening_hours.js/blob/master/holidays/de.yaml
+[ohlib.holidays]: https://github.com/opening-hours/opening_hours.js/tree/main/holidays
+[ohlib.holidays.de.yaml]: https://github.com/opening-hours/opening_hours.js/blob/main/holidays/de.yaml
 [hc]: https://gitlab.com/ypid/hc
 [YAML]: https://en.wikipedia.org/wiki/YAML
 [Nominatim search]: https://wiki.openstreetmap.org/wiki/Nominatim#Search
