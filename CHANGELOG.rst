@@ -166,6 +166,11 @@ master_ - unreleased
 
 .. _master: https://github.com/opening-hours/opening_hours.js/compare/v3.9.0...master
 
+Added
+~~~~~
+
+* feat: Script to update german school holidays [scripts/update_german_sh.mjs](scripts/update_german_sh.mjs) (#492)
+
 v3.9.0_ - 2025-05-31
 --------------------
 
