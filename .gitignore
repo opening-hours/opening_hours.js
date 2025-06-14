@@ -14,7 +14,6 @@ export*
 ## Neko bytecode
 *.n
 
-!bower.json
 !taginfo.json
 !taginfo_template.json
 !uglifyjs.log
@@ -25,5 +24,4 @@ tags
 README.html
 tmp_query*
 lockfile_*
-bower_components
 taginfo_sources.json
