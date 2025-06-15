@@ -820,62 +820,7 @@ List of features which can make writing easier:
 
 ## How to contribute
 
-You can contribute in the usual manner as known from git (and GitHub). Just fork, change and make a pull request.
-
-### Translating the evaluation tool and the map
-
-This project uses <https://www.i18next.com/> for translation.
-
-Translations can be made in the file [js/i18n-resources.js][ohlib.js/i18n-resources.js]. Just copy the whole English block, change the language code to the one you are adding and make your translation. You can open the [index.html](/index.html) to see the result of your work. ~~To complete your localization add the translated language name to the other languages~~ (you don’t have to do this anymore. Importing that form somewhere, WIP, see gen_word_error_correction.js). Week and month names are translated by the browser using the `Date.toLocaleString` function.
-
-Note that this resource file does also provide the localization for the [opening_hours_map]. This can also be tested by cloning the project and linking your modified opening_hours.js working copy to the opening_hours.js directory (after renaming it) inside the opening_hours_map project. Or just follow the installation instructions from the [opening_hours_map].
-
-### Translating error messages and warnings
-
-Translations for error messages and warnings for the opening_hours.js library can be made in the file [locales/core.js][ohlib.js/locales/core.js]. You are encouraged to test your translations. Checkout the [Makefile][ohlib.makefile] and the [test framework][ohlib.test.js] for how this can be done.
-
-### Holiday Data
-
-Please do not open issues for missing holidays. It is obvious that there are more missing holidays then holidays which are defined in this library. Instead consider if you can add your missing holidays and send me a pull request or patch. If you are hitting a problem because some holidays depend on variable days or something like this, consider opening a unfinished PR so that the more complicated things can be discussed there.
-
-Holidays can be added to the file [index.js][ohlib.opening_hours.js]. Have a look at the current definitions for [other holidays][ohlib.holidays].
-
-Please refer to the [holiday documentation][ohlib.docs.holiday] for more details about the data format.
-
-Please consider adding a test (with a time range of one year for example) to see if everything works as expected and to ensure that it will stay that way.
-See under [testing][ohlib.testing].
-
-In case your holiday definition does only change the `holiday_definitions` variable (and not core code) it is also ok to test the definition using the `scripts/PH_SH_exporter.js` script. In that case writing a test is not required but still appreciated. Example: `./scripts/PH_SH_exporter.js --verbose --from=2016 --to=2016 --public-holidays --country dk --state dk /tmp/dk_holidays.txt`
-
-### Core code
-
-Be sure to add one or more tests if you add new features or enhance error tolerance or the like.
-See under [testing][ohlib.testing].
-
-#### Commit hooks
-
-Note that there is a git pre-commit hook used to run and compare the test framework before each commit. Hooks are written as shell scripts using [husky](https://github.com/typicode/husky) and should be installed to git automatically when running `npm install`. If this does not happen, you can manually run `npm run postinstall`.
-
-#### Documentation
-
-All functions are documented, which should help contributors to get started.
-
-The documentation looks like this:
-
-```js
-/* List parser for constrained weekdays in month range {{{
- * e.g. Su[-1] which selects the last Sunday of the month.
- *
- * :param tokens: List of token objects.
- * :param at: Position where to start.
- * :returns: Array:
- *            0. Constrained weekday number.
- *            1. Position at which the token does not belong to the list any more (after ']' token).
- */
-function getConstrainedWeekday(tokens, at) {}
-```
-
-The opening brackets `{{{` (and the corresponding closing onces) are used to fold the source code. See [Vim folds](https://vim.fandom.com/wiki/Folding).
+If you want to contribute to this project, please read the [contribution guidelines](CONTRIBUTING.md).
 
 ## Maintainers
 
@@ -938,13 +883,8 @@ Edit: This does also work on npmjs in this short version … -->
 [ohlib.contribute.holidays]: /src/holidays/
 [ohlib.evaluation-tool]: #evaluation-tool
 [ohlib.library-api]: #library-api
-[ohlib.testing]: #testing
 [ohlib.docs.holiday]: /holidays/README.md
-[ohlib.js/locales/core.js]: /src/locales/core.js
-[ohlib.opening_hours.js]: /index.js
-[ohlib.test.js]: /test.js
 [ohlib.makefile]: /Makefile
-[ohlib.js/i18n-resources.js]: /site/js/i18n-resources.js
 [ohlib.npmjs]: https://www.npmjs.org/package/opening_hours
 [ohlib.github]: https://github.com/opening-hours/opening_hours.js
 [hc]: https://gitlab.com/ypid/hc
