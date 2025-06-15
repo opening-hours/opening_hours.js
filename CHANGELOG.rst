@@ -166,6 +166,11 @@ master_ - unreleased
 
 .. _master: https://github.com/opening-hours/opening_hours.js/compare/v3.9.0...master
 
+Changed
+~~~~~~~
+
+- docs: move Contributing section from README to CONTRIBUTING file and add "Branching Model" section
+
 v3.9.0_ - 2025-05-31
 --------------------
 
