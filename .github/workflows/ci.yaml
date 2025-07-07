@@ -9,6 +9,10 @@ name: Continuous Integration
   - "push"
   - "pull_request"
 
+permissions:
+  contents: read
+  pull-requests: read
+
 env:
   npm_config_cache: /tmp/npm-cache
 
@@ -17,17 +21,25 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: "Checkout code"
+      - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: "Use Node.js"
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: "npm"
-      - name: "Install dependencies"
+      - name: Install dependencies
         run: npm install
-      - name: "Run linter tests"
+      - name: Run linter tests
         run: npm run lint
+
+  commitlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wagoid/commitlint-github-action@v6
 
   build:
     runs-on: ubuntu-latest

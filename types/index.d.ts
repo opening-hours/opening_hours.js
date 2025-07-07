@@ -8,6 +8,14 @@ declare module 'opening_hours' {
     getState(date?: Date): boolean
     getUnknown(date?: Date): boolean
     getStateString(
+      date: Date | undefined,
+      past: true
+    ): 'open' | 'unknown' | 'closed'
+    getStateString(
+      date?: Date,
+      past?: false
+    ): 'open' | 'unknown' | 'close'
+    getStateString(
       date?: Date,
       past?: boolean
     ): 'open' | 'unknown' | 'closed' | 'close'
@@ -39,6 +47,14 @@ declare module 'opening_hours' {
     getState(date?: Date): boolean
     getUnknown(date?: Date): boolean
     getStateString(
+      date: Date | undefined,
+      past: true
+    ): 'open' | 'unknown' | 'closed'
+    getStateString(
+      date?: Date,
+      past?: false
+    ): 'open' | 'unknown' | 'close'
+    getStateString(
       date?: Date,
       past?: boolean
     ): 'open' | 'unknown' | 'closed' | 'close'
@@ -68,6 +84,7 @@ declare module 'opening_hours' {
     sep_one_day_between: string
     zero_pad_month_and_week_numbers: boolean
     locale: string
+    date_format: Intl.DateTimeFormatOptions['weekday']
   }
 
   export enum mode {

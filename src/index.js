@@ -1,13 +1,12 @@
 /*
- * SPDX-FileCopyrightText: © 2012 Dmitry Marakasov
  * SPDX-FileCopyrightText: © 2013 Robin Schneider <ypid@riseup.net>
  *
  * SPDX-License-Identifier: LGPL-3.0-only
  *
- * This file is based on work under the following copyright and permission
- * notice:
+ * This file is based on work under the following copyright and
+ * BSD-2-Clause permission notice:
  *
- *     Copyright (c) 2012-2013 Dmitry Marakasov
+ *     SPDX-FileCopyrightText: © 2012 Dmitry Marakasov <amdmi3@amdmi3.ru>
  *     All rights reserved.
  *
  *     Redistribution and use in source and binary forms, with or without
@@ -94,6 +93,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'sep_one_day_between': ',',      // separator which should be used
         'zero_pad_month_and_week_numbers': true, // Format week (e.g. `week 01`) and month day numbers (e.g. `Jan 01`) with "%02d".
         'locale': 'en',                  // use local language (needs i18next)
+        'date_format': 'short'           // Use short or long date format (for day and month names)
     };
 
     var osm_tag_defaults = {
@@ -1204,13 +1204,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         // use months, weekdays for locales 'en' and 'all'
         // otherwise use Date.toLocaleString, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
-        var _is_en_or_all = user_conf['locale'] === 'en' || user_conf['locale'] === 'all';
+        var _is_en_or_all = (user_conf['locale'] === 'en' || user_conf['locale'] === 'all') && user_conf['date_format'] === 'short';
         var months_local = _is_en_or_all ? months : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function(month) {
-            return new Date(2018, month - 1, 1).toLocaleString(user_conf['locale'], {month: 'short'});
+            return new Date(2018, month - 1, 1).toLocaleString(user_conf['locale'], {month: user_conf['date_format']});
         });
         var weekdays_local = _is_en_or_all ? weekdays : [1, 2, 3, 4, 5, 6, 7].map(function(weekday) {
             // 2017-01-01 is Sunday
-            return new Date(2017, 0, weekday).toLocaleString(user_conf['locale'], {weekday: 'short'});
+            return new Date(2017, 0, weekday).toLocaleString(user_conf['locale'], {weekday: user_conf['date_format']});
         });
 
         for (var nrule = 0; nrule < new_tokens.length; nrule++) {
@@ -2841,7 +2841,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'nextWednesday16Nov'    : getDateOfWeekdayInDateRange(3, new Date(year, 10, 16)),
             'nextMo-Fr17March'      : getDateOfNextWeekdayRange(1, 5, new Date(year, 2, 17)),
             'nextMo-Sa01May'        : getDateOfNextWeekdayRange(1, 6, new Date(year, 4, 1)),
+            'nextMo-Fr12July'       : getDateOfNextWeekdayRange(1, 5, new Date(year, 6, 12)),
             'nextMo-Sa07August'     : getDateOfNextWeekdayRange(1, 6, new Date(year, 7, 7)),
+            'nextMo-Fr30November'   : getDateOfNextWeekdayRange(1, 5, new Date(year, 10, 30)),
             'nextMo-Sa25December'   : getDateOfNextWeekdayRange(1, 6, new Date(year, 11, 25)),
             'springEquinox'         : springEquinoxCalc(year),
             'autumnalEquinox'       : autumnalEquinoxCalc(year),

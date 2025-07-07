@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 
+// SPDX-FileCopyrightText: © 2013 Robin Schneider <ypid@riseup.net>
+//
+// SPDX-License-Identifier: LGPL-3.0-only
+
 var optimist = require('optimist')
     .usage('Usage: $0 [optional parameters] [server_listening_ports]')
     .describe('h', 'Display the usage')

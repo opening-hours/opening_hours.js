@@ -161,10 +161,22 @@ Thanks for helping by allowing employees to work on the project during work hour
 .. _iMi digital: https://www.imi-digital.de/
 .. _AddisMap: https://www.addismap.com/
 
-master_ - unreleased
+main_ - unreleased
 --------------------
 
-.. _master: https://github.com/opening-hours/opening_hours.js/compare/v3.9.0...master
+.. _main: https://github.com/opening-hours/opening_hours.js/compare/v3.9.0...main
+
+Changed
+~~~~~~~
+
+* chore: change default git branch from `master` to `main`
+* chore: remove `bower.json`
+* docs: move Contributing section from README to CONTRIBUTING file and add "Branching Model" section
+
+Added
+~~~~~
+
+* feat: script to update German school holidays [scripts/update_german_sh.mjs](scripts/update_german_sh.mjs) (#492)
 
 v3.9.0_ - 2025-05-31
 --------------------

@@ -207,7 +207,7 @@ benchmark-%.js: build/%.js scripts/benchmark.mjs
 
 .PHONY: check-package.json
 check-package.json: package.json
-	./node_modules/package-json-validator/lib/bin/pjv.mjs --warnings --recommendations --filename "$<"
+	./node_modules/package-json-validator/lib/bin/pjv.js --warnings --recommendations --filename "$<"
 
 .PHONY: check-holidays
 check-holidays: scripts/PH_SH_exporter.js

@@ -59,9 +59,6 @@ test_framework.config = {
     },
     'opening_hours:warm_kitchen': {
     },
-    'opening_hours:covid19': {
-        manually_ignored: [ 'same', 'restricted' ],
-    },
     'smoking_hours': {
         manually_ignored: [ 'yes' ],
     },

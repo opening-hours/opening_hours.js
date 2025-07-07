@@ -12,26 +12,26 @@
     <h1>Nothing to see here, open a debug console in your browser to see the interesting stuff.</h1>
 
     <script>
-      // Input string (English and German mixed).
-      let input_value = 'Mo-Tu,Do-Fr 10:00-20:00; Samstag und Sonntag geschlossen';
+      // Input string (English and German mixed) - intentionally using mixed languages to demonstrate prettification.
+      let input_value = "Mo-Tu,Do-Fr 10:00-20:00; Samstag und Sonntag geschlossen";
 
       // Language for the warnings (get it from the browser settings).
       let locale = navigator.language;
 
       // Create opening_hours object.
-      let oh = new opening_hours(input_value, {}, { 'locale': locale });
+      let oh = new opening_hours(input_value, {}, { locale: locale });
 
       // Prettify the value in different languages.
-      let prettified_value_de = oh.prettifyValue({conf: { locale: 'de' },});
-      let prettified_value_en = oh.prettifyValue({conf: { locale: 'en' },});
-      let prettified_value_ru = oh.prettifyValue({conf: { locale: 'ru' },});
+      let prettified_value_de = oh.prettifyValue({ conf: { locale: "de" } });
+      let prettified_value_en = oh.prettifyValue({ conf: { locale: "en" } });
+      let prettified_value_ru = oh.prettifyValue({ conf: { locale: "ru" } });
 
       // Console outputs.
-      console.log('Input value (de en mixed): ' + input_value);
-      console.log('Prettified value (de):     ' + prettified_value_de);
-      console.log('Prettified value (en):     ' + prettified_value_en);
-      console.log('Prettified value (ru):     ' + prettified_value_ru);
-      console.log('Warnings:' + JSON.stringify(oh.getWarnings(), null, '  '));
+      console.log(`Input value (German and English mixed): ${input_value}`);
+      console.log(`Prettified value (de):                  ${prettified_value_de}`);
+      console.log(`Prettified value (en):                  ${prettified_value_en}`);
+      console.log(`Prettified value (ru):                  ${prettified_value_ru}`);
+      console.log(`Warnings:\n  ${oh.getWarnings().join("\n  ")}`);
     </script>
 
   </body>
