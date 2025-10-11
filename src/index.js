@@ -2711,6 +2711,25 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const canadaDay = july_1.getDay() === 0 ? 2 : 1;
         /* }}} */
 
+        /* Calculate Christmas Day and Boxing bank holidays (UK).
+           Christmas Day observed 25th December unless it is a weekend, then the following week day
+           Boxing Day the next week day after Christmas Day bank holiday. {{{ */
+        const christmasDayBh = getDateOfNextWeekdayRange(1, 5, new Date(year, 11, 25));
+        const dayAfterChristmas = new Date(christmasDayBh);
+        dayAfterChristmas.setDate(christmasDayBh.getDate() + 1);
+        const boxingDayBh = getDateOfNextWeekdayRange(1, 5, dayAfterChristmas);
+        /* }}} */
+
+        /* Calculate New Years and 2nd January bank holidays (Scotland).
+           New Year's Day observed 1st January unless it is a weekend, then the following week day
+           2nd January the next week day after New Year's Day bank holiday. {{{ */
+        const newYearsBh = getDateOfNextWeekdayRange(1, 5, new Date(year, 0, 1));
+        const dayAfterNewYears = new Date(newYearsBh);
+        dayAfterNewYears.setDate(newYearsBh.getDate() + 1);
+        const secondJanBh = getDateOfNextWeekdayRange(1, 5, dayAfterNewYears);
+        /* }}} */
+
+
         /* Calculation of the spring and autumnal equinoxes (for Public holidays in Japan). {{{ */
         function springEquinoxCalc(year){
             if(year >= 1900 && year <= 1923){
@@ -2811,6 +2830,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'orthodox easter'       : oDate,
             'victoriaDay'           : new Date(year,  4, victoriaDay),
             'canadaDay'             : new Date(year,  6, canadaDay),
+            'boxingDayBh'           : boxingDayBh,
+            'secondJanBh'           : secondJanBh,
             'firstJanuaryMonday'    : new Date(year,  0, firstWeekdayOfMonth(0, 1)),
             'firstFebruaryMonday'   : new Date(year,  1, firstWeekdayOfMonth(1, 1)),
             'lastFebruarySunday'    : new Date(year,  1, lastFebruarySunday),
@@ -2828,6 +2849,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'firstNovemberTuesday'  : new Date(year, 10, firstWeekdayOfMonth(10, 2)),
             'firstMarchTuesday'     : new Date(year,  2, firstWeekdayOfMonth(2, 2)),
             'firstAugustTuesday'    : new Date(year,  7, firstWeekdayOfMonth(7, 2)),
+            'firstAugustMonday'     : new Date(year,  7, firstWeekdayOfMonth(7, 1)),
             'firstAugustFriday'     : new Date(year,  7, firstWeekdayOfMonth(7, 5)),
             'firstNovemberThursday' : new Date(year, 10, firstWeekdayOfMonth(10, 4)),
             'lastMayMonday'         : new Date(year,  4, lastWeekdayOfMonth(4, 1)),
@@ -2842,11 +2864,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'nextSaturday20Jun'     : getDateOfWeekdayInDateRange(6, new Date(year, 5, 20)),
             'nextSaturday31Oct'     : getDateOfWeekdayInDateRange(6, new Date(year, 9, 31)),
             'nextWednesday16Nov'    : getDateOfWeekdayInDateRange(3, new Date(year, 10, 16)),
+            'nextMo-Fr01January'    : getDateOfNextWeekdayRange(1, 5, new Date(year, 0, 1)),
             'nextMo-Fr17March'      : getDateOfNextWeekdayRange(1, 5, new Date(year, 2, 17)),
             'nextMo-Sa01May'        : getDateOfNextWeekdayRange(1, 6, new Date(year, 4, 1)),
             'nextMo-Fr12July'       : getDateOfNextWeekdayRange(1, 5, new Date(year, 6, 12)),
             'nextMo-Sa07August'     : getDateOfNextWeekdayRange(1, 6, new Date(year, 7, 7)),
             'nextMo-Fr30November'   : getDateOfNextWeekdayRange(1, 5, new Date(year, 10, 30)),
+            'nextMo-Fr25December'   : getDateOfNextWeekdayRange(1, 5, new Date(year, 11, 25)),
             'nextMo-Sa25December'   : getDateOfNextWeekdayRange(1, 6, new Date(year, 11, 25)),
             'springEquinox'         : springEquinoxCalc(year),
             'autumnalEquinox'       : autumnalEquinoxCalc(year),
