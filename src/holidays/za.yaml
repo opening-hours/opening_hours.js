@@ -1,0 +1,42 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-28.8747&lon=25.0372&zoom=18&addressdetails=1&accept-language=en'
+
+# https://www.gov.za/about-sa/public-holidays
+# https://en.wikipedia.org/wiki/Public_holidays_in_South_Africa
+PH:
+  - {'name': "New Year's Day", 'variable_date': 'nextMo-Sa01January'}
+  - {'name': 'Human Rights Day', 'variable_date': 'nextMo-Sa21March'}
+  - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Family Day', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Freedom Day', 'variable_date': 'nextMo-Sa27April'}
+  - {'name': "Workers' Day", 'variable_date': 'nextMo-Sa01May'}
+  - {'name': 'Youth Day', 'variable_date': 'nextMo-Sa16June'}
+  - {'name': "National Women's Day", 'variable_date': 'nextMo-Sa09August'}
+  - {'name': 'Heritage Day', 'variable_date': 'nextMo-Sa24September'}
+  - {'name': 'Day of Reconciliation', 'variable_date': 'nextMo-Sa16December'}
+  - {'name': 'Christmas Day', 'variable_date': 'nextMo-Sa25December'}
+  - {'name': 'Day of Goodwill', 'variable_date': 'nextMo-Sa26December'}
+
+# https://www.gov.za/about-sa/school-calendar
+SH:
+  - name: Before term 1
+    '2025': [1, 1, 1, 14]
+    '2026': [1, 1, 1, 13]
+    '2027': [1, 1, 1, 12]
+  - name: Between term 1 and term 2
+    '2025': [3, 29, 4, 7]
+    '2026': [3, 28, 4, 7]
+    '2027': [3, 20, 4, 5]
+  - name: Between term 2 and term 3
+    '2025': [6, 28, 7, 21]
+    '2026': [6, 27, 7, 20]
+    '2027': [6, 26, 7, 21]
+  - name: Between term 3 and term 4
+    '2025': [10, 4, 10, 12]
+    '2026': [9, 24, 10, 5]
+    '2027': [9, 23, 10, 6]
+  - name: After term 4
+    '2025': [12, 11, 12, 31]
+    '2026': [12, 10, 12, 31]
+    '2027': [9, 10, 12, 31]
