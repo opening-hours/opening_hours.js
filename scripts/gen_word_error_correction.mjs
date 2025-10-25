@@ -68,11 +68,12 @@ if (fs.existsSync(manualYamlPath)) {
 console.log('\n► Discovering supported locales...');
 
 // Dynamic discovery of all available locales using pattern-based testing
-console.log('  → Testing locale patterns (aa-zz)...');
+console.log('  → Testing locale patterns (aa-zz and aaa-zzz)...');
 const discoveredLocales = [];
 
 // Test all 2-letter locale codes (aa to zz) for Intl support
 const letters = 'abcdefghijklmnopqrstuvwxyz';
+console.log('    → Testing 2-letter codes...');
 for (let i = 0; i < letters.length; i++) {
     for (let j = 0; j < letters.length; j++) {
         const locale = letters[i] + letters[j];
@@ -86,6 +87,31 @@ for (let i = 0; i < letters.length; i++) {
         }
     }
 }
+
+const twoLetterCount = discoveredLocales.length;
+console.log(`    ✓ Found ${twoLetterCount} supported 2-letter locales`);
+
+// Test all 3-letter locale codes (aaa to zzz) for Intl support
+console.log('    → Testing 3-letter codes...');
+for (let i = 0; i < letters.length; i++) {
+    for (let j = 0; j < letters.length; j++) {
+        for (let k = 0; k < letters.length; k++) {
+            const locale = letters[i] + letters[j] + letters[k];
+            try {
+                const supported = Intl.DateTimeFormat.supportedLocalesOf([locale]);
+                if (supported.length > 0) {
+                    discoveredLocales.push(locale);
+                }
+            } catch {
+                // Ignore unsupported locales
+            }
+        }
+    }
+}
+
+const threeLetterCount = discoveredLocales.length - twoLetterCount;
+console.log(`    ✓ Found ${threeLetterCount} additional 3-letter locales`);
+console.log(`    → Total discovered: ${discoveredLocales.length} locales`);
 
 // Filter discovered locales to get only those actually supported by Intl.DateTimeFormat
 const supportedLocales = Intl.DateTimeFormat.supportedLocalesOf(discoveredLocales);
