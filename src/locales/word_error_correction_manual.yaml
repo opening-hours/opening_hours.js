@@ -192,56 +192,25 @@
 
   # French
   dim: Su
-  dimanche: Su
   lun?: Mo
-  lundi: Mo
-  mardi: Tu
   mer: We
-  mercredi: We
   jeu?: Th
-  jeudi: Th
   ven?: Fr
-  vendredi: Fr
-  samedi: Sa
 
   # Dutch
   zon?: Su
   zontag: Su
-  zondag: Su
-  maandag: Mo
   din: Tu
-  dinsdag: Tu
   woe?: We
-  woensdag: We
-  donderdag: Th
   vri?: Fr
-  vrijdag: Fr
   zat?: Sa
-  zaterdag: Sa
-
   # Czech
-  neděle: Su
   ne: Su
-  pondělí: Mo
   po: Mo
-  úterý: Tu
   út: Tu
-  středa: We
   st: We
-  čtvrtek: Th
   čt: Th
-  pátek: Fr
   pá: Fr
-  sobota: Sa
-
-  # Spanish
-  martes: Tu
-  miércoles: We
-  jueves: Th
-  viernes: Fr
-  sábado: Sa
-  domingo: Su
-  lunes: Mo
 
   # Indonesian
   selasa: Su
@@ -253,73 +222,40 @@
   senin: Sa
 
   # Swedish
-  söndag: Su
   söndagar: Su
-  måndag: Mo
   ma: Mo
-  tisdag: Tu
-  onsdag: We
-  torsdag: Th
-  fredag: Fr
-  lördag: Sa
   lördagar: Sa
 
   # Polish
-  niedziela: Su
   niedz: Su
   n: Su
   ndz: Su
-  poniedziałek: Mo
   poniedzialek: Mo
   pon: Mo
   pn: Mo
-  wtorek: Tu
   wt: Tu
-  środa: We
   sroda: We
   śr: We
   sr: We
-  czwartek: Th
   czw: Th
   cz: Th
-  piątek: Fr
   piatek: Fr
   pt: Fr
-  # sobota: Sa
   sob: Sa
 
   # Russian
-  воскресенье: Su
   Вс: Su
   'voskresen''ye': Su
-  понедельник: Mo
   Пн: Mo
   'ponedel''nik': Mo
-  вторник: Tu
   vtornik: Tu
-  среда: We
-  sreda: We
-  четверг: Th
   chetverk: Th
-  пятница: Fr
   pyatnitsa: Fr
-  суббота: Sa
   subbota: Sa
-
-  # Danish
-  søndag: Su
-  mandag: Mo
-  tirsdag: Tu
-  # onsdag: We  # Same in Swedish
-  # torsdag: Th
-  # fredag: Fr
-  lørdag: Sa
-
   # Italian
   dom: Su
   domenica?: Su
   domeniche?: Su
-  lun: Mo
   lunedì?: Mo
   mar?: Tu  # Used here:  https://westerhambeauty.co.uk/contact
   martedì?: Tu
@@ -332,72 +268,26 @@
   sab: Sa
   sabato?: Sa
 
-
   # month
   jänner: Jan  # Austria
-  january: Jan
-  february: Feb
-  march: Mar
-  april: Apr
   june?: Jun
   july?: Jul
-  august: Aug
-  september: Sep
   sept: Sep
-  october: Oct
-  november: Nov
-  december: Dec
 
   # German
-  januar: Jan
-  februar: Feb
   märz?: Mar
   maerz: Mar
-  mai: May
-  juni: Jun
-  juli: Jul
   okt: Oct
-  oktober: Oct
   dez: Dec
-  dezember: Dec
 
   # French
-  janvier: Jan
-  février: Feb
   fév: Feb
-  mars: Mar
-  avril: Apr
   avr: Apr
-  # mai: May
-  juin: Jun
-  juillet: Jul
-  août: Aug
   aoû: Aug
-  septembre: Sep
-  octobre: Oct
-  novembre: Nov
-  décembre: Dec
-
-  # Dutch
-  januari: Jan
-  februari: Feb
-  maart: Mar
-  mei: May
-  augustus: Aug
 
   # Italian
-  gennaio: Jan
-  febbraio: Feb
-  marzo: Mar
-  aprile: Apr
   giugno?: Jun
   luglio?: Jul
-  agosto: Aug
-  settembre: Sep
-  ottobre: Oct
-  # novembre: Nov
-  dicembre: Dec
-
 'please use ok for similar looking ko':
   оff: 'off'
 'please use 24 hours time for ko':
