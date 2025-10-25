@@ -2243,10 +2243,10 @@ Tu 23:59-48:00+ <--- (Zeitspanne welche mehrmals Mitternacht beinhaltet wird nic
 』t <--- (Unerwartetes Zeichen: "』" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 
 
 "Incorrect syntax which should throw an error" for "』testing"; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-』t <--- (Unerwartetes Zeichen: "』" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 』testing"; 00:23-00:42 unknown "warning at correct position <--- (Bitte benutze die englische Abkürzung "Su" für "n".); 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
+』t <--- (Unerwartetes Zeichen: "』" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 』testing"; 00:23-00:42 unknown "warning at <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); 』testing"; 00:23-00:42 unknown "warning at correct <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); 』testing"; 00:23-00:42 unknown "warning at correct position <--- (Bitte benutze die englische Abkürzung "Jan" für "ion".); 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
 
 "Incorrect syntax which should throw an error" for ""testing«; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-"testing«; 00:23-00:42 unknown "wa <--- (Unerwartetes Zeichen: "w" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) "testing«; 00:23-00:42 unknown "warning at correct position <--- (Bitte benutze die englische Abkürzung "Su" für "n".); "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
+"testing«; 00:23-00:42 unknown "wa <--- (Unerwartetes Zeichen: "w" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) "testing«; 00:23-00:42 unknown "warning at <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); "testing«; 00:23-00:42 unknown "warning at correct <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); "testing«; 00:23-00:42 unknown "warning at correct position <--- (Bitte benutze die englische Abkürzung "Jan" für "ion".); "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
 
 "Incorrect syntax which should throw an error" for " || open; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
  || <--- (Die Regel vor der Fallback-Regel enthält nichts nützliches)

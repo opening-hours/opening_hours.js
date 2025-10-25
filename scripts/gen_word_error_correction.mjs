@@ -50,16 +50,11 @@ let manualCorrections = {};
 if (fs.existsSync(manualYamlPath)) {
     const manualYamlContent = fs.readFileSync(manualYamlPath, 'utf8');
     manualCorrections = yaml.parse(manualYamlContent) || {};
-    console.log(`  ✓ Loaded from: ${path.relative(process.cwd(), manualYamlPath)}`);
 
-    // Calculate and display statistics for manual corrections
-    let totalManual = 0;
-    Object.keys(manualCorrections).forEach(category => {
-        const count = Object.keys(manualCorrections[category]).length;
-        totalManual += count;
-        console.log(`    ▪ ${category}: ${count} entries`);
-    });
-    console.log(`  → Total manual entries: ${totalManual}`);
+    const totalManual = Object.values(manualCorrections)
+        .reduce((sum, category) => sum + Object.keys(category).length, 0);
+
+    console.log(`  ✓ Loaded ${totalManual} manual entries from: ${path.relative(process.cwd(), manualYamlPath)}`);
 } else {
     console.log(`  ✗ Manual corrections file not found: ${manualYamlPath}`);
 }
@@ -119,6 +114,13 @@ const supportedLocales = Intl.DateTimeFormat.supportedLocalesOf(discoveredLocale
 console.log(`  ✓ Discovered ${discoveredLocales.length} base locales, ${supportedLocales.length} supported`);
 console.log(`  → Will analyze ${supportedLocales.length} languages for conflicts and corrections`);
 
+// Helper function to escape regex special characters in automatically generated keys
+// This prevents issues like "ma." being treated as regex wildcard instead of literal "ma."
+// Manual corrections in word_error_correction_manual.yaml can still contain regex patterns
+function escapeRegexCharacters(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 // Generate dynamic month and weekday abbreviations using English locale as reference
 const currentYear = new Date().getFullYear();
 const englishMonthFormatter = new Intl.DateTimeFormat('en', { month: 'short' });
@@ -146,67 +148,63 @@ for (let i = 0; i < 7; i++) {
 // 3. Preserve structure - copy manual corrections as base
 const finalData = { ...manualCorrections };
 
-// 4. Dynamically detect ambiguous words by analyzing conflicts across languages
+// 4. Detect ambiguous words by analyzing conflicts across languages
 console.log('\n► Detecting ambiguous words...');
-const ambiguousWordsCategory = 'Ambiguous words';
-if (!finalData[ambiguousWordsCategory]) {
-    finalData[ambiguousWordsCategory] = {};
+
+function addWordConflict(wordConflicts, word, locale, meaning, type, form) {
+    if (!wordConflicts[word]) {
+        wordConflicts[word] = [];
+    }
+    wordConflicts[word].push({ locale, meaning, type, form });
 }
 
-// Track word occurrences across different languages to identify conflicts
 const wordConflicts = {};
 const languageInfo = {};
 
-// First pass: collect all words and their meanings from different languages
-console.log(`  → Analyzing ${supportedLocales.length} locales for conflicts...`);
-
 supportedLocales.forEach(locale => {
     try {
-        const weekdayFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long' });
-        const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'long' });
-
-        // Store language info using dynamic lookup for better descriptions
+        // Get language name for better descriptions
         if (!languageInfo[locale]) {
-            // Dynamic language name detection using Intl.DisplayNames
             try {
                 const displayNames = new Intl.DisplayNames(['en'], { type: 'language' });
                 languageInfo[locale] = displayNames.of(locale);
             } catch {
-                // Fallback: use capitalized locale code
                 languageInfo[locale] = locale.charAt(0).toUpperCase() + locale.slice(1);
             }
         }
 
-        // Check months for conflicts across languages
+        const formatters = {
+            monthLong: new Intl.DateTimeFormat(locale, { month: 'long' }),
+            monthShort: new Intl.DateTimeFormat(locale, { month: 'short' }),
+            weekdayLong: new Intl.DateTimeFormat(locale, { weekday: 'long' }),
+            weekdayShort: new Intl.DateTimeFormat(locale, { weekday: 'short' })
+        };
+
+        // Check months and weekdays for conflicts
         for (let i = 0; i < 12; i++) {
             const date = new Date(currentYear, i, 1);
-            const localMonth = monthFormatter.format(date).toLowerCase();
-            if (localMonth && localMonth !== monthAbbreviations[i].toLowerCase()) {
-                if (!wordConflicts[localMonth]) {
-                    wordConflicts[localMonth] = [];
-                }
-                wordConflicts[localMonth].push({
-                    locale: locale,
-                    meaning: monthAbbreviations[i],
-                    type: 'month'
-                });
+            const monthLong = formatters.monthLong.format(date).toLowerCase();
+            const monthShort = formatters.monthShort.format(date).toLowerCase();
+
+            if (monthLong && monthLong !== monthAbbreviations[i].toLowerCase()) {
+                addWordConflict(wordConflicts, monthLong, locale, monthAbbreviations[i], 'month', 'long');
+            }
+            if (monthShort && monthShort !== monthAbbreviations[i].toLowerCase()) {
+                addWordConflict(wordConflicts, monthShort, locale, monthAbbreviations[i], 'month', 'short');
             }
         }
 
-        // Check weekdays for conflicts (less common but possible)
         for (let i = 0; i < 7; i++) {
             const date = new Date(firstSunday);
             date.setDate(firstSunday.getDate() + i);
-            const localWeekday = weekdayFormatter.format(date).toLowerCase();
-            if (localWeekday && localWeekday !== weekdayAbbreviations[i].toLowerCase()) {
-                if (!wordConflicts[localWeekday]) {
-                    wordConflicts[localWeekday] = [];
-                }
-                wordConflicts[localWeekday].push({
-                    locale: locale,
-                    meaning: weekdayAbbreviations[i],
-                    type: 'weekday'
-                });
+            const weekdayLong = formatters.weekdayLong.format(date).toLowerCase();
+            const weekdayShort = formatters.weekdayShort.format(date).toLowerCase();
+
+            if (weekdayLong && weekdayLong !== weekdayAbbreviations[i].toLowerCase()) {
+                addWordConflict(wordConflicts, weekdayLong, locale, weekdayAbbreviations[i], 'weekday', 'long');
+            }
+            if (weekdayShort && weekdayShort !== weekdayAbbreviations[i].toLowerCase()) {
+                addWordConflict(wordConflicts, weekdayShort, locale, weekdayAbbreviations[i], 'weekday', 'short');
             }
         }
 
@@ -215,8 +213,14 @@ supportedLocales.forEach(locale => {
     }
 });
 
-// Second pass: identify actual conflicts (same word, different meanings across languages)
+// Identify conflicts and add to ambiguous words section
+const ambiguousWordsCategory = 'Ambiguous words';
+if (!finalData[ambiguousWordsCategory]) {
+    finalData[ambiguousWordsCategory] = {};
+}
+
 const ambiguousWords = {};
+
 Object.keys(wordConflicts).forEach(word => {
     const occurrences = wordConflicts[word];
     if (occurrences.length > 1) {
@@ -236,16 +240,24 @@ Object.keys(wordConflicts).forEach(word => {
     }
 });
 
-// Add ambiguous words to the final data structure
+// Add ambiguous words to the final data structure (only long forms, discard short forms)
 Object.keys(ambiguousWords).forEach(word => {
-    finalData[ambiguousWordsCategory][word] = ambiguousWords[word].warning;
+    // Check if this word is a short form by looking at its occurrences
+    const hasShortForm = ambiguousWords[word].occurrences.some(occ => occ.form === 'short');
+
+    if (!hasShortForm) {
+        // Only add long form ambiguous words as warnings
+        finalData[ambiguousWordsCategory][word] = ambiguousWords[word].warning;
+    } else {
+        console.log(`    → Discarding ambiguous short form "${word}" (no warning added)`);
+    }
 });
 
 // Display statistics for detected ambiguous words
 console.log(`  ✓ Found ${Object.keys(ambiguousWords).length} ambiguous words:`);
 Object.keys(ambiguousWords).forEach(word => {
     const conflicts = ambiguousWords[word].occurrences.map(occ =>
-        `${occ.meaning} (${languageInfo[occ.locale]})`
+        `${occ.meaning} (${languageInfo[occ.locale]}${occ.form ? '/' + occ.form : ''})`
     ).join(' vs ');
     console.log(`    ▪ ${word}: ${conflicts}`);
 });
@@ -262,40 +274,124 @@ if (!finalData[autoCategory]) {
 }
 
 let totalAutoCorrections = 0;
+let numericKeysFiltered = 0;
+let existingKeysFiltered = 0;
+let ambiguousKeysFiltered = 0;
+
+// Collect all existing keys from manual corrections to avoid conflicts
+const existingKeys = new Set();
+Object.keys(manualCorrections).forEach(category => {
+    Object.keys(manualCorrections[category]).forEach(key => {
+        existingKeys.add(key.toLowerCase());
+    });
+});
+
+console.log(`  → Found ${existingKeys.size} existing manual correction keys to avoid conflicts`);
 
 supportedLocales.forEach(locale => {
     try {
-        const weekdayFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long' });
-        const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'long' });
+        const weekdayLongFormatter = new Intl.DateTimeFormat(locale, { weekday: 'long' });
+        const weekdayShortFormatter = new Intl.DateTimeFormat(locale, { weekday: 'short' });
+        const monthLongFormatter = new Intl.DateTimeFormat(locale, { month: 'long' });
+        const monthShortFormatter = new Intl.DateTimeFormat(locale, { month: 'short' });
 
         let localeCount = 0;
 
-        // Generate weekday corrections
+        // Generate weekday corrections (long forms)
         for (let i = 0; i < 7; i++) {
             const date = new Date(firstSunday);
             date.setDate(firstSunday.getDate() + i);
-            const localWeekday = weekdayFormatter.format(date).toLowerCase();
-            if (localWeekday && localWeekday !== weekdayAbbreviations[i].toLowerCase()) {
-                // Only add if not already defined
-                if (!finalData[autoCategory][localWeekday]) {
-                    finalData[autoCategory][localWeekday] = weekdayAbbreviations[i];
+            const localWeekdayLong = weekdayLongFormatter.format(date).toLowerCase();
+            if (localWeekdayLong && localWeekdayLong !== weekdayAbbreviations[i].toLowerCase()) {
+                // Check if it's a numeric key and count it
+                if (/^\d+$/.test(localWeekdayLong)) {
+                    numericKeysFiltered++;
+                } else if (existingKeys.has(localWeekdayLong)) {
+                    // Check if it conflicts with existing manual corrections
+                    existingKeysFiltered++;
+                } else if (ambiguousWords[localWeekdayLong]) {
+                    // Skip ambiguous words - they are only warnings
+                    ambiguousKeysFiltered++;
+                    continue;
+                } else if (!finalData[autoCategory][localWeekdayLong]) {
+                    // Escape regex special characters in automatically generated keys
+                    const escapedKey = escapeRegexCharacters(localWeekdayLong);
+                    finalData[autoCategory][escapedKey] = weekdayAbbreviations[i];
                     localeCount++;
                 }
             }
         }
 
-        // Generate month corrections
-        for (let i = 0; i < 12; i++) {
-            const date = new Date(currentYear, i, 1);
-            const localMonth = monthFormatter.format(date).toLowerCase();
-            if (localMonth && localMonth !== monthAbbreviations[i].toLowerCase()) {
-                // Only add if not already defined AND not ambiguous
-                if (!finalData[autoCategory][localMonth] && !ambiguousWords[localMonth]) {
-                    finalData[autoCategory][localMonth] = monthAbbreviations[i];
+        // Generate weekday corrections (short forms - only unambiguous ones)
+        for (let i = 0; i < 7; i++) {
+            const date = new Date(firstSunday);
+            date.setDate(firstSunday.getDate() + i);
+            const localWeekdayShort = weekdayShortFormatter.format(date).toLowerCase();
+            if (localWeekdayShort && localWeekdayShort !== weekdayAbbreviations[i].toLowerCase()) {
+                // Check if it's a numeric key and count it
+                if (/^\d+$/.test(localWeekdayShort)) {
+                    numericKeysFiltered++;
+                } else if (existingKeys.has(localWeekdayShort)) {
+                    // Check if it conflicts with existing manual corrections
+                    existingKeysFiltered++;
+                } else if (ambiguousWords[localWeekdayShort]) {
+                    // Skip ambiguous words - they are only warnings
+                    ambiguousKeysFiltered++;
+                    continue;
+                } else if (!finalData[autoCategory][localWeekdayShort]) {
+                    // Escape regex special characters in automatically generated keys
+                    const escapedKey = escapeRegexCharacters(localWeekdayShort);
+                    finalData[autoCategory][escapedKey] = weekdayAbbreviations[i];
                     localeCount++;
                 }
-                // Note: Ambiguous words are intentionally excluded from automatic corrections
-                // They are only present in the "Ambiguous words" section with warnings
+            }
+        }
+
+        // Generate month corrections (long forms)
+        for (let i = 0; i < 12; i++) {
+            const date = new Date(currentYear, i, 1);
+            const localMonthLong = monthLongFormatter.format(date).toLowerCase();
+            if (localMonthLong && localMonthLong !== monthAbbreviations[i].toLowerCase()) {
+                // Check if it's a numeric key and count it
+                if (/^\d+$/.test(localMonthLong)) {
+                    numericKeysFiltered++;
+                } else if (existingKeys.has(localMonthLong)) {
+                    // Check if it conflicts with existing manual corrections
+                    existingKeysFiltered++;
+                } else if (ambiguousWords[localMonthLong]) {
+                    // Skip ambiguous words - they are only warnings
+                    ambiguousKeysFiltered++;
+                    continue;
+                } else if (!finalData[autoCategory][localMonthLong]) {
+                    // Escape regex special characters in automatically generated keys
+                    const escapedKey = escapeRegexCharacters(localMonthLong);
+                    finalData[autoCategory][escapedKey] = monthAbbreviations[i];
+                    localeCount++;
+                }
+            }
+        }
+
+        // Generate month corrections (short forms - only unambiguous ones)
+        for (let i = 0; i < 12; i++) {
+            const date = new Date(currentYear, i, 1);
+            const localMonthShort = monthShortFormatter.format(date).toLowerCase();
+            if (localMonthShort && localMonthShort !== monthAbbreviations[i].toLowerCase()) {
+                // Check if it's a numeric key and count it
+                if (/^\d+$/.test(localMonthShort)) {
+                    numericKeysFiltered++;
+                } else if (existingKeys.has(localMonthShort)) {
+                    // Check if it conflicts with existing manual corrections
+                    existingKeysFiltered++;
+                } else if (ambiguousWords[localMonthShort]) {
+                    // Skip ambiguous words - they are only warnings
+                    ambiguousKeysFiltered++;
+                    continue;
+                } else if (!finalData[autoCategory][localMonthShort]) {
+                    // Escape regex special characters in automatically generated keys
+                    const escapedKey = escapeRegexCharacters(localMonthShort);
+                    finalData[autoCategory][escapedKey] = monthAbbreviations[i];
+                    localeCount++;
+                }
             }
         }
 
@@ -310,6 +406,9 @@ supportedLocales.forEach(locale => {
 });
 
 console.log(`  → Total automatic corrections: ${totalAutoCorrections}`);
+console.log(`  → Numeric keys filtered out: ${numericKeysFiltered}`);
+console.log(`  → Existing manual keys avoided: ${existingKeysFiltered}`);
+console.log(`  → Ambiguous words excluded: ${ambiguousKeysFiltered}`);
 
 // 6. Write final YAML structure
 console.log('\n► Writing output file...');
