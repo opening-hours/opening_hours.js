@@ -1528,6 +1528,23 @@ With [1m[34mwarnings[39m[22m:
 	*mon., Tuesday, wed. <--- (Please omit ".".)
 	*mon., Tuesday, wed., Thursday <--- (Please use the English abbreviation "Th" for "thursday".)
 	*mon., Tuesday, wed., Thursday. <--- (Please omit ".".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "Mo-Fr 09:00-17:00": [1m[32mPASSED[39m[22m
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "ორშაბათი-პარასკევი 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*ორშაბათი <--- (Please use the English abbreviation "Mo" for "ორშაბათი".)
+	*ორშაბათი-პარასკევი <--- (Please use the English abbreviation "Fr" for "პარასკევი".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "วันจันทร์-วันศุกร์ 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*วันจันทร์ <--- (Please use the English abbreviation "Mo" for "วันจันทร์".)
+	*วันจันทร์-วันศุกร์ <--- (Please use the English abbreviation "Fr" for "วันศุกร์".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "月曜日-金曜日 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*月曜日 <--- (Please use the English abbreviation "Mo" for "月曜日".)
+	*月曜日-金曜日 <--- (Please use the English abbreviation "Fr" for "金曜日".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "الاثنين-الجمعة 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*الاثنين <--- (Please use the English abbreviation "Mo" for "الاثنين".)
+	*الاثنين-الجمعة <--- (Please use the English abbreviation "Fr" for "الجمعة".)
 "Error tolerance: Full range" for "Mo-Su": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo-Su <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1676,6 +1693,9 @@ With [1m[34mwarnings[39m[22m:
 "Time intervals (not specified/documented use of colon, please avoid this)" for "00:00-24:00; Mo: 15:00-16:00 off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*00:00-24:00; Mo:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
+"Error tolerance: ambiguous words (listopad)" for "listopad 12:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*listopad <--- (Word "listopad" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo[2] - 0 days; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo[2] - 0 days <--- (Adding 0 does not change the date. Please omit this.)
@@ -2492,7 +2512,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "closed; Sa unknown "comment"": [1m[32mPASSED[39m[22m
-943/947 tests passed. 4 did not pass.
+949/953 tests passed. 4 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

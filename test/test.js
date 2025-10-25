@@ -4912,6 +4912,24 @@ test.addTest('Error tolerance: weekdays, months in different languages', [
         [ '2012-10-04 16:00', '2012-10-04 20:00' ],
     ], 1000 * 60 * 60 * 6 * 4, 0, true, {}, 'not last test');
 
+test.addTest('Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)', [
+        'Mo-Fr 09:00-17:00',             // Reference value for prettify
+        'ორშაბათი-პარასკევი 09:00-17:00', // Georgian: Monday-Friday
+        'วันจันทร์-วันศุกร์ 09:00-17:00',        // Thai: Monday-Friday
+        '月曜日-金曜日 09:00-17:00',       // Japanese: Monday-Friday
+        'الاثنين-الجمعة 09:00-17:00',        // Arabic: Monday-Friday (RTL script)
+    ], '2012-10-01 0:00', '2012-10-06 0:00', [
+        [ '2012-10-01 09:00', '2012-10-01 17:00' ],
+        [ '2012-10-02 09:00', '2012-10-02 17:00' ],
+        [ '2012-10-03 09:00', '2012-10-03 17:00' ],
+        [ '2012-10-04 09:00', '2012-10-04 17:00' ],
+        [ '2012-10-05 09:00', '2012-10-05 17:00' ],
+    ], 1000 * 60 * 60 * 8 * 5, 0, true, {}, 'not last test');
+
+test.addShouldWarn('Error tolerance: ambiguous words (listopad)', [
+        'listopad 12:00-18:00',
+    ], nominatim_default, 'not last test');
+
 test.addTest('Error tolerance: Full range', [
         'Mo-Su',       // reference value for prettify
         'Montag-Sonntag',
