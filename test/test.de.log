@@ -1941,7 +1941,7 @@ With [1m[34mwarnings[39m[22m:
 Mo-Fr 17:00-12:00; Sa-Su 24:00 <--- (Zeitspanne beginnt außerhalb des aktuellen Tages)
 
 "Incorrect syntax which should throw an error" for "sdasdlasdj a3reaw": [1m[32mPASSED[39m[22m
-sd <--- (Unerwartetes Zeichen: "s" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) sdasdlasdj a3reaw <--- ("w" wird als "We" interpretiert.)
+sd <--- (Unerwartetes Zeichen: "s" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) sdasdlasdj a <--- (Bitte verwende "-" anstelle von "a".); sdasdlasdj a3reaw <--- ("w" wird als "We" interpretiert.)
 
 "Incorrect syntax which should throw an error" for "": [1m[32mPASSED[39m[22m
 Der Wert enthält nichts, was ausgewertet werden könnte.
