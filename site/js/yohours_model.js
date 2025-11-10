@@ -1840,7 +1840,7 @@ var OpeningHoursBuilder = function() {};
 				var lastSameDay = i;
 				var sameDayCount = 1;
 				
-				for(var j = i + 1; j < days.length; j++) {
+				for(let j = i + 1; j < days.length; j++) {
 					if (days[i].sameTime(days[j])) {
 						daysStatus[j] = i + 1;
 						days[i].addWeekday(j);
@@ -1857,7 +1857,7 @@ var OpeningHoursBuilder = function() {};
 					result.push(days[i]);
 				} else if (sameDayCount > 2) {
 					// more than two Days with this special opening_hours
-					for (var j = i + 1; j < lastSameDay; j++) {
+					for (let j = i + 1; j < lastSameDay; j++) {
 						if (daysStatus[j] == 0) {
 							daysStatus[j] = -i - 1;
 							days[i].addOverwrittenWeekday(j);
@@ -1956,7 +1956,7 @@ var OpeningHoursBuilder = function() {};
 				
 				result.push(days[i]);
 				
-				for(var j = i + 1; j < days.length; j++) {
+				for(let j = i + 1; j < days.length; j++) {
 					if (days[i].sameTime(days[j])) {
 						daysStatus[j] = i + 1;
 						days[i].addWeekday(j);
@@ -1973,7 +1973,7 @@ var OpeningHoursBuilder = function() {};
 					result.push(days[i]);
 				} else if (sameDayCount > 2) {
 					// more than two Days with this special opening_hours
-					for (var j = i + 1; j < lastSameDay; j++) {
+					for (let j = i + 1; j < lastSameDay; j++) {
 						if (daysStatus[j] == 0) {
 							daysStatus[j] = -i - 1;
 							if(days[j].getTime().length > 0) {

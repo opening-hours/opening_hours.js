@@ -1,10 +1,10 @@
 /* global $, , default_lat, default_lon, i18next, jQuery, mapCountryToLanguage, opening_hours, OpeningHoursTable, specification_url, YoHoursChecker */
 
 /* Constants {{{ */
-var nominatim_api_url = 'https://nominatim.openstreetmap.org/reverse';
-// var nominatim_api_url = 'https://open.mapquestapi.com/nominatim/v1/reverse.php';
+const nominatim_api_url = 'https://nominatim.openstreetmap.org/reverse';
+// let nominatim_api_url = 'https://open.mapquestapi.com/nominatim/v1/reverse.php';
 
-var evaluation_tool_colors = {
+const evaluation_tool_colors = {
     'ok': '#ADFF2F',
     'warn': '#FFA500',
     'error': '#DEB887',
@@ -15,8 +15,9 @@ var evaluation_tool_colors = {
 // Using a different way to load stuff in JOSM than https://github.com/rurseekatze/OpenLinkMap/blob/master/js/small.js
 // prevent josm remote plugin of showing message
 // FIXME: Warning in console. Encoding stuff.
+// eslint-disable-next-line no-unused-vars
 function josm(url_param) {
-    var xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://localhost:8111/' + url_param, true);      // true makes this call asynchronous
     xhr.onreadystatechange = function () {    // need eventhandler since our call is async
         if ( xhr.status !== 200 ) {
@@ -29,11 +30,11 @@ function josm(url_param) {
 
 // add calculation for calendar week to date {{{
 function dateAtWeek(date, week) {
-    var minutes_in_day = 60 * 24;
-    var msec_in_day    = 1000 * 60 * minutes_in_day;
-    var msec_in_week   = msec_in_day * 7;
+    const minutes_in_day = 60 * 24;
+    const msec_in_day    = 1000 * 60 * minutes_in_day;
+    const msec_in_week   = msec_in_day * 7;
 
-    var tmpdate = new Date(date.getFullYear(), 0, 1);
+    const tmpdate = new Date(date.getFullYear(), 0, 1);
     tmpdate.setDate(1 - (tmpdate.getDay() + 6) % 7 + week * 7); // start of week n where week starts on Monday
     return Math.floor((date - tmpdate) / msec_in_week);
 }
@@ -50,17 +51,17 @@ function reverseGeocodeLocation(query, guessed_language_for_location, on_success
 
     if (query === '&lat=48.7769&lon=9.1844') {
         /* Cached response to avoid two queries for each usage of the tool. */
-        return on_success({"place_id":"159221147","licence":"Data © OpenStreetMap contributors, ODbL 1.0. https:\/\/www.openstreetmap.org\/copyright","osm_type":"relation","osm_id":"62611","lat":"48.6296972","lon":"9.1949534","display_name":"Baden-Württemberg, Deutschland","address":{"state":"Baden-Württemberg","country":"Deutschland","country_code":"de"},"boundingbox":["47.5324787","49.7912941","7.5117461","10.4955731"]});
+        return on_success({'place_id':'159221147','licence':'Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright','osm_type':'relation','osm_id':'62611','lat':'48.6296972','lon':'9.1949534','display_name':'Baden-Württemberg, Deutschland','address':{'state':'Baden-Württemberg','country':'Deutschland','country_code':'de'},'boundingbox':['47.5324787','49.7912941','7.5117461','10.4955731']});
     }
 
-    var nominatim_api_url_template_query = nominatim_api_url
+    const nominatim_api_url_template_query = nominatim_api_url
         + '?format=json'
         + query
         + '&zoom=5'
         + '&addressdetails=1'
         + '&email=ypid23@aol.de';
 
-    var nominatim_api_url_query = nominatim_api_url_template_query;
+    let nominatim_api_url_query = nominatim_api_url_template_query;
     if (typeof accept_lanaguage === 'string') {
         nominatim_api_url_query += '&accept-language=' + guessed_language_for_location;
     }
@@ -78,9 +79,10 @@ function reverseGeocodeLocation(query, guessed_language_for_location, on_success
     }).error(on_error);
 }
 
+// eslint-disable-next-line no-unused-vars
 function submitenter(myfield,e) {
     Evaluate();
-    // var keycode;
+    // let keycode;
     // if (window.event) keycode = window.event.keyCode;
     // else if (e) keycode = e.which;
     // else return true;
@@ -93,23 +95,25 @@ function submitenter(myfield,e) {
 }
 
 /* JS for toggling examples on and off {{{ */
+// eslint-disable-next-line no-unused-vars
 function toggle(control){
-    var elem = document.getElementById(control);
+    const elem = document.getElementById(control);
 
-    if (elem.style.display === "none") {
-        elem.style.display = "block";
+    if (elem.style.display === 'none') {
+        elem.style.display = 'block';
     } else {
-        elem.style.display = "none";
+        elem.style.display = 'none';
     }
 }
 /* }}} */
 
+// eslint-disable-next-line no-unused-vars
 function copyToClipboard(text) {
     window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
 }
 
-var lat, lon, string_lat, string_lon, nominatim;
-var date;
+let lat, lon, string_lat, string_lon, nominatim;
+let date;
 
 function Evaluate (offset, reset) {
     if (typeof offset === 'undefined') {
@@ -142,8 +146,8 @@ function Evaluate (offset, reset) {
             },
             function() {
                 /* Set fallback Nominatim answer to allow using the evaluation tool even without Nominatim. */
-                alert("Reverse geocoding of the coordinates using Nominatim was not successful. The evaluation of features of the opening_hours specification which depend this information will be unreliable. Otherwise, this tool will work as expected using a fallback answer. You might want to check your browser settings to fix this.");
-                nominatim = {"place_id":"44651229","licence":"Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https:\/\/www.openstreetmap.org\/copyright","osm_type":"way","osm_id":"36248375","lat":"49.5400039","lon":"9.7937133","display_name":"K 2847, Lauda-K\u00f6nigshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-W\u00fcrttemberg, Germany, European Union","address":{"road":"K 2847","city":"Lauda-K\u00f6nigshofen","county":"Main-Tauber-Kreis","state_district":"Regierungsbezirk Stuttgart","state":"Baden-W\u00fcrttemberg","country":"Germany","country_code":"de","continent":"European Union"}};
+                alert('Reverse geocoding of the coordinates using Nominatim was not successful. The evaluation of features of the opening_hours specification which depend this information will be unreliable. Otherwise, this tool will work as expected using a fallback answer. You might want to check your browser settings to fix this.');
+                nominatim = {'place_id':'44651229','licence':'Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright','osm_type':'way','osm_id':'36248375','lat':'49.5400039','lon':'9.7937133','display_name':'K 2847, Lauda-K\u00f6nigshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-W\u00fcrttemberg, Germany, European Union','address':{'road':'K 2847','city':'Lauda-K\u00f6nigshofen','county':'Main-Tauber-Kreis','state_district':'Regierungsbezirk Stuttgart','state':'Baden-W\u00fcrttemberg','country':'Germany','country_code':'de','continent':'European Union'}};
                 document.forms.check.elements['cc'].value    = nominatim.address.country_code;
                 document.forms.check.elements['state'].value = nominatim.address.state;
                 Evaluate();
@@ -162,7 +166,7 @@ function Evaluate (offset, reset) {
             offset
         );
 
-    function u2 (v) { return v>=0 && v<10 ? "0"+v : v; }
+    function u2 (v) { return v>=0 && v<10 ? '0'+v : v; }
 
     document.forms.check.elements['yyyy'].value       = date.getFullYear();
     document.forms.check.elements['mm'].selectedIndex = date.getMonth();
@@ -172,23 +176,25 @@ function Evaluate (offset, reset) {
     document.forms.check.elements['wday'].value       = date.toLocaleString(i18next.language, {weekday: 'short'});
     document.forms.check.elements['week'].value       = 'W'+u2(dateAtWeek(date, 0) + 1);
 
-    var show_time_table         = document.getElementById('show_time_table');
-    var show_warnings_or_errors = document.getElementById('show_warnings_or_errors');
-    var show_results            = document.getElementById('show_results');
+    const show_time_table         = document.getElementById('show_time_table');
+    const show_warnings_or_errors = document.getElementById('show_warnings_or_errors');
+    const show_results            = document.getElementById('show_results');
 
     show_warnings_or_errors.innerHTML = '';
 
-    var crashed = false;
-    var value = document.forms.check.elements['expression'].value;
-    var diff_value = document.forms.check.elements['diff_value'].value;
-    var mode = parseInt(document.getElementById('mode').selectedIndex);
+    let crashed = false;
+    const value = document.forms.check.elements['expression'].value;
+    const diff_value = document.forms.check.elements['diff_value'].value;
+    const mode = parseInt(document.getElementById('mode').selectedIndex);
+    let oh;
+    let it;
     try {
-        var oh = new opening_hours(value, nominatim, {
+        oh = new opening_hours(value, nominatim, {
             'mode': mode,
             'warnings_severity': 7,
             'locale': i18next.language
         });
-        var it = oh.getIterator(date);
+        it = oh.getIterator(date);
     } catch (err) {
         crashed = err;
         show_warnings_or_errors.innerHTML = `
@@ -202,12 +208,12 @@ function Evaluate (offset, reset) {
     show_time_table.innerHTML = '<a href="javascript:josm(\'import?url=' + encodeURIComponent('https://overpass-api.de/api/xapi_meta?*[opening_hours='
         + document.forms.check.elements['expression'].value + ']') + '\')">' + i18next.t('texts.load all with JOSM') + '</a><br />';
     if (!crashed) {
-        var prettified = oh.prettifyValue({});
-        var prettified_value_array = oh.prettifyValue({
+        const prettified = oh.prettifyValue({});
+        const prettified_value_array = oh.prettifyValue({
             // conf: { locale: i18next.language },
             get_internals: true,
         });
-        // var prettified_newline_sep = oh.prettifyValue({ conf: { locale: i18next.language, rule_sep_string: '\n', print_semicolon: false } });
+        // let prettified_newline_sep = oh.prettifyValue({ conf: { locale: i18next.language, rule_sep_string: '\n', print_semicolon: false } });
         show_results.innerHTML = '<p><span class="hd">' + i18next.t('words.status') + ':</span>'
             + '<input class="nostyle" size="10" name="status" readonly="readonly" />'
             + '<input class="nostyle" size="60" name="comment" readonly="readonly" />'
@@ -215,15 +221,15 @@ function Evaluate (offset, reset) {
             + i18next.t('texts.MatchingRule') + ':</span>'
             + '<input class="nostyle w100" name="MatchingRule" readonly="readonly" />'
             + '</p>';
-        var used_selectors = { };
-        var value_explanation =
+        const used_selectors = { };
+        let value_explanation =
             i18next.t('texts.prettified value for displaying') + ':<br />'
             + '<p class="value_explanation">';
         // console.log(JSON.stringify(prettified_value_array, null, '    '));
         // console.log(JSON.stringify(prettified_value_array, null, '    '));
-        for (var nrule = 0; nrule < prettified_value_array[0].length; nrule++) {
+        for (let nrule = 0; nrule < prettified_value_array[0].length; nrule++) {
             if (nrule !== 0) {
-                var rule_separator = (
+                const rule_separator = (
                     prettified_value_array[1][nrule][1]
                         ? ' ||'
                         : (
@@ -240,10 +246,10 @@ function Evaluate (offset, reset) {
                     + '">' + rule_separator + '</a></span><br>';
             }
             value_explanation += '<span class="one_rule">';
-            for (var nselector = 0, sl = prettified_value_array[0][nrule].length; nselector < sl; nselector++) {
-                var selector_type  = prettified_value_array[0][nrule][nselector][0][2];
-                var selector_value = prettified_value_array[0][nrule][nselector][1];
-                var fragment_identifier;
+            for (let nselector = 0, sl = prettified_value_array[0][nrule].length; nselector < sl; nselector++) {
+                const selector_type  = prettified_value_array[0][nrule][nselector][0][2];
+                const selector_value = prettified_value_array[0][nrule][nselector][1];
+                let fragment_identifier;
                 switch(selector_type) {
                     case '24/7':
                         fragment_identifier = 'selector_sequence';
@@ -277,14 +283,14 @@ function Evaluate (offset, reset) {
         }
 
         if (diff_value.length > 0) {
-          var is_equal_to;
+          let is_equal_to;
           try {
               is_equal_to = oh.isEqualTo(new opening_hours(diff_value, nominatim, {
                   'mode': mode,
                   'warnings_severity': 7,
                   'locale': i18next.language
               }));
-          } catch (err) {
+          } catch {
               $('input#diff_value').css({'background-color' : evaluation_tool_colors.error})
           }
           if (typeof is_equal_to === 'object') {
@@ -292,12 +298,12 @@ function Evaluate (offset, reset) {
               $('input#diff_value').css({'background-color' : evaluation_tool_colors.ok})
             } else {
               $('input#diff_value').css({'background-color' : evaluation_tool_colors.warn})
-              var human_readable_not_equal_output = jQuery.extend(true, {}, is_equal_to[1])
+              const human_readable_not_equal_output = jQuery.extend(true, {}, is_equal_to[1])
               if (typeof human_readable_not_equal_output.deviation_for_time === 'object') {
                 human_readable_not_equal_output.deviation_for_time = {};
-                for (var time_code in is_equal_to[1].deviation_for_time) {
+                for (const time_code in is_equal_to[1].deviation_for_time) {
                   console.log(time_code);
-                  var time_string = new Date(parseInt(time_code)).toLocaleString();
+                  const time_string = new Date(parseInt(time_code)).toLocaleString();
                   human_readable_not_equal_output.deviation_for_time[time_string] =
                     is_equal_to[1].deviation_for_time[time_code];
                 }
@@ -322,7 +328,7 @@ function Evaluate (offset, reset) {
             ? it.getComment() : i18next.t('words.no') + ' ' + i18next.t('words.comment');
         document.forms.check.elements['status'].value = (it.getState() ? i18next.t('words.open')
             : (it.getUnknown() ? i18next.t('words.unknown') : i18next.t('words.closed')));
-        var rule_index    = it.getMatchingRule();
+        const rule_index    = it.getMatchingRule();
         document.forms.check.elements['MatchingRule'].value = typeof rule_index === 'undefined'
             ? i18next.t('words.none') : oh.prettifyValue({ 'rule_index': rule_index });
 
@@ -332,7 +338,7 @@ function Evaluate (offset, reset) {
                 + '<input style="width: 100%" onclick="javascript:newValue(\'' + prettified.replace(/"/g, '&quot;') + '\')" id="prettifiedValue" name="prettifiedValue" value="' + prettified.replace(/"/g, '&quot;') + '" /></p>';
         }
 
-        var warnings = oh.getWarnings();
+        const warnings = oh.getWarnings();
         if (warnings.length > 0) {
             show_warnings_or_errors.innerHTML += `
             <div class="warning"> ${i18next.t('texts.filter.error')}
@@ -352,6 +358,7 @@ function Evaluate (offset, reset) {
     }
 }
 
+// eslint-disable-next-line no-unused-vars
 function EX (element) {
     newValue(element.innerHTML);
     return false;
@@ -366,14 +373,15 @@ function newValue(value) {
     Evaluate();
 }
 
+// eslint-disable-next-line no-unused-vars
 function permalink () {
-    var exp = document.getElementById('expression').value;
-    var diff_value = document.getElementById('diff_value').value;
-    var lat = document.getElementById('lat').value;
-    var lon = document.getElementById('lon').value;
-    var mode = document.getElementById('mode').selectedIndex;
+    const exp = document.getElementById('expression').value;
+    const diff_value = document.getElementById('diff_value').value;
+    const lat = document.getElementById('lat').value;
+    const lon = document.getElementById('lon').value;
+    const mode = document.getElementById('mode').selectedIndex;
 
-    var permalink_url_query='?EXP='+encodeURIComponent(exp)+'&lat='+lat+'&lon='+lon+'&mode='+mode;
+    let permalink_url_query='?EXP='+encodeURIComponent(exp)+'&lat='+lat+'&lon='+lon+'&mode='+mode;
 
     if (document.getElementById('permalink-include-timestamp').checked) {
         permalink_url_query += '&DATE='+date.getTime();
@@ -385,6 +393,7 @@ function permalink () {
     location = location.protocol+'//'+location.host+location.pathname+permalink_url_query;
 }
 
+// eslint-disable-next-line no-unused-vars
 function setCurrentPosition() {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(onPositionUpdate);
@@ -392,20 +401,20 @@ function setCurrentPosition() {
 }
 
 function onPositionUpdate(position) {
-    var lat = position.coords.latitude;
-    var lng = position.coords.longitude;
+    const lat = position.coords.latitude;
+    const lng = position.coords.longitude;
     document.getElementById('lat').value = lat;
     document.getElementById('lon').value = lng;
     Evaluate();
-    console.log("Current position: " + lat + " " + lng);
+    console.log('Current position: ' + lat + ' ' + lng);
 }
 window.onload = function () {
-    var prmarr = window.location.search.replace( "?", "" ).split("&");
-    var params = {};
-    var customCoords = false;
+    const prmarr = window.location.search.replace( '?', '' ).split('&');
+    const params = {};
+    let customCoords = false;
 
-    for ( var i = 0; i < prmarr.length; i++) {
-        var tmparr = prmarr[i].split("=");
+    for ( let i = 0; i < prmarr.length; i++) {
+        const tmparr = prmarr[i].split('=');
         params[tmparr[0]] = tmparr[1];
     }
     if (typeof params['EXP'] !== 'undefined') {
@@ -426,7 +435,7 @@ window.onload = function () {
         document.forms.check.elements['mode'].value = decodeURIComponent(params['mode']);
     }
     if (typeof params['DATE'] !== 'undefined') {
-        var crashed = true;
+        let crashed = true;
         try {
             date = new Date(parseInt(params['DATE']));
             crashed = false;
@@ -451,16 +460,16 @@ window.onload = function () {
 /* }}} */
 
 $(document).ready(function () {
-    var permalink = document.getElementById('permalink');
+    const permalink = document.getElementById('permalink');
     if (permalink) {
-        var checkbox = document.createElement('input');
+        const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.name = 'name';
         checkbox.value = 'value';
         checkbox.id = 'permalink-include-timestamp';
         checkbox.checked = true;
 
-        var label = document.createElement('label')
+        const label = document.createElement('label')
         label.htmlFor = 'permalink-include-timestamp';
         label.appendChild(document.createTextNode(i18next.t('texts.include timestamp?')));
 

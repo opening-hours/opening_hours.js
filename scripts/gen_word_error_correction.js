@@ -18,15 +18,15 @@
  *
  * }}} */
 
-var moment = require('moment');
-var CountryLanguage = require('country-language');
-var fs = require('node:fs');
+const moment = require('moment');
+const CountryLanguage = require('country-language');
+const fs = require('node:fs');
 
 /* https://stackoverflow.com/a/1961068/2239985 */
 Array.prototype.getUnique = function(){
-   var u = {}, a = [];
-   for(var i = 0, l = this.length; i < l; ++i){
-      if(u.hasOwnProperty(this[i])) {
+   const u = {}, a = [];
+   for(let i = 0, l = this.length; i < l; ++i){
+      if(Object.prototype.hasOwnProperty.call(u, this[i])) {
          continue;
       }
       a.push(this[i]);
@@ -36,16 +36,17 @@ Array.prototype.getUnique = function(){
 }
 
 function parseWeekdays(weekday_list_list, locale) {
-    var correction_mapping = {};
-    var list_of_used_correction_keys_for_this_locale = [];
+    const correction_mapping = {};
+    const list_of_used_correction_keys_for_this_locale = [];
+    let weekday_list;
 
-    for (var weekday_type_ind = 0, weekday_type_len = weekday_list_list.length; weekday_type_ind < weekday_type_len; weekday_type_ind++) {
-        var weekday_list = weekday_list_list[weekday_type_ind].map(function (value) { return value.toLowerCase() });
+    for (let weekday_type_ind = 0, weekday_type_len = weekday_list_list.length; weekday_type_ind < weekday_type_len; weekday_type_ind++) {
+        weekday_list = weekday_list_list[weekday_type_ind].map(function (value) { return value.toLowerCase() });
 
-        for (var weekday_ind = 0, weekday_len = weekday_list.length; weekday_ind < weekday_len; weekday_ind++) {
-            var weekday_name = weekday_list[weekday_ind].toLowerCase().replace(/\.$/, '');
+        for (let weekday_ind = 0, weekday_len = weekday_list.length; weekday_ind < weekday_len; weekday_ind++) {
+            const weekday_name = weekday_list[weekday_ind].toLowerCase().replace(/\.$/, '');
 
-            var list_of_keys = [ weekday_name ];
+            let list_of_keys = [ weekday_name ];
 
             switch (weekday_type_ind) {
                case 0: /* Long */
@@ -71,7 +72,7 @@ function parseWeekdays(weekday_list_list, locale) {
                   }
             }
 
-            for (var key_ind = 0, key_list_len = list_of_keys.length; key_ind < key_list_len; key_ind++) {
+            for (let key_ind = 0, key_list_len = list_of_keys.length; key_ind < key_list_len; key_ind++) {
                if (list_of_used_correction_keys.indexOf(list_of_keys[key_ind]) === -1) {
 
                   if (! locale.match(/^(?:de|en).*$/)) {
@@ -91,7 +92,7 @@ function parseWeekdays(weekday_list_list, locale) {
 
     }
     if (Object.keys(correction_mapping).length) {
-       message = 'Please use the abbreviation "<ok>" for "<ko>" which is for example used in ' + getNativeLang(moment.locale());
+       const message = 'Please use the abbreviation "<ok>" for "<ko>" which is for example used in ' + getNativeLang(moment.locale());
        word_error_correction['weekday'][message] = correction_mapping;
 
        list_of_all_used_glyphs.push(weekday_list);
@@ -99,6 +100,7 @@ function parseWeekdays(weekday_list_list, locale) {
     }
 }
 
+// eslint-disable-next-line no-unused-vars
 function getCharArray(list) {
     return list.join('').split('').getUnique().filter(function (value) {
       return ! value.match(/^[a-z]$/);
@@ -106,7 +108,7 @@ function getCharArray(list) {
 }
 
 function getNativeLang(lang_code) {
-   var cl_object = CountryLanguage.getLanguage(lang_code.replace(/-.*/, ''));
+   const cl_object = CountryLanguage.getLanguage(lang_code.replace(/-.*/, ''));
    if (typeof cl_object === 'object') {
       return cl_object.nativeName[0] + ' (' + lang_code + ', ' + cl_object.name[0] + ')';
    } else {
@@ -114,13 +116,13 @@ function getNativeLang(lang_code) {
    }
 }
 
-var locales_priority = [ 'en', 'en-au', 'en-ca', 'en-gb', 'de', 'de-at' ].reverse();
-var list_of_used_correction_keys = [];
-var list_of_all_used_glyphs = [ 'äößàáéøčěíúýřПнВсо' ];
-var word_error_correction = { month: {}, weekday: {} };
-var moment_locales = fs.readdirSync('./node_modules/moment/locale/').map(function (locale_file) { return locale_file.replace(/\.js$/, '') });
-// var moment_locales = [ 'de', 'en', 'en-ca', 'en-gb', 'en-au' ];
-// var moment_locales = [ 'me' ];
+const locales_priority = [ 'en', 'en-au', 'en-ca', 'en-gb', 'de', 'de-at' ].reverse();
+const list_of_used_correction_keys = [];
+const list_of_all_used_glyphs = [ 'äößàáéøčěíúýřПнВсо' ];
+const word_error_correction = { month: {}, weekday: {} };
+const moment_locales = fs.readdirSync('./node_modules/moment/locale/').map(function (locale_file) { return locale_file.replace(/\.js$/, '') });
+// let moment_locales = [ 'de', 'en', 'en-ca', 'en-gb', 'en-au' ];
+// let moment_locales = [ 'me' ];
 
 moment_locales.sort().sort(
    function (a, b) {
@@ -128,8 +130,8 @@ moment_locales.sort().sort(
    }
 );
 
-for (var locale_ind = 0, len = moment_locales.length; locale_ind < len; locale_ind++) {
-    var locale = moment_locales[locale_ind];
+for (let locale_ind = 0, len = moment_locales.length; locale_ind < len; locale_ind++) {
+    const locale = moment_locales[locale_ind];
 
     console.log(locale);
     moment.locale(locale);

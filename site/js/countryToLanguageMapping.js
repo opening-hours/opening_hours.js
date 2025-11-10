@@ -1,7 +1,7 @@
 /*
  * Upstream source: https://wiki.openstreetmap.org/wiki/Nominatim/Country_Codes
  */
-var countryToLanguageMapping = {
+const countryToLanguageMapping = {
     'ad': 'ca',
     'ae': 'ar',
     'af': 'fa,ps',
@@ -228,6 +228,7 @@ var countryToLanguageMapping = {
     'zm': 'en',
     'zw': 'en,sn,nd ',
 };
+// eslint-disable-next-line no-unused-vars
 function mapCountryToLanguage(country_code) {
     if (typeof countryToLanguageMapping[country_code] !== 'undefined') {
         return countryToLanguageMapping[country_code];

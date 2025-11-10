@@ -55,7 +55,7 @@
                         document.write('<span class="hd">' + i18next.t('words.date') + ' ' + i18next.t('words.and') + ' ' + i18next.t('words.time.time') + ':</span>');
                         document.write('<input type="number" step="1" class="input__year" id="yyyy" name="yyyy" value="2013" onblur="Evaluate()" />-');
                         document.write('<select id="mm" name="mm" onchange="Evaluate()">');
-                        for (var i = 0; i < 12; i++) {
+                        for (let i = 0; i < 12; i++) {
                             document.write('<option value="monthNumber' + i + '">' + new Date(2018, i, 1).toLocaleString(i18next.language, {month: 'short'}) + '</option>');
                         }
                         document.write('</select>-');
@@ -69,7 +69,7 @@
                     <input size="3"  name="week" readonly="readonly" />
                 </p>
                 <p><script>
-                    var buttons = [
+                    let buttons = [
                         [ 3600 * 24 * 365, 1, 'words.time.year'    ],
                         [ 3600 * 24 *   7, 1, 'words.time.week'    ],
                         [ 3600 * 24      , 1, 'words.time.day'     ],
@@ -77,10 +77,10 @@
                         [ 60             , 1, 'words.time.minute'  ],
                         [ 0              , 0, 'words.time.now'     ],
                     ];
-                    for (var i = 0; i < buttons.length; i++) {
+                    for (let i = 0; i < buttons.length; i++) {
                         if (buttons[i][1] !== 0) {
-                            for (var x = -1; x <= 1; x += 2) {
-                                var step = x * buttons[i][1]
+                            for (let x = -1; x <= 1; x += 2) {
+                                let step = x * buttons[i][1]
                                 document.write('<button type="button" onclick="Evaluate(' + buttons[i][0] * step
                                     + ')">' + (step > 0 ? '+' : '') + step + ' ' + i18next.t(buttons[i][2]) + '</button>'
                                     + (x === 1 ? ' ' : ''));
@@ -107,7 +107,7 @@
                 <p>
                     <script>
                         document.write('<span class="hd">' + i18next.t('words.mode') + ': </span><select id="mode" name="mode" onchange="Evaluate()" style="max-width:100%;">');
-                        for (var i = 0; i <= 2; i++) {
+                        for (let i = 0; i <= 2; i++) {
                             document.write('<option value="' + i + '">' + i18next.t('texts.mode ' + i) + '</option>');
                         }
                         document.write('</select>');
@@ -202,7 +202,7 @@
                     <li>
                         <a href="#check" onclick="EX(this)">2013,2015,2050-2053,2055/2,2020-2029/3,2060+ Jan 1</a>,
                         <script>
-                            document.write('<a href="' + repo_url + '/tree/master#year-ranges" target="_blank">' + i18next.t('words.docu') + '</a>');
+                            document.write('<a href="' + repo_url + '/tree/main#year-ranges" target="_blank">' + i18next.t('words.docu') + '</a>');
                         </script>
                     </li>
                     <li><a href="#check" onclick="EX(this)">Jan 23-Feb 11,Feb 12 00:00-24:00; PH off</a></li>

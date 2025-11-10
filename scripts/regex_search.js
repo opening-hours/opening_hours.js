@@ -6,15 +6,13 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-var opening_hours = require('../build/opening_hours.js');
-var fs = require('node:fs');
-var readline = require('node:readline');
-var colors = require('colors');
+const fs = require('node:fs');
+const readline = require('node:readline');
 
-var page_width = 20;
+const page_width = 20;
 
-var args = process.argv.splice(2);
-var json_file = args[0];
+const args = process.argv.splice(2);
+let json_file = args[0];
 if (typeof json_file === 'undefined') {
     // json_file = 'export.opening_hours.json';
     json_file = 'export.opening_hours:kitchen.json';
@@ -22,7 +20,7 @@ if (typeof json_file === 'undefined') {
     // return;
 }
 
-var rl = readline.createInterface({
+const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
@@ -32,7 +30,7 @@ fs.readFile(json_file, 'utf8', function (err, json) {
         console.log('Error: ' + err);
         return;
     }
-    var json = JSON.parse(json);
+    const parsedJson = JSON.parse(json);
 
     rl.setPrompt('regex search> ');
     rl.prompt();
@@ -42,28 +40,27 @@ fs.readFile(json_file, 'utf8', function (err, json) {
             process.exit(0);
         }
 
-        var user_re_ok = false;
+        let user_re = false;
         try {
-            var user_re = new RegExp('^(.*?)(' + line + ')(.*)$', 'i');
-            user_re_ok = true;
+            user_re = new RegExp('^(.*?)(' + line + ')(.*)$', 'i');
         } catch (err) {
             console.log('Your regular expression did not compile: ' + err);
         }
 
-        if (user_re_ok) {
-            matched = [];
-            for (var i = 0; i < json.data.length; i++) {
-                var res = json.data[i].value.match(user_re);
+        if (user_re !== false) {
+            let matched = [];
+            for (let i = 0; i < parsedJson.data.length; i++) {
+                const res = parsedJson.data[i].value.match(user_re);
                 if (res)
-                    matched.push([json.data[i].value, json.data[i].count, res]);
+                    matched.push([parsedJson.data[i].value, parsedJson.data[i].count, res]);
             }
 
             if (matched === 0) {
                 console.log('Did not match any value with regular expression: ' + line)
             } else {
                 matched = matched.sort(Comparator);
-                var total_in_use = 0;
-                for (var i = 0; i < matched.length; i++) {
+                let total_in_use = 0;
+                for (let i = 0; i < matched.length; i++) {
                     total_in_use += matched[i][1];
                 }
 
@@ -90,13 +87,10 @@ fs.readFile(json_file, 'utf8', function (err, json) {
 });
 
 function print_values(matched) {
-    for (var i = 0; i < matched.length; i++) {
-        if (i !== 0 && i % page_width === 0) {
-        }
-        var value = matched[i][0];
-        var count = matched[i][1];
-        var res   = matched[i][2];
-        console.log('Matched (count: '+ count +'): ' + res[1] + res[2].blue + res[3])
+    for (let i = 0; i < matched.length; i++) {
+        const count = matched[i][1];
+        const res   = matched[i][2];
+        console.log('Matched (count: '+ count +'): ' + res[1] + res[2].blue + res[3]);
     }
 }
 

@@ -20,21 +20,21 @@
  * }}} */
 
 /* Required modules {{{ */
-var opening_hours = require('../build/opening_hours.js');
-var fs            = require('node:fs');
-var glob          = require('glob');
-var YAML          = require('yaml');
+const opening_hours = require('../build/opening_hours.js');
+const fs            = require('node:fs');
+const glob          = require('glob');
+const YAML          = require('yaml');
 /* }}} */
 
 /* Parameter handling {{{ */
-var optimist = require('optimist')
+const yargs = require('yargs')
     .usage('Usage: $0 export_list.conf')
     .describe('h', 'Display the usage')
     .describe('v', 'Verbose output')
     .describe('f', 'From year (including)')
-    .demand('f')
+    .demandOption('f')
     .describe('t', 'Until year (including)')
-    .demand('t')
+    .demandOption('t')
     .describe('p', 'Export public holidays. Can not be used together with --school-holidays.')
     // .default('p', true)
     .describe('s', 'Export school holidays. Can not be used together with --public-holidays.')
@@ -55,39 +55,40 @@ var optimist = require('optimist')
     .alias('r', 'state')
     .alias('a', 'all-locations')
     .string(['c', 'r', ])
-    .alias('o', 'omit-date-hyphens');
+    .alias('o', 'omit-date-hyphens')
+    .help(false);
 
-var argv = optimist.argv;
+const argv = yargs.parse();
 
 if (argv.help || argv._.length === 0) {
-    optimist.showHelp();
+    yargs.showHelp();
     process.exit(0);
 }
 
 /* Error handling {{{ */
 if (argv['public-holidays'] && argv['school-holidays']) {
-    console.error("--school-holidays and --public-holidays can not be used together.");
+    console.error('--school-holidays and --public-holidays can not be used together.');
     process.exit(1);
 }
 if (!(argv['public-holidays'] || argv['school-holidays'] || argv['all-locations'])) {
-    console.error("Either --school-holidays or --public-holidays has to be specified.");
+    console.error('Either --school-holidays or --public-holidays has to be specified.');
     process.exit(1);
 }
-let nominatim_by_loc = {};
-for (let nominatim_file of glob.sync("src/holidays/nominatim_cache/*.yaml")) {
-    let country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
-    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, "utf8"));
+const nominatim_by_loc = {};
+for (const nominatim_file of glob.sync('src/holidays/nominatim_cache/*.yaml')) {
+    const country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
+    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, 'utf8'));
 }
 
 /* }}} */
 /* }}} */
 
-var filepath = argv._[0];
+const filepath = argv._[0];
 
-var oh_value = argv['public-holidays'] ? 'PH' : 'SH';
+const oh_value = argv['public-holidays'] ? 'PH' : 'SH';
 
 if (argv['all-locations']) {
-    for (let nominatim_file_lookup_string in nominatim_by_loc) {
+    for (const nominatim_file_lookup_string in nominatim_by_loc) {
         write_config_file(filepath, oh_value, nominatim_file_lookup_string, new Date(argv.from, 0, 1), new Date(argv.to + 1, 0, 1));
     }
 } else {
@@ -101,28 +102,29 @@ if (argv['all-locations']) {
 }
 
 function write_config_file(filepath, oh_value, nominatim_file_lookup_string, from_date, to_date) {
-    let nominatim_data = nominatim_by_loc[nominatim_file_lookup_string] || nominatim_by_loc[argv.country];
+    const nominatim_data = nominatim_by_loc[nominatim_file_lookup_string] || nominatim_by_loc[argv.country];
 
     if (typeof nominatim_data !== 'object') {
-        console.error(nominatim_file_lookup_string + " is currently not supported.");
+        console.error(nominatim_file_lookup_string + ' is currently not supported.');
         process.exit(1);
     }
 
+    let oh;
     try {
         oh = new opening_hours(oh_value, nominatim_data);
     } catch (err) {
-        var error_message = 'Error creating new opening_hours(\'' + oh_value + '\', ' + JSON.stringify(nominatim_data) + '): ';
+        let error_message = 'Error creating new opening_hours(\'' + oh_value + '\', ' + JSON.stringify(nominatim_data) + '): ';
         error_message += 'Error: ' + err + '. Please file an issue at https://github.com/opening-hours/opening_hours.js/issues';
         console.error(error_message);
         process.exit(0);
     }
 
-    var intervals = oh.getOpenIntervals(from_date, to_date);
+    const intervals = oh.getOpenIntervals(from_date, to_date);
 
-    var output_lines = [];
-    for (var i = 0; i < intervals.length; i++) {
-        var holiday_entry = intervals[i];
-        var output_line = [
+    let output_lines = [];
+    for (let i = 0; i < intervals.length; i++) {
+        const holiday_entry = intervals[i];
+        const output_line = [
             getISODate(holiday_entry[0], 0, argv['omit-date-hyphens']),
         ];
         if (oh_value === 'SH') { /* Add end date */
@@ -132,7 +134,7 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
         output_line.push(holiday_entry[3]);
         output_lines.push(output_line.join(' '));
     }
-    output_lines = output_lines.join("\n");
+    output_lines = output_lines.join('\n');
     if (argv.verbose) {
         console.log(`${nominatim_file_lookup_string}:\n${output_lines}`);
     }
@@ -142,9 +144,9 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
 /* Helper functions {{{ */
 // https://stackoverflow.com/a/2998822
 function pad(num, size) {
-    var s = String(num);
+    let s = String(num);
     while (s.length < size) {
-        s = "0" + s;
+        s = '0' + s;
     }
     return s;
 }
@@ -156,7 +158,7 @@ function getISODate(date, day_offset, omit_date_hyphens) { /* Is a valid ISO 860
     }
 
     date.setDate(date.getDate() + day_offset);
-    var date_parts = [date.getFullYear(), pad(date.getMonth() + 1, 2), pad(date.getDate(), 2)];
+    const date_parts = [date.getFullYear(), pad(date.getMonth() + 1, 2), pad(date.getDate(), 2)];
     if (omit_date_hyphens) {
         return date_parts.join('')
     } else {

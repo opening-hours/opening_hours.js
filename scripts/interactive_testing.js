@@ -1,6 +1,10 @@
 #!/usr/bin/env node
 
-var optimist = require('optimist')
+// SPDX-FileCopyrightText: © 2013 Robin Schneider <ypid@riseup.net>
+//
+// SPDX-License-Identifier: LGPL-3.0-only
+
+const yargs = require('yargs')
     .usage('Usage: $0 [optional parameters] [server_listening_ports]')
     .describe('h', 'Display the usage')
     // .describe('v', 'Verbose output')
@@ -16,28 +20,29 @@ var optimist = require('optimist')
     .alias('V', 'value')
     .default('f', '../build/opening_hours.js')
     .default('l', 'en')
-    .default('L', 'en');
+    .default('L', 'en')
+    .help(false);
 
-var argv = optimist.argv;
+const argv = yargs.parse();
 
 if (argv.help) {
-    optimist.showHelp();
+    yargs.showHelp();
     process.exit(0);
 }
 
-var opening_hours = require('./' + argv['library-file']);
-var readline      = require('node:readline');
-var net           = require('node:net');
+const opening_hours = require('./' + argv['library-file']);
+const readline      = require('node:readline');
+const net           = require('node:net');
 
 // used for sunrise, sunset and PH,SH
 // https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487429714954&lon=9.81602098644987&zoom=18&addressdetails=1
-var nominatimTestJSON = {"place_id":"44651229","licence":"Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https:\/\/www.openstreetmap.org\/copyright","osm_type":"way","osm_id":"36248375","lat":"49.5400039","lon":"9.7937133","display_name":"K 2847, Lauda-K\u00f6nigshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-W\u00fcrttemberg, Germany, European Union","address":{"road":"K 2847","city":"Lauda-K\u00f6nigshofen","county":"Main-Tauber-Kreis","state_district":"Regierungsbezirk Stuttgart","state":"Baden-W\u00fcrttemberg","country":"Germany","country_code":"de","continent":"European Union"}};
+const nominatimTestJSON = {'place_id':'44651229','licence':'Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright','osm_type':'way','osm_id':'36248375','lat':'49.5400039','lon':'9.7937133','display_name':'K 2847, Lauda-K\u00f6nigshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-W\u00fcrttemberg, Germany, European Union','address':{'road':'K 2847','city':'Lauda-K\u00f6nigshofen','county':'Main-Tauber-Kreis','state_district':'Regierungsbezirk Stuttgart','state':'Baden-W\u00fcrttemberg','country':'Germany','country_code':'de','continent':'European Union'}};
 
 function opening_hours_object(value) {
-    var oh;
-    var crashed = true;
-    var needed_nominatim_json = false;
-    var warnings = [];
+    let oh;
+    let crashed = true;
+    let needed_nominatim_json = false;
+    let warnings = [];
     try {
         oh = new opening_hours(value, {}, { 'locale': argv.locale } );
         warnings = oh.getWarnings();
@@ -45,7 +50,7 @@ function opening_hours_object(value) {
             console.error(warnings);
         // prettified = oh.prettifyValue();
         crashed = false;
-    } catch (err) {
+    } catch {
         try {
             oh = new opening_hours(value, nominatimTestJSON, { 'locale': argv.locale });
             crashed = false;
@@ -55,7 +60,7 @@ function opening_hours_object(value) {
         }
     }
 
-    var result = { 'needed_nominatim_json': needed_nominatim_json };
+    const result = { 'needed_nominatim_json': needed_nominatim_json };
     if (crashed) {
         result.error      = true;
         result.eval_notes = crashed;
@@ -68,7 +73,7 @@ function opening_hours_object(value) {
         result.state_string  = oh.getStateString();
         try {
             result.next_change   = oh.getNextChange();
-        } catch (err) {
+        } catch {
             // This might throw an exception if there is no change.
         }
         result.rule_index    = oh.getMatchingRule();
@@ -81,36 +86,36 @@ function opening_hours_object(value) {
     return result;
 }
 
-var servers = [];
-for (var i = 0; i < argv._.length; i++) {
+const servers = [];
+for (let i = 0; i < argv._.length; i++) {
     console.log('Starting to listen on "%s"', argv._[i]);
     servers[i] = net.createServer(function(socket) {
-        console.log("connected");
+        console.log('connected');
 
         socket.on('data', function (data) {
-            value = data.toString();
+            const value = data.toString();
             console.log(value);
-            result = opening_hours_object(value);
+            const result = opening_hours_object(value);
             socket.write(JSON.stringify(result, null, '\t'));
         });
     }).listen(argv._[i]);
 }
 
 if (typeof argv.value === 'string') {
-    result = opening_hours_object(argv.value);
+    const result = opening_hours_object(argv.value);
     console.log(JSON.stringify(result, null, '\t') + '\n');
 } else {
-    var rl = readline.createInterface({
+    const rl = readline.createInterface({
         input: process.stdin,
         output: process.stdout,
     });
 
     rl.on('line', function (value) {
-        result = opening_hours_object(value);
+        const result = opening_hours_object(value);
         console.log(JSON.stringify(result, null, '\t') + '\n');
 
     }).on('close', function() {
-        for (var i = 0; i < servers.length; i++) {
+        for (let i = 0; i < servers.length; i++) {
             servers[i].close();
         }
         console.log('\nBye');
@@ -118,6 +123,6 @@ if (typeof argv.value === 'string') {
     });
 
     console.info('You can enter your opening_hours like value and hit enter to evaluate. The result handed to you is represented in JSON.');
-    console.info('If you want to create a binding for another programing language you should use the unix socket interface which gives you full access to the API or use a native binding to NodeJS/JavaScript if one does exist.');
+    console.info('If you want to create a binding for another programming language you should use the unix socket interface which gives you full access to the API or use a native binding to NodeJS/JavaScript if one does exist.');
     // Also the stdin method breaks for certain values (e.g. newlines in values).
 }

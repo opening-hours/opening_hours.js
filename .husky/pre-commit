@@ -3,4 +3,8 @@
 # # Redirect output to stderr.
 # exec 1>&2
 
+# Run lint-staged to auto-fix issues (including trailing whitespace) on staged files
+npx lint-staged
+
+# Run checks
 make check

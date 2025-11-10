@@ -14,7 +14,7 @@ if (!i18next.isInitialized) {
     });
 } else {
     // compat with an app that already initializes i18n
-    for (var lang in opening_hours_resources) {
+    for (const lang in opening_hours_resources) {
         i18next.addResourceBundle(lang, 'opening_hours', opening_hours_resources[lang]['opening_hours'], true);
     }
 }

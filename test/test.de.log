@@ -279,241 +279,62 @@ With [1m[34mwarnings[39m[22m:
 "Time ranges spanning midnight with date overwriting (complex real world example)" for "Su-Tu 11:00-01:00, We-Th 11:00-03:00, Fr 11:00-06:00, Sa 11:00-07:00": [1m[32mPASSED[39m[22m
 "Time ranges spanning midnight with date overwriting (complex real world example)" for "Su-Tu 11:00-01:00, We-Th11:00-03:00, Fr 11:00-06:00, Sa 11:00-07:00": [1m[32mPASSED[39m[22m
 "Time ranges spanning midnight (maximum supported)" for "Tu 23:59-48:00": [1m[32mPASSED[39m[22m
-"Time ranges spanning midnight with open ened (maximum supported)" for "Tu 23:59-40:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-02 23:59', '2012-10-03 16:00', false, undefined ],
-[ '2012-10-03 16:00', '2012-10-04 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-02 23:59', '2012-10-03 16:00', false, undefined ],
-[ '2012-10-03 16:00', '2012-10-04 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Time ranges spanning midnight with open end (maximum supported)" for "Tu 23:59-40:00+": [1m[32mPASSED[39m[22m
 "Open end" for "07:00+ open "visit there website to know if they did already close"": [1m[32mPASSED[39m[22m
 "Open end" for "07:00+ unknown "visit there website to know if they did already close"": [1m[32mPASSED[39m[22m
-"Open end" for "17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Open end" for "17:00-late": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00+": [1m[32mPASSED[39m[22m
+"Open end" for "17:00-late": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00-late <--- ("-late" wird als "+" ("open end") interpretiert. Example: "12:00+".)
-"Open end" for "17:00 til late": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00 til late": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00 til late <--- ("til late" wird als "+" ("open end") interpretiert. Example: "12:00+".)
-"Open end" for "17:00 till late": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00 till late": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00 till late <--- ("till late" wird als "+" ("open end") interpretiert. Example: "12:00+".)
-"Open end" for "17:00 bis Open End": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00 bis Open End": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00 bis Open End <--- ("bis open end" wird als "+" ("open end") interpretiert. Example: "12:00+".)
-"Open end" for "17:00-open end": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00-open end": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00-open end <--- ("-open end" wird als "+" ("open end") interpretiert. Example: "12:00+".)
-"Open end" for "17:00-openend": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00-openend": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00-openend <--- ("-openend" wird als "+" ("open end") interpretiert. Example: "12:00+".)
-"Open end" for "17:00+; 15:00-16:00 off": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "17:00+; 15:00-16:00 off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00+; 15:00-16:00 off <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
-"Open end" for "15:00-16:00 off; 17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Open end, variable time" for "sunrise+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:22', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 07:22', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Open end, variable time" for "(sunrise+01:00)+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 08:22', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 08:22', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "15:00-16:00 off; 17:00+": [1m[32mPASSED[39m[22m
+"Open end, variable time" for "sunrise+": [1m[32mPASSED[39m[22m
+"Open end, variable time" for "(sunrise+01:00)+": [1m[32mPASSED[39m[22m
 "Open end" for "17:00+ off": [1m[32mPASSED[39m[22m
 "Open end" for "17:00+off": [1m[32mPASSED[39m[22m
 "Open end" for "17:00-19:00 off": [1m[32mPASSED[39m[22m
-"Open end" for "07:00+,12:00-16:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:00', '2012-10-01 12:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 12:00', '2012-10-01 16:00', false, undefined ],
-expected:
-[ '2012-10-01 07:00', '2012-10-01 12:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 12:00', '2012-10-01 16:00', false, undefined ],
-"Open end" for "07:00+,12:00-13:00,13:00-16:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:00', '2012-10-01 12:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 12:00', '2012-10-01 16:00', false, undefined ],
-expected:
-[ '2012-10-01 07:00', '2012-10-01 12:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 12:00', '2012-10-01 16:00', false, undefined ],
-"Open end" for "07:00+,12:00-16:00; 16:00-24:00 closed "needed because of open end"": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:00', '2012-10-01 12:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 12:00', '2012-10-01 16:00', false, undefined ],
-expected:
-[ '2012-10-01 07:00', '2012-10-01 12:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 12:00', '2012-10-01 16:00', false, undefined ],
-"Open end" for "05:00-06:00,06:45-07:00+,13:00-16:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 05:00', '2012-10-01 06:00', false, undefined ],
-[ '2012-10-01 06:45', '2012-10-01 07:00', false, undefined ],
-[ '2012-10-01 07:00', '2012-10-01 13:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 16:00', false, undefined ],
-expected:
-[ '2012-10-01 05:00', '2012-10-01 06:00', false, undefined ],
-[ '2012-10-01 06:45', '2012-10-01 07:00', false, undefined ],
-[ '2012-10-01 07:00', '2012-10-01 13:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 16:00', false, undefined ],
-"Open end" for "06:45-07:00+,05:00-06:00,13:00-16:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 05:00', '2012-10-01 06:00', false, undefined ],
-[ '2012-10-01 06:45', '2012-10-01 07:00', false, undefined ],
-[ '2012-10-01 07:00', '2012-10-01 13:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 16:00', false, undefined ],
-expected:
-[ '2012-10-01 05:00', '2012-10-01 06:00', false, undefined ],
-[ '2012-10-01 06:45', '2012-10-01 07:00', false, undefined ],
-[ '2012-10-01 07:00', '2012-10-01 13:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 16:00', false, undefined ],
-"Open end" for "06:45-07:00+,05:00-06:00,13:00-14:00,14:00-16:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 05:00', '2012-10-01 06:00', false, undefined ],
-[ '2012-10-01 06:45', '2012-10-01 07:00', false, undefined ],
-[ '2012-10-01 07:00', '2012-10-01 13:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 16:00', false, undefined ],
-expected:
-[ '2012-10-01 05:00', '2012-10-01 06:00', false, undefined ],
-[ '2012-10-01 06:45', '2012-10-01 07:00', false, undefined ],
-[ '2012-10-01 07:00', '2012-10-01 13:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 16:00', false, undefined ],
+"Open end" for "07:00+,12:00-16:00": [1m[32mPASSED[39m[22m
+"Open end" for "07:00+,12:00-13:00,13:00-16:00": [1m[32mPASSED[39m[22m
+"Open end" for "07:00+,12:00-16:00; 16:00-24:00 closed "needed because of open end"": [1m[32mPASSED[39m[22m
+"Open end" for "05:00-06:00,06:45-07:00+,13:00-16:00": [1m[32mPASSED[39m[22m
+"Open end" for "06:45-07:00+,05:00-06:00,13:00-16:00": [1m[32mPASSED[39m[22m
+"Open end" for "06:45-07:00+,05:00-06:00,13:00-14:00,14:00-16:00": [1m[32mPASSED[39m[22m
 "Open end" for "17:00+,13:00-02:00; 02:00-03:00 closed "needed because of open end"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00+,13:00-02:00; 02:00-03:00 closed "needed because of open end" <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
 "Open end" for "17:00+,13:00-02:00; 02:00-03:00 closed "needed because of open end"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*17:00+,13:00-02:00; 02:00-03:00 closed "needed because of open end" <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
-"Open end" for "13:00-17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Open end" for "13:00-17:00,17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Open end" for "13:00-02:00,17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Open end" for "13:00-17:00 open, 17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 13:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Fixed time followed by open end" for "14:00-17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 14:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 14:00', '2012-10-01 17:00', false, undefined ],
-[ '2012-10-01 17:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Fixed time followed by open end, wrapping over midnight" for "Mo 22:00-04:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 22:00', '2012-10-02 04:00', false, undefined ],
-[ '2012-10-02 04:00', '2012-10-02 12:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 22:00', '2012-10-02 04:00', false, undefined ],
-[ '2012-10-02 04:00', '2012-10-02 12:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Fixed time followed by open end, wrapping over midnight" for "Mo 22:00-28:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 22:00', '2012-10-02 04:00', false, undefined ],
-[ '2012-10-02 04:00', '2012-10-02 12:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 22:00', '2012-10-02 04:00', false, undefined ],
-[ '2012-10-02 04:00', '2012-10-02 12:00', true, 'Specified as open end. Closing time was guessed.' ],
-"variable time range followed by open end" for "14:00-sunset+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 00:00', '2012-10-01 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-01 14:00', '2012-10-01 19:00', false, undefined ],
-[ '2012-10-01 19:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 00:00', '2012-10-01 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-01 14:00', '2012-10-01 19:00', false, undefined ],
-[ '2012-10-01 19:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"variable time range followed by open end" for "sunrise-14:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:22', '2012-10-01 14:00', false, undefined ],
-[ '2012-10-01 14:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 07:22', '2012-10-01 14:00', false, undefined ],
-[ '2012-10-01 14:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"variable time range followed by open end" for "sunrise-14:00,14:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:22', '2012-10-01 14:00', false, undefined ],
-[ '2012-10-01 14:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 07:22', '2012-10-01 14:00', false, undefined ],
-[ '2012-10-01 14:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"variable time range followed by open end" for "sunrise-14:00 open, 14:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-01 07:22', '2012-10-01 14:00', false, undefined ],
-[ '2012-10-01 14:00', '2012-10-02 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-01 07:22', '2012-10-01 14:00', false, undefined ],
-[ '2012-10-01 14:00', '2012-10-02 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"variable time range followed by open end" for "sunrise-(sunset+01:00)+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-06 00:00', '2012-10-06 05:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-06 07:29', '2012-10-06 19:50', false, undefined ],
-[ '2012-10-06 19:50', '2012-10-07 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-06 00:00', '2012-10-06 05:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-06 07:29', '2012-10-06 19:50', false, undefined ],
-[ '2012-10-06 19:50', '2012-10-07 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"variable time range followed by open end" for "sunrise-(sunset+01:00)+; Su off": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2012-10-06 00:00', '2012-10-06 05:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2012-10-06 07:29', '2012-10-06 19:50', false, undefined ],
-[ '2012-10-06 19:50', '2012-10-07 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2012-10-06 00:00', '2012-10-06 05:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2012-10-06 07:29', '2012-10-06 19:50', false, undefined ],
-[ '2012-10-06 19:50', '2012-10-07 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Open end" for "13:00-17:00+": [1m[32mPASSED[39m[22m
+"Open end" for "13:00-17:00,17:00+": [1m[32mPASSED[39m[22m
+"Open end" for "13:00-02:00,17:00+": [1m[32mPASSED[39m[22m
+"Open end" for "13:00-17:00 open, 17:00+": [1m[32mPASSED[39m[22m
+"Fixed time followed by open end" for "14:00-17:00+": [1m[32mPASSED[39m[22m
+"Fixed time followed by open end, wrapping over midnight" for "Mo 22:00-04:00+": [1m[32mPASSED[39m[22m
+"Fixed time followed by open end, wrapping over midnight" for "Mo 22:00-28:00+": [1m[32mPASSED[39m[22m
+"variable time range followed by open end" for "14:00-sunset+": [1m[32mPASSED[39m[22m
+"variable time range followed by open end" for "sunrise-14:00+": [1m[32mPASSED[39m[22m
+"variable time range followed by open end" for "sunrise-14:00,14:00+": [1m[32mPASSED[39m[22m
+"variable time range followed by open end" for "sunrise-14:00 open, 14:00+": [1m[32mPASSED[39m[22m
+"variable time range followed by open end" for "sunrise-(sunset+01:00)+": [1m[32mPASSED[39m[22m
+"variable time range followed by open end" for "sunrise-(sunset+01:00)+; Su off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*sunrise-(sunset+01:00)+; Su off <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
 "variable time range followed by open end, day wrap and different states" for "Fr 11:00-24:00+ open "geöffnet täglich von 11:00 Uhr bis tief in die Nacht"": [1m[32mPASSED[39m[22m
@@ -544,32 +365,11 @@ With [1m[34mwarnings[39m[22m:
 With [1m[34mwarnings[39m[22m:
 	*daylight <--- (Bitte verwende "sunrise-sunset" anstelle von "daylight".)
 "Variable times calculation with coordinates" for "(sunrise+02:00)-sunset": [1m[32mPASSED[39m[22m
-"Variable times which moves over fix end time" for "sunrise-08:02": [1m[31mFAILED[39m[22m, bad duration(s): 1860000,0, expected 1800000,0, bad intervals: 
-[ '2013-01-27 08:01', '2013-01-27 08:02', false, undefined ],
-[ '2013-01-28 08:00', '2013-01-28 08:02', false, undefined ],
-[ '2013-01-29 07:59', '2013-01-29 08:02', false, undefined ],
-[ '2013-01-30 07:58', '2013-01-30 08:02', false, undefined ],
-[ '2013-01-31 07:56', '2013-01-31 08:02', false, undefined ],
-[ '2013-02-01 07:55', '2013-02-01 08:02', false, undefined ],
-[ '2013-02-02 07:54', '2013-02-02 08:02', false, undefined ],
-expected:
-[ '2013-01-28 08:00', '2013-01-28 08:02', false, undefined ],
-[ '2013-01-29 07:59', '2013-01-29 08:02', false, undefined ],
-[ '2013-01-30 07:58', '2013-01-30 08:02', false, undefined ],
-[ '2013-01-31 07:56', '2013-01-31 08:02', false, undefined ],
-[ '2013-02-01 07:55', '2013-02-01 08:02', false, undefined ],
-[ '2013-02-02 07:54', '2013-02-02 08:02', false, undefined ],
+"Variable times which moves over fix end time" for "sunrise-08:02": [1m[32mPASSED[39m[22m
 "Variable times which moves over fix end time" for "sunrise-08:00": [1m[32mPASSED[39m[22m
 "Variable times which moves over fix end time" for "sunrise-07:58": [1m[32mPASSED[39m[22m
 "Variable times which moves over fix end time" for "sunrise-06:00": [1m[32mPASSED[39m[22m
-"Variable times which moves over fix end time" for "sunrise-05:59": [1m[31mFAILED[39m[22m, bad duration(s): 158220000,0, expected 158160000,0, bad intervals: 
-[ '2013-01-26 00:00', '2013-01-26 05:59', false, undefined ],
-[ '2013-01-26 08:01', '2013-01-27 05:59', false, undefined ],
-[ '2013-01-27 08:00', '2013-01-28 00:00', false, undefined ],
-expected:
-[ '2013-01-26 00:00', '2013-01-26 05:59', false, undefined ],
-[ '2013-01-26 08:02', '2013-01-27 05:59', false, undefined ],
-[ '2013-01-27 08:00', '2013-01-28 00:00', false, undefined ],
+"Variable times which moves over fix end time" for "sunrise-05:59": [1m[32mPASSED[39m[22m
 "Variable times which moves over fix end time" for "sunrise-06:00": [1m[32mPASSED[39m[22m
 "Variable times which moves over fix end time" for "sunrise-05:59": [1m[33mIGNORED[39m[22m, reason: not implemented yet
 "Variable times spanning midnight" for "sunset-sunrise": [1m[32mPASSED[39m[22m
@@ -1178,34 +978,8 @@ With [1m[34mwarnings[39m[22m:
 "Constrained weekdays" for "We[4],We[5] 10:00-12:00": [1m[32mPASSED[39m[22m
 "Constrained weekdays" for "We[4] 10:00-12:00; We[-1] 10:00-12:00": [1m[32mPASSED[39m[22m
 "Constrained weekdays" for "We[-1,-2] 10:00-12:00": [1m[32mPASSED[39m[22m
-"Calculations based on constrained weekdays" for "Sa[-1] +3 days 10:00-12:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2013-09-01 10:00', '2013-09-01 12:00', false, undefined ],
-[ '2013-10-01 10:00', '2013-10-01 12:00', false, undefined ],
-[ '2013-10-29 10:00', '2013-10-29 12:00', false, undefined ],
-[ '2013-12-03 10:00', '2013-12-03 12:00', false, undefined ],
-[ '2013-12-31 10:00', '2013-12-31 12:00', false, undefined ],
-[ '2014-01-28 10:00', '2014-01-28 12:00', false, undefined ],
-expected:
-[ '2013-09-03 10:00', '2013-09-03 12:00', false, undefined ],
-[ '2013-10-01 10:00', '2013-10-01 12:00', false, undefined ],
-[ '2013-10-29 10:00', '2013-10-29 12:00', false, undefined ],
-[ '2013-12-03 10:00', '2013-12-03 12:00', false, undefined ],
-[ '2013-12-31 10:00', '2013-12-31 12:00', false, undefined ],
-[ '2014-01-28 10:00', '2014-01-28 12:00', false, undefined ],
-"Calculations based on constrained weekdays" for "Sa[-1] +3 day 10:00-12:00": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2013-09-01 10:00', '2013-09-01 12:00', false, undefined ],
-[ '2013-10-01 10:00', '2013-10-01 12:00', false, undefined ],
-[ '2013-10-29 10:00', '2013-10-29 12:00', false, undefined ],
-[ '2013-12-03 10:00', '2013-12-03 12:00', false, undefined ],
-[ '2013-12-31 10:00', '2013-12-31 12:00', false, undefined ],
-[ '2014-01-28 10:00', '2014-01-28 12:00', false, undefined ],
-expected:
-[ '2013-09-03 10:00', '2013-09-03 12:00', false, undefined ],
-[ '2013-10-01 10:00', '2013-10-01 12:00', false, undefined ],
-[ '2013-10-29 10:00', '2013-10-29 12:00', false, undefined ],
-[ '2013-12-03 10:00', '2013-12-03 12:00', false, undefined ],
-[ '2013-12-31 10:00', '2013-12-31 12:00', false, undefined ],
-[ '2014-01-28 10:00', '2014-01-28 12:00', false, undefined ],
+"Calculations based on constrained weekdays" for "Sa[-1] +3 days 10:00-12:00": [1m[32mPASSED[39m[22m
+"Calculations based on constrained weekdays" for "Sa[-1] +3 day 10:00-12:00": [1m[32mPASSED[39m[22m
 "Calculations based on constrained weekdays: last weekend in month" for "Sa[-1],Sa[-1] +1 day 10:00-12:00": [1m[32mPASSED[39m[22m
 "Calculations based on constrained weekdays: last weekend in month" for "Sa[-1],Sa[-1] +1 day": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
@@ -1246,49 +1020,53 @@ With [1m[34mwarnings[39m[22m:
 "Fallback group rules, with some closed times" for "Mo,Tu,Th 09:00-12:00; Fr 14:00-17:30 || "Termine nach Vereinbarung"; We off": [1m[32mPASSED[39m[22m
 "Fallback group rules, with some closed times" for "Mo-Th 09:00-12:00; Fr 14:00-17:30 || "Termine nach Vereinbarung"; We off": [1m[32mPASSED[39m[22m
 "Fallback group rules, with some closed times" for "Mo-Th 09:00-12:00; Fr 14:00-17:30 || unknown "Termine nach Vereinbarung"; We off": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 01,03 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 01,03 00:00-24:00 || closed "should not change the test result"": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 01,03: 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 01,week 03: 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 01: 00:00-24:00; week 03: 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 01; week 03": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01,03 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01,03 00:00-24:00 || closed "should not change the test result"": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01,03: 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01,week 03: 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01: 00:00-24:00; week 03: 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01; week 03": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 01 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 	*week 01; week 03 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week ranges" for "week 01-03/2 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 02,04 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week ranges" for "week 02-04/2 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range limit" for "week 02-53": [1m[32mPASSED[39m[22m
+"Week ranges: basic syntax patterns (weeks 01,03)" for "week 01-03/2 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week ranges: even weeks with period notation (02,04)" for "week 02,04 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week ranges: even weeks with period notation (02,04)" for "week 02-04/2 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: weeks 02-53 (excluding first week)" for "week 02-53": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 02-53 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range limit" for "week 02-53 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range full range" for "week 01-53": [1m[32mPASSED[39m[22m
+"Week range: weeks 02-53 (excluding first week)" for "week 02-53 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: full year coverage (weeks 01-53)" for "week 01-53": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 01-53 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range full range" for "week 01-53 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range second week" for "week 02 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range" for "week 01-53/2 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range" for "week 01-53/2 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range" for "week 02-53/2 We; week 01-53/2 Sa 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: full year coverage (weeks 01-53)" for "week 01-53 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: single week across multiple years (week 02)" for "week 02 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: odd weeks with boundary start date (01-53/2)" for "week 01-53/2 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: odd weeks with year start date (01-53/2)" for "week 01-53/2 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: alternating weeks with weekdays (even=We, odd=Sa)" for "week 02-53/2 We; week 01-53/2 Sa 00:00-24:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 02-53/2 We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range (beginning in last year)" for "week 04-16": [1m[32mPASSED[39m[22m
+"Week range: winter to spring with pre-year start (04-16)" for "week 04-16": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 04-16 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range (beginning in matching year)" for "week 04-16": [1m[32mPASSED[39m[22m
+"Week range: winter to spring with year start (04-16)" for "week 04-16": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 04-16 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range first week" for "week 01": [1m[32mPASSED[39m[22m
+"Week range: first week single year (week 01)" for "week 01": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 01 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range first week" for "week 01": [1m[32mPASSED[39m[22m
+"Week range: first week multi-year with full days (week 01)" for "week 01": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 01 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range first week" for "week 01 open": [1m[32mPASSED[39m[22m
+"Week range: first week multi-year with full days (week 01)" for "week 01 open": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*week 01 open <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Week range first week" for "week 01 00:00-24:00": [1m[32mPASSED[39m[22m
-"Week range first week" for "week 01 00:00-23:59": [1m[32mPASSED[39m[22m
+"Week range: first week multi-year with full days (week 01)" for "week 01 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: first week multi-year with specific hours (week 01 00:00-23:59)" for "week 01 00:00-23:59": [1m[32mPASSED[39m[22m
+"Week range: periodic selector resumes mid-range (02-52/6 Fr)" for "week 02-52/6 Fr 00:00-24:00": [1m[32mPASSED[39m[22m
+"Week range: odd weeks with native Date objects (01-53/2)" for "week 01-53/2 Mo-Su 07:30-08:00": [1m[32mPASSED[39m[22m
+"Week range: odd weeks with normalized Date objects (01-53/2)" for "week 01-53/2 Mo-Su 07:30-08:00": [1m[32mPASSED[39m[22m
+"Week range: odd weeks with copied Date objects (01-53/2)" for "week 01-53/2 Mo-Su 07:30-08:00": [1m[32mPASSED[39m[22m
 "Only in one month of the year" for "Apr 08:00-12:00": [1m[32mPASSED[39m[22m
 "Only in one month of the year" for "Apr: 08:00-12:00": [1m[32mPASSED[39m[22m
 "Month ranges" for "Nov-Feb 00:00-24:00": [1m[32mPASSED[39m[22m
@@ -1638,62 +1416,10 @@ With [1m[34mwarnings[39m[22m:
 With [1m[34mwarnings[39m[22m:
 	*Aug,Dec 25-easter <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Real world example: Was processed right (month range/monthday range with additional rule)" for "Nov-Mar Mo-Fr 11:30-17:00, Mo-Su 17:00-01:00": [1m[32mPASSED[39m[22m
-"Real world example: Was not processed right (month range/monthday range)" for "Mo-Sa 18:00+; SH off": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-09-14 00:00', '2014-09-14 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-15 18:00', '2014-09-16 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-16 18:00', '2014-09-17 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-17 18:00', '2014-09-18 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-18 18:00', '2014-09-19 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-19 18:00', '2014-09-20 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-20 18:00', '2014-09-21 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2014-09-14 00:00', '2014-09-14 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-15 18:00', '2014-09-16 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-16 18:00', '2014-09-17 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-17 18:00', '2014-09-18 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-18 18:00', '2014-09-19 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-19 18:00', '2014-09-20 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-20 18:00', '2014-09-21 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Real world example: Was not processed right (month range/monthday range)" for "Mo-Sa 18:00+; SH off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo-Sa 18:00+; SH off <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
-"Real world example: Was not processed right (month range/monthday range)" for "SH off; Mo-Sa 18:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-09-01 18:00', '2014-09-02 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-02 18:00', '2014-09-03 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-03 18:00', '2014-09-04 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-04 18:00', '2014-09-05 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-05 18:00', '2014-09-06 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-06 18:00', '2014-09-07 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-08 18:00', '2014-09-09 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-09 18:00', '2014-09-10 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-10 18:00', '2014-09-11 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-11 18:00', '2014-09-12 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-12 18:00', '2014-09-13 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-13 18:00', '2014-09-14 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-15 18:00', '2014-09-16 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-16 18:00', '2014-09-17 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-17 18:00', '2014-09-18 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-18 18:00', '2014-09-19 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-19 18:00', '2014-09-20 04:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-09-20 18:00', '2014-09-21 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2014-09-01 18:00', '2014-09-02 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-02 18:00', '2014-09-03 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-03 18:00', '2014-09-04 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-04 18:00', '2014-09-05 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-05 18:00', '2014-09-06 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-06 18:00', '2014-09-07 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-08 18:00', '2014-09-09 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-09 18:00', '2014-09-10 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-10 18:00', '2014-09-11 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-11 18:00', '2014-09-12 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-12 18:00', '2014-09-13 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-13 18:00', '2014-09-14 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-15 18:00', '2014-09-16 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-16 18:00', '2014-09-17 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-17 18:00', '2014-09-18 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-18 18:00', '2014-09-19 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-19 18:00', '2014-09-20 04:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-09-20 18:00', '2014-09-21 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Real world example: Was not processed right (month range/monthday range)" for "SH off; Mo-Sa 18:00+": [1m[32mPASSED[39m[22m
 "Real world example: Was processed right (month range/monthday range)" for "Mo-Sa 17:15-01:00, PH,Su 17:15-24:00": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right (month range/monthday range)" for "Jun 15-Sep 15; Sep 16-Dec 31; Jan-Mar off; Dec 25-easter off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
@@ -1705,130 +1431,14 @@ With [1m[34mwarnings[39m[22m:
 "Real world example: Was not processed right" for "Mo, Tu, We, Th, Fr, Su 11:00-01:00; Sa 11:00-02:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo, Tu, We, Th, Fr, Su 11:00-01:00; Sa 11:00-02:00 <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
-"Real world example: Was not processed right." for "Jan Su[-2]-Jan Su[-1]: Fr-Su 12:00+; Feb Su[-2]-Feb Su[-1]: Fr-Su 12:00+; Mar 01-Jul 31: Th-Su 12:00+; Aug 01-Nov 30,Dec: Tu-Su 12:00+; Dec 24-26,Dec 31: off": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-11-29 12:00', '2014-11-30 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-11-30 12:00', '2014-12-01 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-02 12:00', '2014-12-03 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-03 12:00', '2014-12-04 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-04 12:00', '2014-12-05 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-05 12:00', '2014-12-06 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-06 12:00', '2014-12-07 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-07 12:00', '2014-12-08 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-09 12:00', '2014-12-10 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-10 12:00', '2014-12-11 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-11 12:00', '2014-12-12 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-12 12:00', '2014-12-13 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-13 12:00', '2014-12-14 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-14 12:00', '2014-12-15 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-16 12:00', '2014-12-17 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-17 12:00', '2014-12-18 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-18 12:00', '2014-12-19 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-19 12:00', '2014-12-20 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-20 12:00', '2014-12-21 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-21 12:00', '2014-12-22 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-23 12:00', '2014-12-24 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-27 12:00', '2014-12-28 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-28 12:00', '2014-12-29 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-30 12:00', '2014-12-31 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2014-11-29 12:00', '2014-11-30 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-11-30 12:00', '2014-12-01 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-02 12:00', '2014-12-03 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-03 12:00', '2014-12-04 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-04 12:00', '2014-12-05 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-05 12:00', '2014-12-06 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-06 12:00', '2014-12-07 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-07 12:00', '2014-12-08 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-09 12:00', '2014-12-10 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-10 12:00', '2014-12-11 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-11 12:00', '2014-12-12 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-12 12:00', '2014-12-13 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-13 12:00', '2014-12-14 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-14 12:00', '2014-12-15 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-16 12:00', '2014-12-17 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-17 12:00', '2014-12-18 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-18 12:00', '2014-12-19 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-19 12:00', '2014-12-20 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-20 12:00', '2014-12-21 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-21 12:00', '2014-12-22 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-23 12:00', '2014-12-24 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-27 12:00', '2014-12-28 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-28 12:00', '2014-12-29 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-30 12:00', '2014-12-31 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-"Real world example: Was not processed right." for "Jan Su[-2]-Jan Su[-1],Feb Su[-2]-Feb Su[-1]: Fr-Su 12:00+; Mar 01-Dec 31: Tu-Su 12:00+; Dec 24-26,Dec 31: off": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-11-29 12:00', '2014-11-30 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-11-30 12:00', '2014-12-01 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-02 12:00', '2014-12-03 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-03 12:00', '2014-12-04 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-04 12:00', '2014-12-05 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-05 12:00', '2014-12-06 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-06 12:00', '2014-12-07 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-07 12:00', '2014-12-08 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-09 12:00', '2014-12-10 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-10 12:00', '2014-12-11 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-11 12:00', '2014-12-12 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-12 12:00', '2014-12-13 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-13 12:00', '2014-12-14 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-14 12:00', '2014-12-15 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-16 12:00', '2014-12-17 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-17 12:00', '2014-12-18 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-18 12:00', '2014-12-19 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-19 12:00', '2014-12-20 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-20 12:00', '2014-12-21 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-21 12:00', '2014-12-22 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-23 12:00', '2014-12-24 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-27 12:00', '2014-12-28 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-28 12:00', '2014-12-29 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-12-30 12:00', '2014-12-31 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2014-11-29 12:00', '2014-11-30 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-11-30 12:00', '2014-12-01 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-02 12:00', '2014-12-03 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-03 12:00', '2014-12-04 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-04 12:00', '2014-12-05 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-05 12:00', '2014-12-06 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-06 12:00', '2014-12-07 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-07 12:00', '2014-12-08 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-09 12:00', '2014-12-10 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-10 12:00', '2014-12-11 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-11 12:00', '2014-12-12 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-12 12:00', '2014-12-13 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-13 12:00', '2014-12-14 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-14 12:00', '2014-12-15 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-16 12:00', '2014-12-17 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-17 12:00', '2014-12-18 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-18 12:00', '2014-12-19 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-19 12:00', '2014-12-20 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-20 12:00', '2014-12-21 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-21 12:00', '2014-12-22 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-23 12:00', '2014-12-24 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-27 12:00', '2014-12-28 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-28 12:00', '2014-12-29 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-12-30 12:00', '2014-12-31 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Real world example: Was not processed right." for "Jan Su[-2]-Jan Su[-1]: Fr-Su 12:00+; Feb Su[-2]-Feb Su[-1]: Fr-Su 12:00+; Mar 01-Jul 31: Th-Su 12:00+; Aug 01-Nov 30,Dec: Tu-Su 12:00+; Dec 24-26,Dec 31: off": [1m[32mPASSED[39m[22m
+"Real world example: Was not processed right." for "Jan Su[-2]-Jan Su[-1],Feb Su[-2]-Feb Su[-1]: Fr-Su 12:00+; Mar 01-Dec 31: Tu-Su 12:00+; Dec 24-26,Dec 31: off": [1m[32mPASSED[39m[22m
 "Simplifed real world example: Was not processed right." for "Nov 01-20,Dec": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Nov 01-20,Dec <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Real world example: Was processed right form library." for "Mo 19:00+; We 14:00+; Su 10:00+ || "Führung, Sonderführungen nach Vereinbarung."": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-01-06 00:00', '2014-01-06 19:00', true, 'Führung, Sonderführungen nach Vereinbarung.' ],
-[ '2014-01-06 19:00', '2014-01-07 05:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-01-07 05:00', '2014-01-08 14:00', true, 'Führung, Sonderführungen nach Vereinbarung.' ],
-[ '2014-01-08 14:00', '2014-01-09 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-01-09 00:00', '2014-01-12 10:00', true, 'Führung, Sonderführungen nach Vereinbarung.' ],
-[ '2014-01-12 10:00', '2014-01-13 00:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-expected:
-[ '2014-01-06 00:00', '2014-01-06 19:00', true, 'Führung, Sonderführungen nach Vereinbarung.' ],
-[ '2014-01-06 19:00', '2014-01-07 05:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-01-07 05:00', '2014-01-08 14:00', true, 'Führung, Sonderführungen nach Vereinbarung.' ],
-[ '2014-01-08 14:00', '2014-01-09 00:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-01-09 00:00', '2014-01-12 10:00', true, 'Führung, Sonderführungen nach Vereinbarung.' ],
-[ '2014-01-12 10:00', '2014-01-13 00:00', true, 'Specified as open end. Closing time was guessed.' ],
+"Real world example: Was processed right form library." for "Mo 19:00+; We 14:00+; Su 10:00+ || "Führung, Sonderführungen nach Vereinbarung."": [1m[32mPASSED[39m[22m
 "Real world example: Was processed right form library." for "Mo 19:00-05:00 || "Sonderführungen nach Vereinbarung."": [1m[32mPASSED[39m[22m
-"Real world example: Was processed right form library." for "Mo 19:00+ || "Sonderführungen nach Vereinbarung."": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-01-07 01:00', '2014-01-07 05:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2014-01-07 05:00', '2014-01-13 00:00', true, 'Sonderführungen nach Vereinbarung.' ],
-expected:
-[ '2014-01-07 01:00', '2014-01-07 05:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2014-01-07 05:00', '2014-01-13 00:00', true, 'Sonderführungen nach Vereinbarung.' ],
+"Real world example: Was processed right form library." for "Mo 19:00+ || "Sonderführungen nach Vereinbarung."": [1m[32mPASSED[39m[22m
 "Real world example: Was not processed right." for "Jun 15-Sep 15: Th-Su 16:00-19:00; Sep 16-Dec 31: Sa,Su 16:00-19:00; Jan,Feb,Mar off; Dec 25,easter off": [1m[32mPASSED[39m[22m
 "Based on real world example: Is processed right." for "Nov-Dec Sa,Su 16:00-19:00; Dec 22 off": [1m[32mPASSED[39m[22m
 "Based on real world example: Is processed right." for "May-Sep: 00:00-24:00, Apr-Oct: Sa-Su 08:00-15:00": [1m[32mPASSED[39m[22m
@@ -1851,78 +1461,18 @@ With [1m[34mwarnings[39m[22m:
 "Real world example: Problem with <additional_rule_separator> in holiday parser" for "PH; Aug-Sep 00:00-24:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; Jun-Aug We 11:00-14:00,17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
-expected:
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
+"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; Jun-Aug We 11:00-14:00,17:00+": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*We off; Mo,Tu,Th-Su,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; Sommer We 11:00-14:00,17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
-expected:
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
+"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; Sommer We 11:00-14:00,17:00+": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*We off; Mo,Tu,Th-Su,PH; Sommer <--- ("sommer" wird als "Jun-Aug" interpretiert.)
 	*We off; Mo,Tu,Th-Su,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; sommer We 11:00-14:00,17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
-expected:
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
+"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; sommer We 11:00-14:00,17:00+": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*We off; Mo,Tu,Th-Su,PH; sommer <--- ("sommer" wird als "Jun-Aug" interpretiert.)
 	*We off; Mo,Tu,Th-Su,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Real world example: Problem with <additional_rule_separator> in holiday parser" for "Mo,Tu,Th-Su,PH 00:00-24:00; Jun-Aug We 11:00-14:00,17:00+": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Angegeben als "open end". Schließzeit wurde geraten.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
-expected:
-[ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ],
-[ '2015-05-26 00:00', '2015-05-27 00:00', false, undefined ],
-[ '2015-05-28 00:00', '2015-06-03 00:00', false, undefined ],
-[ '2015-06-03 11:00', '2015-06-03 14:00', false, undefined ],
-[ '2015-06-03 17:00', '2015-06-04 03:00', true, 'Specified as open end. Closing time was guessed.' ],
-[ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ],
-[ '2015-06-05 00:00', '2015-06-10 00:00', false, undefined ],
+"Real world example: Problem with <additional_rule_separator> in holiday parser" for "Mo,Tu,Th-Su,PH 00:00-24:00; Jun-Aug We 11:00-14:00,17:00+": [1m[32mPASSED[39m[22m
 "Real world example: Problem with daylight saving?" for "Mo-Su,PH 15:00-03:00; easter -2 days 15:00-24:00": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo-Su,PH 15:00-03:00; easter -2 days 15:00-24:00 <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
@@ -3159,7 +2709,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "closed; Sa unknown "comment"": [1m[32mPASSED[39m[22m
-891/946 tests passed. 55 did not pass.
+940/950 tests passed. 10 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

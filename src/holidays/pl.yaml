@@ -14,5 +14,6 @@ PH:
   - {'name': 'Wniebowzięcie Najświętszej Maryi Panny', 'fixed_date': [8, 15]}
   - {'name': 'Wszystkich Świętych', 'fixed_date': [11, 1]}
   - {'name': 'Święto Niepodległości', 'fixed_date': [11, 11]}
+  - {'name': 'Wigilia Bożego Narodzenia', 'fixed_date': [12, 24]}
   - {'name': 'pierwszy dzień Bożego Narodzenia', 'fixed_date': [12, 25]}
   - {'name': 'drugi dzień Bożego Narodzenia', 'fixed_date': [12, 26]}

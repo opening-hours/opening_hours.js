@@ -1,5 +1,9 @@
 #!/usr/bin/env python
-# encoding: utf-8
+
+# SPDX-FileCopyrightText: © 2014 Robin Schneider <ypid@riseup.net>
+#
+# SPDX-License-Identifier: LGPL-3.0-only
+
 """Search over OSM opening_hours like values and see if they can be parsed."""
 
 # modules {{{
@@ -30,7 +34,7 @@ class OpeningHoursRegexSearch: # {{{
                 + '?template=key-value&key=%s&value=' % key
         self.taginfo_url = 'https://taginfo.openstreetmap.org/tags/%s=' % key
         self.josm_remote_url = 'http://localhost:8111/import?url=%s' % (
-                self._url_encode(u'https://overpass-api.de/api/xapi_meta?*[%s=' % key)
+                self._url_encode('https://overpass-api.de/api/xapi_meta?*[%s=' % key)
             )
 
     # helper functions for the user of the package {{{
@@ -79,7 +83,7 @@ class OpeningHoursRegexSearch: # {{{
             try:
                 user_reg = re.compile('(?P<pre>.*?)(?P<match>'+user_regex+')(?P<post>.*)',
                         re.IGNORECASE)
-            except re.error, err:
+            except re.error as err:
                 logging.error('Your regular expression did not compile: %s', err)
                 continue
             # }}}
@@ -202,7 +206,7 @@ class OpeningHoursRegexSearch: # {{{
                                 if (josm_load_not_repeat and taginfo_hash['value'] not in do_not_load_values_again) or josm_load_not_repeat != True:
                                     if josm_load_not_repeat:
                                         do_not_load_values_again.append(taginfo_hash['value'])
-                                    josm_remote_url_for_value = '%s%s' % (self.josm_remote_url, self._url_encode('%s%s' % (taginfo_hash['value'], u']')))
+                                    josm_remote_url_for_value = '%s%s' % (self.josm_remote_url, self._url_encode('%s%s' % (taginfo_hash['value'], ']')))
                                     try:
                                         josm_return = urllib.urlopen(josm_remote_url_for_value)
                                         if josm_return.getcode() != 200:
@@ -234,8 +238,8 @@ def main():
     def signal_handler(signal, frame):
         """Called on SIGINT to exit gracefully."""
 
-        print ''
-        logging.info(u'Bye')
+        print ('')
+        logging.info('Bye')
         sys.exit(0)
     signal.signal(signal.SIGINT, signal_handler)
     # }}}
@@ -297,7 +301,7 @@ def main():
     if len(sys.argv) > 1:
         json_file = sys.argv[1]
     taginfo_tag_export = regex_search.load_json_file(json_file)
-    logging.info(u'Loaded %s.' % json_file)
+    logging.info('Loaded %s.' % json_file)
     # }}}
 
     key = ''

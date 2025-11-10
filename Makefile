@@ -131,11 +131,11 @@ ready-for-hosting: dependencies-get build/opening_hours+deps.min.js
 
 ## command line programs {{{
 .PHONY: run-regex_search
-run-regex_search: export.$(SEARCH).json interactive_testing.js regex_search.py
-	$(NODEJS) regex_search.py "$<"
+run-regex_search: export.$(SEARCH).json ./scripts/interactive_testing.js scripts/regex_search.py
+	python3 ./scripts/regex_search.py "$<"
 
 .PHONY: run-interactive_testing
-run-interactive_testing: interactive_testing.js opening_hours.js
+run-interactive_testing: ./scripts/interactive_testing.js ./build/opening_hours.js
 	$(NODEJS) "$<" --locale "$(CHECK_LANG)"
 ## }}}
 
@@ -207,7 +207,7 @@ benchmark-%.js: build/%.js scripts/benchmark.mjs
 
 .PHONY: check-package.json
 check-package.json: package.json
-	./node_modules/package-json-validator/lib/bin/pjv.mjs --warnings --recommendations --filename "$<"
+	./node_modules/package-json-validator/lib/bin/pjv.js --warnings --recommendations --filename "$<"
 
 .PHONY: check-holidays
 check-holidays: scripts/PH_SH_exporter.js
@@ -484,11 +484,11 @@ osm-tag-data-gen-stats-sort:
 ## }}}
 
 build/opening_hours.js: build/opening_hours.min.js
-build/opening_hours.min.js:
+build/opening_hours.min.js: src/index.js
 	DEPS=NO node_modules/.bin/rollup -c
 
 build/opening_hours+deps.js: build/opening_hours+deps.min.js
-build/opening_hours+deps.min.js:
+build/opening_hours+deps.min.js: src/index.js
 	DEPS=YES node_modules/.bin/rollup -c
 
 README.html:

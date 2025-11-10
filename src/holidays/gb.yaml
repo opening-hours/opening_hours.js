@@ -22,3 +22,28 @@
     - {'name': 'Summer bank holiday', 'variable_date': lastAugustMonday}
     - {'name': 'Christmas', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+'Northern Ireland':  # https://www.gov.uk/bank-holidays#northern-ireland
+  _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=54.5950675&lon=-5.9298401&zoom=18&addressdetails=1&accept-language=en
+  PH:
+    - {'name': 'New Year’s Day', 'fixed_date': [1, 1]}
+    - {'name': 'St Patrick’s Day', 'variable_date': 'nextMo-Fr17March'}
+    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+    - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
+    - {'name': 'Early May bank holiday', 'variable_date': firstMayMonday}
+    - {'name': 'Spring bank holiday', 'variable_date': lastMayMonday}
+    - {'name': 'Battle of the Boyne', 'variable_date': 'nextMo-Fr12July'}
+    - {'name': 'Summer bank holiday', 'variable_date': lastAugustMonday}
+    - {'name': 'Christmas', 'fixed_date': [12, 25]}
+    - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+'Scotland':  # https://www.gov.uk/bank-holidays#scotland
+  _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=55.9557307&lon=-3.1976026&zoom=18&addressdetails=1&accept-language=en
+  PH:
+    - {'name': 'New Year’s Day', 'fixed_date': [1, 1]}
+    - {'name': '2nd January', 'fixed_date': [1, 2]}
+    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+    - {'name': 'Early May bank holiday', 'variable_date': firstMayMonday}
+    - {'name': 'Spring bank holiday', 'variable_date': lastMayMonday}
+    - {'name': 'Summer bank holiday', 'variable_date': lastAugustMonday}
+    - {'name': 'St. Andrew’s Day', 'variable_date': 'nextMo-Fr30November'}
+    - {'name': 'Christmas', 'fixed_date': [12, 25]}
+    - {'name': 'Boxing Day', 'fixed_date': [12, 26]}

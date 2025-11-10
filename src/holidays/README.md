@@ -151,23 +151,23 @@ Meaning of the integers:
 Multiple time ranges can be defined.
 
 ```YAML
-# Everything below is generated and kept up-to-date by hc.
-SH:
-  - name: Osterferien
-    '2017': [4, 10, 4, 21]
-    '2018': [3, 26, 4, 6]
-  - name: Pfingstferien
-    '2017': [6, 6, 6, 16]
-    '2018': [5, 22, 6, 2]
-  - name: Sommerferien
-    '2017': [7, 27, 9, 9]
-    '2018': [7, 26, 9, 8]
-  - name: Herbstferien
-    '2017': [10, 30, 11, 3]
-    '2018': [10, 29, 11, 2]
-  - name: Weihnachtsferien
-    '2017': [12, 22, 1, 5]
-    '2018': [12, 24, 1, 5]
+# Everything below is generated and kept up-to-date by hc or scripts/update_german_sh.mjs.
+  SH:
+    - name: 'Osterferien'
+      2024: [3, 23, 4, 6]
+      2025: [4, 14, 4, 27]
+    - name: 'Pfingstferien'
+      2024: [5, 21, 6, 1]
+      2025: [6, 10, 6, 21]
+    - name: 'Sommerferien'
+      2024: [7, 25, 9, 8]
+      2025: [7, 31, 9, 14]
+    - name: 'Herbstferien'
+      2024: [10, 31, 11, 1]
+      2025: [10, 31, 11, 1]
+    - name: 'Weihnachtsferien'
+      2024: [12, 23, 1, 5]
+      2025: [12, 22, 1, 6]
 ```
 
 Note that the 4-digit keys define the year are in fact strings. This is done for compatibility reasons.
@@ -183,8 +183,8 @@ Two years in the past should be more then enough for the typical use cases of th
 * Please also add the source for this information (in form of an URL) as comment. Like shown in the examples above. Usually Wikipedia in the local language is a great source.
 * You can use `make check-holidays` to check all regions of all countries.
 
-[ohlib.holidays]: https://github.com/opening-hours/opening_hours.js/tree/master/holidays
-[ohlib.holidays.de.yaml]: https://github.com/opening-hours/opening_hours.js/blob/master/holidays/de.yaml
+[ohlib.holidays]: https://github.com/opening-hours/opening_hours.js/tree/main/holidays
+[ohlib.holidays.de.yaml]: https://github.com/opening-hours/opening_hours.js/blob/main/holidays/de.yaml
 [hc]: https://gitlab.com/ypid/hc
 [YAML]: https://en.wikipedia.org/wiki/YAML
 [Nominatim search]: https://wiki.openstreetmap.org/wiki/Nominatim#Search

@@ -20,29 +20,30 @@
  * }}} */
 
 /* Required modules {{{ */
-var fs = require('node:fs');
+const fs = require('node:fs');
 /* }}} */
 
 /* Parameter handling {{{ */
-var optimist = require('optimist')
+const yargs = require('yargs')
     .usage('Usage: $0 -')
     .describe('h', 'Display the usage')
     .describe('k', 'File containing the list of supported keys')
-    .demand('k')
+    .demandOption('k')
     .describe('i', 'Template taginfo.json which is used to merge with the list of keys')
     .alias('h', 'help')
     .alias('k', 'key-file')
-    .alias('i', 'template-file');
+    .alias('i', 'template-file')
+    .help(false);
 
-var argv = optimist.argv;
+const argv = yargs.parse();
 
 if (argv.help) {
-    optimist.showHelp();
+    yargs.showHelp();
     process.exit(0);
 }
 /* }}} */
 
-keys = [];
+const keys = [];
 fs.readFileSync(argv['key-file'], 'utf8').split('\n').forEach(function (osm_tag_key) {
     if (osm_tag_key.match(new RegExp('^[^#]'))) {
         keys.push(osm_tag_key)
@@ -50,15 +51,15 @@ fs.readFileSync(argv['key-file'], 'utf8').split('\n').forEach(function (osm_tag_
 });
 
 if (typeof argv['template-file'] === 'string') {
-    var template_file = JSON.parse(fs.readFileSync(argv['template-file'], 'utf8'));
-    var key_description;
+    const template_file = JSON.parse(fs.readFileSync(argv['template-file'], 'utf8'));
+    let key_description;
     if (typeof template_file.tags === 'object' && typeof template_file.tags[0] === 'string') {
         key_description = template_file.tags[0];
         template_file.tags = [];
     }
-    for (var i = 0; i < keys.length; i++) {
-        var key = keys[i];
-        var key_entry = {
+    for (let i = 0; i < keys.length; i++) {
+        const key = keys[i];
+        const key_entry = {
             'key': key,
         };
         if (typeof key_description === 'string') {

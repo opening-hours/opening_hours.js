@@ -6,7 +6,9 @@ osm_id: 3815077900
 lat: '0'
 lon: '0'
 display_name: Soul Buoy
-address: {}
+address: {
+  country_code: xa
+}
   # man_made: Soul Buoy
 boundingbox:
   - '-5.0E-5'

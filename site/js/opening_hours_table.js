@@ -1,7 +1,7 @@
 /* global i18next */
 
 // eslint-disable-next-line no-unused-vars
-var OpeningHoursTable = {
+const OpeningHoursTable = {
 
     // JS functions for generating the table {{{
     // In English. Localization is done somewhere else (above).
