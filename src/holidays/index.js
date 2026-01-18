@@ -35,3 +35,4 @@ export { default as ua } from './ua.yaml';
 export { default as us } from './us.yaml';
 export { default as vn } from './vn.yaml';
 export { default as xa } from './xa.yaml';
+export { default as za } from './za.yaml';

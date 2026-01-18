@@ -600,6 +600,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
     - [Russian][ph-ru]
     - Slovakia
     - [Slovenia][ph-si]
+    - [South Africa][ph-za]
     - Spain
     - [Sweden][ph-se]
     - [Switzerland][ph-ch]
@@ -622,6 +623,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
     - Hungary (good until 2024&ndash;2025)
     - Luxembourg (good until 2025&ndash;2026)
     - Romania (good until 2021)
+    - South Africa (2025&ndash;2027)
 
 - There can be two cases which need to be separated (this applies for PH and SH):
 
@@ -905,5 +907,6 @@ Edit: This does also work on npmjs in this short version … -->
 [ph-ua]: https://uk.wikipedia.org/wiki/%D0%A1%D0%B2%D1%8F%D1%82%D0%B0_%D1%82%D0%B0_%D0%BF%D0%B0%D0%BC%27%D1%8F%D1%82%D0%BD%D1%96_%D0%B4%D0%BD%D1%96_%D0%B2_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%96
 [ph-us]: https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
 [ph-vn]: https://vi.wikipedia.org/wiki/C%C3%A1c_ng%C3%A0y_l%E1%BB%85_%E1%BB%9F_Vi%E1%BB%87t_Nam
+[ph-za]: https://www.gov.za/about-sa/public-holidays
 
 <!-- }}} -->
