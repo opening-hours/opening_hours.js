@@ -19,6 +19,7 @@ export { default as hr } from './hr.yaml';
 export { default as hu } from './hu.yaml';
 export { default as ie } from './ie.yaml';
 export { default as it } from './it.yaml';
+export { default as je } from './je.yaml';
 export { default as jp } from './jp.yaml';
 export { default as lu } from './lu.yaml';
 export { default as na } from './na.yaml';
