@@ -15,7 +15,7 @@ address:
   # neighbourhood: Stubenviertel
   # pedestrian: Stephansplatz
   # postcode: 1010
-  # state: Wien
+  state: Wien
   # suburb: KG Innere Stadt
 boundingbox:
   - '48.2082379'

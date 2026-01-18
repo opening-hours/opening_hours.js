@@ -29,12 +29,13 @@ We use a branching model inspired by Gitflow:
 When the `develop` branch is deemed ready for a new release:
 
 1.  A maintainer prepares the release in a `release/` branch based on `develop`.
-2.  The maintainer runs `make release-prepare` locally.
-2.  The maintainer decides if a release candidate should be released, if rc `npx commit-and-tag-version --prerelease=rc` should be run locally, if not `make release-local` should be run. In case a maintainer does not have a separate OpenSSH/OpenPGP key for releases, they can use their regular signing key. The maintainer pushes the signed git tag to their repo fork.
-2.  This pull request will be reviewed and then merged into `develop`
-3.  The maintainer creates a new pull request from `develop` to `main`.
-5.  ypid who is currently the only one who can release to npmjs.com gets assigned the pull requests, pulls the signed git tag and runs `make release-publish` on their machine and finally merges the pull request.
-4.  ypid creates a release on GitHub and marks it as latest.
+2.  The maintainer updates school holiday data: `node scripts/fetch-school-holidays.mjs` and commits any changes.
+3.  The maintainer runs `make release-prepare` locally.
+4.  The maintainer decides if a release candidate should be released, if rc `npx commit-and-tag-version --prerelease=rc` should be run locally, if not `make release-local` should be run. In case a maintainer does not have a separate OpenSSH/OpenPGP key for releases, they can use their regular signing key. The maintainer pushes the signed git tag to their repo fork.
+5.  This pull request will be reviewed and then merged into `develop`
+6.  The maintainer creates a new pull request from `develop` to `main`.
+7.  ypid who is currently the only one who can release to npmjs.com gets assigned the pull requests, pulls the signed git tag and runs `make release-publish` on their machine and finally merges the pull request.
+8.  ypid creates a release on GitHub and marks it as latest.
 
 ## Translation Contributions
 

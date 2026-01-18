@@ -489,32 +489,14 @@ With [1m[34mwarnings[39m[22m:
 With [1m[34mwarnings[39m[22m:
 	*one day before public holiday <--- (Bitte verwende "PH -1 day" anstelle von "one day before public holiday".)
 	*one day before public holiday Mo-We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Variable days: public holidays" for "SH PH -1 day Mo-We": [1m[31mFAILED[39m[22m, bad duration(s): 864000000,0, expected 259200000,0, bad intervals: 
-[ '2014-10-27 00:00', '2014-10-30 00:00', false, 'Herbstferien' ],
-[ '2014-12-22 00:00', '2014-12-24 00:00', false, 'Weihnachtsferien' ],
-[ '2014-12-24 00:00', '2014-12-25 00:00', false, 'Day before 1. Weihnachtstag' ],
-[ '2014-12-29 00:00', '2014-12-31 00:00', false, 'Weihnachtsferien' ],
-[ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahrstag' ],
-[ '2015-01-05 00:00', '2015-01-06 00:00', false, 'Day before Heilige Drei Könige' ],
-expected:
-[ '2014-12-24 00:00', '2014-12-25 00:00', false, 'Day before 1. Weihnachtstag' ],
-[ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahrstag' ],
-[ '2015-01-05 00:00', '2015-01-06 00:00', false, 'Day before Heilige Drei Könige' ],
-With [1m[34mwarnings[39m[22m:
-	*SH PH -1 day  <--- (Du hast 2 nicht verbundene Feiertagen in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
-	*SH PH -1 day Mo-We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Variable days: public holidays" for "PH -1 day SH Mo-We": [1m[31mFAILED[39m[22m, bad duration(s): 864000000,0, expected 259200000,0, bad intervals: 
-[ '2014-10-27 00:00', '2014-10-30 00:00', false, 'Herbstferien' ],
-[ '2014-12-22 00:00', '2014-12-25 00:00', false, 'Weihnachtsferien' ],
-[ '2014-12-29 00:00', '2015-01-01 00:00', false, 'Weihnachtsferien' ],
-[ '2015-01-05 00:00', '2015-01-06 00:00', false, 'Weihnachtsferien' ],
-expected:
-[ '2014-12-24 00:00', '2014-12-25 00:00', false, 'Day before 1. Weihnachtstag' ],
-[ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahrstag' ],
-[ '2015-01-05 00:00', '2015-01-06 00:00', false, 'Day before Heilige Drei Könige' ],
+"Variable days: public holidays" for "PH -1 day SH Mo-We": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH -1 day SH  <--- (Du hast 2 nicht verbundene Feiertagen in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
 	*PH -1 day SH Mo-We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
+"Variable days: public holidays (SH first keeps intervals separate)" for "SH PH -1 day Mo-We": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*SH PH -1 day  <--- (Du hast 2 nicht verbundene Feiertagen in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
+	*SH PH -1 day Mo-We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Variable days: public holidays" for "PH -1 day": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH -1 day <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -536,17 +518,17 @@ With [1m[34mwarnings[39m[22m:
 "SH: Only if SH is Wednesday" for "SHWe": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*SHWe <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"SH: Only if SH is Wednesday" for "2014 SH We": [1m[32mPASSED[39m[22m
+"SH: Only if SH is Wednesday" for "2024 SH We": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*2014  <--- (Das Jahr liegt in der Vergangenheit.)
-	*2014 SH We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
+	*2024  <--- (Das Jahr liegt in der Vergangenheit.)
+	*2024 SH We <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Variable days: school holidays" for "SH,PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*SH,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Variable days: school holidays" for "2014 SH,PH": [1m[32mPASSED[39m[22m
+"Variable days: school holidays" for "2024 SH,PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
-	*2014  <--- (Das Jahr liegt in der Vergangenheit.)
-	*2014 SH,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
+	*2024  <--- (Das Jahr liegt in der Vergangenheit.)
+	*2024 SH,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Variable days: school holidays" for "Jan-Feb SH,PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Jan-Feb SH,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -559,27 +541,6 @@ With [1m[34mwarnings[39m[22m:
 "Variable days: school holidays" for "SH,PH,Su": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*SH,PH,Su <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Variable days: school holidays" for "PH,Su,SH": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-01-01 00:00', '2014-01-05 00:00', false, 'Weihnachtsferien' ],
-[ '2014-01-05 00:00', '2014-01-06 00:00', false, undefined ],
-[ '2014-01-06 00:00', '2014-01-07 00:00', false, 'Heilige Drei Könige' ],
-[ '2014-01-12 00:00', '2014-01-13 00:00', false, undefined ],
-[ '2014-01-19 00:00', '2014-01-20 00:00', false, undefined ],
-[ '2014-01-26 00:00', '2014-01-27 00:00', false, undefined ],
-[ '2014-02-02 00:00', '2014-02-03 00:00', false, undefined ],
-[ '2014-02-09 00:00', '2014-02-10 00:00', false, undefined ],
-expected:
-[ '2014-01-01 00:00', '2014-01-02 00:00', false, 'Neujahrstag' ],
-[ '2014-01-02 00:00', '2014-01-05 00:00', false, 'Weihnachtsferien' ],
-[ '2014-01-05 00:00', '2014-01-06 00:00', false, undefined ],
-[ '2014-01-06 00:00', '2014-01-07 00:00', false, 'Heilige Drei Könige' ],
-[ '2014-01-12 00:00', '2014-01-13 00:00', false, undefined ],
-[ '2014-01-19 00:00', '2014-01-20 00:00', false, undefined ],
-[ '2014-01-26 00:00', '2014-01-27 00:00', false, undefined ],
-[ '2014-02-02 00:00', '2014-02-03 00:00', false, undefined ],
-[ '2014-02-09 00:00', '2014-02-10 00:00', false, undefined ],
-With [1m[34mwarnings[39m[22m:
-	*PH,Su,SH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Variable days: school holidays" for "SH,Sonntag und an Feiertagen": [1m[32mPASSED[39m[22m, [1m[33mexcept[39m[22m prettifyValue
 With [1m[34mwarnings[39m[22m:
 	*SH,Sonntag <--- (Bitte benutze die englische Abkürzung "Su" für "sonntag".)
@@ -625,6 +586,9 @@ With [1m[34mwarnings[39m[22m:
 	*SH und <--- (Bitte verwende "," anstelle von "und".)
 	*SH und an Sonn- und Feiertagen <--- (Bitte verwende "PH,Su" anstelle von "an sonn- und feiertagen".)
 	*SH und an Sonn- und Feiertagen <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
+"Variable days: school holidays (PH first merges Neujahr into Weihnachtsferien)" for "PH,Su,SH": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*PH,Su,SH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Variable days: Everyday including public holidays" for "Mo-Su,PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo-Su,PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -637,8 +601,9 @@ With [1m[34mwarnings[39m[22m:
 "Variable days: Italian public holidays" for "PH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-Bei der Auswertung des Wertes "SH" ist ein Fehler aufgetreten. Du kannst dies korrigieren, indem du das Problem löst und in Form eines Pull Requests oder Patches zum Projekt beiträgst: https://github.com/opening-hours/opening_hours.js. Die Schulferien sind für das Jahr 2018 nicht definiert
-"SH for Romania" for "SH": [1m[35mCRASHED[39m[22m, reason: Bei der Auswertung des Wertes "SH" ist ein Fehler aufgetreten. Du kannst dies korrigieren, indem du das Problem löst und in Form eines Pull Requests oder Patches zum Projekt beiträgst: https://github.com/opening-hours/opening_hours.js. Die Schulferien sind für das Jahr 2018 nicht definiert
+"SH for Romania" for "SH": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*SH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "SH for Austria" for "SH": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*SH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -1517,196 +1482,8 @@ With [1m[34mwarnings[39m[22m:
 	*Monday-Wednesday 07:00; Thursday,Friday 05:45; Monday[1] 07:30; school holidays Monday-Friday <--- (Bitte benutze die englische Abkürzung "Fr" für "friday".)
 	*Monday-Wednesday 07:00; Thursday,Friday 05:45; Monday[1] 07:30; school holidays Monday-Friday (sunrise+03:00); public holidays <--- (Bitte verwende "PH" anstelle von "public holidays".)
 "Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th,Fr 05:45; Mo[1] 07:30; SH Mo-Fr (sunrise+03:00); PH off": [1m[32mPASSED[39m[22m
-"Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-08-25 09:27', '2014-08-25 09:28', false, 'Sommerferien' ],
-[ '2014-08-26 09:28', '2014-08-26 09:29', false, 'Sommerferien' ],
-[ '2014-08-27 09:30', '2014-08-27 09:31', false, 'Sommerferien' ],
-[ '2014-08-28 09:31', '2014-08-28 09:32', false, 'Sommerferien' ],
-[ '2014-08-29 09:33', '2014-08-29 09:34', false, 'Sommerferien' ],
-[ '2014-09-01 09:37', '2014-09-01 09:38', false, 'Sommerferien' ],
-[ '2014-09-02 09:39', '2014-09-02 09:40', false, 'Sommerferien' ],
-[ '2014-09-03 09:40', '2014-09-03 09:41', false, 'Sommerferien' ],
-[ '2014-09-04 09:41', '2014-09-04 09:42', false, 'Sommerferien' ],
-[ '2014-09-05 09:43', '2014-09-05 09:44', false, 'Sommerferien' ],
-[ '2014-09-08 09:47', '2014-09-08 09:48', false, 'Sommerferien' ],
-[ '2014-09-09 09:49', '2014-09-09 09:50', false, 'Sommerferien' ],
-[ '2014-09-10 09:50', '2014-09-10 09:51', false, 'Sommerferien' ],
-[ '2014-09-11 09:52', '2014-09-11 09:53', false, 'Sommerferien' ],
-[ '2014-09-12 09:53', '2014-09-12 09:54', false, 'Sommerferien' ],
-[ '2014-09-15 07:00', '2014-09-15 07:01', false, undefined ],
-[ '2014-09-16 07:00', '2014-09-16 07:01', false, undefined ],
-[ '2014-09-17 07:00', '2014-09-17 07:01', false, undefined ],
-[ '2014-09-18 05:45', '2014-09-18 05:46', false, undefined ],
-[ '2014-09-19 05:45', '2014-09-19 05:46', false, undefined ],
-[ '2014-09-22 07:00', '2014-09-22 07:01', false, undefined ],
-[ '2014-09-23 07:00', '2014-09-23 07:01', false, undefined ],
-[ '2014-09-24 07:00', '2014-09-24 07:01', false, undefined ],
-[ '2014-09-25 05:45', '2014-09-25 05:46', false, undefined ],
-[ '2014-09-26 07:05', '2014-09-26 07:06', false, undefined ],
-[ '2014-09-29 07:00', '2014-09-29 07:01', false, undefined ],
-[ '2014-09-30 07:00', '2014-09-30 07:01', false, undefined ],
-[ '2014-10-01 07:00', '2014-10-01 07:01', false, undefined ],
-[ '2014-10-02 05:45', '2014-10-02 05:46', false, undefined ],
-[ '2014-10-06 07:00', '2014-10-06 07:01', false, undefined ],
-[ '2014-10-07 07:00', '2014-10-07 07:01', false, undefined ],
-[ '2014-10-08 07:00', '2014-10-08 07:01', false, undefined ],
-[ '2014-10-09 05:45', '2014-10-09 05:46', false, undefined ],
-[ '2014-10-10 07:05', '2014-10-10 07:06', false, undefined ],
-[ '2014-10-13 07:00', '2014-10-13 07:01', false, undefined ],
-[ '2014-10-14 07:00', '2014-10-14 07:01', false, undefined ],
-[ '2014-10-15 07:00', '2014-10-15 07:01', false, undefined ],
-[ '2014-10-16 05:45', '2014-10-16 05:46', false, undefined ],
-[ '2014-10-17 05:45', '2014-10-17 05:46', false, undefined ],
-[ '2014-10-20 07:00', '2014-10-20 07:01', false, undefined ],
-[ '2014-10-21 07:00', '2014-10-21 07:01', false, undefined ],
-[ '2014-10-22 07:00', '2014-10-22 07:01', false, undefined ],
-[ '2014-10-23 05:45', '2014-10-23 05:46', false, undefined ],
-[ '2014-10-24 07:05', '2014-10-24 07:06', false, undefined ],
-[ '2014-10-27 10:01', '2014-10-27 10:02', false, 'Herbstferien' ],
-[ '2014-10-28 10:03', '2014-10-28 10:04', false, 'Herbstferien' ],
-[ '2014-10-29 10:05', '2014-10-29 10:06', false, 'Herbstferien' ],
-[ '2014-10-30 10:06', '2014-10-30 10:07', false, 'Herbstferien' ],
-[ '2014-10-31 05:45', '2014-10-31 05:46', false, undefined ],
-expected:
-[ '2014-08-25 09:27', '2014-08-25 09:28', false, 'Sommerferien' ],
-[ '2014-08-26 09:28', '2014-08-26 09:29', false, 'Sommerferien' ],
-[ '2014-08-27 09:30', '2014-08-27 09:31', false, 'Sommerferien' ],
-[ '2014-08-28 09:31', '2014-08-28 09:32', false, 'Sommerferien' ],
-[ '2014-08-29 09:33', '2014-08-29 09:34', false, 'Sommerferien' ],
-[ '2014-09-01 09:37', '2014-09-01 09:38', false, 'Sommerferien' ],
-[ '2014-09-02 09:39', '2014-09-02 09:40', false, 'Sommerferien' ],
-[ '2014-09-03 09:40', '2014-09-03 09:41', false, 'Sommerferien' ],
-[ '2014-09-04 09:42', '2014-09-04 09:43', false, 'Sommerferien' ],
-[ '2014-09-05 09:43', '2014-09-05 09:44', false, 'Sommerferien' ],
-[ '2014-09-08 09:47', '2014-09-08 09:48', false, 'Sommerferien' ],
-[ '2014-09-09 09:49', '2014-09-09 09:50', false, 'Sommerferien' ],
-[ '2014-09-10 09:50', '2014-09-10 09:51', false, 'Sommerferien' ],
-[ '2014-09-11 09:52', '2014-09-11 09:53', false, 'Sommerferien' ],
-[ '2014-09-12 09:53', '2014-09-12 09:54', false, 'Sommerferien' ],
-[ '2014-09-15 07:00', '2014-09-15 07:01', false, undefined ],
-[ '2014-09-16 07:00', '2014-09-16 07:01', false, undefined ],
-[ '2014-09-17 07:00', '2014-09-17 07:01', false, undefined ],
-[ '2014-09-18 05:45', '2014-09-18 05:46', false, undefined ],
-[ '2014-09-19 05:45', '2014-09-19 05:46', false, undefined ],
-[ '2014-09-22 07:00', '2014-09-22 07:01', false, undefined ],
-[ '2014-09-23 07:00', '2014-09-23 07:01', false, undefined ],
-[ '2014-09-24 07:00', '2014-09-24 07:01', false, undefined ],
-[ '2014-09-25 05:45', '2014-09-25 05:46', false, undefined ],
-[ '2014-09-26 07:05', '2014-09-26 07:06', false, undefined ],
-[ '2014-09-29 07:00', '2014-09-29 07:01', false, undefined ],
-[ '2014-09-30 07:00', '2014-09-30 07:01', false, undefined ],
-[ '2014-10-01 07:00', '2014-10-01 07:01', false, undefined ],
-[ '2014-10-02 05:45', '2014-10-02 05:46', false, undefined ],
-[ '2014-10-06 07:00', '2014-10-06 07:01', false, undefined ],
-[ '2014-10-07 07:00', '2014-10-07 07:01', false, undefined ],
-[ '2014-10-08 07:00', '2014-10-08 07:01', false, undefined ],
-[ '2014-10-09 05:45', '2014-10-09 05:46', false, undefined ],
-[ '2014-10-10 07:05', '2014-10-10 07:06', false, undefined ],
-[ '2014-10-13 07:00', '2014-10-13 07:01', false, undefined ],
-[ '2014-10-14 07:00', '2014-10-14 07:01', false, undefined ],
-[ '2014-10-15 07:00', '2014-10-15 07:01', false, undefined ],
-[ '2014-10-16 05:45', '2014-10-16 05:46', false, undefined ],
-[ '2014-10-17 05:45', '2014-10-17 05:46', false, undefined ],
-[ '2014-10-20 07:00', '2014-10-20 07:01', false, undefined ],
-[ '2014-10-21 07:00', '2014-10-21 07:01', false, undefined ],
-[ '2014-10-22 07:00', '2014-10-22 07:01', false, undefined ],
-[ '2014-10-23 05:45', '2014-10-23 05:46', false, undefined ],
-[ '2014-10-24 07:05', '2014-10-24 07:06', false, undefined ],
-[ '2014-10-27 10:02', '2014-10-27 10:03', false, 'Herbstferien' ],
-[ '2014-10-28 10:03', '2014-10-28 10:04', false, 'Herbstferien' ],
-[ '2014-10-29 10:05', '2014-10-29 10:06', false, 'Herbstferien' ],
-[ '2014-10-30 10:06', '2014-10-30 10:07', false, 'Herbstferien' ],
-[ '2014-10-31 05:45', '2014-10-31 05:46', false, undefined ],
-"Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off; easter -2 days-easter +2 days off "My little break from work every year."; 2014 Sep 01-2014 Sep 07 off "My vacations …"": [1m[31mFAILED[39m[22m, bad intervals: 
-[ '2014-08-25 09:27', '2014-08-25 09:28', false, 'Sommerferien' ],
-[ '2014-08-26 09:28', '2014-08-26 09:29', false, 'Sommerferien' ],
-[ '2014-08-27 09:30', '2014-08-27 09:31', false, 'Sommerferien' ],
-[ '2014-08-28 09:31', '2014-08-28 09:32', false, 'Sommerferien' ],
-[ '2014-08-29 09:33', '2014-08-29 09:34', false, 'Sommerferien' ],
-[ '2014-09-08 09:47', '2014-09-08 09:48', false, 'Sommerferien' ],
-[ '2014-09-09 09:49', '2014-09-09 09:50', false, 'Sommerferien' ],
-[ '2014-09-10 09:50', '2014-09-10 09:51', false, 'Sommerferien' ],
-[ '2014-09-11 09:52', '2014-09-11 09:53', false, 'Sommerferien' ],
-[ '2014-09-12 09:53', '2014-09-12 09:54', false, 'Sommerferien' ],
-[ '2014-09-15 07:00', '2014-09-15 07:01', false, undefined ],
-[ '2014-09-16 07:00', '2014-09-16 07:01', false, undefined ],
-[ '2014-09-17 07:00', '2014-09-17 07:01', false, undefined ],
-[ '2014-09-18 05:45', '2014-09-18 05:46', false, undefined ],
-[ '2014-09-19 05:45', '2014-09-19 05:46', false, undefined ],
-[ '2014-09-22 07:00', '2014-09-22 07:01', false, undefined ],
-[ '2014-09-23 07:00', '2014-09-23 07:01', false, undefined ],
-[ '2014-09-24 07:00', '2014-09-24 07:01', false, undefined ],
-[ '2014-09-25 05:45', '2014-09-25 05:46', false, undefined ],
-[ '2014-09-26 07:05', '2014-09-26 07:06', false, undefined ],
-[ '2014-09-29 07:00', '2014-09-29 07:01', false, undefined ],
-[ '2014-09-30 07:00', '2014-09-30 07:01', false, undefined ],
-[ '2014-10-01 07:00', '2014-10-01 07:01', false, undefined ],
-[ '2014-10-02 05:45', '2014-10-02 05:46', false, undefined ],
-[ '2014-10-06 07:00', '2014-10-06 07:01', false, undefined ],
-[ '2014-10-07 07:00', '2014-10-07 07:01', false, undefined ],
-[ '2014-10-08 07:00', '2014-10-08 07:01', false, undefined ],
-[ '2014-10-09 05:45', '2014-10-09 05:46', false, undefined ],
-[ '2014-10-10 07:05', '2014-10-10 07:06', false, undefined ],
-[ '2014-10-13 07:00', '2014-10-13 07:01', false, undefined ],
-[ '2014-10-14 07:00', '2014-10-14 07:01', false, undefined ],
-[ '2014-10-15 07:00', '2014-10-15 07:01', false, undefined ],
-[ '2014-10-16 05:45', '2014-10-16 05:46', false, undefined ],
-[ '2014-10-17 05:45', '2014-10-17 05:46', false, undefined ],
-[ '2014-10-20 07:00', '2014-10-20 07:01', false, undefined ],
-[ '2014-10-21 07:00', '2014-10-21 07:01', false, undefined ],
-[ '2014-10-22 07:00', '2014-10-22 07:01', false, undefined ],
-[ '2014-10-23 05:45', '2014-10-23 05:46', false, undefined ],
-[ '2014-10-24 07:05', '2014-10-24 07:06', false, undefined ],
-[ '2014-10-27 10:01', '2014-10-27 10:02', false, 'Herbstferien' ],
-[ '2014-10-28 10:03', '2014-10-28 10:04', false, 'Herbstferien' ],
-[ '2014-10-29 10:05', '2014-10-29 10:06', false, 'Herbstferien' ],
-[ '2014-10-30 10:06', '2014-10-30 10:07', false, 'Herbstferien' ],
-[ '2014-10-31 05:45', '2014-10-31 05:46', false, undefined ],
-expected:
-[ '2014-08-25 09:27', '2014-08-25 09:28', false, 'Sommerferien' ],
-[ '2014-08-26 09:28', '2014-08-26 09:29', false, 'Sommerferien' ],
-[ '2014-08-27 09:30', '2014-08-27 09:31', false, 'Sommerferien' ],
-[ '2014-08-28 09:31', '2014-08-28 09:32', false, 'Sommerferien' ],
-[ '2014-08-29 09:33', '2014-08-29 09:34', false, 'Sommerferien' ],
-[ '2014-09-08 09:47', '2014-09-08 09:48', false, 'Sommerferien' ],
-[ '2014-09-09 09:49', '2014-09-09 09:50', false, 'Sommerferien' ],
-[ '2014-09-10 09:50', '2014-09-10 09:51', false, 'Sommerferien' ],
-[ '2014-09-11 09:52', '2014-09-11 09:53', false, 'Sommerferien' ],
-[ '2014-09-12 09:53', '2014-09-12 09:54', false, 'Sommerferien' ],
-[ '2014-09-15 07:00', '2014-09-15 07:01', false, undefined ],
-[ '2014-09-16 07:00', '2014-09-16 07:01', false, undefined ],
-[ '2014-09-17 07:00', '2014-09-17 07:01', false, undefined ],
-[ '2014-09-18 05:45', '2014-09-18 05:46', false, undefined ],
-[ '2014-09-19 05:45', '2014-09-19 05:46', false, undefined ],
-[ '2014-09-22 07:00', '2014-09-22 07:01', false, undefined ],
-[ '2014-09-23 07:00', '2014-09-23 07:01', false, undefined ],
-[ '2014-09-24 07:00', '2014-09-24 07:01', false, undefined ],
-[ '2014-09-25 05:45', '2014-09-25 05:46', false, undefined ],
-[ '2014-09-26 07:05', '2014-09-26 07:06', false, undefined ],
-[ '2014-09-29 07:00', '2014-09-29 07:01', false, undefined ],
-[ '2014-09-30 07:00', '2014-09-30 07:01', false, undefined ],
-[ '2014-10-01 07:00', '2014-10-01 07:01', false, undefined ],
-[ '2014-10-02 05:45', '2014-10-02 05:46', false, undefined ],
-[ '2014-10-06 07:00', '2014-10-06 07:01', false, undefined ],
-[ '2014-10-07 07:00', '2014-10-07 07:01', false, undefined ],
-[ '2014-10-08 07:00', '2014-10-08 07:01', false, undefined ],
-[ '2014-10-09 05:45', '2014-10-09 05:46', false, undefined ],
-[ '2014-10-10 07:05', '2014-10-10 07:06', false, undefined ],
-[ '2014-10-13 07:00', '2014-10-13 07:01', false, undefined ],
-[ '2014-10-14 07:00', '2014-10-14 07:01', false, undefined ],
-[ '2014-10-15 07:00', '2014-10-15 07:01', false, undefined ],
-[ '2014-10-16 05:45', '2014-10-16 05:46', false, undefined ],
-[ '2014-10-17 05:45', '2014-10-17 05:46', false, undefined ],
-[ '2014-10-20 07:00', '2014-10-20 07:01', false, undefined ],
-[ '2014-10-21 07:00', '2014-10-21 07:01', false, undefined ],
-[ '2014-10-22 07:00', '2014-10-22 07:01', false, undefined ],
-[ '2014-10-23 05:45', '2014-10-23 05:46', false, undefined ],
-[ '2014-10-24 07:05', '2014-10-24 07:06', false, undefined ],
-[ '2014-10-27 10:02', '2014-10-27 10:03', false, 'Herbstferien' ],
-[ '2014-10-28 10:03', '2014-10-28 10:04', false, 'Herbstferien' ],
-[ '2014-10-29 10:05', '2014-10-29 10:06', false, 'Herbstferien' ],
-[ '2014-10-30 10:06', '2014-10-30 10:07', false, 'Herbstferien' ],
-[ '2014-10-31 05:45', '2014-10-31 05:46', false, undefined ],
+"Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off": [1m[32mPASSED[39m[22m
+"Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off; easter -2 days-easter +2 days off "My little break from work every year."; 2024 Sep 02-2024 Sep 06 off "My vacations …"": [1m[32mPASSED[39m[22m
 "Points in time, period times" for "Mo-Fr 10:00-16:00/01:30": [1m[32mPASSED[39m[22m
 "Points in time, period times" for "Mo-Fr 10:00-16:00/90": [1m[32mPASSED[39m[22m
 "Points in time, period times" for "Mo-Fr 10:00-16:00/90; Sa off "testing at end for parser"": [1m[32mPASSED[39m[22m
@@ -2016,6 +1793,7 @@ With [1m[34mwarnings[39m[22m:
 "Value not ideal (probably wrong). Should throw a warning." for "2014-2020/1; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*2014-2020/1 <--- (Bitte verwende keine year-Spannen mit Periode "1".)
+	*2014-2020 <--- (Das Jahr liegt in der Vergangenheit.)
 	*2014-2020/1 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Value not ideal (probably wrong). Should throw a warning." for "2014/1; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
@@ -2721,7 +2499,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "closed; Sa unknown "comment"": [1m[32mPASSED[39m[22m
-944/954 tests passed. 10 did not pass.
+950/954 tests passed. 4 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

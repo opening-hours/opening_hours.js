@@ -611,17 +611,13 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
 - Support for school holidays (`SH 10:00-14:00`).
 
-  - Countries with SH definition:
+  School holidays are automatically sourced from the [OpenHolidays API](https://openholidaysapi.org) for 33 countries (from 2020 onwards). Update data by running:
 
-    - Austria (national until 2024, regional until 2021)
-    - Belgium (good until 2026)
-    - Croatia (good until 2022&ndash;2023)
-    - France (good until 2025)
-    - Germany, see [hc] and [scripts/update_german_sh.mjs](scripts/update_german_sh.mjs) (good until 2026)
-    - Greece (good until 2020)
-    - Hungary (good until 2024&ndash;2025)
-    - Luxembourg (good until 2025&ndash;2026)
-    - Romania (good until 2021)
+  ```bash
+  node scripts/fetch-school-holidays.mjs
+  ```
+
+  For details see [src/holidays/README.md](src/holidays/README.md).
 
 - There can be two cases which need to be separated (this applies for PH and SH):
 
@@ -876,7 +872,6 @@ Edit: This does also work on npmjs in this short version … -->
 [ohlib.library-api]: #library-api
 [ohlib.npmjs]: https://www.npmjs.org/package/opening_hours
 [ohlib.github]: https://github.com/opening-hours/opening_hours.js
-[hc]: https://gitlab.com/ypid/hc
 [evaluation tool]: https://openingh.openstreetmap.de/evaluation_tool/
 [ph-ar]: https://en.wikipedia.org/wiki/Public_holidays_in_Argentina
 [ph-at]: https://de.wikipedia.org/wiki/Feiertage_in_%C3%96sterreich
