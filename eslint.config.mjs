@@ -6,7 +6,7 @@ import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
 
 export default defineConfig([
-  globalIgnores(['build/*', 'submodules/*', '**/yohours_model.js']),
+  globalIgnores(['build/*', 'submodules/*', '**/yohours_model.js', 'src/holidays/generated-openholidays.js']),
   {
     files: ['**/*.js', '**/*.mjs'],
     extends: [js.configs.recommended],

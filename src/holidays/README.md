@@ -1,5 +1,18 @@
 # holidays
+## Overview
 
+This library supports both **Public Holidays (PH)** and **School Holidays (SH)** for various countries:
+
+- **Total**: 52 countries with holiday data (PH and/or SH)
+- **School Holidays**: 33 countries (all via [OpenHolidays API](https://openholidaysapi.org))
+- **Public Holidays**: 37 countries (defined in YAML files)
+
+School holiday data is automatically generated from the OpenHolidays API using:
+```bash
+node scripts/fetch-school-holidays.mjs
+```
+
+This generates `src/holidays/generated-openholidays.js` which consolidates all holiday definitions.
 ## Deciding which holidays do apply
 
 Because each country/culture has it‘s own important dates/events, holidays are defined on a country level. The country wide definition can be overwritten as needed by more specific definitions. Because this library works with the OSM ecosystem, those boundaries are based on OSM.
@@ -134,58 +147,69 @@ PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
 
 Order matters, "first come first serve"/"first rule wins" is used to determine the name of a holiday. Evaluation is done in sequence so if two PH definitions evaluate to the same date for a given year, then the first definition is used.
 
-### Holiday definition format: SH
+### School Holidays (SH)
 
-School holiday (`SH`) definitions look a little bit different. This is because school holidays usually spans multiple days and because `SH` are different for each year/can not be mathematically calculated (at least the countries that @ypid has seen so far).
-This is not very nice, but as we are hackers, we can just grab the data and convert it into the data format documented here. This is what @ypid has been doing for all states in Germany using the [hc] tool which was developed for use with this library and which fellows might find useful to convert holidays for other countries as well.
+**Data Sources:**
+- **OpenHolidays API** (33 countries): Automatically fetched, from 2020 onwards
+- **YAML Fallback**: Available as fallback strategy (see `xa.yaml` for example structure)
 
-Now to the data format. It consists of an array of dictionaries. Each dictionary defines one school holiday. The `name` key defines the name of the school holiday, again preferably in local language. 4-digit string keys define the year with a time range definition as value.
-The time range definition is an array consisting of a multiple of 4 integers.
+> **Note:** The `xa.yaml` file is a generic example country demonstrating the YAML format for school holidays.
+> This structure can be used as a fallback if OpenHolidays API is unavailable, or for countries not yet in OpenHolidays.
+> **Please contribute** missing school holiday data to the [OpenHolidays API data repository](https://github.com/openpotato/openholidaysapi.data).
 
-Meaning of the integers:
+**Updating School Holidays:**
 
-1 and 2: Month and day of the first day of the school holiday.
-
-3 and 4: Month and day of the last day of the school holiday.
-
-Multiple time ranges can be defined.
-
-```YAML
-# Everything below is generated and kept up-to-date by hc or scripts/update_german_sh.mjs.
-  SH:
-    - name: 'Osterferien'
-      2024: [3, 23, 4, 6]
-      2025: [4, 14, 4, 27]
-    - name: 'Pfingstferien'
-      2024: [5, 21, 6, 1]
-      2025: [6, 10, 6, 21]
-    - name: 'Sommerferien'
-      2024: [7, 25, 9, 8]
-      2025: [7, 31, 9, 14]
-    - name: 'Herbstferien'
-      2024: [10, 31, 11, 1]
-      2025: [10, 31, 11, 1]
-    - name: 'Weihnachtsferien'
-      2024: [12, 23, 1, 5]
-      2025: [12, 22, 1, 6]
+Run the fetch script to update from OpenHolidays API:
+```bash
+node scripts/fetch-school-holidays.mjs
 ```
 
-Note that the 4-digit keys define the year are in fact strings. This is done for compatibility reasons.
+This script:
+1. Fetches school holiday data from [OpenHolidays API](https://openholidaysapi.org)
+2. Merges with YAML-based public holidays (PH)
+3. Generates `src/holidays/generated-openholidays.js`
+4. Validates that all countries are exported in `index.js`
 
-If some school holidays are the same for all states, you can define them on the country level and they will be merged with the state level definition. Refer to `./at.yaml` for an example.
+**Manual YAML Definition (fallback only):**
 
-Also note that past year definitions can be removed from the definition as long as the SH dataset can be regenerated as a whole by Free Software without depending on none-cached resources and as long as the unit tests pass which might where written against previous holidays.
-Two years in the past should be more then enough for the typical use cases of the library. In the far future, a compile time option might be provided to make this configurable to also make historian’s happy.
+> ⚠️ **Important:** School holidays should preferably be contributed to the [OpenHolidays API data repository](https://github.com/openpotato/openholidaysapi.data) rather than maintained as YAML in this repository. YAML definitions are only recommended as a temporary fallback for countries not yet available in OpenHolidays.
+
+For emergency fallback scenarios, school holidays can be manually defined in YAML files. The format consists of an array of dictionaries, where each dictionary defines one school holiday. The `name` key contains the holiday name (preferably in local language). Year keys (4-digit strings) define time ranges as arrays of 4 integers:
+
+- **Integers 1-2:** Month and day of the first day of the school holiday
+- **Integers 3-4:** Month and day of the last day of the school holiday
+
+Multiple time ranges can be defined per holiday.
+
+**Example YAML structure:**
+
+```YAML
+SH:
+  - name: 'Summer Holidays'
+    '2024': [7, 25, 9, 8]
+    '2025': [7, 31, 9, 14]
+  - name: 'Winter Holidays'
+    '2024': [12, 23, 1, 5]
+    '2025': [12, 22, 1, 6]
+```
+
+Note: Year keys are strings for compatibility reasons. See `xa.yaml` for a complete example.
+
+**Important Notes:**
+- All school holidays are sourced from OpenHolidays API (from 2020 onwards)
+- YAML-based school holidays should only be used as fallback (see `xa.yaml` for example)
+- The generated file should not be edited manually - run `node scripts/fetch-school-holidays.mjs` instead
+- If some school holidays are the same for all states, you can define them on country level
 
 ### Hints
 
+* **To update school holidays from OpenHolidays API**: Run `node scripts/fetch-school-holidays.mjs`
 * Note that you should include the definitions in order (see [#126](https://github.com/opening-hours/opening_hours.js/issues/126#issuecomment-156853794) for details).
 * Please also add the source for this information (in form of an URL) as comment. Like shown in the examples above. Usually Wikipedia in the local language is a great source.
 * You can use `make check-holidays` to check all regions of all countries.
 
 [ohlib.holidays]: https://github.com/opening-hours/opening_hours.js/tree/main/holidays
 [ohlib.holidays.de.yaml]: https://github.com/opening-hours/opening_hours.js/blob/main/holidays/de.yaml
-[hc]: https://gitlab.com/ypid/hc
 [YAML]: https://en.wikipedia.org/wiki/YAML
 [Nominatim search]: https://wiki.openstreetmap.org/wiki/Nominatim#Search
 [Nominatim reverse geocoding]: https://wiki.openstreetmap.org/wiki/Nominatim#Reverse_Geocoding

@@ -1,3 +1,6 @@
 [submodule "submodules/YoHours"]
 	path = submodules/YoHours
 	url = https://framagit.org/PanierAvide/YoHours.git
+[submodule "submodules/openholidaysapi.data"]
+	path = submodules/openholidaysapi.data
+	url = https://github.com/openpotato/openholidaysapi.data.git

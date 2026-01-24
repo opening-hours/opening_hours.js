@@ -3,18 +3,10 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';
 import yaml from '@rollup/plugin-yaml';
 
-function recursivelyDeleteNominatimUrl(data) {
-    if (typeof data === 'object') {
-        Object.values(data).forEach(recursivelyDeleteNominatimUrl);
-    }
-    delete data._nominatim_url;
-    return data;
-}
-
+// YAML plugin only for non-holiday files (e.g., word_error_correction.yaml)
+// Holiday data now comes from generated-openholidays.js
 const yamlPlugin = yaml({
-    transform(data) {
-        return recursivelyDeleteNominatimUrl(data);
-    }
+    include: ['**/*.yaml', '!**/holidays/*.yaml']
 });
 
 const terserConfig = {
