@@ -341,14 +341,40 @@ function convertCSVToInternalFormat(csvData, country, yearRange) {
 }
 
 /**
+ * Get submodule commit info for reproducible builds
+ */
+async function getSubmoduleInfo() {
+  const { execSync } = await import('child_process');
+  const submodulePath = path.join(ROOT_DIR, 'submodules', 'openholidaysapi.data');
+
+  const hash = execSync('git rev-parse --short HEAD', {
+    cwd: submodulePath,
+    encoding: 'utf8'
+  }).trim();
+
+  // Commit timestamp in seconds (for year range calculation)
+  const commitUnixTimestamp = parseInt(
+    execSync('git show --no-patch --format=%ct HEAD', {
+      cwd: submodulePath,
+      encoding: 'utf8'
+    }).trim(),
+    10
+  );
+
+  return { hash, commitUnixTimestamp };
+}
+
+/**
  * Generate JavaScript file with holiday definitions
  */
-async function generateJavaScriptFile(countriesData, yearRange) {
+async function generateJavaScriptFile(countriesData, yearRange, submodule) {
+  const commitDate = new Date(submodule.commitUnixTimestamp * 1000).toISOString().split('T')[0];
+
   const lines = [
     '/**',
     ' * Auto-generated school holidays from OpenHolidays API Data (Git Submodule)',
     ' * DO NOT EDIT MANUALLY - Run: node scripts/fetch-school-holidays.mjs',
-    ` * Generated: ${new Date().toISOString()}`,
+    ` * Submodule: ${submodule.hash} (${commitDate})`,
     ' */',
     ''
   ];
@@ -635,11 +661,14 @@ async function buildSchoolHolidays() {
     }
   }
 
-  // Generate JavaScript file (limit to current year ±15)
-  const currentYear = new Date().getFullYear();
-  const yearRange = [currentYear - 15, currentYear + 15];
+  // Generate JavaScript file (limit to submodule commit year ±15)
+  // Using submodule timestamp ensures reproducible builds
+  // @see https://reproducible-builds.org/docs/timestamps/
+  const submodule = await getSubmoduleInfo();
+  const referenceYear = new Date(submodule.commitUnixTimestamp * 1000).getUTCFullYear();
+  const yearRange = [referenceYear - 15, referenceYear + 15];
   console.log(`📅 Year range: ${yearRange[0]}–${yearRange[1]}`);
-  const jsContent = await generateJavaScriptFile(results, yearRange);
+  const jsContent = await generateJavaScriptFile(results, yearRange, submodule);
   await fs.writeFile(GENERATED_FILE, jsContent, 'utf8');
 
   const jsStats = await fs.stat(GENERATED_FILE);
