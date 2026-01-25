@@ -8,6 +8,76 @@ SPDX-License-Identifier: LGPL-3.0-only
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.11.0](https://github.com/opening-hours/opening_hours.js/compare/v3.10.0...v3.11.0) (2026-01-25)
+
+
+### Features
+
+* add helpful error message for invalid variable time offset syntax ([c817897](https://github.com/opening-hours/opening_hours.js/commit/c8178976b7e5868f3b02e309f3af57af3735ba1c))
+* **evaluation-tool:** improve diff comparison UX and dark mode ([b63ca2d](https://github.com/opening-hours/opening_hours.js/commit/b63ca2d51e7c818dacfcd9c15ff6d602efa7f347))
+* **evaluation-tool:** improve language selection UX ([d2e8dec](https://github.com/opening-hours/opening_hours.js/commit/d2e8dec6a1153253e330663b8daac8dae52f4722))
+* **evaluation-tool:** modernize UI with dark mode and responsive design ([f706813](https://github.com/opening-hours/opening_hours.js/commit/f7068138da13e7a51a63fb710241914b9411b6bb))
+* **evaluation-tool:** redesign status display with timeline and improved table ([5d060a8](https://github.com/opening-hours/opening_hours.js/commit/5d060a8d7831d2122d02c098dc6f5a4bc71ea28f))
+* **holidays:** migrate school holidays to OpenHolidays data ([b9b48f0](https://github.com/opening-hours/opening_hours.js/commit/b9b48f01eddbec261ccdb4d2de9f2319129e965c))
+
+
+### Bug Fixes
+
+* add missing else in formatWarnErrorMessage function ([4c41166](https://github.com/opening-hours/opening_hours.js/commit/4c41166f3e3dbcf80fa95722d5b6ad330f19594e))
+* **evaluation-tool:** fix specification links in value_explanation ([6807459](https://github.com/opening-hours/opening_hours.js/commit/680745923629cfa15a8051d9e045d95141910b86)), closes [#546](https://github.com/opening-hours/opening_hours.js/issues/546)
+* remove redundant console logs from formatWarnErrorMessage function ([78d6395](https://github.com/opening-hours/opening_hours.js/commit/78d63952fc62bd581aaae31a2c0a1204015d5e09))
+* **scripts:** handle empty/invalid JSON files in real_test.js ([bab7f5a](https://github.com/opening-hours/opening_hours.js/commit/bab7f5a093eedff14a1ec5e88fd2a7117916564e))
+* **tooling:** fix taginfo downloads with pagination support ([7b5d777](https://github.com/opening-hours/opening_hours.js/commit/7b5d777d75be33d5d5f14b186602428e70bbfe05))
+
+
+### Data Updates
+
+* **fr:** add 2026-2027 school holidays and fix 2024 dates ([383525e](https://github.com/opening-hours/opening_hours.js/commit/383525eac0a45dbc23e5fd484f6b2c44566ededb))
+* update Argentina 2026 public holidays ([73eb195](https://github.com/opening-hours/opening_hours.js/commit/73eb195d2b59b6b2d1727da694de31539e5a6b0e))
+
+
+### Documentation
+
+* `build` is not a valid commit scope to avoid `build(build)` ([f26b82b](https://github.com/opening-hours/opening_hours.js/commit/f26b82b6ef82d75a171f1c5f63fcc9fe9421e3a2))
+* add `evaluation-tool` as common git commit scope ([93a13d7](https://github.com/opening-hours/opening_hours.js/commit/93a13d72eb19461bed053e2b93c57d71a51e53ae))
+* do not overuse the term "main" to avoid confusion ([4bf17d8](https://github.com/opening-hours/opening_hours.js/commit/4bf17d8be6e082c8fc0b56c19c55691154732030))
+* **evaluation-tool:** remove term "GPG" from noscript HTML tag ([aa8e75c](https://github.com/opening-hours/opening_hours.js/commit/aa8e75c621154f2067dc65620b15d8efa8625e16))
+* give more specific commit message example ([972558c](https://github.com/opening-hours/opening_hours.js/commit/972558c0a1ff7d29faf09c0b7fb4ca445b4a527c))
+* **readme:** mention Major Evaluation Tool Redesign under Maintainers ([5d076c8](https://github.com/opening-hours/opening_hours.js/commit/5d076c84f8dffa75621c9e53fd02569ec68c827f)), closes [#542](https://github.com/opening-hours/opening_hours.js/issues/542)
+* update osm-tag-data-check to osm-tag-data-taginfo-check ([25812d6](https://github.com/opening-hours/opening_hours.js/commit/25812d6c6c3da2d89966e5f6d523cd480d0044b1))
+* update Releasing section ([7c0da2f](https://github.com/opening-hours/opening_hours.js/commit/7c0da2f554275cca35d99cafdd3dfb2c4b99a324))
+* update VCS URL of YoHours ([6974460](https://github.com/opening-hours/opening_hours.js/commit/6974460d052b7ef3e29ae6934c1001c36afea401))
+
+
+### Code Refactoring
+
+* **evaluation-tool:** export module state from helpers/main instead of window globals ([acb9393](https://github.com/opening-hours/opening_hours.js/commit/acb9393717711b5226477d9ebdb78ae0adfca973))
+* **evaluation-tool:** extract inline scripts ([680d323](https://github.com/opening-hours/opening_hours.js/commit/680d32328ca3d5f992ef29b05d8f03a3e7beb998))
+* **evaluation-tool:** improve handleDiffComparison type safety and readability ([84fa9a8](https://github.com/opening-hours/opening_hours.js/commit/84fa9a8711b78c7084c528c7794085fa63d7e0f7))
+* **evaluation-tool:** improve readability of generateValueExplanation ([73ac361](https://github.com/opening-hours/opening_hours.js/commit/73ac36193f18df4408de1297e5850b986d94008d))
+* **evaluation-tool:** merge example lists ([1ec616a](https://github.com/opening-hours/opening_hours.js/commit/1ec616a34f6bfeacc314454e1d08339d7de613d9)), closes [#103](https://github.com/opening-hours/opening_hours.js/issues/103)
+* **evaluation-tool:** migrate to ES modules ([714eb22](https://github.com/opening-hours/opening_hours.js/commit/714eb22d25c044dc664b0486b3afe6b015f3a7de))
+* **evaluation-tool:** modernize Nominatim geocoding ([4e0b3d8](https://github.com/opening-hours/opening_hours.js/commit/4e0b3d8b9ac108c1261fe02383aab8329bbb32a6))
+* **evaluation-tool:** move script tags to head with defer ([18b0499](https://github.com/opening-hours/opening_hours.js/commit/18b049999a65f2d2eaaaa885a739af119121c5fb))
+* **evaluation-tool:** remove unused hidden iframe ([9f7bced](https://github.com/opening-hours/opening_hours.js/commit/9f7bced69f33d3cb67aafc23b543678f296cde8d))
+* **evaluation-tool:** rename printDate func to toISODateString ([d15af56](https://github.com/opening-hours/opening_hours.js/commit/d15af566a8664fd3ac47cd6ced03999894f18b66))
+* **evaluation-tool:** replace `javascript:` URLs with event delegation ([3172e07](https://github.com/opening-hours/opening_hours.js/commit/3172e0768d8f90fe20a8e5c2fb974455a1e7ed8d))
+* **evaluation-tool:** replace jQuery with modern vanilla JavaScript ([7e450d0](https://github.com/opening-hours/opening_hours.js/commit/7e450d099103c012d512f81f65115ed60326c024))
+* **evaluation-tool:** replace repetitive inline handlers with event delegation ([b3cf85f](https://github.com/opening-hours/opening_hours.js/commit/b3cf85fca535d3cd09a5930c1208b89ffe14e52b))
+* **evaluation-tool:** replace XMLHttpRequest with fetch API ([190989d](https://github.com/opening-hours/opening_hours.js/commit/190989d6ed14ef1cb9af4456aa30bde064fa9a4e))
+* **evaluation-tool:** simplify and modernize permalink generation ([aa06419](https://github.com/opening-hours/opening_hours.js/commit/aa06419823316da6fe2a22a55afb7fcfbc77920f))
+* **evaluation-tool:** simplify initialization flow ([72f5e9c](https://github.com/opening-hours/opening_hours.js/commit/72f5e9c4d6e3f8a549455de58cde899e75d00405))
+* **evaluation-tool:** streamline DOM manipulation by removing unnecessary checks ([1ca6e20](https://github.com/opening-hours/opening_hours.js/commit/1ca6e20ed826eee2fa4c6452e29479a1e83597f3))
+* **evaluation-tool:** use semantic HTML elements ([b5b8fe7](https://github.com/opening-hours/opening_hours.js/commit/b5b8fe799dc30957ca8ab28bae805fb7801b4f1c))
+* **evaluation-tool:** use template literals and const/let ([386d600](https://github.com/opening-hours/opening_hours.js/commit/386d600aeeb87ad7d41551beb39ada16ce713781))
+* **evaluation-tool:** use URLSearchParams in page initialization ([3851dfb](https://github.com/opening-hours/opening_hours.js/commit/3851dfb21711a2b62a98b02c9949496b7a2c0ddf))
+* **holiday:** extract parseSingleHolidayToken and simplify main loop ([3b593f9](https://github.com/opening-hours/opening_hours.js/commit/3b593f9ab9eb0e9a4ade675af5a6931213dcc79e))
+* **PH:** extract public holiday selector as standalone function ([e5d4aa1](https://github.com/opening-hours/opening_hours.js/commit/e5d4aa1b6f332f004f7f9fd8a6cbf2ae95ce59d6))
+* replace i18next with lightweight custom i18n in core library ([96972fd](https://github.com/opening-hours/opening_hours.js/commit/96972fda2ee702767b8928024531071a37db193a))
+* **SH:** extract helper functions for date/range handling ([217b4e9](https://github.com/opening-hours/opening_hours.js/commit/217b4e9fda4279c861e71a4ba1548c8518684934))
+* **SH:** extract school holiday selector as standalone function ([85692a1](https://github.com/opening-hours/opening_hours.js/commit/85692a1f8c2e891a5934ddd6747fa332f1240a89)), closes [#75](https://github.com/opening-hours/opening_hours.js/issues/75)
+* **SH:** make school holiday parsing independent of data order ([7320458](https://github.com/opening-hours/opening_hours.js/commit/7320458df7426a41c226448fd76d9583bbf8acab))
+
 ## [3.10.0](https://github.com/opening-hours/opening_hours.js/compare/v3.10.0-rc.1...v3.10.0) (2025-12-22)
 
 ## [3.10.0-rc.1](https://github.com/opening-hours/opening_hours.js/compare/v3.10.0-rc.0...v3.10.0-rc.1) (2025-12-21)
