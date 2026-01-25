@@ -247,8 +247,13 @@ release-local-resign-tag: package.json
 	git tag --delete "v$(shell jq --raw-output '.version' $<)"
 	git tag --sign --local-user="$(RELEASE_OPENPGP_FINGERPRINT)" --message="chore(release): $(shell jq --raw-output '.version' $<)" "v$(shell jq --raw-output '.version' $<)"
 
+# "build" target currently does not guarantee correctness [1].
+# GNU make is not the right tool for this so we just force make as workaround.
+#
+# [1]: https://bazel.build/reference/glossary#correctness
 .PHONY: release-publish
 release-publish:
+	$(MAKE) $(MAKE_OPTIONS) --always-make build
 	git push --follow-tags origin
 	npm publish
 	@echo "Manually create release on https://github.com/opening-hours/opening_hours.js/releases"
