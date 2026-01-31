@@ -1,7 +1,7 @@
 /**
  * Auto-generated school holidays from OpenHolidays API Data (Git Submodule)
  * DO NOT EDIT MANUALLY - Run: node scripts/fetch-school-holidays.mjs
- * Generated: 2026-01-21T17:35:41.390Z
+ * Submodule: dd3dfa8 (2026-01-21)
  */
 
 export const ad = {
