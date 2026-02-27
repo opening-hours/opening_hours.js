@@ -1545,6 +1545,46 @@ With [1m[34mwarnings[39m[22m:
 With [1m[34mwarnings[39m[22m:
 	*الاثنين <--- (Bitte benutze die englische Abkürzung "Mo" für "الاثنين".)
 	*الاثنين-الجمعة <--- (Bitte benutze die englische Abkürzung "Fr" für "الجمعة".)
+"Error tolerance: month names in different languages (long form)" for "Jan 10:00-18:00": [1m[32mPASSED[39m[22m
+"Error tolerance: month names in different languages (long form)" for "januar 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*januar <--- (Bitte benutze die englische Abkürzung "Jan" für "januar".)
+"Error tolerance: month names in different languages (long form)" for "janvier 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*janvier <--- (Bitte benutze die englische Abkürzung "Jan" für "janvier".)
+"Error tolerance: month names in different languages (long form)" for "enero 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*enero <--- (Bitte benutze die englische Abkürzung "Jan" für "enero".)
+"Error tolerance: month names in different languages (long form)" for "gennaio 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*gennaio <--- (Bitte benutze die englische Abkürzung "Jan" für "gennaio".)
+"Error tolerance: month names in different languages (short form)" for "Jun 10:00-18:00": [1m[32mPASSED[39m[22m
+"Error tolerance: month names in different languages (short form)" for "jun. 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*jun. <--- (Bitte verzichte auf ".".)
+"Error tolerance: month names in different languages (short form)" for "juin 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*juin <--- (Bitte benutze die englische Abkürzung "Jun" für "juin".)
+"Error tolerance: month names in different languages (short form)" for "junio 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*junio <--- (Bitte benutze die englische Abkürzung "Jun" für "junio".)
+"Error tolerance: month names in different languages (short form)" for "giugno 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*giugno <--- (Bitte benutze die englische Abkürzung "Jun" für "giugno".)
+"Error tolerance: weekdays in different languages (French, Spanish)" for "Mo,Fr 10:00-18:00": [1m[32mPASSED[39m[22m
+"Error tolerance: weekdays in different languages (French, Spanish)" for "lundi,vendredi 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*lundi <--- (Bitte benutze die englische Abkürzung "Mo" für "lundi".)
+	*lundi,vendredi <--- (Bitte benutze die englische Abkürzung "Fr" für "vendredi".)
+"Error tolerance: weekdays in different languages (French, Spanish)" for "lunes,viernes 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*lunes <--- (Bitte benutze die englische Abkürzung "Mo" für "lunes".)
+	*lunes,viernes <--- (Bitte benutze die englische Abkürzung "Fr" für "viernes".)
+"Error tolerance: Cyrillic weekday names (Russian)" for "Mo-Fr 09:00-17:00": [1m[32mPASSED[39m[22m
+"Error tolerance: Cyrillic weekday names (Russian)" for "понедельник-пятница 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*понедельник <--- (Bitte benutze die englische Abkürzung "Mo" für "понедельник".)
+	*понедельник-пятница <--- (Bitte benutze die englische Abkürzung "Fr" für "пятница".)
 "Error tolerance: Full range" for "Mo-Su": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo-Su <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -2519,7 +2559,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "closed; Sa unknown "comment"": [1m[32mPASSED[39m[22m
-956/960 tests passed. 4 did not pass.
+971/975 tests passed. 4 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

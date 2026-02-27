@@ -4930,6 +4930,50 @@ test.addShouldWarn('Error tolerance: ambiguous words (listopad)', [
         'listopad 12:00-18:00',
     ], nominatim_default, 'not last test');
 
+test.addTest('Error tolerance: month names in different languages (long form)', [
+        'Jan 10:00-18:00', // reference value for prettify
+        'januar 10:00-18:00',   // German
+        'janvier 10:00-18:00',  // French
+        'enero 10:00-18:00',    // Spanish
+        'gennaio 10:00-18:00',  // Italian
+    ], '2012-01-01 0:00', '2012-01-04 0:00', [
+        [ '2012-01-01 10:00', '2012-01-01 18:00' ],
+        [ '2012-01-02 10:00', '2012-01-02 18:00' ],
+        [ '2012-01-03 10:00', '2012-01-03 18:00' ],
+    ], 1000 * 60 * 60 * 8 * 3, 0, false, {}, 'not last test');
+
+test.addTest('Error tolerance: month names in different languages (short form)', [
+        'Jun 10:00-18:00', // reference value for prettify
+        'jun. 10:00-18:00',   // German short with dot
+        'juin 10:00-18:00',   // French
+        'junio 10:00-18:00',  // Spanish
+        'giugno 10:00-18:00', // Italian
+    ], '2012-06-01 0:00', '2012-06-04 0:00', [
+        [ '2012-06-01 10:00', '2012-06-01 18:00' ],
+        [ '2012-06-02 10:00', '2012-06-02 18:00' ],
+        [ '2012-06-03 10:00', '2012-06-03 18:00' ],
+    ], 1000 * 60 * 60 * 8 * 3, 0, false, {}, 'not last test');
+
+test.addTest('Error tolerance: weekdays in different languages (French, Spanish)', [
+        'Mo,Fr 10:00-18:00', // reference value for prettify
+        'lundi,vendredi 10:00-18:00',  // French
+        'lunes,viernes 10:00-18:00',   // Spanish
+    ], '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-01 10:00', '2012-10-01 18:00' ],
+        [ '2012-10-05 10:00', '2012-10-05 18:00' ],
+    ], 1000 * 60 * 60 * 8 * 2, 0, true, {}, 'not last test');
+
+test.addTest('Error tolerance: Cyrillic weekday names (Russian)', [
+        'Mo-Fr 09:00-17:00', // reference value for prettify
+        'понедельник-пятница 09:00-17:00', // Russian: Monday-Friday
+    ], '2012-10-01 0:00', '2012-10-06 0:00', [
+        [ '2012-10-01 09:00', '2012-10-01 17:00' ],
+        [ '2012-10-02 09:00', '2012-10-02 17:00' ],
+        [ '2012-10-03 09:00', '2012-10-03 17:00' ],
+        [ '2012-10-04 09:00', '2012-10-04 17:00' ],
+        [ '2012-10-05 09:00', '2012-10-05 17:00' ],
+    ], 1000 * 60 * 60 * 8 * 5, 0, true, {}, 'not last test');
+
 test.addTest('Error tolerance: Full range', [
         'Mo-Su',       // reference value for prettify
         'Montag-Sonntag',
