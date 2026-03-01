@@ -81,7 +81,7 @@ build/opening_hours.js \
 build/opening_hours.min.js \
 build/opening_hours.esm.mjs \
 build/opening_hours+deps.js \
-build/opening_hours+deps.min.js: src/index.js
+build/opening_hours+deps.min.js: src/index.js src/locales/word_error_correction.yaml
 	node_modules/.bin/rollup -c
 
 .PHONY: check
@@ -503,6 +503,10 @@ osm-tag-data-gen-stats-sort:
 		mv "$$file.tmp" "$$file"; \
 	done
 ## }}}
+
+src/locales/word_error_correction.yaml: scripts/gen_word_error_correction.mjs
+	@echo "Generating word error correction data..."
+	$(NODEJS) scripts/gen_word_error_correction.mjs >/dev/null
 
 README.html:
 

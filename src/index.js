@@ -552,6 +552,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
      *        internal documentation in the docs/ directory for details.
      */
     function tokenize(value) {
+        // Negative list approach: Match anything that's NOT punctuation, digits, or special chars
+        // This automatically supports all Unicode letter categories without explicit enumeration
+        const WORD_REGEX = /^([^\s\d\p{P}\p{S}\p{C}]{2,})(?=\s|$|[\s\d\p{P}\p{S}\p{C}])((?:[.]| before| after)?)/iu;
+
         const all_tokens     = [];
         let curr_rule_tokens = [];
 
@@ -562,7 +566,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
              * Also, error tolerance is supposed to happen at the end.
              */
             // console.log("Parsing value: " + value);
-            let tmp = value.match(/^([a-z]{2,})\b((?:[.]| before| after)?)/i);
+
+            // First regex: Match international words (2+ characters) with optional suffixes
+            // Pattern: word characters followed by word boundary, with optional ". before after" suffixes
+            let tmp = value.match(WORD_REGEX);
             let token_from_map = undefined;
             if (tmp && tmp[2] === '') {
                 token_from_map = string_to_token_map[tmp[1].toLowerCase()];
@@ -630,7 +637,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             t('please use ok for ko', {'ko': tmp[0], 'ok': ok})]);
                 }
                 value = ok + value.substr(tmp[0].length);
-            } else if ((tmp = value.match(/^(&|_|→|–|−|—|ー|=|·|öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：|always (?:open|closed)|24x7|24 hours 7 days a week|24 hours|7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day|(?:bis|till?|-|–)? ?(?:open ?end|late)|(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?|days?\b|до|рм|ам|jours fériés|on work days?|sonntags?|(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?|(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)|p\.m\.|a\.m\.|[_a-zäößàáéøčěíúýřПнВсо]+\b|à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(\.?)/i))) {
+            } else if ((tmp = value.match(/^(&|_|→|–|−|—|ー|=|·|öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：|always (?:open|closed)|24x7|24 hours 7 days a week|24 hours|7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day|(?:bis|till?|-|–)? ?(?:open ?end|late)|(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?|days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?|(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?|(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)|p\.m\.|a\.m\.|(?:[^\s\d\p{P}\p{S}\p{C}]|_)+(?=\s|$|[\s\d\p{Po}\p{Ps}\p{Pe}\p{Pd}\p{Pf}\p{Pi}\p{S}\p{C}])|à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(\.?)/iu))) {
                 /* Handle all remaining words and specific other characters with error tolerance.
                  *
                  * à|á: Word boundary does not work with Unicode chars: 'test à test'.match(/\bà\b/i)
@@ -785,8 +792,35 @@ export default function(value, nominatim_object, optional_conf_parm) {
         if (typeof token_from_map === 'object') {
             return token_from_map;
         }
+
+        // Check for ambiguous words first - show warning and provide default correction
+        if (word_error_correction['Ambiguous words'] && word_error_correction['Ambiguous words'][word]) {
+            if (!done_with_warnings) {
+                const warningMessage = word_error_correction['Ambiguous words'][word];
+                parsing_warnings.push([
+                    -1,
+                    value_length - word.length,
+                    warningMessage
+                ]);
+            }
+            // For ambiguous words, extract the first possible correction from the warning message
+            // and use it as a default to keep parsing working
+            const warningText = word_error_correction['Ambiguous words'][word];
+            const match = warningText.match(/: (\w+) \(/);
+            if (match && match[1]) {
+                return match[1]; // Return the first suggested correction (e.g. "Nov" from "Nov (Czech)")
+            }
+            // Fallback: continue with normal processing
+            return undefined;
+        }
+
+        // Standard processing for all other words using flat structure
         Object.keys(word_error_correction).forEach(function (comment) {
             if (correctWordOrToken) {
+                return;
+            }
+            // Skip the ambiguous words section for auto-correction
+            if (comment === 'Ambiguous words') {
                 return;
             }
             Object.keys(word_error_correction[comment]).forEach(function (old_val) {
@@ -795,19 +829,21 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
                 if (new RegExp('^' + old_val + '$').test(word)) {
                     const val = word_error_correction[comment][old_val];
-                    // Replace wrong words or characters with correct ones.
-                    // This will return a string which is then being tokenized.
+
                     if (!done_with_warnings) {
+                        const warningMessage = t(comment, {'ko': word, 'ok': val});
+
                         parsing_warnings.push([
                             -1,
                             value_length - word.length,
-                            t(comment, {'ko': word, 'ok': val}),
+                            warningMessage
                         ]);
                     }
                     correctWordOrToken = val;
                 }
             });
         });
+
         return correctWordOrToken;
     }
     /* }}} */

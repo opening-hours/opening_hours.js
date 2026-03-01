@@ -1528,6 +1528,63 @@ With [1m[34mwarnings[39m[22m:
 	*mon., Tuesday, wed. <--- (Please omit ".".)
 	*mon., Tuesday, wed., Thursday <--- (Please use the English abbreviation "Th" for "thursday".)
 	*mon., Tuesday, wed., Thursday. <--- (Please omit ".".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "Mo-Fr 09:00-17:00": [1m[32mPASSED[39m[22m
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "ორშაბათი-პარასკევი 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*ორშაბათი <--- (Please use the English abbreviation "Mo" for "ორშაბათი".)
+	*ორშაბათი-პარასკევი <--- (Please use the English abbreviation "Fr" for "პარასკევი".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "วันจันทร์-วันศุกร์ 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*วันจันทร์ <--- (Please use the English abbreviation "Mo" for "วันจันทร์".)
+	*วันจันทร์-วันศุกร์ <--- (Please use the English abbreviation "Fr" for "วันศุกร์".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "月曜日-金曜日 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*月曜日 <--- (Please use the English abbreviation "Mo" for "月曜日".)
+	*月曜日-金曜日 <--- (Please use the English abbreviation "Fr" for "金曜日".)
+"Error tolerance: languages with Unicode characters (Georgian, Thai, Japanese, Arabic)" for "الاثنين-الجمعة 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*الاثنين <--- (Please use the English abbreviation "Mo" for "الاثنين".)
+	*الاثنين-الجمعة <--- (Please use the English abbreviation "Fr" for "الجمعة".)
+"Error tolerance: month names in different languages (long form)" for "Jan 10:00-18:00": [1m[32mPASSED[39m[22m
+"Error tolerance: month names in different languages (long form)" for "januar 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*januar <--- (Please use the English abbreviation "Jan" for "januar".)
+"Error tolerance: month names in different languages (long form)" for "janvier 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*janvier <--- (Please use the English abbreviation "Jan" for "janvier".)
+"Error tolerance: month names in different languages (long form)" for "enero 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*enero <--- (Please use the English abbreviation "Jan" for "enero".)
+"Error tolerance: month names in different languages (long form)" for "gennaio 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*gennaio <--- (Please use the English abbreviation "Jan" for "gennaio".)
+"Error tolerance: month names in different languages (short form)" for "Jun 10:00-18:00": [1m[32mPASSED[39m[22m
+"Error tolerance: month names in different languages (short form)" for "jun. 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*jun. <--- (Please omit ".".)
+"Error tolerance: month names in different languages (short form)" for "juin 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*juin <--- (Please use the English abbreviation "Jun" for "juin".)
+"Error tolerance: month names in different languages (short form)" for "junio 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*junio <--- (Please use the English abbreviation "Jun" for "junio".)
+"Error tolerance: month names in different languages (short form)" for "giugno 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*giugno <--- (Please use the English abbreviation "Jun" for "giugno".)
+"Error tolerance: weekdays in different languages (French, Spanish)" for "Mo,Fr 10:00-18:00": [1m[32mPASSED[39m[22m
+"Error tolerance: weekdays in different languages (French, Spanish)" for "lundi,vendredi 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*lundi <--- (Please use the English abbreviation "Mo" for "lundi".)
+	*lundi,vendredi <--- (Please use the English abbreviation "Fr" for "vendredi".)
+"Error tolerance: weekdays in different languages (French, Spanish)" for "lunes,viernes 10:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*lunes <--- (Please use the English abbreviation "Mo" for "lunes".)
+	*lunes,viernes <--- (Please use the English abbreviation "Fr" for "viernes".)
+"Error tolerance: Cyrillic weekday names (Russian)" for "Mo-Fr 09:00-17:00": [1m[32mPASSED[39m[22m
+"Error tolerance: Cyrillic weekday names (Russian)" for "понедельник-пятница 09:00-17:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*понедельник <--- (Please use the English abbreviation "Mo" for "понедельник".)
+	*понедельник-пятница <--- (Please use the English abbreviation "Fr" for "пятница".)
 "Error tolerance: Full range" for "Mo-Su": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo-Su <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1676,6 +1733,9 @@ With [1m[34mwarnings[39m[22m:
 "Time intervals (not specified/documented use of colon, please avoid this)" for "00:00-24:00; Mo: 15:00-16:00 off": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*00:00-24:00; Mo:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
+"Error tolerance: ambiguous words (listopad)" for "listopad 12:00-18:00": [1m[32mPASSED[39m[22m
+With [1m[34mwarnings[39m[22m:
+	*listopad <--- (Word "listopad" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo[2] - 0 days; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
 With [1m[34mwarnings[39m[22m:
 	*Mo[2] - 0 days <--- (Adding 0 does not change the date. Please omit this.)
@@ -1941,7 +2001,7 @@ With [1m[34mwarnings[39m[22m:
 Mo-Fr 17:00-12:00; Sa-Su 24:00 <--- (Time range starts outside of the current day)
 
 "Incorrect syntax which should throw an error" for "sdasdlasdj a3reaw": [1m[32mPASSED[39m[22m
-sd <--- (Unexpected token: "s" This means that the syntax is not valid at that point or it is currently not supported.) sdasdlasdj a3reaw <--- (Assuming "We" for "w".)
+sd <--- (Unexpected token: "s" This means that the syntax is not valid at that point or it is currently not supported.) sdasdlasdj a <--- (Please use notation "-" for "a".); sdasdlasdj a3reaw <--- (Assuming "We" for "w".)
 
 "Incorrect syntax which should throw an error" for "": [1m[32mPASSED[39m[22m
 The value contains nothing meaningful which can be parsed.
@@ -2223,10 +2283,10 @@ Tu 23:59-48:00+ <--- (Time spanning more than two midnights not supported)
 』t <--- (Unexpected token: "』" This means that the syntax is not valid at that point or it is currently not supported.) 
 
 "Incorrect syntax which should throw an error" for "』testing"; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-』t <--- (Unexpected token: "』" This means that the syntax is not valid at that point or it is currently not supported.) 』testing"; 00:23-00:42 unknown "warning at correct position <--- (Please use the English abbreviation "Su" for "n".); 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
+』t <--- (Unexpected token: "』" This means that the syntax is not valid at that point or it is currently not supported.) 』testing"; 00:23-00:42 unknown "warning at <--- (Please use the English abbreviation "Tu" for "t".); 』testing"; 00:23-00:42 unknown "warning at correct <--- (Please use the English abbreviation "Tu" for "t".); 』testing"; 00:23-00:42 unknown "warning at correct position <--- (Please use the English abbreviation "Jan" for "ion".); 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
 
 "Incorrect syntax which should throw an error" for ""testing«; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
-"testing«; 00:23-00:42 unknown "wa <--- (Unexpected token: "w" This means that the syntax is not valid at that point or it is currently not supported.) "testing«; 00:23-00:42 unknown "warning at correct position <--- (Please use the English abbreviation "Su" for "n".); "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
+"testing«; 00:23-00:42 unknown "wa <--- (Unexpected token: "w" This means that the syntax is not valid at that point or it is currently not supported.) "testing«; 00:23-00:42 unknown "warning at <--- (Please use the English abbreviation "Tu" for "t".); "testing«; 00:23-00:42 unknown "warning at correct <--- (Please use the English abbreviation "Tu" for "t".); "testing«; 00:23-00:42 unknown "warning at correct position <--- (Please use the English abbreviation "Jan" for "ion".); "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
 
 "Incorrect syntax which should throw an error" for " || open; 00:23-00:42 unknown "warning at correct position?"": [1m[32mPASSED[39m[22m
  || <--- (Rule before fallback rule does not contain anything useful)
@@ -2492,7 +2552,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [1m[32mPASSED[39m[22m
 "Test isEqualTo function" for "closed; Sa unknown "comment"": [1m[32mPASSED[39m[22m
-943/947 tests passed. 4 did not pass.
+964/968 tests passed. 4 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

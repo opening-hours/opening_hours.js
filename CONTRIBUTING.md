@@ -49,6 +49,17 @@ Note that this resource file does also provide the localization for the [opening
 
 The core library uses a custom lightweight i18n implementation. Translations for error messages and warnings can be made in the file [locales/opening_hours_resources.yaml][ohlib.js/locales/opening_hours_resources.yaml]. You are encouraged to test your translations. Checkout the [Makefile][ohlib.makefile] and the [test framework][ohlib.test.js] for how this can be done.
 
+#### Word Error Correction System
+
+The word error correction system is automatically generated using the `scripts/gen_word_error_correction.mjs` script, which creates corrections for date/time-related terms across 141+ languages using native internationalization API `Intl`. The system generates over 2,000 automatic corrections for common misspellings and variations of month names, weekday names, and other temporal terms.
+
+Manual corrections can be added to `src/locales/word_error_correction_manual.yaml` for cases that require human curation or language-specific corrections that cannot be automatically generated. The build system automatically combines both automatic and manual corrections into the final `word_error_correction.yaml` file used by the library.
+
+To regenerate the word error corrections:
+```bash
+make src/locales/word_error_correction.yaml
+```
+
 ## Holiday Data Contributions
 
 Please do not open issues for missing holidays. It is obvious that there are more missing holidays then holidays which are defined in this library. Instead consider if you can add your missing holidays and send me a pull request or patch. If you are hitting a problem because some holidays depend on variable days or something like this, consider opening a unfinished PR so that the more complicated things can be discussed there.
