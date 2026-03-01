@@ -36,7 +36,8 @@
 // preamble {{{
 
 /* Parameter handling {{{ */
-const yargs = require('yargs')
+const { hideBin } = require('yargs/helpers');
+const yargs = require('yargs')(hideBin(process.argv))
     .usage('Usage: $0 [optional parameters]')
     .describe('h', 'Display the usage')
     // .describe('v', 'Verbose output')
