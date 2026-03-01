@@ -63,7 +63,6 @@ if (argv.help) {
 const {resolve} = require('path')
 const opening_hours = require(resolve(argv['library-file']));
 const colors        = require('colors');
-const sprintf       = require('sprintf-js').sprintf;
 const timekeeper    = require('timekeeper');
 const glob          = require('glob');
 const YAML          = require('yaml');
@@ -5995,7 +5994,7 @@ function opening_hours_test() {
                         reason += ' (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)';
                         break;
                 }
-                console.warn(sprintf('* %2s: %s', count, reason));
+                console.warn(`* ${String(count).padStart(2)}: ${reason}`);
             }
         }
 

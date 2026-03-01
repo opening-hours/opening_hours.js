@@ -35,7 +35,6 @@
 const opening_hours = require('../build/opening_hours.js');
 const fs            = require('node:fs');
 const colors        = require('colors');
-const sprintf       = require('sprintf-js').sprintf;
 const assert        = require('node:assert');
 /* }}} */
 
@@ -150,10 +149,6 @@ function opening_hours_test() {
 
     // let percent_number_format     = '%04.1f %%';
     // Looks kind of unusual.
-    const percent_number_format            = '%.1f %%';
-    const total_value_number_format        = '%7d';
-    const total_differ_value_number_format = '%6d';
-    const ms_runtime_number_format         = '%5d';
 
     const related_tags_file = 'related_tags.txt';
 
@@ -311,7 +306,7 @@ function opening_hours_test() {
                 for (let i = 0; i < important_and_failed.length; i++) {
                     const value = important_and_failed[i][0];
                     const count = important_and_failed[i][1];
-                    console.log('Failed with value which appears ' + sprintf(total_differ_value_number_format, count) + ' times: ' + value);
+                    console.log('Failed with value which appears ' + String(count).padStart(6) + ' times: ' + value);
                 }
             }
             console.log();
@@ -590,7 +585,7 @@ function opening_hours_test() {
             // console.log('Done:');
 
         console.log(
-            sprintf(total_value_number_format, success) + '/' + sprintf(total_value_number_format, total) +
+            String(success).padStart(7) + '/' + String(total).padStart(7) +
             ' (' + get_percent(success, parsed_values) +
                 ( tests_done ?
                     ', not pretty: ' + get_percent(not_pretty, parsed_values)
@@ -598,22 +593,22 @@ function opening_hours_test() {
                     '' /* Need the space to fit one line on the screen … */
                 ) +
             ', with warnings: ' + get_percent(warnings , parsed_values) + ')' +
-            ', only different values: '+ sprintf(total_differ_value_number_format, success_differ) +'/'+ sprintf(total_differ_value_number_format, total_differ) +
+            ', only different values: '+ String(success_differ).padStart(6) +'/'+ String(total_differ).padStart(6) +
             ' (' + get_percent(success_differ, total_differ) + ')' +
             ' tests passed. ' +
                 ( tests_done ?
-                    sprintf(total_value_number_format, total) + ' values' +
-                    ' in ' + sprintf(ms_runtime_number_format, delta) + ' ms (' + sprintf('%0.1f', total/delta*1000) + ' n/sec).\n'
+                    String(total).padStart(7) + ' values' +
+                    ' in ' + String(delta).padStart(5) + ' ms (' + (total/delta*1000).toFixed(1) + ' n/sec).\n'
                 :
-                    // sprintf(total_value_number_format, total_differ - currently_parsed_value) + ' left … ' +
-                    sprintf(total_value_number_format, currently_parsed_value) + ' values' +
-                    ' in ' + sprintf(ms_runtime_number_format, delta) + ' ms (' + sprintf('%0.1f', currently_parsed_value/delta*1000) + ' n/sec).'
+                    // String(total_differ - currently_parsed_value).padStart(7) + ' left … ' +
+                    String(currently_parsed_value).padStart(7) + ' values' +
+                    ' in ' + String(delta).padStart(5) + ' ms (' + (currently_parsed_value/delta*1000).toFixed(1) + ' n/sec).'
                 )
         );
     } /* }}} */
 
     function get_percent(passing_values, parsed_values) {
-        return sprintf('%6s', sprintf(percent_number_format, passing_values / parsed_values * 100)).result;
+        return String((passing_values / parsed_values * 100).toFixed(1) + ' %').padStart(6);
         /* "100.0 %" would be 7 characters long, but that does not happen to often. */
     }
 
