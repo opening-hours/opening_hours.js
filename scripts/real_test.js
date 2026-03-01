@@ -34,7 +34,7 @@
 /* Required modules {{{ */
 const opening_hours = require('../build/opening_hours.js');
 const fs            = require('node:fs');
-const colors        = require('colors');
+const { styleText } = require('node:util');
 const assert        = require('node:assert');
 /* }}} */
 
@@ -48,9 +48,10 @@ const test_framework = new opening_hours_test();
 
 /* Configuration {{{ */
 
-colors.setTheme({
-    result: [ 'green', 'bold' ],
-    warning: [ 'yellow', 'bold' ],
+// Text style helpers using built-in util.styleText (Node >= 20.12)
+Object.defineProperties(String.prototype, {
+    result:  { get() { return styleText(['green',  'bold'], this.toString()); } },
+    warning: { get() { return styleText(['yellow', 'bold'], this.toString()); } },
 });
 
 /* Also used by opening_hours_map/opening_hours_map.html */

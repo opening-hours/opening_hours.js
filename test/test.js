@@ -62,19 +62,20 @@ if (argv.help) {
 /* Required modules {{{ */
 const {resolve} = require('path')
 const opening_hours = require(resolve(argv['library-file']));
-const colors        = require('colors');
+const { styleText } = require('node:util');
 const timekeeper    = require('timekeeper');
 const glob          = require('glob');
 const YAML          = require('yaml');
 const fs            = require('fs');
 /* }}} */
 
-colors.setTheme({
-    passed:  [ 'green'  , 'bold' ] , // printed with console.log
-    warn:    [ 'blue'   , 'bold' ] , // printed with console.info
-    failed:  [ 'red'    , 'bold' ] , // printed with console.warn
-    crashed: [ 'magenta', 'bold' ] , // printed with console.error
-    ignored: [ 'yellow' , 'bold' ] ,
+// Text style helpers using built-in util.styleText (Node >= 20.12)
+Object.defineProperties(String.prototype, {
+    passed:  { get() { return styleText(['green',   'bold'], this.toString()); } }, // printed with console.log
+    warn:    { get() { return styleText(['blue',    'bold'], this.toString()); } }, // printed with console.info
+    failed:  { get() { return styleText(['red',     'bold'], this.toString()); } }, // printed with console.warn
+    crashed: { get() { return styleText(['magenta', 'bold'], this.toString()); } }, // printed with console.error
+    ignored: { get() { return styleText(['yellow',  'bold'], this.toString()); } },
 });
 
 // Because of DST and such things, the timezone needs to be set to

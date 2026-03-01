@@ -63,7 +63,7 @@
     "regex_search": "make run-regex_search",
     "prepare": "husky",
     "readme": "doctoc README.md --title \"## Table of Contents\"",
-    "check-updates": "npm-check-updates --reject colors --upgrade"
+    "check-updates": "npm-check-updates --upgrade"
   },
   "dependencies": {
     "i18next": "^25.8.13",
@@ -80,7 +80,6 @@
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-yaml": "^4.1.2",
     "@stylistic/eslint-plugin": "^5.9.0",
-    "colors": "^1.4.0",
     "commit-and-tag-version": "^12.6.1",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
