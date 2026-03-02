@@ -49,10 +49,9 @@ const test_framework = new opening_hours_test();
 /* Configuration {{{ */
 
 // Text style helpers using built-in util.styleText (Node >= 20.12)
-Object.defineProperties(String.prototype, {
-    result:  { get() { return styleText(['green',  'bold'], this.toString()); } },
-    warning: { get() { return styleText(['yellow', 'bold'], this.toString()); } },
-});
+const c = {
+    warning: s => styleText(['yellow', 'bold'], s),
+};
 
 /* Also used by opening_hours_map/opening_hours_map.html */
 test_framework.config = {
@@ -502,7 +501,7 @@ function opening_hours_test() {
 
             // Check if file is empty or contains invalid JSON
             if (!data || data.trim().length === 0) {
-                console.warn('Warning:'.warning + ' File "' + filename + '" is empty, skipping.');
+                console.warn(c.warning('Warning:') + ' File "' + filename + '" is empty, skipping.');
                 return;
             }
 
