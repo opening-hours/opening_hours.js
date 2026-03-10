@@ -24,7 +24,8 @@ const fs = require('node:fs');
 /* }}} */
 
 /* Parameter handling {{{ */
-const yargs = require('yargs')
+const { hideBin } = require('yargs/helpers');
+const yargs = require('yargs')(hideBin(process.argv))
     .usage('Usage: $0 -')
     .describe('h', 'Display the usage')
     .describe('k', 'File containing the list of supported keys')

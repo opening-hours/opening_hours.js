@@ -36,7 +36,8 @@
 // preamble {{{
 
 /* Parameter handling {{{ */
-const yargs = require('yargs')
+const { hideBin } = require('yargs/helpers');
+const yargs = require('yargs')(hideBin(process.argv))
     .usage('Usage: $0 [optional parameters]')
     .describe('h', 'Display the usage')
     // .describe('v', 'Verbose output')
@@ -61,21 +62,21 @@ if (argv.help) {
 /* Required modules {{{ */
 const {resolve} = require('path')
 const opening_hours = require(resolve(argv['library-file']));
-const colors        = require('colors');
-const sprintf       = require('sprintf-js').sprintf;
+const { styleText } = require('node:util');
 const timekeeper    = require('timekeeper');
 const glob          = require('glob');
 const YAML          = require('yaml');
 const fs            = require('fs');
 /* }}} */
 
-colors.setTheme({
-    passed:  [ 'green'  , 'bold' ] , // printed with console.log
-    warn:    [ 'blue'   , 'bold' ] , // printed with console.info
-    failed:  [ 'red'    , 'bold' ] , // printed with console.warn
-    crashed: [ 'magenta', 'bold' ] , // printed with console.error
-    ignored: [ 'yellow' , 'bold' ] ,
-});
+// Text style helpers using built-in util.styleText (Node >= 20.12)
+const c = {
+    passed:  s => styleText(['green',   'bold'], s), // printed with console.log
+    warn:    s => styleText(['blue',    'bold'], s), // printed with console.info
+    failed:  s => styleText(['red',     'bold'], s), // printed with console.warn
+    crashed: s => styleText(['magenta', 'bold'], s), // printed with console.error
+    ignored: s => styleText(['yellow',  'bold'], s),
+};
 
 // Because of DST and such things, the timezone needs to be set to
 // Europe/Berlin for some tests to be reproducible.
@@ -5599,7 +5600,7 @@ function opening_hours_test() {
             )
             + '": ';
         if (crashed) {
-            str += 'PASSED'.passed;
+            str += c.passed('PASSED');
 
             if (this.show_passing_tests) {
                 console.log(str);
@@ -5607,7 +5608,7 @@ function opening_hours_test() {
                     console.info(crashed + '\n');
             }
         } else {
-            str += 'FAILED'.failed;
+            str += c.failed('FAILED');
             console.warn(str);
         }
 
@@ -5644,7 +5645,7 @@ function opening_hours_test() {
             )
             + '": ';
         if (!crashed && warnings.length > 0) {
-            str += 'PASSED'.passed;
+            str += c.passed('PASSED');
             passed = true;
             if (this.show_passing_tests) {
                 console.log(str);
@@ -5652,12 +5653,12 @@ function opening_hours_test() {
             }
             passed = true;
         } else if (ignored) {
-            str += 'IGNORED'.ignored + ', reason: ' + ignored;
+            str += c.ignored('IGNORED') + ', reason: ' + ignored;
             passed = true;
             console.log(str);
             this.print_warnings(warnings);
         } else {
-            str += 'FAILED'.failed;
+            str += c.failed('FAILED');
             console.warn(str);
             this.print_warnings(warnings);
             if (this.show_error_warnings)
@@ -5766,16 +5767,16 @@ function opening_hours_test() {
                 && duration_ok
                 && (prettify_ok   || ignored === 'prettifyValue')
                 && (weekstable_ok || ignored === 'check for week stable not implemented')) { // replace 'check for week stable not implemented'.
-            str += 'PASSED'.passed;
+            str += c.passed('PASSED');
             if (ignored) {
                 if (ignored === 'check for week stable not implemented') {
-                    str += ', ' + 'except'.ignored + ' weekstable which is ignored for now';
+                    str += ', ' + c.ignored('except') + ' weekstable which is ignored for now';
                 } else if (ignored === 'prettifyValue'){
-                    str += ', ' + 'except'.ignored + ' prettifyValue';
+                    str += ', ' + c.ignored('except') + ' prettifyValue';
                     if (prettify_ok)
                         str += ' Ignored but passes!';
                 } else {
-                    str += ', ' + 'also ignored, please unignore since the test passes!'.ignored;
+                    str += ', ' + c.ignored('also ignored, please unignore since the test passes!');
                     if (weekstable_ok)
                         str += ' Ignored but passes!';
                 }
@@ -5791,14 +5792,14 @@ function opening_hours_test() {
                 )
             ) {
 
-            str += 'IGNORED'.ignored + ', reason: ' + ignored;
+            str += c.ignored('IGNORED') + ', reason: ' + ignored;
             console.warn(str);
             passed = true;
         } else if (crashed) {
-            str += 'CRASHED'.crashed + ', reason: ' + crashed;
+            str += c.crashed('CRASHED') + ', reason: ' + crashed;
             console.error(str);
         } else {
-            str += 'FAILED'.failed;
+            str += c.failed('FAILED');
             if (!duration_ok)
                 str += ', bad duration(s): ' + durations + ', expected ' + expected_durations;
             if (!intervals_ok)
@@ -5837,16 +5838,16 @@ function opening_hours_test() {
 
         let str = '"' + name + '" for "' + value.replace('\n', '*newline*') + '": ';
         if (!crashed && matching_rule_ok) {
-            str += 'PASSED'.passed;
+            str += c.passed('PASSED');
             passed = true;
 
             if (this.show_passing_tests)
                 console.log(str);
         } else if (crashed) {
-            str += 'CRASHED'.crashed + ', reason: ' + crashed;
+            str += c.crashed('CRASHED') + ', reason: ' + crashed;
             console.error(str);
         } else {
-            str += 'FAILED'.failed + ' for time ' + new Date(point_in_time);
+            str += c.failed('FAILED') + ' for time ' + new Date(point_in_time);
             str += ', bad matching rule: "' + matching_rule + '", expected "' + expected_matching_rule + '"';
             console.warn(str);
         }
@@ -5874,16 +5875,16 @@ function opening_hours_test() {
 
         let str = '"' + name + '" for "' + value.replace('\n', '*newline*') + '": ';
         if (!crashed && prettify_value_ok) {
-            str += 'PASSED'.passed;
+            str += c.passed('PASSED');
             passed = true;
 
             if (this.show_passing_tests)
                 console.log(str);
         } else if (crashed) {
-            str += 'CRASHED'.crashed + ', reason: ' + crashed;
+            str += c.crashed('CRASHED') + ', reason: ' + crashed;
             console.error(str);
         } else {
-            str += 'FAILED'.failed + ', prettify value: "' + prettified_value + '", expected "' + expected_prettified_value + '"';
+            str += c.failed('FAILED') + ', prettify value: "' + prettified_value + '", expected "' + expected_prettified_value + '"';
             console.warn(str);
         }
 
@@ -5913,16 +5914,16 @@ function opening_hours_test() {
 
         let str = '"' + name + '" for "' + first_value.replace('\n', '*newline*') + '": ';
         if (!crashed && JSON.stringify(expected_result) === JSON.stringify(actual_result)) {
-            str += 'PASSED'.passed;
+            str += c.passed('PASSED');
             passed = true;
 
             if (this.show_passing_tests)
                 console.log(str);
         } else if (crashed) {
-            str += 'CRASHED'.crashed + ', reason: ' + crashed;
+            str += c.crashed('CRASHED') + ', reason: ' + crashed;
             console.error(str);
         } else {
-            str += 'FAILED'.failed + ', result: "' + JSON.stringify(actual_result, null, '    ') + '", expected "' + expected_result + '"';
+            str += c.failed('FAILED') + ', result: "' + JSON.stringify(actual_result, null, '    ') + '", expected "' + expected_result + '"';
             console.warn(str);
         }
 
@@ -5994,7 +5995,7 @@ function opening_hours_test() {
                         reason += ' (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)';
                         break;
                 }
-                console.warn(sprintf('* %2s: %s', count, reason));
+                console.warn(`* ${String(count).padStart(2)}: ${reason}`);
             }
         }
 
@@ -6183,7 +6184,7 @@ function opening_hours_test() {
 
     this.print_warnings = function(warnings) { /* {{{ */
         if (this.show_error_warnings && typeof warnings === 'object' && warnings.length > 0) {
-            console.info('With ' + 'warnings'.warn + ':\n\t*' + warnings.join('\n\t*'));
+            console.info('With ' + c.warn('warnings') + ':\n\t*' + warnings.join('\n\t*'));
         }
     };
     // }}}
