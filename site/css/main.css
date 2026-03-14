@@ -40,6 +40,19 @@
     --bg-input: #fff;
     --text-primary: #333;
     --text-heading: #2c3e50;
+    --text-muted: #6c757d;
+    --bg-muted: #e9ecef;
+    --text-on-muted: #495057;
+    --border-muted: #ced4da;
+    --bg-button: #ffffff;
+    --text-button: #4a7ba7;
+    --hero-btn-bg: rgba(255, 255, 255, 0.95);
+    --hero-btn-color: #2c5f8d;
+    --hero-btn-border: rgba(255, 255, 255, 0.6);
+    --warning-bg: #fff3cd;
+    --warning-text: #856404;
+    --warning-border: #ffeaa7;
+    --link-color: #007bff;
     --border-color: #dee2e6;
     --border-action: #e9ecef;
     --shadow-sm: rgba(0, 0, 0, 0.06);
@@ -56,6 +69,19 @@ body[data-theme="dark"] {
     --bg-input: #2f2f2f;
     --text-primary: #e0e0e0;
     --text-heading: #f0f0f0;
+    --text-muted: #9aa0a6;
+    --bg-muted: #383838;
+    --text-on-muted: #c8c8c8;
+    --border-muted: #555555;
+    --bg-button: #2f2f2f;
+    --text-button: #6c94c4;
+    --hero-btn-bg: rgba(255, 255, 255, 0.12);
+    --hero-btn-color: #c8dff0;
+    --hero-btn-border: rgba(255, 255, 255, 0.25);
+    --warning-bg: #332800;
+    --warning-text: #ffd000;
+    --warning-border: #665200;
+    --link-color: #6baed6;
     --border-color: #404040;
     --border-action: #3a3a3a;
     --shadow-sm: rgba(0, 0, 0, 0.3);
@@ -73,6 +99,19 @@ body[data-theme="dark"] {
         --bg-input: #2f2f2f;
         --text-primary: #e0e0e0;
         --text-heading: #f0f0f0;
+        --text-muted: #9aa0a6;
+        --bg-muted: #383838;
+        --text-on-muted: #c8c8c8;
+        --border-muted: #555555;
+        --bg-button: #2f2f2f;
+        --text-button: #6c94c4;
+        --hero-btn-bg: rgba(255, 255, 255, 0.12);
+        --hero-btn-color: #c8dff0;
+        --hero-btn-border: rgba(255, 255, 255, 0.25);
+        --warning-bg: #332800;
+        --warning-text: #ffd000;
+        --warning-border: #665200;
+        --link-color: #6baed6;
         --border-color: #404040;
         --border-action: #3a3a3a;
         --shadow-sm: rgba(0, 0, 0, 0.3);
@@ -189,11 +228,11 @@ h1 {
     padding: 0.5rem 0;
     cursor: pointer;
     text-align: left;
-    color: #2c3e50;
+    color: var(--text-heading);
 }
 
 .examples-toggle-btn:hover {
-    color: #1a252f;
+    color: var(--text-primary);
 }
 
 .examples-toggle-btn h2 {
@@ -204,11 +243,11 @@ h1 {
 .toggle-icon {
     font-size: 1rem;
     transition: transform 0.3s;
-    color: #666;
+    color: var(--text-muted);
 }
 
 .examples-toggle-btn:hover .toggle-icon {
-    color: #333;
+    color: var(--text-primary);
 }
 
 .examples-toggle-btn.collapsed .toggle-icon {
@@ -327,7 +366,7 @@ section {
 
 .permalink {
     font-size: 0.9em;
-    color: #666;
+    color: var(--text-muted);
 }
 
 #action-compare {
@@ -413,7 +452,7 @@ section {
 
 .variant-label {
     font-size: 0.85em;
-    color: #6c757d;
+    color: var(--text-muted);
     font-weight: 500;
 }
 
@@ -425,8 +464,8 @@ section {
 
 .copy-btn {
     padding: 0.3rem 0.5rem;
-    background: #fff;
-    color: #4a7ba7;
+    background: var(--bg-button);
+    color: var(--text-button);
     border: 2px solid #6c94c4;
     border-radius: 4px;
     cursor: pointer;
@@ -450,15 +489,15 @@ section {
 
 .yohours-warning {
     font-size: 0.85em;
-    color: #856404;
-    background-color: #fff3cd;
-    border: 1px solid #ffeaa7;
+    color: var(--warning-text);
+    background-color: var(--warning-bg);
+    border: 1px solid var(--warning-border);
     padding: 0.5rem;
     border-radius: 4px;
 }
 
 #action-links .action-item a {
-    color: #007bff;
+    color: var(--link-color);
     text-decoration: none;
     font-weight: 500;
 }
@@ -472,12 +511,12 @@ section {
 }
 
 .action-item {
-    background-color: #fafafa;
+    background-color: var(--bg-action);
 }
 
 p.value_explanation {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
+    background-color: var(--bg-section);
+    border: 1px solid var(--border-color);
     line-height: 1.6;
     overflow: auto;
     padding: 1rem;
@@ -487,12 +526,14 @@ p.value_explanation {
 /* See https://clrs.cc/ */
 .error {
     background: #ff851b; /* Orange */
+    color: #111;
     padding: 0.4rem 0.6rem;
     border-radius: 4px;
 }
 
 .warning {
     background: #ffdc00; /* Yellow */
+    color: #111;
     padding: 0.4rem 0.6rem;
     border-radius: 4px;
 }
@@ -500,7 +541,8 @@ p.value_explanation {
 div.warning_error_message {
     margin: 0.5rem 0;
     padding: 0.75rem;
-    background-color: white;
+    background-color: var(--bg-body);
+    color: var(--text-primary);
     opacity: 0.9;
     font-family: 'Courier New', monospace;
     border-left: 4px solid #ff851b;
@@ -542,15 +584,15 @@ div.warning_error_message {
     opacity: 0.9;
 }
 
-span.year    { background: #ff851b } /* Orange */
-span.week    { background: #ffdc00 } /* Yellow */
-span.month   { background: #88ff88 }
-span.time    { background: #88ccff }
-span.rule_separator    { background: #3d9970 } /* Olive */
+span.year    { background: #ff851b; color: #111 } /* Orange */
+span.week    { background: #ffdc00; color: #111 } /* Yellow */
+span.month   { background: #88ff88; color: #111 }
+span.time    { background: #88ccff; color: #111 }
+span.rule_separator    { background: #3d9970; color: #fff } /* Olive */
 /* span.one_rule { text-decoration: underline } */
-a.specification { color: black; text-decoration:none }
-span.state   { background: #ffccff }
-span.comment { background: #dddddd } /* Silver */
+a.specification { color: #111; text-decoration:none }
+span.state   { background: #ffccff; color: #111 }
+span.comment { background: #dddddd; color: #111 } /* Silver */
 
 noscript { color: #AA4400 }
 h2 {
@@ -587,16 +629,17 @@ h3 {
 }
 
 #value-input-section .input-btn {
-    background: rgba(255, 255, 255, 0.95);
-    color: #2c5f8d;
+    background: var(--hero-btn-bg);
+    color: var(--hero-btn-color);
     padding: 0.5rem 0.75rem;
     font-size: 1rem;
-    border: 2px solid rgba(255, 255, 255, 0.6);
+    border: 2px solid var(--hero-btn-border);
     font-weight: 500;
 }
 
 #value-input-section .input-btn:hover {
-    background: #fff;
+    background: rgba(255, 255, 255, 0.95);
+    color: #2c5f8d;
     border-color: rgba(255, 255, 255, 0.9);
 }
 
@@ -636,8 +679,8 @@ h3 {
 
 .input-btn {
     padding: 0.3rem 0.5rem;
-    background: #fff;
-    color: #4a7ba7;
+    background: var(--bg-button);
+    color: var(--text-button);
     border: 2px solid #6c94c4;
     border-radius: 4px;
     cursor: pointer;
@@ -689,8 +732,8 @@ h3 {
 .date-info-badge {
     display: inline-block;
     padding: 0.4rem 0.7rem;
-    background-color: #e9ecef;
-    color: #495057;
+    background-color: var(--bg-muted);
+    color: var(--text-on-muted);
     border-radius: 4px;
     font-size: 0.9rem;
     font-weight: 500;
@@ -723,8 +766,9 @@ input[type="number"].input__coordinate {
 }
 
 input:read-only {
-    background-color: #e9ecef;
-    border: 1px solid #ced4da;
+    background-color: var(--bg-muted);
+    border: 1px solid var(--border-muted);
+    color: var(--text-primary);
     border-radius: 4px;
     padding: 0.4rem;
     margin: 0 0.5rem 0 0;
@@ -827,8 +871,8 @@ button:active {
     min-width: 2ch;
     padding: 0.35rem 0.6rem;
     font-size: 0.85rem;
-    color: #212529;
-    background-color: #e9ecef;
+    color: var(--text-on-muted);
+    background-color: var(--bg-muted);
     user-select: none;
     white-space: nowrap;
     font-family: 'Courier New', 'Consolas', monospace;
@@ -838,7 +882,7 @@ button:active {
 }
 
 .time-btn-label.editable {
-    background-color: #f8f9fa;
+    background-color: var(--bg-section);
     user-select: text;
     cursor: text;
     outline: none;
@@ -846,11 +890,11 @@ button:active {
 }
 
 .time-btn-label.editable:hover {
-    background-color: #e9ecef;
+    background-color: var(--bg-muted);
 }
 
 .time-btn-label.editable:focus {
-    background-color: #fff;
+    background-color: var(--bg-input);
     box-shadow: inset 0 0 0 1px #80bdff;
 }
 
@@ -873,7 +917,7 @@ button:active {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    color: #6c757d;
+    color: var(--text-muted);
     margin-bottom: 0.5rem;
 }
 
@@ -1207,6 +1251,10 @@ button:active {
         background-color: var(--bg-section);
         border-color: var(--border-color);
         color: var(--text-primary);
+    }
+
+    div.warning_error_message {
+        background-color: var(--bg-body);
     }
 
     .example-link {
