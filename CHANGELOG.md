@@ -8,6 +8,30 @@ SPDX-License-Identifier: LGPL-3.0-only
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.12.0](https://github.com/opening-hours/opening_hours.js/compare/v3.11.0...v3.12.0) (2026-03-21)
+
+
+### Features
+
+* add error tolerance tests for languages with Unicode characters and ambiguous words ([3f9fe33](https://github.com/opening-hours/opening_hours.js/commit/3f9fe33ba5a613959b13b34942434f27a93cd0b3))
+* also use short names for weeks and months ([44d059a](https://github.com/opening-hours/opening_hours.js/commit/44d059a9bf7d9d69a66c6c64a398fc4e400c12c7))
+* expand locale pattern discovery to 3-letter codes ([032c18a](https://github.com/opening-hours/opening_hours.js/commit/032c18a779dc7a06254409413bd74dde2edbec78))
+* implement dynamic word error correction generator with zero dependencies ([361ca2d](https://github.com/opening-hours/opening_hours.js/commit/361ca2d4e5a5ccb408be32d7168bc832cb5ab891))
+
+
+### Documentation
+
+* rename develop branch to main (overwrites main) ([5cde3f5](https://github.com/opening-hours/opening_hours.js/commit/5cde3f57cc18898ef0ad995fcd4126d709c1b86a)), closes [#554](https://github.com/opening-hours/opening_hours.js/issues/554)
+* update localization documentation to include word error correction system details ([957cc5c](https://github.com/opening-hours/opening_hours.js/commit/957cc5cbc2bd5ea0d6d50189fc6ccf81cd426f60))
+
+
+### Code Refactoring
+
+* adapt yargs calls to v18 API ([f0ea1c7](https://github.com/opening-hours/opening_hours.js/commit/f0ea1c7b70ab1b2114a6fd255b91e1db3ac4b352))
+* remove non-functional concept script `scripts/gen_word_error_correction.js`` ([c22fff9](https://github.com/opening-hours/opening_hours.js/commit/c22fff9bac62a540e7953304fed26c68be41bd0b))
+* remove redundant entries from manual word corrections ([b5fc898](https://github.com/opening-hours/opening_hours.js/commit/b5fc8986ccf725d0a1610690dc0112d7cb7cff37))
+* replace String.prototype patching with c namespace for style helpers ([8e384bd](https://github.com/opening-hours/opening_hours.js/commit/8e384bd969072773a46b723dd4a88934fe40b420))
+
 ## [3.11.0](https://github.com/opening-hours/opening_hours.js/compare/v3.10.0...v3.11.0) (2026-01-25)
 
 
