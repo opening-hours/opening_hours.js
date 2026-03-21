@@ -6,36 +6,34 @@ We're excited you're interested in contributing! This document outlines our cont
 
 We use a branching model inspired by Gitflow:
 
-* **`main`**: This branch represents the latest stable release. Direct commits to `main` are forbidden. Pull requests to `main` are only made from the `develop` branch when a new release is ready.
-* **`develop`**: This is the primary development branch and default git branch. All new feature development and bug fixes should be based on this branch. Pull requests for new features or fixes should target the `develop` branch.
+* **`main`**: This is the primary development branch and default git branch. All new feature development and bug fixes should be based on this branch. Pull requests for new features or fixes should target the `main` branch.
 
 ## Getting Started
 
 1.  **Fork the repository**.
 2.  **Clone your fork** locally: `git clone https://github.com/opening-hours/opening_hours.js`
-3.  **Create a new branch** from `develop` for your work: `git switch -c feature/your-feature-name develop` or `git switch -c bugfix/issue-description develop`.
+3.  **Create a new branch** from `main` for your work: `git switch -c feature/your-feature-name main` or `git switch -c bugfix/issue-description main`.
 4.  **Make your changes** and commit them with clear, descriptive messages.
 5.  **Push your branch** to your fork: `git push origin feature/your-feature-name`.
-6.  **Open a Pull Request** (PR) against the `develop` branch of the [upstream repository][ohlib.github].
+6.  **Open a Pull Request** (PR) against the `main` branch of the [upstream repository][ohlib.github].
 
 ## Pull Request Process
 
 1.  Ensure your PR includes a clear description of the changes and why they are being made. Reference any relevant issues.
 2.  Your PR will be reviewed by a maintainer.
-3.  Once approved and CI checks pass, your PR will be merged into the `develop` branch.
+3.  Once approved and CI checks pass, your PR will be merged into the `main` branch.
 
 ## Releasing
 
-When the `develop` branch is deemed ready for a new release:
+When the `main` branch is deemed ready for a new release:
 
-1.  A maintainer prepares the release in a `release/` branch based on `develop`.
+1.  A maintainer prepares the release in a `release/` branch based on `main`.
 2.  The maintainer updates school holiday data: `node scripts/fetch-school-holidays.mjs` and commits any changes.
 3.  The maintainer runs `make release-prepare` locally.
 4.  The maintainer decides if a release candidate should be released, if rc `npx commit-and-tag-version --prerelease=rc` should be run locally, if not `make release-local` should be run. In case a maintainer does not have a separate OpenSSH/OpenPGP key for releases, they can use their regular signing key. The maintainer pushes the signed git tag to their repo fork.
-5.  This pull request will be reviewed and then merged into `develop`
-6.  The maintainer creates a new pull request from `develop` to `main`.
-7.  ypid who is currently the only one who can release to npmjs.com gets assigned the pull requests, pulls the signed git tag and runs `make release-publish` on their machine and finally merges the pull request.
-8.  ypid creates a release on GitHub and marks it as latest.
+5.  This pull request will be reviewed and then merged into `main`
+6.  ypid who is currently the only one who can release to npmjs.com gets assigned the pull requests, pulls the signed git tag and runs `make release-publish` on their machine and finally merges the pull request.
+7.  ypid creates a release on GitHub and marks it as latest.
 
 ## Translation Contributions
 
