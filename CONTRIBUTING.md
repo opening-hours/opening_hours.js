@@ -39,7 +39,7 @@ When the `main` branch is deemed ready for a new release:
 
 ### Translating the evaluation tool and the map
 
-The web-based evaluation tool and map use [i18next][i18next] for translation. Translations can be made in the file [js/i18n-resources.js][ohlib.js/i18n-resources.js]. Just copy the whole English block, change the language code to the one you are adding and make your translation. You can open the [index.html][site/index.html] to see the result of your work. Week and month names are translated by the browser using the `Date.toLocaleString` function.
+The web-based evaluation tool and map use [i18next] for translation. Translations can be made in the file [js/i18n-resources.js][ohlib.js/i18n-resources.js]. Just copy the whole English block, change the language code to the one you are adding and make your translation. You can open the [index.html][site/index.html] to see the result of your work. Week and month names are translated by the browser using the `Date.toLocaleString` function.
 
 Note that this resource file does also provide the localization for the [opening_hours_map]. This can also be tested by cloning the project and linking your modified opening_hours.js working copy to the opening_hours.js directory (after renaming it) inside the opening_hours_map project. Or just follow the installation instructions from the [opening_hours_map].
 
@@ -80,7 +80,7 @@ See under [testing][ohlib.testing].
 
 ### Commit Message Convention
 
-We follow the [Conventional Commits](https://www.conventionalcommits.org/) specification. The minimum required format is:
+We follow the [Conventional Commits] specification. The minimum required format is:
 
 ```text
 <type>[(optional scope)]: <subject>
@@ -148,7 +148,7 @@ The changelog is automatically generated from these commit messages. Only `feat`
 
 ### Commit Hooks
 
-Note that there is a git pre-commit hook used to run and compare the test framework before each commit. Hooks are written as shell scripts using [husky][husky] and should be installed to git automatically when running `npm install`. If this does not happen, you can manually run `node --run postinstall`.
+Note that there is a git pre-commit hook used to run and compare the test framework before each commit. Hooks are written as shell scripts using [husky] and should be installed to git automatically when running `npm install`. If this does not happen, you can manually run `node --run postinstall`.
 
 ## Reporting Issues
 
@@ -174,24 +174,25 @@ The documentation looks like this:
 function getConstrainedWeekday(tokens, at) {}
 ```
 
-The opening brackets `{{{` (and the corresponding closing onces) are used to fold the source code. See [Vim folds][Vim folds].
+The opening brackets `{{{` (and the corresponding closing onces) are used to fold the source code. See [Vim folds].
 
 ---
 
 Thank you for contributing!
 
+[Conventional Commits]: https://www.conventionalcommits.org/
 [husky]: https://typicode.github.io/husky
 [i18next]: https://www.i18next.com
 [Vim folds]: https://vimhelp.org/fold.txt.html#folding
 
 [opening_hours_map]: https://github.com/opening-hours/opening_hours_map
-[ohlib.docs.holiday]: /holidays/README.md
+[ohlib.docs.holiday]: src/holidays/README.md
 [ohlib.holidays]: README.md#holidays
 [ohlib.js/locales/opening_hours_resources.yaml]: src/locales/opening_hours_resources.yaml
 [ohlib.js/i18n-resources.js]: site/js/i18n-resources.js
-[ohlib.makefile]: /Makefile
-[ohlib.opening_hours.js]: /index.js
+[ohlib.github]: https://github.com/opening-hours/opening_hours.js
+[ohlib.makefile]: Makefile
+[ohlib.opening_hours.js]: src/index.js
 [ohlib.test.js]: test/test.js
 [ohlib.testing]: README.md#testing
-[ohlib.github]: https://github.com/opening-hours/opening_hours.js
 [site/index.html]: site/index.html
