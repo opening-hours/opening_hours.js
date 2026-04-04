@@ -10,3 +10,4 @@ npx lint-staged
 
 # Run checks
 make check
+reuse lint
