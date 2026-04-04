@@ -44,12 +44,8 @@
     const theme = getThemePreference();
     setTheme(theme);
 
-    // Set up toggle button when DOM is ready
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initToggleButton);
-    } else {
-        initToggleButton();
-    }
+    // Set up toggle button (script loads with defer, so DOM is ready)
+    initToggleButton();
 
     function initToggleButton() {
         const toggleBtn = document.getElementById('theme-toggle');
