@@ -1,3 +1,5 @@
+<!-- SPDX-FileCopyrightText: © opening_hours.js contributors -->
+<!-- SPDX-License-Identifier: LGPL-3.0-only -->
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
   <circle cx="33.8" cy="35.8" r="24.8" fill="none" stroke="#818181" stroke-width="4.7"/>
   <path stroke="#818181" stroke-width="1.2" d="M33.8 13.2v3.3m0 38.5v3.3M11.3 35.8h3.3m38.6 0h3.3"/>

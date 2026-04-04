@@ -1,4 +1,6 @@
 #!/bin/sh
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: CC0-1.0
 
 # # Redirect output to stderr.
 # exec 1>&2

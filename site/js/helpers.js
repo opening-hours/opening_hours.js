@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2014 Robin Schneider <ypid@riseup.net>
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ */
 // Import dependencies
 import i18next from '../../node_modules/i18next/dist/esm/i18next.bundled.js';
 import { OpeningHoursTable } from './opening_hours_table.js';
