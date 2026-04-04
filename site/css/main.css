@@ -517,6 +517,7 @@ section {
 p.value_explanation {
     background-color: var(--bg-section);
     border: 1px solid var(--border-color);
+    color: var(--text-primary);
     line-height: 1.6;
     overflow: auto;
     padding: 1rem;
@@ -590,7 +591,7 @@ span.month   { background: #88ff88; color: #111 }
 span.time    { background: #88ccff; color: #111 }
 span.rule_separator    { background: #3d9970; color: #fff } /* Olive */
 /* span.one_rule { text-decoration: underline } */
-a.specification { color: #111; text-decoration:none }
+a.specification { color: inherit; text-decoration: none }
 span.state   { background: #ffccff; color: #111 }
 span.comment { background: #dddddd; color: #111 } /* Silver */
 
