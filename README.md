@@ -775,6 +775,7 @@ YoHours currently only checks with this lib if the opening_hours value can be ev
 
 ## Other implementations
 
+- Rust: <https://github.com/remi-dupre/opening-hours-rs> (Rust implementation with Python bindings)
 - Java: <https://github.com/simonpoole/OpeningHoursParser> (Implementation using [JavaCC](https://de.wikipedia.org/wiki/JavaCC) as Lexer/Parser compiler generator, Status: Basic language features implemented)
 - PHP: <https://github.com/kenguest/Services_Openstreetmap/blob/master/Services/OpenStreetMap/OpeningHours.php> (reimplementation, Status: Basic language features implemented)
 - C: <https://github.com/anthill/C_OpeningHours> Implementation in C.
