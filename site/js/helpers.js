@@ -46,15 +46,18 @@ export function josm(url_param) {
 }
 // }}}
 
-// add calculation for calendar week to date {{{
-export function dateAtWeek(date, week) {
-    const minutes_in_day = 60 * 24;
-    const msec_in_day    = 1000 * 60 * minutes_in_day;
-    const msec_in_week   = msec_in_day * 7;
+// ISO 8601 calendar week number {{{
+export function getISOWeekNumber(date) {
+    const millisecondsPerDay = 24 * 60 * 60 * 1000;
+    const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
 
-    const tmpdate = new Date(date.getFullYear(), 0, 1);
-    tmpdate.setDate(1 - (tmpdate.getDay() + 6) % 7 + week * 7); // start of week n where week starts on Monday
-    return Math.floor((date - tmpdate) / msec_in_week);
+    // ISO week uses Monday=1..Sunday=7 and anchors weeks on Thursday.
+    const isoDay = utcDate.getUTCDay() || 7;
+    utcDate.setUTCDate(utcDate.getUTCDate() + 4 - isoDay);
+
+    const isoYearStart = new Date(Date.UTC(utcDate.getUTCFullYear(), 0, 1));
+    const dayOfYear = Math.floor((utcDate - isoYearStart) / millisecondsPerDay) + 1;
+    return Math.ceil(dayOfYear / 7);
 }
 // }}}
 
