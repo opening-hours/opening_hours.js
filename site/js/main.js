@@ -1,7 +1,7 @@
 // Import all required modules
 import i18next from '../../node_modules/i18next/dist/esm/i18next.bundled.js';
 import { resources, detectLanguage, getUserSelectTranslateHTMLCode, changeLanguage } from './i18n-resources.js';
-import { Evaluate, EX, josm, toggle, dateAtWeek, newValue, currentDateTime } from './helpers.js';
+import { Evaluate, EX, josm, toggle, getISOWeekNumber, newValue, currentDateTime } from './helpers.js';
 
 // Configuration constants
 window.default_lat = 48.7769;
@@ -72,7 +72,7 @@ export function updateTimeButtonLabels(date) {
     if (minuteLabel) minuteLabel.textContent = u2(currentDateTime.minute);
 
     if (weekLabel && date) {
-        weekLabel.textContent = `W${u2(dateAtWeek(date, 0) + 1)}`;
+        weekLabel.textContent = `W${u2(getISOWeekNumber(date))}`;
     }
 
     if (wdayDisplay && date) {
