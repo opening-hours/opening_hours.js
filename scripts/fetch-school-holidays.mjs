@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 /*
+ * SPDX-FileCopyrightText: © 2026 Kristjan ESPERANTO <https://github.com/KristjanESPERANTO>
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
  * Generate School Holidays from OpenHolidays API Data (Git Submodule)
  *
  * Strategy:

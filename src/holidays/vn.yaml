@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: ODbL-1.0
 ---
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=10.77374&lon=106.70094&zoom=16&addressdetails=1&accept-language=en'
 

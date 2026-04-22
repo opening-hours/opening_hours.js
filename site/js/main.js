@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2025 Kristjan ESPERANTO <https://github.com/KristjanESPERANTO>
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ */
 // Import all required modules
 import i18next from '../../node_modules/i18next/dist/esm/i18next.bundled.js';
 import { resources, detectLanguage, getUserSelectTranslateHTMLCode, changeLanguage } from './i18n-resources.js';

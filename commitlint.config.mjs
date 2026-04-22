@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © opening_hours.js contributors
+// SPDX-License-Identifier: CC0-1.0
 export default {
   extends: ['@commitlint/config-conventional'],
   rules: {

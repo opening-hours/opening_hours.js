@@ -1,4 +1,8 @@
 /**
+ * SPDX-FileCopyrightText: © opening_hours.js contributors
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
  * Holiday definitions for opening_hours.js
  *
  * All countries are now sourced from generated-openholidays.js
