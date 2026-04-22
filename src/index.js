@@ -482,7 +482,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         // console.log(`Called formatWarnErrorMessage: ${nrule}, ${at}, ${message}`);
         // FIXME: Change to new_tokens.
         if (typeof nrule === 'number') {
-            let pos = 0;
+            let pos;
             if (nrule === -1) { // Usage of rule index not required because we do have access to value.length.
                 pos = value.length - at;
             } else { // Issue occurred at a later time, position in string needs to be reconstructed.
@@ -3030,7 +3030,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         tokens[at][3] = 'year';
         for (; at < tokens.length; at++) {
             if (matchTokens(tokens, at, 'year')) {
-                let is_range = false,
+                let is_range,
                     has_period,
                     period;
                 if (matchTokens(tokens, at+1, '-', 'year', '/', 'number')) {
