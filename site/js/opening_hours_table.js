@@ -232,14 +232,6 @@ export const OpeningHoursTable = {
         return `<table class="opening-hours-table">${headerRow}${rows}</table>`;
     },
 
-    getReadableState (startString, endString, oh, past) {
-        if (past === true) past = 'd';
-        else past = '';
-
-        const output = '';
-        return `${startString + output + endString}.`;
-    },
-
     drawTableAndComments (oh, it, evalDate) {
         const prevdate          = it.getDate();
         const unknown           = it.getUnknown();
