@@ -223,7 +223,7 @@ function opening_hours_test() {
             for (let i = 0; i < total_differ; i++) {
                 const oh_value = data.data[i].value;
                 if (ignored_values.indexOf(oh_value) === -1) {
-                    let oh_crashed = true,
+                    let oh_crashed,
                         oh_warnings = [],
                         oh_value_prettified,
                         oh;

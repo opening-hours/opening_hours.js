@@ -5651,7 +5651,6 @@ function opening_hours_test() {
                 console.log(str);
                 this.print_warnings(warnings);
             }
-            passed = true;
         } else if (ignored) {
             str += c.ignored('IGNORED') + ', reason: ' + ignored;
             passed = true;
@@ -5694,7 +5693,7 @@ function opening_hours_test() {
             value   = value[0];
         }
 
-        let oh, intervals, durations, weekstable, prettified, intervals_ok, duration_ok, weekstable_ok, prettify_ok, crashed = true;
+        let oh, intervals, durations, weekstable, prettified, intervals_ok, duration_ok, weekstable_ok, prettify_ok, crashed;
 
         let warnings;
         try {
@@ -5898,7 +5897,7 @@ function opening_hours_test() {
             expected_result = test_data_object[3];
 
         let passed = false;
-        let crashed = true;
+        let crashed;
         let actual_result;
         try {
             const first_oh = new opening_hours(first_value, nominatim_default);

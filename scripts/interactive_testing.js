@@ -41,7 +41,7 @@ const nominatimTestJSON = {'place_id':'44651229','licence':'Data \u00a9 OpenStre
 
 function opening_hours_object(value) {
     let oh;
-    let crashed = true;
+    let crashed;
     let needed_nominatim_json = false;
     let warnings = [];
     try {
