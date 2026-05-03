@@ -2559,7 +2559,10 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-20:01": [32m[1mPASSED[22m[39m
 "Test isEqualTo function" for "Mo 10:00-20:00; We-Fr 10:00-19:59": [32m[1mPASSED[22m[39m
 "Test isEqualTo function" for "closed; Sa unknown "comment"": [32m[1mPASSED[22m[39m
-971/975 tests passed. 4 did not pass.
+"getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
+"getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
+"getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
+974/978 tests passed. 4 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

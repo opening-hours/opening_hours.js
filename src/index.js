@@ -3992,11 +3992,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /* getNextChange: Get time of next status change {{{ */
+    /*
+     * Return next visible state change (open/closed/unknown).
+     * Skip comment-only boundaries; use getIterator(...).advance() for those.
+     */
     this.getNextChange = function(date, maxdate) {
         const it = this.getIterator(date);
-        if (!it.advance(maxdate))
-            return undefined;
-        return it.getDate();
+        const initial_state = it.getState();
+        const initial_unknown = it.getUnknown();
+        while (it.advance(maxdate)) {
+            if (it.getState() !== initial_state || it.getUnknown() !== initial_unknown) {
+                return it.getDate();
+            }
+        }
+        return undefined;
     };
     /* }}} */
 
