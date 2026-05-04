@@ -412,6 +412,8 @@ This API is useful for one-shot checks, but for iteration over intervals you sho
 
   Returns date of next state change. You may omit *date* to use current date.
 
+  "State change" means a visible state transition (open/closed/unknown). Comment-only boundaries (for example holiday-name comments or the end of an `off "renovation"` overlay while still closed) are skipped. If you need every boundary, use the iterator API and call `advance()` directly.
+
   Returns undefined if the next change cannot be found. This may happen if the state won't ever change (e.g. `24/7`) or if search goes beyond *limit* (which is *date* + ~5 years if omitted).
 
 - `let rule_index = oh.getMatchingRule(date);`

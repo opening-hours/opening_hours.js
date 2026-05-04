@@ -5554,6 +5554,34 @@ test.addEqualTo('Test isEqualTo function', [
     ]);
 /* }}} */
 
+// getNextChange: regressions for comment-only boundaries (#523, #489) {{{
+
+test.addNextChangeTest(
+    'getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)',
+    'Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"',
+    '2025-09-23 12:17',
+    // Skip end of renovation comment; next state change is morning opening.
+    '2025-09-25 08:00',
+    nominatim_by_loc.hr,
+);
+
+test.addNextChangeTest(
+    'getNextChange skips PH comment inside contiguous open range (#489)',
+    'Jul-Aug Mo-Su,PH 00:00-24:00',
+    '2024-07-14 00:01',
+    // Skip PH comment end; still open until Jul-Aug range ends.
+    '2024-09-01 00:00',
+    nominatim_by_loc.fr_occ,
+);
+
+test.addNextChangeTest(
+    'getNextChange returns undefined when state never changes',
+    '24/7',
+    '2025-01-01 00:00',
+    undefined,
+);
+// }}}
+
 process.exit(test.run() ? 0 : 1);
 
 //======================================================================
@@ -5572,6 +5600,7 @@ function opening_hours_test() {
     this.tests_comp_matching_rule = [];
     this.tests_prettify_value = [];
     this.tests_equal_to = [];
+    this.tests_next_change = [];
 
     this.extensive_testing = false;
     // If set to true, to run extensive tests.
@@ -5929,6 +5958,52 @@ function opening_hours_test() {
         return passed;
     }; /* }}} */
 
+    this.runSingleTestNextChange = function(test_data_object) { /* {{{ */
+        const name             = test_data_object[0],
+            value              = test_data_object[1],
+            from               = new Date(test_data_object[2]),
+            expected_next      = typeof test_data_object[3] === 'undefined'
+                ? undefined
+                : new Date(test_data_object[3]),
+            nominatim_data     = test_data_object[4],
+            oh_mode            = test_data_object[5];
+
+        let passed = false;
+        let crashed;
+        let actual_next;
+        try {
+            const oh = new opening_hours(value, nominatim_data, oh_mode);
+            actual_next = oh.getNextChange(from);
+            crashed = false;
+        } catch (err) {
+            crashed = err;
+        }
+
+        const matches = !crashed && (
+            (typeof expected_next === 'undefined' && typeof actual_next === 'undefined')
+            || (expected_next instanceof Date && actual_next instanceof Date
+                && expected_next.getTime() === actual_next.getTime())
+        );
+
+        let str = '"' + name + '" for "' + value.replace('\n', '*newline*') + '": ';
+        if (matches) {
+            str += c.passed('PASSED');
+            passed = true;
+            if (this.show_passing_tests)
+                console.log(str);
+        } else if (crashed) {
+            str += c.crashed('CRASHED') + ', reason: ' + crashed;
+            console.error(str);
+        } else {
+            str += c.failed('FAILED')
+                + ', getNextChange returned ' + actual_next
+                + ', expected ' + expected_next;
+            console.warn(str);
+        }
+
+        return passed;
+    }; /* }}} */
+
     // }}}
 
     // run all tests (public function) {{{
@@ -5938,7 +6013,8 @@ function opening_hours_test() {
             this.tests_should_warn.length +
             this.tests_comp_matching_rule.length +
             this.tests_prettify_value.length +
-            this.tests_equal_to.length;
+            this.tests_equal_to.length +
+            this.tests_next_change.length;
         let success   = 0;
         this.ignored  = [];
         for (let test = 0; test < this.tests.length; test++) {
@@ -5963,6 +6039,10 @@ function opening_hours_test() {
         }
         for (let test = 0; test < this.tests_equal_to.length; test++) {
             if (this.runSingleTestEqualTo(this.tests_equal_to[test]))
+                success++;
+        }
+        for (let test = 0; test < this.tests_next_change.length; test++) {
+            if (this.runSingleTestNextChange(this.tests_next_change[test]))
                 success++;
         }
 
@@ -6072,6 +6152,19 @@ function opening_hours_test() {
         else
             for (let value_ind = 0; value_ind < values.length; value_ind++)
                 this.tests_comp_matching_rule.push([name, values[value_ind], date, matching_rule, nominatim_data]);
+    };
+    // }}}
+
+    // add test to check getNextChange returns the next visible state change {{{
+    this.addNextChangeTest = function(name, value, from, expected_next_change, nominatim_data, last, oh_mode) {
+        if (this.last === true) {
+            return;
+        }
+        this.handle_only_test(last);
+
+        oh_mode = get_oh_mode_parameter(oh_mode);
+
+        this.tests_next_change.push([name, value, from, expected_next_change, nominatim_data, oh_mode]);
     };
     // }}}
 
