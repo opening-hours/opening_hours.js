@@ -35,6 +35,13 @@ jobs:
       - name: Run linter tests
         run: npm run lint
 
+  reuse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: REUSE Compliance Check
+        uses: fsfe/reuse-action@v6
+
   commitlint:
     runs-on: ubuntu-latest
     steps:

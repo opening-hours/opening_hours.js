@@ -4,4 +4,33 @@ version = 1
 SPDX-PackageName = "opening_hours"
 SPDX-PackageSupplier = "Robin Schneider <ypid@riseup.net>"
 SPDX-PackageDownloadLocation = "https://github.com/opening-hours/opening_hours.js"
-annotations = []
+
+# JSON config files and other non-commentable tooling files
+[[annotations]]
+path = [
+  ".versionrc.json",
+  "package.json",
+  "package-lock.json",
+  "taginfo.json",
+  "taginfo_template.json",
+  "test/test.de.log",
+  "test/test.en.log",
+  "types/index.d.ts",
+]
+SPDX-FileCopyrightText = "opening_hours.js contributors"
+SPDX-License-Identifier = "CC0-1.0"
+
+# Generated source files
+[[annotations]]
+path = [
+  "src/holidays/generated-openholidays.js",
+  "src/locales/word_error_correction.yaml",
+]
+SPDX-FileCopyrightText = "opening_hours.js contributors"
+SPDX-License-Identifier = "LGPL-3.0-only"
+
+# Nominatim geocoding cache data from OpenStreetMap
+[[annotations]]
+path = "src/holidays/nominatim_cache/*.yaml"
+SPDX-FileCopyrightText = "OpenStreetMap contributors"
+SPDX-License-Identifier = "ODbL-1.0"

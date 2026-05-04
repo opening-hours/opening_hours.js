@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 /* Info, license and author {{{
+ * SPDX-FileCopyrightText: © 2015 Robin Schneider <ypid@riseup.net>
+ * SPDX-License-Identifier: AGPL-3.0-only
  * @license AGPLv3 <https://www.gnu.org/licenses/agpl-3.0.html>
  * @author Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
  *

@@ -1,3 +1,8 @@
+/**
+ * SPDX-FileCopyrightText: © 2025 Kristjan ESPERANTO <https://github.com/KristjanESPERANTO>
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ */
 import opening_hours_resources from './opening_hours_resources.yaml';
 
 const resources = opening_hours_resources;
