@@ -6,18 +6,18 @@ _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.
 PH:
   - {'name': 'Anul Nou', 'fixed_date': [1, 1]}
   - {'name': 'A doua zi de Anul Nou', 'fixed_date': [1, 2]}
-  - {'name': 'Ziua Unirii Principatelor Române (Ziua Unirii)', 'fixed_date': [1, 24]}
-  - {'name': 'Paștele ortodox', 'variable_date': 'orthodox easter'}
-  - {'name': 'A doua zi de Paște ortodox', 'variable_date': 'orthodox easter', 'offset': 1}
+  - {'name': 'Bobotează', 'fixed_date': [1, 6]}
+  - {'name': 'Sfântul Ioan Botezătorul', 'fixed_date': [1, 7]}
+  - {'name': 'Ziua Unirii Principatelor Române', 'fixed_date': [1, 24]}
+  - {'name': 'Vinerea Mare', 'variable_date': orthodox easter, 'offset': -2}
+  - {'name': 'Paștele', 'variable_date': orthodox easter}
+  - {'name': 'A doua zi de Paști', 'variable_date': orthodox easter, 'offset': 1}
   - {'name': 'Ziua Muncii', 'fixed_date': [5, 1]}
-  - {'name': 'Rusaliile', 'variable_date': 'orthodox easter', 'offset': 50}
-  - {'name': 'A doua zi de Rusalii', 'variable_date': 'orthodox easter', 'offset': 51}
+  - {'name': 'Ziua Copilului', 'fixed_date': [6, 1]}
+  - {'name': 'Rusaliile', 'variable_date': orthodox easter, 'offset': 50}
+  - {'name': 'A doua zi de Rusalii', 'variable_date': orthodox easter, 'offset': 51}
   - {'name': 'Adormirea Maicii Domnului', 'fixed_date': [8, 15]}
-  - {'name': 'Sfântul Apostol Andrei', 'fixed_date': [11, 30]}
-  - {'name': 'Ziua Națională (Ziua Marii Uniri)', 'fixed_date': [12, 1]}
+  - {'name': 'Sfântul Andrei', 'fixed_date': [11, 30]}
+  - {'name': 'Ziua Națională a României', 'fixed_date': [12, 1]}
   - {'name': 'Crăciunul', 'fixed_date': [12, 25]}
   - {'name': 'A doua zi de Crăciun', 'fixed_date': [12, 26]}
-
-# sources
-# https://www.edu.ro/ordinul-ministrului-educa%C8%9Biei-%C8%99i-cercet%C4%83rii-nr-31252020-privind-structura-anului-%C8%99colar-2020-2021
-# https://www.edu.ro/structura_anului_scolar_2021_2022

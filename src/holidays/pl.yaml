@@ -1,19 +1,21 @@
 ---
 
-# https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=53.4825&lon=18.75823&zoom=18&addressdetails=1&accept-language=pl,en'
+
+# https://isap.sejm.gov.pl/isap.nsf/DocDetails.xsp?id=WDU20250000296
+# https://pl.wikipedia.org/wiki/Dni_wolne_od_pracy_w_Polsce
 PH:
   - {'name': 'Nowy Rok', 'fixed_date': [1, 1]}
   - {'name': 'Święto Trzech Króli', 'fixed_date': [1, 6]}
-  - {'name': 'Wielkanoc', 'variable_date': easter}
-  - {'name': 'Lany Poniedziałek - drugi dzień Wielkiej Nocy', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Pierwszy Maja', 'fixed_date': [5, 1]}
-  - {'name': 'Trzeci Maja', 'fixed_date': [5, 3]}
-  - {'name': 'Zielone Świątki', 'variable_date': easter, 'offset': 49}
-  - {'name': 'Boże Ciało', 'variable_date': easter, 'offset': 60}
-  - {'name': 'Wniebowzięcie Najświętszej Maryi Panny', 'fixed_date': [8, 15]}
+  - {'name': 'pierwszy dzień Wielkiej Nocy', 'variable_date': easter}
+  - {'name': 'drugi dzień Wielkiej Nocy', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Święto Państwowe', 'fixed_date': [5, 1]}
+  - {'name': 'Święto Narodowe Trzeciego Maja', 'fixed_date': [5, 3]}
+  - {'name': 'pierwszy dzień Zielonych Świątek', 'variable_date': easter, 'offset': 49}
+  - {'name': 'dzień Bożego Ciała', 'variable_date': easter, 'offset': 60}
+  - {'name': 'Wniebowzięcie Najświętszej Marii Panny', 'fixed_date': [8, 15]}
   - {'name': 'Wszystkich Świętych', 'fixed_date': [11, 1]}
-  - {'name': 'Święto Niepodległości', 'fixed_date': [11, 11]}
+  - {'name': 'Narodowe Święto Niepodległości', 'fixed_date': [11, 11]}
   - {'name': 'Wigilia Bożego Narodzenia', 'fixed_date': [12, 24]}
   - {'name': 'pierwszy dzień Bożego Narodzenia', 'fixed_date': [12, 25]}
   - {'name': 'drugi dzień Bożego Narodzenia', 'fixed_date': [12, 26]}

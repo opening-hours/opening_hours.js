@@ -6,14 +6,14 @@ _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=53.
 
 PH:
   - {'name': 'New Year’s Day', 'fixed_date': [1, 1]}
-  - {'name': 'St Patrick’s Day', 'fixed_date': [3, 17]}
-  - {'name': 'St Patrick’s Day', 'variable_date': 'nextMo-Fr17March'}
+  - {'name': 'St. Patrick’s Day', 'fixed_date': [3, 17]}
+  - {'name': 'St. Patrick’s Day', 'variable_date': 'nextMo-Fr17March'}
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
   - {'name': 'May Bank Holiday', 'variable_date': firstMayMonday}
   - {'name': 'June Bank Holiday', 'variable_date': firstJuneMonday}
   - {'name': 'August Bank Holiday', 'variable_date': firstAugustMonday}
-  - {'name': 'October Bank Holiday (Halloween)', 'variable_date': lastOctoberMonday}
-  - {'name': 'Christmas', 'fixed_date': [12, 25]}
-  - {'name': 'St Stephen’s Day', 'fixed_date': [12, 26]}
+  - {'name': 'October Bank Holiday', 'variable_date': lastOctoberMonday}
+  - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+  - {'name': 'St. Stephen’s Day', 'fixed_date': [12, 26]}
   - {'name': 'Bank Holiday', 'fixed_date': [12, 27]}

@@ -1,0 +1,12 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=53.9045&lon=27.5615&zoom=18&addressdetails=1&accept-language=be,en'
+
+PH:
+  - {'name': 'Новы год', 'fixed_date': [1, 1]}
+  - {'name': 'Мiжнародны жаночы дзень', 'fixed_date': [3, 8]}
+  - {'name': 'Дзень працы', 'fixed_date': [5, 1]}
+  - {'name': 'Дзень Перамогi', 'fixed_date': [5, 9]}
+  - {'name': 'Дзень Незалежнасцi', 'fixed_date': [7, 3]}
+  - {'name': 'Дзень Кастрычніцкай рэвалюцыі', 'fixed_date': [11, 7]}
+  - {'name': 'Каляды каталiцкiя', 'fixed_date': [12, 25]}

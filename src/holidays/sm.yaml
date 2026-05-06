@@ -1,0 +1,23 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=43.9424&lon=12.4578&zoom=18&addressdetails=1&accept-language=it,en'
+
+PH:
+  - {'name': 'Capodanno', 'fixed_date': [1, 1]}
+  - {'name': 'Epifania', 'fixed_date': [1, 6]}
+  - {'name': 'Festa di Sant’Agata', 'fixed_date': [2, 5]}
+  - {'name': 'Anniversario dell''Arengo', 'fixed_date': [3, 25]}
+  - {'name': 'Cerimonia di investitura dei Capitani Reggenti', 'fixed_date': [4, 1]}
+  - {'name': 'Domenica di Pasqua', 'variable_date': easter}
+  - {'name': 'Lunedì dell’Angelo', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Festa del Lavoro', 'fixed_date': [5, 1]}
+  - {'name': 'Corpus Domini', 'variable_date': easter, 'offset': 60}
+  - {'name': 'Anniversario della caduta del Fascismo e Festa della Libertà', 'fixed_date': [7, 28]}
+  - {'name': 'Ferragosto', 'fixed_date': [8, 15]}
+  - {'name': 'Festa di San Marino e di Fondazione della Repubblica', 'fixed_date': [9, 3]}
+  - {'name': 'Cerimonia di investitura dei Capitani Reggenti', 'fixed_date': [10, 1]}
+  - {'name': 'Tutti i Santi', 'fixed_date': [11, 1]}
+  - {'name': 'Commemorazione dei defunti', 'fixed_date': [11, 2]}
+  - {'name': 'Immacolata Concezione', 'fixed_date': [12, 8]}
+  - {'name': 'Natale', 'fixed_date': [12, 25]}
+  - {'name': 'Santo Stefano', 'fixed_date': [12, 26]}

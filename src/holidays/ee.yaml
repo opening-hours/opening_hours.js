@@ -1,0 +1,17 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=59.4370&lon=24.7536&zoom=18&addressdetails=1&accept-language=et,en'
+
+PH:
+  - {'name': 'uusaasta', 'fixed_date': [1, 1]}
+  - {'name': 'iseseisvuspäev', 'fixed_date': [2, 24]}
+  - {'name': 'suur reede', 'variable_date': easter, 'offset': -2}
+  - {'name': 'lihavõtted', 'variable_date': easter}
+  - {'name': 'kevadpüha', 'fixed_date': [5, 1]}
+  - {'name': 'nelipühade 1. püha', 'variable_date': easter, 'offset': 49}
+  - {'name': 'võidupüha', 'fixed_date': [6, 23]}
+  - {'name': 'jaanipäev', 'fixed_date': [6, 24]}
+  - {'name': 'taasiseseisvumispäev', 'fixed_date': [8, 20]}
+  - {'name': 'jõululaupäev', 'fixed_date': [12, 24]}
+  - {'name': 'esimene jõulupüha', 'fixed_date': [12, 25]}
+  - {'name': 'teine jõulupüha', 'fixed_date': [12, 26]}

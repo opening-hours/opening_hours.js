@@ -1,0 +1,19 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=35.8997&lon=14.5147&zoom=18&addressdetails=1&accept-language=mt,en'
+
+PH:
+  - {'name': 'L-Ewwel tas-Sena', 'fixed_date': [1, 1]}
+  - {'name': 'Nawfraġju ta'' San Pawl', 'fixed_date': [2, 10]}
+  - {'name': 'San Ġużepp', 'fixed_date': [3, 19]}
+  - {'name': 'Jum il-Ħelsien', 'fixed_date': [3, 31]}
+  - {'name': 'Il-Ġimgħa l-Kbira', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Jum il-Ħaddiem', 'fixed_date': [5, 1]}
+  - {'name': 'Sette Giugno', 'fixed_date': [6, 7]}
+  - {'name': 'L-Imnarja', 'fixed_date': [6, 29]}
+  - {'name': 'Santa Marija', 'fixed_date': [8, 15]}
+  - {'name': 'Jum il-Vitorja', 'fixed_date': [9, 8]}
+  - {'name': 'Jum l-Indipendenza', 'fixed_date': [9, 21]}
+  - {'name': 'Il-Kunċizzjoni', 'fixed_date': [12, 8]}
+  - {'name': 'Jum ir-Repubblika', 'fixed_date': [12, 13]}
+  - {'name': 'Il-Milied', 'fixed_date': [12, 25]}
