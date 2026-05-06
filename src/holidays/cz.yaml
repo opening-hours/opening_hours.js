@@ -2,9 +2,10 @@
 
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=50.0874401&lon=14.4212556&zoom=18&addressdetails=1&accept-language=cs,en'
 
-# http://www.mpsv.cz/cs/74 or english: https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
+# https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
 PH:
-  - {'name': 'Den obnovy samostatného českého státu', 'fixed_date': [1, 1]}
+
+  - {'name': 'Den obnovy samostatného českého státu; Nový rok', 'fixed_date': [1, 1]}
   - {'name': 'Velký pátek', 'variable_date': easter, 'offset': -2}
   - {'name': 'Velikonoční pondělí', 'variable_date': easter, 'offset': 1}
   - {'name': 'Svátek práce', 'fixed_date': [5, 1]}
