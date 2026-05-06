@@ -1,0 +1,14 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=44.8176&lon=20.4569&zoom=18&addressdetails=1&accept-language=sr,en'
+
+PH:
+  - {'name': 'Нова година', 'fixed_date': [1, 1]}
+  - {'name': 'Нова година', 'fixed_date': [1, 2]}
+  - {'name': 'Дан државности Србије', 'fixed_date': [2, 16]}
+  - {'name': 'Велики петак', 'variable_date': orthodox easter, 'offset': -2}
+  - {'name': 'Васкрс', 'variable_date': orthodox easter}
+  - {'name': 'Васкрсни понедељак', 'variable_date': orthodox easter, 'offset': 1}
+  - {'name': 'Празник рада', 'fixed_date': [5, 1]}
+  - {'name': 'Празник рада', 'fixed_date': [5, 2]}
+  - {'name': 'Дан примирја', 'fixed_date': [11, 11]}

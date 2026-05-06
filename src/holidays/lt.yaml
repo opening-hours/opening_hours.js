@@ -1,0 +1,19 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=54.6872&lon=25.2797&zoom=18&addressdetails=1&accept-language=lt,en'
+
+PH:
+  - {'name': 'Naujieji metai', 'fixed_date': [1, 1]}
+  - {'name': 'Lietuvos valstybės atkūrimo diena', 'fixed_date': [2, 16]}
+  - {'name': 'Lietuvos nepriklausomybės atkūrimo diena', 'fixed_date': [3, 11]}
+  - {'name': 'Velykos', 'variable_date': easter}
+  - {'name': 'Velykų pirmadienis', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Tarptautinė darbo diena', 'fixed_date': [5, 1]}
+  - {'name': 'Joninės, Rasos', 'fixed_date': [6, 24]}
+  - {'name': 'Valstybės diena', 'fixed_date': [7, 6]}
+  - {'name': 'Žolinė', 'fixed_date': [8, 15]}
+  - {'name': 'Visų šventųjų diena', 'fixed_date': [11, 1]}
+  - {'name': 'Vėlinės', 'fixed_date': [11, 2]}
+  - {'name': 'Šv. Kūčios', 'fixed_date': [12, 24]}
+  - {'name': 'Šv. Kalėdos', 'fixed_date': [12, 25]}
+  - {'name': '2. Kalėdų diena', 'fixed_date': [12, 26]}

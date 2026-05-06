@@ -1,0 +1,22 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.7151&lon=44.8271&zoom=18&addressdetails=1&accept-language=ka,en'
+
+PH:
+  - {'name': 'ახალი წელი', 'fixed_date': [1, 1]}
+  - {'name': 'ბედობა', 'fixed_date': [1, 2]}
+  - {'name': 'შობა', 'fixed_date': [1, 7]}
+  - {'name': 'ნათლისღება', 'fixed_date': [1, 19]}
+  - {'name': 'დედის დღე', 'fixed_date': [3, 3]}
+  - {'name': 'ქალთა საერთაშორისო დღე', 'fixed_date': [3, 8]}
+  - {'name': 'ეროვნული ერთიანობის დღე', 'fixed_date': [4, 9]}
+  - {'name': 'წითელი პარასკევი', 'variable_date': orthodox easter, 'offset': -2}
+  - {'name': 'დიდი შაბათი', 'variable_date': orthodox easter, 'offset': -1}
+  - {'name': 'აღდგომა', 'variable_date': orthodox easter}
+  - {'name': 'აღდგომის ორშაბათი', 'variable_date': orthodox easter, 'offset': 1}
+  - {'name': 'ფაშიზმზე გამარჯვების დღე', 'fixed_date': [5, 9]}
+  - {'name': 'წმინდა ანდრია პირველწოდებულის ხსენების დღე', 'fixed_date': [5, 12]}
+  - {'name': 'დამოუკიდებლობის დღე', 'fixed_date': [5, 26]}
+  - {'name': 'მარიამობა', 'fixed_date': [8, 28]}
+  - {'name': 'სვეტიცხოვლობა', 'fixed_date': [10, 14]}
+  - {'name': 'გიორგობა', 'fixed_date': [11, 23]}

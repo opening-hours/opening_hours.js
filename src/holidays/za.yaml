@@ -1,0 +1,17 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-25.7462&lon=28.1881&zoom=18&addressdetails=1&accept-language=en,af'
+
+PH:
+  - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
+  - {'name': 'Human Rights Day', 'fixed_date': [3, 21]}
+  - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Family Day', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Freedom Day', 'fixed_date': [4, 27]}
+  - {'name': 'Workers'' Day', 'fixed_date': [5, 1]}
+  - {'name': 'Youth Day', 'fixed_date': [6, 16]}
+  - {'name': 'National Women''s Day', 'fixed_date': [8, 9]}
+  - {'name': 'Heritage Day', 'fixed_date': [9, 24]}
+  - {'name': 'Day of Reconciliation', 'fixed_date': [12, 16]}
+  - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+  - {'name': 'Day of Goodwill', 'fixed_date': [12, 26]}

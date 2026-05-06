@@ -1,0 +1,17 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=43.7384&lon=7.4246&zoom=18&addressdetails=1&accept-language=fr,en'
+
+PH:
+  - {'name': 'Nouvel An', 'fixed_date': [1, 1]}
+  - {'name': 'Sainte Dévote', 'fixed_date': [1, 27]}
+  - {'name': 'Lundi de Pâques', 'variable_date': easter, 'offset': 1}
+  - {'name': '1er mai', 'fixed_date': [5, 1]}
+  - {'name': 'Ascension', 'variable_date': easter, 'offset': 39}
+  - {'name': 'Lundi de Pentecôte', 'variable_date': easter, 'offset': 50}
+  - {'name': 'la Fête-Dieu', 'variable_date': easter, 'offset': 60}
+  - {'name': 'Assomption', 'fixed_date': [8, 15]}
+  - {'name': 'Toussaint', 'fixed_date': [11, 1]}
+  - {'name': 'La Fête du Prince', 'fixed_date': [11, 19]}
+  - {'name': 'Immaculée Conception', 'fixed_date': [12, 8]}
+  - {'name': 'Noël', 'fixed_date': [12, 25]}
