@@ -9,7 +9,7 @@ PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_New_Zealand
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
   - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
-  - {'name': 'Queen''s Birthday', 'variable_date': firstJuneMonday}
+  - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday}
   - {'name': 'Labour Day', 'variable_date': firstOctoberMonday, 'offset': 21}
   - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
   - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
