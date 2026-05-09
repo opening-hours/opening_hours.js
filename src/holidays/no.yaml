@@ -3,15 +3,15 @@
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=61.0&lon=8.0&zoom=8&addressdetails=1&accept-language=no,en'
 
 PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_Norway
-  - {'name': 'Nyttårsdag', 'fixed_date': [1, 1]}
+  - {'name': 'Første nyttårsdag', 'fixed_date': [1, 1]}
   - {'name': 'Skjærtorsdag', 'variable_date': easter, 'offset': -3}
   - {'name': 'Langfredag', 'variable_date': easter, 'offset': -2}
-  - {'name': 'Påskedag', 'variable_date': easter}
-  - {'name': '2. Påskedag', 'variable_date': easter, 'offset': 1}
-  - {'name': '1. Mai', 'fixed_date': [5, 1]}
+  - {'name': 'Første påskedag', 'variable_date': easter}
+  - {'name': 'Andre påskedag', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Arbeidernes dag', 'fixed_date': [5, 1]}
+  - {'name': 'Kristi himmelfartsdag', 'variable_date': easter, 'offset': 39}
   - {'name': 'Grunnlovsdagen', 'fixed_date': [5, 17]}
-  - {'name': 'Kristi Himmelfartsdag', 'variable_date': easter, 'offset': 39}
-  - {'name': 'Pinsedag', 'variable_date': easter, 'offset': 49}
-  - {'name': '2. Pinsedag', 'variable_date': easter, 'offset': 50}
-  - {'name': 'Juledag', 'fixed_date': [12, 25]}
-  - {'name': '2. Juledag', 'fixed_date': [12, 26]}
+  - {'name': 'Første pinsedag', 'variable_date': easter, 'offset': 49}
+  - {'name': 'Andre pinsedag', 'variable_date': easter, 'offset': 50}
+  - {'name': 'Første juledag', 'fixed_date': [12, 25]}
+  - {'name': 'Andre juledag', 'fixed_date': [12, 26]}

@@ -1,0 +1,18 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=38.7223&lon=-9.1393&zoom=18&addressdetails=1&accept-language=pt,en'
+
+PH:
+  - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
+  - {'name': 'Sexta-Feira Santa', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Páscoa', 'variable_date': easter}
+  - {'name': 'Dia da Liberdade', 'fixed_date': [4, 25]}
+  - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
+  - {'name': 'Corpo de Deus', 'variable_date': easter, 'offset': 60}
+  - {'name': 'Dia de Portugal', 'fixed_date': [6, 10]}
+  - {'name': 'Assunção de Maria', 'fixed_date': [8, 15]}
+  - {'name': 'Implantação da República', 'fixed_date': [10, 5]}
+  - {'name': 'Todos os santos', 'fixed_date': [11, 1]}
+  - {'name': 'Restauração da Independência', 'fixed_date': [12, 1]}
+  - {'name': 'Imaculada Conceição', 'fixed_date': [12, 8]}
+  - {'name': 'Natal', 'fixed_date': [12, 25]}

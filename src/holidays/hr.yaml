@@ -1,12 +1,14 @@
 ---
 
-_nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lon=15.977&lat=45.813&zoom=18&addressdetails=1&accept-language=hr,en
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lon=15.977&lat=45.813&zoom=18&addressdetails=1&accept-language=hr,en'
 
 PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_Croatia
   - {'name': 'Nova godina', 'fixed_date': [1, 1]}
   - {'name': 'Sveta tri kralja', 'fixed_date': [1, 6]}
+  - {'name': 'Uskrs', 'variable_date': easter}
   - {'name': 'Uskršnji ponedjeljak', 'variable_date': easter, 'offset': 1}
   - {'name': 'Praznik rada', 'fixed_date': [5, 1]}
+  - {'name': 'Dan državnosti', 'fixed_date': [5, 30]}
   - {'name': 'Tijelovo', 'variable_date': easter, 'offset': 60}
   - {'name': 'Dan antifašističke borbe', 'fixed_date': [6, 22]}
   - {'name': 'Dan pobjede i domovinske zahvalnosti', 'fixed_date': [8, 5]}

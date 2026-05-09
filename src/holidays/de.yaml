@@ -3,7 +3,7 @@
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487&lon=9.8160&zoom=18&addressdetails=1&accept-language=de,en'
 
 PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
-  - {"name": "Neujahrstag", "fixed_date": [1, 1]}
+  - {"name": "Neujahr", "fixed_date": [1, 1]}
   - {"name": "Heilige Drei Könige", "fixed_date": [1, 6], "only_states": [Baden-Württemberg, Bayern, Sachsen-Anhalt]}
   - {"name": "Frauentag", "fixed_date": [3, 8], "only_states": [Berlin, Mecklenburg-Vorpommern]}
   - {"name": "Tag der Arbeit", "fixed_date": [5, 1]}

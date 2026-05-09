@@ -1,5 +1,7 @@
 ---
 
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.0569&lon=14.5058&zoom=18&addressdetails=1&accept-language=sl,en'
+
 # https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/
 PH:
   - {'name': 'novo leto', 'fixed_date': [1, 1]}

@@ -118,7 +118,7 @@ export const ar = {
 };
 
 export const at = {
-  PH: [{"name":"Neujahrstag","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Staatsfeiertag","fixed_date":[5,1]},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60},{"name":"Mariä Himmelfahrt","fixed_date":[8,15]},{"name":"Nationalfeiertag","fixed_date":[10,26]},{"name":"Allerheiligen","fixed_date":[11,1]},{"name":"Mariä Empfängnis","fixed_date":[12,8]},{"name":"Christtag","fixed_date":[12,25]},{"name":"Stefanitag","fixed_date":[12,26]}],
+  PH: [{"name":"Neujahr","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Staatsfeiertag","fixed_date":[5,1]},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60},{"name":"Mariä Himmelfahrt","fixed_date":[8,15]},{"name":"Nationalfeiertag","fixed_date":[10,26]},{"name":"Allerheiligen","fixed_date":[11,1]},{"name":"Mariä Empfängnis","fixed_date":[12,8]},{"name":"Christtag","fixed_date":[12,25]},{"name":"Stefanitag","fixed_date":[12,26]}],
   SH: [
     {
       name: "Osterferien",
@@ -551,47 +551,47 @@ export const at = {
 };
 
 export const au = {
-  PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}],
+  PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-35.2809&lon=149.1300&zoom=16&addressdetails=1&accept-language=en",
   "Australian Capital Territory": {
     "_state_code": "act",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-35.2809&lon=149.1300&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Canberra Day","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Sunday","variable_date":"easter"},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Reconciliation Day","variable_date":"lastMayMonday"},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Family and Community Day","variable_date":"lastSeptemberMonday"},{"name":"Labour Day","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Canberra Day","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Sunday","variable_date":"easter"},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Reconciliation Day","variable_date":"lastMayMonday"},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Family and Community Day","variable_date":"lastSeptemberMonday"},{"name":"Labour Day","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "New South Wales": {
     "_state_code": "nsw",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-33.8688&lon=151.2093&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Sunday","variable_date":"easter"},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Labour Day","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Sunday","variable_date":"easter"},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Labour Day","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "Northern Territory": {
     "_state_code": "nt",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-12.4634&lon=130.8456&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"May Day","variable_date":"firstMayMonday"},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Picnic Day","variable_date":"firstAugustMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"May Day","variable_date":"firstMayMonday"},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Picnic Day","variable_date":"firstAugustMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "Queensland": {
     "_state_code": "qld",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-27.4698&lon=153.0251&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Labour Day","variable_date":"firstMayMonday"},{"name":"Queens Birthday","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Labour Day","variable_date":"firstMayMonday"},{"name":"Queens Birthday","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "South Australia": {
     "_state_code": "sa",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.9285&lon=138.6007&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Adelaide Cup","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Labour Day","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Adelaide Cup","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Labour Day","variable_date":"firstOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "Tasmania": {
     "_state_code": "tas",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-42.8821&lon=147.3272&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Eight Hours Day","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Eight Hours Day","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "Victoria": {
     "_state_code": "vic",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-37.8136&lon=144.9631&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Labour Day","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Sunday","variable_date":"easter"},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"AFL Grand Final","variable_date":"lastSeptemberFriday"},{"name":"Melbourne Cup","variable_date":"firstNovemberTuesday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Labour Day","variable_date":"firstMarchMonday","offset":7},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Saturday","variable_date":"easter","offset":-1},{"name":"Easter Sunday","variable_date":"easter"},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Queens Birthday","variable_date":"firstJuneMonday","offset":7},{"name":"AFL Grand Final","variable_date":"lastSeptemberFriday"},{"name":"Melbourne Cup","variable_date":"firstNovemberTuesday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
   "Western Australia": {
     "_state_code": "wa",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-31.9505&lon=115.8605&zoom=16&addressdetails=1&accept-language=en",
-    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Labour Day","variable_date":"firstMarchMonday"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"ANZAC Day","fixed_date":[4,25]},{"name":"Western Australia Day","variable_date":"firstJuneMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+    PH: [{"name":"New Years Day","fixed_date":[1,1]},{"name":"Australia Day","fixed_date":[1,26]},{"name":"Labour Day","variable_date":"firstMarchMonday"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Western Australia Day","variable_date":"firstJuneMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   }
 };
 
@@ -801,6 +801,7 @@ export const be = {
 };
 
 export const bg = {
+  PH: [{"name":"Нова Година","fixed_date":[1,1]},{"name":"Ден на Освобождението на България от Османската Империя","fixed_date":[3,3]},{"name":"Разпети петък","variable_date":"orthodox easter","offset":-2},{"name":"Великден","variable_date":"orthodox easter"},{"name":"Велики понеделник","variable_date":"orthodox easter","offset":1},{"name":"Ден на труда","fixed_date":[5,1]},{"name":"Гергьовден","fixed_date":[5,6]},{"name":"Ден на азбуката, културата и просветата","fixed_date":[5,24]},{"name":"Ден на съединението","fixed_date":[9,6]},{"name":"Ден на независимостта","fixed_date":[9,22]},{"name":"Бъдни вечер","fixed_date":[12,24]},{"name":"Коледа","fixed_date":[12,25]}],
   SH: [
     {
       name: "Коледна ваканция",
@@ -856,7 +857,8 @@ export const bg = {
       2022: [2,2,2,4],
       2026: [3,2,3,2],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.6977&lon=23.3219&zoom=18&addressdetails=1&accept-language=bg,en"
 };
 
 export const br = {
@@ -947,6 +949,7 @@ export const br = {
 };
 
 export const by = {
+  PH: [{"name":"Новы год","fixed_date":[1,1]},{"name":"Мiжнародны жаночы дзень","fixed_date":[3,8]},{"name":"Дзень працы","fixed_date":[5,1]},{"name":"Дзень Перамогi","fixed_date":[5,9]},{"name":"Дзень Незалежнасцi","fixed_date":[7,3]},{"name":"Дзень Кастрычніцкай рэвалюцыі","fixed_date":[11,7]},{"name":"Каляды каталiцкiя","fixed_date":[12,25]}],
   SH: [
     {
       name: "Зімовыя вакацыі",
@@ -987,11 +990,13 @@ export const by = {
       2024: [10,27,11,5],
       2025: [11,2,11,9],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=53.9045&lon=27.5615&zoom=18&addressdetails=1&accept-language=be,en"
 };
 
 export const ca = {
   PH: [{"name":"New Year's Day","fixed_date":[1,1]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Canada Day","variable_date":"canadaDay"},{"name":"Labour Day","variable_date":"firstSeptemberMonday"},{"name":"Christmas Day","fixed_date":[12,25]}],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=45.4215&lon=-75.6972&zoom=18&addressdetails=1&accept-language=en,fr",
   "Alberta": {
     PH: [{"name":"New Year's Day","fixed_date":[1,1]},{"name":"Alberta Family Day","variable_date":"firstFebruaryMonday","offset":14},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Victoria Day","variable_date":"victoriaDay"},{"name":"Canada Day","variable_date":"canadaDay"},{"name":"Heritage Day","variable_date":"firstAugustMonday"},{"name":"Labour Day","variable_date":"firstSeptemberMonday"},{"name":"Thanksgiving","variable_date":"firstOctoberMonday","offset":7},{"name":"Remembrance Day","fixed_date":[11,11]},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   },
@@ -3425,7 +3430,7 @@ export const cn = {
 };
 
 export const cz = {
-  PH: [{"name":"Den obnovy samostatného českého státu","fixed_date":[1,1]},{"name":"Velký pátek","variable_date":"easter","offset":-2},{"name":"Velikonoční pondělí","variable_date":"easter","offset":1},{"name":"Svátek práce","fixed_date":[5,1]},{"name":"Den vítězství","fixed_date":[5,8]},{"name":"Den slovanských věrozvěstů Cyrila a Metoděje","fixed_date":[7,5]},{"name":"Den upálení mistra Jana Husa","fixed_date":[7,6]},{"name":"Den české státnosti","fixed_date":[9,28]},{"name":"Den vzniku samostatného československého státu","fixed_date":[10,28]},{"name":"Den boje za svobodu a demokracii","fixed_date":[11,17]},{"name":"Štědrý den","fixed_date":[12,24]},{"name":"1. svátek vánoční","fixed_date":[12,25]},{"name":"2. svátek vánoční","fixed_date":[12,26]}],
+  PH: [{"name":"Den obnovy samostatného českého státu; Nový rok","fixed_date":[1,1]},{"name":"Velký pátek","variable_date":"easter","offset":-2},{"name":"Velikonoční pondělí","variable_date":"easter","offset":1},{"name":"Svátek práce","fixed_date":[5,1]},{"name":"Den vítězství","fixed_date":[5,8]},{"name":"Den slovanských věrozvěstů Cyrila a Metoděje","fixed_date":[7,5]},{"name":"Den upálení mistra Jana Husa","fixed_date":[7,6]},{"name":"Den české státnosti","fixed_date":[9,28]},{"name":"Den vzniku samostatného československého státu","fixed_date":[10,28]},{"name":"Den boje za svobodu a demokracii","fixed_date":[11,17]},{"name":"Štědrý den","fixed_date":[12,24]},{"name":"1. svátek vánoční","fixed_date":[12,25]},{"name":"2. svátek vánoční","fixed_date":[12,26]}],
   SH: [
     {
       name: "Vánoční prázdniny",
@@ -4723,7 +4728,7 @@ export const cz = {
 };
 
 export const de = {
-  PH: [{"name":"Neujahrstag","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6],"only_states":["Baden-Württemberg","Bayern","Sachsen-Anhalt"]},{"name":"Frauentag","fixed_date":[3,8],"only_states":["Berlin","Mecklenburg-Vorpommern"]},{"name":"Tag der Arbeit","fixed_date":[5,1]},{"name":"Karfreitag","variable_date":"easter","offset":-2},{"name":"Ostersonntag","variable_date":"easter","only_states":["Brandenburg"]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstsonntag","variable_date":"easter","offset":49,"only_states":["Brandenburg"]},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60,"only_states":["Baden-Württemberg","Bayern","Hessen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Mariä Himmelfahrt","fixed_date":[8,15],"only_states":["Saarland"]},{"name":"Weltkindertag","fixed_date":[9,20],"only_states":["Thüringen"]},{"name":"Tag der Deutschen Einheit","fixed_date":[10,3]},{"name":"Reformationstag","fixed_date":[10,31],"only_states":["Brandenburg","Bremen","Hamburg","Mecklenburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]},{"name":"Allerheiligen","fixed_date":[11,1],"only_states":["Baden-Württemberg","Bayern","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Buß- und Bettag","variable_date":"nextWednesday16Nov","only_states":["Sachsen"]},{"name":"1. Weihnachtstag","fixed_date":[12,25]},{"name":"2. Weihnachtstag","fixed_date":[12,26]}],
+  PH: [{"name":"Neujahr","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6],"only_states":["Baden-Württemberg","Bayern","Sachsen-Anhalt"]},{"name":"Frauentag","fixed_date":[3,8],"only_states":["Berlin","Mecklenburg-Vorpommern"]},{"name":"Tag der Arbeit","fixed_date":[5,1]},{"name":"Karfreitag","variable_date":"easter","offset":-2},{"name":"Ostersonntag","variable_date":"easter","only_states":["Brandenburg"]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstsonntag","variable_date":"easter","offset":49,"only_states":["Brandenburg"]},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60,"only_states":["Baden-Württemberg","Bayern","Hessen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Mariä Himmelfahrt","fixed_date":[8,15],"only_states":["Saarland"]},{"name":"Weltkindertag","fixed_date":[9,20],"only_states":["Thüringen"]},{"name":"Tag der Deutschen Einheit","fixed_date":[10,3]},{"name":"Reformationstag","fixed_date":[10,31],"only_states":["Brandenburg","Bremen","Hamburg","Mecklenburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]},{"name":"Allerheiligen","fixed_date":[11,1],"only_states":["Baden-Württemberg","Bayern","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Buß- und Bettag","variable_date":"nextWednesday16Nov","only_states":["Sachsen"]},{"name":"1. Weihnachtstag","fixed_date":[12,25]},{"name":"2. Weihnachtstag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487&lon=9.8160&zoom=18&addressdetails=1&accept-language=de,en",
   "Baden-Württemberg": {
     SH: [
@@ -7000,11 +7005,12 @@ export const de = {
 };
 
 export const dk = {
-  PH: [{"name":"Nytårsdag","fixed_date":[1,1]},{"name":"Skærtorsdag","variable_date":"easter","offset":-3},{"name":"Langfredag","variable_date":"easter","offset":-2},{"name":"Påskedag","variable_date":"easter"},{"name":"2. Påskedag","variable_date":"easter","offset":1},{"name":"Store Bededag","variable_date":"easter","offset":26},{"name":"Kristi Himmelfartsdag","variable_date":"easter","offset":39},{"name":"Pinsedag","variable_date":"easter","offset":49},{"name":"2. Pinsedag","variable_date":"easter","offset":50},{"name":"Grundlovsdag","fixed_date":[6,5]},{"name":"Juleaftensdag","fixed_date":[12,24]},{"name":"Juledag","fixed_date":[12,25]},{"name":"2. Juledag","fixed_date":[12,26]}],
+  PH: [{"name":"Nytårsdag","fixed_date":[1,1]},{"name":"Skærtorsdag","variable_date":"easter","offset":-3},{"name":"Langfredag","variable_date":"easter","offset":-2},{"name":"Påskedag","variable_date":"easter"},{"name":"Anden påskedag","variable_date":"easter","offset":1},{"name":"Kristi Himmelfartsdag","variable_date":"easter","offset":39},{"name":"Pinsedag","variable_date":"easter","offset":49},{"name":"Anden Pinsedag","variable_date":"easter","offset":50},{"name":"Grundlovsdag","fixed_date":[6,5]},{"name":"Juleaftensdag","fixed_date":[12,24]},{"name":"Juledag","fixed_date":[12,25]},{"name":"Anden Juledag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=55.670249&lon=10.3333283&zoom=18&addressdetails=1&accept-language=da,en"
 };
 
 export const ee = {
+  PH: [{"name":"uusaasta","fixed_date":[1,1]},{"name":"iseseisvuspäev","fixed_date":[2,24]},{"name":"suur reede","variable_date":"easter","offset":-2},{"name":"lihavõtted","variable_date":"easter"},{"name":"kevadpüha","fixed_date":[5,1]},{"name":"nelipühade 1. püha","variable_date":"easter","offset":49},{"name":"võidupüha","fixed_date":[6,23]},{"name":"jaanipäev","fixed_date":[6,24]},{"name":"taasiseseisvumispäev","fixed_date":[8,20]},{"name":"jõululaupäev","fixed_date":[12,24]},{"name":"esimene jõulupüha","fixed_date":[12,25]},{"name":"teine jõulupüha","fixed_date":[12,26]}],
   SH: [
     {
       name: "jõulupühad",
@@ -7060,7 +7066,8 @@ export const ee = {
       2025: [10,20,10,26],
       2026: [10,26,11,1],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=59.4370&lon=24.7536&zoom=18&addressdetails=1&accept-language=et,en"
 };
 
 export const es = {
@@ -10175,13 +10182,18 @@ export const gb = {
   }
 };
 
+export const ge = {
+  PH: [{"name":"ახალი წელი","fixed_date":[1,1]},{"name":"ბედობა","fixed_date":[1,2]},{"name":"შობა","fixed_date":[1,7]},{"name":"ნათლისღება","fixed_date":[1,19]},{"name":"დედის დღე","fixed_date":[3,3]},{"name":"ქალთა საერთაშორისო დღე","fixed_date":[3,8]},{"name":"ეროვნული ერთიანობის დღე","fixed_date":[4,9]},{"name":"წითელი პარასკევი","variable_date":"orthodox easter","offset":-2},{"name":"დიდი შაბათი","variable_date":"orthodox easter","offset":-1},{"name":"აღდგომა","variable_date":"orthodox easter"},{"name":"აღდგომის ორშაბათი","variable_date":"orthodox easter","offset":1},{"name":"ფაშიზმზე გამარჯვების დღე","fixed_date":[5,9]},{"name":"წმინდა ანდრია პირველწოდებულის ხსენების დღე","fixed_date":[5,12]},{"name":"დამოუკიდებლობის დღე","fixed_date":[5,26]},{"name":"მარიამობა","fixed_date":[8,28]},{"name":"სვეტიცხოვლობა","fixed_date":[10,14]},{"name":"გიორგობა","fixed_date":[11,23]}],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.7151&lon=44.8271&zoom=18&addressdetails=1&accept-language=ka,en"
+};
+
 export const gr = {
-  PH: [{"name":"Πρωτοχρονιά","fixed_date":[1,1]},{"name":"Θεοφάνια","fixed_date":[1,6]},{"name":"Καθαρά Δευτέρα","variable_date":"orthodox easter","offset":-48},{"name":"25η Μαρτίου","fixed_date":[3,25]},{"name":"Μεγάλη Παρασκευή","variable_date":"orthodox easter","offset":-2},{"name":"Πάσχα","variable_date":"orthodox easter","offset":0},{"name":"Δευτέρα του Πάσχα","variable_date":"orthodox easter","offset":1},{"name":"Πρωτομαγιά","fixed_date":[5,1]},{"name":"Κοίμηση της Θεοτόκου","fixed_date":[8,15]},{"name":"28η Οκτωβρίου","fixed_date":[10,28]},{"name":"Χριστούγεννα","fixed_date":[12,25]},{"name":"2η μέρα Χριστουγέννων","fixed_date":[12,26]}],
+  PH: [{"name":"Πρωτοχρονιά","fixed_date":[1,1]},{"name":"Θεοφάνια","fixed_date":[1,6]},{"name":"Καθαρά Δευτέρα","variable_date":"orthodox easter","offset":-48},{"name":"25η Μαρτίου","fixed_date":[3,25]},{"name":"Μεγάλη Παρασκευή","variable_date":"orthodox easter","offset":-2},{"name":"Πάσχα","variable_date":"orthodox easter"},{"name":"Δευτέρα του Πάσχα","variable_date":"orthodox easter","offset":1},{"name":"Εργατική Πρωτομαγιά","fixed_date":[5,1]},{"name":"Κοίμηση της Θεοτόκου","fixed_date":[8,15]},{"name":"Επέτειος του Όχι","fixed_date":[10,28]},{"name":"Χριστούγεννα","fixed_date":[12,25]},{"name":"2η μέρα Χριστουγέννων","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Greece&&zoom=18&addressdetails=1&limit=1&accept-language=el,en"
 };
 
 export const hr = {
-  PH: [{"name":"Nova godina","fixed_date":[1,1]},{"name":"Sveta tri kralja","fixed_date":[1,6]},{"name":"Uskršnji ponedjeljak","variable_date":"easter","offset":1},{"name":"Praznik rada","fixed_date":[5,1]},{"name":"Tijelovo","variable_date":"easter","offset":60},{"name":"Dan antifašističke borbe","fixed_date":[6,22]},{"name":"Dan pobjede i domovinske zahvalnosti","fixed_date":[8,5]},{"name":"Velika Gospa","fixed_date":[8,15]},{"name":"Svi sveti","fixed_date":[11,1]},{"name":"Dan sjećanja na žrtve Domovinskog rata","fixed_date":[11,18]},{"name":"Božić","fixed_date":[12,25]},{"name":"Sveti Stjepan","fixed_date":[12,26]}],
+  PH: [{"name":"Nova godina","fixed_date":[1,1]},{"name":"Sveta tri kralja","fixed_date":[1,6]},{"name":"Uskrs","variable_date":"easter"},{"name":"Uskršnji ponedjeljak","variable_date":"easter","offset":1},{"name":"Praznik rada","fixed_date":[5,1]},{"name":"Dan državnosti","fixed_date":[5,30]},{"name":"Tijelovo","variable_date":"easter","offset":60},{"name":"Dan antifašističke borbe","fixed_date":[6,22]},{"name":"Dan pobjede i domovinske zahvalnosti","fixed_date":[8,5]},{"name":"Velika Gospa","fixed_date":[8,15]},{"name":"Svi sveti","fixed_date":[11,1]},{"name":"Dan sjećanja na žrtve Domovinskog rata","fixed_date":[11,18]},{"name":"Božić","fixed_date":[12,25]},{"name":"Sveti Stjepan","fixed_date":[12,26]}],
   SH: [
     {
       name: "Zimski odmor",
@@ -10306,7 +10318,7 @@ export const hu = {
 };
 
 export const ie = {
-  PH: [{"name":"New Year’s Day","fixed_date":[1,1]},{"name":"St Patrick’s Day","fixed_date":[3,17]},{"name":"St Patrick’s Day","variable_date":"nextMo-Fr17March"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"May Bank Holiday","variable_date":"firstMayMonday"},{"name":"June Bank Holiday","variable_date":"firstJuneMonday"},{"name":"August Bank Holiday","variable_date":"firstAugustMonday"},{"name":"October Bank Holiday (Halloween)","variable_date":"lastOctoberMonday"},{"name":"Christmas","fixed_date":[12,25]},{"name":"St Stephen’s Day","fixed_date":[12,26]},{"name":"Bank Holiday","fixed_date":[12,27]}],
+  PH: [{"name":"New Year’s Day","fixed_date":[1,1]},{"name":"St. Patrick’s Day","fixed_date":[3,17]},{"name":"St. Patrick’s Day","variable_date":"nextMo-Fr17March"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"May Bank Holiday","variable_date":"firstMayMonday"},{"name":"June Bank Holiday","variable_date":"firstJuneMonday"},{"name":"August Bank Holiday","variable_date":"firstAugustMonday"},{"name":"October Bank Holiday","variable_date":"lastOctoberMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"St. Stephen’s Day","fixed_date":[12,26]},{"name":"Bank Holiday","fixed_date":[12,27]}],
   SH: [
     {
       name: "Christmas",
@@ -11365,7 +11377,7 @@ export const it = {
 };
 
 export const jp = {
-  PH: [{"name":"元日","fixed_date":[1,1]},{"name":"成人の日","variable_date":"firstJanuaryMonday","offset":7},{"name":"建国記念の日","fixed_date":[2,11]},{"name":"天皇誕生日","fixed_date":[2,23]},{"name":"昭和の日","fixed_date":[4,29]},{"name":"憲法記念日","fixed_date":[5,3]},{"name":"みどりの日","fixed_date":[5,4]},{"name":"こどもの日","fixed_date":[5,5]},{"name":"海の日","variable_date":"firstJulyMonday","offset":14},{"name":"山の日","fixed_date":[8,11]},{"name":"敬老の日","variable_date":"firstSeptemberMonday","offset":14},{"name":"スポーツの日","variable_date":"firstNovemberMonday","offset":7},{"name":"文化の日","fixed_date":[11,3]},{"name":"勤労感謝の日","fixed_date":[11,23]},{"name":"春分の日","variable_date":"springEquinox"},{"name":"秋分の日","variable_date":"autumnalEquinox"}],
+  PH: [{"name":"元日","fixed_date":[1,1]},{"name":"成人の日","variable_date":"firstJanuaryMonday","offset":7},{"name":"建国記念の日","fixed_date":[2,11]},{"name":"天皇誕生日","fixed_date":[2,23]},{"name":"昭和の日","fixed_date":[4,29]},{"name":"憲法記念日","fixed_date":[5,3]},{"name":"みどりの日","fixed_date":[5,4]},{"name":"こどもの日","fixed_date":[5,5]},{"name":"海の日","variable_date":"firstJulyMonday","offset":14},{"name":"山の日","fixed_date":[8,11]},{"name":"敬老の日","variable_date":"firstSeptemberMonday","offset":14},{"name":"スポーツの日","variable_date":"firstOctoberMonday","offset":7},{"name":"文化の日","fixed_date":[11,3]},{"name":"勤労感謝の日","fixed_date":[11,23]},{"name":"春分の日","variable_date":"springEquinox"},{"name":"秋分の日","variable_date":"autumnalEquinox"}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.39291572&lon=139.44288869&zoom=18&addressdetails=1&accept-language=ja,en"
 };
 
@@ -11436,6 +11448,7 @@ export const li = {
 };
 
 export const lt = {
+  PH: [{"name":"Naujieji metai","fixed_date":[1,1]},{"name":"Lietuvos valstybės atkūrimo diena","fixed_date":[2,16]},{"name":"Lietuvos nepriklausomybės atkūrimo diena","fixed_date":[3,11]},{"name":"Velykos","variable_date":"easter"},{"name":"Velykų pirmadienis","variable_date":"easter","offset":1},{"name":"Tarptautinė darbo diena","fixed_date":[5,1]},{"name":"Joninės, Rasos","fixed_date":[6,24]},{"name":"Valstybės diena","fixed_date":[7,6]},{"name":"Žolinė","fixed_date":[8,15]},{"name":"Visų šventųjų diena","fixed_date":[11,1]},{"name":"Vėlinės","fixed_date":[11,2]},{"name":"Šv. Kūčios","fixed_date":[12,24]},{"name":"Šv. Kalėdos","fixed_date":[12,25]},{"name":"2. Kalėdų diena","fixed_date":[12,26]}],
   SH: [
     {
       name: "Žiemos atostogos",
@@ -11481,7 +11494,8 @@ export const lt = {
       2025: [11,3,11,9],
       2026: [11,2,11,8],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=54.6872&lon=25.2797&zoom=18&addressdetails=1&accept-language=lt,en"
 };
 
 export const lu = {
@@ -11557,6 +11571,7 @@ export const lu = {
 };
 
 export const lv = {
+  PH: [{"name":"Jaunais Gads","fixed_date":[1,1]},{"name":"Lielā Piektdiena","variable_date":"easter","offset":-2},{"name":"Lieldienas","variable_date":"easter"},{"name":"Otrās Lieldienas","variable_date":"easter","offset":1},{"name":"Darba svētki","fixed_date":[5,1]},{"name":"Latvijas Republikas Neatkarības atjaunošanas diena","fixed_date":[5,4]},{"name":"Līgo Diena","fixed_date":[6,23]},{"name":"Jāņi","fixed_date":[6,24]},{"name":"Latvijas Republikas proklamēšanas diena","fixed_date":[11,18]},{"name":"Ziemassvētku vakars","fixed_date":[12,24]},{"name":"Ziemassvētki","fixed_date":[12,25]},{"name":"Otrie Ziemassvētki","fixed_date":[12,26]},{"name":"Vecgada vakars","fixed_date":[12,31]}],
   SH: [
     {
       name: "Ziemas brīvdienas",
@@ -11593,10 +11608,12 @@ export const lv = {
       2023: [10,23,10,27],
       2024: [10,21,10,27],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=56.9460&lon=24.1059&zoom=18&addressdetails=1&accept-language=lv,en"
 };
 
 export const mc = {
+  PH: [{"name":"Nouvel An","fixed_date":[1,1]},{"name":"Sainte Dévote","fixed_date":[1,27]},{"name":"Lundi de Pâques","variable_date":"easter","offset":1},{"name":"1er mai","fixed_date":[5,1]},{"name":"Ascension","variable_date":"easter","offset":39},{"name":"Lundi de Pentecôte","variable_date":"easter","offset":50},{"name":"la Fête-Dieu","variable_date":"easter","offset":60},{"name":"Assomption","fixed_date":[8,15]},{"name":"Toussaint","fixed_date":[11,1]},{"name":"La Fête du Prince","fixed_date":[11,19]},{"name":"Immaculée Conception","fixed_date":[12,8]},{"name":"Noël","fixed_date":[12,25]}],
   SH: [
     {
       name: "Vacances de Noël",
@@ -11662,10 +11679,12 @@ export const mc = {
       2024: [10,24,11,3],
       2025: [10,23,11,2],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.7384&lon=7.4246&zoom=18&addressdetails=1&accept-language=fr,en"
 };
 
 export const md = {
+  PH: [{"name":"Anul nou","fixed_date":[1,1]},{"name":"Ziua Internationala a Femeii","fixed_date":[3,8]},{"name":"Paștele","variable_date":"orthodox easter"},{"name":"A doua zi de Pasti","variable_date":"orthodox easter","offset":1},{"name":"Paştele Blăjinilor","variable_date":"orthodox easter","offset":8},{"name":"Ziua muncii","fixed_date":[5,1]},{"name":"Ziua Victoriei","fixed_date":[5,9]},{"name":"Ziua Independentei","fixed_date":[8,27]},{"name":"Limba noastră","fixed_date":[8,31]},{"name":"Craciun pe stil Nou","fixed_date":[12,25]}],
   SH: [
     {
       name: "Vacanţa de iarnă",
@@ -11716,10 +11735,12 @@ export const md = {
       2024: [10,28,11,3],
       2025: [10,27,11,2],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=47.0105&lon=28.8638&zoom=18&addressdetails=1&accept-language=ro,en"
 };
 
 export const mt = {
+  PH: [{"name":"L-Ewwel tas-Sena","fixed_date":[1,1]},{"name":"Nawfraġju ta' San Pawl","fixed_date":[2,10]},{"name":"San Ġużepp","fixed_date":[3,19]},{"name":"Jum il-Ħelsien","fixed_date":[3,31]},{"name":"Il-Ġimgħa l-Kbira","variable_date":"easter","offset":-2},{"name":"Jum il-Ħaddiem","fixed_date":[5,1]},{"name":"Sette Giugno","fixed_date":[6,7]},{"name":"L-Imnarja","fixed_date":[6,29]},{"name":"Santa Marija","fixed_date":[8,15]},{"name":"Jum il-Vitorja","fixed_date":[9,8]},{"name":"Jum l-Indipendenza","fixed_date":[9,21]},{"name":"Il-Kunċizzjoni","fixed_date":[12,8]},{"name":"Jum ir-Repubblika","fixed_date":[12,13]},{"name":"Il-Milied","fixed_date":[12,25]}],
   SH: [
     {
       name: "Vaganzi tal-Milied",
@@ -11780,10 +11801,12 @@ export const mt = {
       2024: [11,1,11,5],
       2025: [11,3,11,5],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.8997&lon=14.5147&zoom=18&addressdetails=1&accept-language=mt,en"
 };
 
 export const mx = {
+  PH: [{"name":"Año Nuevo","fixed_date":[1,1]},{"name":"Día de la Constitución","variable_date":"firstFebruaryMonday"},{"name":"Natalicio de Benito Juárez","variable_date":"firstMarchMonday","offset":14},{"name":"Día del Trabajador","fixed_date":[5,1]},{"name":"Día de la Independencia","fixed_date":[9,16]},{"name":"Día de la Revolución","variable_date":"firstNovemberMonday","offset":14},{"name":"Navidad","fixed_date":[12,25]}],
   SH: [
     {
       name: "Receso de invierno",
@@ -11818,16 +11841,18 @@ export const mx = {
       name: "Fin de lecciones",
       2026: [7,15,7,15],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=19.4326&lon=-99.1332&zoom=18&addressdetails=1&accept-language=es,en"
 };
 
 export const na = {
-  PH: [{"name":"New Year’s Day","fixed_date":[1,1]},{"name":"Independence Day","fixed_date":[3,21]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Worker’s Day","fixed_date":[5,1]},{"name":"Cassinga Day","fixed_date":[5,4]},{"name":"Ascension Day","variable_date":"easter","offset":39},{"name":"Africa Day","fixed_date":[5,25]},{"name":"Heroes’ Day","fixed_date":[8,26]},{"name":"Human Rights Day","fixed_date":[12,10]},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Family Day","fixed_date":[12,26]}],
+  PH: [{"name":"New Year’s Day","fixed_date":[1,1]},{"name":"Independence Day","fixed_date":[3,21]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Workers’ Day","fixed_date":[5,1]},{"name":"Cassinga Day","fixed_date":[5,4]},{"name":"Ascension Day","variable_date":"easter","offset":39},{"name":"Africa Day","fixed_date":[5,25]},{"name":"Heroes’ Day","fixed_date":[8,26]},{"name":"Human Rights Day","fixed_date":[12,10]},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Family Day","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Namibia&zoom=18&addressdetails=1&limit=1"
 };
 
 export const nl = {
   PH: [{"name":"Nieuwjaarsdag","fixed_date":[1,1]},{"name":"Goede vrijdag","variable_date":"easter","offset":-2},{"name":"Tweede Paasdag","variable_date":"easter","offset":1},{"name":"Koningsdag","fixed_date":[4,27]},{"name":"Bevrijdingsdag","fixed_date":[5,5]},{"name":"Hemelvaartsdag","variable_date":"easter","offset":39},{"name":"Tweede Pinksterdag","variable_date":"easter","offset":50},{"name":"Eerste Kerstdag","fixed_date":[12,25]},{"name":"Tweede Kerstdag","fixed_date":[12,26]}],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=52.3702&lon=4.8952&zoom=18&addressdetails=1&accept-language=nl,en",
   "MI": {
     SH: [
       {
@@ -12050,17 +12075,17 @@ export const nl = {
 };
 
 export const no = {
-  PH: [{"name":"Nyttårsdag","fixed_date":[1,1]},{"name":"Skjærtorsdag","variable_date":"easter","offset":-3},{"name":"Langfredag","variable_date":"easter","offset":-2},{"name":"Påskedag","variable_date":"easter"},{"name":"2. Påskedag","variable_date":"easter","offset":1},{"name":"1. Mai","fixed_date":[5,1]},{"name":"Grunnlovsdagen","fixed_date":[5,17]},{"name":"Kristi Himmelfartsdag","variable_date":"easter","offset":39},{"name":"Pinsedag","variable_date":"easter","offset":49},{"name":"2. Pinsedag","variable_date":"easter","offset":50},{"name":"Juledag","fixed_date":[12,25]},{"name":"2. Juledag","fixed_date":[12,26]}],
+  PH: [{"name":"Første nyttårsdag","fixed_date":[1,1]},{"name":"Skjærtorsdag","variable_date":"easter","offset":-3},{"name":"Langfredag","variable_date":"easter","offset":-2},{"name":"Første påskedag","variable_date":"easter"},{"name":"Andre påskedag","variable_date":"easter","offset":1},{"name":"Arbeidernes dag","fixed_date":[5,1]},{"name":"Kristi himmelfartsdag","variable_date":"easter","offset":39},{"name":"Grunnlovsdagen","fixed_date":[5,17]},{"name":"Første pinsedag","variable_date":"easter","offset":49},{"name":"Andre pinsedag","variable_date":"easter","offset":50},{"name":"Første Juledag","fixed_date":[12,25]},{"name":"Andre juledag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=61.0&lon=8.0&zoom=8&addressdetails=1&accept-language=no,en"
 };
 
 export const nz = {
-  PH: [{"name":"New Year's Day","fixed_date":[1,1]},{"name":"Day after New Year's Day","fixed_date":[1,2]},{"name":"Waitangi Day","fixed_date":[2,6]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"Queen's Birthday","variable_date":"firstJuneMonday"},{"name":"Labour Day","variable_date":"firstOctoberMonday","offset":21},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}],
+  PH: [{"name":"New Year's Day","fixed_date":[1,1]},{"name":"Day after New Year's Day","fixed_date":[1,2]},{"name":"Waitangi Day","fixed_date":[2,6]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Anzac Day","fixed_date":[4,25]},{"name":"King's Birthday","variable_date":"firstJuneMonday"},{"name":"Labour Day","variable_date":"firstOctoberMonday","offset":21},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-41.2922255&lon=174.7763033&zoom=16&addressdetails=1&accept-language=en"
 };
 
 export const pl = {
-  PH: [{"name":"Nowy Rok","fixed_date":[1,1]},{"name":"Święto Trzech Króli","fixed_date":[1,6]},{"name":"Wielkanoc","variable_date":"easter"},{"name":"Lany Poniedziałek - drugi dzień Wielkiej Nocy","variable_date":"easter","offset":1},{"name":"Pierwszy Maja","fixed_date":[5,1]},{"name":"Trzeci Maja","fixed_date":[5,3]},{"name":"Zielone Świątki","variable_date":"easter","offset":49},{"name":"Boże Ciało","variable_date":"easter","offset":60},{"name":"Wniebowzięcie Najświętszej Maryi Panny","fixed_date":[8,15]},{"name":"Wszystkich Świętych","fixed_date":[11,1]},{"name":"Święto Niepodległości","fixed_date":[11,11]},{"name":"Wigilia Bożego Narodzenia","fixed_date":[12,24]},{"name":"pierwszy dzień Bożego Narodzenia","fixed_date":[12,25]},{"name":"drugi dzień Bożego Narodzenia","fixed_date":[12,26]}],
+  PH: [{"name":"Nowy Rok","fixed_date":[1,1]},{"name":"Święto Trzech Króli","fixed_date":[1,6]},{"name":"Niedziela Wielkanocna","variable_date":"easter"},{"name":"Drugi dzień Wielkanocy","variable_date":"easter","offset":1},{"name":"Święto Państwowe; Święto Pracy","fixed_date":[5,1]},{"name":"Święto Narodowe Trzeciego Maja","fixed_date":[5,3]},{"name":"Zielone Świątki","variable_date":"easter","offset":49},{"name":"Dzień Bożego Ciała","variable_date":"easter","offset":60},{"name":"Wniebowzięcie Najświętszej Maryi Panny","fixed_date":[8,15]},{"name":"Wszystkich Świętych","fixed_date":[11,1]},{"name":"Narodowe Święto Niepodległości","fixed_date":[11,11]},{"name":"Wigilia Bożego Narodzenia","fixed_date":[12,24]},{"name":"Pierwszy dzień Bożego Narodzenia","fixed_date":[12,25]},{"name":"Drugi dzień Bożego Narodzenia","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=53.4825&lon=18.75823&zoom=18&addressdetails=1&accept-language=pl,en",
   "Dolnośląskie": {
     SH: [
@@ -12784,6 +12809,7 @@ export const pl = {
 };
 
 export const pt = {
+  PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Páscoa","variable_date":"easter"},{"name":"Dia da Liberdade","fixed_date":[4,25]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Corpo de Deus","variable_date":"easter","offset":60},{"name":"Dia de Portugal","fixed_date":[6,10]},{"name":"Assunção de Maria","fixed_date":[8,15]},{"name":"Implantação da República","fixed_date":[10,5]},{"name":"Todos os santos","fixed_date":[11,1]},{"name":"Restauração da Independência","fixed_date":[12,1]},{"name":"Imaculada Conceição","fixed_date":[12,8]},{"name":"Natal","fixed_date":[12,25]}],
   SH: [
     {
       name: "Férias de Natal",
@@ -12835,11 +12861,12 @@ export const pt = {
       name: "Fim das aulas",
       2028: [6,30,6,30],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=38.7223&lon=-9.1393&zoom=18&addressdetails=1&accept-language=pt,en"
 };
 
 export const ro = {
-  PH: [{"name":"Anul Nou","fixed_date":[1,1]},{"name":"A doua zi de Anul Nou","fixed_date":[1,2]},{"name":"Ziua Unirii Principatelor Române (Ziua Unirii)","fixed_date":[1,24]},{"name":"Paștele ortodox","variable_date":"orthodox easter"},{"name":"A doua zi de Paște ortodox","variable_date":"orthodox easter","offset":1},{"name":"Ziua Muncii","fixed_date":[5,1]},{"name":"Rusaliile","variable_date":"orthodox easter","offset":50},{"name":"A doua zi de Rusalii","variable_date":"orthodox easter","offset":51},{"name":"Adormirea Maicii Domnului","fixed_date":[8,15]},{"name":"Sfântul Apostol Andrei","fixed_date":[11,30]},{"name":"Ziua Națională (Ziua Marii Uniri)","fixed_date":[12,1]},{"name":"Crăciunul","fixed_date":[12,25]},{"name":"A doua zi de Crăciun","fixed_date":[12,26]}],
+  PH: [{"name":"Anul Nou","fixed_date":[1,1]},{"name":"A doua zi de Anul Nou","fixed_date":[1,2]},{"name":"Bobotează","fixed_date":[1,6]},{"name":"Sfântul Ioan Botezătorul","fixed_date":[1,7]},{"name":"Ziua Unirii Principatelor Române","fixed_date":[1,24]},{"name":"Vinerea Mare","variable_date":"orthodox easter","offset":-2},{"name":"Paștele","variable_date":"orthodox easter"},{"name":"A doua zi de Paști","variable_date":"orthodox easter","offset":1},{"name":"Ziua Muncii","fixed_date":[5,1]},{"name":"Ziua Copilului","fixed_date":[6,1]},{"name":"Rusaliile","variable_date":"orthodox easter","offset":50},{"name":"A doua zi de Rusalii","variable_date":"orthodox easter","offset":51},{"name":"Adormirea Maicii Domnului","fixed_date":[8,15]},{"name":"Sfântul Andrei","fixed_date":[11,30]},{"name":"Ziua Națională a României","fixed_date":[12,1]},{"name":"Crăciunul","fixed_date":[12,25]},{"name":"A doua zi de Crăciun","fixed_date":[12,26]}],
   SH: [
     {
       name: "Vacanța de iarnă",
@@ -13379,6 +13406,7 @@ export const ro = {
 };
 
 export const rs = {
+  PH: [{"name":"Нова година","fixed_date":[1,1]},{"name":"Нова година","fixed_date":[1,2]},{"name":"Дан државности Србије","fixed_date":[2,16]},{"name":"Велики петак","variable_date":"orthodox easter","offset":-2},{"name":"Васкрс","variable_date":"orthodox easter"},{"name":"Васкрсни понедељак","variable_date":"orthodox easter","offset":1},{"name":"Празник рада","fixed_date":[5,1]},{"name":"Празник рада","fixed_date":[5,2]},{"name":"Дан примирја","fixed_date":[11,11]}],
   SH: [
     {
       name: "Зимски распуст",
@@ -13422,7 +13450,8 @@ export const rs = {
       name: "Сретењски распуст",
       2026: [2,16,2,20],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=44.8176&lon=20.4569&zoom=18&addressdetails=1&accept-language=sr,en"
 };
 
 export const ru = {
@@ -13577,6 +13606,7 @@ export const si = {
       2024: [5,3,5,3],
     },
   ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.0569&lon=14.5058&zoom=18&addressdetails=1&accept-language=sl,en",
   "vzhodne regije": {
     SH: [
       {
@@ -13608,7 +13638,7 @@ export const si = {
 };
 
 export const sk = {
-  PH: [{"name":"Deň vzniku Slovenskej republiky","fixed_date":[1,1]},{"name":"Zjavenie Pána","fixed_date":[1,6]},{"name":"Veľký piatok","variable_date":"easter","offset":-2},{"name":"Veľkonočná nedeľa","variable_date":"easter"},{"name":"Veľkonočný pondelok","variable_date":"easter","offset":1},{"name":"Sviatok práce","fixed_date":[5,1]},{"name":"Deň víťazstva nad fašizmom","fixed_date":[5,8]},{"name":"Sviatok svätého Cyrila a Metoda","fixed_date":[7,5]},{"name":"Výročie Slovenského národného povstania","fixed_date":[8,29]},{"name":"Deň Ústavy Slovenskej republiky","fixed_date":[9,1]},{"name":"Sviatok Panny Márie Sedembolestnej","fixed_date":[9,15]},{"name":"Sviatok všetkých svätých","fixed_date":[11,1]},{"name":"Deň boja za slobodu a demokraciu","fixed_date":[11,17]},{"name":"Štedrý deň","fixed_date":[12,24]},{"name":"Prvý sviatok vianočný","fixed_date":[12,25]},{"name":"Druhý sviatok vianočný","fixed_date":[12,26]}],
+  PH: [{"name":"Deň vzniku Slovenskej republiky","fixed_date":[1,1]},{"name":"Zjavenie Pána","fixed_date":[1,6]},{"name":"Veľký piatok","variable_date":"easter","offset":-2},{"name":"Veľkonočná nedeľa","variable_date":"easter"},{"name":"Veľkonočný pondelok","variable_date":"easter","offset":1},{"name":"Sviatok práce","fixed_date":[5,1]},{"name":"Sviatok svätého Cyrila a Metoda","fixed_date":[7,5]},{"name":"Výročie Slovenského národného povstania","fixed_date":[8,29]},{"name":"Sviatok všetkých svätých","fixed_date":[11,1]},{"name":"Štedrý deň","fixed_date":[12,24]},{"name":"Prvý sviatok vianočný","fixed_date":[12,25]},{"name":"Druhý sviatok vianočný","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=48.7411522&lon=19.4528646&zoom=18&addressdetails=1&accept-language=sk,en",
   "Banskobystrický kraj": {
     SH: [
@@ -14117,6 +14147,7 @@ export const sk = {
 };
 
 export const sm = {
+  PH: [{"name":"Capodanno","fixed_date":[1,1]},{"name":"Epifania","fixed_date":[1,6]},{"name":"Festa di Sant’Agata","fixed_date":[2,5]},{"name":"Anniversario dell'Arengo","fixed_date":[3,25]},{"name":"Cerimonia di investitura dei Capitani Reggenti","fixed_date":[4,1]},{"name":"Domenica di Pasqua","variable_date":"easter"},{"name":"Lunedì dell’Angelo","variable_date":"easter","offset":1},{"name":"Festa del Lavoro","fixed_date":[5,1]},{"name":"Corpus Domini","variable_date":"easter","offset":60},{"name":"Anniversario della caduta del Fascismo e Festa della Libertà","fixed_date":[7,28]},{"name":"Ferragosto","fixed_date":[8,15]},{"name":"Festa di San Marino e di Fondazione della Repubblica","fixed_date":[9,3]},{"name":"Cerimonia di investitura dei Capitani Reggenti","fixed_date":[10,1]},{"name":"Tutti i Santi","fixed_date":[11,1]},{"name":"Commemorazione dei defunti","fixed_date":[11,2]},{"name":"Immacolata Concezione","fixed_date":[12,8]},{"name":"Natale","fixed_date":[12,25]},{"name":"Santo Stefano","fixed_date":[12,26]}],
   SH: [
     {
       name: "Vacanze Natalizie",
@@ -14151,11 +14182,13 @@ export const sm = {
       name: "Termine lezioni",
       2026: [6,17,6,17],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.9424&lon=12.4578&zoom=18&addressdetails=1&accept-language=it,en"
 };
 
 export const ua = {
-  PH: [{"name":"Новий рік","fixed_date":[1,1]},{"name":"Різдво","fixed_date":[1,7]},{"name":"Міжнародний жіночий день","fixed_date":[3,8]},{"name":"Великдень","variable_date":"orthodox easter","offset":1},{"name":"День Праці 1","fixed_date":[5,1]},{"name":"День Праці 2","fixed_date":[5,2]},{"name":"День Перемоги","fixed_date":[5,9]},{"name":"День Конституції України","fixed_date":[6,28]},{"name":"День Незалежності України","fixed_date":[8,24]}]
+  PH: [{"name":"Новий рік","fixed_date":[1,1]},{"name":"Міжнародний жіночий день","fixed_date":[3,8]},{"name":"Великдень","variable_date":"orthodox easter","offset":1},{"name":"День міжнародної солідарності трудящих","fixed_date":[5,1]},{"name":"День пам'яті та перемоги над нацизмом у Другій світовій війні","fixed_date":[5,8]},{"name":"Трійця","variable_date":"orthodox easter","offset":50},{"name":"День Конституції України","fixed_date":[6,28]},{"name":"День Української Державності","fixed_date":[7,15]},{"name":"День Незалежності України","fixed_date":[8,24]},{"name":"День захисників і захисниць України","fixed_date":[10,1]},{"name":"Різдво Христове","fixed_date":[12,25]}],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=50.4501&lon=30.5234&zoom=18&addressdetails=1&accept-language=uk,en"
 };
 
 export const us = {
@@ -14462,6 +14495,7 @@ export const xa = {
 };
 
 export const za = {
+  PH: [{"name":"New Year's Day","fixed_date":[1,1]},{"name":"Human Rights Day","fixed_date":[3,21]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Family Day","variable_date":"easter","offset":1},{"name":"Freedom Day","fixed_date":[4,27]},{"name":"Workers' Day","fixed_date":[5,1]},{"name":"Youth Day","fixed_date":[6,16]},{"name":"National Women's Day","fixed_date":[8,9]},{"name":"Heritage Day","fixed_date":[9,24]},{"name":"Day of Reconciliation","fixed_date":[12,16]},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Day of Goodwill","fixed_date":[12,26]}],
   SH: [
     {
       name: "Summer Break",
@@ -14518,5 +14552,6 @@ export const za = {
       2026: [9,25,9,25],
       2027: [4,26,4,26],
     },
-  ]
+  ],
+  "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-25.7462&lon=28.1881&zoom=18&addressdetails=1&accept-language=en,af"
 };

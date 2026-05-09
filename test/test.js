@@ -768,7 +768,7 @@ test.addTest('Variable days: public holidays', [
         'public holidays', // Throws a warning.
         'public holiday',  // Throws a warning.
     ], '2013-01-01 0:00', '2015-01-01 0:00', [
-        [ '2013-01-01 00:00', '2013-01-02 00:00', false, 'Neujahrstag' ],
+        [ '2013-01-01 00:00', '2013-01-02 00:00', false, 'Neujahr' ],
         [ '2013-01-06 00:00', '2013-01-07 00:00', false, 'Heilige Drei Könige' ],
         [ '2013-03-29 00:00', '2013-03-30 00:00', false, 'Karfreitag' ],
         [ '2013-04-01 00:00', '2013-04-02 00:00', false, 'Ostermontag' ],
@@ -780,7 +780,7 @@ test.addTest('Variable days: public holidays', [
         [ '2013-11-01 00:00', '2013-11-02 00:00', false, 'Allerheiligen' ],
         [ '2013-12-25 00:00', '2013-12-26 00:00', false, '1. Weihnachtstag' ],
         [ '2013-12-26 00:00', '2013-12-27 00:00', false, '2. Weihnachtstag' ],
-        [ '2014-01-01 00:00', '2014-01-02 00:00', false, 'Neujahrstag' ],
+        [ '2014-01-01 00:00', '2014-01-02 00:00', false, 'Neujahr' ],
         [ '2014-01-06 00:00', '2014-01-07 00:00', false, 'Heilige Drei Könige' ],
         [ '2014-04-18 00:00', '2014-04-19 00:00', false, 'Karfreitag' ],
         [ '2014-04-21 00:00', '2014-04-22 00:00', false, 'Ostermontag' ],
@@ -858,7 +858,7 @@ test.addTest('Variable days: public holidays', [
 test.addTest('Variable days: public holidays (with time range)', [
         'PH 12:00-13:00',
     ], '2012-01-01 0:00', '2012-04-01 0:00', [
-        [ '2012-01-01 12:00', '2012-01-01 13:00', false, 'Neujahrstag' ],
+        [ '2012-01-01 12:00', '2012-01-01 13:00', false, 'Neujahr' ],
         [ '2012-01-06 12:00', '2012-01-06 13:00', false, 'Heilige Drei Könige' ],
     ], 1000 * 60 * 60 * 2, 0, false, nominatim_default, 'not last test');
 
@@ -909,7 +909,7 @@ test.addTest('Variable days: public holidays', [
         [ '2014-11-02 00:00', '2014-11-03 00:00', false, 'Day after Allerheiligen' ],
         [ '2014-12-26 00:00', '2014-12-27 00:00', false, 'Day after 1. Weihnachtstag' ],
         [ '2014-12-27 00:00', '2014-12-28 00:00', false, 'Day after 2. Weihnachtstag' ],
-        [ '2015-01-02 00:00', '2015-01-03 00:00', false, 'Day after Neujahrstag' ],
+        [ '2015-01-02 00:00', '2015-01-03 00:00', false, 'Day after Neujahr' ],
         [ '2015-01-07 00:00', '2015-01-08 00:00', false, 'Day after Heilige Drei Könige' ],
     ], 1000 * 60 * 60 * 24 * (3 + 2), 0, false, nominatim_default, 'not last test');
 
@@ -922,7 +922,7 @@ test.addTest('Variable days: public holidays', [
         // [ '2014-10-31 00:00', '2014-11-01 00:00', false, 'Day before Allerheiligen' ],       // 31: Fr
         [ '2014-12-24 00:00', '2014-12-25 00:00', false, 'Day before 1. Weihnachtstag' ],    // 24: We
         // [ '2014-12-25 00:00', '2014-12-26 00:00', false, 'Day before 2. Weihnachtstag' ],    // 25: Th
-        [ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahrstag' ],         // 31: We
+        [ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahr' ],         // 31: We
         [ '2015-01-05 00:00', '2015-01-06 00:00', false, 'Day before Heilige Drei Könige' ], // 05: Mo
     ], 1000 * 60 * 60 * 24 * 3, 0, false, nominatim_default, 'not last test');
 
@@ -944,7 +944,7 @@ test.addTest('Variable days: public holidays (SH first keeps intervals separate)
         [ '2024-12-24 00:00', '2024-12-25 00:00', false, 'Day before 1. Weihnachtstag' ],
         [ '2024-12-25 00:00', '2024-12-26 00:00', false, 'Day before 2. Weihnachtstag' ],
         [ '2024-12-30 00:00', '2024-12-31 00:00', false, 'Weihnachtsferien' ],
-        [ '2024-12-31 00:00', '2025-01-01 00:00', false, 'Day before Neujahrstag' ],
+        [ '2024-12-31 00:00', '2025-01-01 00:00', false, 'Day before Neujahr' ],
         [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'Weihnachtsferien' ],
     ], 1000 * 60 * 60 * 24 * (3 + 1 + 1 + 1 + 1 + 1 + 1), 0, false, nominatim_default, 'not last test');
 
@@ -959,7 +959,7 @@ test.addTest('Variable days: public holidays', [
         [ '2014-10-31 00:00', '2014-11-01 00:00', false, 'Day before Allerheiligen' ],
         [ '2014-12-24 00:00', '2014-12-25 00:00', false, 'Day before 1. Weihnachtstag' ],
         [ '2014-12-25 00:00', '2014-12-26 00:00', false, 'Day before 2. Weihnachtstag' ],
-        [ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahrstag' ],
+        [ '2014-12-31 00:00', '2015-01-01 00:00', false, 'Day before Neujahr' ],
         [ '2015-01-05 00:00', '2015-01-06 00:00', false, 'Day before Heilige Drei Könige' ],
     ], 1000 * 60 * 60 * 24 * (3 + 2), 0, false, nominatim_default, 'not last test');
 
@@ -988,7 +988,7 @@ test.addTest('Variable days: school holidays', [
         'Jan-Feb SH,PH',
         // 'PH,SH', // Note that later holidays override the comment for the first holidays.
     ], '2024-01-01 0:00', '2024-02-15 0:00', [
-        [ '2024-01-01 00:00', '2024-01-02 00:00', false, 'Neujahrstag' ],
+        [ '2024-01-01 00:00', '2024-01-02 00:00', false, 'Neujahr' ],
         [ '2024-01-02 00:00', '2024-01-06 00:00', false, 'Weihnachtsferien' ],
         [ '2024-01-06 00:00', '2024-01-07 00:00', false, 'Heilige Drei Könige' ],
     ], 1000 * 60 * 60 * 24 * (1 + 4 + 1), 0, false, nominatim_default, 'not last test');
@@ -1008,7 +1008,7 @@ test.addTest('Variable days: school holidays', [
         ignored('SH und Sonn-/Feiertags', 'prettifyValue'),
         ignored('SH und an Sonn- und Feiertagen', 'prettifyValue'),
     ], '2024-01-01 0:00', '2024-02-15 0:00', [
-        [ '2024-01-01 00:00', '2024-01-02 00:00', false, 'Neujahrstag' ],
+        [ '2024-01-01 00:00', '2024-01-02 00:00', false, 'Neujahr' ],
         [ '2024-01-02 00:00', '2024-01-06 00:00', false, 'Weihnachtsferien' ],
         [ '2024-01-06 00:00', '2024-01-07 00:00', false, 'Heilige Drei Könige' ],
         [ '2024-01-07 00:00', '2024-01-08 00:00' ],
@@ -1037,7 +1037,7 @@ test.addTest('Variable days: Everyday including public holidays', [
         'Mo-Su,PH',
         'PH,Mo-Su',
     ], '2014-01-01 0:00', '2014-01-15 0:00', [
-        [ '2014-01-01 00:00', '2014-01-02 00:00', false, 'Neujahrstag' ],
+        [ '2014-01-01 00:00', '2014-01-02 00:00', false, 'Neujahr' ],
         [ '2014-01-02 00:00', '2014-01-06 00:00' ],
         [ '2014-01-06 00:00', '2014-01-07 00:00', false, 'Heilige Drei Könige' ],
         [ '2014-01-07 00:00', '2014-01-15 00:00' ],
@@ -2442,7 +2442,7 @@ test.addTest('Variable days: United States public holidays. Wyoming', [
 test.addTest('Variable days: Czech Republic public holidays.', [
     'PH',
 ], '2015-01-01 0:00', '2015-12-31 23:59', [
-    [ '2015-01-01 00:00', '2015-01-02 00:00', false, 'Den obnovy samostatného českého státu' ],
+    [ '2015-01-01 00:00', '2015-01-02 00:00', false, 'Den obnovy samostatného českého státu; Nový rok' ],
     [ '2015-04-03 00:00', '2015-04-04 00:00', false, 'Velký pátek' ],
     [ '2015-04-06 00:00', '2015-04-07 00:00', false, 'Velikonoční pondělí' ],
     [ '2015-05-01 00:00', '2015-05-02 00:00', false, 'Svátek práce' ],
@@ -2503,7 +2503,7 @@ test.addTest('Variable days: New Zealand public holidays.', [
     [ '2020-04-10 00:00', '2020-04-10 24:00', false, 'Good Friday' ],
     [ '2020-04-13 00:00', '2020-04-13 24:00', false, 'Easter Monday' ],
     [ '2020-04-25 00:00', '2020-04-25 24:00', false, 'Anzac Day' ],
-    [ '2020-06-01 00:00', '2020-06-01 24:00', false, 'Queen\'s Birthday' ],
+    [ '2020-06-01 00:00', '2020-06-01 24:00', false, 'King\'s Birthday' ],
     [ '2020-10-26 00:00', '2020-10-26 24:00', false, 'Labour Day' ],
     [ '2020-12-25 00:00', '2020-12-25 24:00', false, 'Christmas Day' ],
     [ '2020-12-26 00:00', '2020-12-26 24:00', false, 'Boxing Day' ],
@@ -2513,7 +2513,7 @@ test.addTest('Variable days: New Zealand public holidays.', [
     [ '2021-04-02 00:00', '2021-04-02 24:00', false, 'Good Friday' ],
     [ '2021-04-05 00:00', '2021-04-05 24:00', false, 'Easter Monday' ],
     [ '2021-04-25 00:00', '2021-04-25 24:00', false, 'Anzac Day' ],
-    [ '2021-06-07 00:00', '2021-06-07 24:00', false, 'Queen\'s Birthday' ],
+    [ '2021-06-07 00:00', '2021-06-07 24:00', false, 'King\'s Birthday' ],
     [ '2021-10-25 00:00', '2021-10-25 24:00', false, 'Labour Day' ],
     [ '2021-12-25 00:00', '2021-12-25 24:00', false, 'Christmas Day' ],
     [ '2021-12-26 00:00', '2021-12-26 24:00', false, 'Boxing Day' ],
@@ -2523,7 +2523,7 @@ test.addTest('Variable days: New Zealand public holidays.', [
     [ '2022-04-15 00:00', '2022-04-15 24:00', false, 'Good Friday' ],
     [ '2022-04-18 00:00', '2022-04-18 24:00', false, 'Easter Monday' ],
     [ '2022-04-25 00:00', '2022-04-25 24:00', false, 'Anzac Day' ],
-    [ '2022-06-06 00:00', '2022-06-06 24:00', false, 'Queen\'s Birthday' ],
+    [ '2022-06-06 00:00', '2022-06-06 24:00', false, 'King\'s Birthday' ],
     [ '2022-10-24 00:00', '2022-10-24 24:00', false, 'Labour Day' ],
     [ '2022-12-25 00:00', '2022-12-25 24:00', false, 'Christmas Day' ],
     [ '2022-12-26 00:00', '2022-12-26 24:00', false, 'Boxing Day' ],
@@ -2536,49 +2536,49 @@ test.addTest('Variable days: Ireland public holidays.', [
     'PH',
 ], '2017-01-01 0:00', '2020-12-31 23:59', [
 	[ '2017-01-01 00:00', '2017-01-02 00:00', false, 'New Year’s Day' ],
-	[ '2017-03-17 00:00', '2017-03-18 00:00', false, 'St Patrick’s Day' ],
+	[ '2017-03-17 00:00', '2017-03-18 00:00', false, 'St. Patrick’s Day' ],
 	[ '2017-04-14 00:00', '2017-04-15 00:00', false, 'Good Friday' ],
 	[ '2017-04-17 00:00', '2017-04-18 00:00', false, 'Easter Monday' ],
 	[ '2017-05-01 00:00', '2017-05-02 00:00', false, 'May Bank Holiday' ],
 	[ '2017-06-05 00:00', '2017-06-06 00:00', false, 'June Bank Holiday' ],
 	[ '2017-08-07 00:00', '2017-08-08 00:00', false, 'August Bank Holiday' ],
-	[ '2017-10-30 00:00', '2017-10-31 00:00', false, 'October Bank Holiday (Halloween)' ],
-	[ '2017-12-25 00:00', '2017-12-26 00:00', false, 'Christmas' ],
-	[ '2017-12-26 00:00', '2017-12-27 00:00', false, 'St Stephen’s Day' ],
+	[ '2017-10-30 00:00', '2017-10-31 00:00', false, 'October Bank Holiday' ],
+	[ '2017-12-25 00:00', '2017-12-26 00:00', false, 'Christmas Day' ],
+	[ '2017-12-26 00:00', '2017-12-27 00:00', false, 'St. Stephen’s Day' ],
 	[ '2017-12-27 00:00', '2017-12-28 00:00', false, 'Bank Holiday' ],
 	[ '2018-01-01 00:00', '2018-01-02 00:00', false, 'New Year’s Day' ],
-	[ '2018-03-17 00:00', '2018-03-18 00:00', false, 'St Patrick’s Day' ],
-	[ '2018-03-19 00:00', '2018-03-20 00:00', false, 'St Patrick’s Day' ],
+	[ '2018-03-17 00:00', '2018-03-18 00:00', false, 'St. Patrick’s Day' ],
+	[ '2018-03-19 00:00', '2018-03-20 00:00', false, 'St. Patrick’s Day' ],
 	[ '2018-03-30 00:00', '2018-03-31 00:00', false, 'Good Friday' ],
 	[ '2018-04-02 00:00', '2018-04-03 00:00', false, 'Easter Monday' ],
 	[ '2018-05-07 00:00', '2018-05-08 00:00', false, 'May Bank Holiday' ],
 	[ '2018-06-04 00:00', '2018-06-05 00:00', false, 'June Bank Holiday' ],
 	[ '2018-08-06 00:00', '2018-08-07 00:00', false, 'August Bank Holiday' ],
-	[ '2018-10-29 00:00', '2018-10-30 00:00', false, 'October Bank Holiday (Halloween)' ],
-	[ '2018-12-25 00:00', '2018-12-26 00:00', false, 'Christmas' ],
-	[ '2018-12-26 00:00', '2018-12-27 00:00', false, 'St Stephen’s Day' ],
+	[ '2018-10-29 00:00', '2018-10-30 00:00', false, 'October Bank Holiday' ],
+	[ '2018-12-25 00:00', '2018-12-26 00:00', false, 'Christmas Day' ],
+	[ '2018-12-26 00:00', '2018-12-27 00:00', false, 'St. Stephen’s Day' ],
 	[ '2018-12-27 00:00', '2018-12-28 00:00', false, 'Bank Holiday' ],
 	[ '2019-01-01 00:00', '2019-01-02 00:00', false, 'New Year’s Day' ],
-	[ '2019-03-17 00:00', '2019-03-19 00:00', false, 'St Patrick’s Day' ], /* Two days */
+	[ '2019-03-17 00:00', '2019-03-19 00:00', false, 'St. Patrick’s Day' ], /* Two days */
 	[ '2019-04-19 00:00', '2019-04-20 00:00', false, 'Good Friday' ],
 	[ '2019-04-22 00:00', '2019-04-23 00:00', false, 'Easter Monday' ],
 	[ '2019-05-06 00:00', '2019-05-07 00:00', false, 'May Bank Holiday' ],
 	[ '2019-06-03 00:00', '2019-06-04 00:00', false, 'June Bank Holiday' ],
 	[ '2019-08-05 00:00', '2019-08-06 00:00', false, 'August Bank Holiday' ],
-	[ '2019-10-28 00:00', '2019-10-29 00:00', false, 'October Bank Holiday (Halloween)' ],
-	[ '2019-12-25 00:00', '2019-12-26 00:00', false, 'Christmas' ],
-	[ '2019-12-26 00:00', '2019-12-27 00:00', false, 'St Stephen’s Day' ],
+	[ '2019-10-28 00:00', '2019-10-29 00:00', false, 'October Bank Holiday' ],
+	[ '2019-12-25 00:00', '2019-12-26 00:00', false, 'Christmas Day' ],
+	[ '2019-12-26 00:00', '2019-12-27 00:00', false, 'St. Stephen’s Day' ],
 	[ '2019-12-27 00:00', '2019-12-28 00:00', false, 'Bank Holiday' ],
 	[ '2020-01-01 00:00', '2020-01-02 00:00', false, 'New Year’s Day' ],
-	[ '2020-03-17 00:00', '2020-03-18 00:00', false, 'St Patrick’s Day' ],
+	[ '2020-03-17 00:00', '2020-03-18 00:00', false, 'St. Patrick’s Day' ],
 	[ '2020-04-10 00:00', '2020-04-11 00:00', false, 'Good Friday' ],
 	[ '2020-04-13 00:00', '2020-04-14 00:00', false, 'Easter Monday' ],
 	[ '2020-05-04 00:00', '2020-05-05 00:00', false, 'May Bank Holiday' ],
 	[ '2020-06-01 00:00', '2020-06-02 00:00', false, 'June Bank Holiday' ],
 	[ '2020-08-03 00:00', '2020-08-04 00:00', false, 'August Bank Holiday' ],
-	[ '2020-10-26 00:00', '2020-10-27 00:00', false, 'October Bank Holiday (Halloween)' ],
-	[ '2020-12-25 00:00', '2020-12-26 00:00', false, 'Christmas' ],
-	[ '2020-12-26 00:00', '2020-12-27 00:00', false, 'St Stephen’s Day' ],
+	[ '2020-10-26 00:00', '2020-10-27 00:00', false, 'October Bank Holiday' ],
+	[ '2020-12-25 00:00', '2020-12-26 00:00', false, 'Christmas Day' ],
+	[ '2020-12-26 00:00', '2020-12-27 00:00', false, 'St. Stephen’s Day' ],
 	[ '2020-12-27 00:00', '2020-12-28 00:00', false, 'Bank Holiday' ],
 ], 1000 * 60 * 60 * 24 * 46, 0, false, nominatim_by_loc.ie, 'not only test');
 
@@ -4360,7 +4360,7 @@ test.addTest('Real world example: Problem with <additional_rule_separator> in ho
         // 'PH, Aug-Sep 00:00-24:00', // Should fail.
         'PH; Aug-Sep 00:00-24:00',
     ], '2015-01-01 0:00', '2015-01-10 0:00', [
-        [ '2015-01-01 00:00', '2015-01-02 00:00', false, 'Neujahrstag' ],
+        [ '2015-01-01 00:00', '2015-01-02 00:00', false, 'Neujahr' ],
         [ '2015-01-06 00:00', '2015-01-07 00:00', false, 'Heilige Drei Könige' ],
     ], 1000 * 60 * 60 * 24 * 2, 0, false, nominatim_default, 'not only test');
 test.addTest('Real world example: Problem with <additional_rule_separator> in holiday parser', [

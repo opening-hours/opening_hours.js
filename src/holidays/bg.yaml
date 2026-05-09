@@ -1,0 +1,17 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.6977&lon=23.3219&zoom=18&addressdetails=1&accept-language=bg,en'
+
+PH:
+  - {'name': 'Нова Година', 'fixed_date': [1, 1]}
+  - {'name': 'Ден на Освобождението на България от Османската Империя', 'fixed_date': [3, 3]}
+  - {'name': 'Разпети петък', 'variable_date': orthodox easter, 'offset': -2}
+  - {'name': 'Великден', 'variable_date': orthodox easter}
+  - {'name': 'Велики понеделник', 'variable_date': orthodox easter, 'offset': 1}
+  - {'name': 'Ден на труда', 'fixed_date': [5, 1]}
+  - {'name': 'Гергьовден', 'fixed_date': [5, 6]}
+  - {'name': 'Ден на азбуката, културата и просветата', 'fixed_date': [5, 24]}
+  - {'name': 'Ден на съединението', 'fixed_date': [9, 6]}
+  - {'name': 'Ден на независимостта', 'fixed_date': [9, 22]}
+  - {'name': 'Бъдни вечер', 'fixed_date': [12, 24]}
+  - {'name': 'Коледа', 'fixed_date': [12, 25]}

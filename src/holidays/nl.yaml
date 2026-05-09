@@ -1,5 +1,7 @@
 ---
 
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=52.3702&lon=4.8952&zoom=18&addressdetails=1&accept-language=nl,en'
+
 # https://nl.wikipedia.org/wiki/Feestdagen_in_Nederland
 PH:
   - {'name': 'Nieuwjaarsdag', 'fixed_date': [1, 1]}

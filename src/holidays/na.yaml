@@ -7,7 +7,7 @@ PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_Namibia, https://www.off
   - {'name': 'Independence Day', 'fixed_date': [3, 21]}
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Worker’s Day', 'fixed_date': [5, 1]}
+  - {'name': 'Workers’ Day', 'fixed_date': [5, 1]}
   - {'name': 'Cassinga Day', 'fixed_date': [5, 4]}
   - {'name': 'Ascension Day', 'variable_date': easter, 'offset': 39}
   - {'name': 'Africa Day', 'fixed_date': [5, 25]}

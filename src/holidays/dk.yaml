@@ -7,14 +7,13 @@ PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
   - {'name': 'Skærtorsdag', 'variable_date': easter, 'offset': -3}
   - {'name': 'Langfredag', 'variable_date': easter, 'offset': -2}
   - {'name': 'Påskedag', 'variable_date': easter}
-  - {'name': '2. Påskedag', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Store Bededag', 'variable_date': easter, 'offset': 26}
+  - {'name': 'Anden påskedag', 'variable_date': easter, 'offset': 1}
   - {'name': 'Kristi Himmelfartsdag', 'variable_date': easter, 'offset': 39}
   - {'name': 'Pinsedag', 'variable_date': easter, 'offset': 49}
-  - {'name': '2. Pinsedag', 'variable_date': easter, 'offset': 50}
+  - {'name': 'Anden Pinsedag', 'variable_date': easter, 'offset': 50}
   - {'name': 'Grundlovsdag', 'fixed_date': [6, 5]}
   # constitution day, Not a church holiday, most treated almost but not quite as such
   - {'name': 'Juleaftensdag', 'fixed_date': [12, 24]}
   # Not an official church holiday, but by law, stores are closed
   - {'name': 'Juledag', 'fixed_date': [12, 25]}
-  - {'name': '2. Juledag', 'fixed_date': [12, 26]}
+  - {'name': 'Anden Juledag', 'fixed_date': [12, 26]}

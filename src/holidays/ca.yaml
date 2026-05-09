@@ -1,5 +1,7 @@
 ---
 
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.4215&lon=-75.6972&zoom=18&addressdetails=1&accept-language=en,fr'
+
 # https://en.wikipedia.org/wiki/Public_holidays_in_Canada
 PH:
   - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}

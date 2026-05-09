@@ -1,0 +1,12 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=19.4326&lon=-99.1332&zoom=18&addressdetails=1&accept-language=es,en'
+
+PH:
+  - {'name': 'Año Nuevo', 'fixed_date': [1, 1]}
+  - {'name': 'Día de la Constitución', 'variable_date': firstFebruaryMonday}
+  - {'name': 'Natalicio de Benito Juárez', 'variable_date': firstMarchMonday, 'offset': 14}
+  - {'name': 'Día del Trabajador', 'fixed_date': [5, 1]}
+  - {'name': 'Día de la Independencia', 'fixed_date': [9, 16]}
+  - {'name': 'Día de la Revolución', 'variable_date': firstNovemberMonday, 'offset': 14}
+  - {'name': 'Navidad', 'fixed_date': [12, 25]}

@@ -1,0 +1,18 @@
+---
+
+_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=56.9460&lon=24.1059&zoom=18&addressdetails=1&accept-language=lv,en'
+
+PH:
+  - {'name': 'Jaunais Gads', 'fixed_date': [1, 1]}
+  - {'name': 'Lielā Piektdiena', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Lieldienas', 'variable_date': easter}
+  - {'name': 'Otrās Lieldienas', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Darba svētki', 'fixed_date': [5, 1]}
+  - {'name': 'Latvijas Republikas Neatkarības atjaunošanas diena', 'fixed_date': [5, 4]}
+  - {'name': 'Līgo Diena', 'fixed_date': [6, 23]}
+  - {'name': 'Jāņi', 'fixed_date': [6, 24]}
+  - {'name': 'Latvijas Republikas proklamēšanas diena', 'fixed_date': [11, 18]}
+  - {'name': 'Ziemassvētku vakars', 'fixed_date': [12, 24]}
+  - {'name': 'Ziemassvētki', 'fixed_date': [12, 25]}
+  - {'name': 'Otrie Ziemassvētki', 'fixed_date': [12, 26]}
+  - {'name': 'Vecgada vakars', 'fixed_date': [12, 31]}
