@@ -11376,6 +11376,13 @@ export const it = {
   }
 };
 
+export const je = {
+  "Jersey": {
+    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=49.2&lon=-2.1&zoom=11&addressdetails=1&accept-language=en",
+    PH: [{"name":"New Year’s Day","fixed_date":[1,1]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Early May bank holiday","variable_date":"firstMayMonday"},{"name":"Liberation Day","fixed_date":[5,9]},{"name":"Spring bank holiday","variable_date":"lastMayMonday"},{"name":"Summer bank holiday","variable_date":"lastAugustMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
+  }
+};
+
 export const jp = {
   PH: [{"name":"元日","fixed_date":[1,1]},{"name":"成人の日","variable_date":"firstJanuaryMonday","offset":7},{"name":"建国記念の日","fixed_date":[2,11]},{"name":"天皇誕生日","fixed_date":[2,23]},{"name":"昭和の日","fixed_date":[4,29]},{"name":"憲法記念日","fixed_date":[5,3]},{"name":"みどりの日","fixed_date":[5,4]},{"name":"こどもの日","fixed_date":[5,5]},{"name":"海の日","variable_date":"firstJulyMonday","offset":14},{"name":"山の日","fixed_date":[8,11]},{"name":"敬老の日","variable_date":"firstSeptemberMonday","offset":14},{"name":"スポーツの日","variable_date":"firstOctoberMonday","offset":7},{"name":"文化の日","fixed_date":[11,3]},{"name":"勤労感謝の日","fixed_date":[11,23]},{"name":"春分の日","variable_date":"springEquinox"},{"name":"秋分の日","variable_date":"autumnalEquinox"}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.39291572&lon=139.44288869&zoom=18&addressdetails=1&accept-language=ja,en"
@@ -12075,7 +12082,7 @@ export const nl = {
 };
 
 export const no = {
-  PH: [{"name":"Første nyttårsdag","fixed_date":[1,1]},{"name":"Skjærtorsdag","variable_date":"easter","offset":-3},{"name":"Langfredag","variable_date":"easter","offset":-2},{"name":"Første påskedag","variable_date":"easter"},{"name":"Andre påskedag","variable_date":"easter","offset":1},{"name":"Arbeidernes dag","fixed_date":[5,1]},{"name":"Kristi himmelfartsdag","variable_date":"easter","offset":39},{"name":"Grunnlovsdagen","fixed_date":[5,17]},{"name":"Første pinsedag","variable_date":"easter","offset":49},{"name":"Andre pinsedag","variable_date":"easter","offset":50},{"name":"Første Juledag","fixed_date":[12,25]},{"name":"Andre juledag","fixed_date":[12,26]}],
+  PH: [{"name":"Første nyttårsdag","fixed_date":[1,1]},{"name":"Skjærtorsdag","variable_date":"easter","offset":-3},{"name":"Langfredag","variable_date":"easter","offset":-2},{"name":"Første påskedag","variable_date":"easter"},{"name":"Andre påskedag","variable_date":"easter","offset":1},{"name":"Arbeidernes dag","fixed_date":[5,1]},{"name":"Kristi himmelfartsdag","variable_date":"easter","offset":39},{"name":"Grunnlovsdagen","fixed_date":[5,17]},{"name":"Første pinsedag","variable_date":"easter","offset":49},{"name":"Andre pinsedag","variable_date":"easter","offset":50},{"name":"Første juledag","fixed_date":[12,25]},{"name":"Andre juledag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=61.0&lon=8.0&zoom=8&addressdetails=1&accept-language=no,en"
 };
 
@@ -12085,7 +12092,7 @@ export const nz = {
 };
 
 export const pl = {
-  PH: [{"name":"Nowy Rok","fixed_date":[1,1]},{"name":"Święto Trzech Króli","fixed_date":[1,6]},{"name":"Niedziela Wielkanocna","variable_date":"easter"},{"name":"Drugi dzień Wielkanocy","variable_date":"easter","offset":1},{"name":"Święto Państwowe; Święto Pracy","fixed_date":[5,1]},{"name":"Święto Narodowe Trzeciego Maja","fixed_date":[5,3]},{"name":"Zielone Świątki","variable_date":"easter","offset":49},{"name":"Dzień Bożego Ciała","variable_date":"easter","offset":60},{"name":"Wniebowzięcie Najświętszej Maryi Panny","fixed_date":[8,15]},{"name":"Wszystkich Świętych","fixed_date":[11,1]},{"name":"Narodowe Święto Niepodległości","fixed_date":[11,11]},{"name":"Wigilia Bożego Narodzenia","fixed_date":[12,24]},{"name":"Pierwszy dzień Bożego Narodzenia","fixed_date":[12,25]},{"name":"Drugi dzień Bożego Narodzenia","fixed_date":[12,26]}],
+  PH: [{"name":"Nowy Rok","fixed_date":[1,1]},{"name":"Święto Trzech Króli","fixed_date":[1,6]},{"name":"pierwszy dzień Wielkiej Nocy","variable_date":"easter"},{"name":"drugi dzień Wielkiej Nocy","variable_date":"easter","offset":1},{"name":"Święto Państwowe","fixed_date":[5,1]},{"name":"Święto Narodowe Trzeciego Maja","fixed_date":[5,3]},{"name":"pierwszy dzień Zielonych Świątek","variable_date":"easter","offset":49},{"name":"dzień Bożego Ciała","variable_date":"easter","offset":60},{"name":"Wniebowzięcie Najświętszej Marii Panny","fixed_date":[8,15]},{"name":"Wszystkich Świętych","fixed_date":[11,1]},{"name":"Narodowe Święto Niepodległości","fixed_date":[11,11]},{"name":"Wigilia Bożego Narodzenia","fixed_date":[12,24]},{"name":"pierwszy dzień Bożego Narodzenia","fixed_date":[12,25]},{"name":"drugi dzień Bożego Narodzenia","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=53.4825&lon=18.75823&zoom=18&addressdetails=1&accept-language=pl,en",
   "Dolnośląskie": {
     SH: [
