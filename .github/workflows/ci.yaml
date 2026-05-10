@@ -31,7 +31,7 @@ jobs:
           node-version: lts/*
           cache: "npm"
       - name: Install dependencies
-        run: npm install
+        run: npm ci
       - name: Run linter tests
         run: npm run lint
 
