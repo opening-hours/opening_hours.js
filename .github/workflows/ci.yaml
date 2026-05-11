@@ -31,7 +31,7 @@ jobs:
           node-version: lts/*
           cache: "npm"
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
       - name: Run linter tests
         run: npm run lint
 
