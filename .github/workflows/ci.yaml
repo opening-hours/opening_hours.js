@@ -15,6 +15,7 @@ permissions:
 
 env:
   npm_config_cache: /tmp/npm-cache
+  npm_config_min_release_age: 7
 
 jobs:
   code-style-check:
