@@ -1,5 +1,5 @@
 // Import all required modules
-import i18next from '../../node_modules/i18next/dist/esm/i18next.bundled.js';
+import i18next from '../../node_modules/i18next/dist/esm/i18next.js';
 import { resources, detectLanguage, getUserSelectTranslateHTMLCode, changeLanguage } from './i18n-resources.js';
 import { Evaluate, EX, josm, toggle, getISOWeekNumber, newValue, currentDateTime } from './helpers.js';
 

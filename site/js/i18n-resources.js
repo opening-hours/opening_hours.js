@@ -1,5 +1,5 @@
 // Import i18next for use in helper functions
-import i18next from '../../node_modules/i18next/dist/esm/i18next.bundled.js';
+import i18next from '../../node_modules/i18next/dist/esm/i18next.js';
 
 // localization {{{
 export const resources = { // English is fallback language.
