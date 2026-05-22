@@ -1,3 +1,5 @@
+<!-- SPDX-FileCopyrightText: © opening_hours.js contributors -->
+<!-- SPDX-License-Identifier: LGPL-3.0-only -->
 # Contributing to opening_hours
 
 We're excited you're interested in contributing! This document outlines our contribution guidelines and processes.

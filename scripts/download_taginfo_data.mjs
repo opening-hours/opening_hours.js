@@ -1,5 +1,9 @@
 #!/usr/bin/env node
 /**
+ * SPDX-FileCopyrightText: © 2025 Kristjan ESPERANTO <https://github.com/KristjanESPERANTO>
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
  * Download taginfo data with pagination support for large keys
  * Usage: node download_taginfo_data.mjs <output-file> <key> [max-values]
  * Example: node download_taginfo_data.mjs export.opening_hours.json opening_hours 5000

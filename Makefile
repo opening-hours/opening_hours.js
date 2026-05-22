@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: LGPL-3.0-only
 ## vim: foldmarker={{{,}}} foldlevel=0 foldmethod=marker spell:
 
 SHELL ?= /bin/bash -o nounset -o pipefail -o errexit

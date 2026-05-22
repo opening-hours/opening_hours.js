@@ -1,3 +1,5 @@
+<!-- SPDX-FileCopyrightText: © opening_hours.js contributors -->
+<!-- SPDX-License-Identifier: LGPL-3.0-only -->
 # Internals
 
 ## Terminology

@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © opening_hours.js contributors
+// SPDX-License-Identifier: CC0-1.0
 import common from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from '@rollup/plugin-terser';

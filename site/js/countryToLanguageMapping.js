@@ -1,4 +1,8 @@
 /*
+ * SPDX-FileCopyrightText: © 2015 Robin Schneider <ypid@riseup.net>
+ *
+ * SPDX-License-Identifier: LGPL-3.0-only
+ *
  * Upstream source: https://wiki.openstreetmap.org/wiki/Nominatim/Country_Codes
  */
 export const countryToLanguageMapping = {

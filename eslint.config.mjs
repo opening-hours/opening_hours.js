@@ -1,3 +1,5 @@
+// SPDX-FileCopyrightText: © opening_hours.js contributors
+// SPDX-License-Identifier: CC0-1.0
 import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import js from '@eslint/js'
