@@ -19,7 +19,7 @@ export const OpeningHoursTable = {
 
     // Formats a date's local time as "HH:MM".
     formatHM(date) {
-        return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
+        return date.toLocaleString('en', { hourCycle: 'h23', hour: '2-digit', minute: '2-digit' });
     },
 
     formatdate (now, nextchange, from) {
