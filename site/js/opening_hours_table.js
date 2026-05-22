@@ -12,6 +12,16 @@ export const OpeningHoursTable = {
         return date.toLocaleString(i18next.language, { weekday: 'short' });
     },
 
+    // Returns a date's local time as a percentage of the day (0–100).
+    dayPercent(date) {
+        return (date.getHours() * 60 + date.getMinutes()) / 1440 * 100;
+    },
+
+    // Formats a date's local time as "HH:MM".
+    formatHM(date) {
+        return date.toLocaleString('en', { hourCycle: 'h23', hour: '2-digit', minute: '2-digit' });
+    },
+
     formatdate (now, nextchange, from) {
         const now_daystart = new Date(now.getFullYear(), now.getMonth(), now.getDate());
         const nextdays = (nextchange.getTime() - now_daystart.getTime()) / 1000 / 60 / 60 / 24;
@@ -113,7 +123,7 @@ export const OpeningHoursTable = {
         // Calculate current time position for "now" marker (percentage of day)
         // Use evalDate instead of new Date() to show the evaluation time, not browser time
         const now = evalDate || new Date();
-        const nowPercent = ((now.getHours() * 60 + now.getMinutes()) / (24 * 60)) * 100;
+        const nowPercent = this.dayPercent(now);
 
         const tableData = [];
 
@@ -137,30 +147,23 @@ export const OpeningHoursTable = {
             while (has_next_change && it.advance() && curdate.getTime() - date.getTime() < 24 * 60 * 60 * 1000) {
                 curdate = it.getDate();
 
-                let fr = prevdate.getTime() - date.getTime();
-                let to = curdate.getTime() - date.getTime();
+                // Use local clock time (not elapsed ms) so bars stay aligned
+                // with labels on DST transition days.
+                const crossesMidnight = prevdate.getDay() !== curdate.getDay();
 
-                if (to > 24 * 60 * 60 * 1000) {
-                    to = 24 * 60 * 60 * 1000;
-                }
-
-                fr *= 100 / 1000 / 60 / 60 / 24;
-                to *= 100 / 1000 / 60 / 60 / 24;
+                const from = this.dayPercent(prevdate);
+                const to = crossesMidnight ? 100 : this.dayPercent(curdate);
 
                 const stateClass = is_open ? 'open' : (unknown ? 'unknown' : 'closed');
-                // Always use 24h format with HH:MM
-                const timeFrom = `${String(prevdate.getHours()).padStart(2, '0')}:${String(prevdate.getMinutes()).padStart(2, '0')}`;
-                const timeToDate = prevdate.getDay() !== curdate.getDay() ? null : curdate;
-                const timeTo = timeToDate
-                    ? `${String(timeToDate.getHours()).padStart(2, '0')}:${String(timeToDate.getMinutes()).padStart(2, '0')}`
-                    : '24:00';
+                const timeFrom = this.formatHM(prevdate);
+                const timeTo = crossesMidnight ? '24:00' : this.formatHM(curdate);
 
                 // Use current state_string for this period (before advancing)
                 const currentStateString = state_string;
                 const tooltip = `${i18next.t(`words.${currentStateString}`)}: ${timeFrom} - ${timeTo}`;
 
                 rowData.times.push(
-                    `<div class="timebar ${stateClass}" style="width:${to - fr}%" title="${tooltip}"></div>`
+                    `<div class="timebar ${stateClass}" style="width:${to - from}%" title="${tooltip}"></div>`
                 );
 
                 if (is_open || unknown) {
@@ -349,10 +352,7 @@ export const OpeningHoursTable = {
         const change_daystart = new Date(changeDate.getFullYear(), changeDate.getMonth(), changeDate.getDate());
         const daysDiff = Math.round((change_daystart.getTime() - now_daystart.getTime()) / (1000 * 60 * 60 * 24));
 
-        // Always use 24h format with HH:MM
-        const hours = String(changeDate.getHours()).padStart(2, '0');
-        const minutes = String(changeDate.getMinutes()).padStart(2, '0');
-        const timeStr = `${hours}:${minutes}`;
+        const timeStr = this.formatHM(changeDate);
 
         if (daysDiff === 0) {
             return `${i18next.t('words.today')} ${timeStr}`;
