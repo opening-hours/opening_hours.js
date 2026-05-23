@@ -1,16 +1,20 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: ODbL-1.0
 ---
 
 _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Belgium&zoom=18&addressdetails=1&limit=1&accept-language=nl,fr,de,en'
 
+# https://www.emploi.belgique.be/fr/themes/international/detachement/conditions-de-travail-respecter-en-cas-de-detachement-en-2
+# https://www.werk.belgie.be/nl/themas/internationaal/detachering/na-te-leven-arbeidsvoorwaarden-geval-van-detachering-naar-3
 # https://nl.wikipedia.org/wiki/Feestdagen_in_Belgi%C3%AB
 PH:
-  - {'name': 'Nieuwjaar - Jour de l''an', 'fixed_date': [1, 1]}
+  - {'name': 'Nieuwjaar - Nouvel An', 'fixed_date': [1, 1]}
   - {'name': 'Paasmaandag - Lundi de Pâques', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Dag van de Arbeid - Fête du Travail', 'fixed_date': [5, 1]}
-  - {'name': 'Onze-Lieve-Heer-Hemelvaart - Jeudi de l''Ascensionn', 'variable_date': easter, 'offset': 39}
+  - {'name': 'Dag van de Arbeid - Fête du travail', 'fixed_date': [5, 1]}
+  - {'name': 'Hemelvaartsdag - Ascension', 'variable_date': easter, 'offset': 39}
   - {'name': 'Pinkstermaandag - Lundi de Pentecôte', 'variable_date': easter, 'offset': 50}
-  - {'name': 'Nationale feestdag van België - Fête nationale', 'fixed_date': [7, 21]}
-  - {'name': 'Onze-Lieve-Vrouw-Hemelvaart - Assomption', 'fixed_date': [8, 15]}
+  - {'name': 'Nationale feestdag - Fête nationale', 'fixed_date': [7, 21]}
+  - {'name': 'Tenhemelopneming - Assomption', 'fixed_date': [8, 15]}
   - {'name': 'Allerheiligen - Toussaint', 'fixed_date': [11, 1]}
   - {'name': 'Wapenstilstand - Armistice', 'fixed_date': [11, 11]}
   - {'name': 'Kerstmis - Noël', 'fixed_date': [12, 25]}

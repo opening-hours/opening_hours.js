@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: ODbL-1.0
 ---
 
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-35.2809&lon=149.1300&zoom=16&addressdetails=1&accept-language=en'
@@ -5,7 +7,7 @@ _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-35
 # https://en.wikipedia.org/wiki/Public_holidays_in_Australia
 # Partial holidays excluded
 PH:
-  - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+  - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
   - {'name': 'Australia Day', 'fixed_date': [1, 26]}
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
@@ -17,7 +19,7 @@ PH:
   _state_code: act
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-35.2809&lon=149.1300&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Canberra Day', 'variable_date': firstMarchMonday, 'offset': 7}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
@@ -25,10 +27,8 @@ PH:
     - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
-    # Reconciliation day is recently new https://www.cmtedd.act.gov.au/open_government/inform/act_government_media_releases/rachel-stephen-smith-mla-media-releases/2017/reconciliation-day-public-holiday-an-australian-first
     - {'name': 'Reconciliation Day', 'variable_date': lastMayMonday}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
-    - {'name': 'Family and Community Day', 'variable_date': lastSeptemberMonday}
+    - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
@@ -37,14 +37,14 @@ PH:
   _state_code: nsw
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-33.8688&lon=151.2093&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Saturday', 'variable_date': easter, 'offset': -1}
     - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
@@ -53,30 +53,32 @@ PH:
   _state_code: nt
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-12.4634&lon=130.8456&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Saturday', 'variable_date': easter, 'offset': -1}
+    - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
     - {'name': 'May Day', 'variable_date': firstMayMonday}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Picnic Day', 'variable_date': firstAugustMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
 
-Queensland:
+'Queensland':
   _state_code: qld
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-27.4698&lon=153.0251&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Saturday', 'variable_date': easter, 'offset': -1}
+    - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
     - {'name': 'Labour Day', 'variable_date': firstMayMonday}
-    - {'name': 'Queens Birthday', 'variable_date': firstOctoberMonday}
+    - {'name': 'King''s Birthday', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
 
@@ -84,37 +86,39 @@ Queensland:
   _state_code: sa
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.9285&lon=138.6007&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
-    - {'name': 'Adelaide Cup', 'variable_date': firstMarchMonday, 'offset': 7}
+    - {'name': 'Adelaide Cup Day', 'variable_date': firstMarchMonday, 'offset': 7}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Saturday', 'variable_date': easter, 'offset': -1}
+    - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+    - {'name': 'Proclamation Day', 'fixed_date': [12, 26]}
 
-Tasmania:
+'Tasmania':
   _state_code: tas
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-42.8821&lon=147.3272&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Eight Hours Day', 'variable_date': firstMarchMonday, 'offset': 7}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
 
-Victoria:
+'Victoria':
   _state_code: vic
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-37.8136&lon=144.9631&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Labour Day', 'variable_date': firstMarchMonday, 'offset': 7}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
@@ -122,8 +126,8 @@ Victoria:
     - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
-    - {'name': 'Queens Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
-    - {'name': 'AFL Grand Final', 'variable_date': lastSeptemberFriday}
+    - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
+    - {'name': 'AFL Grand Final Friday', 'variable_date': lastSeptemberFriday}
     - {'name': 'Melbourne Cup', 'variable_date': firstNovemberTuesday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
@@ -132,12 +136,14 @@ Victoria:
   _state_code: wa
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-31.9505&lon=115.8605&zoom=16&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Years Day', 'fixed_date': [1, 1]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
     - {'name': 'Australia Day', 'fixed_date': [1, 26]}
     - {'name': 'Labour Day', 'variable_date': firstMarchMonday}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+    - {'name': 'Easter Sunday', 'variable_date': easter}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
     - {'name': 'Western Australia Day', 'variable_date': firstJuneMonday}
+    - {'name': 'King''s Birthday', 'variable_date': lastSeptemberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
