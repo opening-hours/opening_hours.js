@@ -121,8 +121,10 @@ The following keys in the dictionary are supported:
 * `variable_date`: The name of a movable event. The movable events and the formulas for calculating them for a given year are defined in the `getMovableEventsForYear` function.
 * `offset`: Optional, defaults to 0. Offset in days to `variable_date`. Can only be used when `variable_date` is specified.
 * `only_states`: Optional. Array of `address.state` strings for which the holiday applies.
+* `shift_rule`: Optional. Rule for transferable fixed-date holidays, using a small date-holidays-like DSL (domain-specific language), e.g. `if tuesday,wednesday then previous monday if thursday,friday then next monday`. Can only be used when `fixed_date` is specified.
 
 Only one of `fixed_date` or `variable_date` can be used for one holiday.
+If `shift_rule` is set, the holiday is moved to the shifted date. If the shifted date would collide with another fixed holiday in the same year, the original date is kept. This is for holidays that legally move; substitute days, where the original date stays a holiday and an additional day is added, need separate support.
 
 ```YAML
 PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
