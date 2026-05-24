@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: LGPL-3.0-only
 ---
 
 'unexpected token': 'Unexpected token: "{{token}}" This means that the syntax is not valid at that point or it is currently not supported.'
