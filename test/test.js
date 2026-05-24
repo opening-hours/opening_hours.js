@@ -2770,6 +2770,20 @@ test.addTest('Constrained weekday (complex real world example)', [
         [ '2013-08-25 10:00', '2013-08-25 18:00' ],
         [ '2013-09-08 14:00', '2013-09-08 18:00' ],
     ], 1000 * 60 * 60 * (4 * 2 + 4 * 4), 0, false, {}, 'not last test');
+
+// issue #444: nth weekday overflows month but negative add_days pulls result back {{{
+test.addTest('Calculations based on constrained weekdays: issue #444, no 5th Sunday in Feb 2020', [
+        // Feb 2020: only 4 Sundays. Su[5] overflows to Mar 1; -1 day = Feb 29 — must not match.
+        'Feb: Su[5] -1 day 12:00-22:00',
+    ], '2020-02-01 0:00', '2020-03-01 0:00', [
+    ], 0, 0, false, {}, 'not last test');
+
+test.addTest('Calculations based on constrained weekdays: issue #444, 5th Sunday exists in Feb 2032', [
+        // Feb 2032 (leap year, Feb 1 = Sunday): 5th Sunday = Feb 29; -1 day = Feb 28.
+        'Feb: Su[5] -1 day 12:00-22:00',
+    ], '2032-02-27 0:00', '2032-03-01 0:00', [
+        [ '2032-02-28 12:00', '2032-02-28 22:00' ],
+    ], 1000 * 60 * 60 * 10, 0, false, {}, 'not last test');
 // }}}
 
 // additional rules {{{
