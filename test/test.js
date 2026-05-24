@@ -2438,6 +2438,90 @@ test.addTest('Variable days: United States public holidays. Wyoming', [
 ], 1000 * 60 * 60 * 24 * (10 + 0), 0, false, nominatim_by_loc.us_wy, 'not last test');
 /* }}} */
 
+/* Argentina holidays {{{ */
+/* Ley 27.399 (Art. 6) shifts certain national holidays falling on
+ * Tue/Wed to the previous Monday and on Thu/Fri to the next Monday.
+ * Decreto 297/2024 (Art. 1) keeps the original date when the shifted
+ * date would collide with another fixed national holiday.
+ */
+test.addTest('Variable days: Argentina public holidays. 2024 (shift_rule, no collisions)', [
+    'PH',
+], '2024-01-01 0:00', '2024-12-31 23:59', [
+    [ '2024-01-01 00:00', '2024-01-02 00:00', false, 'Año Nuevo' ],
+    [ '2024-02-12 00:00', '2024-02-14 00:00', false, 'Carnaval' ],
+    [ '2024-03-24 00:00', '2024-03-25 00:00', false, 'Día Nacional de la Memoria por la Verdad y la Justicia' ],
+    [ '2024-03-29 00:00', '2024-03-30 00:00', false, 'Viernes Santo' ],
+    [ '2024-04-02 00:00', '2024-04-03 00:00', false, 'Día del Veterano y de los Caídos en la Guerra de Malvinas' ],
+    [ '2024-05-01 00:00', '2024-05-02 00:00', false, 'Día del Trabajador' ],
+    [ '2024-05-25 00:00', '2024-05-26 00:00', false, 'Día de la Revolución de Mayo' ],
+    /* 2024-06-17 = Monday → no shift. */
+    [ '2024-06-17 00:00', '2024-06-18 00:00', false, 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes' ],
+    [ '2024-06-20 00:00', '2024-06-21 00:00', false, 'Paso a la Inmortalidad del General D. Manuel Belgrano' ],
+    [ '2024-07-09 00:00', '2024-07-10 00:00', false, 'Día de la Independencia' ],
+    [ '2024-07-10 00:00', '2024-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
+    /* 2024-08-17 = Saturday → no shift. */
+    [ '2024-08-17 00:00', '2024-08-18 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
+    [ '2024-10-12 00:00', '2024-10-13 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
+    /* 2024-11-20 = Wednesday → previous Monday (2024-11-18). */
+    [ '2024-11-18 00:00', '2024-11-19 00:00', false, 'Día de la Soberanía Nacional' ],
+    [ '2024-12-07 00:00', '2024-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
+    [ '2024-12-08 00:00', '2024-12-09 00:00', false, 'Inmaculada Concepción de María' ],
+    [ '2024-12-25 00:00', '2024-12-26 00:00', false, 'Navidad' ],
+], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
+
+test.addTest('Variable days: Argentina public holidays. 2025 (shift_rule, both directions)', [
+    'PH',
+], '2025-01-01 0:00', '2025-12-31 23:59', [
+    [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'Año Nuevo' ],
+    [ '2025-03-03 00:00', '2025-03-05 00:00', false, 'Carnaval' ],
+    [ '2025-03-24 00:00', '2025-03-25 00:00', false, 'Día Nacional de la Memoria por la Verdad y la Justicia' ],
+    [ '2025-04-02 00:00', '2025-04-03 00:00', false, 'Día del Veterano y de los Caídos en la Guerra de Malvinas' ],
+    [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Viernes Santo' ],
+    [ '2025-05-01 00:00', '2025-05-02 00:00', false, 'Día del Trabajador' ],
+    [ '2025-05-25 00:00', '2025-05-26 00:00', false, 'Día de la Revolución de Mayo' ],
+    /* 2025-06-17 = Tuesday → previous Monday (2025-06-16). */
+    [ '2025-06-16 00:00', '2025-06-17 00:00', false, 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes' ],
+    [ '2025-06-20 00:00', '2025-06-21 00:00', false, 'Paso a la Inmortalidad del General D. Manuel Belgrano' ],
+    [ '2025-07-09 00:00', '2025-07-10 00:00', false, 'Día de la Independencia' ],
+    [ '2025-07-10 00:00', '2025-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
+    /* 2025-08-17 = Sunday → no shift. */
+    [ '2025-08-17 00:00', '2025-08-18 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
+    [ '2025-10-12 00:00', '2025-10-13 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
+    /* 2025-11-20 = Thursday → next Monday (2025-11-24). */
+    [ '2025-11-24 00:00', '2025-11-25 00:00', false, 'Día de la Soberanía Nacional' ],
+    [ '2025-12-07 00:00', '2025-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
+    [ '2025-12-08 00:00', '2025-12-09 00:00', false, 'Inmaculada Concepción de María' ],
+    [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Navidad' ],
+], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
+
+test.addTest('Variable days: Argentina public holidays. 2022 (collision: Güemes 06-17 Fri would shift to 06-20 but collides with Belgrano)', [
+    'PH',
+], '2022-01-01 0:00', '2022-12-31 23:59', [
+    [ '2022-01-01 00:00', '2022-01-02 00:00', false, 'Año Nuevo' ],
+    [ '2022-02-28 00:00', '2022-03-02 00:00', false, 'Carnaval' ],
+    [ '2022-03-24 00:00', '2022-03-25 00:00', false, 'Día Nacional de la Memoria por la Verdad y la Justicia' ],
+    [ '2022-04-02 00:00', '2022-04-03 00:00', false, 'Día del Veterano y de los Caídos en la Guerra de Malvinas' ],
+    [ '2022-04-15 00:00', '2022-04-16 00:00', false, 'Viernes Santo' ],
+    [ '2022-05-01 00:00', '2022-05-02 00:00', false, 'Día del Trabajador' ],
+    [ '2022-05-25 00:00', '2022-05-26 00:00', false, 'Día de la Revolución de Mayo' ],
+    /* 2022-06-17 = Friday → would shift to next Monday 2022-06-20, but that
+     * date is already taken by Belgrano (fixed_date 06-20). Per
+     * Decreto 297/2024 Art. 1, the original date is kept. */
+    [ '2022-06-17 00:00', '2022-06-18 00:00', false, 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes' ],
+    [ '2022-06-20 00:00', '2022-06-21 00:00', false, 'Paso a la Inmortalidad del General D. Manuel Belgrano' ],
+    [ '2022-07-09 00:00', '2022-07-10 00:00', false, 'Día de la Independencia' ],
+    [ '2022-07-10 00:00', '2022-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
+    /* 2022-08-17 = Wednesday → previous Monday (2022-08-15). */
+    [ '2022-08-15 00:00', '2022-08-16 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
+    [ '2022-10-12 00:00', '2022-10-13 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
+    /* 2022-11-20 = Sunday → no shift. */
+    [ '2022-11-20 00:00', '2022-11-21 00:00', false, 'Día de la Soberanía Nacional' ],
+    [ '2022-12-07 00:00', '2022-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
+    [ '2022-12-08 00:00', '2022-12-09 00:00', false, 'Inmaculada Concepción de María' ],
+    [ '2022-12-25 00:00', '2022-12-26 00:00', false, 'Navidad' ],
+], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
+/* }}} */
+
 /* Czech holidays {{{ */
 test.addTest('Variable days: Czech Republic public holidays.', [
     'PH',
