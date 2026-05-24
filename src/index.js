@@ -2220,6 +2220,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             // The target day is in the next month. If the target day without the added days is not in this month
                             if (target_day_this_month.getTime() >= start_of_next_month.getTime())
                                 return [false, start_of_next_month];
+                        } else if (target_day_this_month.getTime() >= start_of_next_month.getTime()) {
+                            // The nth weekday overflows to next month (e.g. no 5th Sunday in February),
+                            // but negative add_days pulled the result back into this month.
+                            // The nth weekday still does not exist this month, so do not match.
+                            return [false, start_of_next_month];
                         }
 
                         let target_day_with_added_moved_days_this_month;

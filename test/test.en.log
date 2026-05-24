@@ -964,6 +964,8 @@ With [34m[1mwarnings[22m[39m:
 	*Aug Su[-1] +1 day <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Constrained weekday (complex real world example)" for "Apr-Oct: Su[2] 14:00-18:00; Aug Su[-1] -1 day 10:00-18:00, Aug: Su[-1] 10:00-18:00": [32m[1mPASSED[22m[39m
 "Constrained weekday (complex real world example)" for "Apr-Oct: Su[2] 14:00-18:00; Aug Su[-1] -1 day 10:00-18:00; Aug: Su[-1] 10:00-18:00": [32m[1mPASSED[22m[39m
+"Calculations based on constrained weekdays: issue #444, no 5th Sunday in Feb 2020" for "Feb: Su[5] -1 day 12:00-22:00": [32m[1mPASSED[22m[39m
+"Calculations based on constrained weekdays: issue #444, 5th Sunday exists in Feb 2032" for "Feb: Su[5] -1 day 12:00-22:00": [32m[1mPASSED[22m[39m
 "Additional rules" for "Mo-Fr 10:00-16:00, We 12:00-18:00": [32m[1mPASSED[22m[39m
 "Additional rules" for "Mo-Fr 08:00-12:00, We 14:00-18:00": [32m[1mPASSED[22m[39m
 "Additional rules" for "Mo-Fr 08:00-12:00, We 14:00-18:00; Su off": [32m[1mPASSED[22m[39m
@@ -2555,7 +2557,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-967/971 tests passed. 4 did not pass.
+969/973 tests passed. 4 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
