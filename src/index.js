@@ -2974,15 +2974,116 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
+    // Shift rule support for transferable holidays. {{{
+
+    const weekday_name_to_num = {
+        sunday: 0, monday: 1, tuesday: 2, wednesday: 3,
+        thursday: 4, friday: 5, saturday: 6,
+    };
+
+    const shift_rule_cache = Object.create(null);
+
+    /* Compile a shift_rule string into a (Date) => Date shifter.
+     *
+     * A `shift_rule` field on a holiday definition moves the holiday’s date
+     * depending on the weekday it falls on. The syntax is a subset of the
+     * date-holidays DSL: chained `if … then …` clauses, first match wins,
+     * unmatched dates stay unchanged.
+     *
+     * Format:
+     *   “if <wd>[,<wd>...] then <next|previous> <wd> [if … then … <wd>]*”
+     *
+     * Collision behaviour: if the shifted date would land on another
+     * non-shifted holiday in the same year, the holiday keeps its original
+     * date instead.
+     */
+    function compileShiftRule(rule) {
+        if (shift_rule_cache[rule]) {
+            return shift_rule_cache[rule];
+        }
+        const clauses = parseShiftRule(rule);
+        const shifter = function (date) {
+            return applyShiftClauses(clauses, date);
+        };
+        shift_rule_cache[rule] = shifter;
+        return shifter;
+    }
+
+    /* Parse a shift_rule string into a list of clause objects.
+     *
+     * Each clause has the shape:
+     *   { from_wds: [<int>, ...], direction: "next"|"previous", target_wd: <int> }
+     * where weekdays are 0–6 (Sunday–Saturday).
+     */
+    function parseShiftRule(rule) {
+        function fail(detail) {
+            throw formatLibraryBugMessage(
+                'shift_rule: ' + detail + ' in "' + rule + '"'
+            );
+        }
+        function toWeekdayNum(name) {
+            const n = name.trim();
+            if (!(n in weekday_name_to_num)) {
+                fail('unknown weekday "' + n + '"');
+            }
+            return weekday_name_to_num[n];
+        }
+
+        const clause_regex = /if\s+([a-z,\s]+?)\s+then\s+(next|previous)\s+([a-z]+)/g;
+        const clauses = [];
+        let last_end = 0;
+        let match;
+        while ((match = clause_regex.exec(rule)) !== null) {
+            // Any text before the first match or between matches must be blank.
+            if (rule.slice(last_end, match.index).trim() !== '') {
+                fail('cannot parse');
+            }
+            clauses.push({
+                from_wds:  match[1].split(',').map(toWeekdayNum),
+                direction: match[2],
+                target_wd: toWeekdayNum(match[3]),
+            });
+            last_end = clause_regex.lastIndex;
+        }
+        if (clauses.length === 0 || rule.slice(last_end).trim() !== '') {
+            fail('cannot parse');
+        }
+        return clauses;
+    }
+
+    /* Apply the first matching clause to `date` and return the shifted date.
+     * Returns the original date if no clause matches.
+     */
+    function applyShiftClauses(clauses, date) {
+        const wd = date.getDay();
+        for (let i = 0; i < clauses.length; i++) {
+            const c = clauses[i];
+            if (c.from_wds.indexOf(wd) === -1) continue;
+
+            // Distance to the target weekday, always in the range [1, 7].
+            // The modulo alone could yield 0 when wd === target_wd, but the
+            // from_wds guard above prevents that for well-formed rules.
+            // The "|| 7" is a safety net: if it ever did produce 0 we would
+            // shift by a full week rather than silently not moving the date.
+            let diff;
+            if (c.direction === 'next') {
+                diff = ((c.target_wd - wd + 7) % 7) || 7;   // move forward
+            } else {
+                diff = -(((wd - c.target_wd + 7) % 7) || 7); // move backward
+            }
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate() + diff);
+        }
+        return date;
+    }
+
     function getApplyingHolidaysForYear(applying_holidays, year, add_days) {
         const movableDays = getMovableEventsForYear(year);
 
-        let sorted_holidays = [];
-        let next_holiday;
-
-        applying_holidays.forEach(function (holiday_item) {
+        /* Pass 1: resolve the base date of every holiday (no shift, no add_days). */
+        const resolved = applying_holidays.map(function (holiday_item) {
+            let base_date;
             if ('fixed_date' in holiday_item) {
-                next_holiday = new Date(year,
+                base_date = new Date(year,
                         holiday_item.fixed_date[0] - 1,
                         holiday_item.fixed_date[1]
                     );
@@ -2991,27 +3092,49 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (!selected_movableDay) {
                     throw t('movable no formula', {'name': holiday_item.name});
                 }
-                let date_offset = 0;
-                if ('offset' in holiday_item) {
-                    date_offset = holiday_item.offset;
-                }
-                next_holiday = new Date(selected_movableDay.getFullYear(),
+                const date_offset = 'offset' in holiday_item ? holiday_item.offset : 0;
+                base_date = new Date(selected_movableDay.getFullYear(),
                     selected_movableDay.getMonth(),
                     selected_movableDay.getDate() + date_offset
                 );
-                if (year !== next_holiday.getFullYear()) {
+                if (year !== base_date.getFullYear()) {
                     throw t('movable not in year', {
                         'name': holiday_item.variable_date, 'days': date_offset});
                 }
             } else {
                 throw formatLibraryBugMessage('Unexpected object: ' + JSON.stringify(holiday_item, null, '    '));
             }
+            return { date: base_date, holiday: holiday_item };
+        });
 
-            if (add_days[0]) {
-                next_holiday.setDate(next_holiday.getDate() + add_days[0]);
+        /* Pass 2: apply shift_rule with collision detection.
+         * Collisions are checked against the nominal (non-shifted, no-add_days)
+         * dates of all non-shifted holidays — never against other shifted ones,
+         * to keep the result deterministic regardless of declaration order.
+         */
+        const fixed_times = new Set();
+        resolved.forEach(function (r) {
+            if (!r.holiday.shift_rule) {
+                fixed_times.add(r.date.getTime());
             }
+        });
+        resolved.forEach(function (r) {
+            if (!r.holiday.shift_rule) return;
+            const shifter = compileShiftRule(r.holiday.shift_rule);
+            const shifted = shifter(r.date);
+            if (shifted.getTime() === r.date.getTime()) return;
+            // Keep original date on collision with a non-shifted holiday.
+            if (fixed_times.has(shifted.getTime())) return;
+            r.date = shifted;
+        });
 
-            sorted_holidays.push([ next_holiday, holiday_item.name ]);
+        /* Pass 3: apply add_days uniformly and sort. */
+        let sorted_holidays = resolved.map(function (r) {
+            let d = r.date;
+            if (add_days[0]) {
+                d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + add_days[0]);
+            }
+            return [ d, r.holiday.name ];
         });
 
         sorted_holidays = sorted_holidays.sort(function(a,b){
