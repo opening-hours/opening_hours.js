@@ -1076,6 +1076,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 && (
                         (
                             typeof oh_key === 'string'
+                            && oh_regex_key
                             && osm_tag_defaults[oh_regex_key]['warn_for_PH_missing']
                         )
                         || (typeof oh_key !== 'string')
