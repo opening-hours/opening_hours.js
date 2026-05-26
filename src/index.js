@@ -106,6 +106,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'opening_hours:.+'    :  { 'mode' :  0, },
         '.+:opening_hours'    :  { 'mode' :  0, },
         '.+:opening_hours:.+' :  { 'mode' :  0, },
+        '.+:conditional'      :  { 'mode' :  0, },
         'smoking_hours'       :  { 'mode' :  0, },
         'service_times'       :  { 'mode' :  2, },
         'happy_hours'         :  { 'mode' :  0, },
