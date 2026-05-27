@@ -106,6 +106,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'opening_hours:.+'    :  { 'mode' :  0, },
         '.+:opening_hours'    :  { 'mode' :  0, },
         '.+:opening_hours:.+' :  { 'mode' :  0, },
+        '.+:conditional'      :  { 'mode' :  0, },
         'smoking_hours'       :  { 'mode' :  0, },
         'service_times'       :  { 'mode' :  2, },
         'happy_hours'         :  { 'mode' :  0, },
@@ -1076,6 +1077,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 && (
                         (
                             typeof oh_key === 'string'
+                            && oh_regex_key
                             && osm_tag_defaults[oh_regex_key]['warn_for_PH_missing']
                         )
                         || (typeof oh_key !== 'string')
