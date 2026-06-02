@@ -337,6 +337,9 @@ test.addTest('Error tolerance: Time range', [
         'Mo 12:00-14:00', // reference value for prettify
         'Mo12:00-14:00',
         'Mo 12:00→14:00',
+        'Mo 12:00‐14:00',
+        'Mo 12:00‑14:00',
+        'Mo 12:00‒14:00',
         'Mo 12:00–14:00',
         'Mo 12:00−14:00',
         'Mo 12:00—14:00',
