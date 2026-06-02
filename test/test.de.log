@@ -1462,10 +1462,7 @@ With [34m[1mwarnings[22m[39m:
 "Real world example: Was not processed right (test over a full year)" for "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30; Nov off; Dec off": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right (test over a full year)" for "Nov-Mar off; Apr,May,Sep,Oct Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul,Aug Tu-Su 10:00-17:00": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right (test over a full year)" for "Nov-Mar off; Apr,May,Sep,Oct 10:00-14:30; Jun 09:00-16:00; Jul,Aug 10:00-17:00; Mo off": [32m[1mPASSED[22m[39m
-"Real world example: Was not processed right" for "Tu 10:00-12:00, Fr 16:00-18:00; unknown": [31m[1mFAILED[22m[39m, bad duration(s): 0,63072000000, expected 0,0, bad intervals: 
-[ '2014-01-01 00:00', '2016-01-01 00:00', true, undefined ],
-expected:
-(none), bad weekstable flag: true, expected false
+"Real world example: Was not processed right" for "Tu 10:00-12:00, Fr 16:00-18:00; unknown": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Tu 10:00-12:00, Fr 16:00-18:00; unknown <--- (Diese Regel, welche den Standard-Status (d.h. geschlossen) für alle folgenden Regeln ändert, ist nicht die erste Regel. Diese Regel überschreibt alle vorherigen Regeln. Es kann legitim sein, den Standard-Status z.B. auf geöffnet festzulegen und dann nur die Zeiten, zu denen geschlossen ist, anzugeben.)
 "Real world example: Problem with <additional_rule_separator> in holiday parser" for "PH; Aug-Sep 00:00-24:00": [32m[1mPASSED[22m[39m
@@ -2607,7 +2604,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-984/986 tests passed. 2 did not pass.
+985/986 tests passed. 1 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
