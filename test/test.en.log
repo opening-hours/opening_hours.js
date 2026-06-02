@@ -1389,13 +1389,37 @@ With [34m[1mwarnings[22m[39m:
 "Complex example used in README and benchmark" for "Mo,Tu,Th,Fr 12:00-18:00; Sa,PH 12:00-17:00; Th[3] off; Th[-1] off": [32m[1mPASSED[22m[39m
 "Complex example used in README and benchmark" for "Mo,Tu,Th,Fr 12:00-18:00; Sa,PH 12:00-17:00; Th[3],Th[-1] off": [32m[1mPASSED[22m[39m
 "Warnings corrected to additional rule (real world example)" for "Mo-Fr 09:00-12:00, Mo,Tu,Th 15:00-18:00": [32m[1mPASSED[22m[39m
-"Warnings corrected to additional rule (real world example)" for "Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr": [35m[1mCRASHED[22m[39m, reason: TypeError: Cannot read properties of undefined (reading '0')
+"Warnings corrected to additional rule (real world example)" for "Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
+	*Mo – Fr: 9 – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
+	*Mo – Fr: 9 – 12 Uhr <--- (Please omit "uhr".)
+	*Mo – Fr: 9 – 12 Uhr und <--- (Please use notation "," for "und".)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Please use the English abbreviation "Tu" for "di".)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Please use the English abbreviation "Th" for "do".)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr <--- (Please omit "uhr".)
+	*Mo – Fr: 9 – 12 Uhr  <--- (Time range without minutes specified. Not very explicit! Please use this syntax instead "09:00-12:00".)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr <--- (Time range without minutes specified. Not very explicit! Please use this syntax instead "15:00-18:00".)
+	*Mo – Fr:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
 "Real world example: Was not processed right." for "Mo off, Tu 14:00-18:00, We-Sa 10:00-18:00": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right." for "Mo geschl., Tu 14:00-18:00, We-Sa 10:00-18:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo geschl <--- (Please use "off" for "geschl". Example: "Mo-Fr 08:00-12:00; Tu off".)
 	*Mo geschl. <--- (Please omit ".".)
-"Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [35m[1mCRASHED[22m[39m, reason: TypeError: Cannot read properties of undefined (reading '0')
+"Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo: geschlossen <--- (Please use "off" for "geschlossen". Example: "Mo-Fr 08:00-12:00; Tu off".)
+	*Mo: geschlossen, Di <--- (Please use the English abbreviation "Tu" for "di".)
+	*Mo: geschlossen, Di: 14-18Uhr <--- (Please omit "uhr".)
+	*Mo: geschlossen, Di: 14-18Uhr, Mi <--- (Please use the English abbreviation "We" for "mi".)
+	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr <--- (Please omit "uhr".)
+	*Mo: geschlossen, Di: 14-18Uhr <--- (Time range without minutes specified. Not very explicit! Please use this syntax instead "14:00-18:00".)
+	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr <--- (Time range without minutes specified. Not very explicit! Please use this syntax instead "10:00-18:00".)
+	*Mo:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
+	*Mo: geschlossen, Di:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
+	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
 "Real world example: Was not processed right." for "Mo off; Tu 14:00-18:00; We-Sa 10:00-18:00": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right (month range/monthday range)" for "Aug,Dec 25-easter": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
@@ -1430,19 +1454,20 @@ With [34m[1mwarnings[22m[39m:
 "Based on real world example: Is processed right." for "Apr-Oct: Sa-Su 08:00-15:00, May-Sep: 00:00-24:00": [32m[1mPASSED[22m[39m
 "Based on real world example: Is processed right." for "Apr-Oct: Sa-Su 08:00-15:00; May-Sep: 00:00-24:00": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right." for "Mo-Fr 07:00-19:30; Sa-Su 08:00-19:30 open, 19:30-21:00 open "No new laundry loads in"; Nov Th[4] off; Dec 25 off": [32m[1mPASSED[22m[39m
-An error occurred during evaluation of the value "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off". Please file a bug report or pull request: https://github.com/opening-hours/opening_hours.js. Bug in warning generation code which could not determine the exact position of the warning or error in value.
-tokens_to_use[nrule][2] is undefined. This is ok if nrule is the last rule.
-An error occurred during evaluation of the value "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off". Please file a bug report or pull request: https://github.com/opening-hours/opening_hours.js. Bug in warning generation code which could not determine the exact position of the warning or error in value.
-tokens_to_use[nrule][2] is undefined. This is ok if nrule is the last rule.
 "Real world example: Was not processed right" for "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
-	*Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov off; Dec off <--- (You have used 2 not connected months in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
+	*Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30 Nov  <--- (You have used 2 not connected months in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
 "Real world example: Was not processed right" for "Nov-Mar off; Apr,May,Sep,Oct Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul,Aug Tu-Su 10:00-17:00": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right" for "Nov-Mar off; Apr,May,Sep,Oct 10:00-14:30; Jun 09:00-16:00; Jul,Aug 10:00-17:00; Mo off": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right (test over a full year)" for "Jan off; Feb off; Mar off; Apr Tu-Su 10:00-14:30, May Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul Tu-Su 10:00-17:00; Aug Tu-Su 10:00-17:00; Sep Tu-Su 10:00-14:30; Oct Tu-Su 10:00-14:30; Nov off; Dec off": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right (test over a full year)" for "Nov-Mar off; Apr,May,Sep,Oct Tu-Su 10:00-14:30; Jun Tu-Su 09:00-16:00; Jul,Aug Tu-Su 10:00-17:00": [32m[1mPASSED[22m[39m
 "Real world example: Was not processed right (test over a full year)" for "Nov-Mar off; Apr,May,Sep,Oct 10:00-14:30; Jun 09:00-16:00; Jul,Aug 10:00-17:00; Mo off": [32m[1mPASSED[22m[39m
-"Real world example: Was not processed right" for "Tu 10:00-12:00, Fr 16:00-18:00; unknown": [35m[1mCRASHED[22m[39m, reason: TypeError: Cannot read properties of undefined (reading '0')
+"Real world example: Was not processed right" for "Tu 10:00-12:00, Fr 16:00-18:00; unknown": [31m[1mFAILED[22m[39m, bad duration(s): 0,63072000000, expected 0,0, bad intervals: 
+[ '2014-01-01 00:00', '2016-01-01 00:00', true, undefined ],
+expected:
+(none), bad weekstable flag: true, expected false
+With [34m[1mwarnings[22m[39m:
+	*Tu 10:00-12:00, Fr 16:00-18:00; unknown <--- (This rule which changes the default state (which is closed) for all following rules is not the first rule. The rule will overwrite all previous rules. It can be legitimate to change the default state to open for example and then only specify for which times the facility is closed.)
 "Real world example: Problem with <additional_rule_separator> in holiday parser" for "PH; Aug-Sep 00:00-24:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -2575,7 +2600,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-975/979 tests passed. 4 did not pass.
+977/979 tests passed. 2 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
