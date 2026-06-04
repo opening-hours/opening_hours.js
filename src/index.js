@@ -283,7 +283,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         throw t('nothing');
     }
 
-    const parsing_warnings = []; // Elements are fed into function formatWarnErrorMessage(nrule, at, message)
+    const parsing_warnings = []; // Elements are arrays [nrule, at, message, tokens_to_use?] fed into formatWarnErrorMessage().
     let done_with_warnings = false; // The functions which returns warnings can be called multiple times.
     let done_with_selector_reordering = false;
     let done_with_selector_reordering_warnings = false;
@@ -471,9 +471,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* Format warning or error message for the user. {{{
      *
      * :param nrule: Rule number starting with 0.
-     * :param at: Token position at which the issue occurred.
+     *               -1: error during tokenization, `at` is remaining value.length.
+     *               string: prettified value, `at` is a byte offset into it.
+     * :param at: Token position. -1 means end of rule (no token at that position).
      * :param message: Human readable string with the message.
-     * :param tokens_to_use: List of token objects.
+     * :param tokens_to_use: Optional. Defaults to `tokens`. Pass `new_tokens` from
+     *               getWarnings() because new_tokens can have more entries than tokens
+     *               when Additional Rules are present.
      * :returns: String with position of the warning or error marked for the user.
      */
     function formatWarnErrorMessage(nrule, at, message, tokens_to_use) {
@@ -481,14 +485,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
             tokens_to_use = tokens;
         }
         // console.log(`Called formatWarnErrorMessage: ${nrule}, ${at}, ${message}`);
-        // FIXME: Change to new_tokens.
         if (typeof nrule === 'number') {
             let pos;
-            if (nrule === -1) { // Usage of rule index not required because we do have access to value.length.
+            if (nrule === -1) {
+                // at is remaining value.length at the point of the error.
                 pos = value.length - at;
-            } else { // Issue occurred at a later time, position in string needs to be reconstructed.
+            } else {
+                if (typeof tokens_to_use[nrule] === 'undefined') {
+                    // Caller passed the wrong token array (tokens instead of new_tokens?).
+                    formatLibraryBugMessage('Bug in warning generation code: tokens_to_use[nrule] is undefined for nrule=' + nrule + '.');
+                    return value + ' <--- (' + message + ')';
+                }
                 if (typeof tokens_to_use[nrule][0][at] === 'undefined') {
                     if (typeof tokens_to_use[nrule][0] !== 'undefined' && at === -1) {
+                        // at === -1: point to end of rule, use offset of next rule entry if available.
                         pos = value.length;
                         if (typeof tokens_to_use[nrule+1] === 'object' && typeof tokens_to_use[nrule+1][2] === 'number') {
                             pos -= tokens_to_use[nrule+1][2];
@@ -496,13 +506,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             pos -= tokens_to_use[nrule][2];
                         }
                     } else {
-                        // Given position is invalid.
-                        //
+                        // Token position is out of range. Run real_test regularly to catch this.
                         formatLibraryBugMessage('Bug in warning generation code which could not determine the exact position of the warning or error in value.');
                         pos = value.length;
                         if (typeof tokens_to_use[nrule][2] === 'number') {
-                            // Fallback: Point to last token in the rule which caused the problem.
-                            // Run real_test regularly to fix the problem before a user is confronted with it.
+                            // Fallback: point to last token in the rule which caused the problem.
                             pos -= tokens_to_use[nrule][2];
                             console.warn('Last token for rule: ' + JSON.stringify(tokens_to_use[nrule]));
                         } else {
@@ -522,6 +530,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         } else if (typeof nrule === 'string') {
             return nrule.substring(0, at) + ' <--- (' + message + ')';
         }
+        return message;
     }
     /* }}} */
 
@@ -934,7 +943,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                         :
                                         t('selector multi 2b', {'what': t(selector_type + (/^(?:month|weekday)$/.test(selector_type) ? 's' : ' ranges'))})
                                 )
-                            })]
+                            }),
+                            new_tokens]
                         );
                         done_with_selector_reordering = true; // Correcting the selector order makes no sense if this kind of issue exists.
                     }
@@ -945,7 +955,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && Object.keys(used_selectors[nrule]).length === 1
                 ) {
                     if (nrule !== 0) {
-                        parsing_warnings.push([nrule, new_tokens[nrule][0].length - 1, t('default state')]);
+                        parsing_warnings.push([nrule, new_tokens[nrule][0].length - 1, t('default state'), new_tokens]);
                     }
                 /* }}} */
                 /* Check if a rule (with state open) has no time selector {{{ */
@@ -959,7 +969,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             typeof used_selectors[nrule]['24/7'] === 'undefined'
                     ) {
 
-                        parsing_warnings.push([nrule, new_tokens[nrule][0].length - 1, t('vague')]);
+                        parsing_warnings.push([nrule, new_tokens[nrule][0].length - 1, t('vague'), new_tokens]);
                     }
                 }
                 /* }}} */
@@ -968,7 +978,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && new_tokens[nrule][0][used_selectors[nrule].comment[0]][0].length === 0
                 ) {
 
-                    parsing_warnings.push([nrule, used_selectors[nrule].comment[0], t('empty comment')]);
+                    parsing_warnings.push([nrule, used_selectors[nrule].comment[0], t('empty comment'), new_tokens]);
                 }
                 /* }}} */
                 /* Check for valid use of <separator_for_readability> {{{ */
@@ -983,7 +993,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                         if (new_tokens[nrule][0][used_selectors[nrule][selector_type][0]][0] === ':') {
                             parsing_warnings.push([nrule, used_selectors[nrule][selector_type][0],
-                                t('separator_for_readability')
+                                t('separator_for_readability'),
+                                new_tokens
                             ]);
                         }
                     }
