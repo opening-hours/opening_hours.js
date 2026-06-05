@@ -174,9 +174,147 @@ fi:
 fr:
   opening_hours:
     texts:
-      'assuming ok for ko': 'suppose "{{ok}}" pour "{{ko}}".'
-      'please use ok for ko': 'S''il vous plaît utilisez "{{ok}}" pour "{{ko}}".'
-      'please use English abbreviation ok for ko': 'S''il vous plaît utiliseé l''abréviation "{{ok}}" pour "{{ko}}".'
+      unexpected token: "Caractère inattendu : \"{{token}}\" — la syntaxe à cet endroit n'a pas pu être reconnue."
+      no string: "La valeur (premier paramètre) n'est pas une chaîne de caractères."
+      nothing: "La valeur ne contient rien qui puisse être évalué."
+      nothing useful: "Cette règle ne contient rien d'utile. Veuillez supprimer cette règle vide."
+      'combine rules': >-
+        Des règles séparées ont été détectées, contenant chacune uniquement une définition de plage horaire.
+        Ces règles devraient être combinées en une seule règle avec "{{ok}}".
+      'value ends with token': >-
+        La valeur se termine par "{{token}}".
+        Veuillez compléter la valeur après "{{token}}" ou supprimer "{{token}}".
+      programmers joke: >-
+        Êtes-vous développeur et avez-vous l'habitude compulsive d'ajouter un point-virgule après chaque instruction ;) ?
+        Le point-virgule est défini comme séparateur de règles dans la syntaxe opening_hours.
+        Veuillez éviter le point-virgule ici.
+      interpreted as year: "Le nombre {{number}} est interprété comme une année. Ce n'est probablement pas intentionnel. Les heures sont indiquées sous la forme \"12:00\"."
+      rule before fallback empty: "La règle avant la règle de repli ne contient rien d'utile."
+      hour min separator: "Veuillez utiliser \":\" comme séparateur heure/minute."
+      warnings severity: >-
+        Le paramètre optional_conf_parm["warnings_severity"] doit être un entier compris entre 0 et 7 inclus.
+        Donné : {{severity}}, attendu : l'un des nombres : {{allowed}}.
+      optional conf parm type: "Le paramètre optional_conf_parm a un type inconnu. Donné : {{given}}"
+      conf param tag key missing: "optional_conf_parm[\"tag_key\"] est manquant mais nécessaire à cause de optional_conf_parm[\"map_value\"]."
+      conf param mode invalid: "Le paramètre optional_conf_parm[\"mode\"] est un nombre invalide. Donné : {{given}}, attendu : l'un des nombres : {{allowed}}."
+      conf param unknown type: "Le paramètre optional_conf_parm[\"{{key}}\"] a un type inconnu. Donné : {{given}}, attendu : {{expected}}."
+      library bug: "Une erreur s'est produite lors de l'évaluation de la valeur \"{{value}}\". Veuillez signaler ce bug ou le corriger via une pull request ou un patch : {{-url}}.{{message}}"
+      library bug PR only: "Une erreur s'est produite lors de l'évaluation de la valeur \"{{value}}\". Vous pouvez corriger cela en résolvant le problème et en contribuant sous forme de pull request ou de patch : {{-url}}.{{message}}"
+      use multi: "Vous avez utilisé {{count}} {{-part2}} Les règles séparées peuvent être séparées par \";\"."
+      selector multi 2a: "{{what}} utilisé dans une règle. Vous ne pouvez en utiliser qu'un par règle."
+      selector multi 2b: "{{what}} non connectés utilisés dans une règle. C'est probablement une erreur. Les sélecteurs identiques peuvent (et doivent) toujours être écrits ensemble, séparés par des virgules. Exemple pour les plages horaires \"12:00-13:00,15:00-18:00\". Exemple pour les jours de la semaine \"Mo-We,Fr\"."
+      selector state: "Mots-clés d'état (ouvert, fermé)"
+      comments: "Commentaires"
+      months: "Mois"
+      weekdays: "Jours de la semaine"
+      ranges: "Plages horaires"
+      default state: "Cette règle, qui modifie l'état par défaut (c.-à-d. fermé) pour toutes les règles suivantes, n'est pas la première règle. Elle remplace toutes les règles précédentes. Il peut être légitime de définir l'état par défaut sur ouvert puis d'indiquer uniquement les heures de fermeture."
+      vague: "Cette règle n'est pas très précise car aucun sélecteur de temps n'a été spécifié. Un sélecteur de temps indique à quelle heure de la journée un lieu est ouvert, par exemple \"10:00-19:00\". Veuillez ajouter une heure ou un commentaire pour améliorer cela."
+      empty comment: "Vous avez utilisé un commentaire vide. Veuillez soit écrire un texte de commentaire, soit utiliser le mot-clé \"unknown\" à la place."
+      separator_for_readability: "Vous avez utilisé le symbole optionnel <separator_for_readability> au mauvais endroit. Veuillez lire la spécification de syntaxe pour voir où il peut être utilisé, ou supprimez-le."
+      strange 24/7: >-
+        Vous avez utilisé 24/7 d'une manière qui ne sera probablement pas interprétée comme "24 heures, 7 jours par semaine".
+        Pour plus de clarté, utilisez "open" ou "closed" pour cette règle et spécifiez les exceptions — par exemple "open; Mo 12:00-14:00 off".
+      public holiday: >-
+        Aucune règle pour "PH" (jours fériés) n'a été spécifiée. Ce n'est pas très précis.{{-part2}}
+        Veuillez ajouter la règle "PH off" si l'établissement est fermé tous les jours fériés,
+        ou écrivez "Sa,Su,PH 12:00-16:00" pour indiquer qu'il est ouvert le samedi, dimanche et jours fériés de 12h00 à 16h00.
+        Attention avec une heure comme "Fr-Sa 18:00-06:00", car "PH off" s'applique à 00:00-24:00 ;
+        on peut alors utiliser "Fr-Sa 18:00-06:00; PH 18:00-06:00 off".
+        Si l'établissement est ouvert tous les jours et les jours fériés, cela peut être exprimé explicitement avec "Mo-Su,PH".
+        Si vous n'êtes pas sûr, essayez de clarifier les horaires. Sinon, laissez de côté et ignorez cet avertissement.
+      public holiday part2: " Malheureusement, la \"clé de tag\" (par exemple \"opening_hours\" ou \"lit\") n'est pas connue dans opening_hours.js. Cet avertissement ne concerne que les clés : {{keys}}. Si votre entrée ne concerne pas l'une d'elles, veuillez ignorer la remarque suivante :"
+      'additional_rule_separator not used after time wrapping midnight': >-
+        Cette règle remplace des parties de la règle précédente.
+        La raison en est que les règles normales s'appliquent à toute la journée et remplacent toutes les définitions des règles précédentes pour ce jour.
+        Vous pouvez déclarer cette règle comme règle additive en utilisant "," au lieu du ";" habituel.
+        Notez que le remplacement peut aussi être intentionnel, auquel cas cet avertissement peut être ignoré.
+      'additional rule which evaluates to closed': >-
+        Cette règle est évaluée comme fermée mais a été spécifiée comme règle additive.
+        Elle devrait être définie comme règle normale avec ";".
+        Voir https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:rule_modifier:closed.
+      switched: "Le sélecteur \"{{first}}\" a été échangé avec \"{{second}}\" pour une meilleure lisibilité."
+      no colon after: "Veuillez ne pas utiliser \":\" après le token {{token}}."
+      number -5 to 5: "Nombre entre -5 et 5 (sauf 0) attendu."
+      one weekday constraint: "Vous ne pouvez utiliser qu'un seul jour de la semaine contraint dans une plage mensuelle."
+      range constrained weekdays: "Vous ne pouvez pas utiliser une plage de jours de la semaine comme contrainte dans une plage mensuelle."
+      expected: "\"{{-symbol}}\" attendu."
+      range zero: "Vous ne pouvez pas utiliser une plage {{type}} avec la période \"0\"."
+      period one year+: "Veuillez ne pas utiliser de plages {{type}} avec la période \"1\". Si vous voulez exprimer qu'un établissement est toujours ouvert à partir d'une certaine année, veuillez utiliser \"<year>+\"."
+      period one: "Veuillez ne pas utiliser de plages {{type}} avec la période \"1\"."
+      month 31: "Le numéro de jour pour {{month}} doit être compris entre 1 et 31."
+      month 30: "Le mois {{month}} n'a pas 31 jours. Le dernier jour de {{month}} est le jour 30."
+      month feb: "\"Le mois {{month}} a soit 28 soit 29 jours (années bissextiles).\""
+      point in time: "Tiret (-) ou fin ouverte (+) attendu dans la plage horaire {{calc}}. Pour travailler avec des points dans le temps, le mode de {{libraryname}} doit être modifié. Peut-être un mauvais tag ?"
+      calculation: "Calcul"
+      time range continue: "La plage horaire ne continue pas comme prévu."
+      period continue: "La période de plage horaire ne continue pas comme prévu. Exemple \"/01:30\"."
+      time range mode: "{{libraryname}} a été appelé en mode \"plage horaire\". Point dans le temps trouvé."
+      time ranges: "Plages horaires"
+      holiday ranges: "Jours fériés"
+      point in time mode: "{{libraryname}} a été appelé en mode \"point dans le temps\". Plage horaire trouvée."
+      outside current day: "La plage horaire commence en dehors du jour actuel."
+      two midnights: "La plage horaire couvrant plusieurs fois minuit n'est pas prise en charge."
+      without minutes: "Plage horaire spécifiée sans minutes. Ce n'est pas très précis ! Veuillez utiliser la syntaxe \"{{syntax}}\" à la place."
+      outside day: "La plage horaire commence en dehors du jour actuel."
+      zero calculation: "L'ajout de 0 dans un calcul de temps variable ne modifie pas le temps variable. Veuillez supprimer le calcul de temps (exemple : \"sunrise-(sunset-00:00)\")."
+      calculation syntax: "Le calcul avec un temps variable n'a pas la syntaxe correcte."
+      time offset hours only: "Le décalage horaire doit être au format HH:MM, pas seulement les heures. Vouliez-vous dire \"{{suggestion}}\" ?"
+      missing: "\"{{symbol}}\" manquant."
+      '(time)': "(heure)"
+      bad range: "Plage invalide : {{from}}-{{to}}"
+      '] or more numbers': "\"]\" ou d'autres nombres attendus."
+      additional rule no sense: >-
+        Une règle supplémentaire à cet endroit n'a pas de sens.
+        Utilisez simplement ";" comme séparateur de règles.
+        Voir https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator
+      unexpected token weekday range: "Token inattendu dans la plage de jours : {{token}}"
+      max differ: "Il ne devrait pas y avoir de raison de s'écarter de plus de {{maxdiffer}} jours d'un {{name}}. Si nécessaire, veuillez nous en informer…"
+      adding 0: "L'addition de 0 ne modifie pas la date. Veuillez l'omettre."
+      unexpected token holiday: "Token inattendu (dans l'évaluation des jours fériés) : {{token}}"
+      no holiday definition: "{{name}} n'est pas défini pour le pays {{cc}}."
+      no holiday definition state: "{{name}} n'est pas défini pour le pays {{cc}} et la région {{state}}."
+      no country code: "Le code pays est manquant. Il est nécessaire pour déterminer les jours fériés corrects (voir le README pour savoir comment le spécifier)."
+      no SH definition: "Les vacances scolaires {{name}} ne sont pas définies pour l'année {{year}}."
+      movable no formula: "Le jour férié mobile {{name}} ne peut pas être calculé. Veuillez ajouter une formule correspondante."
+      movable not in year: "Le jour férié mobile {{name}} plus {{days}} jours ne se trouve plus dans la même année. Actuellement non pris en charge."
+      year range one year: "Une plage d'années avec la même année comme début et fin n'a pas de sens. Veuillez supprimer l'année de fin. Par exemple : \"{{year}} May 23\"."
+      year range reverse: "Une plage d'années avec un début supérieur à la fin n'a pas de sens. Veuillez inverser."
+      year past: "L'année est dans le passé."
+      unexpected token year range: "Token inattendu dans la plage d'années : {{token}}"
+      week range reverse: "Vous avez spécifié une plage de semaines en ordre inverse ou couvrant plusieurs années. Ceci n'est actuellement pas pris en charge."
+      week negative: "Vous avez spécifié un numéro de semaine inférieur à 1. Les valeurs valides sont 1-53."
+      week exceed: "Vous avez spécifié un numéro de semaine supérieur à 53. Les valeurs valides sont 1-53."
+      week period less than 2: "Vous avez spécifié une période de semaine inférieure à 2. Si vous voulez sélectionner toute la plage de la semaine {{weekfrom}} à la semaine {{weekto}}, omettez simplement \"/{{period}}\"."
+      week period greater than 26: >-
+        Vous avez spécifié une période de semaine supérieure à 26.
+        26,5 est la moitié du maximum de 53 semaines par an,
+        donc une période supérieure à 26 ne se produirait qu'une fois par an.
+        Veuillez spécifier le sélecteur de semaine comme "week {{weekfrom}}" si c'est ce que vous souhaitez exprimer.
+      unexpected token week range: "Token inattendu dans la plage de semaines : {{token}}"
+      unexpected token month range: "Token inattendu dans la plage de mois : {{token}}"
+      day range reverse: "Plage dans le mauvais ordre. Le jour de début est supérieur au jour de fin."
+      open end: "Indiqué comme fin ouverte. L'heure de fermeture a été estimée."
+      date parameter needed: "Paramètre de date nécessaire."
+      'assuming ok for ko': 'Suppose "{{ok}}" pour "{{ko}}".'
+      'please use ok for ko': 'Veuillez utiliser "{{ok}}" pour "{{ko}}".'
+      'please use English written ok for ko': 'Veuillez utiliser la notation anglaise "{{ok}}" pour "{{ko}}".'
+      'please use English abbreviation ok for ko': 'Veuillez utiliser l''abréviation anglaise "{{ok}}" pour "{{ko}}".'
+      'please use English abbreviation ok for so': 'Veuillez utiliser l''abréviation anglaise "{{ok}}" pour "{{ko}}". Notez que cela peut désigner un samedi en polonais.'
+      'please use off for ko': 'Veuillez utiliser "{{ok}}" pour "{{ko}}". Exemple : "Mo-Fr 08:00-12:00; Tu off".'
+      'please use ok for workday': '"{{ko}}" est interprété comme "{{ok}}". Le jour ouvrable ne devrait pas être utilisé. Voir https://wiki.openstreetmap.org/wiki/Talk:Key:opening_hours#need_syntax_for_holidays_and_workingdays'
+      'omit hour keyword': 'Veuillez omettre "{{ko}}" ou utiliser un deux-points. Exemple : "12:00-14:00".'
+      'omit ko': 'Veuillez omettre "{{ko}}".'
+      'omit tag key': 'Veuillez omettre "{{ko}}". La clé de tag ne doit pas figurer dans la valeur du tag.'
+      'omit wrong keyword open end': 'Veuillez omettre "{{ko}}". Si vous souhaitez exprimer une fin ouverte, veuillez utiliser "+". Exemple : "12:00+".'
+      'assuming open end for ko': '"{{ko}}" est interprété comme "{{ok}}" (fin ouverte). Exemple : "12:00+".'
+      'please use ok for uncertainty': 'Veuillez utiliser "{{ok}}" pour "{{ko}}". En cas de doute raisonnable, envisagez l''utilisation d''un commentaire. Exemple : 12:00-14:00 "uniquement par beau temps".'
+      'please use fallback rule': 'Veuillez utiliser "{{ok}}" (règle de repli) pour "{{ko}}". Exemple : Mo-Fr 12:00-14:00; PH off || "sur rendez-vous".'
+      'please use ok for missing data': 'Veuillez utiliser une note FIXME.'
+      'please use 24 hours time for ko': 'Veuillez utiliser le format 24 heures plutôt que le format 12 heures obsolète. Si le format 12 heures est utilisé, une conversion peut être nécessaire.'
+      'please use restriction comment time for ko': 'Il semble que vous souhaitiez ajouter des restrictions supplémentaires pour un horaire d''ouverture. Si cela ne peut pas être exprimé avec la syntaxe, des commentaires peuvent être utilisés. Le mot-clé `open` devrait éventuellement aussi être utilisé. Exemple : open "Femmes uniquement".'
+      'please use ok for typographically correct': 'Veuillez utiliser "{{-ok}}" pour "{{ko}}". Même si "{{ko}}" est typographiquement correct, il n''est pas défini dans la syntaxe opening_hours. La typographie correcte devrait être assurée au niveau de l''application…'
+      'rant degree sign used for zero': 'Notez qu''il s''agit d''un signe degré utilisé comme zéro en exposant. Un zéro en exposant est défini en Unicode (⁰) et serait plus approprié ici. Cependant, l''utilisation de chiffres non ASCII n''est pas autorisée.'
     pretty:
       'off': "fermé"
       SH: "vacances scolaires"
