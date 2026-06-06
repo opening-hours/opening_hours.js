@@ -3757,6 +3757,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 at = parseMonthRange(tokens, at);
             } else if (matchTokens(tokens, at, 'month')) {
                 return parseMonthRange(tokens, at, true, true);
+            } else if (matchTokens(tokens, at - 1, ',')) { // additional rule
+                throw formatWarnErrorMessage(nrule, at - 1, t('additional rule no sense'));
             } else {
                 // throw 'Unexpected token in monthday range: "' + tokens[at] + '"';
                 return at;
