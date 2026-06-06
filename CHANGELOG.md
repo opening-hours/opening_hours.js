@@ -8,6 +8,72 @@ SPDX-License-Identifier: LGPL-3.0-only
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.13.0](https://github.com/opening-hours/opening_hours.js/compare/v3.12.0...v3.13.0) (2026-06-06)
+
+
+### Features
+
+* add *:conditional to osm_tag_defaults, suppress PH warning ([5196db1](https://github.com/opening-hours/opening_hours.js/commit/5196db1a9a25e39989b97fd662e3b306630f4a2f)), closes [#480](https://github.com/opening-hours/opening_hours.js/issues/480)
+* **holidays:** support shift_rule for transferable public holidays ([73287f4](https://github.com/opening-hours/opening_hours.js/commit/73287f4f13d0b1df963b0daaef86d671c1e691e6)), closes [#455](https://github.com/opening-hours/opening_hours.js/issues/455)
+
+
+### Bug Fixes
+
+* **api:** ignore comment-only next-change boundaries ([5a9565b](https://github.com/opening-hours/opening_hours.js/commit/5a9565ba55a919a06b20015028e150d5d72156c0)), closes [#489](https://github.com/opening-hours/opening_hours.js/issues/489) [#523](https://github.com/opening-hours/opening_hours.js/issues/523)
+* complete hyphen correction for U+2010–U+2012 ([00c2ee4](https://github.com/opening-hours/opening_hours.js/commit/00c2ee420646dd67a5f5e5c113a10b55bb152fdd))
+* don't crash in formatWarnErrorMessage with Additional Rules ([658b230](https://github.com/opening-hours/opening_hours.js/commit/658b2303f4f3b9da595d1c0ac1c5aca26a835181))
+* **evaluation-tool:** align table bars with labels on DST transition days ([765cfae](https://github.com/opening-hours/opening_hours.js/commit/765cfae3dc6ccf6de39532db980d71ae5ff8b49f)), closes [#575](https://github.com/opening-hours/opening_hours.js/issues/575)
+* **evaluation-tool:** correct ISO week labels at year boundary ([db49bc7](https://github.com/opening-hours/opening_hours.js/commit/db49bc744c02108c0633a903f359333c25871c17)), closes [#567](https://github.com/opening-hours/opening_hours.js/issues/567)
+* **evaluation-tool:** update i18next import path for v24+ ([a9d20ee](https://github.com/opening-hours/opening_hours.js/commit/a9d20ee1a1452b6d4d8b14b20e519788bdd4ef5f))
+* interpret other non-standard hyphens as hyphen for ranges ([9829b16](https://github.com/opening-hours/opening_hours.js/commit/9829b16b22b956eacbca473ec9761633dc74c2bb))
+* **parser:** don't match when nth weekday overflows to next month ([36d5404](https://github.com/opening-hours/opening_hours.js/commit/36d5404f7df796ec98929f8b39a42f2ed8ecb149)), closes [#444](https://github.com/opening-hours/opening_hours.js/issues/444)
+* prevent TypeError in getWarnings() for unknown tag_key ([f38bdbf](https://github.com/opening-hours/opening_hours.js/commit/f38bdbfd3beef37d0f7eec9d2fc8505bff3b9766))
+
+
+### Data Updates
+
+* add holiday data for multiple countries ([f9674a9](https://github.com/opening-hours/opening_hours.js/commit/f9674a98c540f37bbcf8b1dd5fea95e4eeac53e5))
+* add nominatim URLs for ca, nl, si, and ua ([a1d1bc0](https://github.com/opening-hours/opening_hours.js/commit/a1d1bc007e6973db23a1134a6b8e9b808a858989))
+* **ar:** align with official and date-holidays data ([617d403](https://github.com/opening-hours/opening_hours.js/commit/617d403ded1505cf84f04e8f2ef941e4ea9c3dfd))
+* **ar:** apply shift_rule for Ley 27.399 transferable holidays ([6206845](https://github.com/opening-hours/opening_hours.js/commit/6206845260ffd1f20c222923644f39db1ae4829d))
+* **at:** update name ([c24b305](https://github.com/opening-hours/opening_hours.js/commit/c24b305b4cba7e4cf5bd1b0280380e74c66d1199))
+* **au:** align with official and date-holidays data ([e48d3e2](https://github.com/opening-hours/opening_hours.js/commit/e48d3e28291c655803b6ffeba8af0b34c07b86c2))
+* **au:** update name ([c638f67](https://github.com/opening-hours/opening_hours.js/commit/c638f6706275a41b5291d7fd4410243bb739b567))
+* **be:** align names with official NL/FR terminology ([c63e05d](https://github.com/opening-hours/opening_hours.js/commit/c63e05d430ae36a1897190702503d831ee825002))
+* **cz:** update name and remove old URL ([fabf1d3](https://github.com/opening-hours/opening_hours.js/commit/fabf1d319ce8429db7bbf8013936ca8057517cc6))
+* **de:** update name ([576f8bc](https://github.com/opening-hours/opening_hours.js/commit/576f8bc02b01e87611c2b0bba3b130a83542850b))
+* **dk:** update names and remove Store Bededag ([ff49f41](https://github.com/opening-hours/opening_hours.js/commit/ff49f4193adc367bab94731bc7abd84647c94c8a))
+* **gr:** update names ([1bc8704](https://github.com/opening-hours/opening_hours.js/commit/1bc8704494ca7f29aaa15bee5c2d66113c230cee))
+* **hr:** update names and add two holidays ([66440ae](https://github.com/opening-hours/opening_hours.js/commit/66440ae6fa59605e6a7b7db32bb4af493f0b8fda))
+* **ie:** update names ([5b48c10](https://github.com/opening-hours/opening_hours.js/commit/5b48c1032580277fefcf991f1cee35ff3eeec21e))
+* **je:** add Jersey PH baseline ([2e9cc57](https://github.com/opening-hours/opening_hours.js/commit/2e9cc57bc39972d8ae89609a218188d0e99e3f32))
+* **je:** refresh Jersey generated data ([75e6c7a](https://github.com/opening-hours/opening_hours.js/commit/75e6c7a57ac2c7d00309c38370f9f58ef190da8b))
+* **jp:** fix Sports Day to 2nd Monday of October ([6967cf4](https://github.com/opening-hours/opening_hours.js/commit/6967cf4bd17c8a2229bc4880866a3b18c817289f))
+* **locales:** regenerate word error correction data with Node 26 ([e993e77](https://github.com/opening-hours/opening_hours.js/commit/e993e77fbca89c7696ee131e1738c4aa376eac1a))
+* **na:** correct spelling of 'Workers’ Day' ([4f75770](https://github.com/opening-hours/opening_hours.js/commit/4f75770e37343729a9e2d26bf542b7bec5cab648))
+* **no:** fix holiday names per Helligdagsfredloven ([e8954e8](https://github.com/opening-hours/opening_hours.js/commit/e8954e807f6176e7af45183c5357736053d346cb))
+* **nz:** update name ([1e4a25e](https://github.com/opening-hours/opening_hours.js/commit/1e4a25e95234e7fbe4a9b2e3c9ee405fb97c0766))
+* **pl:** fix holiday names per ustawa o dniach wolnych od pracy ([5b8eb24](https://github.com/opening-hours/opening_hours.js/commit/5b8eb241afb0abd206ab5b4837dd393e63184597))
+* **ro:** add missing holidays and standardize per Wikipedia ([3d32cfc](https://github.com/opening-hours/opening_hours.js/commit/3d32cfc44fe8011ed380aff37cfcb64e3ca29751))
+* **sk:** remove holidays no longer non-working days ([346e739](https://github.com/opening-hours/opening_hours.js/commit/346e73934903548209e5508bed5ae93d16c26267))
+* **ua:** update holidays per current law ([e3f6793](https://github.com/opening-hours/opening_hours.js/commit/e3f679304f89e4e1e7d608fb63f3ba15440b15a3))
+* update generated file ([0cad542](https://github.com/opening-hours/opening_hours.js/commit/0cad5422a8546f412813767ce0cfc591240216e0))
+
+
+### Documentation
+
+* add Rust implementation link to README ([fbe7c8f](https://github.com/opening-hours/opening_hours.js/commit/fbe7c8f83717c42750784dffe244b55d26541bca))
+* fix and optimize links ([f0a045d](https://github.com/opening-hours/opening_hours.js/commit/f0a045d8be435728e2c7c9b1ce850830adc3e29f))
+* **holidays:** document shift_rule ([4db9c13](https://github.com/opening-hours/opening_hours.js/commit/4db9c1383d91dbcd0fefada21dc3fa67b7981f78))
+
+
+### Code Refactoring
+
+* **evaluation-tool:** simplify theme toggle button initialization ([b194abc](https://github.com/opening-hours/opening_hours.js/commit/b194abc787bdab69308f6ab630d6be9378a38928))
+* **evaluation-tool:** use toLocaleString in formatHM ([3777fdf](https://github.com/opening-hours/opening_hours.js/commit/3777fdfe26eafe5fbaeed8afb67c685faeae332e))
+* remove unnecessary initializations for variables ([312e545](https://github.com/opening-hours/opening_hours.js/commit/312e5451f76d83ab872c21d7a6eb80c3a5b69ca4))
+* remove unused getReadableState function from OpeningHoursTable ([9a923d3](https://github.com/opening-hours/opening_hours.js/commit/9a923d3bcbaf5021df9072298ee485ed2b31209a))
+
 ## [3.12.0](https://github.com/opening-hours/opening_hours.js/compare/v3.11.0...v3.12.0) (2026-03-21)
 
 
