@@ -2351,7 +2351,9 @@ We,  <--- (Eine weitere Regel an dieser Stelle ergibt keinen Sinn. Benutze einfa
 "Incorrect syntax which should throw an error" for "week 05, Aug Mo; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 week 05,  <--- (Eine weitere Regel an dieser Stelle ergibt keinen Sinn. Benutze einfach ";" als Trenner für Regeln. Siehe https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator)
 
-"Incorrect syntax which should throw an error" for "Jun 02-5, week 05 00:00-24:00; 00:23-00:42 unknown "warning at correct position?"": [31m[1mFAILED[22m[39m
+"Incorrect syntax which should throw an error" for "Jun 02-5, week 05 00:00-24:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
+Jun 02-5,  <--- (Eine weitere Regel an dieser Stelle ergibt keinen Sinn. Benutze einfach ";" als Trenner für Regeln. Siehe https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator)
+
 "Incorrect syntax which should throw an error" for "Jan 00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 Jan 00 <--- (Die Tagesangabe für Jan muss zwischen 1 und 31 liegen.)
 
@@ -2604,7 +2606,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-985/986 tests passed. 1 did not pass.
+986/986 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
