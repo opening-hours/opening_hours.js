@@ -5247,6 +5247,28 @@ test.addShouldWarn('Value not ideal (probably wrong). Should throw a warning. wa
     ], nominatim_default, 'not only test', { 'warnings_severity': 5, 'tag_key': 'opening_hours' });
 // }}}
 
+// getStructuredWarnings: machine-readable warning objects {{{
+test.addStructuredWarnings('Structured warning: time range without minutes',
+        'Mo 10-12',
+        [ 'without_minutes' ],
+        nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: word error correction has stable type',
+        'Mon',
+        [ 'word_error_correction', 'vague' ],
+        nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warnings yields empty list',
+        'Mo 10:00-12:00',
+        [],
+        nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: multiple warnings keep distinct positions',
+        'Mo 10-12; Tu 14-16',
+        [ 'without_minutes', 'without_minutes' ],
+        nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+// }}}
+
 // values which should fail during parsing {{{
 test.addShouldFail('Incorrect syntax which should throw an error', [
         // stupid tests {{{
@@ -5699,6 +5721,7 @@ function opening_hours_test() {
     this.tests = [];
     this.tests_should_fail = [];
     this.tests_should_warn = [];
+    this.tests_structured_warnings = [];
     this.tests_comp_matching_rule = [];
     this.tests_prettify_value = [];
     this.tests_equal_to = [];
@@ -5793,6 +5816,77 @@ function opening_hours_test() {
             this.print_warnings(warnings);
             if (this.show_error_warnings)
                 console.error(crashed + '\n');
+        }
+        return passed;
+    }; /* }}} */
+
+    this.runSingleTestStructuredWarnings = function(test_data_object) { /* {{{ */
+        const name           = test_data_object[0];
+        const value          = test_data_object[1];
+        const expected_types = test_data_object[2];
+        const nominatim_data = test_data_object[3];
+        const oh_mode        = test_data_object[4];
+
+        let warnings, formatted, oh;
+        let crashed = false;
+        try {
+            oh = new opening_hours(value, nominatim_data, oh_mode);
+            warnings = oh.getStructuredWarnings();
+            formatted = oh.getWarnings();
+        } catch (err) {
+            crashed = err;
+        }
+
+        let passed = false;
+        let str = '"' + name + '" for "' + value + '": ';
+
+        let shape_ok = false;
+        let types_ok = false;
+        let derives_ok = false;
+        if (!crashed && Array.isArray(warnings)) {
+            shape_ok = warnings.every(function(w) {
+                return w !== null
+                    && typeof w === 'object'
+                    && typeof w.type === 'string'
+                    && w.type.length > 0
+                    && typeof w.message === 'string'
+                    && w.message.length > 0
+                    && typeof w.value === 'string'
+                    && (w.position === null || typeof w.position === 'number');
+            });
+            const got_types = warnings.map(function(w) { return w.type; });
+            types_ok = expected_types.length === got_types.length
+                && expected_types.every(function(t, i) { return t === got_types[i]; });
+            // The formatted string from getWarnings() must be derivable from the
+            // structured object, proving value/position are correct.
+            derives_ok = Array.isArray(formatted)
+                && formatted.length === warnings.length
+                && warnings.every(function(w, i) {
+                    const derived = w.position === null
+                        ? w.message
+                        : w.value.substring(0, w.position) + ' <--- (' + w.message + ')';
+                    return derived === formatted[i];
+                });
+        }
+
+        if (shape_ok && types_ok && derives_ok) {
+            str += c.passed('PASSED');
+            passed = true;
+            if (this.show_passing_tests) {
+                console.log(str);
+            }
+        } else {
+            str += c.failed('FAILED');
+            console.warn(str);
+            if (crashed) {
+                console.error(crashed + '\n');
+            } else {
+                console.warn('  expected types: ' + JSON.stringify(expected_types));
+                console.warn('  got warnings:   ' + JSON.stringify(warnings));
+                if (!derives_ok) {
+                    console.warn('  formatted:      ' + JSON.stringify(formatted));
+                }
+            }
         }
         return passed;
     }; /* }}} */
@@ -6113,6 +6207,7 @@ function opening_hours_test() {
         const tests_length = this.tests.length +
             this.tests_should_fail.length +
             this.tests_should_warn.length +
+            this.tests_structured_warnings.length +
             this.tests_comp_matching_rule.length +
             this.tests_prettify_value.length +
             this.tests_equal_to.length +
@@ -6125,6 +6220,10 @@ function opening_hours_test() {
         }
         for (let test = 0; test < this.tests_should_warn.length; test++) {
             if (this.runSingleTestShouldThrowWarning(this.tests_should_warn[test]))
+                success++;
+        }
+        for (let test = 0; test < this.tests_structured_warnings.length; test++) {
+            if (this.runSingleTestStructuredWarnings(this.tests_structured_warnings[test]))
                 success++;
         }
         for (let test = 0; test < this.tests_should_fail.length; test++) {
@@ -6239,6 +6338,19 @@ function opening_hours_test() {
         else
             for (let value_ind = 0; value_ind < values.length; value_ind++)
                 this.tests_should_warn.push([name, values[value_ind], nominatim_data, oh_mode]);
+    };
+    // }}}
+
+    // add test to check getStructuredWarnings returns the expected warning types {{{
+    this.addStructuredWarnings = function(name, value, expected_types, nominatim_data, last, oh_mode) {
+        if (this.last === true)  {
+            return;
+        }
+        this.handle_only_test(last);
+
+        oh_mode = get_oh_mode_parameter(oh_mode);
+
+        this.tests_structured_warnings.push([name, value, expected_types, nominatim_data, oh_mode]);
     };
     // }}}
 
@@ -6369,6 +6481,7 @@ function opening_hours_test() {
             this.tests = [];
             this.tests_should_fail = [];
             this.tests_should_warn = [];
+            this.tests_structured_warnings = [];
             this.tests_comp_matching_rule = [];
             this.tests_prettify_value = [];
         }

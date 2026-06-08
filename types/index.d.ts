@@ -1,4 +1,45 @@
 declare module 'opening_hours' {
+  export type opening_hours_warning_type =
+    | 'adding_0'
+    | 'additional_rule_separator_not_used_after_time_wrapping_midnight'
+    | 'additional_rule_which_evaluates_to_closed'
+    | 'ambiguous_word'
+    | 'combine_rules'
+    | 'default_state'
+    | 'empty_comment'
+    | 'hour_min_separator'
+    | 'interpreted_as_year'
+    | 'no_colon_after'
+    | 'nothing_useful'
+    | 'omit_ko'
+    | 'period_one'
+    | 'period_one_year_plus'
+    | 'please_use_ok_for_ko'
+    | 'public_holiday'
+    | 'rant_degree_sign_used_for_zero'
+    | 'separator_for_readability'
+    | 'strange_24_7'
+    | 'switched'
+    | 'use_multi'
+    | 'vague'
+    | 'value_ends_with_token'
+    | 'without_minutes'
+    | 'word_error_correction'
+    | 'year_past'
+    | 'zero_calculation'
+
+  export interface opening_hours_warning {
+    type: opening_hours_warning_type
+    message: string
+    /** The string the `position` offset refers to. This is the input value,
+     * except for selector-reordering warnings where it is the prettified value. */
+    value: string
+    /** Character offset into `value` where the warning points (the spot the
+     * `<--- ` marker is placed at in `getWarnings()`). `null` if it could not
+     * be determined. */
+    position: number | null
+  }
+
   export class opening_hours {
     constructor(
       value: string,
@@ -31,6 +72,7 @@ declare module 'opening_hours' {
       date?: Date
     ): [boolean, Date, boolean, string | undefined, number | undefined]
     getWarnings(): string[]
+    getStructuredWarnings(): opening_hours_warning[]
     isEqualTo(
       second_oh_object: opening_hours,
       start_date?: Date
