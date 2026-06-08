@@ -92,7 +92,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'leave_weekday_sep_one_day_betw': true, // use the separator (either "," or "-" which is used to separate days which follow to each other like Sa,Su or Su-Mo
         'sep_one_day_between': ',',      // separator which should be used
         'zero_pad_month_and_week_numbers': true, // Format week (e.g. `week 01`) and month day numbers (e.g. `Jan 01`) with "%02d".
-        'locale': 'en',                  // locale for translations (currently 'en' and 'de' are supported)
+        'locale': 'en',                  // locale for translations (currently 'en', 'de' and 'fr' are supported)
         'date_format': 'short'           // Use short or long date format (for day and month names)
     };
 
@@ -135,8 +135,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
     locale = i18n.language;
 
     const t = function(str, variables) {
-        // Use i18n for German translations, fallback to built-in lang for others
-        if (typeof locale === 'string' && ['de'].indexOf(locale) !== -1) {
+        // Use i18n for German and French translations, fallback to built-in lang for others
+        if (typeof locale === 'string' && ['de', 'fr'].indexOf(locale) !== -1) {
             let translatorFunction;
             if (i18n.language !== locale) {
                 translatorFunction = i18n.getFixedT(locale);
