@@ -7,6 +7,19 @@ import opening_hours_resources from './opening_hours_resources.yaml';
 
 const resources = opening_hours_resources;
 
+/**
+ * Normalize a locale string to the base language used for translation lookup.
+ *
+ * Accepts BCP 47 locale tags (e.g. de-DE) and POSIX locale identifiers per ISO 15897 (e.g. de_DE).
+ * Returns the base language subtag (usually ISO 639).
+ *
+ * @param {string} localeString - Locale string like 'de', 'de-DE' or 'de_DE'.
+ * @returns {string} Base language, e.g. 'de'.
+ */
+export function normalizeLocale(localeString) {
+    return localeString.split(/[-_]/)[0];
+}
+
 // Simple i18n object compatible with the minimal features used in src/index.js
 const i18n = {
     language: 'en',
