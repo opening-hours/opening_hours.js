@@ -32,10 +32,9 @@
  */
 import * as holiday_definitions from './holidays/index';
 import word_error_correction from './locales/word_error_correction.yaml';
-import lang from './locales/lang.yaml';
 
 import SunCalc from 'suncalc';
-import i18n, { normalizeLocale } from './locales/i18n';
+import { translate } from './locales/i18n';
 
 export default function(value, nominatim_object, optional_conf_parm) {
     // Short constants {{{
@@ -131,35 +130,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /* Translation function {{{ */
-    // Initialize from i18n.language; optional_conf_parm.locale overrides it.
-    let locale = normalizeLocale(i18n.language);
+    // Parser messages use the `texts` translations. Pretty output translates separately.
+    const parser_locale = optional_conf_parm && typeof optional_conf_parm['locale'] === 'string'
+        ? optional_conf_parm['locale']
+        : 'en';
 
-    const t = function(str, variables) {
-        // Use i18n for German and French translations, fallback to built-in lang for others
-        if (typeof locale === 'string' && ['de', 'fr'].indexOf(locale) !== -1) {
-            let translatorFunction;
-            if (i18n.language !== locale) {
-                translatorFunction = i18n.getFixedT(locale);
-            } else {
-                translatorFunction = i18n.t;
-            }
-            const text = translatorFunction('opening_hours:texts.' + str, variables);
-            return text;
-        }
-
-        // Fallback for non-German locales
-        let text = lang[str];
-        if (typeof text === 'undefined') {
-            text = str;
-        }
-        return text.replace(/{{([^{}]*)}}/g, function (match, c) {
-            return typeof variables[c] !== 'undefined'
-                ? variables[c]
-                : match
-                ;
-            }
-        );
-    };
+    // Parser errors and warnings only need message translations.
+    const t = (key, variables) => translate(parser_locale, 'texts', key, variables);
     /* }}} */
 
     /* Optional constructor parameters {{{ */
@@ -220,9 +197,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
     if (typeof optional_conf_parm === 'number') {
         oh_mode = optional_conf_parm;
     } else if (typeof optional_conf_parm === 'object') {
-        if (typeof optional_conf_parm['locale'] === 'string') {
-            locale = normalizeLocale(optional_conf_parm['locale']);
-        }
         if (checkOptionalConfParm('mode', 'number')) {
             oh_mode = optional_conf_parm['mode'];
         }
@@ -1371,15 +1345,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                 );
             }
-            const old_prettified_value_length = prettified_value.length;
+            const shouldTranslatePrettyOutput = typeof user_conf['locale'] === 'string' && user_conf['locale'] !== 'en';
 
-            if (typeof user_conf['locale'] === 'string' && user_conf['locale'] !== 'en') {
-                let translatorFunction;
-                if (i18n.language !== user_conf['locale']) {
-                    translatorFunction = i18n.getFixedT(user_conf['locale']);
-                } else {
-                    translatorFunction = i18n.t.bind(i18n);
-                }
+            if (shouldTranslatePrettyOutput) {
                 for (let i = 0; i < prettified_group_value.length; i++) {
                     const type = prettified_group_value[i][0][2];
                     if (type === 'weekday') {
@@ -1393,11 +1361,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     } else {
                         const prettifiedValueIsProbablyTranslatable = prettified_group_value[i][1].indexOf(':') === -1;
                         if (prettifiedValueIsProbablyTranslatable) {
-                            prettified_group_value[i][1] = translatorFunction(['opening_hours:pretty.' + prettified_group_value[i][1], prettified_group_value[i][1]]);
+                            prettified_group_value[i][1] = translate(user_conf['locale'], 'pretty', prettified_group_value[i][1]);
                         }
                     }
                 }
             }
+
+            const old_prettified_value_length = prettified_value.length;
 
             prettified_value += prettified_group_value.map(function (array) {
                 return array[1];
