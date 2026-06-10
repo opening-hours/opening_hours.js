@@ -3,12 +3,7 @@
  *
  * SPDX-License-Identifier: LGPL-3.0-only
  */
-import resources from './opening_hours_resources.yaml';
-import lang from './lang.yaml';
-
-// Merge English texts into the shared resource tree.
-// Other locales live in opening_hours_resources.yaml; English texts are in lang.yaml.
-resources.en.opening_hours.texts = lang;
+import resources from './translations.yaml';
 
 /**
  * Replace `{{varName}}` (or `{{-varName}}`) placeholders in a translation string.
