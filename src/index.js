@@ -35,7 +35,7 @@ import word_error_correction from './locales/word_error_correction.yaml';
 import lang from './locales/lang.yaml';
 
 import SunCalc from 'suncalc';
-import i18n from './locales/i18n';
+import i18n, { normalizeLocale } from './locales/i18n';
 
 export default function(value, nominatim_object, optional_conf_parm) {
     // Short constants {{{
@@ -131,8 +131,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /* Translation function {{{ */
-    let locale = 'en'; // Default locale
-    locale = i18n.language;
+    // Initialize from i18n.language; optional_conf_parm.locale overrides it.
+    let locale = normalizeLocale(i18n.language);
 
     const t = function(str, variables) {
         // Use i18n for German and French translations, fallback to built-in lang for others
@@ -221,8 +221,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         oh_mode = optional_conf_parm;
     } else if (typeof optional_conf_parm === 'object') {
         if (typeof optional_conf_parm['locale'] === 'string') {
-            /* TODO: The split thing is obviously a workaround. */
-            locale = optional_conf_parm['locale'].split('-')[0];
+            locale = normalizeLocale(optional_conf_parm['locale']);
         }
         if (checkOptionalConfParm('mode', 'number')) {
             oh_mode = optional_conf_parm['mode'];
