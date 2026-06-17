@@ -3,12 +3,7 @@
  *
  * SPDX-License-Identifier: LGPL-3.0-only
  */
-import resources from './opening_hours_resources.yaml';
-import lang from './lang.yaml';
-
-// Merge English texts into the shared resource tree.
-// Other locales live in opening_hours_resources.yaml; English texts are in lang.yaml.
-resources.en.opening_hours.texts = lang;
+import resources from './translations.yaml';
 
 /**
  * Replace `{{varName}}` (or `{{-varName}}`) placeholders in a translation string.
@@ -64,7 +59,7 @@ function localeChain(locale) {
  * Walk the resource tree for the first locale in the fallback chain that has
  * a translation for the given key.
  *
- * Tree shape: resources[locale].opening_hours[section][key]
+ * Tree shape: resources[locale][section][…key segments]
  *
  * @param {string|null|undefined} locale  - BCP 47 locale tag.
  * @param {string}                section - 'texts' or 'pretty'.
@@ -74,8 +69,7 @@ function localeChain(locale) {
 function lookup(locale, section, key) {
     const keyPath = key.split('.');
     for (const loc of localeChain(locale)) {
-        // Navigate to resources[locale].opening_hours[section], then drill down by key path.
-        let value = resources[loc]?.opening_hours?.[section];
+        let value = resources[loc]?.[section];
         for (const segment of keyPath) value = value?.[segment];
         // Return as soon as we find a value defined by the resource tree.
         if (value !== undefined) return value;

@@ -8,9 +8,8 @@ For detailed translation guidelines, see the [CONTRIBUTING](/CONTRIBUTING.md#tra
 
 ## Files
 
-- `core.js`: Core localization functionality
-- `lang.yaml`: Language configuration and mappings
-- `opening_hours_resources.yaml`: Translations
+- `i18n.js`: Translation lookup implementation
+- `translations.yaml`: All locale translations (error messages, warnings, pretty-print tokens)
 - `word_error_correction_manual.yaml`: Manual word error corrections requiring manual curation
   - This file is used to add manual corrections for specific languages that cannot be automatically generated or require human oversight.
 - `word_error_correction.yaml`: Generated combined word error corrections (automatic + manual)

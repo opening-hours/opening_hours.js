@@ -2371,13 +2371,13 @@ Feb 30 <--- (Month Feb either has 28 or 29 days (leap years).)
 Mar 32 <--- (The day for Mar must be between 1 and 31.)
 
 "Incorrect syntax which should throw an error" for "Apr 31; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-Apr 31 <--- (Month Apr doesn't have 31 days. The last day of Apr is day 30.)
+Apr 31 <--- (Month Apr doesn’t have 31 days. The last day of Apr is day 30.)
 
 "Incorrect syntax which should throw an error" for "Mai 32; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 Mai 32 <--- (The day for May must be between 1 and 31.)
 
 "Incorrect syntax which should throw an error" for "Jun 31; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-Jun 31 <--- (Month Jun doesn't have 31 days. The last day of Jun is day 30.)
+Jun 31 <--- (Month Jun doesn’t have 31 days. The last day of Jun is day 30.)
 
 "Incorrect syntax which should throw an error" for "Jul 32; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 Jul 32 <--- (The day for Jul must be between 1 and 31.)
@@ -2386,13 +2386,13 @@ Jul 32 <--- (The day for Jul must be between 1 and 31.)
 Aug 32 <--- (The day for Aug must be between 1 and 31.)
 
 "Incorrect syntax which should throw an error" for "Sep 31; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-Sep 31 <--- (Month Sep doesn't have 31 days. The last day of Sep is day 30.)
+Sep 31 <--- (Month Sep doesn’t have 31 days. The last day of Sep is day 30.)
 
 "Incorrect syntax which should throw an error" for "Oct 32; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 Oct 32 <--- (The day for Oct must be between 1 and 31.)
 
 "Incorrect syntax which should throw an error" for "Nov 31; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-Nov 31 <--- (Month Nov doesn't have 31 days. The last day of Nov is day 30.)
+Nov 31 <--- (Month Nov doesn’t have 31 days. The last day of Nov is day 30.)
 
 "Incorrect syntax which should throw an error" for "Dec 32; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 Dec 32 <--- (The day for Dec must be between 1 and 31.)

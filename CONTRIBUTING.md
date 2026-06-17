@@ -47,7 +47,7 @@ Note that this resource file does also provide the localization for the [opening
 
 ### Translating Error Messages and Warnings
 
-The core library uses a custom lightweight i18n implementation. Translations for error messages and warnings can be made in the file [locales/opening_hours_resources.yaml][ohlib.js/locales/opening_hours_resources.yaml]. You are encouraged to test your translations. Checkout the [Makefile][ohlib.makefile] and the [test framework][ohlib.test.js] for how this can be done.
+The core library uses a custom lightweight i18n implementation. Translations for error messages and warnings can be made in the file [locales/translations.yaml][ohlib.js/locales/translations.yaml]. You are encouraged to test your translations. Checkout the [Makefile][ohlib.makefile] and the [test framework][ohlib.test.js] for how this can be done.
 
 #### Word Error Correction System
 
@@ -190,7 +190,7 @@ Thank you for contributing!
 [opening_hours_map]: https://github.com/opening-hours/opening_hours_map
 [ohlib.docs.holiday]: src/holidays/README.md
 [ohlib.holidays]: README.md#holidays
-[ohlib.js/locales/opening_hours_resources.yaml]: src/locales/opening_hours_resources.yaml
+[ohlib.js/locales/translations.yaml]: src/locales/translations.yaml
 [ohlib.js/i18n-resources.js]: site/js/i18n-resources.js
 [ohlib.github]: https://github.com/opening-hours/opening_hours.js
 [ohlib.makefile]: Makefile
