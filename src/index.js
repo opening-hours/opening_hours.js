@@ -79,6 +79,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'off': [ 'off', 'state' ],
         'unknown': [ 'unknown', 'state' ],
     }
+    const ambiguous_season_words = new Set([
+        'spring', 'summer', 'autumn', 'winter', // en
+        'frühling', 'fruehling', 'frühjahr', 'sommer', 'herbst', // de
+        'primavera', 'estate', 'autunno', 'inverno', // it
+    ]);
 
     const default_prettify_conf = {
         // Update README.md if changed.
@@ -652,7 +657,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                  * mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec: Prefer defended keywords
                  * if used in cases like 'mo12:00-14:00' (when keyword is followed by number).
                  */
-                let correct_val = returnCorrectWordOrToken(tmp[1].toLowerCase(), value.length);
+                const lower_word = tmp[1].toLowerCase();
+                let correct_val = returnCorrectWordOrToken(lower_word, value.length);
                 // console.log('Error tolerance for string "' + tmp[1] + '" returned "' + correct_val + '".');
                 if (typeof correct_val === 'object') {
                     curr_rule_tokens.push([ correct_val[0], correct_val[1], value.length ]);
@@ -699,6 +705,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // value = correct_val + value.substr(tmp[0].length);
                     // Does not work because it would generate the wrong length for formatWarnErrorMessage.
                 } else {
+                    if (ambiguous_season_words.has(lower_word)) {
+                        throw formatWarnErrorMessage(
+                            -1,
+                            value.length - tmp[0].length,
+                            t('season words ambiguous')
+                        );
+                    }
                     // No correction available. Insert as single character token and let the parser handle the error.
                     curr_rule_tokens.push([value[0].toLowerCase(), value[0].toLowerCase(), value.length - 1 ]);
                     value = value.substr(1);

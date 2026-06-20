@@ -1471,14 +1471,6 @@ With [34m[1mwarnings[22m[39m:
 "Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; Jun-Aug We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*We off; Mo,Tu,Th-Su,PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
-"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; Sommer We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*We off; Mo,Tu,Th-Su,PH; Sommer <--- (Assuming "Jun-Aug" for "sommer".)
-	*We off; Mo,Tu,Th-Su,PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
-"Real world example: Problem with <additional_rule_separator> in holiday parser" for "We off; Mo,Tu,Th-Su,PH; sommer We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*We off; Mo,Tu,Th-Su,PH; sommer <--- (Assuming "Jun-Aug" for "sommer".)
-	*We off; Mo,Tu,Th-Su,PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Real world example: Problem with <additional_rule_separator> in holiday parser" for "Mo,Tu,Th-Su,PH 00:00-24:00; Jun-Aug We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
 "Real world example: Problem with daylight saving?" for "Mo-Su,PH 15:00-03:00; easter -2 days 15:00-24:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
@@ -2043,6 +2035,24 @@ With [34m[1mwarnings[22m[39m:
 "Structured warning: word error correction has stable type" for "Mon": [32m[1mPASSED[22m[39m
 "Structured warning: no warnings yields empty list" for "Mo 10:00-12:00": [32m[1mPASSED[22m[39m
 "Structured warning: multiple warnings keep distinct positions" for "Mo 10-12; Tu 14-16": [32m[1mPASSED[22m[39m
+"Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; spring We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
+We off; Mo,Tu,Th-Su,PH; spring <--- (Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.)
+
+"Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; winter We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
+We off; Mo,Tu,Th-Su,PH; winter <--- (Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.)
+
+"Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; Frühling We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
+We off; Mo,Tu,Th-Su,PH; Frühling <--- (Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.)
+
+"Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; Fruehling We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
+We off; Mo,Tu,Th-Su,PH; Fruehling <--- (Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.)
+
+"Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; FRÜHLING We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
+We off; Mo,Tu,Th-Su,PH; FRÜHLING <--- (Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.)
+
+"Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; primavera We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
+We off; Mo,Tu,Th-Su,PH; primavera <--- (Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.)
+
 "Incorrect syntax which should throw an error" for "Mo-Fr 17:00-12:00; Sa-Su 24:00-12:00": [32m[1mPASSED[22m[39m
 Mo-Fr 17:00-12:00; Sa-Su 24:00 <--- (Time range starts outside of the current day)
 
@@ -2603,7 +2613,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-983/983 tests passed. 0 did not pass.
+987/987 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

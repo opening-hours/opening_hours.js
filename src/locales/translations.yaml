@@ -5,6 +5,7 @@
 en:
   texts:
     'unexpected token': 'Unexpected token: "{{token}}" This means that the syntax is not valid at that point or it is currently not supported.'
+    'season words ambiguous': 'Season words are ambiguous. Please use explicit date ranges instead, e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.'
     'no string': 'The value (first parameter) is not a string.'
     'nothing': 'The value contains nothing meaningful which can be parsed.'
     'nothing useful': 'This rule does not contain anything useful. Please remove this empty rule.'
@@ -136,6 +137,7 @@ en:
 de:
   texts:
     unexpected token: "Unerwartetes Zeichen: \"{{token}}\" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte."
+    'season words ambiguous': 'Saisonwörter sind mehrdeutig. Bitte verwende stattdessen explizite Datumsbereiche, z. B. Jun-Aug, Dec-Feb oder Jun 21-Sep 22.'
     no string: "Der Wert (erster Parameter) ist kein String"
     nothing: "Der Wert enthält nichts, was ausgewertet werden könnte."
     nothing useful: "Diese Regel enthält nichts nützliches. Bitte entferne diese leere Regel."
@@ -296,6 +298,7 @@ fi:
 fr:
   texts:
     unexpected token: "Caractère inattendu : \"{{token}}\" — la syntaxe à cet endroit n'a pas pu être reconnue."
+    'season words ambiguous': 'Les mots de saison sont ambigus. Veuillez utiliser des plages de dates explicites, par exemple Jun-Aug, Dec-Feb ou Jun 21-Sep 22.'
     no string: "La valeur (premier paramètre) n'est pas une chaîne de caractères."
     nothing: "La valeur ne contient rien qui puisse être évalué."
     nothing useful: "Cette règle ne contient rien d'utile. Veuillez supprimer cette règle vide."
