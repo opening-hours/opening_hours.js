@@ -80,6 +80,8 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-yaml": "^4.1.2",
     "@stylistic/eslint-plugin": "^5.10.0",
+    "cldr-dates-full": "^48.2.0",
+    "cldr-localenames-full": "^48.2.0",
     "commit-and-tag-version": "^12.7.3",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
