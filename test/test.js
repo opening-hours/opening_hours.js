@@ -4468,8 +4468,6 @@ test.addTest('Real world example: Problem with <additional_rule_separator> in ho
 test.addTest('Real world example: Problem with <additional_rule_separator> in holiday parser', [
         // 'We off, Mo,Tu,Th-Su,PH, Jun-Aug We 11:00-14:00,17:00+', // Should fail.
         'We off; Mo,Tu,Th-Su,PH; Jun-Aug We 11:00-14:00,17:00+',
-        'We off; Mo,Tu,Th-Su,PH; Sommer We 11:00-14:00,17:00+',
-        'We off; Mo,Tu,Th-Su,PH; sommer We 11:00-14:00,17:00+',
         'Mo,Tu,Th-Su,PH 00:00-24:00; Jun-Aug We 11:00-14:00,17:00+'
     ], '2015-05-25 0:00', '2015-06-10 0:00', [
         [ '2015-05-25 00:00', '2015-05-26 00:00', false, 'Pfingstmontag' ], // Mo: 1
@@ -4480,6 +4478,15 @@ test.addTest('Real world example: Problem with <additional_rule_separator> in ho
         [ '2015-06-04 03:00', '2015-06-05 00:00', false, 'Fronleichnam' ], // Th
         [ '2015-06-05 00:00', '2015-06-10 00:00' ], // Fr-Tu: 5
     ], 1000 * 60 * 60 * (24 * (1 + 1 + 6 + 5) + 3 + (24 - 3)), 1000 * 60 * 60 * (24 - 17 + 3), false, nominatim_default, 'not last test');
+
+test.addShouldFail('Season words should fail with explicit date-range guidance', [
+    'We off; Mo,Tu,Th-Su,PH; spring We 11:00-14:00,17:00+',
+    'We off; Mo,Tu,Th-Su,PH; winter We 11:00-14:00,17:00+',
+    'We off; Mo,Tu,Th-Su,PH; Frühling We 11:00-14:00,17:00+',
+    'We off; Mo,Tu,Th-Su,PH; Fruehling We 11:00-14:00,17:00+',
+    'We off; Mo,Tu,Th-Su,PH; FRÜHLING We 11:00-14:00,17:00+',
+    'We off; Mo,Tu,Th-Su,PH; primavera We 11:00-14:00,17:00+',
+    ], nominatim_default, 'not only test');
 /* }}} */
 
 /* https://github.com/opening-hours/opening_hours.js/issues/87 {{{ */

@@ -8,26 +8,14 @@
 
 "assuming ok for ko":
   "daytime": "sunrise-sunset"
-  "spring": "Mar-May"
-  "summer": "Jun-Aug"
-  "autumn": "Sep-Nov"
-  "winter": "Dec-Feb"
   "_": "-"
   "=": "-"
-  "frühling": "Mar-May"
-  "frühjahr": "Mar-May"
-  "sommer": "Jun-Aug"
-  "herbst": "Sep-Nov"
   "gesloten": "off"
   "feestdag": "PH"
   "feestdagen": "PH"
   "m": "Mo"
   "w": "We"
   "f": "Fr"
-  "primavera": "Mar-May"
-  "estate": "Jun-Aug"
-  "autunno": "Sep-Nov"
-  "inverno": "Dec-Feb"
 "please use English written ok for ko":
   "(?:an )?feiertag(?:s|en?)?": "PH"
 "please use off for ko":
