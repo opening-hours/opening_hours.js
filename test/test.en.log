@@ -847,6 +847,15 @@ With [34m[1mwarnings[22m[39m:
 "Variable days: Argentina public holidays. 2022 (collision: Güemes 06-17 Fri would shift to 06-20 but collides with Belgrano)" for "PH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
+"Variable days: Australia national PH. 2033 (substitute_rule: New Year on Saturday → Monday substitute; Christmas on Sunday → Tuesday substitute)" for "PH": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
+"Variable days: Australia national PH. 2034 (substitute_rule: New Year on Sunday → adjacent Monday substitute merges into 2-day range)" for "PH": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
+"Variable days: Australia national PH. 2027 (substitute_rule: Christmas on Saturday + Boxing on Sunday → two separate substitute days)" for "PH": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Variable days: Czech Republic public holidays." for "PH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -2613,7 +2622,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-987/987 tests passed. 0 did not pass.
+990/990 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

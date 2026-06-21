@@ -2525,6 +2525,33 @@ test.addTest('Variable days: Argentina public holidays. 2022 (collision: Güemes
 ], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
 /* }}} */
 
+/* Australia holidays — substitute_rule {{{ */
+test.addTest('Variable days: Australia national PH. 2033 (substitute_rule: New Year on Saturday → Monday substitute; Christmas on Sunday → Tuesday substitute)', ['PH'],
+    '2033-01-01 0:00', '2033-12-31 23:59', [
+    [ '2033-01-01 00:00', '2033-01-02 00:00', false, 'New Year\'s Day' ],
+    [ '2033-01-03 00:00', '2033-01-04 00:00', false, 'New Year\'s Day' ],
+    [ '2033-01-26 00:00', '2033-01-27 00:00', false, 'Australia Day' ],
+    [ '2033-04-15 00:00', '2033-04-16 00:00', false, 'Good Friday' ],
+    [ '2033-04-18 00:00', '2033-04-19 00:00', false, 'Easter Monday' ],
+    [ '2033-04-25 00:00', '2033-04-26 00:00', false, 'Anzac Day' ],
+    [ '2033-12-25 00:00', '2033-12-26 00:00', false, 'Christmas Day' ],
+    [ '2033-12-26 00:00', '2033-12-27 00:00', false, 'Boxing Day' ],
+    [ '2033-12-27 00:00', '2033-12-28 00:00', false, 'Christmas Day' ],
+], 1000 * 60 * 60 * 24 * 9, 0, false, nominatim_by_loc.au, 'not last test');
+test.addTest('Variable days: Australia national PH. 2034 (substitute_rule: New Year on Sunday → adjacent Monday substitute merges into 2-day range)', ['PH'],
+    '2034-01-01 0:00', '2034-01-31 23:59', [
+    [ '2034-01-01 00:00', '2034-01-03 00:00', false, 'New Year\'s Day' ],
+    [ '2034-01-26 00:00', '2034-01-27 00:00', false, 'Australia Day' ],
+], 1000 * 60 * 60 * 24 * 3, 0, false, nominatim_by_loc.au, 'not last test');
+test.addTest('Variable days: Australia national PH. 2027 (substitute_rule: Christmas on Saturday + Boxing on Sunday → two separate substitute days)', ['PH'],
+    '2027-12-01 0:00', '2027-12-31 23:59', [
+    [ '2027-12-25 00:00', '2027-12-26 00:00', false, 'Christmas Day' ],
+    [ '2027-12-26 00:00', '2027-12-27 00:00', false, 'Boxing Day' ],
+    [ '2027-12-27 00:00', '2027-12-28 00:00', false, 'Christmas Day' ],
+    [ '2027-12-28 00:00', '2027-12-29 00:00', false, 'Boxing Day' ],
+], 1000 * 60 * 60 * 24 * 4, 0, false, nominatim_by_loc.au, 'not last test');
+/* }}} */
+
 /* Czech holidays {{{ */
 test.addTest('Variable days: Czech Republic public holidays.', [
     'PH',
