@@ -5,15 +5,15 @@
 _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Namibia&zoom=18&addressdetails=1&limit=1'
 
 PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_Namibia, https://www.officeholidays.com/countries/namibia
-  - {'name': 'New Year’s Day', 'fixed_date': [1, 1]}
-  - {'name': 'Independence Day', 'fixed_date': [3, 21]}
+  - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
+  - {'name': 'Independence Day', 'fixed_date': [3, 21], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Workers’ Day', 'fixed_date': [5, 1]}
-  - {'name': 'Cassinga Day', 'fixed_date': [5, 4]}
+  - {'name': 'Workers’ Day', 'fixed_date': [5, 1], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
+  - {'name': 'Cassinga Day', 'fixed_date': [5, 4], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
   - {'name': 'Ascension Day', 'variable_date': easter, 'offset': 39}
-  - {'name': 'Africa Day', 'fixed_date': [5, 25]}
-  - {'name': 'Heroes’ Day', 'fixed_date': [8, 26]}
-  - {'name': 'Human Rights Day', 'fixed_date': [12, 10]}
+  - {'name': 'Africa Day', 'fixed_date': [5, 25], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
+  - {'name': 'Heroes’ Day', 'fixed_date': [8, 26], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
+  - {'name': 'Human Rights Day', 'fixed_date': [12, 10], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
   - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-  - {'name': 'Family Day', 'fixed_date': [12, 26]}
+  - {'name': 'Family Day', 'fixed_date': [12, 26], 'substitute_rule': 'if sunday then next monday', 'substitute_name': 'Public Holiday'}
