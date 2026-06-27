@@ -1367,14 +1367,7 @@ With [34m[1mwarnings[22m[39m:
 "Additional comments for unknown" for "Sa 10:00-12:00 unknown "Maybe open. Call us. (testing special tokens in comment: ; ;; ' || | test end)"": [32m[1mPASSED[22m[39m
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 <--- (The selector "time" was switched with the selector "comment" for readability and compatibility reasons.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us." <--- (The selector "comment" was switched with the selector "time" for readability and compatibility reasons.)
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; "Maybe open. Call us." We 10:00-16:00": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We <--- (The selector "weekday" was switched with the selector "comment" for readability and compatibility reasons.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 <--- (The selector "time" was switched with the selector "weekday" for readability and compatibility reasons.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us." <--- (The selector "comment" was switched with the selector "time" for readability and compatibility reasons.)
 "Additional comments with time ranges spanning midnight" for "22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us." <--- (This rule overwrites parts of the previous rule. This happens because normal rules apply to the whole day and overwrite any definition made by previous rules. You can make this rule an additional rule by using a "," instead of the normal ";" to separate the rules. Note that the overwriting can also be desirable in which case you can ignore this warning.)
@@ -2610,6 +2603,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Monday-Saturday 8-9, Sunday 8-8": [32m[1mPASSED[22m[39m
 "Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Mo-Fr 10:00-19:00; Sa 16-16": [32m[1mPASSED[22m[39m
 "Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Su 8-8, Mo Closed, Tu-Th 12-8, F-Sa 12-9": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should not reorder comments across state (#596)" for "Mo-Fr 11:00-14:00 "Mittagessen" open, PH off": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "open": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "24/7": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "2000-2100": [32m[1mPASSED[22m[39m
@@ -2628,7 +2622,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-996/996 tests passed. 0 did not pass.
+997/997 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

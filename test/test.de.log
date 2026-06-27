@@ -1367,14 +1367,7 @@ With [34m[1mwarnings[22m[39m:
 "Additional comments for unknown" for "Sa 10:00-12:00 unknown "Maybe open. Call us. (testing special tokens in comment: ; ;; ' || | test end)"": [32m[1mPASSED[22m[39m
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "comment" getauscht.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us." <--- (Der Selektor "comment" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; "Maybe open. Call us." We 10:00-16:00": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We <--- (Der Selektor "weekday" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "comment" getauscht.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "weekday" getauscht.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us." <--- (Der Selektor "comment" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
 "Additional comments with time ranges spanning midnight" for "22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us." <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)

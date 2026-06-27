@@ -5683,6 +5683,10 @@ test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges un
         'Su 8-8, Mo Closed, Tu-Th 12-8, F-Sa 12-9',
     ], 'all', 'Su 8-8, Mo closed, Tu-Th 12:00-08:00, Fr-Sa 12:00-09:00');
 
+test.addPrettifyValue('Regression: prettifyValue should not reorder comments across state (#596)', [
+        'Mo-Fr 11:00-14:00 "Mittagessen" open, PH off',
+    ], 'en', 'Mo-Fr 11:00-14:00 "Mittagessen" open, PH off');
+
 /* }}} */
 
 /* isEqualTo {{{ */

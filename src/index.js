@@ -1355,8 +1355,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
             } while (selector_start_end_type[1] < new_tokens[nrule][0].length);
             // console.log('Prettified value: ' + JSON.stringify(prettified_group_value, null, '    '));
             const not_sorted_prettified_group_value = prettified_group_value.slice();
+            const contains_comment_selector = prettified_group_value.some(function (array) {
+                return array[0][2] === 'comment';
+            });
 
-            if (!done_with_selector_reordering && !rules_without_selector_reordering.has(nrule)) {
+            if (!done_with_selector_reordering && !rules_without_selector_reordering.has(nrule) && !contains_comment_selector) {
                 prettified_group_value.sort(
                     function (a, b) {
                         const selector_order = [ 'year', 'month', 'week', 'holiday', 'weekday', 'time', '24/7', 'state', 'comment'];
