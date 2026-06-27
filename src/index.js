@@ -3177,24 +3177,37 @@ export default function(value, nominatim_object, optional_conf_parm) {
         /* Pass 2b: apply substitute_rule — additive substitutes.
          * The original date stays a holiday; an extra entry is appended when
          * the original falls on one of the trigger weekdays.
-         * Unlike shift_rule there is no collision detection: the substitute
-         * day is always added (the original never moves).
-         * Example: Christmas on Sunday → original stays Sunday + extra day added on Tuesday
+         * Unlike shift_rule there is no collision detection, so this relies on
+         * the holiday data being arranged such that a substitute never lands on
+         * another holiday (e.g. ZA omits the rule on Christmas Day because
+         * Day of Goodwill already covers the following Monday).
+         * Example: New Year's Day on Sunday → Jan 1 stays + extra day on Monday.
          */
         const substitutes = [];
         resolved.forEach(function (holiday_entry) {
-            if (!holiday_entry.holiday.substitute_rule) return;
+            const original = holiday_entry.holiday;
+            if (!original.substitute_rule) return;
 
-            const shifter = compileShiftRule(holiday_entry.holiday.substitute_rule);
-            const replacement_date = shifter(holiday_entry.date);
+            const shifter = compileShiftRule(original.substitute_rule);
+            const substitute_date = shifter(holiday_entry.date);
 
-            // Only add if the rule actually matched and shifted the date
-            if (replacement_date.getTime() === holiday_entry.date.getTime()) return;
+            // The rule didn't match this weekday, so no substitute is needed.
+            if (substitute_date.getTime() === holiday_entry.date.getTime()) return;
 
-            substitutes.push({ date: replacement_date, holiday: holiday_entry.holiday });
+            // Clone the definition so renaming the substitute doesn't mutate the
+            // shared holiday object. A substitute is itself a plain holiday, so
+            // drop the rule fields that only make sense on the original.
+            const substitute = { ...original };
+            if (original.substitute_name) {
+                substitute.name = original.substitute_name;
+            }
+            delete substitute.substitute_rule;
+            delete substitute.substitute_name;
+
+            substitutes.push({ date: substitute_date, holiday: substitute });
         });
 
-        // Merge substitute days into the resolved holidays list
+        // Merge the substitute days into the resolved holidays list.
         resolved.push(...substitutes);
 
         /* Pass 3: apply add_days uniformly and sort. */

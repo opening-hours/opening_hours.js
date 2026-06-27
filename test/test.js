@@ -872,6 +872,36 @@ test.addTest('Variable days: public holidays (with time range)', [
         [ '2012-01-06 12:00', '2012-01-06 13:00', false, 'this comment should override the holiday name which is returned as comment if PH matches.' ],
     ], 1000 * 60 * 60 * 2, 0, false, nominatim_default, 'not last test');
 
+test.addTest('Variable days: public holidays (substitute_name)', [
+        'PH 12:00-13:00',
+    ], '2022-12-25 0:00', '2023-01-03 0:00', [
+        [ '2022-12-25 12:00', '2022-12-25 13:00', false, 'Christmas Day' ],
+        [ '2022-12-26 12:00', '2022-12-26 13:00', false, 'Day of Goodwill' ],
+        [ '2023-01-01 12:00', '2023-01-01 13:00', false, 'New Year\'s Day' ],
+        [ '2023-01-02 12:00', '2023-01-02 13:00', false, 'Public Holiday' ],
+    ], 1000 * 60 * 60 * 4, 0, false, {
+        lat: '-25.7462',
+        lon: '28.1881',
+        address: {
+            country_code: 'za',
+        },
+    }, 'not last test');
+
+test.addTest('Variable days: public holidays (Scotland substitute collision order)', [
+        'PH 12:00-13:00',
+    ], '2023-01-01 0:00', '2023-01-04 0:00', [
+        [ '2023-01-01 12:00', '2023-01-01 13:00', false, 'New Year’s Day' ],
+        [ '2023-01-02 12:00', '2023-01-02 13:00', false, '2nd January' ],
+        [ '2023-01-03 12:00', '2023-01-03 13:00', false, '2nd January (substitute day)' ],
+    ], 1000 * 60 * 60 * 3, 0, false, {
+        lat: '55.9533',
+        lon: '-3.1883',
+        address: {
+            country_code: 'gb',
+            state: 'Scotland',
+        },
+    }, 'not last test');
+
 test.addTest('PH: Only if PH is Wednesday', [
         'PH We,Fr',
         'PH: We,Fr', // Please don’t use ":" after holiday.

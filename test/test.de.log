@@ -421,6 +421,8 @@ With [34m[1mwarnings[22m[39m:
 "Variable days: public holidays" for "open; PH off": [32m[1mPASSED[22m[39m
 "Variable days: public holidays (with time range)" for "PH 12:00-13:00": [32m[1mPASSED[22m[39m
 "Variable days: public holidays (with time range)" for "PH 12:00-13:00 open "this comment should override the holiday name which is returned as comment if PH matches."": [32m[1mPASSED[22m[39m
+"Variable days: public holidays (substitute_name)" for "PH 12:00-13:00": [32m[1mPASSED[22m[39m
+"Variable days: public holidays (Scotland substitute collision order)" for "PH 12:00-13:00": [32m[1mPASSED[22m[39m
 "PH: Only if PH is Wednesday" for "PH We,Fr": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH We,Fr <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -2629,7 +2631,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-997/997 tests passed. 0 did not pass.
+999/999 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
