@@ -5671,6 +5671,18 @@ test.addPrettifyValue('Regression: prettifyValue should not reorder additional o
         'Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, off 12:00-13:00, Su 14:00-17:00',
     ], 'all', 'Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, closed 12:00-13:00, Su 14:00-17:00');
 
+test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges unchanged (#596)', [
+        'Monday-Saturday 8-9, Sunday 8-8',
+    ], 'all', 'Mo-Sa 08:00-09:00, Su 8-8');
+
+test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges unchanged (#596)', [
+        'Mo-Fr 10:00-19:00; Sa 16-16',
+    ], 'all', 'Mo-Fr 10:00-19:00; Sa 16-16');
+
+test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges unchanged (#596)', [
+        'Su 8-8, Mo Closed, Tu-Th 12-8, F-Sa 12-9',
+    ], 'all', 'Su 8-8, Mo closed, Tu-Th 12:00-08:00, Fr-Sa 12:00-09:00');
+
 /* }}} */
 
 /* isEqualTo {{{ */

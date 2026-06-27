@@ -2614,6 +2614,9 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Compare prettifyValue" for "Jan 01,3,9,21,31": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "week 01-05/2,9": [32m[1mPASSED[22m[39m
 "Regression: prettifyValue should not reorder additional off rule (#596)" for "Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, off 12:00-13:00, Su 14:00-17:00": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Monday-Saturday 8-9, Sunday 8-8": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Mo-Fr 10:00-19:00; Sa 16-16": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Su 8-8, Mo Closed, Tu-Th 12-8, F-Sa 12-9": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "open": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "24/7": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "2000-2100": [32m[1mPASSED[22m[39m
@@ -2632,7 +2635,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1000/1000 tests passed. 0 did not pass.
+1003/1003 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

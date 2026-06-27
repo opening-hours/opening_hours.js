@@ -4106,7 +4106,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && at + 2 <= selector_end
                     && matchTokens(tokens, at, 'number')
                     && matchTokens(tokens, at+1, '-')
-                    && matchTokens(tokens, at+2, 'number')) {
+                    && matchTokens(tokens, at+2, 'number')
+                    && tokens[at][0] !== tokens[at+2][0]) {
                 prettified_value += (tokens[at][0] < 10 ?
                         (tokens[at][0] === 0 && conf.one_zero_if_hour_zero ? '' : '0')
                         : '') + tokens[at][0].toString();
