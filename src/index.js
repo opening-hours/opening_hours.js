@@ -4079,6 +4079,16 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         let prettified_value = '';
         let at = selector_start;
+        // Preserve a leading malformed ':' before a time selector so the
+        // prettified form keeps the same meaning as the tolerated input.
+        if (selector_type === 'time'
+                && selector_start > 1
+                && matchTokens(tokens, selector_start - 1, 'timesep')
+                && matchTokens(tokens, selector_start, 'number')
+                && (matchTokens(tokens, selector_start - 2, 'rule separator')
+                    || matchTokens(tokens, selector_start - 2, ','))) {
+            prettified_value += ':';
+        }
         // console.log(selector_type);
         while (at <= selector_end) {
             // console.log('At: ' + at + ', token: ' + tokens[at]);
