@@ -265,6 +265,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
     let done_with_warnings = false; // The functions which returns warnings can be called multiple times.
     let done_with_selector_reordering = false;
     let done_with_selector_reordering_warnings = false;
+    // Rule indices for which prettify must keep the original selector order,
+    // because reordering time/state would change the meaning (#596).
+    const rules_without_selector_reordering = new Set();
     // eslint-disable-next-line no-var
     var tokens = tokenize(value); // TODO: Figure out why tests fail if this is const or let.
     // console.log(JSON.stringify(tokens, null, '    '));
@@ -1084,6 +1087,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         t('additional rule which evaluates to closed'),
                         new_tokens
                     ]);
+                    // Reordering would move time before state (e.g. "off") and
+                    // can change semantics for additional rules (#596).
+                    rules_without_selector_reordering.add(nrule);
                 }
                 /* }}} */
 
@@ -1350,7 +1356,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             // console.log('Prettified value: ' + JSON.stringify(prettified_group_value, null, '    '));
             const not_sorted_prettified_group_value = prettified_group_value.slice();
 
-            if (!done_with_selector_reordering) {
+            if (!done_with_selector_reordering && !rules_without_selector_reordering.has(nrule)) {
                 prettified_group_value.sort(
                     function (a, b) {
                         const selector_order = [ 'year', 'month', 'week', 'holiday', 'weekday', 'time', '24/7', 'state', 'comment'];

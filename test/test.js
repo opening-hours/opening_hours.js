@@ -5667,6 +5667,10 @@ test.addPrettifyValue('Compare prettifyValue', [
         'week 01-05/2,9',
     ], 'all', 'week 01-05/2,09', 'not only test');
 
+test.addPrettifyValue('Regression: prettifyValue should not reorder additional off rule (#596)', [
+        'Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, off 12:00-13:00, Su 14:00-17:00',
+    ], 'all', 'Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, closed 12:00-13:00, Su 14:00-17:00');
+
 /* }}} */
 
 /* isEqualTo {{{ */
