@@ -3850,6 +3850,24 @@ test.addTest('Date overwriting with additional comments for unknown ', [
         [ '2012-10-05 10:00', '2012-10-05 20:00', true, 'Maybe' ],
     ], 0, 1000 * 60 * 60 * (4 * 10 + 6), true, {}, 'not only test');
 
+test.addTest('Date overwriting with reordered selectors (overwrite semantics)', [
+        'Mo-Fr 10:00-20:00 open; We 10:00-16:00 open',
+    ], '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-01 10:00', '2012-10-01 20:00' ],
+        [ '2012-10-02 10:00', '2012-10-02 20:00' ],
+        [ '2012-10-03 10:00', '2012-10-03 16:00' ],
+        [ '2012-10-04 10:00', '2012-10-04 20:00' ],
+        [ '2012-10-05 10:00', '2012-10-05 20:00' ],
+    ], 1000 * 60 * 60 * 46, 0, true, {}, 'not only test');
+
+// Reordered (non-canonical) variants still emit switched warnings. The
+// canonical form above is unaffected because no reordering occurs there.
+test.addShouldWarn('Reordered selectors without comments still emit switched warnings', [
+        'Mo-Fr 10:00-20:00 open; open We 10:00-16:00',
+        'Mo-Fr 10:00-20:00 open; We open 10:00-16:00',
+        'Mo-Fr 10:00-20:00 open; 10:00-16:00 We open',
+    ], {}, 'not only test');
+
 test.addTest('Additional comments with time ranges spanning midnight', [
         '22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us."',
     ], '2012-10-01 0:00', '2012-10-08 0:00', [
@@ -5331,6 +5349,16 @@ test.addStructuredWarnings('Structured warning: multiple warnings keep distinct 
         'Mo 10-12; Tu 14-16',
         [ 'without_minutes', 'without_minutes' ],
         nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: switched remains for reorder without comments',
+    'Mo-Fr 10:00-20:00 open; open We 10:00-16:00',
+    [ 'switched', 'switched', 'switched' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no switched for reordered comment selector',
+    'Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
 // }}}
 
 // values which should fail during parsing {{{
