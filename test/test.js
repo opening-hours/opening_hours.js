@@ -5665,6 +5665,18 @@ test.addPrettifyValue('Compare prettifyValue', [
         'PH',
     ], 'de', 'Feiertags');
 
+test.addPrettifyValue('Regression: prettifyValue should translate holiday tokens inside weekday groups (#319)', [
+        'Mo,PH off',
+    ], 'de', 'Mo,Feiertags geschlossen');
+
+test.addPrettifyValue('Regression: prettifyValue should translate school holiday tokens inside weekday groups (#319)', [
+        'Mo,SH off',
+    ], 'de', 'Mo,Schulferien geschlossen');
+
+test.addPrettifyValue('prettifyValue should translate weekday and month tokens in a mixed selector', [
+        'Jan Mo off',
+    ], 'de', 'Jan Mo geschlossen');
+
 test.addPrettifyValue('Compare prettifyValue', [
         'märz',
         'mär',

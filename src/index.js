@@ -1287,17 +1287,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
         });
 
-        // use months, weekdays for locales 'en' and 'all'
-        // otherwise use Date.toLocaleString, see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleString
-        const _is_en_or_all = (user_conf['locale'] === 'en' || user_conf['locale'] === 'all') && user_conf['date_format'] === 'short';
-        const months_local = _is_en_or_all ? months : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function(month) {
-            return new Date(2018, month - 1, 1).toLocaleString(user_conf['locale'], {month: user_conf['date_format']});
-        });
-        const weekdays_local = _is_en_or_all ? weekdays : [1, 2, 3, 4, 5, 6, 7].map(function(weekday) {
-            // 2017-01-01 is Sunday
-            return new Date(2017, 0, weekday).toLocaleString(user_conf['locale'], {weekday: user_conf['date_format']});
-        });
-
         for (let nrule = 0; nrule < new_tokens.length; nrule++) {
             if (new_tokens[nrule][0].length === 0) continue;
             // Rule does contain nothing useful e.g. second rule of '10:00-12:00;' (empty) which needs to be handled.
@@ -1366,27 +1355,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         return selector_order.indexOf(a[0][2]) - selector_order.indexOf(b[0][2]);
                     }
                 );
-            }
-            const shouldTranslatePrettyOutput = typeof user_conf['locale'] === 'string' && user_conf['locale'] !== 'en';
-
-            if (shouldTranslatePrettyOutput) {
-                for (let i = 0; i < prettified_group_value.length; i++) {
-                    const type = prettified_group_value[i][0][2];
-                    if (type === 'weekday') {
-                        weekdays.forEach(function (weekday, key) {
-                            prettified_group_value[i][1] = prettified_group_value[i][1].replace(new RegExp(weekday, 'g'), weekdays_local[key]);
-                        });
-                    } else if (type === 'month') {
-                        months.forEach(function (month, key) {
-                            prettified_group_value[i][1] = prettified_group_value[i][1].replace(new RegExp(month, 'g'), months_local[key]);
-                        });
-                    } else {
-                        const prettifiedValueIsProbablyTranslatable = prettified_group_value[i][1].indexOf(':') === -1;
-                        if (prettifiedValueIsProbablyTranslatable) {
-                            prettified_group_value[i][1] = translate(user_conf['locale'], 'pretty', prettified_group_value[i][1]);
-                        }
-                    }
-                }
             }
 
             const old_prettified_value_length = prettified_value.length;
@@ -4067,6 +4035,59 @@ export default function(value, nominatim_object, optional_conf_parm) {
     };
     /* }}} */
 
+    /* Memoized localized month/weekday names for prettified output.
+     * :param conf: Prettify configuration (locale/date_format).
+     * :param kind: Either 'weekday' or 'month'.
+     * :returns: Localized name array with stable index mapping.
+     */
+    const localized_name_cache = {};
+
+    function getLocalizedNames(conf, kind) {
+        const useEnglishShortNames =
+            (conf['locale'] === 'en' || conf['locale'] === 'all') && conf['date_format'] === 'short';
+        if (useEnglishShortNames) {
+            return kind === 'weekday' ? weekdays : months;
+        }
+
+        const cache_key = kind + '|' + conf['locale'] + '|' + conf['date_format'];
+        if (!localized_name_cache[cache_key]) {
+            localized_name_cache[cache_key] = kind === 'weekday'
+                // 2026-02-01 is a Sunday, so day 1..7 maps to Su..Sa.
+                ? [1, 2, 3, 4, 5, 6, 7].map(function (weekday) {
+                    return new Date(2026, 1, weekday).toLocaleString(conf['locale'], {weekday: conf['date_format']});
+                })
+                // The year is arbitrary; only the month index affects the name.
+                : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (month) {
+                    return new Date(2026, month - 1, 1).toLocaleString(conf['locale'], {month: conf['date_format']});
+                });
+        }
+        return localized_name_cache[cache_key];
+    }
+
+    /* Translate prettify output token-wise (fixes PH/SH inside grouped selectors, #319).
+     * :param value: Token value (index for month/weekday, string otherwise).
+     * :param token_type: Token type, e.g. 'weekday', 'month', 'state'.
+     * :param conf: Prettify configuration (locale/date_format).
+     * :returns: Translated token string or unchanged value.
+     */
+    function translatePrettyToken(value, token_type, conf) {
+        if (token_type === 'weekday') {
+            return getLocalizedNames(conf, 'weekday')[value];
+        }
+
+        if (token_type === 'month') {
+            return getLocalizedNames(conf, 'month')[value];
+        }
+
+        // Other tokens (e.g. holidays 'PH'/'SH' or the 'off'/'closed' state)
+        // only need translation for non-English locales.
+        if (typeof conf['locale'] !== 'string' || conf['locale'] === 'en') {
+            return value;
+        }
+
+        return translate(conf['locale'], 'pretty', value);
+    }
+
     /* Generate prettified value for selector based on tokens. {{{
      *
      * :param tokens: List of token objects.
@@ -4091,6 +4112,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
         }
         // console.log(selector_type);
         while (at <= selector_end) {
+            const token_value = tokens[at][0];
+            const token_type = tokens[at][1];
             // console.log('At: ' + at + ', token: ' + tokens[at]);
             if (matchTokens(tokens, at, 'weekday')) {
                 if (!conf.leave_weekday_sep_one_day_betw
@@ -4099,7 +4122,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && tokens[at][0] === (tokens[at-2][0] + 1) % 7) {
                         prettified_value = prettified_value.substring(0, prettified_value.length - 1) + conf.sep_one_day_between;
                 }
-                prettified_value += weekdays[tokens[at][0]];
+                prettified_value += translatePrettyToken(token_value, 'weekday', conf);
             } else if (at - selector_start > 0 // e.g. '09:0' -> '09:00'
                     && selector_type === 'time'
                     && matchTokens(tokens, at-1, 'timesep')
@@ -4131,7 +4154,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             } else if (matchTokens(tokens, at, 'comment')) {
                 prettified_value += '"' + tokens[at][0].toString() + '"';
             } else if (matchTokens(tokens, at, 'closed')) {
-                prettified_value += (conf.leave_off_closed ? tokens[at][0] : conf.keyword_for_off_closed);
+                prettified_value += translatePrettyToken(conf.leave_off_closed ? token_value : conf.keyword_for_off_closed, 'state', conf);
             } else if (at - selector_start > 0 && matchTokens(tokens, at, 'number')
                     && (selector_type === 'month' || selector_type === 'week')) {
                 prettified_value +=
@@ -4140,12 +4163,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     + tokens[at][0];
             } else if (at - selector_start > 0 && matchTokens(tokens, at, 'month')
                     && matchTokens(tokens, at-1, 'year')) {
-                prettified_value += ' ' + months[[tokens[at][0]]];
+                prettified_value += ' ' + translatePrettyToken(token_value, 'month', conf);
             } else if (at - selector_start > 0 && matchTokens(tokens, at, 'event')
                     && matchTokens(tokens, at-1, 'year')) {
                 prettified_value += ' ' + tokens[at][0];
             } else if (matchTokens(tokens, at, 'month')) {
-                prettified_value += months[[tokens[at][0]]];
+                prettified_value += translatePrettyToken(token_value, 'month', conf);
                 if (at + 1 <= selector_end && matchTokens(tokens, at+1, 'weekday'))
                     prettified_value += ' ';
             } else if (at + 2 <= selector_end
@@ -4162,7 +4185,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && tokens[at][0] === ',') {
                 /* Remove trailing , which is ignored in parseTimeRange. */
             } else {
-                prettified_value += tokens[at][0].toString();
+                prettified_value += translatePrettyToken(token_value.toString(), token_type, conf);
             }
             at++;
         }

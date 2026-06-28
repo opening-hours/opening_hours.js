@@ -2613,6 +2613,9 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Compare prettifyValue" for "Tue": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "Dienstag": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "PH": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should translate holiday tokens inside weekday groups (#319)" for "Mo,PH off": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should translate school holiday tokens inside weekday groups (#319)" for "Mo,SH off": [32m[1mPASSED[22m[39m
+"prettifyValue should translate weekday and month tokens in a mixed selector" for "Jan Mo off": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "märz": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "mär": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "SH": [32m[1mPASSED[22m[39m
@@ -2646,7 +2649,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1011/1011 tests passed. 0 did not pass.
+1014/1014 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
