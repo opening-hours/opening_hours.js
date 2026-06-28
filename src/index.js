@@ -33,7 +33,7 @@
 import * as holiday_definitions from './holidays/index';
 import word_error_correction from './locales/word_error_correction.yaml';
 
-import SunCalc from 'suncalc';
+import { getTimes } from 'suncalc';
 import { translate } from './locales/i18n';
 
 export default function(value, nominatim_object, optional_conf_parm) {
@@ -180,6 +180,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
         throw 'The nominatim_object parameter is of unknown type.'
             + ' Given ' + typeof(nominatim_object)
             + ', expected object.';
+    }
+
+    function getTimevarMinutes(date, timevar_name, timevar_add_minutes) {
+        const event_time = getTimes(date, lat, lon)[timevar_name];
+        return event_time.getHours() * 60 + event_time.getMinutes() + timevar_add_minutes;
     }
     /* }}} */
 
@@ -1903,12 +1908,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             const ourminutes = date.getHours() * 60 + date.getMinutes();
 
                             if (timevar_string[0]) {
-                                const date_from = SunCalc.getTimes(date, lat, lon)[timevar_string[0]];
-                                minutes_from  = date_from.getHours() * 60 + date_from.getMinutes() + timevar_add[0];
+                                minutes_from = getTimevarMinutes(date, timevar_string[0], timevar_add[0]);
                             }
                             if (timevar_string[1]) {
-                                const date_to = SunCalc.getTimes(date, lat, lon)[timevar_string[1]];
-                                minutes_to  = date_to.getHours() * 60 + date_to.getMinutes() + timevar_add[1];
+                                minutes_to = getTimevarMinutes(date, timevar_string[1], timevar_add[1]);
                                 minutes_to += minutes_in_day;
                                 // Needs to be added because it was added by
                                 // normal times: if (minutes_to < minutes_from)
@@ -1947,8 +1950,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                 const ourminutes = date.getHours() * 60 + date.getMinutes();
 
                                 if (timevar_string[1]) {
-                                    const date_to = SunCalc.getTimes(date, lat, lon)[timevar_string[1]];
-                                    minutes_to  = date_to.getHours() * 60 + date_to.getMinutes() + timevar_add[1];
+                                    minutes_to = getTimevarMinutes(date, timevar_string[1], timevar_add[1]);
                                     // minutes_in_day does not need to be added.
                                     // For normal times in it was added in: if (minutes_to < // minutes_from)
                                     // above the selector construction and
@@ -1978,12 +1980,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             const ourminutes = date.getHours() * 60 + date.getMinutes();
 
                             if (timevar_string[0]) {
-                                const date_from = SunCalc.getTimes(date, lat, lon)[timevar_string[0]];
-                                minutes_from  = date_from.getHours() * 60 + date_from.getMinutes() + timevar_add[0];
+                                minutes_from = getTimevarMinutes(date, timevar_string[0], timevar_add[0]);
                             }
                             if (timevar_string[1]) {
-                                const date_to = SunCalc.getTimes(date, lat, lon)[timevar_string[1]];
-                                minutes_to  = date_to.getHours() * 60 + date_to.getMinutes() + timevar_add[1];
+                                minutes_to = getTimevarMinutes(date, timevar_string[1], timevar_add[1]);
                             } else if (is_point_in_time && typeof point_in_time_period !== 'number') {
                                 minutes_to = minutes_from + 1;
                             }

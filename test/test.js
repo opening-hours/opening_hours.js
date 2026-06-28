@@ -491,14 +491,14 @@ test.addTest('Open end', [
 test.addTest('Open end, variable time', [
         'sunrise+',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
-        [ '2012-10-01 07:22', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-    ], 0, 1000 * 60 * (60 * 16 + 60 - 22), false, nominatim_default, 'not last test');
+        [ '2012-10-01 07:20', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
+    ], 0, 1000 * 60 * (60 * 16 + 60 - 20), false, nominatim_default, 'not last test');
 
 test.addTest('Open end, variable time', [
         '(sunrise+01:00)+',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
-        [ '2012-10-01 08:22', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-    ], 0, 1000 * 60 * (60 * 15 + 60 - 22), false, nominatim_default, 'not last test');
+        [ '2012-10-01 08:20', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
+    ], 0, 1000 * 60 * (60 * 15 + 60 - 20), false, nominatim_default, 'not last test');
 
 test.addTest('Open end', [
         '17:00+ off',
@@ -583,27 +583,27 @@ test.addTest('variable time range followed by open end', [
         '14:00-sunset+',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
         [ '2012-10-01 00:00', '2012-10-01 04:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-        [ '2012-10-01 14:00', '2012-10-01 19:00' ],
-        [ '2012-10-01 19:00', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-    ], 1000 * 60 * 60 * 5, 1000 * 60 * 60 * (4 + 5), false, nominatim_default, 'not last test');
+        [ '2012-10-01 14:00', '2012-10-01 18:58' ],
+        [ '2012-10-01 18:58', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
+    ], 1000 * 60 * (60 * 4 + 58), 1000 * 60 * (60 * 9 + 2), false, nominatim_default, 'not last test');
 
 test.addTest('variable time range followed by open end', [
         'sunrise-14:00+',
         'sunrise-14:00,14:00+', // Internally represented as two time selectors.
         'sunrise-14:00 open, 14:00+',
     ], '2012-10-01 0:00', '2012-10-02 5:00', [
-        [ '2012-10-01 07:22', '2012-10-01 14:00' ],
+        [ '2012-10-01 07:20', '2012-10-01 14:00' ],
         [ '2012-10-01 14:00', '2012-10-02 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-    ], 1000 * 60 * (38 + 60 * 6), 1000 * 60 * 60 * 10, false, nominatim_default, 'not only test');
+    ], 1000 * 60 * (40 + 60 * 6), 1000 * 60 * 60 * 10, false, nominatim_default, 'not only test');
 
 test.addTest('variable time range followed by open end', [
         'sunrise-(sunset+01:00)+',
         'sunrise-(sunset+01:00)+; Su off',
     ], '2012-10-06 0:00', '2012-10-07 0:00', [
         [ '2012-10-06 00:00', '2012-10-06 05:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-        [ '2012-10-06 07:29', '2012-10-06 19:50' ],
-        [ '2012-10-06 19:50', '2012-10-07 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
-    ], 1000 * 60 * (31 + (19 - 8) * 60 + 50), 1000 * 60 * (60 * 5 + 60 * 4 + 10), false, nominatim_default, 'not last test');
+        [ '2012-10-06 07:28', '2012-10-06 19:48' ],
+        [ '2012-10-06 19:48', '2012-10-07 00:00', true,  EXPECTED_OPEN_END_MESSAGE ],
+    ], 1000 * 60 * (60 * 12 + 20), 1000 * 60 * (60 * 5 + 60 * 4 + 12), false, nominatim_default, 'not last test');
 
 test.addTest('variable time range followed by open end, day wrap and different states', [
     'Fr 11:00-24:00+ open "geöffnet täglich von 11:00 Uhr bis tief in die Nacht"',
@@ -623,14 +623,14 @@ test.addTest('Variable times e.g. dawn, dusk', [
         'Mo dawn-dusk',
         'dawn-dusk',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
-        [ '2012-10-01 06:50', '2012-10-01 19:32' ],
-    ], 1000 * 60 * (60 * 12 + 10 + 32), 0, false, nominatim_default, 'not last test');
+        [ '2012-10-01 06:49', '2012-10-01 19:30' ],
+    ], 1000 * 60 * (60 * 12 + 41), 0, false, nominatim_default, 'not last test');
 
 test.addTest('Variable times e.g. sunrise, sunset', [
         'Mo sunrise-sunset',
         'sunrise-sunset',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
-        [ '2012-10-01 07:22', '2012-10-01 19:00' ],
+        [ '2012-10-01 07:20', '2012-10-01 18:58' ],
     ], 1000 * 60 * (60 * 11 + 38), 0, false, nominatim_default);
 
 test.addTest('Variable times e.g. sunrise, sunset without coordinates (→ constant times)', [
@@ -644,7 +644,7 @@ test.addTest('Variable times e.g. sunrise, sunset', [
         'sunrise-sunset open "Beware of sunburn!"',
         // 'sunrise-sunset closed "Beware of sunburn!"', // Not so intuitive I guess.
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
-        [ '2012-10-01 07:22', '2012-10-01 19:00', false, 'Beware of sunburn!' ],
+        [ '2012-10-01 07:20', '2012-10-01 18:58', false, 'Beware of sunburn!' ],
     ], 1000 * 60 * (60 * 11 + 38), 0, false, nominatim_default, 'not only test');
 
 test.addTest('Variable times calculation without coordinates', [
@@ -668,50 +668,62 @@ test.addTest('Variable times e.g. sunrise, sunset over a few days', [
         'sunrise-sunset', // If your timezone uses daylight saving times you will see a difference of around one hours between two days.
         'daylight', // Throws a warning.
     ], '2012-10-01 0:00', '2012-10-04 0:00', [
-        [ '2012-10-01 07:22', '2012-10-01 19:00' ],
-        [ '2012-10-02 07:23', '2012-10-02 18:58' ],
-        [ '2012-10-03 07:25', '2012-10-03 18:56' ],
-    ], 1000 * 60 * ((60 * 11 + 38) + (60 * 11 + 37 - 2) + (60 * 11 + 35 - 4)), 0, false, nominatim_default, 'not only test');
+        [ '2012-10-01 07:20', '2012-10-01 18:58' ],
+        [ '2012-10-02 07:22', '2012-10-02 18:56' ],
+        [ '2012-10-03 07:23', '2012-10-03 18:54' ],
+    ], 1000 * 60 * ((60 * 11 + 38) + (60 * 11 + 34) + (60 * 11 + 31)), 0, false, nominatim_default, 'not only test');
 
 test.addTest('Variable times calculation with coordinates', [
         '(sunrise+02:00)-sunset',
     ], '2012-10-01 0:00', '2012-10-04 0:00', [
-        [ '2012-10-01 09:22', '2012-10-01 19:00' ],
-        [ '2012-10-02 09:23', '2012-10-02 18:58' ],
-        [ '2012-10-03 09:25', '2012-10-03 18:56' ],
-    ], 1000 * 60 * ((60 * 11 + 38) + (60 * 11 + 37 - 2) + (60 * 11 + 35 - 4) - 60 * 2 * 3), 0, false, nominatim_default, 'not last test');
+        [ '2012-10-01 09:20', '2012-10-01 18:58' ],
+        [ '2012-10-02 09:22', '2012-10-02 18:56' ],
+        [ '2012-10-03 09:23', '2012-10-03 18:54' ],
+    ], 1000 * 60 * ((60 * 9 + 38) + (60 * 9 + 34) + (60 * 9 + 31)), 0, false, nominatim_default, 'not last test');
 
 test.addTest('Variable times which moves over fix end time', [
         'sunrise-08:02',
     ], '2013-01-26 0:00', '2013-02-03 0:00', [
-        // [ '2013-01-26 08:03', '2013-01-26 08:02' ], // Ignored because it would be interpreted as time range spanning midnight
-        // [ '2013-01-27 08:02', '2013-01-27 08:02' ], // which is probably not what you want.
-        [ '2013-01-27 08:01', '2013-01-27 08:02' ],
-        [ '2013-01-28 08:00', '2013-01-28 08:02' ],
-        [ '2013-01-29 07:59', '2013-01-29 08:02' ],
-        [ '2013-01-30 07:58', '2013-01-30 08:02' ],
-        [ '2013-01-31 07:56', '2013-01-31 08:02' ],
-        [ '2013-02-01 07:55', '2013-02-01 08:02' ],
-        [ '2013-02-02 07:54', '2013-02-02 08:02' ],
-    ], 1000 * 60 * (1 + 2 + 3 + 4 + 6 + 7 + 8), 0, false, nominatim_default);
+        [ '2013-01-26 08:01', '2013-01-26 08:02' ],
+        [ '2013-01-27 08:00', '2013-01-27 08:02' ],
+        [ '2013-01-28 07:59', '2013-01-28 08:02' ],
+        [ '2013-01-29 07:58', '2013-01-29 08:02' ],
+        [ '2013-01-30 07:56', '2013-01-30 08:02' ],
+        [ '2013-01-31 07:55', '2013-01-31 08:02' ],
+        [ '2013-02-01 07:54', '2013-02-01 08:02' ],
+        [ '2013-02-02 07:52', '2013-02-02 08:02' ],
+    ], 1000 * 60 * (1 + 2 + 3 + 4 + 6 + 7 + 8 + 10), 0, false, nominatim_default);
+
+test.addTest('Variable times boundary: first non-empty day', [
+        'sunrise-08:02',
+    ], '2013-01-25 0:00', '2013-01-27 0:00', [
+        [ '2013-01-26 08:01', '2013-01-26 08:02' ],
+    ], 1000 * 60, 0, false, nominatim_default, 'not last test');
 
 test.addTest('Variable times which moves over fix end time', [
         'sunrise-08:00',
     ], '2013-01-26 0:00', '2013-02-03 0:00', [
-        [ '2013-01-29 07:59', '2013-01-29 08:00' ],
-        [ '2013-01-30 07:58', '2013-01-30 08:00' ],
-        [ '2013-01-31 07:56', '2013-01-31 08:00' ],
-        [ '2013-02-01 07:55', '2013-02-01 08:00' ],
-        [ '2013-02-02 07:54', '2013-02-02 08:00' ],
-    ], 1000 * 60 * (1 + 2 + 4 + 5 + 6), 0, false, nominatim_default);
+        [ '2013-01-28 07:59', '2013-01-28 08:00' ],
+        [ '2013-01-29 07:58', '2013-01-29 08:00' ],
+        [ '2013-01-30 07:56', '2013-01-30 08:00' ],
+        [ '2013-01-31 07:55', '2013-01-31 08:00' ],
+        [ '2013-02-01 07:54', '2013-02-01 08:00' ],
+        [ '2013-02-02 07:52', '2013-02-02 08:00' ],
+    ], 1000 * 60 * (1 + 2 + 4 + 5 + 6 + 8), 0, false, nominatim_default);
+
+test.addTest('Variable times boundary: zero-length is excluded', [
+        'sunrise-08:00',
+    ], '2013-01-27 0:00', '2013-01-28 0:00', [
+    ], 0, 0, false, nominatim_default, 'not last test');
 
 test.addTest('Variable times which moves over fix end time', [
         'sunrise-07:58',
     ], '2013-01-26 0:00', '2013-02-03 0:00', [
-        [ '2013-01-31 07:56', '2013-01-31 07:58' ],
-        [ '2013-02-01 07:55', '2013-02-01 07:58' ],
-        [ '2013-02-02 07:54', '2013-02-02 07:58' ],
-    ], 1000 * 60 * (2 + 3 + 4), 0, false, nominatim_default);
+        [ '2013-01-30 07:56', '2013-01-30 07:58' ],
+        [ '2013-01-31 07:55', '2013-01-31 07:58' ],
+        [ '2013-02-01 07:54', '2013-02-01 07:58' ],
+        [ '2013-02-02 07:52', '2013-02-02 07:58' ],
+    ], 1000 * 60 * (2 + 3 + 4 + 6), 0, false, nominatim_default);
 
 test.addTest('Variable times which moves over fix end time', [
         'sunrise-06:00',
@@ -723,9 +735,9 @@ test.addTest('Variable times which moves over fix end time', [
         'sunrise-05:59', // end time < constant time < from time
     ], '2013-01-26 0:00', '2013-01-28 0:00', [
     [ '2013-01-26 00:00', '2013-01-26 05:59' ],
-    [ '2013-01-26 08:01', '2013-01-27 05:59' ],
-    [ '2013-01-27 08:00', '2013-01-28 00:00' ],
-    ], 1000 * 60 * ((60 * 5 + 59) + (60 * 22 - 2) + (60 * 16)), 0, false, nominatim_default, 'not last test');
+    [ '2013-01-26 08:00', '2013-01-27 05:59' ],
+    [ '2013-01-27 07:59', '2013-01-28 00:00' ],
+    ], 1000 * 60 * ((60 * 5 + 59) + (60 * 22 - 1) + (60 * 16 + 1)), 0, false, nominatim_default, 'not last test');
 
 test.addTest('Variable times which moves over fix end time', [
         'sunrise-06:00', // from time < constant time <= end time
@@ -744,21 +756,33 @@ test.addTest('Variable times spanning midnight', [
         'sunset-sunrise',
         'Mo-Su sunset-sunrise',
     ], '2012-10-01 0:00', '2012-10-03 0:00', [
-        [ '2012-10-01 00:00', '2012-10-01 07:22' ],
-        [ '2012-10-01 19:00', '2012-10-02 07:23' ],
-        [ '2012-10-02 18:58', '2012-10-03 00:00' ],
-    ], 1000 * 60 * ((60 * 7 + 22) + (60 * (5 + 7) + 23) + (60 * 5 + 2)), 0, false, nominatim_default, 'not last test');
+        [ '2012-10-01 00:00', '2012-10-01 07:20' ],
+        [ '2012-10-01 18:58', '2012-10-02 07:22' ],
+        [ '2012-10-02 18:56', '2012-10-03 00:00' ],
+    ], 1000 * 60 * ((60 * 7 + 20) + (60 * 12 + 24) + (60 * 5 + 4)), 0, false, nominatim_default, 'not last test');
 
 test.addTest('Variable times spanning midnight', [
         'sunset-sunrise',
         'Mo-Su sunset-sunrise',
         // '19:00-07:22 Mo-Su', // also works but is week stable
+    ], '2012-10-01 0:00', '2012-10-02 0:00', [
+        [ '2012-10-01 00:00', '2012-10-01 07:20' ],
+        [ '2012-10-01 18:58', '2012-10-02 00:00' ],
+    ], 1000 * 60 * ((60 * 7 + 20) + (60 * 5 + 2)), 0, false, nominatim_default, 'not last test');
+
+test.addTest('Variable times spanning midnight', [
         'Mo-Su sunset-07:22',
-        'Mo-Su 19:00-sunrise',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
         [ '2012-10-01 00:00', '2012-10-01 07:22' ],
+        [ '2012-10-01 18:58', '2012-10-02 00:00' ],
+    ], 1000 * 60 * ((60 * 7 + 22) + (60 * 5 + 2)), 0, false, nominatim_default, 'not last test');
+
+test.addTest('Variable times spanning midnight', [
+        'Mo-Su 19:00-sunrise',
+    ], '2012-10-01 0:00', '2012-10-02 0:00', [
+        [ '2012-10-01 00:00', '2012-10-01 07:20' ],
         [ '2012-10-01 19:00', '2012-10-02 00:00' ],
-    ], 1000 * 60 * ((60 * 7 + 22) + (60 * 5)), 0, false, nominatim_default, 'not last test');
+    ], 1000 * 60 * ((60 * 7 + 20) + (60 * 5)), 0, false, nominatim_default, 'not last test');
 // }}}
 
 // holidays {{{
@@ -4676,8 +4700,8 @@ test.addTest('Points in time, mode 1', [
         'Mo sunrise,sunset',
         'Mon sunrise,sunset',
     ], '2012-10-01 0:00', '2012-10-08 0:00', [
-        [ '2012-10-01 07:22', '2012-10-01 07:23' ],
-        [ '2012-10-01 19:00', '2012-10-01 19:01' ],
+        [ '2012-10-01 07:20', '2012-10-01 07:21' ],
+        [ '2012-10-01 18:58', '2012-10-01 18:59' ],
     ], 1000 * 60 * 2, 0, false, nominatim_default, 'not last test', { 'mode': 1, 'warnings_severity': 0 });
     // Should not return any warnings.
 
@@ -4696,14 +4720,14 @@ test.addTest('Points in time with month, mode 1', [
 test.addTest('Points in time, mode 2', [
         'Mo sunrise,sunset',
     ], '2012-10-01 0:00', '2012-10-08 0:00', [
-        [ '2012-10-01 07:22', '2012-10-01 07:23' ],
-        [ '2012-10-01 19:00', '2012-10-01 19:01' ],
+        [ '2012-10-01 07:20', '2012-10-01 07:21' ],
+        [ '2012-10-01 18:58', '2012-10-01 18:59' ],
     ], 1000 * 60 * 2, 0, false, nominatim_default, 'not last test', { 'tag_key': 'collection_times' });
 
 test.addTest('Points in time, mode 2', [
         'Mo (sunrise+01:00)',
     ], '2012-10-01 0:00', '2012-10-08 0:00', [
-        [ '2012-10-01 08:22', '2012-10-01 08:23' ],
+        [ '2012-10-01 08:20', '2012-10-01 08:21' ],
     ], 1000 * 60 * 1, 0, false, nominatim_default, 'not last test', { 'warnings_severity': 5, 'tag_key': 'collection_times' });
     // Test for warn_for_PH_missing.
 
@@ -4745,13 +4769,13 @@ test.addTest('Points in time, extrem example useful for ComplexAlarm', [
         [ '2024-07-23 07:00', '2024-07-23 07:01' ], // Tu
         [ '2024-07-24 07:00', '2024-07-24 07:01' ], // We
         /* Sommerferien BW 2024: 2024-07-25 to 2024-09-07 */
-        [ '2024-07-25 08:43', '2024-07-25 08:44', false, 'Sommerferien' ], // Th
-        [ '2024-07-26 08:45', '2024-07-26 08:46', false, 'Sommerferien' ], // Fr
-        [ '2024-07-29 08:49', '2024-07-29 08:50', false, 'Sommerferien' ], // Mo
-        [ '2024-07-30 08:50', '2024-07-30 08:51', false, 'Sommerferien' ], // Tu
-        [ '2024-07-31 08:51', '2024-07-31 08:52', false, 'Sommerferien' ], // We
-        [ '2024-08-01 08:53', '2024-08-01 08:54', false, 'Sommerferien' ], // Th
-        [ '2024-08-02 08:54', '2024-08-02 08:55', false, 'Sommerferien' ], // Fr
+        [ '2024-07-25 08:42', '2024-07-25 08:43', false, 'Sommerferien' ], // Th
+        [ '2024-07-26 08:44', '2024-07-26 08:45', false, 'Sommerferien' ], // Fr
+        [ '2024-07-29 08:48', '2024-07-29 08:49', false, 'Sommerferien' ], // Mo
+        [ '2024-07-30 08:49', '2024-07-30 08:50', false, 'Sommerferien' ], // Tu
+        [ '2024-07-31 08:50', '2024-07-31 08:51', false, 'Sommerferien' ], // We
+        [ '2024-08-01 08:52', '2024-08-01 08:53', false, 'Sommerferien' ], // Th
+        [ '2024-08-02 08:53', '2024-08-02 08:54', false, 'Sommerferien' ], // Fr
     ], 1000 * 60 * 30, 0, false, nominatim_default, 'not only test', 1);
 
 test.addTest('Points in time, extrem example useful for ComplexAlarm', [
@@ -4793,38 +4817,38 @@ test.addTest('Points in time, extrem example useful for ComplexAlarm', [
         [ '2024-07-23 07:00', '2024-07-23 07:01' ], // Tu
         [ '2024-07-24 07:00', '2024-07-24 07:01' ], // We
         /* Sommerferien BW 2024: 2024-07-25 to 2024-09-07 */
-        [ '2024-07-25 08:43', '2024-07-25 08:44', false, 'Sommerferien' ], // Th
-        [ '2024-07-26 08:45', '2024-07-26 08:46', false, 'Sommerferien' ], // Fr
-        [ '2024-07-29 08:49', '2024-07-29 08:50', false, 'Sommerferien' ], // Mo
-        [ '2024-07-30 08:50', '2024-07-30 08:51', false, 'Sommerferien' ], // Tu
-        [ '2024-07-31 08:51', '2024-07-31 08:52', false, 'Sommerferien' ], // We
-        [ '2024-08-01 08:53', '2024-08-01 08:54', false, 'Sommerferien' ], // Th
-        [ '2024-08-02 08:54', '2024-08-02 08:55', false, 'Sommerferien' ], // Fr
-        [ '2024-08-05 08:58', '2024-08-05 08:59', false, 'Sommerferien' ], // Mo
-        [ '2024-08-06 09:00', '2024-08-06 09:01', false, 'Sommerferien' ], // Tu
-        [ '2024-08-07 09:01', '2024-08-07 09:02', false, 'Sommerferien' ], // We
-        [ '2024-08-08 09:03', '2024-08-08 09:04', false, 'Sommerferien' ], // Th
-        [ '2024-08-09 09:04', '2024-08-09 09:05', false, 'Sommerferien' ], // Fr
-        [ '2024-08-12 09:08', '2024-08-12 09:09', false, 'Sommerferien' ], // Mo
-        [ '2024-08-13 09:10', '2024-08-13 09:11', false, 'Sommerferien' ], // Tu
-        [ '2024-08-14 09:11', '2024-08-14 09:12', false, 'Sommerferien' ], // We
-        [ '2024-08-15 09:13', '2024-08-15 09:14', false, 'Sommerferien' ], // Th
-        [ '2024-08-16 09:14', '2024-08-16 09:15', false, 'Sommerferien' ], // Fr
-        [ '2024-08-19 09:19', '2024-08-19 09:20', false, 'Sommerferien' ], // Mo
-        [ '2024-08-20 09:20', '2024-08-20 09:21', false, 'Sommerferien' ], // Tu
-        [ '2024-08-21 09:22', '2024-08-21 09:23', false, 'Sommerferien' ], // We
-        [ '2024-08-22 09:23', '2024-08-22 09:24', false, 'Sommerferien' ], // Th
-        [ '2024-08-23 09:25', '2024-08-23 09:26', false, 'Sommerferien' ], // Fr
-        [ '2024-08-26 09:29', '2024-08-26 09:30', false, 'Sommerferien' ], // Mo
-        [ '2024-08-27 09:30', '2024-08-27 09:31', false, 'Sommerferien' ], // Tu
-        [ '2024-08-28 09:32', '2024-08-28 09:33', false, 'Sommerferien' ], // We
-        [ '2024-08-29 09:33', '2024-08-29 09:34', false, 'Sommerferien' ], // Th
-        [ '2024-08-30 09:35', '2024-08-30 09:36', false, 'Sommerferien' ], // Fr
-        [ '2024-09-02 09:39', '2024-09-02 09:40', false, 'Sommerferien' ], // Mo
-        [ '2024-09-03 09:41', '2024-09-03 09:42', false, 'Sommerferien' ], // Tu
-        [ '2024-09-04 09:42', '2024-09-04 09:43', false, 'Sommerferien' ], // We
-        [ '2024-09-05 09:44', '2024-09-05 09:45', false, 'Sommerferien' ], // Th
-        [ '2024-09-06 09:45', '2024-09-06 09:46', false, 'Sommerferien' ], // Fr
+        [ '2024-07-25 08:42', '2024-07-25 08:43', false, 'Sommerferien' ], // Th
+        [ '2024-07-26 08:44', '2024-07-26 08:45', false, 'Sommerferien' ], // Fr
+        [ '2024-07-29 08:48', '2024-07-29 08:49', false, 'Sommerferien' ], // Mo
+        [ '2024-07-30 08:49', '2024-07-30 08:50', false, 'Sommerferien' ], // Tu
+        [ '2024-07-31 08:50', '2024-07-31 08:51', false, 'Sommerferien' ], // We
+        [ '2024-08-01 08:52', '2024-08-01 08:53', false, 'Sommerferien' ], // Th
+        [ '2024-08-02 08:53', '2024-08-02 08:54', false, 'Sommerferien' ], // Fr
+        [ '2024-08-05 08:57', '2024-08-05 08:58', false, 'Sommerferien' ], // Mo
+        [ '2024-08-06 08:59', '2024-08-06 09:00', false, 'Sommerferien' ], // Tu
+        [ '2024-08-07 09:00', '2024-08-07 09:01', false, 'Sommerferien' ], // We
+        [ '2024-08-08 09:02', '2024-08-08 09:03', false, 'Sommerferien' ], // Th
+        [ '2024-08-09 09:03', '2024-08-09 09:04', false, 'Sommerferien' ], // Fr
+        [ '2024-08-12 09:07', '2024-08-12 09:08', false, 'Sommerferien' ], // Mo
+        [ '2024-08-13 09:09', '2024-08-13 09:10', false, 'Sommerferien' ], // Tu
+        [ '2024-08-14 09:10', '2024-08-14 09:11', false, 'Sommerferien' ], // We
+        [ '2024-08-15 09:12', '2024-08-15 09:13', false, 'Sommerferien' ], // Th
+        [ '2024-08-16 09:13', '2024-08-16 09:14', false, 'Sommerferien' ], // Fr
+        [ '2024-08-19 09:17', '2024-08-19 09:18', false, 'Sommerferien' ], // Mo
+        [ '2024-08-20 09:19', '2024-08-20 09:20', false, 'Sommerferien' ], // Tu
+        [ '2024-08-21 09:20', '2024-08-21 09:21', false, 'Sommerferien' ], // We
+        [ '2024-08-22 09:22', '2024-08-22 09:23', false, 'Sommerferien' ], // Th
+        [ '2024-08-23 09:23', '2024-08-23 09:24', false, 'Sommerferien' ], // Fr
+        [ '2024-08-26 09:28', '2024-08-26 09:29', false, 'Sommerferien' ], // Mo
+        [ '2024-08-27 09:29', '2024-08-27 09:30', false, 'Sommerferien' ], // Tu
+        [ '2024-08-28 09:31', '2024-08-28 09:32', false, 'Sommerferien' ], // We
+        [ '2024-08-29 09:32', '2024-08-29 09:33', false, 'Sommerferien' ], // Th
+        [ '2024-08-30 09:34', '2024-08-30 09:35', false, 'Sommerferien' ], // Fr
+        [ '2024-09-02 09:38', '2024-09-02 09:39', false, 'Sommerferien' ], // Mo
+        [ '2024-09-03 09:39', '2024-09-03 09:40', false, 'Sommerferien' ], // Tu
+        [ '2024-09-04 09:41', '2024-09-04 09:42', false, 'Sommerferien' ], // We
+        [ '2024-09-05 09:42', '2024-09-05 09:43', false, 'Sommerferien' ], // Th
+        [ '2024-09-06 09:44', '2024-09-06 09:45', false, 'Sommerferien' ], // Fr
         /* Regular days after summer holidays */
         [ '2024-09-09 07:00', '2024-09-09 07:01' ], // Mo
         [ '2024-09-10 07:00', '2024-09-10 07:01' ], // Tu
@@ -4862,9 +4886,9 @@ test.addTest('Points in time, extrem example useful for ComplexAlarm', [
         [ '2024-10-24 05:45', '2024-10-24 05:46' ], // Th
         [ '2024-10-25 07:05', '2024-10-25 07:06' ], // Fr, KW43
         /* Herbstferien BW 2024: 2024-10-28 to 2024-10-30 */
-        [ '2024-10-28 10:04', '2024-10-28 10:05', false, 'Herbstferien' ], // Mo
+        [ '2024-10-28 10:03', '2024-10-28 10:04', false, 'Herbstferien' ], // Mo
         [ '2024-10-29 10:05', '2024-10-29 10:06', false, 'Herbstferien' ], // Tu
-        [ '2024-10-30 10:07', '2024-10-30 10:08', false, 'Herbstferien' ], // We
+        [ '2024-10-30 10:06', '2024-10-30 10:07', false, 'Herbstferien' ], // We
         // 2024-10-31: Reformationstag (PH), no alarm
     ], 1000 * 60 * 92, 0, false, nominatim_default, 'not only test', 1);
 
@@ -4896,33 +4920,33 @@ test.addTest('Points in time, extrem example useful for ComplexAlarm', [
         [ '2024-07-23 07:00', '2024-07-23 07:01' ], // Tu
         [ '2024-07-24 07:00', '2024-07-24 07:01' ], // We
         /* Summer holidays: 2024-07-25 to 2024-09-07 */
-        [ '2024-07-25 08:43', '2024-07-25 08:44', false, 'Sommerferien' ], // Th
-        [ '2024-07-26 08:45', '2024-07-26 08:46', false, 'Sommerferien' ], // Fr
-        [ '2024-07-29 08:49', '2024-07-29 08:50', false, 'Sommerferien' ], // Mo
-        [ '2024-07-30 08:50', '2024-07-30 08:51', false, 'Sommerferien' ], // Tu
-        [ '2024-07-31 08:51', '2024-07-31 08:52', false, 'Sommerferien' ], // We
-        [ '2024-08-01 08:53', '2024-08-01 08:54', false, 'Sommerferien' ], // Th
-        [ '2024-08-02 08:54', '2024-08-02 08:55', false, 'Sommerferien' ], // Fr
-        [ '2024-08-05 08:58', '2024-08-05 08:59', false, 'Sommerferien' ], // Mo
-        [ '2024-08-06 09:00', '2024-08-06 09:01', false, 'Sommerferien' ], // Tu
-        [ '2024-08-07 09:01', '2024-08-07 09:02', false, 'Sommerferien' ], // We
-        [ '2024-08-08 09:03', '2024-08-08 09:04', false, 'Sommerferien' ], // Th
-        [ '2024-08-09 09:04', '2024-08-09 09:05', false, 'Sommerferien' ], // Fr
-        [ '2024-08-12 09:08', '2024-08-12 09:09', false, 'Sommerferien' ], // Mo
-        [ '2024-08-13 09:10', '2024-08-13 09:11', false, 'Sommerferien' ], // Tu
-        [ '2024-08-14 09:11', '2024-08-14 09:12', false, 'Sommerferien' ], // We
-        [ '2024-08-15 09:13', '2024-08-15 09:14', false, 'Sommerferien' ], // Th
-        [ '2024-08-16 09:14', '2024-08-16 09:15', false, 'Sommerferien' ], // Fr
-        [ '2024-08-19 09:19', '2024-08-19 09:20', false, 'Sommerferien' ], // Mo
-        [ '2024-08-20 09:20', '2024-08-20 09:21', false, 'Sommerferien' ], // Tu
-        [ '2024-08-21 09:22', '2024-08-21 09:23', false, 'Sommerferien' ], // We
-        [ '2024-08-22 09:23', '2024-08-22 09:24', false, 'Sommerferien' ], // Th
-        [ '2024-08-23 09:25', '2024-08-23 09:26', false, 'Sommerferien' ], // Fr
-        [ '2024-08-26 09:29', '2024-08-26 09:30', false, 'Sommerferien' ], // Mo
-        [ '2024-08-27 09:30', '2024-08-27 09:31', false, 'Sommerferien' ], // Tu
-        [ '2024-08-28 09:32', '2024-08-28 09:33', false, 'Sommerferien' ], // We
-        [ '2024-08-29 09:33', '2024-08-29 09:34', false, 'Sommerferien' ], // Th
-        [ '2024-08-30 09:35', '2024-08-30 09:36', false, 'Sommerferien' ], // Fr
+        [ '2024-07-25 08:42', '2024-07-25 08:43', false, 'Sommerferien' ], // Th
+        [ '2024-07-26 08:44', '2024-07-26 08:45', false, 'Sommerferien' ], // Fr
+        [ '2024-07-29 08:48', '2024-07-29 08:49', false, 'Sommerferien' ], // Mo
+        [ '2024-07-30 08:49', '2024-07-30 08:50', false, 'Sommerferien' ], // Tu
+        [ '2024-07-31 08:50', '2024-07-31 08:51', false, 'Sommerferien' ], // We
+        [ '2024-08-01 08:52', '2024-08-01 08:53', false, 'Sommerferien' ], // Th
+        [ '2024-08-02 08:53', '2024-08-02 08:54', false, 'Sommerferien' ], // Fr
+        [ '2024-08-05 08:57', '2024-08-05 08:58', false, 'Sommerferien' ], // Mo
+        [ '2024-08-06 08:59', '2024-08-06 09:00', false, 'Sommerferien' ], // Tu
+        [ '2024-08-07 09:00', '2024-08-07 09:01', false, 'Sommerferien' ], // We
+        [ '2024-08-08 09:02', '2024-08-08 09:03', false, 'Sommerferien' ], // Th
+        [ '2024-08-09 09:03', '2024-08-09 09:04', false, 'Sommerferien' ], // Fr
+        [ '2024-08-12 09:07', '2024-08-12 09:08', false, 'Sommerferien' ], // Mo
+        [ '2024-08-13 09:09', '2024-08-13 09:10', false, 'Sommerferien' ], // Tu
+        [ '2024-08-14 09:10', '2024-08-14 09:11', false, 'Sommerferien' ], // We
+        [ '2024-08-15 09:12', '2024-08-15 09:13', false, 'Sommerferien' ], // Th
+        [ '2024-08-16 09:13', '2024-08-16 09:14', false, 'Sommerferien' ], // Fr
+        [ '2024-08-19 09:17', '2024-08-19 09:18', false, 'Sommerferien' ], // Mo
+        [ '2024-08-20 09:19', '2024-08-20 09:20', false, 'Sommerferien' ], // Tu
+        [ '2024-08-21 09:20', '2024-08-21 09:21', false, 'Sommerferien' ], // We
+        [ '2024-08-22 09:22', '2024-08-22 09:23', false, 'Sommerferien' ], // Th
+        [ '2024-08-23 09:23', '2024-08-23 09:24', false, 'Sommerferien' ], // Fr
+        [ '2024-08-26 09:28', '2024-08-26 09:29', false, 'Sommerferien' ], // Mo
+        [ '2024-08-27 09:29', '2024-08-27 09:30', false, 'Sommerferien' ], // Tu
+        [ '2024-08-28 09:31', '2024-08-28 09:32', false, 'Sommerferien' ], // We
+        [ '2024-08-29 09:32', '2024-08-29 09:33', false, 'Sommerferien' ], // Th
+        [ '2024-08-30 09:34', '2024-08-30 09:35', false, 'Sommerferien' ], // Fr
         /* Sep 02-06: My vacations (off) */
         /* Regular days */
         [ '2024-09-09 07:00', '2024-09-09 07:01' ], // Mo
@@ -4960,9 +4984,9 @@ test.addTest('Points in time, extrem example useful for ComplexAlarm', [
         [ '2024-10-24 05:45', '2024-10-24 05:46' ], // Th
         [ '2024-10-25 07:05', '2024-10-25 07:06' ], // Fr, KW43
         /* Autumn holidays: 2024-10-28 to 2024-10-30 */
-        [ '2024-10-28 10:04', '2024-10-28 10:05', false, 'Herbstferien' ], // Mo
+        [ '2024-10-28 10:03', '2024-10-28 10:04', false, 'Herbstferien' ], // Mo
         [ '2024-10-29 10:05', '2024-10-29 10:06', false, 'Herbstferien' ], // Tu
-        [ '2024-10-30 10:07', '2024-10-30 10:08', false, 'Herbstferien' ], // We
+        [ '2024-10-30 10:06', '2024-10-30 10:07', false, 'Herbstferien' ], // We
         // 2024-10-31: Reformationstag (PH), no alarm
     ], 1000 * 60 * 87, 0, false, nominatim_default, 'not only test', 1);
 
@@ -5011,11 +5035,11 @@ test.addTest('Points in time, period times time wrap', [
 test.addTest('Points in time, period times with variable times', [
         'Mo-Fr sunrise-(sunset-02:00)/120',
     ], '2012-10-01 0:00', '2012-10-02 0:00', [
-        [ '2012-10-01 07:22', '2012-10-01 07:23' ],
-        [ '2012-10-01 09:22', '2012-10-01 09:23' ],
-        [ '2012-10-01 11:22', '2012-10-01 11:23' ],
-        [ '2012-10-01 13:22', '2012-10-01 13:23' ],
-        [ '2012-10-01 15:22', '2012-10-01 15:23' ],
+        [ '2012-10-01 07:20', '2012-10-01 07:21' ],
+        [ '2012-10-01 09:20', '2012-10-01 09:21' ],
+        [ '2012-10-01 11:20', '2012-10-01 11:21' ],
+        [ '2012-10-01 13:20', '2012-10-01 13:21' ],
+        [ '2012-10-01 15:20', '2012-10-01 15:21' ],
     ], 1000 * 60 * 5, 0, false, nominatim_default, 'not last test', 1);
 
 // FIXME
