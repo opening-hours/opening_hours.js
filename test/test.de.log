@@ -1367,14 +1367,8 @@ With [34m[1mwarnings[22m[39m:
 "Additional comments for unknown" for "Sa 10:00-12:00 unknown "Maybe open. Call us. (testing special tokens in comment: ; ;; ' || | test end)"": [32m[1mPASSED[22m[39m
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "comment" getauscht.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us." <--- (Der Selektor "comment" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
 "Date overwriting with additional comments for unknown " for "Mo-Fr 10:00-20:00 unknown "Maybe"; "Maybe open. Call us." We 10:00-16:00": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We <--- (Der Selektor "weekday" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "comment" getauscht.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "weekday" getauscht.)
-	*Mo-Fr 10:00-20:00 unknown "Maybe"; We 10:00-16:00 "Maybe open. Call us." <--- (Der Selektor "comment" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
+"Date overwriting with reordered selectors (overwrite semantics)" for "Mo-Fr 10:00-20:00 open; We 10:00-16:00 open": [32m[1mPASSED[22m[39m
 "Additional comments with time ranges spanning midnight" for "22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us." <--- (Diese Regel überschreibt Teile der vorherigen Regel. Der Grund dafür ist, dass normale Regeln auf den ganzen Tag zutreffen und alle Definitionen von vorhergehenden Regeln für diesen Tag überschreiben. Du kannst diese Regel als additive Regel deklarieren indem du ein "," anstelle des üblichen ";" für diese Regel verwendest. Beachte das die Überschreibung auch gewünscht sein kann und in so einem Fall diese Warnung ignoriert werden kann.)
@@ -1778,6 +1772,19 @@ With [34m[1mwarnings[22m[39m:
 "Time intervals (not specified/documented use of colon, please avoid this)" for "00:00-24:00; Mo: 15:00-16:00 off": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*00:00-24:00; Mo:  <--- (Du hast das optionale Symbol <separator_for_readability> an der falschen Stelle benutzt. Bitte lies die Syntax-Spezifikation um zu sehen, wo es verwendet werden kann, oder entferne es.)
+"Reordered selectors without comments still emit switched warnings" for "Mo-Fr 10:00-20:00 open; open We 10:00-16:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo-Fr 10:00-20:00 open; We <--- (Der Selektor "weekday" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "state" getauscht.)
+	*Mo-Fr 10:00-20:00 open; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "weekday" getauscht.)
+	*Mo-Fr 10:00-20:00 open; We 10:00-16:00 open <--- (Der Selektor "state" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
+"Reordered selectors without comments still emit switched warnings" for "Mo-Fr 10:00-20:00 open; We open 10:00-16:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo-Fr 10:00-20:00 open; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "state" getauscht.)
+	*Mo-Fr 10:00-20:00 open; We 10:00-16:00 open <--- (Der Selektor "state" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
+"Reordered selectors without comments still emit switched warnings" for "Mo-Fr 10:00-20:00 open; 10:00-16:00 We open": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo-Fr 10:00-20:00 open; We <--- (Der Selektor "weekday" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "time" getauscht.)
+	*Mo-Fr 10:00-20:00 open; We 10:00-16:00 <--- (Der Selektor "time" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "weekday" getauscht.)
 "Error tolerance: ambiguous words (listopad)" for "listopad 12:00-18:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*listopad <--- (Word "listopad" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name.)
@@ -2046,6 +2053,8 @@ With [34m[1mwarnings[22m[39m:
 "Structured warning: word error correction has stable type" for "Mon": [32m[1mPASSED[22m[39m
 "Structured warning: no warnings yields empty list" for "Mo 10:00-12:00": [32m[1mPASSED[22m[39m
 "Structured warning: multiple warnings keep distinct positions" for "Mo 10-12; Tu 14-16": [32m[1mPASSED[22m[39m
+"Structured warning: switched remains for reorder without comments" for "Mo-Fr 10:00-20:00 open; open We 10:00-16:00": [32m[1mPASSED[22m[39m
+"Structured warning: no switched for reordered comment selector" for "Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00": [32m[1mPASSED[22m[39m
 "Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; spring We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
 We off; Mo,Tu,Th-Su,PH; spring <--- (Saisonwörter sind mehrdeutig. Bitte verwende stattdessen explizite Datumsbereiche, z. B. Jun-Aug, Dec-Feb oder Jun 21-Sep 22.)
 
@@ -2613,6 +2622,12 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "Compare prettifyValue" for "Mo: 7-18; ": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "Jan 01,3,9,21,31": [32m[1mPASSED[22m[39m
 "Compare prettifyValue" for "week 01-05/2,9": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should not reorder additional off rule (#596)" for "Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, off 12:00-13:00, Su 14:00-17:00": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Monday-Saturday 8-9, Sunday 8-8": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Mo-Fr 10:00-19:00; Sa 16-16": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should keep bare time ranges unchanged (#596)" for "Su 8-8, Mo Closed, Tu-Th 12-8, F-Sa 12-9": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should not reorder comments across state (#596)" for "Mo-Fr 11:00-14:00 "Mittagessen" open": [32m[1mPASSED[22m[39m
+"Regression: prettifyValue should preserve malformed time selectors (#596)" for "Tu-We 09:00-12:30,14:00-18:00; Th 09:00-12:30,:15:00-18:00, Fr 09:00-12:30, 14:00-18:00; Sa 09:00-12:30,13:30-16:30": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "open": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "24/7": [32m[1mPASSED[22m[39m
 "Test isEqualTo function: Full range" for "2000-2100": [32m[1mPASSED[22m[39m
@@ -2631,7 +2646,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-999/999 tests passed. 0 did not pass.
+1011/1011 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

@@ -3850,6 +3850,24 @@ test.addTest('Date overwriting with additional comments for unknown ', [
         [ '2012-10-05 10:00', '2012-10-05 20:00', true, 'Maybe' ],
     ], 0, 1000 * 60 * 60 * (4 * 10 + 6), true, {}, 'not only test');
 
+test.addTest('Date overwriting with reordered selectors (overwrite semantics)', [
+        'Mo-Fr 10:00-20:00 open; We 10:00-16:00 open',
+    ], '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-01 10:00', '2012-10-01 20:00' ],
+        [ '2012-10-02 10:00', '2012-10-02 20:00' ],
+        [ '2012-10-03 10:00', '2012-10-03 16:00' ],
+        [ '2012-10-04 10:00', '2012-10-04 20:00' ],
+        [ '2012-10-05 10:00', '2012-10-05 20:00' ],
+    ], 1000 * 60 * 60 * 46, 0, true, {}, 'not only test');
+
+// Reordered (non-canonical) variants still emit switched warnings. The
+// canonical form above is unaffected because no reordering occurs there.
+test.addShouldWarn('Reordered selectors without comments still emit switched warnings', [
+        'Mo-Fr 10:00-20:00 open; open We 10:00-16:00',
+        'Mo-Fr 10:00-20:00 open; We open 10:00-16:00',
+        'Mo-Fr 10:00-20:00 open; 10:00-16:00 We open',
+    ], {}, 'not only test');
+
 test.addTest('Additional comments with time ranges spanning midnight', [
         '22:00-26:00; We 12:00-14:00 unknown "Maybe open. Call us."',
     ], '2012-10-01 0:00', '2012-10-08 0:00', [
@@ -5331,6 +5349,16 @@ test.addStructuredWarnings('Structured warning: multiple warnings keep distinct 
         'Mo 10-12; Tu 14-16',
         [ 'without_minutes', 'without_minutes' ],
         nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: switched remains for reorder without comments',
+    'Mo-Fr 10:00-20:00 open; open We 10:00-16:00',
+    [ 'switched', 'switched', 'switched' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no switched for reordered comment selector',
+    'Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
 // }}}
 
 // values which should fail during parsing {{{
@@ -5666,6 +5694,30 @@ test.addPrettifyValue('Compare prettifyValue', [
 test.addPrettifyValue('Compare prettifyValue', [
         'week 01-05/2,9',
     ], 'all', 'week 01-05/2,09', 'not only test');
+
+test.addPrettifyValue('Regression: prettifyValue should not reorder additional off rule (#596)', [
+        'Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, off 12:00-13:00, Su 14:00-17:00',
+    ], 'all', 'Nov-Feb Mo-Sa 10:00-16:00, Su 13:00-16:00; Mar-Oct Mo-Sa 10:00-17:00, closed 12:00-13:00, Su 14:00-17:00');
+
+test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges unchanged (#596)', [
+        'Monday-Saturday 8-9, Sunday 8-8',
+    ], 'all', 'Mo-Sa 08:00-09:00, Su 8-8');
+
+test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges unchanged (#596)', [
+        'Mo-Fr 10:00-19:00; Sa 16-16',
+    ], 'all', 'Mo-Fr 10:00-19:00; Sa 16-16');
+
+test.addPrettifyValue('Regression: prettifyValue should keep bare time ranges unchanged (#596)', [
+        'Su 8-8, Mo Closed, Tu-Th 12-8, F-Sa 12-9',
+    ], 'all', 'Su 8-8, Mo closed, Tu-Th 12:00-08:00, Fr-Sa 12:00-09:00');
+
+test.addPrettifyValue('Regression: prettifyValue should not reorder comments across state (#596)', [
+        'Mo-Fr 11:00-14:00 "Mittagessen" open',
+    ], 'all', 'Mo-Fr 11:00-14:00 "Mittagessen" open');
+
+test.addPrettifyValue('Regression: prettifyValue should preserve malformed time selectors (#596)', [
+        'Tu-We 09:00-12:30,14:00-18:00; Th 09:00-12:30,:15:00-18:00, Fr 09:00-12:30, 14:00-18:00; Sa 09:00-12:30,13:30-16:30',
+    ], 'all', 'Tu-We 09:00-12:30,14:00-18:00; Th 09:00-12:30, :15:00-18:00, Fr 09:00-12:30,14:00-18:00; Sa 09:00-12:30,13:30-16:30');
 
 /* }}} */
 

@@ -265,6 +265,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
     let done_with_warnings = false; // The functions which returns warnings can be called multiple times.
     let done_with_selector_reordering = false;
     let done_with_selector_reordering_warnings = false;
+    // Rule indices for which prettify must keep the original selector order,
+    // because reordering time/state would change the meaning (#596).
+    const rules_without_selector_reordering = new Set();
     // eslint-disable-next-line no-var
     var tokens = tokenize(value); // TODO: Figure out why tests fail if this is const or let.
     // console.log(JSON.stringify(tokens, null, '    '));
@@ -1084,6 +1087,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         t('additional rule which evaluates to closed'),
                         new_tokens
                     ]);
+                    // Reordering would move time before state (e.g. "off") and
+                    // can change semantics for additional rules (#596).
+                    rules_without_selector_reordering.add(nrule);
                 }
                 /* }}} */
 
@@ -1349,8 +1355,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
             } while (selector_start_end_type[1] < new_tokens[nrule][0].length);
             // console.log('Prettified value: ' + JSON.stringify(prettified_group_value, null, '    '));
             const not_sorted_prettified_group_value = prettified_group_value.slice();
+            const contains_comment_selector = prettified_group_value.some(function (array) {
+                return array[0][2] === 'comment';
+            });
 
-            if (!done_with_selector_reordering) {
+            if (!done_with_selector_reordering && !rules_without_selector_reordering.has(nrule) && !contains_comment_selector) {
                 prettified_group_value.sort(
                     function (a, b) {
                         const selector_order = [ 'year', 'month', 'week', 'holiday', 'weekday', 'time', '24/7', 'state', 'comment'];
@@ -4070,6 +4079,16 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         let prettified_value = '';
         let at = selector_start;
+        // Preserve a leading malformed ':' before a time selector so the
+        // prettified form keeps the same meaning as the tolerated input.
+        if (selector_type === 'time'
+                && selector_start > 1
+                && matchTokens(tokens, selector_start - 1, 'timesep')
+                && matchTokens(tokens, selector_start, 'number')
+                && (matchTokens(tokens, selector_start - 2, 'rule separator')
+                    || matchTokens(tokens, selector_start - 2, ','))) {
+            prettified_value += ':';
+        }
         // console.log(selector_type);
         while (at <= selector_end) {
             // console.log('At: ' + at + ', token: ' + tokens[at]);
@@ -4100,7 +4119,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && at + 2 <= selector_end
                     && matchTokens(tokens, at, 'number')
                     && matchTokens(tokens, at+1, '-')
-                    && matchTokens(tokens, at+2, 'number')) {
+                    && matchTokens(tokens, at+2, 'number')
+                    && tokens[at][0] !== tokens[at+2][0]) {
                 prettified_value += (tokens[at][0] < 10 ?
                         (tokens[at][0] === 0 && conf.one_zero_if_hour_zero ? '' : '0')
                         : '') + tokens[at][0].toString();
