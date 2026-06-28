@@ -67,7 +67,7 @@
   },
   "dependencies": {
     "i18next": "^26.1.0",
-    "suncalc": "^1.9.0"
+    "suncalc": "^2.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.0.0",

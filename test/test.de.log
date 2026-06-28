@@ -375,7 +375,9 @@ With [34m[1mwarnings[22m[39m:
 	*daylight <--- (Bitte verwende "sunrise-sunset" anstelle von "daylight".)
 "Variable times calculation with coordinates" for "(sunrise+02:00)-sunset": [32m[1mPASSED[22m[39m
 "Variable times which moves over fix end time" for "sunrise-08:02": [32m[1mPASSED[22m[39m
+"Variable times boundary: first non-empty day" for "sunrise-08:02": [32m[1mPASSED[22m[39m
 "Variable times which moves over fix end time" for "sunrise-08:00": [32m[1mPASSED[22m[39m
+"Variable times boundary: zero-length is excluded" for "sunrise-08:00": [32m[1mPASSED[22m[39m
 "Variable times which moves over fix end time" for "sunrise-07:58": [32m[1mPASSED[22m[39m
 "Variable times which moves over fix end time" for "sunrise-06:00": [32m[1mPASSED[22m[39m
 "Variable times which moves over fix end time" for "sunrise-05:59": [32m[1mPASSED[22m[39m
@@ -2649,7 +2651,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1014/1014 tests passed. 0 did not pass.
+1016/1016 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
