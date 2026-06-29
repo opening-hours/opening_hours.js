@@ -2570,7 +2570,7 @@ test.addTest('Variable days: Argentina public holidays. 2022 (collision: Güemes
     [ '2022-07-10 00:00', '2022-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
     /* 2022-08-17 = Wednesday → previous Monday (2022-08-15). */
     [ '2022-08-15 00:00', '2022-08-16 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
-    [ '2022-10-12 00:00', '2022-10-13 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
+    [ '2022-10-10 00:00', '2022-10-11 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
     /* 2022-11-20 = Sunday → no shift. */
     [ '2022-11-20 00:00', '2022-11-21 00:00', false, 'Día de la Soberanía Nacional' ],
     [ '2022-12-07 00:00', '2022-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
