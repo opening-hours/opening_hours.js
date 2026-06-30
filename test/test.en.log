@@ -2051,6 +2051,19 @@ With [34m[1mwarnings[22m[39m:
 "Value not ideal (probably wrong). Should throw a warning. warnings_severity: 5, "tag_key": "opening_hours"" for "Mo-Fr 08:00-16:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo-Fr 08:00-16:00 <--- (There was no PH (public holiday) specified. This is not very explicit. Please either append a "PH off" rule if the amenity is closed on all public holidays or use something like "Sa,Su,PH 12:00-16:00" to say that on Saturdays, Sundays and on public holidays the amenity is open 12:00-16:00. Be careful with opening hours like "Fr-Sa 18:00-06:00" because "PH off" applies to 00:00-24:00. So "Fr-Sa 18:00-06:00; PH 18:00-06:00 off" is probably what you want. If the amenity is open everyday including public holidays then you can make this explicit by writing "Mo-Su,PH". If you are not certain try to find it out. If you can’t then do not add PH to the value and ignore this warning.)
+"Structured warning: ambiguous single-digit start and end hour" for "9:00-6:00": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit end hour only" for "11:00-6:00": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit end hour with leading-zero start" for "09:00-6:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning for unambiguous single-digit hours" for "Mo 8:00-22:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning for afternoon single-digit end hour" for "9:00-15:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning for unambiguous end hour >= 12" for "7:00-13:00": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit end hour with afternoon start" for "12:00-6:00": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit end hour with evening start" for "20:00-6:00": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit end hour with variable-time start" for "sunrise-9:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning for variable-time start with unambiguous end hour" for "sunrise-15:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning for variable-time start with leading-zero end" for "sunrise-09:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning when leading zeros are used" for "09:00-06:00": [32m[1mPASSED[22m[39m
+"Structured warning: no warning with leading zeros and weekdays" for "Tu-Sa 09:00-06:00": [32m[1mPASSED[22m[39m
 "Structured warning: time range without minutes" for "Mo 10-12": [32m[1mPASSED[22m[39m
 "Structured warning: word error correction has stable type" for "Mon": [32m[1mPASSED[22m[39m
 "Structured warning: no warnings yields empty list" for "Mo 10:00-12:00": [32m[1mPASSED[22m[39m
@@ -2641,7 +2654,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1006/1006 tests passed. 0 did not pass.
+1019/1019 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
