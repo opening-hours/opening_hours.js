@@ -29,105 +29,105 @@ PH:  # https://de.wikipedia.org/wiki/Feiertage_in_der_Schweiz, https://www.bj.ad
   - {'name': 'Restauration de la République', 'fixed_date': [12, 31], 'only_states': [Genf]}
 
 Aargau:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Aargau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ag
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Aargau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Appenzell Ausserrhoden:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell%20Ausserrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ar
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell+Ausserrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Appenzell Innerrhoden:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell%20Innerrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ai
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell+Innerrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Basel-Landschaft:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Landschaft&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: bl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Landschaft&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Basel-Stadt:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Stadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: bs
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Stadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Bern:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Bern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: be
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Bern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Freiburg:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: fr
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Genf:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Genf&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ge
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Genf&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Glarus:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Glarus&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: gl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Glarus&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Graubünden:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: gr
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Jura:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Jura&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ju
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Jura&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Luzern:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Luzern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: lu
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Luzern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Neuenburg:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Neuenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ne
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Neuenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Nidwalden:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Nidwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: nw
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Nidwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Obwalden:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Obwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ow
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Obwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Schaffhausen:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schaffhausen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: sh
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schaffhausen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Schwyz:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schwyz&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: sz
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schwyz&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Solothurn:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Solothurn&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: so
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Solothurn&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Sankt Gallen:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Sankt%20Gallen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: sg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Sankt%20Gallen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Tessin:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Tessin&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ti
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Tessin&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Thurgau:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Thurgau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: tg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Thurgau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Uri:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Uri&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: ur
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Uri&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Waadt:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Waadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: vd
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Waadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Wallis:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Wallis&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: vs
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Wallis&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Zug:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Zug&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: zg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Zug&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
 
 Zürich:
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Z%C3%BCrich&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'
   _state_code: zh
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Z%C3%BCrich&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm'

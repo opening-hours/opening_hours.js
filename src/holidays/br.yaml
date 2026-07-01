@@ -2,9 +2,12 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# https://pt.wikipedia.org/wiki/Feriados_no_Brasil
+# https://github.com/commenthol/date-holidays/blob/master/data/countries/BR.yaml
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-10&lon=-52&zoom=18&addressdetails=1&accept-language=pt,en'
 
-PH:  # https://pt.wikipedia.org/wiki/Feriados_no_Brasil
+PH:
   - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
   - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
   - {'name': 'Sexta-feira santa', 'variable_date': easter, 'offset': -2}
@@ -17,6 +20,8 @@ PH:  # https://pt.wikipedia.org/wiki/Feriados_no_Brasil
   - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
   - {'name': 'Natal', 'fixed_date': [12, 25]}
 Acre:
+  _state_code: ac
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Acre&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Dia do evangélico', 'fixed_date': [1, 23]}
@@ -35,6 +40,8 @@ Acre:
     - {'name': 'Assinatura do Tratado de Petrópolis', 'fixed_date': [11, 17]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Alagoas:
+  _state_code: al
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Alagoas&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -52,6 +59,8 @@ Alagoas:
     - {'name': 'Morte de Zumbi dos Palmares', 'fixed_date': [11, 20]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Amapá:
+  _state_code: ap
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Amap%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -67,7 +76,9 @@ Amapá:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Amazonas:
-  PH:  # https://pt.wikipedia.org/wiki/Feriados_no_Brasil#Feriados_estaduais
+  _state_code: am
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Amazonas&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
+  PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
     - {'name': 'Sexta-feira santa', 'variable_date': easter, 'offset': -2}
@@ -82,6 +93,8 @@ Amazonas:
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Bahia:
+  _state_code: ba
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Bahia&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -96,6 +109,8 @@ Bahia:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Ceará:
+  _state_code: ce
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Cear%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -109,7 +124,9 @@ Ceará:
     - {'name': 'Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Distrito Federal':
+Distrito Federal:
+  _state_code: df
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Distrito+Federal&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -123,7 +140,9 @@ Ceará:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia do evangélico', 'fixed_date': [11, 30]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Espírito Santo':
+Espírito Santo:
+  _state_code: es
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Esp%C3%ADrito+Santo&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -138,6 +157,8 @@ Ceará:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Goiás:
+  _state_code: go
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Goi%C3%A1s&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -151,6 +172,8 @@ Goiás:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Maranhão:
+  _state_code: ma
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Maranh%C3%A3o&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -164,8 +187,9 @@ Maranhão:
     - {'name': 'Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Mato Grosso':
-  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-10.4276788&lon=-52.0892082&zoom=18&addressdetails=1&accept-language=pt,en'
+Mato Grosso:
+  _state_code: mt
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Mato+Grosso&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -179,7 +203,9 @@ Maranhão:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Mato Grosso do Sul':
+Mato Grosso do Sul:
+  _state_code: ms
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Mato+Grosso+do+Sul&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -193,7 +219,9 @@ Maranhão:
     - {'name': 'Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Minas Gerais':
+Minas Gerais:
+  _state_code: mg
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Minas+Gerais&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -208,6 +236,8 @@ Maranhão:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Pará:
+  _state_code: pa
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Par%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -222,6 +252,8 @@ Pará:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Paraíba:
+  _state_code: pb
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Para%C3%ADba&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -237,6 +269,8 @@ Paraíba:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Paraná:
+  _state_code: pr
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Paran%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -251,6 +285,8 @@ Paraná:
     - {'name': 'Data magna do estado', 'fixed_date': [12, 19]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Pernambuco:
+  _state_code: pe
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Pernambuco&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -265,6 +301,8 @@ Pernambuco:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Piauí:
+  _state_code: pi
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Piau%C3%AD&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -278,7 +316,9 @@ Piauí:
     - {'name': 'Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Rio de Janeiro':
+Rio de Janeiro:
+  _state_code: rj
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rio+de+Janeiro&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -292,7 +332,9 @@ Piauí:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Rio Grande do Norte':
+Rio Grande do Norte:
+  _state_code: rn
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rio+Grande+do+Norte&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -307,7 +349,9 @@ Piauí:
     - {'name': 'Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Rio Grande do Sul':
+Rio Grande do Sul:
+  _state_code: rs
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rio+Grande+do+Sul&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -322,6 +366,8 @@ Piauí:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Rondônia:
+  _state_code: ro
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rond%C3%B4nia&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Data magna do estado', 'fixed_date': [1, 4]}
@@ -337,6 +383,8 @@ Rondônia:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Roraima:
+  _state_code: rr
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Roraima&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -350,7 +398,9 @@ Roraima:
     - {'name': 'Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'Santa Catarina':
+Santa Catarina:
+  _state_code: sc
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Santa+Catarina&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -365,7 +415,9 @@ Roraima:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Santa Catarina de Alexandria', 'fixed_date': [11, 25]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
-'São Paulo':
+São Paulo:
+  _state_code: sp
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=S%C3%A3o+Paulo&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -380,6 +432,8 @@ Roraima:
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Sergipe:
+  _state_code: se
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Sergipe&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
@@ -397,6 +451,8 @@ Sergipe:
     - {'name': 'Nossa Senhora da Conceição', 'fixed_date': [12, 8]}
     - {'name': 'Natal', 'fixed_date': [12, 25]}
 Tocantins:
+  _state_code: to
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Tocantins&zoom=18&addressdetails=1&limit=1&accept-language=pt,en'
   PH:
     - {'name': 'Ano Novo', 'fixed_date': [1, 1]}
     - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}

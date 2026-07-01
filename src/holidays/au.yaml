@@ -6,16 +6,18 @@ _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-35
 
 # https://en.wikipedia.org/wiki/Public_holidays_in_Australia
 # Partial holidays excluded
+# https://github.com/commenthol/date-holidays/blob/master/data/countries/AU.yaml
+
 PH:
   - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday'}
-  - {'name': 'Australia Day', 'fixed_date': [1, 26]}
+  - {'name': 'Australia Day', 'fixed_date': [1, 26], 'shift_rule': 'if saturday,sunday then next monday'}
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
   - {'name': 'Anzac Day', 'fixed_date': [4, 25]}
   - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
   - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'Australian Capital Territory':
+Australian Capital Territory:
   _state_code: act
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-35.2809&lon=149.1300&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -33,7 +35,7 @@ PH:
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'New South Wales':
+New South Wales:
   _state_code: nsw
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-33.8688&lon=151.2093&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -49,7 +51,7 @@ PH:
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'Northern Territory':
+Northern Territory:
   _state_code: nt
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-12.4634&lon=130.8456&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -66,7 +68,7 @@ PH:
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'shift_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'Queensland':
+Queensland:
   _state_code: qld
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-27.4698&lon=153.0251&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -82,7 +84,7 @@ PH:
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'South Australia':
+South Australia:
   _state_code: sa
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.9285&lon=138.6007&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -97,10 +99,9 @@ PH:
     - {'name': 'King''s Birthday', 'variable_date': firstJuneMonday, 'offset': 7}
     - {'name': 'Labour Day', 'variable_date': firstOctoberMonday}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'shift_rule': 'if saturday then next monday if sunday then next tuesday'}
-    - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Proclamation Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'Tasmania':
+Tasmania:
   _state_code: tas
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-42.8821&lon=147.3272&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -114,7 +115,7 @@ PH:
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'shift_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'Victoria':
+Victoria:
   _state_code: vic
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-37.8136&lon=144.9631&zoom=16&addressdetails=1&accept-language=en'
   PH:
@@ -132,7 +133,7 @@ PH:
     - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
 
-'Western Australia':
+Western Australia:
   _state_code: wa
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-31.9505&lon=115.8605&zoom=16&addressdetails=1&accept-language=en'
   PH:

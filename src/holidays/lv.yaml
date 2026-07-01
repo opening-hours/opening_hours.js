@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# https://github.com/commenthol/date-holidays/blob/master/data/countries/LV.yaml
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=56.9460&lon=24.1059&zoom=18&addressdetails=1&accept-language=lv,en'
 
 PH:
@@ -10,10 +12,10 @@ PH:
   - {'name': 'Lieldienas', 'variable_date': easter}
   - {'name': 'Otrās Lieldienas', 'variable_date': easter, 'offset': 1}
   - {'name': 'Darba svētki', 'fixed_date': [5, 1]}
-  - {'name': 'Latvijas Republikas Neatkarības atjaunošanas diena', 'fixed_date': [5, 4]}
+  - {'name': 'Latvijas Republikas Neatkarības atjaunošanas diena', 'fixed_date': [5, 4], 'substitute_rule': 'if saturday,sunday then next monday'}
   - {'name': 'Līgo Diena', 'fixed_date': [6, 23]}
   - {'name': 'Jāņi', 'fixed_date': [6, 24]}
-  - {'name': 'Latvijas Republikas proklamēšanas diena', 'fixed_date': [11, 18]}
+  - {'name': 'Latvijas Republikas proklamēšanas diena', 'fixed_date': [11, 18], 'substitute_rule': 'if saturday,sunday then next monday'}
   - {'name': 'Ziemassvētku vakars', 'fixed_date': [12, 24]}
   - {'name': 'Ziemassvētki', 'fixed_date': [12, 25]}
   - {'name': 'Otrie Ziemassvētki', 'fixed_date': [12, 26]}

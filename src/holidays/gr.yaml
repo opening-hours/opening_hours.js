@@ -2,20 +2,22 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Greece&&zoom=18&addressdetails=1&limit=1&accept-language=el,en'
+_nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Greece&zoom=18&addressdetails=1&limit=1&accept-language=el,en'
 
 # https://el.wikipedia.org/wiki/%CE%95%CF%80%CE%AF%CF%83%CE%B7%CE%BC%CE%B5%CF%82_%CE%B1%CF%81%CE%B3%CE%AF%CE%B5%CF%82_%CF%83%CF%84%CE%B7%CE%BD_%CE%95%CE%BB%CE%BB%CE%AC%CE%B4%CE%B1
 
 PH:
   - {'name': 'Πρωτοχρονιά', 'fixed_date': [1, 1]}
   - {'name': 'Θεοφάνια', 'fixed_date': [1, 6]}
+  - {'name': '25η Μαρτίου', 'fixed_date': [3, 25]}
   - {'name': 'Καθαρά Δευτέρα', 'variable_date': orthodox easter, 'offset': -48}
-  - {'name': '25η Μαρτίου', 'fixed_date': [03, 25]}
   - {'name': 'Μεγάλη Παρασκευή', 'variable_date': orthodox easter, 'offset': -2}
   - {'name': 'Πάσχα', 'variable_date': orthodox easter}
   - {'name': 'Δευτέρα του Πάσχα', 'variable_date': orthodox easter, 'offset': 1}
+  - {'name': 'Αγίου Πνεύματος', 'variable_date': orthodox easter, 'offset': 50}
   - {'name': 'Εργατική Πρωτομαγιά', 'fixed_date': [5, 1]}
   - {'name': 'Κοίμηση της Θεοτόκου', 'fixed_date': [8, 15]}
   - {'name': 'Επέτειος του Όχι', 'fixed_date': [10, 28]}
   - {'name': 'Χριστούγεννα', 'fixed_date': [12, 25]}
-  - {'name': '2η μέρα Χριστουγέννων', 'fixed_date': [12, 26]}
+  # Official holiday name according to KEPEA: "Η Δεύτερη μέρα των Χριστουγέννων"
+  - {'name': 'Δεύτερη μέρα των Χριστουγέννων', 'fixed_date': [12, 26]}
