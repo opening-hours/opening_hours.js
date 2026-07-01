@@ -5351,6 +5351,71 @@ test.addShouldWarn('Value not ideal (probably wrong). Should throw a warning. wa
 test.addShouldWarn('Value not ideal (probably wrong). Should throw a warning. warnings_severity: 5, "tag_key": "opening_hours"', [
         'Mo-Fr 08:00-16:00',
     ], nominatim_default, 'not only test', { 'warnings_severity': 5, 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: ambiguous single-digit start and end hour',
+    '9:00-6:00',
+    [ 'ambiguous_single_digit_hour', 'ambiguous_single_digit_hour' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: ambiguous single-digit end hour only',
+    '11:00-6:00',
+    [ 'ambiguous_single_digit_hour' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: ambiguous single-digit end hour with leading-zero start',
+    '09:00-6:00',
+    [ 'ambiguous_single_digit_hour' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning for unambiguous single-digit hours',
+    'Mo 8:00-22:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning for afternoon single-digit end hour',
+    '9:00-15:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning for unambiguous end hour >= 12',
+    '7:00-13:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: ambiguous single-digit end hour with afternoon start',
+    '12:00-6:00',
+    [ 'ambiguous_single_digit_hour' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: ambiguous single-digit end hour with evening start',
+    '20:00-6:00',
+    [ 'ambiguous_single_digit_hour' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: ambiguous single-digit end hour with variable-time start',
+    'sunrise-9:00',
+    [ 'ambiguous_single_digit_hour' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning for variable-time start with unambiguous end hour',
+    'sunrise-15:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning for variable-time start with leading-zero end',
+    'sunrise-09:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning when leading zeros are used',
+    '09:00-06:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: no warning with leading zeros and weekdays',
+    'Tu-Sa 09:00-06:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
 // }}}
 
 // getStructuredWarnings: machine-readable warning objects {{{

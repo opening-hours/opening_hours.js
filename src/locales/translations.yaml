@@ -77,6 +77,7 @@ en:
     'outside current day': 'Time range starts outside of the current day'
     'two midnights': 'Time spanning more than two midnights not supported'
     'without minutes': 'Time range without minutes specified. Not very explicit! Please use this syntax instead "{{syntax}}".'
+    'ambiguous single digit hour': 'Single-digit hour "{{hour}}" without leading zero - could mean {{hour}} (in the morning) or {{hour_pm}} (after midday). Add a leading zero like "0{{hour}}" or change it to "{{hour_pm}}" to be explicit.'
     'outside day': 'Time range starts outside of the current day'
     'zero calculation': 'Adding zero in a variable time calculation does not change the variable time. Please omit the calculation (example: "sunrise-(sunset-00:00)").'
     'calculation syntax': 'Calculation with variable time is not in the right syntax'
@@ -217,6 +218,7 @@ de:
     outside current day: "Zeitspanne beginnt außerhalb des aktuellen Tages"
     two midnights: "Zeitspanne welche mehrmals Mitternacht beinhaltet wird nicht unterstützt"
     without minutes: "Zeitspanne ohne Minutenangabe angegeben. Das ist nicht sehr eindeutig! Bitte verwende stattdessen folgende Syntax \"{{syntax}}\"."
+    ambiguous single digit hour: 'Einstellige Stunde "{{hour}}" ohne führende Null - könnte {{hour}} Uhr (morgens) oder {{hour_pm}} Uhr (nachmittags) bedeuten. Führende Null ergänzen, z.B. "0{{hour}}", oder auf "{{hour_pm}}" ändern, um dies eindeutig zu machen.'
     outside day: "Die Zeitspanne beginnt außerhalb des aktuellen Tages"
     zero calculation: "Das Hinzufügen von 0 in einer variablen Zeitberechnung ändert die variable Zeit nicht. Bitte entferne die Zeitberechnung (Beispiel: \"sunrise-(sunset-00:00)\")."
     calculation syntax: "Berechnung mit variabler Zeit hat nicht die korrekte Syntax"
@@ -380,6 +382,7 @@ fr:
     outside current day: "La plage horaire commence en dehors du jour actuel."
     two midnights: "La plage horaire couvrant plusieurs fois minuit n'est pas prise en charge."
     without minutes: "Plage horaire spécifiée sans minutes. Ce n'est pas très précis ! Veuillez utiliser la syntaxe \"{{syntax}}\" à la place."
+    ambiguous single digit hour: 'Heure à un seul chiffre "{{hour}}" sans zéro initial - cela peut signifier {{hour}} h (le matin) ou {{hour_pm}} h (l''après-midi). Ajoutez un zéro initial, par exemple "0{{hour}}", ou remplacez-la par "{{hour_pm}}" pour lever l''ambiguïté.'
     outside day: "La plage horaire commence en dehors du jour actuel."
     zero calculation: "L'ajout de 0 dans un calcul de temps variable ne modifie pas le temps variable. Veuillez supprimer le calcul de temps (exemple : \"sunrise-(sunset-00:00)\")."
     calculation syntax: "Le calcul avec un temps variable n'a pas la syntaxe correcte."

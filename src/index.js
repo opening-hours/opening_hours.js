@@ -736,7 +736,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                 'interpreted_as_year', t('interpreted as year', {number:  Number(tmp[1])})
                         ]);
                 } else {
-                    curr_rule_tokens.push([Number(tmp[1]), 'number', value.length ]);
+                    const num_token = [Number(tmp[1]), 'number', value.length];
+                    // Store whether the original numeric lexeme had a single digit (e.g. "9").
+                    // Only consulted at hour positions, where a single digit (0-9) is ambiguous.
+                    num_token.single_digit_lexeme = tmp[1].length === 1;
+                    curr_rule_tokens.push(num_token);
                 }
 
                 value = value.substr(tmp[1].length + (typeof tmp[2] === 'string' ? tmp[2].length : 0));
@@ -1835,6 +1839,30 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     } else {
                         if (has_normal_time[1]) {
                             minutes_to = getMinutesByHoursMinutes(tokens, nrule, at_end_time);
+                            const from_hour = tokens[at][0];
+                            const to_hour = tokens[at_end_time][0];
+                            // to_hour < 12: am/pm correction can raise the value of a single-digit
+                            // lexeme to >= 12 (e.g. "8pm" -> 20), which is not ambiguous.
+                            const ambiguous_end_hour = tokens[at_end_time].single_digit_lexeme === true && to_hour < 12;
+
+                            // The end hour is ambiguous regardless of the start type
+                            // (e.g. "12:00-6:00" or "sunrise-6:00").
+                            if (!done_with_warnings && ambiguous_end_hour) {
+                                const ambiguous_hours = [];
+                                // The start hour only adds ambiguity when it is a single-digit
+                                // clock time (not a variable time) and the end hour is ambiguous too.
+                                if (tokens[at].single_digit_lexeme === true && from_hour < 12) {
+                                    ambiguous_hours.push([at, from_hour]);
+                                }
+                                ambiguous_hours.push([at_end_time, to_hour]);
+
+                                for (const [token_index, hour] of ambiguous_hours) {
+                                    parsing_warnings.push([nrule, token_index, 'ambiguous_single_digit_hour', t('ambiguous single digit hour', {
+                                        'hour':    hour,
+                                        'hour_pm': hour + 12,
+                                    })]);
+                                }
+                            }
                         } else {
                             timevar_string[1] = tokens[at_end_time+has_time_var_calc[1]][0];
                             minutes_to = word_value_replacement[timevar_string[1]];
