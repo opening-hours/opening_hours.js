@@ -240,13 +240,17 @@ export const OpeningHoursTable = {
         return `<table class="opening-hours-table">${headerRow}${rows}</table>`;
     },
 
-    drawTableAndComments (oh, it, evalDate) {
+    drawTableAndComments (oh, it, evalDate, warnings = [], publicHolidayContext = {}) {
         const prevdate          = it.getDate();
         const unknown           = it.getUnknown();
         const currentState      = it.getState();
         const state_string_past = it.getStateString(true);
         const comment           = it.getComment();
         const has_next_change   = it.advance();
+        const hasPublicHolidayWarning = warnings.some(
+            warning => warning.type === 'public_holiday');
+        const hasPublicHolidayWarningForDate = publicHolidayContext.isHoliday
+            && hasPublicHolidayWarning;
 
         let output = '';
 
@@ -255,6 +259,9 @@ export const OpeningHoursTable = {
             i18next.t(`texts.${state_string_past} ${has_next_change ? 'now' : 'always'}`)}`;
         if (unknown) {
             output += i18next.t('texts.depends on', {comment: `"${comment}"`});
+        }
+        if (hasPublicHolidayWarningForDate) {
+            output += `<span class="public-holiday-status">${i18next.t('texts.public holiday status context')}</span>`;
         }
         output += '</p>';
 

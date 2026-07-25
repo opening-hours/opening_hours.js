@@ -1142,6 +1142,13 @@ button:active {
     opacity: 0.85;
 }
 
+.public-holiday-status {
+    display: block;
+    margin-top: 0.7rem;
+    color: var(--warning-text);
+    font-size: 0.9rem;
+}
+
 /* Next change highlight */
 .status-info.next-change {
     margin-top: 0.8rem;

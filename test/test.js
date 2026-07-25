@@ -5460,6 +5460,18 @@ test.addStructuredWarnings('Structured warning: no switched for reordered commen
     'Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00',
     [],
     nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Public holiday context identifies evaluated holiday',
+    'Mo-Fr 08:00-20:00',
+    [ 'public_holiday' ],
+    { address: { country_code: 'de' } }, 'not only test',
+    { 'tag_key': 'opening_hours', 'warnings_severity': 7 }, new Date(2026, 11, 26, 12), true);
+
+test.addStructuredWarnings('Public holiday context identifies non-holiday',
+    'Mo-Fr 08:00-20:00',
+    [ 'public_holiday' ],
+    { address: { country_code: 'de' } }, 'not only test',
+    { 'tag_key': 'opening_hours', 'warnings_severity': 7 }, new Date(2026, 11, 24, 12), false);
 // }}}
 
 // values which should fail during parsing {{{
@@ -6055,13 +6067,16 @@ function opening_hours_test() {
         const expected_types = test_data_object[2];
         const nominatim_data = test_data_object[3];
         const oh_mode        = test_data_object[4];
+        const date           = test_data_object[5];
+        const expected_is_holiday = test_data_object[6];
 
-        let warnings, formatted, oh;
+        let warnings, formatted, oh, public_holiday_context;
         let crashed = false;
         try {
             oh = new opening_hours(value, nominatim_data, oh_mode);
             warnings = oh.getStructuredWarnings();
             formatted = oh.getWarnings();
+            public_holiday_context = oh.getPublicHolidayContext(date);
         } catch (err) {
             crashed = err;
         }
@@ -6072,6 +6087,7 @@ function opening_hours_test() {
         let shape_ok = false;
         let types_ok = false;
         let derives_ok = false;
+        let public_holiday_context_ok = true;
         if (!crashed && Array.isArray(warnings)) {
             shape_ok = warnings.every(function(w) {
                 return w !== null
@@ -6096,9 +6112,12 @@ function opening_hours_test() {
                         : w.value.substring(0, w.position) + ' <--- (' + w.message + ')';
                     return derived === formatted[i];
                 });
+            if (typeof expected_is_holiday !== 'undefined') {
+                public_holiday_context_ok = public_holiday_context.isHoliday === expected_is_holiday;
+            }
         }
 
-        if (shape_ok && types_ok && derives_ok) {
+        if (shape_ok && types_ok && derives_ok && public_holiday_context_ok) {
             str += c.passed('PASSED');
             passed = true;
             if (this.show_passing_tests) {
@@ -6114,6 +6133,10 @@ function opening_hours_test() {
                 console.warn('  got warnings:   ' + JSON.stringify(warnings));
                 if (!derives_ok) {
                     console.warn('  formatted:      ' + JSON.stringify(formatted));
+                }
+                if (!public_holiday_context_ok) {
+                    console.warn('  expected isHoliday: ' + expected_is_holiday);
+                    console.warn('  got context:       ' + JSON.stringify(public_holiday_context));
                 }
             }
         }
@@ -6571,7 +6594,7 @@ function opening_hours_test() {
     // }}}
 
     // add test to check getStructuredWarnings returns the expected warning types {{{
-    this.addStructuredWarnings = function(name, value, expected_types, nominatim_data, last, oh_mode) {
+    this.addStructuredWarnings = function(name, value, expected_types, nominatim_data, last, oh_mode, date, date_relevant) {
         if (this.last === true)  {
             return;
         }
@@ -6579,7 +6602,7 @@ function opening_hours_test() {
 
         oh_mode = get_oh_mode_parameter(oh_mode);
 
-        this.tests_structured_warnings.push([name, value, expected_types, nominatim_data, oh_mode]);
+        this.tests_structured_warnings.push([name, value, expected_types, nominatim_data, oh_mode, date, date_relevant]);
     };
     // }}}
 

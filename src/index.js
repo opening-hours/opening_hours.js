@@ -2877,6 +2877,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
+    function isPublicHoliday(date) {
+        try {
+            const applying_holidays = getMatchingHoliday('PH');
+            return createPublicHolidaySelector(applying_holidays, [0, 0])(date)[0];
+        } catch {
+            return false;
+        }
+    }
+
     /* Return closest holiday definition available. {{{
      *
      * First try to get the state, if missing get the country wide holidays
@@ -4401,15 +4410,21 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return it.getMatchingRule();
     };
 
+    this.getPublicHolidayContext = function(date) {
+        return {
+            isHoliday: isPublicHoliday(date),
+        };
+    };
+
     /* Not available for iterator API {{{ */
-    /* getWarnings: Get warnings, empty list if none {{{ */
+    /* getWarnings: Get warnings, empty list if none. {{{ */
     this.getWarnings = function() {
         const it = this.getIterator();
         return getWarnings(it);
     };
     /* }}} */
 
-    /* getStructuredWarnings: Get warnings as structured objects {{{
+    /* getStructuredWarnings: Get warnings as structured objects. {{{
      * Returns an array of objects for each warning, empty list if none. Each object
      * has a stable, machine-readable `type`, a human-readable `message`, the `value`
      * the warning refers to and the character `position` of the marker within it.
