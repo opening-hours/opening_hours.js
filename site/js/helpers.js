@@ -604,7 +604,8 @@ export async function Evaluate (offset = 0, reset) {
         showWarningsOrErrors.append(generateValueTooLongFragment(prettified, value));
 
         // Generate time table
-        showTimeTable.innerHTML = OpeningHoursTable.drawTableAndComments(oh, it, date);
+        const publicHolidayContext = oh.getPublicHolidayContext(date);
+        showTimeTable.innerHTML = OpeningHoursTable.drawTableAndComments(oh, it, date, warnings, publicHolidayContext);
     }
 
     updatePermalinkHref();

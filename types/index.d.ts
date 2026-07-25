@@ -40,6 +40,10 @@ declare module 'opening_hours' {
     position: number | null
   }
 
+  export interface public_holiday_context {
+    isHoliday: boolean
+  }
+
   export class opening_hours {
     constructor(
       value: string,
@@ -63,6 +67,7 @@ declare module 'opening_hours' {
     getComment(date?: Date): string | undefined
     getNextChange(date?: Date, maxdate?: Date): Date | undefined
     getMatchingRule(date?: Date): number | undefined
+    getPublicHolidayContext(date?: Date): public_holiday_context
     getOpenDuration(from: Date, to: Date): [number, number]
     getOpenIntervals(
       from: Date,

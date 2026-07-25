@@ -2067,6 +2067,8 @@ With [34m[1mwarnings[22m[39m:
 "Structured warning: multiple warnings keep distinct positions" for "Mo 10-12; Tu 14-16": [32m[1mPASSED[22m[39m
 "Structured warning: switched remains for reorder without comments" for "Mo-Fr 10:00-20:00 open; open We 10:00-16:00": [32m[1mPASSED[22m[39m
 "Structured warning: no switched for reordered comment selector" for "Mo-Fr 10:00-20:00 unknown "Maybe"; We "Maybe open. Call us." 10:00-16:00": [32m[1mPASSED[22m[39m
+"Public holiday context identifies evaluated holiday" for "Mo-Fr 08:00-20:00": [32m[1mPASSED[22m[39m
+"Public holiday context identifies non-holiday" for "Mo-Fr 08:00-20:00": [32m[1mPASSED[22m[39m
 "Season words should fail with explicit date-range guidance" for "We off; Mo,Tu,Th-Su,PH; spring We 11:00-14:00,17:00+": [32m[1mPASSED[22m[39m
 We off; Mo,Tu,Th-Su,PH; spring <--- (Saisonwörter sind mehrdeutig. Bitte verwende stattdessen explizite Datumsbereiche, z. B. Jun-Aug, Dec-Feb oder Jun 21-Sep 22.)
 
@@ -2667,7 +2669,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1030/1030 tests passed. 0 did not pass.
+1032/1032 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

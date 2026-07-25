@@ -337,8 +337,15 @@ function getReadableState(startString, endString, oh, past) {
   - `message` is the human readable, localized description (without a position marker).
   - `value` is the string the `position` refers to. This is the input value, except for selector-reordering warnings where it is the prettified value.
   - `position` is the character offset into `value` that the warning points at (the spot the `<--- ` marker is placed at by `getWarnings()`), or `null` if it could not be determined.
+  The formatted string from `getWarnings()` is simply `` `${value.slice(0, position)} <--- (${message})` ``. Use the structured form when you want to filter, group or style warnings by category, or highlight the affected position, instead of displaying the formatted strings.
 
-  This lets you tell exactly which part of the input each warning refers to, even when there are several. The formatted string from `getWarnings()` is simply `` `${value.slice(0, position)} <--- (${message})` ``. Use this when you want to filter, group or style warnings by category, or highlight the affected position, instead of displaying the formatted strings.
+- `let public_holiday_context = oh.getPublicHolidayContext(date);`
+
+  Returns date-specific public-holiday information separately from warnings about the opening-hours value:
+
+  ```js
+  const isPublicHoliday = oh.getPublicHolidayContext(date).isHoliday;
+  ```
 
 - `let prettified = oh.prettifyValue(argument_hash);`
 
