@@ -119,8 +119,6 @@ list-dependency-versions: package.json
 
 taginfo.json: scripts/related_tags.txt scripts/gen_taginfo_json.js taginfo_template.json
 	scripts/gen_taginfo_json.js --key-file "$<" --template-file ./taginfo_template.json > "$@"
-	## Haxe implementation produces a different sorted JSON.
-	# haxe -main Gen_taginfo_json -lib mcli -neko Gen_taginfo_json.n && neko Gen_taginfo_json --key_file "$<" --template_file taginfo_template.json > "$@"
 
 ## docs {{{
 README.html: README.md
