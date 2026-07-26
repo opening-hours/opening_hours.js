@@ -87,7 +87,6 @@
     "cz-conventional-changelog": "^3.3.0",
     "doctoc": "^2.5.0",
     "eslint": "^10.7.0",
-    "full-icu": "^1.6.0",
     "glob": "^13.0.6",
     "globals": "^17.7.0",
     "husky": "^9.1.7",
@@ -103,7 +102,7 @@
     "yargs": "^18.0.0"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=14"
   },
   "config": {
     "commitizen": {
