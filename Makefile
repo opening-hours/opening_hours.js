@@ -52,9 +52,6 @@ MAKE_OPTIONS ?= --no-print-directory
 CHECK_LANG ?= 'en'
 ## }}}
 
-REPO_FILES ?= git ls-files -z | xargs --null -I '{}' find '{}' -type f -print0 | egrep -zZv '^(submodules|src/holidays/nominatim_cache).*$$'
-REPO_SOURCE_FILES ?= $(REPO_FILES) | egrep -zZv '(\.png)$$'
-
 .PHONY: default
 default: list
 
@@ -122,8 +119,6 @@ list-dependency-versions: package.json
 
 taginfo.json: scripts/related_tags.txt scripts/gen_taginfo_json.js taginfo_template.json
 	scripts/gen_taginfo_json.js --key-file "$<" --template-file ./taginfo_template.json > "$@"
-	## Haxe implementation produces a different sorted JSON.
-	# haxe -main Gen_taginfo_json -lib mcli -neko Gen_taginfo_json.n && neko Gen_taginfo_json --key_file "$<" --template_file taginfo_template.json > "$@"
 
 ## docs {{{
 README.html: README.md
@@ -171,9 +166,12 @@ check-fast: check-diff-opening_hours.js
 .PHONY: check-all-diff
 check-all-diff: check-all-lang-diff check-diff-opening_hours.js
 
+# Compare parser test results with the reference logs for each test language.
 .PHONY: check-all-lang-diff
 check-all-lang-diff:
-	@echo -n "en de" | xargs --delimiter ' ' --max-args=1 -I '{}' $(MAKE) $(MAKE_OPTIONS) "CHECK_LANG={}" check-diff-opening_hours.js
+	@for lang in en de; do \
+		$(MAKE) $(MAKE_OPTIONS) "CHECK_LANG=$$lang" check-diff-opening_hours.js || exit 1; \
+	done
 
 # .PHONY: check-opening_hours.js check-opening_hours.min.js
 ## Does not work
