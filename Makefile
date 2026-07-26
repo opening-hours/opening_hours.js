@@ -8,7 +8,6 @@ MAKEFLAGS += --no-builtin-rules
 
 ## Variables {{{
 NODEJS  ?= node
-NODE_ICU_DATA ?= node_modules/full-icu
 SEARCH  ?= opening_hours
 VERBOSE ?= 1
 RELEASE_OPENPGP_FINGERPRINT ?= C505B5C93B0DB3D338A1B6005FE92C12EE88E1F0
@@ -183,7 +182,7 @@ check-opening_hours.min.js:
 check-diff-%: build/% test/test.js
 	@rm -rf "test/test.$(CHECK_LANG).log"
 	@echo "Testing to reproduce test/test.$(CHECK_LANG).log using $<."
-	@NODE_ICU_DATA=$(NODE_ICU_DATA) FORCE_COLOR=true $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
+	@FORCE_COLOR=true $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
 	if git diff --quiet --exit-code HEAD -- "test/test.$(CHECK_LANG).log"; then \
 		echo "Test results for $< ($(CHECK_LANG)) are exactly the same as on development system. So far, so good ;)"; \
 	else \
@@ -192,7 +191,7 @@ check-diff-%: build/% test/test.js
 	@sh -c 'git --no-pager diff --exit-code -- "test/test.$(CHECK_LANG).log"'
 
 check-o%.js: build/o%.js test/test.js
-	NODE_ICU_DATA=$(NODE_ICU_DATA) $(NODEJS) test/test.js --library-file "$<"
+	$(NODEJS) test/test.js --library-file "$<"
 
 
 .PHONY: osm-tag-data-taginfo-check
