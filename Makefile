@@ -52,9 +52,6 @@ MAKE_OPTIONS ?= --no-print-directory
 CHECK_LANG ?= 'en'
 ## }}}
 
-REPO_FILES ?= git ls-files -z | xargs --null -I '{}' find '{}' -type f -print0 | egrep -zZv '^(submodules|src/holidays/nominatim_cache).*$$'
-REPO_SOURCE_FILES ?= $(REPO_FILES) | egrep -zZv '(\.png)$$'
-
 .PHONY: default
 default: list
 
