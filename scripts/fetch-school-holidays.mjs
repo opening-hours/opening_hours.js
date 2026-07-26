@@ -409,6 +409,7 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
             if (!merged[fullName]) {
               merged[fullName] = {};
             }
+            merged[fullName]._state_code ??= subdivision.toLowerCase();
             merged[fullName].SH = subdivisionData.SH;
           } else {
             // Fallback: if no full name available, use the short code
@@ -416,6 +417,7 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
             if (!merged[subdivision]) {
               merged[subdivision] = {};
             }
+            merged[subdivision]._state_code ??= subdivision.toLowerCase();
             merged[subdivision].SH = subdivisionData.SH;
           }
         }

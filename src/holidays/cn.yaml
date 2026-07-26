@@ -15,6 +15,7 @@ PH:  # https://zh.wikipedia.org/wiki/中华人民共和国节日与公众假期#
 
   - {'name': '国庆节休息日', 'fixed_date': [10, 3]}
 西藏自治区:
+  _state_code: xz
   _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&state=%E8%A5%BF%E8%97%8F%E8%87%AA%E6%B2%BB%E5%8C%BA&zoom=1&addressdetails=1&limit=1&accept-language=zh,en'
   PH:
     - {'name': '元旦', 'fixed_date': [1, 1]}

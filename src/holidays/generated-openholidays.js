@@ -193,6 +193,7 @@ export const at = {
   ],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lon=16.3725042&lat=48.2083537&zoom=18&addressdetails=1&accept-language=de,en",
   "Burgenland": {
+    "_state_code": "bl",
     SH: [
       {
         name: "Sommerferien",
@@ -232,6 +233,7 @@ export const at = {
     ]
   },
   "Kärnten": {
+    "_state_code": "kä",
     SH: [
       {
         name: "Sommerferien",
@@ -271,6 +273,7 @@ export const at = {
     ]
   },
   "Niederösterreich": {
+    "_state_code": "nö",
     SH: [
       {
         name: "Sommerferien",
@@ -310,6 +313,7 @@ export const at = {
     ]
   },
   "Oberösterreich": {
+    "_state_code": "oö",
     SH: [
       {
         name: "Sommerferien",
@@ -350,6 +354,7 @@ export const at = {
     ]
   },
   "Salzburg": {
+    "_state_code": "sb",
     SH: [
       {
         name: "Sommerferien",
@@ -389,6 +394,7 @@ export const at = {
     ]
   },
   "Steiermark": {
+    "_state_code": "sm",
     SH: [
       {
         name: "Sommerferien",
@@ -428,6 +434,7 @@ export const at = {
     ]
   },
   "Tirol": {
+    "_state_code": "ti",
     SH: [
       {
         name: "Sommerferien",
@@ -471,6 +478,7 @@ export const at = {
     ]
   },
   "Vorarlberg": {
+    "_state_code": "va",
     SH: [
       {
         name: "Sommerferien",
@@ -510,6 +518,7 @@ export const at = {
     ]
   },
   "Wien": {
+    "_state_code": "wi",
     SH: [
       {
         name: "Sommerferien",
@@ -599,6 +608,7 @@ export const be = {
   PH: [{"name":"Nieuwjaar - Nouvel An","fixed_date":[1,1]},{"name":"Paasmaandag - Lundi de Pâques","variable_date":"easter","offset":1},{"name":"Dag van de Arbeid - Fête du travail","fixed_date":[5,1]},{"name":"Hemelvaartsdag - Ascension","variable_date":"easter","offset":39},{"name":"Pinkstermaandag - Lundi de Pentecôte","variable_date":"easter","offset":50},{"name":"Nationale feestdag - Fête nationale","fixed_date":[7,21]},{"name":"Tenhemelopneming - Assomption","fixed_date":[8,15]},{"name":"Allerheiligen - Toussaint","fixed_date":[11,1]},{"name":"Wapenstilstand - Armistice","fixed_date":[11,11]},{"name":"Kerstmis - Noël","fixed_date":[12,25]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Belgium&zoom=18&addressdetails=1&limit=1&accept-language=nl,fr,de,en",
   "DE": {
+    "_state_code": "de",
     SH: [
       {
         name: "Osterferien",
@@ -661,6 +671,7 @@ export const be = {
     ]
   },
   "FR": {
+    "_state_code": "fr",
     SH: [
       {
         name: "Vacances d'hiver (Noël)",
@@ -731,6 +742,7 @@ export const be = {
     ]
   },
   "NL": {
+    "_state_code": "nl",
     SH: [
       {
         name: "Kerstvakantie",
@@ -1202,6 +1214,7 @@ export const ch = {
     ]
   },
   "Albula": {
+    "_state_code": "gr-ab",
     SH: [
       {
         name: "Herbstferien",
@@ -1246,6 +1259,7 @@ export const ch = {
     ]
   },
   "Appenzell": {
+    "_state_code": "ai-ap",
     SH: [
       {
         name: "Sommerferien",
@@ -1672,6 +1686,7 @@ export const ch = {
     ]
   },
   "Bernina": {
+    "_state_code": "gr-bn",
     SH: [
       {
         name: "Herbstferien",
@@ -1716,6 +1731,7 @@ export const ch = {
     ]
   },
   "Engiadina Bassa/Val Müstair": {
+    "_state_code": "gr-eb",
     SH: [
       {
         name: "Herbstferien",
@@ -1764,6 +1780,7 @@ export const ch = {
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Fribourg": {
+    "_state_code": "fr",
     SH: [
       {
         name: "Sport",
@@ -1818,6 +1835,7 @@ export const ch = {
     ]
   },
   "Genève": {
+    "_state_code": "ge",
     SH: [
       {
         name: "Vacances de février",
@@ -1961,6 +1979,7 @@ export const ch = {
     ]
   },
   "Gonten": {
+    "_state_code": "ai-go",
     SH: [
       {
         name: "Sommerferien",
@@ -2003,6 +2022,7 @@ export const ch = {
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Imboden": {
+    "_state_code": "gr-ib",
     SH: [
       {
         name: "Herbstferien",
@@ -2124,6 +2144,7 @@ export const ch = {
     ]
   },
   "Landquart": {
+    "_state_code": "gr-lq",
     SH: [
       {
         name: "Herbstferien",
@@ -2232,6 +2253,7 @@ export const ch = {
     ]
   },
   "Maloja": {
+    "_state_code": "gr-ml",
     SH: [
       {
         name: "Herbstferien",
@@ -2276,6 +2298,7 @@ export const ch = {
     ]
   },
   "Moesa": {
+    "_state_code": "gr-ms",
     SH: [
       {
         name: "Herbstferien",
@@ -2301,6 +2324,7 @@ export const ch = {
     ]
   },
   "Neuchâtel": {
+    "_state_code": "ne",
     SH: [
       {
         name: "Sport",
@@ -2415,6 +2439,7 @@ export const ch = {
     ]
   },
   "Oberegg": {
+    "_state_code": "ai-ob",
     SH: [
       {
         name: "Sommerferien",
@@ -2507,6 +2532,7 @@ export const ch = {
     ]
   },
   "Plessur": {
+    "_state_code": "gr-ps",
     SH: [
       {
         name: "Herbstferien",
@@ -2551,6 +2577,7 @@ export const ch = {
     ]
   },
   "Prättigau / Davos": {
+    "_state_code": "gr-pd",
     SH: [
       {
         name: "Herbstferien",
@@ -2651,6 +2678,7 @@ export const ch = {
     ]
   },
   "Schlatt-Haslen": {
+    "_state_code": "ai-sh",
     SH: [
       {
         name: "Sommerferien",
@@ -2689,6 +2717,7 @@ export const ch = {
     ]
   },
   "Schwende-Rüte": {
+    "_state_code": "ai-sr",
     SH: [
       {
         name: "Sommerferien",
@@ -2920,6 +2949,7 @@ export const ch = {
     ]
   },
   "Surselva": {
+    "_state_code": "gr-ss",
     SH: [
       {
         name: "Herbstferien",
@@ -3028,6 +3058,7 @@ export const ch = {
     ]
   },
   "Ticino": {
+    "_state_code": "ti",
     SH: [
       {
         name: "Sport",
@@ -3138,6 +3169,7 @@ export const ch = {
     ]
   },
   "Valais": {
+    "_state_code": "vs",
     SH: [
       {
         name: "Sport",
@@ -3192,6 +3224,7 @@ export const ch = {
     ]
   },
   "Vaud": {
+    "_state_code": "vd",
     SH: [
       {
         name: "Sport",
@@ -3246,6 +3279,7 @@ export const ch = {
     ]
   },
   "Viamala": {
+    "_state_code": "gr-vm",
     SH: [
       {
         name: "Herbstferien",
@@ -3501,6 +3535,7 @@ export const cn = {
   PH: [{"name":"元旦","fixed_date":[1,1]},{"name":"妇女节","fixed_date":[3,8]},{"name":"劳动节","fixed_date":[5,1]},{"name":"青年节","fixed_date":[5,4]},{"name":"儿童节","fixed_date":[6,1]},{"name":"国庆节","fixed_date":[10,1]},{"name":"国庆节休息日","fixed_date":[10,2]},{"name":"国庆节休息日","fixed_date":[10,3]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=%E4%B8%AD%E5%9B%BD&&zoom=18&addressdetails=1&limit=1&accept-language=zh,en",
   "西藏自治区": {
+    "_state_code": "xz",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&state=%E8%A5%BF%E8%97%8F%E8%87%AA%E6%B2%BB%E5%8C%BA&zoom=1&addressdetails=1&limit=1&accept-language=zh,en",
     PH: [{"name":"元旦","fixed_date":[1,1]},{"name":"西藏百万农奴解放纪念日","fixed_date":[3,28]},{"name":"妇女节","fixed_date":[3,8]},{"name":"劳动节","fixed_date":[5,1]},{"name":"青年节","fixed_date":[5,4]},{"name":"儿童节","fixed_date":[6,1]},{"name":"国庆节","fixed_date":[10,1]},{"name":"国庆节休息日","fixed_date":[10,2]},{"name":"国庆节休息日","fixed_date":[10,3]}]
   }
@@ -3571,6 +3606,7 @@ export const cz = {
   ],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=50.0874401&lon=14.4212556&zoom=18&addressdetails=1&accept-language=cs,en",
   "Benešov": {
+    "_state_code": "st-bn",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3587,6 +3623,7 @@ export const cz = {
     ]
   },
   "Beroun": {
+    "_state_code": "st-be",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3603,6 +3640,7 @@ export const cz = {
     ]
   },
   "Blansko": {
+    "_state_code": "jm-bk",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3619,6 +3657,7 @@ export const cz = {
     ]
   },
   "Břeclav": {
+    "_state_code": "jm-bv",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3635,6 +3674,7 @@ export const cz = {
     ]
   },
   "Brno-město": {
+    "_state_code": "jm-bm",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3651,6 +3691,7 @@ export const cz = {
     ]
   },
   "Brno-venkov": {
+    "_state_code": "jm-bo",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3667,6 +3708,7 @@ export const cz = {
     ]
   },
   "Bruntál": {
+    "_state_code": "mo-br",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3683,6 +3725,7 @@ export const cz = {
     ]
   },
   "Česká Lípa": {
+    "_state_code": "li-cl",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3699,6 +3742,7 @@ export const cz = {
     ]
   },
   "České Budějovice": {
+    "_state_code": "jc-cb",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3715,6 +3759,7 @@ export const cz = {
     ]
   },
   "Český Krumlov": {
+    "_state_code": "jc-ck",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3731,6 +3776,7 @@ export const cz = {
     ]
   },
   "Cheb": {
+    "_state_code": "ka-ch",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3747,6 +3793,7 @@ export const cz = {
     ]
   },
   "Chomutov": {
+    "_state_code": "us-cv",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3763,6 +3810,7 @@ export const cz = {
     ]
   },
   "Chrudim": {
+    "_state_code": "pa-cr",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3779,6 +3827,7 @@ export const cz = {
     ]
   },
   "Děčín": {
+    "_state_code": "us-dc",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3795,6 +3844,7 @@ export const cz = {
     ]
   },
   "Domažlice": {
+    "_state_code": "pl-do",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3811,6 +3861,7 @@ export const cz = {
     ]
   },
   "Frýdek-Místek": {
+    "_state_code": "mo-fm",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3827,6 +3878,7 @@ export const cz = {
     ]
   },
   "Havlíčkův Brod": {
+    "_state_code": "vy-hb",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3843,6 +3895,7 @@ export const cz = {
     ]
   },
   "Hodonín": {
+    "_state_code": "jm-ho",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3859,6 +3912,7 @@ export const cz = {
     ]
   },
   "Hradec Králov": {
+    "_state_code": "kr-hk",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3875,6 +3929,7 @@ export const cz = {
     ]
   },
   "Jablonec nad Nisou": {
+    "_state_code": "li-jn",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3891,6 +3946,7 @@ export const cz = {
     ]
   },
   "Jeseník": {
+    "_state_code": "ol-je",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3907,6 +3963,7 @@ export const cz = {
     ]
   },
   "Jičín": {
+    "_state_code": "kr-jc",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3923,6 +3980,7 @@ export const cz = {
     ]
   },
   "Jihlava": {
+    "_state_code": "vy-ji",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3939,6 +3997,7 @@ export const cz = {
     ]
   },
   "Jindřichův Hradec": {
+    "_state_code": "jc-jh",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3955,6 +4014,7 @@ export const cz = {
     ]
   },
   "Karlovy Vary": {
+    "_state_code": "ka-kv",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3971,6 +4031,7 @@ export const cz = {
     ]
   },
   "Karviná": {
+    "_state_code": "mo-ki",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -3987,6 +4048,7 @@ export const cz = {
     ]
   },
   "Kladno": {
+    "_state_code": "st-kl",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4003,6 +4065,7 @@ export const cz = {
     ]
   },
   "Klatovy": {
+    "_state_code": "pl-kt",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4019,6 +4082,7 @@ export const cz = {
     ]
   },
   "Kolín": {
+    "_state_code": "st-ko",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4035,6 +4099,7 @@ export const cz = {
     ]
   },
   "Kroměříž": {
+    "_state_code": "zl-km",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4051,6 +4116,7 @@ export const cz = {
     ]
   },
   "Kutná Hora": {
+    "_state_code": "st-kh",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4067,6 +4133,7 @@ export const cz = {
     ]
   },
   "Liberec": {
+    "_state_code": "li-lb",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4083,6 +4150,7 @@ export const cz = {
     ]
   },
   "Litoměřice": {
+    "_state_code": "us-lt",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4099,6 +4167,7 @@ export const cz = {
     ]
   },
   "Louny": {
+    "_state_code": "us-ln",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4115,6 +4184,7 @@ export const cz = {
     ]
   },
   "Mělník": {
+    "_state_code": "st-me",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4131,6 +4201,7 @@ export const cz = {
     ]
   },
   "Mladá Boleslav": {
+    "_state_code": "st-mb",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4147,6 +4218,7 @@ export const cz = {
     ]
   },
   "Most": {
+    "_state_code": "us-mo",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4163,6 +4235,7 @@ export const cz = {
     ]
   },
   "Náchod": {
+    "_state_code": "kr-na",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4179,6 +4252,7 @@ export const cz = {
     ]
   },
   "Nový Jičín": {
+    "_state_code": "mo-nj",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4195,6 +4269,7 @@ export const cz = {
     ]
   },
   "Nymburk": {
+    "_state_code": "st-nb",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4211,6 +4286,7 @@ export const cz = {
     ]
   },
   "Olomouc": {
+    "_state_code": "ol-oc",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4227,6 +4303,7 @@ export const cz = {
     ]
   },
   "Opava": {
+    "_state_code": "mo-op",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4243,6 +4320,7 @@ export const cz = {
     ]
   },
   "Ostrava-město": {
+    "_state_code": "mo-ov",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4259,6 +4337,7 @@ export const cz = {
     ]
   },
   "Pardubice": {
+    "_state_code": "pa-pu",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4275,6 +4354,7 @@ export const cz = {
     ]
   },
   "Pelhřimov": {
+    "_state_code": "vy-pe",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4291,6 +4371,7 @@ export const cz = {
     ]
   },
   "Písek": {
+    "_state_code": "jc-pi",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4307,6 +4388,7 @@ export const cz = {
     ]
   },
   "Plzeň-jih": {
+    "_state_code": "pl-pj",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4323,6 +4405,7 @@ export const cz = {
     ]
   },
   "Plzeň-město": {
+    "_state_code": "pl-pm",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4339,6 +4422,7 @@ export const cz = {
     ]
   },
   "Plzeň-sever": {
+    "_state_code": "pl-ps",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4355,6 +4439,7 @@ export const cz = {
     ]
   },
   "Prachatice": {
+    "_state_code": "jc-pt",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4371,6 +4456,7 @@ export const cz = {
     ]
   },
   "Praha": {
+    "_state_code": "pr",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4387,6 +4473,7 @@ export const cz = {
     ]
   },
   "Praha-východ": {
+    "_state_code": "st-ph",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4403,6 +4490,7 @@ export const cz = {
     ]
   },
   "Praha-západ": {
+    "_state_code": "st-pz",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4419,6 +4507,7 @@ export const cz = {
     ]
   },
   "Přerov": {
+    "_state_code": "ol-pr",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4435,6 +4524,7 @@ export const cz = {
     ]
   },
   "Příbram": {
+    "_state_code": "st-pb",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4451,6 +4541,7 @@ export const cz = {
     ]
   },
   "Prostějov": {
+    "_state_code": "ol-pv",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4467,6 +4558,7 @@ export const cz = {
     ]
   },
   "Rakovník": {
+    "_state_code": "st-ra",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4483,6 +4575,7 @@ export const cz = {
     ]
   },
   "Rokycany": {
+    "_state_code": "pl-ro",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4499,6 +4592,7 @@ export const cz = {
     ]
   },
   "Rychnov nad Kněžnou": {
+    "_state_code": "kr-rk",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4515,6 +4609,7 @@ export const cz = {
     ]
   },
   "Semily": {
+    "_state_code": "li-sm",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4531,6 +4626,7 @@ export const cz = {
     ]
   },
   "Sokolov": {
+    "_state_code": "ka-so",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4547,6 +4643,7 @@ export const cz = {
     ]
   },
   "Strakonice": {
+    "_state_code": "jc-st",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4563,6 +4660,7 @@ export const cz = {
     ]
   },
   "Šumperk": {
+    "_state_code": "ol-su",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4579,6 +4677,7 @@ export const cz = {
     ]
   },
   "Svitavy": {
+    "_state_code": "pa-sy",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4595,6 +4694,7 @@ export const cz = {
     ]
   },
   "Tábor": {
+    "_state_code": "jc-ta",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4611,6 +4711,7 @@ export const cz = {
     ]
   },
   "Tachov": {
+    "_state_code": "pl-tc",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4627,6 +4728,7 @@ export const cz = {
     ]
   },
   "Teplice": {
+    "_state_code": "us-tp",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4643,6 +4745,7 @@ export const cz = {
     ]
   },
   "Třebíč": {
+    "_state_code": "vy-tr",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4659,6 +4762,7 @@ export const cz = {
     ]
   },
   "Trutnov": {
+    "_state_code": "kr-tu",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4675,6 +4779,7 @@ export const cz = {
     ]
   },
   "Uherské Hradiště": {
+    "_state_code": "zl-uh",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4691,6 +4796,7 @@ export const cz = {
     ]
   },
   "Ústí nad Labem": {
+    "_state_code": "us-ul",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4707,6 +4813,7 @@ export const cz = {
     ]
   },
   "Ústí nad Orlicí": {
+    "_state_code": "pa-uo",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4723,6 +4830,7 @@ export const cz = {
     ]
   },
   "Vsetín": {
+    "_state_code": "zl-vs",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4739,6 +4847,7 @@ export const cz = {
     ]
   },
   "Vyškov": {
+    "_state_code": "jm-vy",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4755,6 +4864,7 @@ export const cz = {
     ]
   },
   "Žďár nad Sázavou": {
+    "_state_code": "vy-zr",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4771,6 +4881,7 @@ export const cz = {
     ]
   },
   "Zlín": {
+    "_state_code": "zl-zl",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4787,6 +4898,7 @@ export const cz = {
     ]
   },
   "Znojmom": {
+    "_state_code": "jm-zn",
     SH: [
       {
         name: "Jarní prázdniny",
@@ -4808,6 +4920,7 @@ export const de = {
   PH: [{"name":"Neujahr","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6],"only_states":["Baden-Württemberg","Bayern","Sachsen-Anhalt"]},{"name":"Frauentag","fixed_date":[3,8],"only_states":["Berlin","Mecklenburg-Vorpommern"]},{"name":"Tag der Arbeit","fixed_date":[5,1]},{"name":"Karfreitag","variable_date":"easter","offset":-2},{"name":"Ostersonntag","variable_date":"easter","only_states":["Brandenburg"]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstsonntag","variable_date":"easter","offset":49,"only_states":["Brandenburg"]},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60,"only_states":["Baden-Württemberg","Bayern","Hessen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Mariä Himmelfahrt","fixed_date":[8,15],"only_states":["Saarland"]},{"name":"Weltkindertag","fixed_date":[9,20],"only_states":["Thüringen"]},{"name":"Tag der Deutschen Einheit","fixed_date":[10,3]},{"name":"Reformationstag","fixed_date":[10,31],"only_states":["Brandenburg","Bremen","Hamburg","Mecklenburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]},{"name":"Allerheiligen","fixed_date":[11,1],"only_states":["Baden-Württemberg","Bayern","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Buß- und Bettag","variable_date":"nextWednesday16Nov","only_states":["Sachsen"]},{"name":"1. Weihnachtstag","fixed_date":[12,25]},{"name":"2. Weihnachtstag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487&lon=9.8160&zoom=18&addressdetails=1&accept-language=de,en",
   "Baden-Württemberg": {
+    "_state_code": "bw",
     SH: [
       {
         name: "Osterferien",
@@ -4934,6 +5047,7 @@ export const de = {
     ]
   },
   "Bayern": {
+    "_state_code": "by",
     SH: [
       {
         name: "Winterferien",
@@ -5085,6 +5199,7 @@ export const de = {
     ]
   },
   "Berlin": {
+    "_state_code": "be",
     SH: [
       {
         name: "Winterferien",
@@ -5231,6 +5346,7 @@ export const de = {
     ]
   },
   "Brandenburg": {
+    "_state_code": "bb",
     SH: [
       {
         name: "Winterferien",
@@ -5373,6 +5489,7 @@ export const de = {
     ]
   },
   "Bremen": {
+    "_state_code": "hb",
     SH: [
       {
         name: "Winterferien",
@@ -5542,6 +5659,7 @@ export const de = {
     ]
   },
   "Hamburg": {
+    "_state_code": "hh",
     SH: [
       {
         name: "Winterferien",
@@ -5691,6 +5809,7 @@ export const de = {
     ]
   },
   "Hessen": {
+    "_state_code": "he",
     SH: [
       {
         name: "Osterferien",
@@ -5782,6 +5901,7 @@ export const de = {
     ]
   },
   "MV-ABS": {
+    "_state_code": "mv-abs",
     SH: [
       {
         name: "Winterferien",
@@ -5937,6 +6057,7 @@ export const de = {
     ]
   },
   "MV-BBS": {
+    "_state_code": "mv-bbs",
     SH: [
       {
         name: "Winterferien",
@@ -6024,6 +6145,7 @@ export const de = {
     ]
   },
   "Niedersachsen": {
+    "_state_code": "ni",
     SH: [
       {
         name: "Winterferien",
@@ -6201,6 +6323,7 @@ export const de = {
     ]
   },
   "Nordrhein-Westfalen": {
+    "_state_code": "nw",
     SH: [
       {
         name: "Osterferien",
@@ -6311,6 +6434,7 @@ export const de = {
     ]
   },
   "Rheinland-Pfalz": {
+    "_state_code": "rp",
     SH: [
       {
         name: "Winterferien",
@@ -6414,6 +6538,7 @@ export const de = {
     ]
   },
   "Saarland": {
+    "_state_code": "sl",
     SH: [
       {
         name: "Winterferien",
@@ -6538,6 +6663,7 @@ export const de = {
     ]
   },
   "Sachsen": {
+    "_state_code": "sn",
     SH: [
       {
         name: "Winterferien",
@@ -6678,6 +6804,7 @@ export const de = {
     ]
   },
   "Sachsen-Anhalt": {
+    "_state_code": "st",
     SH: [
       {
         name: "Winterferien",
@@ -6821,6 +6948,7 @@ export const de = {
     ]
   },
   "Schleswig-Holstein": {
+    "_state_code": "sh",
     SH: [
       {
         name: "Osterferien",
@@ -6942,6 +7070,7 @@ export const de = {
     ]
   },
   "Thüringen": {
+    "_state_code": "th",
     SH: [
       {
         name: "Winterferien",
@@ -7151,6 +7280,7 @@ export const es = {
   PH: [{"name":"Cap d'Any","fixed_date":[1,1],"only_states":["Cataluña"]},{"name":"Año Nuevo","fixed_date":[1,1]},{"name":"Reis","fixed_date":[1,6],"only_states":["Cataluña"]},{"name":"Epifanía del Señor","fixed_date":[1,6]},{"name":"Día de Andalucía","fixed_date":[2,28],"only_states":["Andalucía"]},{"name":"Dia de les Illes Balears","fixed_date":[3,1],"only_states":["Islas Baleares"]},{"name":"Sant Josep","fixed_date":[3,19],"only_states":["Comunidad Valenciana"]},{"name":"San José","fixed_date":[3,19],"only_states":["Murcia"]},{"name":"Jueve Santo","variable_date":"easter","offset":-3,"only_states":["Andalucía","Aragón","Castilla y León","Castilla-La Mancha","Canarias","Extremadura","Galicia","Islas Baleares","La Rioja","Comunidad de Madrid","Región de Murcia","Navarra","Asturias","País Vasco","Cantabria","Ceuta","Melilla"]},{"name":"Divendres Sant","variable_date":"easter","offset":-2,"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Viernes Santo","variable_date":"easter","offset":-2},{"name":"Dilluns de Pasqua Florida","variable_date":"easter","offset":1,"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Lunes de Pascua de Resurrección","variable_date":"easter","offset":1,"only_states":["País Vasco","Navarra"]},{"name":"Día de Aragón","fixed_date":[4,23],"only_states":["Aragón"]},{"name":"Día de Castilla y León","fixed_date":[4,23],"only_states":["Castilla y León"]},{"name":"Festa del Treball","fixed_date":[5,1],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Fiesta del Trabajo","fixed_date":[5,1]},{"name":"Fiesta de la Comunidad de Madrid","fixed_date":[5,2],"only_states":["Comunidad de Madrid"]},{"name":"Día das Letras Galegas","fixed_date":[5,2],"only_states":["Galicia"]},{"name":"Día de Canarias","fixed_date":[5,30],"only_states":["Canarias"]},{"name":"Día de la Región Castilla-La Mancha","fixed_date":[5,31],"only_states":["Castilla-La Mancha"]},{"name":"Día de la Región de Murcia","fixed_date":[6,9],"only_states":["Región de Murcia"]},{"name":"Día de la Rioja","fixed_date":[6,9],"only_states":["La Rioja"]},{"name":"San Antonio","fixed_date":[6,13],"only_states":["Ceuta"]},{"name":"Sant Joan","fixed_date":[6,24],"only_states":["Cataluña"]},{"name":"San Juan","fixed_date":[6,24],"only_states":["Ceuta"]},{"name":"Santiago Apóstol","fixed_date":[7,25],"only_states":["Galicia"]},{"name":"Santa María de África","fixed_date":[8,6],"only_states":["Ceuta"]},{"name":"l'Assumpció","fixed_date":[8,15],"only_states":["Cataluña"]},{"name":"Asunción de la Virgen","fixed_date":[8,15]},{"name":"Día de Ceuta","fixed_date":[9,2],"only_states":["Ceuta"]},{"name":"Día de Asturias","fixed_date":[9,8],"only_states":["Asturias"]},{"name":"Día de Extremadura","fixed_date":[9,8],"only_states":["Extremadura"]},{"name":"Diada Nacional de Catalunya","fixed_date":[9,11],"only_states":["Cataluña"]},{"name":"Día de Cantabria","fixed_date":[9,17],"only_states":["Cantabria"]},{"name":"Día de Melilla","fixed_date":[9,15],"only_states":["Melilla"]},{"name":"Dia de la Comunitat Valenciana","fixed_date":[10,9],"only_states":["Comunidad Valenciana"]},{"name":"Festa Nacional d'Espanya","fixed_date":[10,12],"only_states":["Cataluña"]},{"name":"Fiesta Nacional de España","fixed_date":[10,12]},{"name":"Euskadi Eguna","fixed_date":[10,25],"only_states":["País Vasco"]},{"name":"Tots Sants","fixed_date":[11,1],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Todos los Santos","fixed_date":[11,1]},{"name":"Día de la Constitución Española","fixed_date":[12,6]},{"name":"La Puríssima","fixed_date":[12,8],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"La Immaculada Concepción","fixed_date":[12,8]},{"name":"Nadal","fixed_date":[12,25],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Natividad del Señor","fixed_date":[12,25]},{"name":"Sant Esteve","fixed_date":[12,26],"only_states":["Cataluña"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.60333&lon=2.18920&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
   "Almería": {
+    "_state_code": "an-al",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7307,6 +7437,7 @@ export const es = {
     ]
   },
   "Cádiz": {
+    "_state_code": "an-ca",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7542,6 +7673,7 @@ export const es = {
     "_state_code": "ct"
   },
   "Catalunya": {
+    "_state_code": "ct",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7700,6 +7832,7 @@ export const es = {
     "_state_code": "vc"
   },
   "Comunitat Valenciana": {
+    "_state_code": "vc",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7737,6 +7870,7 @@ export const es = {
     ]
   },
   "Córdoba": {
+    "_state_code": "an-co",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7793,6 +7927,7 @@ export const es = {
     ]
   },
   "Euskal Herria": {
+    "_state_code": "pv",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7954,6 +8089,7 @@ export const es = {
     ]
   },
   "Granada": {
+    "_state_code": "an-gr",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8011,6 +8147,7 @@ export const es = {
     ]
   },
   "Huelva": {
+    "_state_code": "an-hl",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8062,6 +8199,7 @@ export const es = {
     ]
   },
   "Huesca": {
+    "_state_code": "ar-hu",
     SH: [
       {
         name: "Día no lectivo",
@@ -8076,6 +8214,7 @@ export const es = {
     ]
   },
   "Illes Balears": {
+    "_state_code": "ib",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8127,6 +8266,7 @@ export const es = {
     "_state_code": "ib"
   },
   "Jaén": {
+    "_state_code": "an-ja",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8236,6 +8376,7 @@ export const es = {
     ]
   },
   "Málaga": {
+    "_state_code": "an-ma",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8347,6 +8488,7 @@ export const es = {
     ]
   },
   "Nafarroako Foru Komunitatea": {
+    "_state_code": "nc",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8439,6 +8581,7 @@ export const es = {
     ]
   },
   "Sevilla": {
+    "_state_code": "an-se",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8491,6 +8634,7 @@ export const es = {
     ]
   },
   "Teruel": {
+    "_state_code": "ar-te",
     SH: [
       {
         name: "Día no lectivo",
@@ -8505,6 +8649,7 @@ export const es = {
     ]
   },
   "Zaragoza": {
+    "_state_code": "ar-zg",
     SH: [
       {
         name: "Día no lectivo",
@@ -8529,6 +8674,7 @@ export const fr = {
   PH: [{"name":"Jour de l'an","fixed_date":[1,1]},{"name":"Vendredi saint","variable_date":"easter","offset":-2,"only_states":["Moselle","Bas-Rhin","Haut-Rhin","Guadeloupe","Martinique","Polynésie française"]},{"name":"Lundi de Pâques","variable_date":"easter","offset":1},{"name":"Abolition de l'esclavage (Mayotte)","fixed_date":[4,27],"only_states":["Mayotte"]},{"name":"Saint-Pierre-Chanel","fixed_date":[4,28],"only_states":["Wallis-et-Futuna"]},{"name":"Fête du Travail","fixed_date":[5,1]},{"name":"Fête de la Victoire","fixed_date":[5,8]},{"name":"Abolition de l'esclavage (Martinique)","fixed_date":[5,22],"only_states":["Martinique"]},{"name":"Abolition de l'esclavage (Guadeloupe)","fixed_date":[5,27],"only_states":["Guadeloupe"]},{"name":"Abolition de l'esclavage (Saint-Martin)","fixed_date":[5,28],"only_states":["Saint-Martin (France)"]},{"name":"Jeudi de l'Ascension","variable_date":"easter","offset":39},{"name":"Lundi de Pentecôte","variable_date":"easter","offset":50},{"name":"Abolition de l'esclavage (Guyane)","fixed_date":[6,10],"only_states":["Guyane"]},{"name":"Fête de l'autonomie","fixed_date":[6,29],"only_states":["Polynésie française"]},{"name":"Fête nationale","fixed_date":[7,14]},{"name":"Fête Victor Schoelcher","fixed_date":[7,21],"only_states":["Guadeloupe","Martinique"]},{"name":"Fête du Territoire","fixed_date":[7,29],"only_states":["Wallis-et-Futuna"]},{"name":"Assomption","fixed_date":[8,15]},{"name":"Fête de la citoyenneté","fixed_date":[9,24],"only_states":["Nouvelle-Calédonie"]},{"name":"Abolition de l'esclavage (Saint-Barthélemy)","fixed_date":[10,9],"only_states":["Saint-Barthélemy"]},{"name":"Toussaint","fixed_date":[11,1]},{"name":"Armistice","fixed_date":[11,11]},{"name":"Abolition de l'esclavage (Réunion)","fixed_date":[12,20],"only_states":["Réunion"]},{"name":"Noël","fixed_date":[12,25]},{"name":"Saint-Étienne ","fixed_date":[12,26],"only_states":["Moselle","Bas-Rhin","Haut-Rhin"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.60333&lon=1.88920&zoom=18&addressdetails=1&accept-language=fr,en",
   "Auvergne-Rhône-Alpes": {
+    "_state_code": "ar",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -8608,6 +8754,7 @@ export const fr = {
     ]
   },
   "Bourgogne-Franche-Comté": {
+    "_state_code": "bf",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -8687,6 +8834,7 @@ export const fr = {
     ]
   },
   "Bretagne": {
+    "_state_code": "bt",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -8767,6 +8915,7 @@ export const fr = {
     ]
   },
   "Centre-Val de Loire": {
+    "_state_code": "cv",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -8847,6 +8996,7 @@ export const fr = {
     ]
   },
   "Corse": {
+    "_state_code": "co",
     SH: [
       {
         name: "Vacances de Noël",
@@ -8910,6 +9060,7 @@ export const fr = {
     ]
   },
   "Grand Est": {
+    "_state_code": "ge",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -8990,6 +9141,7 @@ export const fr = {
     ]
   },
   "Guadeloupe": {
+    "_state_code": "gp",
     SH: [
       {
         name: "Vacances de Noël",
@@ -9052,6 +9204,7 @@ export const fr = {
     ]
   },
   "Guyane": {
+    "_state_code": "gy",
     SH: [
       {
         name: "Vacances de Noël",
@@ -9121,6 +9274,7 @@ export const fr = {
     ]
   },
   "Hauts-de-France": {
+    "_state_code": "hf",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9201,6 +9355,7 @@ export const fr = {
     ]
   },
   "Île-de-France": {
+    "_state_code": "if",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9281,6 +9436,7 @@ export const fr = {
     ]
   },
   "La Réunion": {
+    "_state_code": "ru",
     SH: [
       {
         name: "Vacances d'été austral",
@@ -9339,6 +9495,7 @@ export const fr = {
     ]
   },
   "Martinique": {
+    "_state_code": "mq",
     SH: [
       {
         name: "Vacances de Noël",
@@ -9405,6 +9562,7 @@ export const fr = {
     ]
   },
   "Mayotte": {
+    "_state_code": "yt",
     SH: [
       {
         name: "Vacances de Noël",
@@ -9461,6 +9619,7 @@ export const fr = {
     ]
   },
   "Normandie": {
+    "_state_code": "no",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9541,6 +9700,7 @@ export const fr = {
     ]
   },
   "Nouvelle-Aquitaine": {
+    "_state_code": "na",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9620,6 +9780,7 @@ export const fr = {
     ]
   },
   "Occitanie": {
+    "_state_code": "oc",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9699,6 +9860,7 @@ export const fr = {
     ]
   },
   "Pays de la Loire": {
+    "_state_code": "pl",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9779,6 +9941,7 @@ export const fr = {
     ]
   },
   "Provence-Alpes-Côte d'Azur": {
+    "_state_code": "pc",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9859,6 +10022,7 @@ export const fr = {
     ]
   },
   "Saint-Barthélemy": {
+    "_state_code": "bl",
     SH: [
       {
         name: "Vacances de Noël",
@@ -9919,6 +10083,7 @@ export const fr = {
     ]
   },
   "Saint-Martin": {
+    "_state_code": "mf",
     SH: [
       {
         name: "Vacances de Noël",
@@ -9980,6 +10145,7 @@ export const fr = {
     ]
   },
   "Saint-Pierre-et-Miquelon": {
+    "_state_code": "sp",
     SH: [
       {
         name: "Vacances de Noël",
@@ -10033,6 +10199,7 @@ export const fr = {
     ]
   },
   "Zone A": {
+    "_state_code": "za",
     SH: [
       {
         name: "Vacances de Noël",
@@ -10101,6 +10268,7 @@ export const fr = {
     ]
   },
   "Zone B": {
+    "_state_code": "zb",
     SH: [
       {
         name: "Vacances de Noël",
@@ -10170,6 +10338,7 @@ export const fr = {
     ]
   },
   "Zone C": {
+    "_state_code": "zc",
     SH: [
       {
         name: "Vacances de Noël",
@@ -10242,18 +10411,22 @@ export const fr = {
 
 export const gb = {
   "England": {
+    "_state_code": "eng",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=51.5073219&lon=-0.1276474&zoom=18&addressdetails=1&accept-language=en",
     PH: [{"name":"New Year’s Day","fixed_date":[1,1],"substitute_rule":"if saturday,sunday then next monday","substitute_name":"New Year’s Day (substitute day)"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Early May bank holiday","variable_date":"firstMayMonday"},{"name":"Spring bank holiday","variable_date":"lastMayMonday"},{"name":"Summer bank holiday","variable_date":"lastAugustMonday"},{"name":"Christmas","fixed_date":[12,25],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Christmas Day (substitute day)"},{"name":"Boxing Day","fixed_date":[12,26],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Boxing Day (substitute day)"}]
   },
   "Northern Ireland": {
+    "_state_code": "nir",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=54.5950675&lon=-5.9298401&zoom=18&addressdetails=1&accept-language=en",
     PH: [{"name":"New Year’s Day","fixed_date":[1,1],"substitute_rule":"if saturday,sunday then next monday","substitute_name":"New Year’s Day (substitute day)"},{"name":"St Patrick’s Day","variable_date":"nextMo-Fr17March"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Early May bank holiday","variable_date":"firstMayMonday"},{"name":"Spring bank holiday","variable_date":"lastMayMonday"},{"name":"Battle of the Boyne","variable_date":"nextMo-Fr12July"},{"name":"Summer bank holiday","variable_date":"lastAugustMonday"},{"name":"Christmas","fixed_date":[12,25],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Christmas Day (substitute day)"},{"name":"Boxing Day","fixed_date":[12,26],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Boxing Day (substitute day)"}]
   },
   "Scotland": {
+    "_state_code": "sct",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=55.9557307&lon=-3.1976026&zoom=18&addressdetails=1&accept-language=en",
     PH: [{"name":"New Year’s Day","fixed_date":[1,1],"substitute_rule":"if saturday,sunday then next monday","substitute_name":"New Year’s Day (substitute day)"},{"name":"2nd January","fixed_date":[1,2],"substitute_rule":"if saturday then next monday if sunday then next tuesday if monday then next tuesday","substitute_name":"2nd January (substitute day)"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Early May bank holiday","variable_date":"firstMayMonday"},{"name":"Spring bank holiday","variable_date":"lastMayMonday"},{"name":"Summer bank holiday","variable_date":"firstAugustMonday"},{"name":"St. Andrew’s Day","variable_date":"nextMo-Fr30November"},{"name":"Christmas","fixed_date":[12,25],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Christmas Day (substitute day)"},{"name":"Boxing Day","fixed_date":[12,26],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Boxing Day (substitute day)"}]
   },
   "Wales": {
+    "_state_code": "wls",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=52.2928116&lon=-3.73893&zoom=18&addressdetails=1&accept-language=en",
     PH: [{"name":"New Year’s Day","fixed_date":[1,1],"substitute_rule":"if saturday,sunday then next monday","substitute_name":"New Year’s Day (substitute day)"},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Early May bank holiday","variable_date":"firstMayMonday"},{"name":"Spring bank holiday","variable_date":"lastMayMonday"},{"name":"Summer bank holiday","variable_date":"lastAugustMonday"},{"name":"Christmas","fixed_date":[12,25],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Christmas Day (substitute day)"},{"name":"Boxing Day","fixed_date":[12,26],"substitute_rule":"if saturday then next monday if sunday then next tuesday","substitute_name":"Boxing Day (substitute day)"}]
   }
@@ -10456,6 +10629,7 @@ export const it = {
   ],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.9808038&lon=12.7662312&zoom=18&addressdetails=1&accept-language=it,en",
   "Abruzzo": {
+    "_state_code": "ab",
     SH: [
       {
         name: "festività natalizie",
@@ -10500,6 +10674,7 @@ export const it = {
     ]
   },
   "Basilicata": {
+    "_state_code": "ba",
     SH: [
       {
         name: "festività natalizie",
@@ -10549,6 +10724,7 @@ export const it = {
     ]
   },
   "Bolzano": {
+    "_state_code": "tr-bz",
     SH: [
       {
         name: "festività natalizie",
@@ -10603,6 +10779,7 @@ export const it = {
     ]
   },
   "Calabria": {
+    "_state_code": "cl",
     SH: [
       {
         name: "festività natalizie",
@@ -10653,6 +10830,7 @@ export const it = {
     ]
   },
   "Campania": {
+    "_state_code": "cm",
     SH: [
       {
         name: "festività natalizie",
@@ -10702,6 +10880,7 @@ export const it = {
     ]
   },
   "Emilia-Romagna": {
+    "_state_code": "er",
     SH: [
       {
         name: "festività natalizie",
@@ -10744,6 +10923,7 @@ export const it = {
     ]
   },
   "Friuli Venezia Giulia": {
+    "_state_code": "fv",
     SH: [
       {
         name: "festività natalizie",
@@ -10794,6 +10974,7 @@ export const it = {
     ]
   },
   "Lazio": {
+    "_state_code": "la",
     SH: [
       {
         name: "festività natalizie",
@@ -10836,6 +11017,7 @@ export const it = {
     ]
   },
   "Liguria": {
+    "_state_code": "li",
     SH: [
       {
         name: "festività natalizie",
@@ -10883,6 +11065,7 @@ export const it = {
     ]
   },
   "Lombardia": {
+    "_state_code": "lo",
     SH: [
       {
         name: "festività natalizie",
@@ -10932,6 +11115,7 @@ export const it = {
     ]
   },
   "Marche": {
+    "_state_code": "ma",
     SH: [
       {
         name: "festività natalizie",
@@ -10982,6 +11166,7 @@ export const it = {
     ]
   },
   "Molise": {
+    "_state_code": "mo",
     SH: [
       {
         name: "festività natalizie",
@@ -11032,6 +11217,7 @@ export const it = {
     ]
   },
   "Piemonte": {
+    "_state_code": "pi",
     SH: [
       {
         name: "festività natalizie",
@@ -11083,6 +11269,7 @@ export const it = {
     ]
   },
   "Puglia": {
+    "_state_code": "pu",
     SH: [
       {
         name: "festività natalizie",
@@ -11131,6 +11318,7 @@ export const it = {
     ]
   },
   "Sardegna": {
+    "_state_code": "sa",
     SH: [
       {
         name: "festività natalizie",
@@ -11180,6 +11368,7 @@ export const it = {
     ]
   },
   "Sicilia": {
+    "_state_code": "si",
     SH: [
       {
         name: "festività natalizie",
@@ -11219,6 +11408,7 @@ export const it = {
     ]
   },
   "Toscana": {
+    "_state_code": "to",
     SH: [
       {
         name: "festività natalizie",
@@ -11253,6 +11443,7 @@ export const it = {
     ]
   },
   "Trento": {
+    "_state_code": "tr-tn",
     SH: [
       {
         name: "festività natalizie",
@@ -11302,6 +11493,7 @@ export const it = {
     ]
   },
   "Umbria": {
+    "_state_code": "um",
     SH: [
       {
         name: "festività natalizie",
@@ -11350,6 +11542,7 @@ export const it = {
     ]
   },
   "Valle d'Aosta": {
+    "_state_code": "va",
     SH: [
       {
         name: "festività natalizie",
@@ -11401,6 +11594,7 @@ export const it = {
     ]
   },
   "Veneto": {
+    "_state_code": "ve",
     SH: [
       {
         name: "festività natalizie",
@@ -11455,6 +11649,7 @@ export const it = {
 
 export const je = {
   "Jersey": {
+    "_state_code": "je",
     "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=49.2&lon=-2.1&zoom=11&addressdetails=1&accept-language=en",
     PH: [{"name":"New Year’s Day","fixed_date":[1,1]},{"name":"Good Friday","variable_date":"easter","offset":-2},{"name":"Easter Monday","variable_date":"easter","offset":1},{"name":"Early May bank holiday","variable_date":"firstMayMonday"},{"name":"Liberation Day","fixed_date":[5,9]},{"name":"Spring bank holiday","variable_date":"lastMayMonday"},{"name":"Summer bank holiday","variable_date":"lastAugustMonday"},{"name":"Christmas Day","fixed_date":[12,25]},{"name":"Boxing Day","fixed_date":[12,26]}]
   }
@@ -11938,6 +12133,7 @@ export const nl = {
   PH: [{"name":"Nieuwjaarsdag","fixed_date":[1,1]},{"name":"Goede vrijdag","variable_date":"easter","offset":-2},{"name":"Tweede Paasdag","variable_date":"easter","offset":1},{"name":"Koningsdag","fixed_date":[4,27],"shift_rule":"if sunday then previous saturday"},{"name":"Bevrijdingsdag","fixed_date":[5,5]},{"name":"Hemelvaartsdag","variable_date":"easter","offset":39},{"name":"Tweede Pinksterdag","variable_date":"easter","offset":50},{"name":"Eerste Kerstdag","fixed_date":[12,25]},{"name":"Tweede Kerstdag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=52.3702&lon=4.8952&zoom=18&addressdetails=1&accept-language=nl,en",
   "MI": {
+    "_state_code": "mi",
     SH: [
       {
         name: "Kerstvakantie",
@@ -12011,6 +12207,7 @@ export const nl = {
     ]
   },
   "NO": {
+    "_state_code": "no",
     SH: [
       {
         name: "Kerstvakantie",
@@ -12084,6 +12281,7 @@ export const nl = {
     ]
   },
   "ZU": {
+    "_state_code": "zu",
     SH: [
       {
         name: "Kerstvakantie",
@@ -12172,6 +12370,7 @@ export const pl = {
   PH: [{"name":"Nowy Rok","fixed_date":[1,1]},{"name":"Święto Trzech Króli","fixed_date":[1,6]},{"name":"pierwszy dzień Wielkiej Nocy","variable_date":"easter"},{"name":"drugi dzień Wielkiej Nocy","variable_date":"easter","offset":1},{"name":"Święto Państwowe","fixed_date":[5,1]},{"name":"Święto Narodowe Trzeciego Maja","fixed_date":[5,3]},{"name":"pierwszy dzień Zielonych Świątek","variable_date":"easter","offset":49},{"name":"dzień Bożego Ciała","variable_date":"easter","offset":60},{"name":"Wniebowzięcie Najświętszej Marii Panny","fixed_date":[8,15]},{"name":"Wszystkich Świętych","fixed_date":[11,1]},{"name":"Narodowe Święto Niepodległości","fixed_date":[11,11]},{"name":"Wigilia Bożego Narodzenia","fixed_date":[12,24]},{"name":"pierwszy dzień Bożego Narodzenia","fixed_date":[12,25]},{"name":"drugi dzień Bożego Narodzenia","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=53.4825&lon=18.75823&zoom=18&addressdetails=1&accept-language=pl,en",
   "Dolnośląskie": {
+    "_state_code": "ds",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12217,6 +12416,7 @@ export const pl = {
     ]
   },
   "Kujawsko-pomorskie": {
+    "_state_code": "kp",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12262,6 +12462,7 @@ export const pl = {
     ]
   },
   "Łódzkie": {
+    "_state_code": "ld",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12307,6 +12508,7 @@ export const pl = {
     ]
   },
   "Lubelskie": {
+    "_state_code": "lb",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12351,6 +12553,7 @@ export const pl = {
     ]
   },
   "Lubuskie": {
+    "_state_code": "lu",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12396,6 +12599,7 @@ export const pl = {
     ]
   },
   "Małopolskie": {
+    "_state_code": "ma",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12441,6 +12645,7 @@ export const pl = {
     ]
   },
   "Mazowieckie": {
+    "_state_code": "mz",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12486,6 +12691,7 @@ export const pl = {
     ]
   },
   "Opolskie": {
+    "_state_code": "op",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12531,6 +12737,7 @@ export const pl = {
     ]
   },
   "Podkarpackie": {
+    "_state_code": "pd",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12576,6 +12783,7 @@ export const pl = {
     ]
   },
   "Podlaskie": {
+    "_state_code": "pk",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12621,6 +12829,7 @@ export const pl = {
     ]
   },
   "Pomorskie": {
+    "_state_code": "pm",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12666,6 +12875,7 @@ export const pl = {
     ]
   },
   "Śląskie": {
+    "_state_code": "sk",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12711,6 +12921,7 @@ export const pl = {
     ]
   },
   "Świętokrzyskie": {
+    "_state_code": "sl",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12756,6 +12967,7 @@ export const pl = {
     ]
   },
   "Warmińsko-mazurskie": {
+    "_state_code": "wn",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12801,6 +13013,7 @@ export const pl = {
     ]
   },
   "Wielkopolskie": {
+    "_state_code": "wp",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -12846,6 +13059,7 @@ export const pl = {
     ]
   },
   "Zachodniopomorskie": {
+    "_state_code": "zp",
     SH: [
       {
         name: "Zimowa przerwa świąteczna",
@@ -13026,6 +13240,7 @@ export const ro = {
   ],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=45.9852129&lon=24.6859225&zoom=18&addressdetails=1&accept-language=ro,en",
   "Alba": {
+    "_state_code": "ab",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13037,6 +13252,7 @@ export const ro = {
     ]
   },
   "Arad": {
+    "_state_code": "ar",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13048,6 +13264,7 @@ export const ro = {
     ]
   },
   "Argeș": {
+    "_state_code": "ag",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13059,6 +13276,7 @@ export const ro = {
     ]
   },
   "Bacău": {
+    "_state_code": "bc",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13070,6 +13288,7 @@ export const ro = {
     ]
   },
   "Bihor": {
+    "_state_code": "bh",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13081,6 +13300,7 @@ export const ro = {
     ]
   },
   "Bistrița-Năsăud": {
+    "_state_code": "bn",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13092,6 +13312,7 @@ export const ro = {
     ]
   },
   "Botoșani": {
+    "_state_code": "bt",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13103,6 +13324,7 @@ export const ro = {
     ]
   },
   "Brăila": {
+    "_state_code": "br",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13114,6 +13336,7 @@ export const ro = {
     ]
   },
   "Brașov": {
+    "_state_code": "bv",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13125,6 +13348,7 @@ export const ro = {
     ]
   },
   "București": {
+    "_state_code": "bu",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13136,6 +13360,7 @@ export const ro = {
     ]
   },
   "Buzău": {
+    "_state_code": "bz",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13147,6 +13372,7 @@ export const ro = {
     ]
   },
   "Călărași": {
+    "_state_code": "cl",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13158,6 +13384,7 @@ export const ro = {
     ]
   },
   "Caraș-Severin": {
+    "_state_code": "cs",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13169,6 +13396,7 @@ export const ro = {
     ]
   },
   "Cluj": {
+    "_state_code": "cj",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13180,6 +13408,7 @@ export const ro = {
     ]
   },
   "Constanța": {
+    "_state_code": "ct",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13191,6 +13420,7 @@ export const ro = {
     ]
   },
   "Covasna": {
+    "_state_code": "cv",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13202,6 +13432,7 @@ export const ro = {
     ]
   },
   "Dâmbovița": {
+    "_state_code": "db",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13213,6 +13444,7 @@ export const ro = {
     ]
   },
   "Dolj": {
+    "_state_code": "dj",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13224,6 +13456,7 @@ export const ro = {
     ]
   },
   "Galați": {
+    "_state_code": "gl",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13235,6 +13468,7 @@ export const ro = {
     ]
   },
   "Giurgiu": {
+    "_state_code": "gr",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13246,6 +13480,7 @@ export const ro = {
     ]
   },
   "Gorj": {
+    "_state_code": "gj",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13257,6 +13492,7 @@ export const ro = {
     ]
   },
   "Harghita": {
+    "_state_code": "hr",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13268,6 +13504,7 @@ export const ro = {
     ]
   },
   "Hunedoara": {
+    "_state_code": "hd",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13279,6 +13516,7 @@ export const ro = {
     ]
   },
   "Ialomița": {
+    "_state_code": "il",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13290,6 +13528,7 @@ export const ro = {
     ]
   },
   "Iași": {
+    "_state_code": "is",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13301,6 +13540,7 @@ export const ro = {
     ]
   },
   "Ilfov": {
+    "_state_code": "if",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13312,6 +13552,7 @@ export const ro = {
     ]
   },
   "Maramureș": {
+    "_state_code": "mm",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13323,6 +13564,7 @@ export const ro = {
     ]
   },
   "Mehedinți": {
+    "_state_code": "mh",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13334,6 +13576,7 @@ export const ro = {
     ]
   },
   "Mureș": {
+    "_state_code": "ms",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13345,6 +13588,7 @@ export const ro = {
     ]
   },
   "Neamț": {
+    "_state_code": "nt",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13356,6 +13600,7 @@ export const ro = {
     ]
   },
   "Olt": {
+    "_state_code": "ot",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13367,6 +13612,7 @@ export const ro = {
     ]
   },
   "Prahova": {
+    "_state_code": "ph",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13378,6 +13624,7 @@ export const ro = {
     ]
   },
   "Sălaj": {
+    "_state_code": "sj",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13389,6 +13636,7 @@ export const ro = {
     ]
   },
   "Satu Mare": {
+    "_state_code": "sm",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13400,6 +13648,7 @@ export const ro = {
     ]
   },
   "Sibiu": {
+    "_state_code": "sb",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13411,6 +13660,7 @@ export const ro = {
     ]
   },
   "Suceava": {
+    "_state_code": "sv",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13422,6 +13672,7 @@ export const ro = {
     ]
   },
   "Teleorman": {
+    "_state_code": "tr",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13433,6 +13684,7 @@ export const ro = {
     ]
   },
   "Timiș": {
+    "_state_code": "tm",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13444,6 +13696,7 @@ export const ro = {
     ]
   },
   "Tulcea": {
+    "_state_code": "tl",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13455,6 +13708,7 @@ export const ro = {
     ]
   },
   "Vâlcea": {
+    "_state_code": "vl",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13466,6 +13720,7 @@ export const ro = {
     ]
   },
   "Vaslui": {
+    "_state_code": "vs",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13477,6 +13732,7 @@ export const ro = {
     ]
   },
   "Vrancea": {
+    "_state_code": "vn",
     SH: [
       {
         name: "Vacanţa de schi",
@@ -13692,6 +13948,7 @@ export const si = {
   ],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.0569&lon=14.5058&zoom=18&addressdetails=1&accept-language=sl,en",
   "vzhodne regije": {
+    "_state_code": "vr",
     SH: [
       {
         name: "Zimske počitnice",
@@ -13706,6 +13963,7 @@ export const si = {
     ]
   },
   "zahodne regije": {
+    "_state_code": "zr",
     SH: [
       {
         name: "Zimske počitnice",
@@ -13725,6 +13983,7 @@ export const sk = {
   PH: [{"name":"Deň vzniku Slovenskej republiky","fixed_date":[1,1]},{"name":"Zjavenie Pána","fixed_date":[1,6]},{"name":"Veľký piatok","variable_date":"easter","offset":-2},{"name":"Veľkonočná nedeľa","variable_date":"easter"},{"name":"Veľkonočný pondelok","variable_date":"easter","offset":1},{"name":"Sviatok práce","fixed_date":[5,1]},{"name":"Sviatok svätého Cyrila a Metoda","fixed_date":[7,5]},{"name":"Výročie Slovenského národného povstania","fixed_date":[8,29]},{"name":"Sviatok všetkých svätých","fixed_date":[11,1]},{"name":"Štedrý deň","fixed_date":[12,24]},{"name":"Prvý sviatok vianočný","fixed_date":[12,25]},{"name":"Druhý sviatok vianočný","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=48.7411522&lon=19.4528646&zoom=18&addressdetails=1&accept-language=sk,en",
   "Banskobystrický kraj": {
+    "_state_code": "bc",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -13788,6 +14047,7 @@ export const sk = {
     ]
   },
   "Bratislavský kraj": {
+    "_state_code": "bl",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -13851,6 +14111,7 @@ export const sk = {
     ]
   },
   "Košický kraj": {
+    "_state_code": "ki",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -13914,6 +14175,7 @@ export const sk = {
     ]
   },
   "Nitriansky kraj": {
+    "_state_code": "ni",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -13977,6 +14239,7 @@ export const sk = {
     ]
   },
   "Prešovský kraj": {
+    "_state_code": "pv",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -14040,6 +14303,7 @@ export const sk = {
     ]
   },
   "Trenčiansky kraj": {
+    "_state_code": "tc",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -14103,6 +14367,7 @@ export const sk = {
     ]
   },
   "Trnavský kraj": {
+    "_state_code": "ta",
     SH: [
       {
         name: "Vianočné prázdniny",
@@ -14166,6 +14431,7 @@ export const sk = {
     ]
   },
   "Žilinský kraj": {
+    "_state_code": "zi",
     SH: [
       {
         name: "Vianočné prázdniny",

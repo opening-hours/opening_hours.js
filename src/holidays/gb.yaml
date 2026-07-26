@@ -3,6 +3,7 @@
 ---
 
 'England':  # https://www.gov.uk/bank-holidays#england-and-wales
+  _state_code: eng
   _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=51.5073219&lon=-0.1276474&zoom=18&addressdetails=1&accept-language=en
   PH:
     - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday', 'substitute_name': 'New Year’s Day (substitute day)'}
@@ -14,6 +15,7 @@
     - {'name': 'Christmas', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday', 'substitute_name': 'Christmas Day (substitute day)'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday', 'substitute_name': 'Boxing Day (substitute day)'}
 'Wales':  # https://www.gov.uk/bank-holidays#england-and-wales
+  _state_code: wls
   _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=52.2928116&lon=-3.73893&zoom=18&addressdetails=1&accept-language=en
   PH:
     - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday', 'substitute_name': 'New Year’s Day (substitute day)'}
@@ -25,6 +27,7 @@
     - {'name': 'Christmas', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday', 'substitute_name': 'Christmas Day (substitute day)'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday', 'substitute_name': 'Boxing Day (substitute day)'}
 'Northern Ireland':  # https://www.gov.uk/bank-holidays#northern-ireland
+  _state_code: nir
   _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=54.5950675&lon=-5.9298401&zoom=18&addressdetails=1&accept-language=en
   PH:
     - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday', 'substitute_name': 'New Year’s Day (substitute day)'}
@@ -38,6 +41,7 @@
     - {'name': 'Christmas', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday', 'substitute_name': 'Christmas Day (substitute day)'}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday', 'substitute_name': 'Boxing Day (substitute day)'}
 'Scotland':  # https://www.gov.uk/bank-holidays#scotland
+  _state_code: sct
   _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=55.9557307&lon=-3.1976026&zoom=18&addressdetails=1&accept-language=en
   PH:
     - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday', 'substitute_name': 'New Year’s Day (substitute day)'}

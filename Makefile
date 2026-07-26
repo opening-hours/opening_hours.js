@@ -90,7 +90,7 @@ build/opening_hours+deps.min.js: src/index.js src/locales/word_error_correction.
 check: qa-quick check-fast check-package.json
 
 .PHONY: check-full
-check-full: clean check-all-diff check-package.json check-yaml check-holidays
+check-full: clean check-all-diff check-package.json check-yaml check-holidays check-holiday-state-codes
 
 .PHONY: benchmark
 benchmark: benchmark-opening_hours.min.js
@@ -220,6 +220,10 @@ check-package.json: package.json
 .PHONY: check-holidays
 check-holidays: scripts/PH_SH_exporter.js
 	"$<" --from 2021 --to 2021 /tmp/out --public-holidays --verbose --all-locations
+
+.PHONY: check-holiday-state-codes
+check-holiday-state-codes: scripts/check_holiday_state_codes.mjs
+	$(NODEJS) scripts/check_holiday_state_codes.mjs
 
 .PHONY: check-yaml
 check-yaml:
