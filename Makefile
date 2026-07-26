@@ -171,9 +171,12 @@ check-fast: check-diff-opening_hours.js
 .PHONY: check-all-diff
 check-all-diff: check-all-lang-diff check-diff-opening_hours.js
 
+# Compare parser test results with the reference logs for each test language.
 .PHONY: check-all-lang-diff
 check-all-lang-diff:
-	@echo -n "en de" | xargs --delimiter ' ' --max-args=1 -I '{}' $(MAKE) $(MAKE_OPTIONS) "CHECK_LANG={}" check-diff-opening_hours.js
+	@for lang in en de; do \
+		$(MAKE) $(MAKE_OPTIONS) "CHECK_LANG=$$lang" check-diff-opening_hours.js || exit 1; \
+	done
 
 # .PHONY: check-opening_hours.js check-opening_hours.min.js
 ## Does not work
