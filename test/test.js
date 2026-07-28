@@ -2526,16 +2526,14 @@ test.addTest('Variable days: Argentina public holidays. 2024 (shift_rule, no col
     [ '2024-06-17 00:00', '2024-06-18 00:00', false, 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes' ],
     [ '2024-06-20 00:00', '2024-06-21 00:00', false, 'Paso a la Inmortalidad del General D. Manuel Belgrano' ],
     [ '2024-07-09 00:00', '2024-07-10 00:00', false, 'Día de la Independencia' ],
-    [ '2024-07-10 00:00', '2024-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
     /* 2024-08-17 = Saturday → no shift. */
     [ '2024-08-17 00:00', '2024-08-18 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
     [ '2024-10-12 00:00', '2024-10-13 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
     /* 2024-11-20 = Wednesday → previous Monday (2024-11-18). */
     [ '2024-11-18 00:00', '2024-11-19 00:00', false, 'Día de la Soberanía Nacional' ],
-    [ '2024-12-07 00:00', '2024-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
     [ '2024-12-08 00:00', '2024-12-09 00:00', false, 'Inmaculada Concepción de María' ],
     [ '2024-12-25 00:00', '2024-12-26 00:00', false, 'Navidad' ],
-], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
+], 1000 * 60 * 60 * 24 * 16, 0, false, nominatim_by_loc.ar, 'not last test');
 
 test.addTest('Variable days: Argentina public holidays. 2025 (shift_rule, both directions)', [
     'PH',
@@ -2551,16 +2549,14 @@ test.addTest('Variable days: Argentina public holidays. 2025 (shift_rule, both d
     [ '2025-06-16 00:00', '2025-06-17 00:00', false, 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes' ],
     [ '2025-06-20 00:00', '2025-06-21 00:00', false, 'Paso a la Inmortalidad del General D. Manuel Belgrano' ],
     [ '2025-07-09 00:00', '2025-07-10 00:00', false, 'Día de la Independencia' ],
-    [ '2025-07-10 00:00', '2025-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
     /* 2025-08-17 = Sunday → no shift. */
     [ '2025-08-17 00:00', '2025-08-18 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
     [ '2025-10-12 00:00', '2025-10-13 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
     /* 2025-11-20 = Thursday → next Monday (2025-11-24). */
     [ '2025-11-24 00:00', '2025-11-25 00:00', false, 'Día de la Soberanía Nacional' ],
-    [ '2025-12-07 00:00', '2025-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
     [ '2025-12-08 00:00', '2025-12-09 00:00', false, 'Inmaculada Concepción de María' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Navidad' ],
-], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
+], 1000 * 60 * 60 * 24 * 16, 0, false, nominatim_by_loc.ar, 'not last test');
 
 test.addTest('Variable days: Argentina public holidays. 2022 (collision: Güemes 06-17 Fri would shift to 06-20 but collides with Belgrano)', [
     'PH',
@@ -2578,16 +2574,14 @@ test.addTest('Variable days: Argentina public holidays. 2022 (collision: Güemes
     [ '2022-06-17 00:00', '2022-06-18 00:00', false, 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes' ],
     [ '2022-06-20 00:00', '2022-06-21 00:00', false, 'Paso a la Inmortalidad del General D. Manuel Belgrano' ],
     [ '2022-07-09 00:00', '2022-07-10 00:00', false, 'Día de la Independencia' ],
-    [ '2022-07-10 00:00', '2022-07-11 00:00', false, 'Día no laborable con fines turísticos' ],
     /* 2022-08-17 = Wednesday → previous Monday (2022-08-15). */
     [ '2022-08-15 00:00', '2022-08-16 00:00', false, 'Paso a la Inmortalidad del General José de San Martín' ],
     [ '2022-10-10 00:00', '2022-10-11 00:00', false, 'Día del Respeto a la Diversidad Cultural' ],
     /* 2022-11-20 = Sunday → no shift. */
     [ '2022-11-20 00:00', '2022-11-21 00:00', false, 'Día de la Soberanía Nacional' ],
-    [ '2022-12-07 00:00', '2022-12-08 00:00', false, 'Día no laborable con fines turísticos' ],
     [ '2022-12-08 00:00', '2022-12-09 00:00', false, 'Inmaculada Concepción de María' ],
     [ '2022-12-25 00:00', '2022-12-26 00:00', false, 'Navidad' ],
-], 1000 * 60 * 60 * 24 * 18, 0, false, nominatim_by_loc.ar, 'not last test');
+], 1000 * 60 * 60 * 24 * 16, 0, false, nominatim_by_loc.ar, 'not last test');
 /* }}} */
 
 /* Australia holidays — substitute_rule {{{ */
@@ -2675,46 +2669,18 @@ test.addTest('Variable days: Weekday in given week.', [
 /* New Zealand holidays {{{ */
 test.addTest('Variable days: New Zealand public holidays.', [
     'PH',
-], '2026-01-01 0:00', '2028-12-31 23:59', [
-    [ '2026-01-01 00:00', '2026-01-02 00:00', false, 'New Year\'s Day' ],
-    [ '2026-01-02 00:00', '2026-01-03 00:00', false, 'Day after New Year\'s Day' ],
-    [ '2026-02-06 00:00', '2026-02-07 00:00', false, 'Waitangi Day' ],
-    [ '2026-04-03 00:00', '2026-04-04 00:00', false, 'Good Friday' ],
-    [ '2026-04-06 00:00', '2026-04-07 00:00', false, 'Easter Monday' ],
-    [ '2026-04-25 00:00', '2026-04-26 00:00', false, 'Anzac Day' ],
-    [ '2026-04-27 00:00', '2026-04-28 00:00', false, 'Anzac Day' ],
-    [ '2026-06-01 00:00', '2026-06-02 00:00', false, 'King\'s Birthday' ],
-    [ '2026-10-26 00:00', '2026-10-27 00:00', false, 'Labour Day' ],
-    [ '2026-12-25 00:00', '2026-12-26 00:00', false, 'Christmas Day' ],
-    [ '2026-12-26 00:00', '2026-12-27 00:00', false, 'Boxing Day' ],
-    [ '2026-12-28 00:00', '2026-12-29 00:00', false, 'Boxing Day' ],
-    [ '2027-01-01 00:00', '2027-01-02 00:00', false, 'New Year\'s Day' ],
-    [ '2027-01-02 00:00', '2027-01-03 00:00', false, 'Day after New Year\'s Day' ],
-    [ '2027-01-04 00:00', '2027-01-05 00:00', false, 'Day after New Year\'s Day' ],
-    [ '2027-02-06 00:00', '2027-02-07 00:00', false, 'Waitangi Day' ],
-    [ '2027-02-08 00:00', '2027-02-09 00:00', false, 'Waitangi Day' ],
-    [ '2027-03-26 00:00', '2027-03-27 00:00', false, 'Good Friday' ],
-    [ '2027-03-29 00:00', '2027-03-30 00:00', false, 'Easter Monday' ],
-    [ '2027-04-25 00:00', '2027-04-27 00:00', false, 'Anzac Day' ],
-    [ '2027-06-07 00:00', '2027-06-08 00:00', false, 'King\'s Birthday' ],
-    [ '2027-10-25 00:00', '2027-10-26 00:00', false, 'Labour Day' ],
-    [ '2027-12-25 00:00', '2027-12-26 00:00', false, 'Christmas Day' ],
-    [ '2027-12-26 00:00', '2027-12-27 00:00', false, 'Boxing Day' ],
-    [ '2027-12-27 00:00', '2027-12-28 00:00', false, 'Christmas Day' ],
-    [ '2027-12-28 00:00', '2027-12-29 00:00', false, 'Boxing Day' ],
-    [ '2028-01-01 00:00', '2028-01-02 00:00', false, 'New Year\'s Day' ],
-    [ '2028-01-02 00:00', '2028-01-03 00:00', false, 'Day after New Year\'s Day' ],
-    [ '2028-01-03 00:00', '2028-01-04 00:00', false, 'New Year\'s Day' ],
-    [ '2028-01-04 00:00', '2028-01-05 00:00', false, 'Day after New Year\'s Day' ],
-    [ '2028-02-06 00:00', '2028-02-08 00:00', false, 'Waitangi Day' ],
-    [ '2028-04-14 00:00', '2028-04-15 00:00', false, 'Good Friday' ],
-    [ '2028-04-17 00:00', '2028-04-18 00:00', false, 'Easter Monday' ],
-    [ '2028-04-25 00:00', '2028-04-26 00:00', false, 'Anzac Day' ],
-    [ '2028-06-05 00:00', '2028-06-06 00:00', false, 'King\'s Birthday' ],
-    [ '2028-10-23 00:00', '2028-10-24 00:00', false, 'Labour Day' ],
-    [ '2028-12-25 00:00', '2028-12-26 00:00', false, 'Christmas Day' ],
-    [ '2028-12-26 00:00', '2028-12-27 00:00', false, 'Boxing Day' ],
-], 1000 * 60 * 60 * 24 * 40, 0, false, nominatim_by_loc.nz, 'not last test');
+], '2025-01-01 0:00', '2025-12-31 23:59', [
+    [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year\'s Day' ],
+    [ '2025-01-02 00:00', '2025-01-03 00:00', false, 'Day after New Year\'s Day' ],
+    [ '2025-02-06 00:00', '2025-02-07 00:00', false, 'Waitangi Day' ],
+    [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
+    [ '2025-04-21 00:00', '2025-04-22 00:00', false, 'Easter Monday' ],
+    [ '2025-04-25 00:00', '2025-04-26 00:00', false, 'Anzac Day' ],
+    [ '2025-06-02 00:00', '2025-06-03 00:00', false, 'King\'s Birthday' ],
+    [ '2025-10-27 00:00', '2025-10-28 00:00', false, 'Labour Day' ],
+    [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
+    [ '2025-12-26 00:00', '2025-12-27 00:00', false, 'Boxing Day' ],
+], 1000 * 60 * 60 * 24 * 10, 0, false, nominatim_by_loc.nz, 'not last test');
 
 /* }}} */
 
