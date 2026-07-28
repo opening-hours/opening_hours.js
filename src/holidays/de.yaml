@@ -10,6 +10,7 @@ PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
   - {"name": "Frauentag", "fixed_date": [3, 8], "only_states": [Berlin, Mecklenburg-Vorpommern]}
   - {"name": "Tag der Arbeit", "fixed_date": [5, 1]}
   - {"name": "Karfreitag", "variable_date": "easter", "offset": -2}
+  - {"name": "75-jähriges Jubiläum des Volksaufstands in der DDR", "fixed_date": [6, 17], "year": 2028, "only_states": [Berlin]}
   - {"name": "Ostersonntag", "variable_date": "easter", "only_states": [Brandenburg]}
   - {"name": "Ostermontag", "variable_date": "easter", "offset": 1}
   - {"name": "Christi Himmelfahrt", "variable_date": "easter", "offset": 39}

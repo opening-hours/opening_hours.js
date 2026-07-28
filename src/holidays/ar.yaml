@@ -20,10 +20,10 @@ PH:
   - {'name': 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes', 'fixed_date': [6, 17], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
   - {'name': 'Paso a la Inmortalidad del General D. Manuel Belgrano', 'fixed_date': [6, 20]}
   - {'name': 'Día de la Independencia', 'fixed_date': [7, 9]}
-  - {'name': 'Día no laborable con fines turísticos', 'fixed_date': [7, 10]}
+  - {'name': 'Día no laborable con fines turísticos', 'fixed_date': [7, 10], 'year': 2026}
   - {'name': 'Paso a la Inmortalidad del General José de San Martín', 'fixed_date': [8, 17], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
   - {'name': 'Día del Respeto a la Diversidad Cultural', 'fixed_date': [10, 12], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
   - {'name': 'Día de la Soberanía Nacional', 'fixed_date': [11, 20], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
-  - {'name': 'Día no laborable con fines turísticos', 'fixed_date': [12, 7]}
+  - {'name': 'Día no laborable con fines turísticos', 'fixed_date': [12, 7], 'year': 2026}
   - {'name': 'Inmaculada Concepción de María', 'fixed_date': [12, 8]}
   - {'name': 'Navidad', 'fixed_date': [12, 25]}

@@ -3310,32 +3310,36 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const movableDays = getMovableEventsForYear(year);
 
         /* Pass 1: resolve the base date of every holiday (no shift, no add_days). */
-        const resolved = applying_holidays.map(function (holiday_item) {
-            let base_date;
-            if ('fixed_date' in holiday_item) {
-                base_date = new Date(year,
-                        holiday_item.fixed_date[0] - 1,
-                        holiday_item.fixed_date[1]
+        const resolved = applying_holidays
+            .filter(function (holiday_item) {
+                return !('year' in holiday_item) || holiday_item.year === year;
+            })
+            .map(function (holiday_item) {
+                let base_date;
+                if ('fixed_date' in holiday_item) {
+                    base_date = new Date(year,
+                            holiday_item.fixed_date[0] - 1,
+                            holiday_item.fixed_date[1]
+                        );
+                } else if ('variable_date' in holiday_item) {
+                    const selected_movableDay = movableDays[holiday_item.variable_date];
+                    if (!selected_movableDay) {
+                        throw t('movable no formula', {'name': holiday_item.name});
+                    }
+                    const date_offset = 'offset' in holiday_item ? holiday_item.offset : 0;
+                    base_date = new Date(selected_movableDay.getFullYear(),
+                        selected_movableDay.getMonth(),
+                        selected_movableDay.getDate() + date_offset
                     );
-            } else if ('variable_date' in holiday_item) {
-                const selected_movableDay = movableDays[holiday_item.variable_date];
-                if (!selected_movableDay) {
-                    throw t('movable no formula', {'name': holiday_item.name});
+                    if (year !== base_date.getFullYear()) {
+                        throw t('movable not in year', {
+                            'name': holiday_item.variable_date, 'days': date_offset});
+                    }
+                } else {
+                    throw formatLibraryBugMessage('Unexpected object: ' + JSON.stringify(holiday_item, null, '    '));
                 }
-                const date_offset = 'offset' in holiday_item ? holiday_item.offset : 0;
-                base_date = new Date(selected_movableDay.getFullYear(),
-                    selected_movableDay.getMonth(),
-                    selected_movableDay.getDate() + date_offset
-                );
-                if (year !== base_date.getFullYear()) {
-                    throw t('movable not in year', {
-                        'name': holiday_item.variable_date, 'days': date_offset});
-                }
-            } else {
-                throw formatLibraryBugMessage('Unexpected object: ' + JSON.stringify(holiday_item, null, '    '));
-            }
-            return { date: base_date, holiday: holiday_item };
-        });
+                return { date: base_date, holiday: holiday_item };
+            });
 
         /* Pass 2: apply shift_rule with collision detection.
          * Collisions are checked against the nominal (non-shifted, no-add_days)
