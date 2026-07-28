@@ -408,6 +408,10 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*public holiday <--- (Bitte verwende "PH" anstelle von "public holiday".)
 	*public holiday <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
+"#622: seven-day variable date offset" for "easter -7 days-Nov 01: Tu-Sa 10:00-12:00,13:30-17:00; Su,PH 11:00-17:00": [32m[1mPASSED[22m[39m
+"#622: seven-day variable date offset" for "Easter - 7days - Nov 01: Tu-Sa 10:00-12:00, 13:30-17:00; Su, PH 11:00-17:00": [32m[1mPASSED[22m[39m
+"#622: seven-day variable date offset" for "Easter -7 day-Nov 01: Tu-Sa 10:00-12:00,13:30-17:00; Su,PH 11:00-17:00": [32m[1mPASSED[22m[39m
+"#622: seven-day variable date offset" for "Easter - 07 days - Nov 01: Tu-Sa 10:00-12:00, 13:30-17:00; Su, PH 11:00-17:00": [32m[1mPASSED[22m[39m
 "Variable days: school holidays" for "SH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*SH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
@@ -1670,10 +1674,6 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*every day <--- (Bitte verwende "Mo-Su" anstelle von "every day".)
 	*every day <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Error tolerance: Full range" for "7days": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*7days <--- (Bitte verwende "Mo-Su" anstelle von "7days".)
-	*7days <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Error tolerance: Full range" for "7j/7": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*7j/7 <--- (Bitte verwende "Mo-Su" anstelle von "7j/7".)
@@ -1682,10 +1682,6 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*7/7 <--- (Bitte verwende "Mo-Su" anstelle von "7/7".)
 	*7/7 <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Error tolerance: Full range" for "7 days": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*7 days <--- (Bitte verwende "Mo-Su" anstelle von "7 days".)
-	*7 days <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Error tolerance: Full range" for "7 days a week": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*7 days a week <--- (Bitte verwende "Mo-Su" anstelle von "7 days a week".)
@@ -2114,9 +2110,6 @@ Der Wert enthält nichts, was ausgewertet werden könnte.
 "Incorrect syntax which should throw an error" for "||": [32m[1mPASSED[22m[39m
 || <--- (Die Regel vor der Fallback-Regel enthält nichts nützliches)
 
-"Incorrect syntax which should throw an error" for "Mo[2] - 7 days; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-Mo[2] -  <--- (Unerwartetes Zeichen: "-" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) Mo[2] - 7 days <--- (Bitte verwende "Mo-Su" anstelle von "7 days".)
-
 "Incorrect syntax which should throw an error" for ":week 02-54 00:00-24:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 : <--- (Unerwartetes Zeichen: "timesep" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 
 
@@ -2250,7 +2243,7 @@ Sa[1,3- <--- ("]" oder weitere Zahlen erwartet.)
 Sa[1,3,. <--- (Unexpected token in number range: timesep)
 
 "Incorrect syntax which should throw an error" for "PH + 2 day; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-PH + 2 day <--- (Es sollte keinen Grund geben, mehr als 1 Tage von einem public holiday abzuweichen. Wenn nötig, teile uns dies bitte mit …)
+PH + 2 day <--- (Es sollte keinen Grund geben, mehr als 1 Tage von einem Feiertag abzuweichen. Wenn nötig, teile uns dies bitte mit …)
 
 "Incorrect syntax which should throw an error" for "Su-PH; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 Su- <--- (Unerwartetes Zeichen: "-" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 
@@ -2259,7 +2252,7 @@ Su- <--- (Unerwartetes Zeichen: "-" Das bedeutet, dass die Syntax an dieser Stel
 2012,  <--- (Eine weitere Regel an dieser Stelle ergibt keinen Sinn. Benutze einfach ";" als Trenner für Regeln. Siehe https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator)
 
 "Incorrect syntax which should throw an error" for "easter + 370 days; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-easter + 370 days <--- (Es sollte keinen Grund geben, mehr als 200 Tage von einem event like easter abzuweichen. Wenn nötig, teile uns dies bitte mit …)
+easter + 370 days <--- (Es sollte keinen Grund geben, mehr als 200 Tage von einem beweglichen Feiertag abzuweichen. Wenn nötig, teile uns dies bitte mit …)
 
 "Incorrect syntax which should throw an error" for "easter - 2 days - 2012 easter + 2 days: open "Easter Monday"; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 easter - 2 days -  <--- (Unerwartetes Zeichen: "-" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 
@@ -2449,6 +2442,9 @@ Dec 32 <--- (Die Tagesangabe für Dec muss zwischen 1 und 31 liegen.)
 
 "Incorrect syntax which should throw an error" for "We 12:00-18:00,,,,,,; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 We 12:00-18:00,, <--- (Unerwartetes Zeichen: "," Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 
+
+"Constrained weekday offsets beyond six days should be rejected" for "Mo[2] - 7 days; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
+Mo[2] - 7 days <--- (Es sollte keinen Grund geben, mehr als 6 Tage von einem Wochentag mit Monatsbeschränkung abzuweichen. Wenn nötig, teile uns dies bitte mit …)
 
 "Missing information (e.g. country or holidays not known to opening_hours.js)" for "PH": [32m[1mPASSED[22m[39m
 Der Ländercode fehlt. Dieser wird benötigt um die korrekten Feiertage zu bestimmen (siehe in der README wie dieser anzugeben ist)
@@ -2669,7 +2665,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1032/1032 tests passed. 0 did not pass.
+1034/1034 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

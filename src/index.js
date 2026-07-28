@@ -688,6 +688,25 @@ export default function(value, nominatim_object, optional_conf_parm) {
         };
 
         let last_rule_fallback_terminated = false;
+        const NUMERIC_DAY_OFFSET_PATTERN = String.raw`\d+\s*days?(?!\s*(?:a|\/)\s*week)\b`;
+        const ERROR_TOLERANCE_ALTERNATIVES = [
+            String.raw`&|_|→|‐|‑|‒|–|−|—|ー|=|·`,
+            String.raw`öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：`,
+            String.raw`always (?:open|closed)|24x7|24 hours 7 days a week|24 hours`,
+            String.raw`7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day`,
+            String.raw`(?:bis|till?|-|–)? ?(?:open ?end|late)`,
+            String.raw`(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?`,
+            String.raw`days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?`,
+            String.raw`(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?`,
+            String.raw`(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)`,
+            String.raw`p\.m\.|a\.m\.`,
+            String.raw`(?:[^\s\d\p{P}\p{S}\p{C}]|_)+(?=\s|$|[\s\d\p{Po}\p{Ps}\p{Pe}\p{Pd}\p{Pf}\p{Pi}\p{S}\p{C}])`,
+            String.raw`à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec`,
+        ].join('|');
+        const ERROR_TOLERANCE_REGEX = new RegExp(
+            String.raw`^(?!${NUMERIC_DAY_OFFSET_PATTERN})(${ERROR_TOLERANCE_ALTERNATIVES})(\.?)`,
+            'iu'
+        );
 
         while (value !== '') {
             /* Ordered after likelihood of input for performance reasons.
@@ -767,7 +786,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             'please_use_ok_for_ko', t('please use ok for ko', {'ko': tmp[0], 'ok': ok})]);
                 }
                 value = ok + value.substr(tmp[0].length);
-            } else if ((tmp = value.match(/^(&|_|→|‐|‑|‒|–|−|—|ー|=|·|öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：|always (?:open|closed)|24x7|24 hours 7 days a week|24 hours|7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day|(?:bis|till?|-|–)? ?(?:open ?end|late)|(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?|days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?|(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?|(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)|p\.m\.|a\.m\.|(?:[^\s\d\p{P}\p{S}\p{C}]|_)+(?=\s|$|[\s\d\p{Po}\p{Ps}\p{Pe}\p{Pd}\p{Pf}\p{Pi}\p{S}\p{C}])|à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)(\.?)/iu))) {
+            } else if ((tmp = value.match(ERROR_TOLERANCE_REGEX))) {
                 /* Handle all remaining words and specific other characters with error tolerance.
                  *
                  * à|á: Word boundary does not work with Unicode chars: 'test à test'.match(/\bà\b/i)
@@ -882,11 +901,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                 'interpreted_as_year', t('interpreted as year', {number:  Number(tmp[1])})
                         ]);
                 } else {
-                    const num_token = [Number(tmp[1]), 'number', value.length];
+                    const number_token = [ Number(tmp[1]), 'number', value.length ];
                     // Store whether the original numeric lexeme had a single digit (e.g. "9").
                     // Only consulted at hour positions, where a single digit (0-9) is ambiguous.
-                    num_token.single_digit_lexeme = tmp[1].length === 1;
-                    curr_rule_tokens.push(num_token);
+                    number_token.single_digit_lexeme = tmp[1].length === 1;
+                    curr_rule_tokens.push(number_token);
                 }
 
                 value = value.substr(tmp[1].length + (typeof tmp[2] === 'string' ? tmp[2].length : 0));
@@ -2381,7 +2400,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     );
                 }
 
-                const add_days = getMoveDays(tokens, endat+1, 6, 'constrained weekdays');
+                const add_days = getMoveDays(tokens, endat+1, 6, 'max differ name constrained weekdays');
                 week_stable = false;
 
                 // Create selector for each list element.
@@ -2547,14 +2566,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
      *            0. Days to add.
      *            1. How many tokens.
      */
-    function getMoveDays(tokens, at, max_differ, name) {
+    function getMoveDays(tokens, at, max_differ, name_key) {
         const add_days = [ 0, 0 ]; // [ 'days to add', 'how many tokens' ]
         add_days[0] = matchTokens(tokens, at, '+') || (matchTokens(tokens, at, '-') ? -1 : 0);
         if (add_days[0] !== 0 && matchTokens(tokens, at+1, 'number', 'calcday')) {
             // continues with '+ 5 days' or something like that
             if (tokens[at+1][0] > max_differ)
                 throw formatWarnErrorMessage(nrule, at+2,
-                    t('max differ',{'maxdiffer': max_differ, 'name': name}));
+                    t('max differ', {'maxdiffer': max_differ, 'name': t(name_key)}));
             add_days[0] *= tokens[at+1][0];
             if (add_days[0] === 0 && !done_with_warnings)
                 parsing_warnings.push([ nrule, at+2, 'adding_0', t('adding 0') ]);
@@ -2579,7 +2598,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const applying_holidays = getMatchingHoliday(holiday_type);
 
         if (holiday_type === 'PH') {
-            const add_days = getMoveDays(tokens, at + 1, 1, 'public holiday');
+            const add_days = getMoveDays(tokens, at + 1, 1, 'max differ name public holiday');
             const selector = createPublicHolidaySelector(applying_holidays, add_days);
             target_array.push(selector);
             return at + 1 + add_days[1];
@@ -3737,12 +3756,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
             has_event[0] = matchTokens(tokens, at+has_year[0], 'event');
 
             if (has_event[0])
-                has_calc[0] = getMoveDays(tokens, at+has_year[0]+1, 200, 'event like easter');
+                has_calc[0] = getMoveDays(tokens, at+has_year[0]+1, 200, 'max differ name event like easter');
 
             let at_range_sep;
             if (matchTokens(tokens, at+has_year[0], 'month', 'weekday', '[')) {
                 has_constrained_weekday[0] = getConstrainedWeekday(tokens, at+has_year[0]+3);
-                has_calc[0] = getMoveDays(tokens, has_constrained_weekday[0][1], 6, 'constrained weekdays');
+                has_calc[0] = getMoveDays(tokens, has_constrained_weekday[0][1], 6, 'max differ name constrained weekdays');
                 at_range_sep = has_constrained_weekday[0][1] + (typeof has_calc[0] === 'object' && has_calc[0][1] ? 3 : 0);
             } else {
                 at_range_sep = at+has_year[0]
@@ -3759,10 +3778,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (!has_month[1]) {
                     has_event[1] = matchTokens(tokens, at_sec_event_or_month, 'event');
                     if (has_event[1]) {
-                        has_calc[1] = getMoveDays(tokens, at_sec_event_or_month+1, 366, 'event like easter');
+                        has_calc[1] = getMoveDays(tokens, at_sec_event_or_month+1, 366, 'max differ name event like easter');
                     } else if (matchTokens(tokens, at_sec_event_or_month, 'month', 'weekday', '[')) {
                         has_constrained_weekday[1] = getConstrainedWeekday(tokens, at_sec_event_or_month+3);
-                        has_calc[1] = getMoveDays(tokens, has_constrained_weekday[1][1], 6, 'constrained weekdays');
+                        has_calc[1] = getMoveDays(tokens, has_constrained_weekday[1][1], 6, 'max differ name constrained weekdays');
                     }
                 }
             }

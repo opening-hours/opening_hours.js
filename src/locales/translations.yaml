@@ -89,6 +89,9 @@ en:
     'additional rule no sense': 'An additional rule does not make sense here. Just use a ";" as rule separator. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator'
     'unexpected token weekday range': 'Unexpected token in weekday range: {{token}}'
     'max differ': 'There should be no reason to differ more than {{maxdiffer}} days from a {{name}}. If so tell us …'
+    'max differ name constrained weekdays': 'constrained weekdays'
+    'max differ name event like easter': 'event like Easter'
+    'max differ name public holiday': 'public holiday'
     'adding 0': 'Adding 0 does not change the date. Please omit this.'
     'unexpected token holiday': 'Unexpected token (holiday parser): {{token}}'
     'no holiday definition': 'There are no holidays ({{name}}) defined for country {{cc}}.'
@@ -233,6 +236,9 @@ de:
       Siehe https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator
     unexpected token weekday range: "Unerwartes Token in Tages-Spanne: {{token}}"
     max differ: "Es sollte keinen Grund geben, mehr als {{maxdiffer}} Tage von einem {{name}} abzuweichen. Wenn nötig, teile uns dies bitte mit …"
+    max differ name constrained weekdays: "Wochentag mit Monatsbeschränkung"
+    max differ name event like easter: "beweglichen Feiertag"
+    max differ name public holiday: "Feiertag"
     adding 0: "Addition von 0 verändert das Datum nicht. Bitte weglassen."
     unexpected token holiday: "Unerwarteter Token (in Feiertags-Auswertung): {{token}}"
     no holiday definition: "{{name}} ist für das Land {{cc}} nicht definiert."
@@ -397,6 +403,9 @@ fr:
       Voir https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator
     unexpected token weekday range: "Token inattendu dans la plage de jours : {{token}}"
     max differ: "Il ne devrait pas y avoir de raison de s'écarter de plus de {{maxdiffer}} jours d'un {{name}}. Si nécessaire, veuillez nous en informer…"
+    max differ name constrained weekdays: "jour de semaine contraint"
+    max differ name event like easter: "événement comme Pâques"
+    max differ name public holiday: "jour férié"
     adding 0: "L'addition de 0 ne modifie pas la date. Veuillez l'omettre."
     unexpected token holiday: "Token inattendu (dans l'évaluation des jours fériés) : {{token}}"
     no holiday definition: "{{name}} n'est pas défini pour le pays {{cc}}."
