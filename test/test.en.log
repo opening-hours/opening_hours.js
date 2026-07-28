@@ -408,6 +408,10 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*public holiday <--- (Please use notation "PH" for "public holiday".)
 	*public holiday <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
+"#622: seven-day variable date offset" for "easter -7 days-Nov 01: Tu-Sa 10:00-12:00,13:30-17:00; Su,PH 11:00-17:00": [32m[1mPASSED[22m[39m
+"#622: seven-day variable date offset" for "Easter - 7days - Nov 01: Tu-Sa 10:00-12:00, 13:30-17:00; Su, PH 11:00-17:00": [32m[1mPASSED[22m[39m
+"#622: seven-day variable date offset" for "Easter -7 day-Nov 01: Tu-Sa 10:00-12:00,13:30-17:00; Su,PH 11:00-17:00": [32m[1mPASSED[22m[39m
+"#622: seven-day variable date offset" for "Easter - 07 days - Nov 01: Tu-Sa 10:00-12:00, 13:30-17:00; Su, PH 11:00-17:00": [32m[1mPASSED[22m[39m
 "Variable days: school holidays" for "SH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*SH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1670,10 +1674,6 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*every day <--- (Please use notation "Mo-Su" for "every day".)
 	*every day <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
-"Error tolerance: Full range" for "7days": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*7days <--- (Please use notation "Mo-Su" for "7days".)
-	*7days <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Error tolerance: Full range" for "7j/7": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*7j/7 <--- (Please use notation "Mo-Su" for "7j/7".)
@@ -1682,10 +1682,6 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*7/7 <--- (Please use notation "Mo-Su" for "7/7".)
 	*7/7 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
-"Error tolerance: Full range" for "7 days": [32m[1mPASSED[22m[39m
-With [34m[1mwarnings[22m[39m:
-	*7 days <--- (Please use notation "Mo-Su" for "7 days".)
-	*7 days <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Error tolerance: Full range" for "7 days a week": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*7 days a week <--- (Please use notation "Mo-Su" for "7 days a week".)
@@ -2114,9 +2110,6 @@ The value contains nothing meaningful which can be parsed.
 "Incorrect syntax which should throw an error" for "||": [32m[1mPASSED[22m[39m
 || <--- (Rule before fallback rule does not contain anything useful)
 
-"Incorrect syntax which should throw an error" for "Mo[2] - 7 days; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-Mo[2] -  <--- (Unexpected token: "-" This means that the syntax is not valid at that point or it is currently not supported.) Mo[2] - 7 days <--- (Please use notation "Mo-Su" for "7 days".)
-
 "Incorrect syntax which should throw an error" for ":week 02-54 00:00-24:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 : <--- (Unexpected token: "timesep" This means that the syntax is not valid at that point or it is currently not supported.) 
 
@@ -2259,7 +2252,7 @@ Su- <--- (Unexpected token: "-" This means that the syntax is not valid at that 
 2012,  <--- (An additional rule does not make sense here. Just use a ";" as rule separator. See https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#explain:additional_rule_separator)
 
 "Incorrect syntax which should throw an error" for "easter + 370 days; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-easter + 370 days <--- (There should be no reason to differ more than 200 days from a event like easter. If so tell us …)
+easter + 370 days <--- (There should be no reason to differ more than 200 days from a event like Easter. If so tell us …)
 
 "Incorrect syntax which should throw an error" for "easter - 2 days - 2012 easter + 2 days: open "Easter Monday"; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 easter - 2 days -  <--- (Unexpected token: "-" This means that the syntax is not valid at that point or it is currently not supported.) 
@@ -2449,6 +2442,9 @@ Dec 32 <--- (The day for Dec must be between 1 and 31.)
 
 "Incorrect syntax which should throw an error" for "We 12:00-18:00,,,,,,; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 We 12:00-18:00,, <--- (Unexpected token: "," This means that the syntax is not valid at that point or it is currently not supported.) 
+
+"Constrained weekday offsets beyond six days should be rejected" for "Mo[2] - 7 days; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
+Mo[2] - 7 days <--- (There should be no reason to differ more than 6 days from a constrained weekdays. If so tell us …)
 
 "Missing information (e.g. country or holidays not known to opening_hours.js)" for "PH": [32m[1mPASSED[22m[39m
 Country code missing which is needed to select the correct holidays (see README how to provide it)
@@ -2659,7 +2655,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1022/1022 tests passed. 0 did not pass.
+1024/1024 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

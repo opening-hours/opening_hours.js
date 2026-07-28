@@ -821,6 +821,17 @@ test.addTest('Variable days: public holidays', [
         [ '2014-12-26 00:00', '2014-12-27 00:00', false, '2. Weihnachtstag' ],
     ], 1000 * 60 * 60 * 24 * (20 + 2 * 2), 0, false, nominatim_default, 'not only test');
 
+test.addTest('#622: seven-day variable date offset', [
+        'easter -7 days-Nov 01: Tu-Sa 10:00-12:00,13:30-17:00; Su,PH 11:00-17:00',
+        'Easter - 7days - Nov 01: Tu-Sa 10:00-12:00, 13:30-17:00; Su, PH 11:00-17:00',
+        'Easter -7 day-Nov 01: Tu-Sa 10:00-12:00,13:30-17:00; Su,PH 11:00-17:00',
+        'Easter - 07 days - Nov 01: Tu-Sa 10:00-12:00, 13:30-17:00; Su, PH 11:00-17:00',
+    ], '2026-03-29 0:00', '2026-04-01 0:00', [
+        [ '2026-03-29 11:00', '2026-03-29 17:00' ],
+        [ '2026-03-31 10:00', '2026-03-31 12:00' ],
+        [ '2026-03-31 13:30', '2026-03-31 17:00' ],
+    ], 1000 * 60 * 60 * (6 + 2 + 3.5), 0, false, nominatim_default, 'not only test');
+
 // Updated from 2014 to 2024 for OpenHolidays data (2020-2027)
 // Data source: OpenHolidays Git Submodule Baden-Württemberg
 test.addTest('Variable days: school holidays', [
@@ -5206,10 +5217,8 @@ test.addTest('Error tolerance: Full range', [
         'every day',
         'all days',
         'every day',
-        '7days',
         '7j/7',
         '7/7',
-        '7 days',
         '7 days a week',
         '7 days/week',
         'täglich',
@@ -5485,7 +5494,6 @@ test.addShouldFail('Incorrect syntax which should throw an error', [
         '||', // only rule delimiter
         // '12:00-14:00 ||',
         // }}}
-        'Mo[2] - 7 days' + value_suffix,
         ':week 02-54 00:00-24:00' + value_suffix,
         ':::week 02-54 00:00-24:00' + value_suffix,
         'week :2-54 00:00-24:00' + value_suffix,
@@ -5599,6 +5607,10 @@ test.addShouldFail('Incorrect syntax which should throw an error', [
         'Nov 31' + value_suffix,
         'Dec 32' + value_suffix,
         'We 12:00-18:00,,,,,,' + value_suffix,
+    ], nominatim_default, 'not last test');
+
+test.addShouldFail('Constrained weekday offsets beyond six days should be rejected', [
+        'Mo[2] - 7 days' + value_suffix,
     ], nominatim_default, 'not last test');
 
 test.addShouldFail('Missing information (e.g. country or holidays not known to opening_hours.js)', [
