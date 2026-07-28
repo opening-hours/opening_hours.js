@@ -17,6 +17,9 @@ const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.js');
 /**
  * Country-wide PH/SH definitions and metadata are not regions.
  * A region is a named mapping with its own PH or SH list.
+ * @param {string} key - Country or region key to inspect.
+ * @param {object} value - Holiday definition associated with the key.
+ * @returns {boolean} Whether the value represents a holiday region.
  */
 function isHolidayRegion(key, value) {
     return typeof value === 'object'

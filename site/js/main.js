@@ -54,8 +54,11 @@ function generateTimeButtons() {
     return html;
 }
 
-// Helper function to update time button labels with current values
-
+/**
+ * Update the labels of the time selection buttons.
+ * @param {Date} date - Current date used for the displayed labels.
+ * @returns {void}
+ */
 export function updateTimeButtonLabels(date) {
     const yearLabel = document.getElementById('time-btn-value-year');
     const monthLabel = document.getElementById('time-btn-value-month');

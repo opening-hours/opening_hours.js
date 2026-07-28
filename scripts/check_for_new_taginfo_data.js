@@ -41,7 +41,11 @@ const https = require('node:https');
 const fs   = require('node:fs');
 /* }}} */
 
-/* Helper functions {{{ */
+/**
+ * Read the database creation time from a taginfo dump file. {{{
+ * @param {string} file Path to the taginfo dump file.
+ * @returns {Date|undefined} Database creation time, or `undefined` if it cannot be read.
+ */
 function get_dump_creation_time_from_file(file) {
     try {
         const data = JSON.parse(fs.readFileSync(file, 'utf8'));

@@ -28,8 +28,8 @@
  *
  * Geo tier-2: the POI's country (from the nominatim country code) yields the set
  * of locally plausible languages. A foreign token that matches one of them is
- * accepted with a warning — this is what separates `Mo-Tr` @DE (reject, #588)
- * from `Mo-Tr` @LT (accept, Lithuanian) and `Mo-montag` @DE (accept, German).
+ * accepted with a warning — this is what separates `Mo-Tr` `@DE` (reject, #588)
+ * from `Mo-Tr` `@LT` (accept, Lithuanian) and `Mo-montag` `@DE` (accept, German).
  *
  * Coherence (two pass) resolves Layer 3 tokens against their neighbours:
  *   - `Mo-Tr` (en):  `Tr` only matches lt, no lt context, locale is en → ERROR (#588)
@@ -166,10 +166,9 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
 
 /**
  * Resolve a sequence of raw lexemes of a single grammatical type.
- *
  * @param {string[]} rawTokens - e.g. ['Mo', 'Tr'] for `Mo-Tr`, ['Jan', 'Mär'] for `Jan-Mär`.
- * @param {{ locale: string, type: 'weekday'|'month', layers: object, regionLangs?: Set<string> }} options
- * @returns {{ ok: boolean, confidence: string, tokens: object[] }}
+ * @param {{ locale: string, type: 'weekday'|'month', layers: object, regionLangs?: Set<string> }} options - Locale and resolver data.
+ * @returns {{ ok: boolean, confidence: string, tokens: object[] }} Resolved tokens and overall confidence.
  */
 export function resolveRange(rawTokens, { locale, type, layers, regionLangs }) {
     const localeLang = String(locale || '').split('-')[0].toLowerCase();

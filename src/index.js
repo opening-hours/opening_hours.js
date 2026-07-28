@@ -41,6 +41,12 @@ import { regionLanguages } from './locale-resolver/region-languages.mjs';
 import { normalizeToken } from './locale-resolver/normalize.mjs';
 import resolver_layers from './locale-resolver/layers.json';
 
+/**
+ * Creates an opening hours parser for an OSM opening-hours value.
+ * @param {string} value The opening-hours value to parse.
+ * @param {object|null} [nominatim_object] Location and address data used for holidays and solar times.
+ * @param {number|object} [optional_conf_parm] Parser mode or parser configuration.
+ */
 export default function(value, nominatim_object, optional_conf_parm) {
     // Short constants {{{
     const word_value_replacement = { // If the correct values can not be calculated.
@@ -417,10 +423,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /* Helper functions {{{ */
-    /* Get regex string key from key osm_tag_defaults. {{{
-     *
-     * :param key: Tag key e.g. opening_hours:kitchen.
-     * :returns: Regex key from osm_tag_defaults e.g. opening_hours:.*
+    /**
+     * Get the regex key for an OpenStreetMap tag key. {{{
+     * @param {string} key Tag key, e.g. `opening_hours:kitchen`.
+     * @returns {string|undefined} Matching key from `osm_tag_defaults`.
      */
     function getRegexKeyForKeyFromOsmDefaults(key) {
         let regex_key;
@@ -443,11 +449,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
-    /* Check given element in optional_conf_parm. {{{
-     *
-     * :param key: Key of optional_conf_parm.
-     * :param expected_type: Expected `typeof()` the parameter.
-     * :returns: True if the expected type matches the given type.
+    /**
+     * Check the type of an optional constructor parameter. {{{
+     * @param {string} key Key of `optional_conf_parm`.
+     * @param {string} expected_type Expected result of `typeof`.
+     * @returns {boolean} Whether the value has the expected type.
      */
     function checkOptionalConfParm(key, expected_type) {
         if (typeof optional_conf_parm[key] === expected_type) {
@@ -460,24 +466,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
     /* }}} */
 
-    /* Resolve the position a warning or error points to. {{{
-     *
+    /**
+     * Resolve the position a warning or error points to. {{{
      * Computes the base string and the character offset into it where the
      * `<--- ` marker belongs. This is the single source of truth for both the
      * formatted string (formatWarnErrorMessage) and the structured warning
      * objects (getStructuredWarnings), so both stay consistent.
-     *
-     * :param nrule: Rule number starting with 0.
-     *               -1: error during tokenization, `at` is remaining value.length.
-     *               string: prettified value, `at` is a byte offset into it.
-     * :param at: Token position. -1 means end of rule (no token at that position).
-     * :param tokens_to_use: Optional. Defaults to `tokens`. Pass `new_tokens` from
-     *               getWarnings() because new_tokens can have more entries than tokens
-     *               when Additional Rules are present.
-     * :returns: Object { value, position }. `value` is the string the offset
-     *               refers to (the input value, or the prettified value for
-     *               selector-reordering warnings). `position` is the character
-     *               offset, or null if it could not be determined.
+     * @param {number|string} nrule Rule number starting with 0. `-1` means an
+     *     error during tokenization; a string means the prettified value.
+     * @param {number} at Token position. `-1` means the end of a rule.
+     * @param {Array} [tokens_to_use] Token array, defaulting to `tokens`. Pass
+     *     `new_tokens` from `getWarnings()` because additional rules can make
+     *     it longer than `tokens`.
+     * @returns {{value: string, position: number|null}} The value the position
+     *     refers to and its character offset, or `null` if it is unknown.
      */
     function resolveWarnErrorPosition(nrule, at, tokens_to_use) {
         if (typeof tokens_to_use === 'undefined') {
@@ -529,13 +531,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
-    /* Format warning or error message for the user. {{{
-     *
-     * :param nrule: See resolveWarnErrorPosition.
-     * :param at: See resolveWarnErrorPosition.
-     * :param message: Human readable string with the message.
-     * :param tokens_to_use: See resolveWarnErrorPosition.
-     * :returns: String with position of the warning or error marked for the user.
+    /**
+     * Format a warning or error message and mark its position in the input. {{{
+     * @param {number|string} nrule Rule number, or the prettified value when the
+     *     position refers to that value.
+     * @param {number} at Token or character position to mark.
+     * @param {string} message Human-readable warning or error message.
+     * @param {Array} [tokens_to_use] Token array used to resolve the position.
+     * @returns {string} Message with the position marker, or the original message
+     *     when no position can be determined.
      */
     function formatWarnErrorMessage(nrule, at, message, tokens_to_use) {
         // console.log(`Called formatWarnErrorMessage: ${nrule}, ${at}, ${message}`);
@@ -547,11 +551,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
-    /* Format internal library error message. {{{
-     *
-     * :param message: Human readable string with the error message.
-     * :param text_template: Message template defined in the `lang` variable to use for the error message. Defaults to 'library bug'.
-     * :returns: Error message for the user.
+    /**
+     * Format an internal library error message. {{{
+     * @param {string} [message] Human-readable error message.
+     * @param {string} [text_template] Translation template, defaulting to `library bug`.
+     * @returns {string} Formatted error message.
      */
     function formatLibraryBugMessage(message, text_template) {
         if (typeof message === 'undefined') {
@@ -568,11 +572,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return message;
     } /* }}} */
 
-    /* Tokenize input stream {{{
-     *
-     * :param value: Raw opening_hours value.
-     * :returns: Tokenized list object. Complex structure. Check the
-     *        internal documentation in the docs/ directory for details.
+    /**
+     * Tokenize an opening-hours input stream. {{{
+     * @param {string} value Raw opening-hours value.
+     * @returns {Array} Tokenized list. See the internal documentation in `docs/`.
      */
     function tokenize(value) {
         // Negative list approach: Match anything that's NOT punctuation, digits, or special chars

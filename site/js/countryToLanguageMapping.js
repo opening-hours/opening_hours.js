@@ -232,6 +232,12 @@ export const countryToLanguageMapping = {
     'zm': 'en',
     'zw': 'en,sn,nd ',
 };
+
+/**
+ * Get the preferred languages for a country code.
+ * @param {string} country_code - ISO 3166-1 alpha-2 country code.
+ * @returns {string} Comma-separated preferred language codes, or the country code when unknown.
+ */
 export function mapCountryToLanguage(country_code) {
     if (typeof countryToLanguageMapping[country_code] !== 'undefined') {
         return countryToLanguageMapping[country_code];
