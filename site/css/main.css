@@ -1334,14 +1334,14 @@ button:active {
         background-color: var(--bg-body);
     }
 
-    .example-link {
+    a {
         color: #6c94c4;
         text-decoration: underline;
         text-decoration-style: dotted;
         text-decoration-color: rgba(108, 148, 196, 0.4);
     }
 
-    .example-link:hover {
+    a:hover {
         color: #8bb4e0;
         text-decoration-style: solid;
         text-decoration-color: #8bb4e0;
