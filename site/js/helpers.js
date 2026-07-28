@@ -35,9 +35,11 @@ const evaluation_tool_colors = {
 const OSM_MAX_VALUE_LENGTH = 255;
 /* }}} */
 
-// load nominatim_data in JOSM {{{
-// Using a different way to load stuff in JOSM than https://github.com/vibrog/OpenLinkMap/
-// prevent josm remote plugin of showing message
+/**
+ * Load nominatim_data in JOSM using the JOSM remote control API. {{{
+ * @param {string} url_param - Query parameter sent to the JOSM remote control API.
+ * @returns {void}
+ */
 export function josm(url_param) {
     fetch(`http://localhost:8111/${url_param}`)
         .then(response => {
@@ -51,7 +53,11 @@ export function josm(url_param) {
 }
 // }}}
 
-// ISO 8601 calendar week number {{{
+/**
+ * ISO 8601 calendar week number. {{{
+ * @param {Date} date - Date for which to calculate the week number.
+ * @returns {number} ISO calendar week number.
+ */
 export function getISOWeekNumber(date) {
     const millisecondsPerDay = 24 * 60 * 60 * 1000;
     const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()));
@@ -71,11 +77,10 @@ export function getISOWeekNumber(date) {
  *
  * The names of countries and states are localized in OSM and opening_hours.js
  * (holidays) so we need to get the localized names from Nominatim as well.
- *
  * @param {number} lat - Latitude
  * @param {number} lon - Longitude
  * @param {string} preferredLanguage - Preferred language code (e.g., 'de', 'en')
- * @returns {Promise<Object>} Nominatim response with address data
+ * @returns {Promise<object>} Nominatim response with address data
  */
 async function reverseGeocodeLocation(lat, lon, preferredLanguage) {
     // Cached response for default coordinates to avoid queries on initial load
@@ -113,7 +118,11 @@ async function reverseGeocodeLocation(lat, lon, preferredLanguage) {
     return data;
 }
 
-/* JS for toggling examples on and off {{{ */
+/**
+ * Toggle examples on and off. {{{
+ * @param {string} control - ID of the element to toggle.
+ * @returns {void}
+ */
 export function toggle(control){
     const elem = document.getElementById(control);
 
@@ -125,6 +134,11 @@ export function toggle(control){
 }
 /* }}} */
 
+/**
+ * Open the browser prompt used to copy text to the clipboard.
+ * @param {string} text - Text to display for copying.
+ * @returns {void}
+ */
 export function copyToClipboard(text) {
     window.prompt('Copy to clipboard: Ctrl+C, Enter', text);
 }
@@ -178,7 +192,6 @@ function generateSelectorElement(selectorType, selectorValue) {
  *
  * Converts the internal rule structure into human-readable HTML with links
  * to the specification for each selector type and rule separator.
- *
  * @param {Array} prettifiedValueArray - Array containing [rules, ruleSeparators]
  * @returns {DocumentFragment} DOM fragment with formatted value explanation
  */
@@ -231,10 +244,9 @@ function generateResultsElement(matchingRule) {
 
 /**
  * Generate HTML display for deviation information between two opening hours values.
- *
- * @param {Object} oh1 - The first opening_hours instance
- * @param {Object} oh2 - The second opening_hours instance
- * @param {Object} deviationInfo - Deviation data from isEqualTo comparison
+ * @param {object} oh1 - The first opening_hours instance
+ * @param {object} oh2 - The second opening_hours instance
+ * @param {object} deviationInfo - Deviation data from isEqualTo comparison
  * @returns {string} HTML string with formatted deviation information
  */
 function generateDeviationHTML(oh1, oh2, deviationInfo) {
@@ -319,8 +331,7 @@ function generateDeviationHTML(oh1, oh2, deviationInfo) {
  * - Green (ok): Values are equivalent
  * - Orange (warn): Values differ, shows deviation details in #compare-result
  * - Brown (error): Diff value failed to parse
- *
- * @param {Object} oh - The opening_hours instance to compare
+ * @param {object} oh - The opening_hours instance to compare
  * @param {string} diffValue - The opening hours value to compare against
  * @param {number} mode - The parsing mode for opening hours
  * @param {Date} startDate - The date to start comparison from
@@ -476,6 +487,12 @@ function generateValueTooLongFragment(prettified, value) {
 
 /* }}} */
 
+/**
+ * Evaluate the current opening-hours expression and update the page.
+ * @param {number} [offset] - Offset used when evaluating the expression; defaults to 0.
+ * @param {boolean} [reset] - Whether to reset the current evaluation state.
+ * @returns {Promise<void>}
+ */
 export async function Evaluate (offset = 0, reset) {
     if (document.forms.check.elements['lat'].value !== string_lat || document.forms.check.elements['lon'].value !== string_lon) {
         string_lat = document.forms.check.elements['lat'].value;
@@ -611,11 +628,21 @@ export async function Evaluate (offset = 0, reset) {
     updatePermalinkHref();
 }
 
+/**
+ * Evaluate an example expression from a page element.
+ * @param {HTMLElement} element - Element containing the expression.
+ * @returns {boolean} False to prevent the default element action.
+ */
 export function EX (element) {
     newValue(element.innerHTML);
     return false;
 }
 
+/**
+ * Set and evaluate a new opening-hours expression.
+ * @param {string} value - Opening-hours expression to evaluate.
+ * @returns {void}
+ */
 export function newValue(value) {
     document.forms.check.elements['expression'].value = value;
     Evaluate();
@@ -645,6 +672,10 @@ function updatePermalinkHref() {
     document.getElementById('permalink-link-without-timestamp').href = `${baseUrl}?${params}`;
 }
 
+/**
+ * Request the user's current geolocation and update the form.
+ * @returns {void}
+ */
 export function setCurrentPosition() {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(onPositionUpdate);

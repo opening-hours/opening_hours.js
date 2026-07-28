@@ -34,6 +34,8 @@ const stats = {
 /**
  * Parse CSV file (semicolon-separated)
  * Handles quoted fields containing semicolons and commas
+ * @param {string} content - Semicolon-separated CSV content.
+ * @returns {object[]} Parsed CSV rows.
  */
 function parseCSV(content) {
   const lines = content.trim().split('\n');
@@ -87,6 +89,8 @@ function parseCSV(content) {
 /**
  * Load subdivision names from subdivisions.csv
  * Returns: { "BW": "Baden-Württemberg", ... }
+ * @param {string} country - Country code to load subdivision names for.
+ * @returns {Promise<object>} Subdivision codes mapped to localized names.
  */
 async function loadSubdivisionNames(country) {
   try {
@@ -124,6 +128,7 @@ async function loadSubdivisionNames(country) {
 
 /**
  * Discover all countries with school holidays in submodule
+ * @returns {Promise<string[]>} Country codes with school holiday data.
  */
 async function discoverCountriesInSubmodule() {
   const countries = new Set();
@@ -159,6 +164,8 @@ async function discoverCountriesInSubmodule() {
 
 /**
  * Load complete YAML data (PH, SH, meta) for merging
+ * @param {string} country - Country code to load holiday data for.
+ * @returns {Promise<object>} Parsed country holiday data.
  */
 async function loadCompleteYaml(country) {
   try {
@@ -172,6 +179,8 @@ async function loadCompleteYaml(country) {
 
 /**
  * Check if a YAML file has school holidays data
+ * @param {string} country - Country code to check for school holidays.
+ * @returns {Promise<boolean>} Whether school holiday data exists.
  */
 async function yamlHasSchoolHolidays(country) {
   try {
@@ -198,6 +207,8 @@ async function yamlHasSchoolHolidays(country) {
 
 /**
  * Load school holidays from CSV files in submodule
+ * @param {string} country - Country code to load school holidays for.
+ * @returns {Promise<object[]|null>} Parsed holiday rows, or null if unavailable.
  */
 async function loadSchoolHolidaysFromSubmodule(country) {
   const holidaysDir = path.join(SUBMODULE_DIR, country, 'holidays');
@@ -228,6 +239,10 @@ async function loadSchoolHolidaysFromSubmodule(country) {
 
 /**
  * Convert CSV data to opening_hours.js format
+ * @param {object[]} csvData - Parsed school holiday rows.
+ * @param {string} country - Country code the rows belong to.
+ * @param {number[]} yearRange - Inclusive range of years to include.
+ * @returns {object} School holidays grouped by subdivision.
  */
 function convertCSVToInternalFormat(csvData, country, yearRange) {
   // Group by subdivision -> holiday name -> years
@@ -346,6 +361,7 @@ function convertCSVToInternalFormat(csvData, country, yearRange) {
 
 /**
  * Get submodule commit info for reproducible builds
+ * @returns {Promise<object>} Submodule hash and commit timestamp.
  */
 async function getSubmoduleInfo() {
   const { execSync } = await import('child_process');
@@ -370,6 +386,10 @@ async function getSubmoduleInfo() {
 
 /**
  * Generate JavaScript file with holiday definitions
+ * @param {object} countriesData - Generated holiday data grouped by country.
+ * @param {number[]} yearRange - Inclusive range of years included in the output.
+ * @param {object} submodule - Metadata for the source data submodule.
+ * @returns {Promise<string>} Generated JavaScript source.
  */
 async function generateJavaScriptFile(countriesData, yearRange, submodule) {
   const commitDate = new Date(submodule.commitUnixTimestamp * 1000).toISOString().split('T')[0];
@@ -457,6 +477,9 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
 
 /**
  * Format object in compact style
+ * @param {object} obj - Object to format.
+ * @param {number} indent - Current indentation level.
+ * @returns {string} Formatted JavaScript object literal.
  */
 function formatCompactObject(obj, indent) {
   const ind = '  '.repeat(indent);
@@ -503,6 +526,7 @@ function formatCompactObject(obj, indent) {
 
 /**
  * Discover all YAML files
+ * @returns {Promise<string[]>} Country codes with YAML data.
  */
 async function discoverYamlCountries() {
   const countries = new Set();
@@ -523,6 +547,8 @@ async function discoverYamlCountries() {
 
 /**
  * Validate that all generated countries are exported in index.js
+ * @param {string[]} generatedCountries - Country codes found in generated data.
+ * @returns {Promise<void>} Resolves after export validation completes.
  */
 async function validateExports(generatedCountries) {
   const INDEX_FILE = path.join(HOLIDAYS_DIR, 'index.js');
@@ -597,6 +623,7 @@ async function validateExports(generatedCountries) {
 
 /**
  * Build school holidays for all countries
+ * @returns {Promise<object>} Generated holiday data grouped by country.
  */
 async function buildSchoolHolidays() {
   console.log('═'.repeat(60));

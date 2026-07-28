@@ -2006,6 +2006,11 @@ export const resources = { // English is fallback language.
 
 // Functions which generate localized HTML sections {{{
 
+/**
+ * Change the interface language and reload the page.
+ * @param {string} lang - Language code to activate.
+ * @returns {void}
+ */
 export function changeLanguage(lang) {
     localStorage.setItem('i18nextLng', lang);
     i18next.changeLanguage(lang, () => {
@@ -2013,6 +2018,10 @@ export function changeLanguage(lang) {
     });
 }
 
+/**
+ * Generate the language selection HTML.
+ * @returns {string} HTML for the language selection control.
+ */
 export function getUserSelectTranslateHTMLCode() {
     let res = '<label for="language-select" class="hd">';
     res += i18next.t('lang.choose')
@@ -2035,7 +2044,11 @@ export function getUserSelectTranslateHTMLCode() {
 }
 // }}}
 
-// Detect language: localStorage > browser language > fallback
+/**
+ * Detect the preferred language from localStorage first, then browser settings.
+ * Falls back to English when neither source provides a supported language.
+ * @returns {string} Selected language code, falling back to English.
+ */
 export function detectLanguage() {
     const stored = localStorage.getItem('i18nextLng');
     if (stored && resources[stored]) return stored;
