@@ -1318,32 +1318,30 @@ button:active {
     color: #6c94c4;
 }
 
-@media (prefers-color-scheme: dark) {
-    #footer {
-        border-top-color: var(--border-color);
-        background: linear-gradient(to bottom, var(--bg-section), var(--bg-body));
-    }
+body[data-theme="dark"] #footer {
+    border-top-color: var(--border-color);
+    background: linear-gradient(to bottom, var(--bg-section), var(--bg-body));
+}
 
-    #show_warnings_or_errors {
-        background-color: var(--bg-section);
-        border-color: var(--border-color);
-        color: var(--text-primary);
-    }
+body[data-theme="dark"] #show_warnings_or_errors {
+    background-color: var(--bg-section);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
 
-    div.warning_error_message {
-        background-color: var(--bg-body);
-    }
+body[data-theme="dark"] div.warning_error_message {
+    background-color: var(--bg-body);
+}
 
-    a {
-        color: #6c94c4;
-        text-decoration: underline;
-        text-decoration-style: dotted;
-        text-decoration-color: rgba(108, 148, 196, 0.4);
-    }
+body[data-theme="dark"] a {
+    color: #6c94c4;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: rgba(108, 148, 196, 0.4);
+}
 
-    a:hover {
-        color: #8bb4e0;
-        text-decoration-style: solid;
-        text-decoration-color: #8bb4e0;
-    }
+body[data-theme="dark"] a:hover {
+    color: #8bb4e0;
+    text-decoration-style: solid;
+    text-decoration-color: #8bb4e0;
 }
