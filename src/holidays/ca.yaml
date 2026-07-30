@@ -78,18 +78,6 @@ Newfoundland and Labrador:
     - {'name': 'Armistice Day', 'fixed_date': [11, 11]}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
 
-Nova Scotia:
-  _state_code: ns
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Nova+Scotia&zoom=18&addressdetails=1&limit=1&accept-language=en,fr'
-  PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Heritage Day', 'variable_date': firstFebruaryMonday, 'offset': 14}
-    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-    - {'name': 'Canada Day', 'variable_date': canadaDay}
-    - {'name': 'Labour Day', 'variable_date': firstSeptemberMonday}
-    - {'name': 'Remembrance Day', 'fixed_date': [11, 11]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-
 Northwest Territories:
   _state_code: nt
   _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Northwest+Territories&zoom=18&addressdetails=1&limit=1&accept-language=en,fr'
@@ -106,6 +94,18 @@ Northwest Territories:
     - {'name': 'Remembrance Day', 'fixed_date': [11, 11]}
     - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+
+Nova Scotia:
+  _state_code: ns
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Nova+Scotia&zoom=18&addressdetails=1&limit=1&accept-language=en,fr'
+  PH:
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
+    - {'name': 'Heritage Day', 'variable_date': firstFebruaryMonday, 'offset': 14}
+    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+    - {'name': 'Canada Day', 'variable_date': canadaDay}
+    - {'name': 'Labour Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Remembrance Day', 'fixed_date': [11, 11]}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
 
 Nunavut:
   _state_code: nu
