@@ -1130,11 +1130,11 @@ export const ca = {
 };
 
 export const ch = {
-  PH: [{"name":"Neujahrstag/Nouvel an/Capo d'anno","fixed_date":[1,1]},{"name":"Berchtoldstag/2 janvier","fixed_date":[1,2],"only_states":["Zürich","Bern","Luzern","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Schaffhausen","Graubünden","Aargau","Thurgau","Waadt","Neuenburg","Genf","Jura","St. Gallen","Wallis"]},{"name":"Heilige Drei Könige/Epifania","fixed_date":[1,6],"only_states":["Uri","Schwyz","Graubünden","Tessin"]},{"name":"Instauration de la République","fixed_date":[3,1],"only_states":["Neuenburg"]},{"name":"Josefstag/Saint-Joseph/San Giuseppe","fixed_date":[3,19],"only_states":["Luzern","Uri","Schwyz","Nidwalden","Zug","Graubünden","Tessin","Wallis"]},{"name":"Karfreitag/Vendredi saint","variable_date":"easter","offset":-2,"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Waadt","Neuenburg","Genf","Jura"]},{"name":"Ostermontag/Lundi de Pâques/Lunedi di Pasqua","variable_date":"easter","offset":1,"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Tessin","Waadt","Neuenburg","Genf","Jura","Wallis"]},{"name":"Tag der Arbeit/Festa dei lavoratori","fixed_date":[5,1],"only_states":["Zürich","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Aargau","Thurgau","Tessin","Neuenburg","Jura"]},{"name":"Auffahrt/Ascension/Ascensione","variable_date":"easter","offset":39},{"name":"Pfingstmontag/Lundi de Pentecôte/Lunedi di Pentecoste","variable_date":"easter","offset":50,"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Tessin","Waadt","Neuenburg","Genf","Jura","Wallis"]},{"name":"Fronleichnam/Fête-Dieu/Corpus domini","variable_date":"easter","offset":60,"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Zug","Freiburg","Solothurn","Basel-Landschaft","Appenzell Innerrhoden","Graubünden","Aargau","Tessin","Wallis","Neuenburg","Jura"]},{"name":"Commémoration du plébiscite jurassien","fixed_date":[6,23],"only_states":["Jura"]},{"name":"San Pietro e Paolo","fixed_date":[6,29],"only_states":["Tessin"]},{"name":"Bundesfeiertag/Jour de la fête nationale/Giorno festivo federale","fixed_date":[8,1]},{"name":"Mariä Himmelfahrt/Assomption/Assunzione","fixed_date":[8,15],"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Zug","Freiburg","Solothurn","Basel-Landschaft","Appenzell Innerrhoden","Graubünden","Aargau","Tessin","Wallis","Jura"]},{"name":"Mauritiustag","fixed_date":[9,22],"only_states":["Appenzell Innerrhoden"]},{"name":"Bruderklausenfest","fixed_date":[9,25],"only_states":["Obwalden"]},{"name":"Allerheiligen/Toussaint/Ognissanti","fixed_date":[11,1],"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Tessin","Wallis","Jura"]},{"name":"Mariä Empfängnis/Immaculée Conception/Ognissanti","fixed_date":[12,8],"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Zug","Freiburg","Solothurn","Appenzell Innerrhoden","Graubünden","Aargau","Tessin","Wallis"]},{"name":"Weihnachtstag/Noël/Natale","fixed_date":[12,25]},{"name":"Stephanstag/Saint-Etienne/Santo Stefano","fixed_date":[12,26],"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Tessin","Wallis"]},{"name":"Restauration de la République","fixed_date":[12,31],"only_states":["Genf"]}],
+  PH: [{"name":"Neujahr/Nouvel An/Capodanno","fixed_date":[1,1]},{"name":"Berchtoldstag/2 janvier","fixed_date":[1,2],"only_states":["Aargau","Bern","Jura","Thurgau","Waadt"]},{"name":"Heilige Drei Könige/l'Épiphanie/Epifania","fixed_date":[1,6],"only_states":["Schwyz","Tessin","Uri"]},{"name":"Jahrestag Ausrufung der Republik/Instauration de la République","fixed_date":[3,1],"only_states":["Neuenburg"]},{"name":"Josefstag/San Giuseppe","fixed_date":[3,19],"only_states":["Nidwalden","Schwyz","Solothurn","Tessin","Uri","Wallis"]},{"name":"Karfreitag/Vendredi saint/Venerdì santo","variable_date":"easter","offset":-2,"only_states":["Aargau","Appenzell Ausserrhoden","Appenzell Innerrhoden","Basel-Landschaft","Basel-Stadt","Bern","Freiburg","Genf","Glarus","Graubünden","Jura","Luzern","Neuenburg","Nidwalden","Obwalden","Schaffhausen","Schwyz","Solothurn","St. Gallen","Thurgau","Uri","Waadt","Zug","Zürich"]},{"name":"Ostersonntag/Pâques/Domenica di Pasqua","variable_date":"easter"},{"name":"Ostermontag/Lundi de Pâques/Lunedì dell’Angelo","variable_date":"easter","offset":1},{"name":"Tag der Arbeit/Fête du travail/Festa del Lavoro","fixed_date":[5,1],"only_states":["Aargau","Basel-Landschaft","Basel-Stadt","Jura","Neuenburg","Schaffhausen","Tessin","Thurgau","Zürich"]},{"name":"Auffahrt/Ascension/Ascensione","variable_date":"easter","offset":39},{"name":"Pfingstsonntag/Pentecôte/Pentecoste","variable_date":"easter","offset":49},{"name":"Pfingstmontag/Lundi de Pentecôte/Lunedì di Pentecoste","variable_date":"easter","offset":50},{"name":"Fronleichnam/la Fête-Dieu/Corpus Domini","variable_date":"easter","offset":60,"only_states":["Aargau","Appenzell Innerrhoden","Freiburg","Jura","Luzern","Neuenburg","Nidwalden","Obwalden","Schwyz","Solothurn","Tessin","Uri","Wallis","Zug"]},{"name":"Fest der Unabhängigkeit/Plébiscite jurassien","fixed_date":[6,23],"only_states":["Jura"]},{"name":"Peter und Paul/Saint Pierre et Paul/Santi Pietro e Paolo","fixed_date":[6,29],"only_states":["Tessin"]},{"name":"Bundesfeiertag/Fête nationale/Giorno festivo federale","fixed_date":[8,1]},{"name":"Mariä Himmelfahrt/Assomption/Assunzione","fixed_date":[8,15],"only_states":["Aargau","Appenzell Innerrhoden","Freiburg","Jura","Luzern","Nidwalden","Obwalden","Schwyz","Solothurn","Tessin","Uri","Wallis","Zug"]},{"name":"Eidg. Dank-, Buss- und Bettag/Jeûne fédéral/Digiuno federale","variable_date":"firstSeptemberSunday","offset":14,"only_states":["Aargau","Appenzell Ausserrhoden","Appenzell Innerrhoden","Basel-Landschaft","Basel-Stadt","Bern","Freiburg","Graubünden","Jura","Luzern","Neuenburg","Nidwalden","Obwalden","Schaffhausen","Schwyz","Solothurn","St. Gallen","Tessin","Thurgau","Uri","Waadt","Wallis","Zug","Zürich"]},{"name":"Mauritiustag","fixed_date":[9,22],"only_states":["Appenzell Innerrhoden"]},{"name":"Bruderklausenfest/Saint-Nicholas-de-Flüe","fixed_date":[9,25],"only_states":["Obwalden"]},{"name":"Allerheiligen/Toussaint/Ognissanti","fixed_date":[11,1],"only_states":["Aargau","Appenzell Innerrhoden","Freiburg","Glarus","Jura","Luzern","Nidwalden","Obwalden","Schwyz","Solothurn","St. Gallen","Tessin","Uri","Wallis","Zug"]},{"name":"Mariä Empfängnis/Immaculée Conception/Immacolata Concezione","fixed_date":[12,8],"only_states":["Aargau","Freiburg","Luzern","Nidwalden","Obwalden","Schwyz","Tessin","Uri","Wallis","Zug"]},{"name":"Heiliger Abend/Veille de Noël","fixed_date":[12,24],"only_states":["Glarus"]},{"name":"Weihnachtstag/Noël/Natale","fixed_date":[12,25]},{"name":"Stephanstag/Saint-Etienne/Santo Stefano","fixed_date":[12,26],"only_states":["Aargau","Appenzell Innerrhoden","Basel-Landschaft","Basel-Stadt","Bern","Freiburg","Genf","Glarus","Graubünden","Luzern","Neuenburg","Nidwalden","Obwalden","Schaffhausen","Schwyz","Solothurn","St. Gallen","Tessin","Thurgau","Wallis","Zug","Zürich"]},{"name":"Silvester/Saint-Sylvestre/Ultimo dell’anno","fixed_date":[12,31],"only_states":["Glarus"]},{"name":"Wiederherstellung der Republik/Restauration de la République","fixed_date":[12,31],"only_states":["Genf"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
   "Aargau": {
     "_state_code": "ag",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Aargau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Aargau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -1299,7 +1299,7 @@ export const ch = {
   },
   "Appenzell Ausserrhoden": {
     "_state_code": "ar",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell+Ausserrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Appenzell+Ausserrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -1351,7 +1351,7 @@ export const ch = {
   },
   "Appenzell Innerrhoden": {
     "_state_code": "ai",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell+Innerrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Appenzell+Innerrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Weihnachtsferien",
@@ -1380,7 +1380,7 @@ export const ch = {
   },
   "Basel-Landschaft": {
     "_state_code": "bl",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Landschaft&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Basel-Landschaft&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -1481,7 +1481,7 @@ export const ch = {
   },
   "Basel-Stadt": {
     "_state_code": "bs",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Stadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Basel-Stadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -1582,7 +1582,7 @@ export const ch = {
   },
   "Bern": {
     "_state_code": "be",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Bern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Bern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -1777,7 +1777,7 @@ export const ch = {
   },
   "Freiburg": {
     "_state_code": "fr",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Fribourg": {
     "_state_code": "fr",
@@ -1920,11 +1920,11 @@ export const ch = {
   },
   "Genf": {
     "_state_code": "ge",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Genf&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Genf&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Glarus": {
     "_state_code": "gl",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Glarus&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Glarus&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2019,7 +2019,7 @@ export const ch = {
   },
   "Graubünden": {
     "_state_code": "gr",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Imboden": {
     "_state_code": "gr-ib",
@@ -2068,7 +2068,7 @@ export const ch = {
   },
   "Jura": {
     "_state_code": "ju",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Jura&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Jura&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Vacances de Noël",
@@ -2190,7 +2190,7 @@ export const ch = {
   },
   "Luzern": {
     "_state_code": "lu",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Luzern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Luzern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -2380,11 +2380,11 @@ export const ch = {
   },
   "Neuenburg": {
     "_state_code": "ne",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Neuenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Neuenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Nidwalden": {
     "_state_code": "nw",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Nidwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Nidwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2477,7 +2477,7 @@ export const ch = {
   },
   "Obwalden": {
     "_state_code": "ow",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Obwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Obwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2623,7 +2623,7 @@ export const ch = {
   },
   "Schaffhausen": {
     "_state_code": "sh",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schaffhausen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Schaffhausen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2757,7 +2757,7 @@ export const ch = {
   },
   "Schwyz": {
     "_state_code": "sz",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schwyz&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Schwyz&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2813,7 +2813,7 @@ export const ch = {
   },
   "Solothurn": {
     "_state_code": "so",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Solothurn&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Solothurn&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -2893,7 +2893,7 @@ export const ch = {
   },
   "St. Gallen": {
     "_state_code": "sg",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=St.+Gallen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=St.+Gallen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -2995,11 +2995,11 @@ export const ch = {
   },
   "Tessin": {
     "_state_code": "ti",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Tessin&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Tessin&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Thurgau": {
     "_state_code": "tg",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Thurgau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Thurgau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -3114,7 +3114,7 @@ export const ch = {
   },
   "Uri": {
     "_state_code": "ur",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Uri&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Uri&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -3325,15 +3325,15 @@ export const ch = {
   },
   "Waadt": {
     "_state_code": "vd",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Waadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Waadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Wallis": {
     "_state_code": "vs",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Wallis&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Wallis&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Zug": {
     "_state_code": "zg",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Zug&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Zug&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -3421,7 +3421,7 @@ export const ch = {
   },
   "Zürich": {
     "_state_code": "zh",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Z%C3%BCrich&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Z%C3%BCrich&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
