@@ -874,142 +874,142 @@ export const bg = {
 };
 
 export const br = {
-  PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}],
+  PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=-10&lon=-52&zoom=18&addressdetails=1&accept-language=pt,en",
   "Acre": {
     "_state_code": "ac",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Acre&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Dia do evangélico","fixed_date":[1,23]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Alusivo ao Dia Internacional da Mulher","fixed_date":[3,8]},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Aniversário do estado","fixed_date":[6,15]},{"name":"Dia da Amazônia","fixed_date":[9,5]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Assinatura do Tratado de Petrópolis","fixed_date":[11,17]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Dia do evangélico","fixed_date":[1,12]},{"name":"Alusivo ao Dia Internacional da Mulher","fixed_date":[3,8]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Aniversário do estado","fixed_date":[6,15]},{"name":"Dia da Amazônia","fixed_date":[9,5]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Alagoas": {
     "_state_code": "al",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Alagoas&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"São João","fixed_date":[6,24]},{"name":"São Pedro","fixed_date":[6,29]},{"name":"Independência","fixed_date":[9,7]},{"name":"Emancipação política","fixed_date":[9,16]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Morte de Zumbi dos Palmares","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"São João","fixed_date":[6,24]},{"name":"São Pedro","fixed_date":[6,29]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Emancipação política","fixed_date":[9,16]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Morte de Zumbi dos Palmares","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Amapá": {
     "_state_code": "ap",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Amap%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Dia de São José","fixed_date":[3,19]},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Data Magna do estado","fixed_date":[9,13]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Dia de São José","fixed_date":[3,19]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Criação do Território Federal","fixed_date":[9,13]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Amazonas": {
     "_state_code": "am",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Amazonas&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Data Magna do estado","fixed_date":[9,5]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Elevação do Amazonas à categoria de província","fixed_date":[9,5]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Bahia": {
     "_state_code": "ba",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Bahia&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Data magna do estado","fixed_date":[2,7]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Independência da Bahia","fixed_date":[7,2]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Ceará": {
     "_state_code": "ce",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Cear%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Data magna do estado","fixed_date":[3,25]},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Data magna do estado","fixed_date":[3,25]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Distrito Federal": {
     "_state_code": "df",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Distrito+Federal&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia do evangélico","fixed_date":[11,30]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Fundação de Brasília","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Dia do Evangélico","fixed_date":[11,30]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Espírito Santo": {
     "_state_code": "es",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Esp%C3%ADrito+Santo&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Data magna do estado","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Nossa Senhora da Penha","variable_date":"easter","offset":8},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Goiás": {
     "_state_code": "go",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Goi%C3%A1s&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Nossa Senhora Auxiliadora","fixed_date":[5,24]},{"name":"Fundação da Cidade de Goiás","fixed_date":[7,26]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Lançamento da pedra fundamental de Goiânia","fixed_date":[10,24]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Maranhão": {
     "_state_code": "ma",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Maranh%C3%A3o&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Data magna do estado","fixed_date":[7,28]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Adesão do Maranhão à independência do Brasil","fixed_date":[7,28]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Mato Grosso": {
     "_state_code": "mt",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Mato+Grosso&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Mato Grosso do Sul": {
     "_state_code": "ms",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Mato+Grosso+do+Sul&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Criação do estado","fixed_date":[10,11]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Criação do estado","fixed_date":[10,11]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Minas Gerais": {
     "_state_code": "mg",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Minas+Gerais&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Data magna do estado","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Data magna do estado","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Assunção de Nossa Senhora","fixed_date":[8,15]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Imaculada Conceição","fixed_date":[12,8]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Pará": {
     "_state_code": "pa",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Par%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Data magna do estado","fixed_date":[8,15]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Adesão do Grão-Pará à independência do Brasil","fixed_date":[8,15]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Paraíba": {
     "_state_code": "pb",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Para%C3%ADba&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Homenagem a João Pessoa","fixed_date":[7,26]},{"name":"Data magna do estado","fixed_date":[8,5]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Homenagem à memória do ex-presidente João Pessoa","fixed_date":[7,26]},{"name":"Nossa Senhora das Neves","fixed_date":[8,5]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Paraná": {
     "_state_code": "pr",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Paran%C3%A1&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Data magna do estado","fixed_date":[12,19]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora da Luz dos Pinhais","fixed_date":[9,8]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Emancipação política do estado do Paraná","fixed_date":[12,19]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Pernambuco": {
     "_state_code": "pe",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Pernambuco&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Data magna do estado","variable_date":"firstMarchSunday"},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"São João","fixed_date":[6,24]},{"name":"Nossa Senhora do Carmo","fixed_date":[7,16]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Nossa Senhora da Conceição","fixed_date":[12,8]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Piauí": {
     "_state_code": "pi",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Piau%C3%AD&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Data magna do estado","fixed_date":[10,19]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia do Piauí","fixed_date":[10,19]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Rio de Janeiro": {
     "_state_code": "rj",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rio+de+Janeiro&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Dia de São Sebastião","fixed_date":[1,20]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia de São Jorge","fixed_date":[4,23]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Rio Grande do Norte": {
     "_state_code": "rn",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rio+Grande+do+Norte&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"São Jorge","fixed_date":[4,23]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Mártires de Cunhaú e Uruaçu","fixed_date":[10,3]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Mártires de Cunhaú e Uruaçu","fixed_date":[10,3]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Rio Grande do Sul": {
     "_state_code": "rs",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rio+Grande+do+Sul&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Proclamação da República Rio-Grandense","fixed_date":[9,20]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Proclamação da República Rio-Grandense","fixed_date":[9,20]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Rondônia": {
     "_state_code": "ro",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Rond%C3%B4nia&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Data magna do estado","fixed_date":[1,4]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Dia do evangélico","fixed_date":[6,18]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Criação do estado","fixed_date":[1,4]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia do evangélico","fixed_date":[6,18]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Roraima": {
     "_state_code": "rr",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Roraima&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Data magna do estado","fixed_date":[10,5]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Criação do estado","fixed_date":[10,5]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Santa Catarina": {
     "_state_code": "sc",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Santa+Catarina&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Data magna do estado","fixed_date":[8,11]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Santa Catarina de Alexandria","fixed_date":[11,25]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia de Santa Catarina","fixed_date":[8,11],"shift_rule":"if monday,tuesday,wednesday,thursday,friday,saturday then next sunday"},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Dia de Santa Catarina de Alexandria","fixed_date":[11,25],"shift_rule":"if monday,tuesday,wednesday,thursday,friday,saturday then next sunday"},{"name":"Natal","fixed_date":[12,25]}]
   },
   "São Paulo": {
     "_state_code": "sp",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=S%C3%A3o+Paulo&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Data magna do estado","fixed_date":[7,9]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Aniversário da Cidade","fixed_date":[1,25]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Corpo de Deus","variable_date":"easter","offset":60},{"name":"Revolução Constitucionalista","fixed_date":[7,9]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Sergipe": {
     "_state_code": "se",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Sergipe&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Aniversário de Aracaju","fixed_date":[3,17]},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"São João","fixed_date":[6,24]},{"name":"Data magna do estado","fixed_date":[7,8]},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Nossa Senhora da Conceição","fixed_date":[12,8]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Emancipação política de Sergipe","fixed_date":[7,8]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   },
   "Tocantins": {
     "_state_code": "to",
     "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Brasil&state=Tocantins&zoom=18&addressdetails=1&limit=1&accept-language=pt,en",
-    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Carnaval","variable_date":"easter","offset":-47},{"name":"Autonomia do estado","fixed_date":[3,18]},{"name":"Sexta-feira santa","variable_date":"easter","offset":-2},{"name":"Tiradentes","fixed_date":[4,21]},{"name":"Dia do Trabalhador","fixed_date":[5,1]},{"name":"Corpus Christi","variable_date":"easter","offset":60},{"name":"Independência","fixed_date":[9,7]},{"name":"Nossa Senhora da Natividade","fixed_date":[9,8]},{"name":"Criação do estado","fixed_date":[10,5]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Natal","fixed_date":[12,25]}]
+    PH: [{"name":"Ano Novo","fixed_date":[1,1]},{"name":"Autonomia do Estado","fixed_date":[3,18]},{"name":"Sexta-Feira Santa","variable_date":"easter","offset":-2},{"name":"Dia de Tiradentes","fixed_date":[4,21]},{"name":"Dia do trabalhador","fixed_date":[5,1]},{"name":"Dia da Independência","fixed_date":[9,7]},{"name":"Nossa Senhora da Natividade","fixed_date":[9,8]},{"name":"Criação do estado","fixed_date":[10,5]},{"name":"Nossa Senhora Aparecida","fixed_date":[10,12]},{"name":"Dia de Finados","fixed_date":[11,2]},{"name":"Proclamação da República","fixed_date":[11,15]},{"name":"Dia da Consciência Negra","fixed_date":[11,20]},{"name":"Natal","fixed_date":[12,25]}]
   }
 };
 
@@ -1130,11 +1130,11 @@ export const ca = {
 };
 
 export const ch = {
-  PH: [{"name":"Neujahrstag/Nouvel an/Capo d'anno","fixed_date":[1,1]},{"name":"Berchtoldstag/2 janvier","fixed_date":[1,2],"only_states":["Zürich","Bern","Luzern","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Schaffhausen","Graubünden","Aargau","Thurgau","Waadt","Neuenburg","Genf","Jura","St. Gallen","Wallis"]},{"name":"Heilige Drei Könige/Epifania","fixed_date":[1,6],"only_states":["Uri","Schwyz","Graubünden","Tessin"]},{"name":"Instauration de la République","fixed_date":[3,1],"only_states":["Neuenburg"]},{"name":"Josefstag/Saint-Joseph/San Giuseppe","fixed_date":[3,19],"only_states":["Luzern","Uri","Schwyz","Nidwalden","Zug","Graubünden","Tessin","Wallis"]},{"name":"Karfreitag/Vendredi saint","variable_date":"easter","offset":-2,"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Waadt","Neuenburg","Genf","Jura"]},{"name":"Ostermontag/Lundi de Pâques/Lunedi di Pasqua","variable_date":"easter","offset":1,"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Tessin","Waadt","Neuenburg","Genf","Jura","Wallis"]},{"name":"Tag der Arbeit/Festa dei lavoratori","fixed_date":[5,1],"only_states":["Zürich","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Aargau","Thurgau","Tessin","Neuenburg","Jura"]},{"name":"Auffahrt/Ascension/Ascensione","variable_date":"easter","offset":39},{"name":"Pfingstmontag/Lundi de Pentecôte/Lunedi di Pentecoste","variable_date":"easter","offset":50,"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Tessin","Waadt","Neuenburg","Genf","Jura","Wallis"]},{"name":"Fronleichnam/Fête-Dieu/Corpus domini","variable_date":"easter","offset":60,"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Zug","Freiburg","Solothurn","Basel-Landschaft","Appenzell Innerrhoden","Graubünden","Aargau","Tessin","Wallis","Neuenburg","Jura"]},{"name":"Commémoration du plébiscite jurassien","fixed_date":[6,23],"only_states":["Jura"]},{"name":"San Pietro e Paolo","fixed_date":[6,29],"only_states":["Tessin"]},{"name":"Bundesfeiertag/Jour de la fête nationale/Giorno festivo federale","fixed_date":[8,1]},{"name":"Mariä Himmelfahrt/Assomption/Assunzione","fixed_date":[8,15],"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Zug","Freiburg","Solothurn","Basel-Landschaft","Appenzell Innerrhoden","Graubünden","Aargau","Tessin","Wallis","Jura"]},{"name":"Mauritiustag","fixed_date":[9,22],"only_states":["Appenzell Innerrhoden"]},{"name":"Bruderklausenfest","fixed_date":[9,25],"only_states":["Obwalden"]},{"name":"Allerheiligen/Toussaint/Ognissanti","fixed_date":[11,1],"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Tessin","Wallis","Jura"]},{"name":"Mariä Empfängnis/Immaculée Conception/Ognissanti","fixed_date":[12,8],"only_states":["Luzern","Uri","Schwyz","Obwalden","Nidwalden","Zug","Freiburg","Solothurn","Appenzell Innerrhoden","Graubünden","Aargau","Tessin","Wallis"]},{"name":"Weihnachtstag/Noël/Natale","fixed_date":[12,25]},{"name":"Stephanstag/Saint-Etienne/Santo Stefano","fixed_date":[12,26],"only_states":["Zürich","Bern","Luzern","Uri","Schwyz","Obwalden","Nidwalden","Glarus","Zug","Freiburg","Solothurn","Basel-Stadt","Basel-Landschaft","Schaffhausen","Appenzell Ausserrhoden","Appenzell Innerrhoden","St. Gallen","Graubünden","Aargau","Thurgau","Tessin","Wallis"]},{"name":"Restauration de la République","fixed_date":[12,31],"only_states":["Genf"]}],
+  PH: [{"name":"Neujahr/Nouvel An/Capodanno","fixed_date":[1,1]},{"name":"Berchtoldstag/2 janvier","fixed_date":[1,2],"only_states":["Aargau","Bern","Jura","Thurgau","Waadt"]},{"name":"Heilige Drei Könige/l'Épiphanie/Epifania","fixed_date":[1,6],"only_states":["Schwyz","Tessin","Uri"]},{"name":"Jahrestag Ausrufung der Republik/Instauration de la République","fixed_date":[3,1],"only_states":["Neuenburg"]},{"name":"Josefstag/San Giuseppe","fixed_date":[3,19],"only_states":["Nidwalden","Schwyz","Solothurn","Tessin","Uri","Wallis"]},{"name":"Karfreitag/Vendredi saint/Venerdì santo","variable_date":"easter","offset":-2,"only_states":["Aargau","Appenzell Ausserrhoden","Appenzell Innerrhoden","Basel-Landschaft","Basel-Stadt","Bern","Freiburg","Genf","Glarus","Graubünden","Jura","Luzern","Neuenburg","Nidwalden","Obwalden","Schaffhausen","Schwyz","Solothurn","St. Gallen","Thurgau","Uri","Waadt","Zug","Zürich"]},{"name":"Ostersonntag/Pâques/Domenica di Pasqua","variable_date":"easter"},{"name":"Ostermontag/Lundi de Pâques/Lunedì dell’Angelo","variable_date":"easter","offset":1},{"name":"Tag der Arbeit/Fête du travail/Festa del Lavoro","fixed_date":[5,1],"only_states":["Aargau","Basel-Landschaft","Basel-Stadt","Jura","Neuenburg","Schaffhausen","Tessin","Thurgau","Zürich"]},{"name":"Auffahrt/Ascension/Ascensione","variable_date":"easter","offset":39},{"name":"Pfingstsonntag/Pentecôte/Pentecoste","variable_date":"easter","offset":49},{"name":"Pfingstmontag/Lundi de Pentecôte/Lunedì di Pentecoste","variable_date":"easter","offset":50},{"name":"Fronleichnam/la Fête-Dieu/Corpus Domini","variable_date":"easter","offset":60,"only_states":["Aargau","Appenzell Innerrhoden","Freiburg","Jura","Luzern","Neuenburg","Nidwalden","Obwalden","Schwyz","Solothurn","Tessin","Uri","Wallis","Zug"]},{"name":"Fest der Unabhängigkeit/Plébiscite jurassien","fixed_date":[6,23],"only_states":["Jura"]},{"name":"Peter und Paul/Saint Pierre et Paul/Santi Pietro e Paolo","fixed_date":[6,29],"only_states":["Tessin"]},{"name":"Bundesfeiertag/Fête nationale/Giorno festivo federale","fixed_date":[8,1]},{"name":"Mariä Himmelfahrt/Assomption/Assunzione","fixed_date":[8,15],"only_states":["Aargau","Appenzell Innerrhoden","Freiburg","Jura","Luzern","Nidwalden","Obwalden","Schwyz","Solothurn","Tessin","Uri","Wallis","Zug"]},{"name":"Eidg. Dank-, Buss- und Bettag/Jeûne fédéral/Digiuno federale","variable_date":"firstSeptemberSunday","offset":14,"only_states":["Aargau","Appenzell Ausserrhoden","Appenzell Innerrhoden","Basel-Landschaft","Basel-Stadt","Bern","Freiburg","Graubünden","Jura","Luzern","Neuenburg","Nidwalden","Obwalden","Schaffhausen","Schwyz","Solothurn","St. Gallen","Tessin","Thurgau","Uri","Waadt","Wallis","Zug","Zürich"]},{"name":"Mauritiustag","fixed_date":[9,22],"only_states":["Appenzell Innerrhoden"]},{"name":"Bruderklausenfest/Saint-Nicholas-de-Flüe","fixed_date":[9,25],"only_states":["Obwalden"]},{"name":"Allerheiligen/Toussaint/Ognissanti","fixed_date":[11,1],"only_states":["Aargau","Appenzell Innerrhoden","Freiburg","Glarus","Jura","Luzern","Nidwalden","Obwalden","Schwyz","Solothurn","St. Gallen","Tessin","Uri","Wallis","Zug"]},{"name":"Mariä Empfängnis/Immaculée Conception/Immacolata Concezione","fixed_date":[12,8],"only_states":["Aargau","Freiburg","Luzern","Nidwalden","Obwalden","Schwyz","Tessin","Uri","Wallis","Zug"]},{"name":"Heiliger Abend/Veille de Noël","fixed_date":[12,24],"only_states":["Glarus"]},{"name":"Weihnachtstag/Noël/Natale","fixed_date":[12,25]},{"name":"Stephanstag/Saint-Etienne/Santo Stefano","fixed_date":[12,26],"only_states":["Aargau","Appenzell Innerrhoden","Basel-Landschaft","Basel-Stadt","Bern","Freiburg","Genf","Glarus","Graubünden","Luzern","Neuenburg","Nidwalden","Obwalden","Schaffhausen","Schwyz","Solothurn","St. Gallen","Tessin","Thurgau","Wallis","Zug","Zürich"]},{"name":"Silvester/Saint-Sylvestre/Ultimo dell’anno","fixed_date":[12,31],"only_states":["Glarus"]},{"name":"Wiederherstellung der Republik/Restauration de la République","fixed_date":[12,31],"only_states":["Genf"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
   "Aargau": {
     "_state_code": "ag",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Aargau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Aargau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -1299,7 +1299,7 @@ export const ch = {
   },
   "Appenzell Ausserrhoden": {
     "_state_code": "ar",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell+Ausserrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Appenzell+Ausserrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -1351,7 +1351,7 @@ export const ch = {
   },
   "Appenzell Innerrhoden": {
     "_state_code": "ai",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Appenzell+Innerrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Appenzell+Innerrhoden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Weihnachtsferien",
@@ -1380,7 +1380,7 @@ export const ch = {
   },
   "Basel-Landschaft": {
     "_state_code": "bl",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Landschaft&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Basel-Landschaft&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -1481,7 +1481,7 @@ export const ch = {
   },
   "Basel-Stadt": {
     "_state_code": "bs",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Basel-Stadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Basel-Stadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -1582,7 +1582,7 @@ export const ch = {
   },
   "Bern": {
     "_state_code": "be",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Bern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Bern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -1777,7 +1777,7 @@ export const ch = {
   },
   "Freiburg": {
     "_state_code": "fr",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Freiburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Fribourg": {
     "_state_code": "fr",
@@ -1920,11 +1920,11 @@ export const ch = {
   },
   "Genf": {
     "_state_code": "ge",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Genf&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Genf&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Glarus": {
     "_state_code": "gl",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Glarus&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Glarus&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2019,7 +2019,7 @@ export const ch = {
   },
   "Graubünden": {
     "_state_code": "gr",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Graub%C3%BCnden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Imboden": {
     "_state_code": "gr-ib",
@@ -2068,7 +2068,7 @@ export const ch = {
   },
   "Jura": {
     "_state_code": "ju",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Jura&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Jura&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Vacances de Noël",
@@ -2190,7 +2190,7 @@ export const ch = {
   },
   "Luzern": {
     "_state_code": "lu",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Luzern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Luzern&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -2380,11 +2380,11 @@ export const ch = {
   },
   "Neuenburg": {
     "_state_code": "ne",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Neuenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Neuenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Nidwalden": {
     "_state_code": "nw",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Nidwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Nidwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2477,7 +2477,7 @@ export const ch = {
   },
   "Obwalden": {
     "_state_code": "ow",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Obwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Obwalden&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2623,7 +2623,7 @@ export const ch = {
   },
   "Schaffhausen": {
     "_state_code": "sh",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schaffhausen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Schaffhausen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2757,7 +2757,7 @@ export const ch = {
   },
   "Schwyz": {
     "_state_code": "sz",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Schwyz&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Schwyz&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -2813,7 +2813,7 @@ export const ch = {
   },
   "Solothurn": {
     "_state_code": "so",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Solothurn&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Solothurn&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -2893,7 +2893,7 @@ export const ch = {
   },
   "St. Gallen": {
     "_state_code": "sg",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=St.+Gallen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=St.+Gallen&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -2995,11 +2995,11 @@ export const ch = {
   },
   "Tessin": {
     "_state_code": "ti",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Tessin&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Tessin&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Thurgau": {
     "_state_code": "tg",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Thurgau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Thurgau&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -3114,7 +3114,7 @@ export const ch = {
   },
   "Uri": {
     "_state_code": "ur",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Uri&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Uri&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sport",
@@ -3325,15 +3325,15 @@ export const ch = {
   },
   "Waadt": {
     "_state_code": "vd",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Waadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Waadt&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Wallis": {
     "_state_code": "vs",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Wallis&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Wallis&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm"
   },
   "Zug": {
     "_state_code": "zg",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Zug&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Zug&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Winterferien",
@@ -3421,7 +3421,7 @@ export const ch = {
   },
   "Zürich": {
     "_state_code": "zh",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Switzerland&state=Z%C3%BCrich&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Schweiz&state=Z%C3%BCrich&zoom=18&addressdetails=1&limit=1&accept-language=de,fr,it,rm",
     SH: [
       {
         name: "Sommerferien",
@@ -4917,10 +4917,11 @@ export const cz = {
 };
 
 export const de = {
-  PH: [{"name":"Neujahr","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6],"only_states":["Baden-Württemberg","Bayern","Sachsen-Anhalt"]},{"name":"Frauentag","fixed_date":[3,8],"only_states":["Berlin","Mecklenburg-Vorpommern"]},{"name":"Tag der Arbeit","fixed_date":[5,1]},{"name":"Karfreitag","variable_date":"easter","offset":-2},{"name":"75-jähriges Jubiläum des Volksaufstands in der DDR","fixed_date":[6,17],"year":2028,"only_states":["Berlin"]},{"name":"Ostersonntag","variable_date":"easter","only_states":["Brandenburg"]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstsonntag","variable_date":"easter","offset":49,"only_states":["Brandenburg"]},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60,"only_states":["Baden-Württemberg","Bayern","Hessen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Mariä Himmelfahrt","fixed_date":[8,15],"only_states":["Saarland"]},{"name":"Weltkindertag","fixed_date":[9,20],"only_states":["Thüringen"]},{"name":"Tag der Deutschen Einheit","fixed_date":[10,3]},{"name":"Reformationstag","fixed_date":[10,31],"only_states":["Brandenburg","Bremen","Hamburg","Mecklenburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]},{"name":"Allerheiligen","fixed_date":[11,1],"only_states":["Baden-Württemberg","Bayern","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Buß- und Bettag","variable_date":"nextWednesday16Nov","only_states":["Sachsen"]},{"name":"1. Weihnachtstag","fixed_date":[12,25]},{"name":"2. Weihnachtstag","fixed_date":[12,26]}],
+  PH: [{"name":"Neujahr","fixed_date":[1,1]},{"name":"Heilige Drei Könige","fixed_date":[1,6],"only_states":["Baden-Württemberg","Bayern","Sachsen-Anhalt"]},{"name":"Internationaler Frauentag","fixed_date":[3,8],"only_states":["Berlin","Mecklenburg-Vorpommern"]},{"name":"Karfreitag","variable_date":"easter","offset":-2},{"name":"Ostersonntag","variable_date":"easter","only_states":["Brandenburg"]},{"name":"Ostermontag","variable_date":"easter","offset":1},{"name":"Maifeiertag","fixed_date":[5,1]},{"name":"Christi Himmelfahrt","variable_date":"easter","offset":39},{"name":"Pfingstsonntag","variable_date":"easter","offset":49,"only_states":["Brandenburg"]},{"name":"Pfingstmontag","variable_date":"easter","offset":50},{"name":"Fronleichnam","variable_date":"easter","offset":60,"only_states":["Baden-Württemberg","Bayern","Hessen","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"75-jähriges Jubiläum des Volksaufstands in der DDR","fixed_date":[6,17],"year":2028,"only_states":["Berlin"]},{"name":"Augsburger Friedensfest","fixed_date":[8,8],"only_states":["Bayern"]},{"name":"Mariä Himmelfahrt","fixed_date":[8,15],"only_states":["Bayern","Saarland"]},{"name":"Weltkindertag","fixed_date":[9,20],"only_states":["Thüringen"]},{"name":"Tag der Deutschen Einheit","fixed_date":[10,3]},{"name":"Reformationstag","fixed_date":[10,31],"only_states":["Brandenburg","Bremen","Hamburg","Mecklenburg-Vorpommern","Niedersachsen","Sachsen","Sachsen-Anhalt","Schleswig-Holstein","Thüringen"]},{"name":"Allerheiligen","fixed_date":[11,1],"only_states":["Baden-Württemberg","Bayern","Nordrhein-Westfalen","Rheinland-Pfalz","Saarland"]},{"name":"Buß- und Bettag","variable_date":"nextWednesday16Nov","only_states":["Sachsen"]},{"name":"1. Weihnachtstag","fixed_date":[12,25]},{"name":"2. Weihnachtstag","fixed_date":[12,26]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487&lon=9.8160&zoom=18&addressdetails=1&accept-language=de,en",
   "Baden-Württemberg": {
     "_state_code": "bw",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Baden-W%C3%BCrttemberg&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Osterferien",
@@ -5048,6 +5049,7 @@ export const de = {
   },
   "Bayern": {
     "_state_code": "by",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Bayern&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -5200,6 +5202,7 @@ export const de = {
   },
   "Berlin": {
     "_state_code": "be",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Berlin&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -5347,6 +5350,7 @@ export const de = {
   },
   "Brandenburg": {
     "_state_code": "bb",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Brandenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -5490,6 +5494,7 @@ export const de = {
   },
   "Bremen": {
     "_state_code": "hb",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Bremen&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -5660,6 +5665,7 @@ export const de = {
   },
   "Hamburg": {
     "_state_code": "hh",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Hamburg&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -5810,6 +5816,7 @@ export const de = {
   },
   "Hessen": {
     "_state_code": "he",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Hessen&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Osterferien",
@@ -5899,6 +5906,10 @@ export const de = {
         2029: [12,24,1,11],
       },
     ]
+  },
+  "Mecklenburg-Vorpommern": {
+    "_state_code": "mv",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Mecklenburg-Vorpommern&zoom=18&addressdetails=1&limit=1&accept-language=de,en"
   },
   "MV-ABS": {
     "_state_code": "mv-abs",
@@ -6146,6 +6157,7 @@ export const de = {
   },
   "Niedersachsen": {
     "_state_code": "ni",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Niedersachsen&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -6324,6 +6336,7 @@ export const de = {
   },
   "Nordrhein-Westfalen": {
     "_state_code": "nw",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Nordrhein-Westfalen&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Osterferien",
@@ -6435,6 +6448,7 @@ export const de = {
   },
   "Rheinland-Pfalz": {
     "_state_code": "rp",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Rheinland-Pfalz&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -6539,6 +6553,7 @@ export const de = {
   },
   "Saarland": {
     "_state_code": "sl",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Saarland&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -6664,6 +6679,7 @@ export const de = {
   },
   "Sachsen": {
     "_state_code": "sn",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Sachsen&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -6805,6 +6821,7 @@ export const de = {
   },
   "Sachsen-Anhalt": {
     "_state_code": "st",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Sachsen-Anhalt&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -6949,6 +6966,7 @@ export const de = {
   },
   "Schleswig-Holstein": {
     "_state_code": "sh",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Schleswig-Holstein&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Osterferien",
@@ -7071,6 +7089,7 @@ export const de = {
   },
   "Thüringen": {
     "_state_code": "th",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Th%C3%BCringen&zoom=18&addressdetails=1&limit=1&accept-language=de,en",
     SH: [
       {
         name: "Winterferien",
@@ -7277,7 +7296,7 @@ export const ee = {
 };
 
 export const es = {
-  PH: [{"name":"Cap d'Any","fixed_date":[1,1],"only_states":["Cataluña"]},{"name":"Año Nuevo","fixed_date":[1,1]},{"name":"Reis","fixed_date":[1,6],"only_states":["Cataluña"]},{"name":"Epifanía del Señor","fixed_date":[1,6]},{"name":"Día de Andalucía","fixed_date":[2,28],"only_states":["Andalucía"]},{"name":"Dia de les Illes Balears","fixed_date":[3,1],"only_states":["Islas Baleares"]},{"name":"Sant Josep","fixed_date":[3,19],"only_states":["Comunidad Valenciana"]},{"name":"San José","fixed_date":[3,19],"only_states":["Murcia"]},{"name":"Jueve Santo","variable_date":"easter","offset":-3,"only_states":["Andalucía","Aragón","Castilla y León","Castilla-La Mancha","Canarias","Extremadura","Galicia","Islas Baleares","La Rioja","Comunidad de Madrid","Región de Murcia","Navarra","Asturias","País Vasco","Cantabria","Ceuta","Melilla"]},{"name":"Divendres Sant","variable_date":"easter","offset":-2,"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Viernes Santo","variable_date":"easter","offset":-2},{"name":"Dilluns de Pasqua Florida","variable_date":"easter","offset":1,"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Lunes de Pascua de Resurrección","variable_date":"easter","offset":1,"only_states":["País Vasco","Navarra"]},{"name":"Día de Aragón","fixed_date":[4,23],"only_states":["Aragón"]},{"name":"Día de Castilla y León","fixed_date":[4,23],"only_states":["Castilla y León"]},{"name":"Festa del Treball","fixed_date":[5,1],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Fiesta del Trabajo","fixed_date":[5,1]},{"name":"Fiesta de la Comunidad de Madrid","fixed_date":[5,2],"only_states":["Comunidad de Madrid"]},{"name":"Día das Letras Galegas","fixed_date":[5,2],"only_states":["Galicia"]},{"name":"Día de Canarias","fixed_date":[5,30],"only_states":["Canarias"]},{"name":"Día de la Región Castilla-La Mancha","fixed_date":[5,31],"only_states":["Castilla-La Mancha"]},{"name":"Día de la Región de Murcia","fixed_date":[6,9],"only_states":["Región de Murcia"]},{"name":"Día de la Rioja","fixed_date":[6,9],"only_states":["La Rioja"]},{"name":"San Antonio","fixed_date":[6,13],"only_states":["Ceuta"]},{"name":"Sant Joan","fixed_date":[6,24],"only_states":["Cataluña"]},{"name":"San Juan","fixed_date":[6,24],"only_states":["Ceuta"]},{"name":"Santiago Apóstol","fixed_date":[7,25],"only_states":["Galicia"]},{"name":"Santa María de África","fixed_date":[8,6],"only_states":["Ceuta"]},{"name":"l'Assumpció","fixed_date":[8,15],"only_states":["Cataluña"]},{"name":"Asunción de la Virgen","fixed_date":[8,15]},{"name":"Día de Ceuta","fixed_date":[9,2],"only_states":["Ceuta"]},{"name":"Día de Asturias","fixed_date":[9,8],"only_states":["Asturias"]},{"name":"Día de Extremadura","fixed_date":[9,8],"only_states":["Extremadura"]},{"name":"Diada Nacional de Catalunya","fixed_date":[9,11],"only_states":["Cataluña"]},{"name":"Día de Cantabria","fixed_date":[9,17],"only_states":["Cantabria"]},{"name":"Día de Melilla","fixed_date":[9,15],"only_states":["Melilla"]},{"name":"Dia de la Comunitat Valenciana","fixed_date":[10,9],"only_states":["Comunidad Valenciana"]},{"name":"Festa Nacional d'Espanya","fixed_date":[10,12],"only_states":["Cataluña"]},{"name":"Fiesta Nacional de España","fixed_date":[10,12]},{"name":"Euskadi Eguna","fixed_date":[10,25],"only_states":["País Vasco"]},{"name":"Tots Sants","fixed_date":[11,1],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Todos los Santos","fixed_date":[11,1]},{"name":"Día de la Constitución Española","fixed_date":[12,6]},{"name":"La Puríssima","fixed_date":[12,8],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"La Immaculada Concepción","fixed_date":[12,8]},{"name":"Nadal","fixed_date":[12,25],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Natividad del Señor","fixed_date":[12,25]},{"name":"Sant Esteve","fixed_date":[12,26],"only_states":["Cataluña"]}],
+  PH: [{"name":"Año Nuevo","fixed_date":[1,1]},{"name":"Día de los Reyes Magos","fixed_date":[1,6]},{"name":"Día de Andalucía","fixed_date":[2,28],"substitute_rule":"if sunday then next monday","only_states":["Andalucía"]},{"name":"Día de les Illes Balears","fixed_date":[3,1],"substitute_rule":"if sunday then next monday","only_states":["Illes Balears"]},{"name":"San José","fixed_date":[3,19],"only_states":["Comunidad Foral de Navarra","Comunitat Valenciana","Galicia","País Vasco","Región de Murcia"]},{"name":"Jueves Santo","variable_date":"easter","offset":-3,"only_states":["Andalucía","Aragón","Asturias","Cantabria","Castilla y León","Castilla-La Mancha","Ceuta","Comunidad de Madrid","Comunidad Foral de Navarra","Extremadura","Galicia","Illes Balears","La Rioja","Melilla","País Vasco","Región de Murcia"]},{"name":"Viernes Santo","variable_date":"easter","offset":-2},{"name":"Lunes de Pascua","variable_date":"easter","offset":1,"only_states":["Cataluña","Comunidad Foral de Navarra","Comunitat Valenciana","Illes Balears","La Rioja","País Vasco"]},{"name":"Día de Aragón","fixed_date":[4,23],"substitute_rule":"if sunday then next monday","only_states":["Aragón"]},{"name":"Fiesta de Castilla y León","fixed_date":[4,23],"substitute_rule":"if sunday then next monday","only_states":["Castilla y León"]},{"name":"Día del Trabajador","fixed_date":[5,1]},{"name":"Día de la Comunidad de Madrid","fixed_date":[5,2],"shift_rule":"if sunday then next monday","only_states":["Comunidad de Madrid"]},{"name":"Día de las Letras Gallegas","fixed_date":[5,17],"only_states":["Galicia"]},{"name":"Día de Castilla-La Mancha","fixed_date":[5,31],"only_states":["Castilla-La Mancha"]},{"name":"Corpus Christi","variable_date":"easter","offset":60,"only_states":["Castilla-La Mancha"]},{"name":"Día de La Rioja","fixed_date":[6,9],"only_states":["La Rioja"]},{"name":"San Juan","fixed_date":[6,24],"only_states":["Cataluña","Comunitat Valenciana"]},{"name":"Día de las Instituciones de Cantabria","fixed_date":[6,28],"only_states":["Cantabria"]},{"name":"Día Nacional de Galicia","fixed_date":[7,25],"only_states":["Galicia"]},{"name":"Santiago Apóstol","fixed_date":[7,25],"only_states":["País Vasco"]},{"name":"Nuestra Señora de África","fixed_date":[8,5],"substitute_rule":"if sunday then next monday","only_states":["Ceuta"]},{"name":"Asunción","fixed_date":[8,15]},{"name":"Día de Ceuta","fixed_date":[9,2],"substitute_rule":"if sunday then next monday","only_states":["Ceuta"]},{"name":"Día de Asturias","fixed_date":[9,8],"substitute_rule":"if sunday then next monday","only_states":["Asturias"]},{"name":"Día de Extremadura","fixed_date":[9,8],"substitute_rule":"if sunday then next monday","only_states":["Extremadura"]},{"name":"Dia de Cataluña","fixed_date":[9,11],"only_states":["Cataluña"]},{"name":"La Bien Aparecida","fixed_date":[9,15],"substitute_rule":"if sunday then next monday","only_states":["Cantabria"]},{"name":"Nuestra Señora de la Merced","fixed_date":[9,24],"only_states":["Cataluña"]},{"name":"Fiesta Nacional de España","fixed_date":[10,12]},{"name":"Todos los Santos","fixed_date":[11,1]},{"name":"Día de la Constitución Española","fixed_date":[12,6]},{"name":"La inmaculada concepción","fixed_date":[12,8]},{"name":"Navidad","fixed_date":[12,25],"substitute_rule":"if sunday then next monday"},{"name":"San Esteban","fixed_date":[12,26],"only_states":["Cataluña"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.60333&lon=2.18920&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
   "Almería": {
     "_state_code": "an-al",
@@ -7338,12 +7357,12 @@ export const es = {
     ]
   },
   "Andalucía": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=37.33999&lon=-4.58116&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
-    "_state_code": "an"
+    "_state_code": "an",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Andaluc%C3%ADa&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Aragón": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.37872&lon=-0.76393&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
     "_state_code": "ar",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Arag%C3%B3n&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7388,8 +7407,8 @@ export const es = {
     ]
   },
   "Asturias": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.27108&lon=-5.85414&zoom=18&addressdetails=1&limit=1&accept-language=es,ast",
     "_state_code": "as",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Asturias&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7491,7 +7510,6 @@ export const es = {
     ]
   },
   "Canarias": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=28.29357&lon=-16.62144&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cn",
     SH: [
       {
@@ -7530,8 +7548,8 @@ export const es = {
     ]
   },
   "Cantabria": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.13583&lon=-4.26363&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cb",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Cantabria&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "No lectivos",
@@ -7551,8 +7569,8 @@ export const es = {
     ]
   },
   "Castilla y León": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.80371&lon=-4.74717&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cl",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Castilla+y+Le%C3%B3n&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7610,8 +7628,8 @@ export const es = {
     ]
   },
   "Castilla-La Mancha": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.41779&lon=-2.62323&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Castilla-La+Mancha&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Descanso de Navidad",
@@ -7669,8 +7687,8 @@ export const es = {
     ]
   },
   "Cataluña": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.85230&lon=1.57450&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,oc",
-    "_state_code": "ct"
+    "_state_code": "ct",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Catalu%C3%B1a&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Catalunya": {
     "_state_code": "ct",
@@ -7711,8 +7729,8 @@ export const es = {
     ]
   },
   "Ceuta": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.89429&lon=-5.35568&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "ce",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Ceuta&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7773,8 +7791,8 @@ export const es = {
     ]
   },
   "Comunidad de Madrid": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=40.52483&lon=-3.77156&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "md",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Comunidad+de+Madrid&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7827,12 +7845,13 @@ export const es = {
       },
     ]
   },
-  "Comunidad Valenciana": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.68195&lon=-0.76544&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
-    "_state_code": "vc"
+  "Comunidad Foral de Navarra": {
+    "_state_code": "nc",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Comunidad+Foral+de+Navarra&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Comunitat Valenciana": {
     "_state_code": "vc",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Comunitat+Valenciana&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7965,8 +7984,8 @@ export const es = {
     ]
   },
   "Extremadura": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.17484&lon=-6.15298&zoom=18&addressdetails=1&limit=1&accept-language=es,ast",
     "_state_code": "ex",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Extremadura&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8028,8 +8047,8 @@ export const es = {
     ]
   },
   "Galicia": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.61946&lon=-7.86311&zoom=18&addressdetails=1&limit=1&accept-language=es,gl",
     "_state_code": "ga",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Galicia&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8215,6 +8234,7 @@ export const es = {
   },
   "Illes Balears": {
     "_state_code": "ib",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Illes+Balears&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8261,9 +8281,9 @@ export const es = {
       },
     ]
   },
-  "Islas Baleares": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.61340&lon=2.88043&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
-    "_state_code": "ib"
+  "Islas Canarias": {
+    "_state_code": "cn",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Islas+Canarias&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Jaén": {
     "_state_code": "an-ja",
@@ -8319,8 +8339,8 @@ export const es = {
     ]
   },
   "La Rioja": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.32855&lon=-2.46749&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "ri",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=La+Rioja&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8430,8 +8450,8 @@ export const es = {
     ]
   },
   "Melilla": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.29186&lon=-2.94090&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "ml",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Melilla&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8533,17 +8553,13 @@ export const es = {
       },
     ]
   },
-  "Navarra": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.61254&lon=-1.83078&zoom=18&addressdetails=1&limit=1&accept-language=es,eu",
-    "_state_code": "nc"
-  },
   "País Vasco": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.99118&lon=-2.55430&zoom=18&addressdetails=1&limit=1&accept-language=es,eu",
-    "_state_code": "pv"
+    "_state_code": "pv",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Pa%C3%ADs+Vasco&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Región de Murcia": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=38.06343&lon=-1.67180&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "mc",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Regi%C3%B3n+de+Murcia&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -14537,7 +14553,7 @@ export const sm = {
 };
 
 export const ua = {
-  PH: [{"name":"Новий рік","fixed_date":[1,1]},{"name":"Міжнародний жіночий день","fixed_date":[3,8]},{"name":"Великдень","variable_date":"orthodox easter","offset":1},{"name":"День міжнародної солідарності трудящих","fixed_date":[5,1]},{"name":"День пам'яті та перемоги над нацизмом у Другій світовій війні","fixed_date":[5,8]},{"name":"Трійця","variable_date":"orthodox easter","offset":50},{"name":"День Конституції України","fixed_date":[6,28]},{"name":"День Української Державності","fixed_date":[7,15]},{"name":"День Незалежності України","fixed_date":[8,24]},{"name":"День захисників і захисниць України","fixed_date":[10,1]},{"name":"Різдво Христове","fixed_date":[12,25]}],
+  PH: [{"name":"Новий Рік","fixed_date":[1,1],"substitute_rule":"if saturday, sunday then next tuesday"},{"name":"Новий Рік","fixed_date":[1,2],"substitute_rule":"if saturday, sunday then next monday"},{"name":"Міжнародний жіночий день","fixed_date":[3,8],"substitute_rule":"if saturday, sunday then next monday"},{"name":"Великдень","variable_date":"orthodox easter"},{"name":"Трійця","variable_date":"orthodox easter","offset":49},{"name":"День міжнародної солідарності трудящих","fixed_date":[5,1],"substitute_rule":"if saturday, sunday then next tuesday"},{"name":"День перемоги над нацизмом у Другій світовій війні","fixed_date":[5,9],"substitute_rule":"if saturday, sunday then next monday"},{"name":"День Конституції","fixed_date":[6,28],"substitute_rule":"if saturday, sunday then next monday"},{"name":"День Української Державності","fixed_date":[7,15],"substitute_rule":"if saturday, sunday then next monday"},{"name":"День Незалежності","fixed_date":[8,24],"substitute_rule":"if saturday, sunday then next monday"},{"name":"День захисників і захисниць України","fixed_date":[10,1],"substitute_rule":"if saturday, sunday then next monday"},{"name":"Різдво Христове","fixed_date":[12,25],"substitute_rule":"if saturday, sunday then next monday"}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=50.4501&lon=30.5234&zoom=18&addressdetails=1&accept-language=uk,en"
 };
 

@@ -2,26 +2,94 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/DE.yaml
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487&lon=9.8160&zoom=18&addressdetails=1&accept-language=de,en'
 
-PH:  # https://de.wikipedia.org/wiki/Feiertage_in_Deutschland
-  - {"name": "Neujahr", "fixed_date": [1, 1]}
-  - {"name": "Heilige Drei Könige", "fixed_date": [1, 6], "only_states": [Baden-Württemberg, Bayern, Sachsen-Anhalt]}
-  - {"name": "Frauentag", "fixed_date": [3, 8], "only_states": [Berlin, Mecklenburg-Vorpommern]}
-  - {"name": "Tag der Arbeit", "fixed_date": [5, 1]}
-  - {"name": "Karfreitag", "variable_date": "easter", "offset": -2}
-  - {"name": "75-jähriges Jubiläum des Volksaufstands in der DDR", "fixed_date": [6, 17], "year": 2028, "only_states": [Berlin]}
-  - {"name": "Ostersonntag", "variable_date": "easter", "only_states": [Brandenburg]}
-  - {"name": "Ostermontag", "variable_date": "easter", "offset": 1}
-  - {"name": "Christi Himmelfahrt", "variable_date": "easter", "offset": 39}
-  - {"name": "Pfingstsonntag", "variable_date": "easter", "offset": 49, "only_states": [Brandenburg]}
-  - {"name": "Pfingstmontag", "variable_date": "easter", "offset": 50}
-  - {"name": "Fronleichnam", "variable_date": "easter", "offset": 60, "only_states": [Baden-Württemberg, Bayern, Hessen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland]}
-  - {"name": "Mariä Himmelfahrt", "fixed_date": [8, 15], "only_states": [Saarland]}
-  - {"name": "Weltkindertag", "fixed_date": [9, 20], "only_states": [Thüringen]}
-  - {"name": "Tag der Deutschen Einheit", "fixed_date": [10, 3]}
-  - {"name": "Reformationstag", "fixed_date": [10, 31], "only_states": [Brandenburg, Bremen, Hamburg, Mecklenburg-Vorpommern, Niedersachsen, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen]}
-  - {"name": "Allerheiligen", "fixed_date": [11, 1], "only_states": [Baden-Württemberg, Bayern, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland]}
-  - {"name": "Buß- und Bettag", "variable_date": "nextWednesday16Nov", "only_states": [Sachsen]}
-  - {"name": "1. Weihnachtstag", "fixed_date": [12, 25]}
-  - {"name": "2. Weihnachtstag", "fixed_date": [12, 26]}
+PH:
+  - {'name': 'Neujahr', 'fixed_date': [1, 1]}
+  - {'name': 'Heilige Drei Könige', 'fixed_date': [1, 6], 'only_states': [Baden-Württemberg, Bayern, Sachsen-Anhalt]}
+  - {'name': 'Internationaler Frauentag', 'fixed_date': [3, 8], 'only_states': [Berlin, Mecklenburg-Vorpommern]}
+  - {'name': 'Karfreitag', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Ostersonntag', 'variable_date': easter, 'only_states': [Brandenburg]}
+  - {'name': 'Ostermontag', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Maifeiertag', 'fixed_date': [5, 1]}
+  - {'name': 'Christi Himmelfahrt', 'variable_date': easter, 'offset': 39}
+  - {'name': 'Pfingstsonntag', 'variable_date': easter, 'offset': 49, 'only_states': [Brandenburg]}
+  - {'name': 'Pfingstmontag', 'variable_date': easter, 'offset': 50}
+  - {'name': 'Fronleichnam', 'variable_date': easter, 'offset': 60, 'only_states': [Baden-Württemberg, Bayern, Hessen, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland]}
+  - {'name': '75-jähriges Jubiläum des Volksaufstands in der DDR', 'fixed_date': [6, 17], 'year': 2028, 'only_states': [Berlin]}
+  - {'name': 'Augsburger Friedensfest', 'fixed_date': [8, 8], 'only_states': [Bayern]}
+  - {'name': 'Mariä Himmelfahrt', 'fixed_date': [8, 15], 'only_states': [Bayern, Saarland]}
+  - {'name': 'Weltkindertag', 'fixed_date': [9, 20], 'only_states': [Thüringen]}
+  - {'name': 'Tag der Deutschen Einheit', 'fixed_date': [10, 3]}
+  - {'name': 'Reformationstag', 'fixed_date': [10, 31], 'only_states': [Brandenburg, Bremen, Hamburg, Mecklenburg-Vorpommern, Niedersachsen, Sachsen, Sachsen-Anhalt, Schleswig-Holstein, Thüringen]}
+  - {'name': 'Allerheiligen', 'fixed_date': [11, 1], 'only_states': [Baden-Württemberg, Bayern, Nordrhein-Westfalen, Rheinland-Pfalz, Saarland]}
+  - {'name': 'Buß- und Bettag', 'variable_date': nextWednesday16Nov, 'only_states': [Sachsen]}
+  - {'name': '1. Weihnachtstag', 'fixed_date': [12, 25]}
+  - {'name': '2. Weihnachtstag', 'fixed_date': [12, 26]}
+
+Baden-Württemberg:
+  _state_code: bw
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Baden-W%C3%BCrttemberg&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Bayern:
+  _state_code: by
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Bayern&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Berlin:
+  _state_code: be
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Berlin&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Brandenburg:
+  _state_code: bb
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Brandenburg&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Bremen:
+  _state_code: hb
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Bremen&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Hamburg:
+  _state_code: hh
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Hamburg&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Hessen:
+  _state_code: he
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Hessen&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Mecklenburg-Vorpommern:
+  _state_code: mv
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Mecklenburg-Vorpommern&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Niedersachsen:
+  _state_code: ni
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Niedersachsen&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Nordrhein-Westfalen:
+  _state_code: nw
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Nordrhein-Westfalen&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Rheinland-Pfalz:
+  _state_code: rp
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Rheinland-Pfalz&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Saarland:
+  _state_code: sl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Saarland&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Sachsen:
+  _state_code: sn
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Sachsen&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Sachsen-Anhalt:
+  _state_code: st
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Sachsen-Anhalt&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Schleswig-Holstein:
+  _state_code: sh
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Schleswig-Holstein&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
+
+Thüringen:
+  _state_code: th
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=Deutschland&state=Th%C3%BCringen&zoom=18&addressdetails=1&limit=1&accept-language=de,en'
