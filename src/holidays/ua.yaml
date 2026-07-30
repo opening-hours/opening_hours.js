@@ -2,18 +2,21 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://uk.wikipedia.org/wiki/%D0%A1%D0%B2%D1%8F%D1%82%D0%B0_%D1%96_%D0%BF%D0%B0%D0%BC%27%D1%8F%D1%82%D0%BD%D1%96_%D0%B4%D0%BD%D1%96_%D0%B2_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%96
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/UA.yaml
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=50.4501&lon=30.5234&zoom=18&addressdetails=1&accept-language=uk,en'
 
-# https://uk.wikipedia.org/wiki/%D0%A1%D0%B2%D1%8F%D1%82%D0%B0_%D1%82%D0%B0_%D0%BF%D0%B0%D0%BC%27%D1%8F%D1%82%D0%BD%D1%96_%D0%B4%D0%BD%D1%96_%D0%B2_%D0%A3%D0%BA%D1%80%D0%B0%D1%97%D0%BD%D1%96
 PH:
-  - {'name': 'Новий рік', 'fixed_date': [1, 1]}
-  - {'name': 'Міжнародний жіночий день', 'fixed_date': [3, 8]}
-  - {'name': 'Великдень', 'variable_date': orthodox easter, 'offset': 1}
-  - {'name': 'День міжнародної солідарності трудящих', 'fixed_date': [5, 1]}
-  - {'name': "День пам'яті та перемоги над нацизмом у Другій світовій війні", 'fixed_date': [5, 8]}
-  - {'name': 'Трійця', 'variable_date': orthodox easter, 'offset': 50}
-  - {'name': 'День Конституції України', 'fixed_date': [6, 28]}
-  - {'name': 'День Української Державності', 'fixed_date': [7, 15]}
-  - {'name': 'День Незалежності України', 'fixed_date': [8, 24]}
-  - {'name': 'День захисників і захисниць України', 'fixed_date': [10, 1]}
-  - {'name': 'Різдво Христове', 'fixed_date': [12, 25]}
+  - {'name': 'Новий Рік', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday, sunday then next tuesday'}
+  - {'name': 'Новий Рік', 'fixed_date': [1, 2], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'Міжнародний жіночий день', 'fixed_date': [3, 8], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'Великдень', 'variable_date': orthodox easter}
+  - {'name': 'Трійця', 'variable_date': orthodox easter, 'offset': 49}
+  - {'name': 'День міжнародної солідарності трудящих', 'fixed_date': [5, 1], 'substitute_rule': 'if saturday, sunday then next tuesday'}
+  - {'name': 'День перемоги над нацизмом у Другій світовій війні', 'fixed_date': [5, 9], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'День Конституції', 'fixed_date': [6, 28], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'День Української Державності', 'fixed_date': [7, 15], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'День Незалежності', 'fixed_date': [8, 24], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'День захисників і захисниць України', 'fixed_date': [10, 1], 'substitute_rule': 'if saturday, sunday then next monday'}
+  - {'name': 'Різдво Христове', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday, sunday then next monday'}
