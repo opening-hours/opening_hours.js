@@ -7277,7 +7277,7 @@ export const ee = {
 };
 
 export const es = {
-  PH: [{"name":"Cap d'Any","fixed_date":[1,1],"only_states":["Cataluña"]},{"name":"Año Nuevo","fixed_date":[1,1]},{"name":"Reis","fixed_date":[1,6],"only_states":["Cataluña"]},{"name":"Epifanía del Señor","fixed_date":[1,6]},{"name":"Día de Andalucía","fixed_date":[2,28],"only_states":["Andalucía"]},{"name":"Dia de les Illes Balears","fixed_date":[3,1],"only_states":["Islas Baleares"]},{"name":"Sant Josep","fixed_date":[3,19],"only_states":["Comunidad Valenciana"]},{"name":"San José","fixed_date":[3,19],"only_states":["Murcia"]},{"name":"Jueve Santo","variable_date":"easter","offset":-3,"only_states":["Andalucía","Aragón","Castilla y León","Castilla-La Mancha","Canarias","Extremadura","Galicia","Islas Baleares","La Rioja","Comunidad de Madrid","Región de Murcia","Navarra","Asturias","País Vasco","Cantabria","Ceuta","Melilla"]},{"name":"Divendres Sant","variable_date":"easter","offset":-2,"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Viernes Santo","variable_date":"easter","offset":-2},{"name":"Dilluns de Pasqua Florida","variable_date":"easter","offset":1,"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Lunes de Pascua de Resurrección","variable_date":"easter","offset":1,"only_states":["País Vasco","Navarra"]},{"name":"Día de Aragón","fixed_date":[4,23],"only_states":["Aragón"]},{"name":"Día de Castilla y León","fixed_date":[4,23],"only_states":["Castilla y León"]},{"name":"Festa del Treball","fixed_date":[5,1],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Fiesta del Trabajo","fixed_date":[5,1]},{"name":"Fiesta de la Comunidad de Madrid","fixed_date":[5,2],"only_states":["Comunidad de Madrid"]},{"name":"Día das Letras Galegas","fixed_date":[5,2],"only_states":["Galicia"]},{"name":"Día de Canarias","fixed_date":[5,30],"only_states":["Canarias"]},{"name":"Día de la Región Castilla-La Mancha","fixed_date":[5,31],"only_states":["Castilla-La Mancha"]},{"name":"Día de la Región de Murcia","fixed_date":[6,9],"only_states":["Región de Murcia"]},{"name":"Día de la Rioja","fixed_date":[6,9],"only_states":["La Rioja"]},{"name":"San Antonio","fixed_date":[6,13],"only_states":["Ceuta"]},{"name":"Sant Joan","fixed_date":[6,24],"only_states":["Cataluña"]},{"name":"San Juan","fixed_date":[6,24],"only_states":["Ceuta"]},{"name":"Santiago Apóstol","fixed_date":[7,25],"only_states":["Galicia"]},{"name":"Santa María de África","fixed_date":[8,6],"only_states":["Ceuta"]},{"name":"l'Assumpció","fixed_date":[8,15],"only_states":["Cataluña"]},{"name":"Asunción de la Virgen","fixed_date":[8,15]},{"name":"Día de Ceuta","fixed_date":[9,2],"only_states":["Ceuta"]},{"name":"Día de Asturias","fixed_date":[9,8],"only_states":["Asturias"]},{"name":"Día de Extremadura","fixed_date":[9,8],"only_states":["Extremadura"]},{"name":"Diada Nacional de Catalunya","fixed_date":[9,11],"only_states":["Cataluña"]},{"name":"Día de Cantabria","fixed_date":[9,17],"only_states":["Cantabria"]},{"name":"Día de Melilla","fixed_date":[9,15],"only_states":["Melilla"]},{"name":"Dia de la Comunitat Valenciana","fixed_date":[10,9],"only_states":["Comunidad Valenciana"]},{"name":"Festa Nacional d'Espanya","fixed_date":[10,12],"only_states":["Cataluña"]},{"name":"Fiesta Nacional de España","fixed_date":[10,12]},{"name":"Euskadi Eguna","fixed_date":[10,25],"only_states":["País Vasco"]},{"name":"Tots Sants","fixed_date":[11,1],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Todos los Santos","fixed_date":[11,1]},{"name":"Día de la Constitución Española","fixed_date":[12,6]},{"name":"La Puríssima","fixed_date":[12,8],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"La Immaculada Concepción","fixed_date":[12,8]},{"name":"Nadal","fixed_date":[12,25],"only_states":["Cataluña","Comunidad Valenciana","Islas Baleares"]},{"name":"Natividad del Señor","fixed_date":[12,25]},{"name":"Sant Esteve","fixed_date":[12,26],"only_states":["Cataluña"]}],
+  PH: [{"name":"Año Nuevo","fixed_date":[1,1]},{"name":"Día de los Reyes Magos","fixed_date":[1,6]},{"name":"Día de Andalucía","fixed_date":[2,28],"substitute_rule":"if sunday then next monday","only_states":["Andalucía"]},{"name":"Día de les Illes Balears","fixed_date":[3,1],"substitute_rule":"if sunday then next monday","only_states":["Illes Balears"]},{"name":"San José","fixed_date":[3,19],"only_states":["Comunidad Foral de Navarra","Comunitat Valenciana","Galicia","País Vasco","Región de Murcia"]},{"name":"Jueves Santo","variable_date":"easter","offset":-3,"only_states":["Andalucía","Aragón","Asturias","Cantabria","Castilla y León","Castilla-La Mancha","Ceuta","Comunidad de Madrid","Comunidad Foral de Navarra","Extremadura","Galicia","Illes Balears","La Rioja","Melilla","País Vasco","Región de Murcia"]},{"name":"Viernes Santo","variable_date":"easter","offset":-2},{"name":"Lunes de Pascua","variable_date":"easter","offset":1,"only_states":["Cataluña","Comunidad Foral de Navarra","Comunitat Valenciana","Illes Balears","La Rioja","País Vasco"]},{"name":"Día de Aragón","fixed_date":[4,23],"substitute_rule":"if sunday then next monday","only_states":["Aragón"]},{"name":"Fiesta de Castilla y León","fixed_date":[4,23],"substitute_rule":"if sunday then next monday","only_states":["Castilla y León"]},{"name":"Día del Trabajador","fixed_date":[5,1]},{"name":"Día de la Comunidad de Madrid","fixed_date":[5,2],"shift_rule":"if sunday then next monday","only_states":["Comunidad de Madrid"]},{"name":"Día de las Letras Gallegas","fixed_date":[5,17],"only_states":["Galicia"]},{"name":"Día de Castilla-La Mancha","fixed_date":[5,31],"only_states":["Castilla-La Mancha"]},{"name":"Corpus Christi","variable_date":"easter","offset":60,"only_states":["Castilla-La Mancha"]},{"name":"Día de La Rioja","fixed_date":[6,9],"only_states":["La Rioja"]},{"name":"San Juan","fixed_date":[6,24],"only_states":["Cataluña","Comunitat Valenciana"]},{"name":"Día de las Instituciones de Cantabria","fixed_date":[6,28],"only_states":["Cantabria"]},{"name":"Día Nacional de Galicia","fixed_date":[7,25],"only_states":["Galicia"]},{"name":"Santiago Apóstol","fixed_date":[7,25],"only_states":["País Vasco"]},{"name":"Nuestra Señora de África","fixed_date":[8,5],"substitute_rule":"if sunday then next monday","only_states":["Ceuta"]},{"name":"Asunción","fixed_date":[8,15]},{"name":"Día de Ceuta","fixed_date":[9,2],"substitute_rule":"if sunday then next monday","only_states":["Ceuta"]},{"name":"Día de Asturias","fixed_date":[9,8],"substitute_rule":"if sunday then next monday","only_states":["Asturias"]},{"name":"Día de Extremadura","fixed_date":[9,8],"substitute_rule":"if sunday then next monday","only_states":["Extremadura"]},{"name":"Dia de Cataluña","fixed_date":[9,11],"only_states":["Cataluña"]},{"name":"La Bien Aparecida","fixed_date":[9,15],"substitute_rule":"if sunday then next monday","only_states":["Cantabria"]},{"name":"Nuestra Señora de la Merced","fixed_date":[9,24],"only_states":["Cataluña"]},{"name":"Fiesta Nacional de España","fixed_date":[10,12]},{"name":"Todos los Santos","fixed_date":[11,1]},{"name":"Día de la Constitución Española","fixed_date":[12,6]},{"name":"La inmaculada concepción","fixed_date":[12,8]},{"name":"Navidad","fixed_date":[12,25],"substitute_rule":"if sunday then next monday"},{"name":"San Esteban","fixed_date":[12,26],"only_states":["Cataluña"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.60333&lon=2.18920&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
   "Almería": {
     "_state_code": "an-al",
@@ -7338,12 +7338,12 @@ export const es = {
     ]
   },
   "Andalucía": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=37.33999&lon=-4.58116&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
-    "_state_code": "an"
+    "_state_code": "an",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Andaluc%C3%ADa&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Aragón": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.37872&lon=-0.76393&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
     "_state_code": "ar",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Arag%C3%B3n&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7388,8 +7388,8 @@ export const es = {
     ]
   },
   "Asturias": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.27108&lon=-5.85414&zoom=18&addressdetails=1&limit=1&accept-language=es,ast",
     "_state_code": "as",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Asturias&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7491,7 +7491,6 @@ export const es = {
     ]
   },
   "Canarias": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=28.29357&lon=-16.62144&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cn",
     SH: [
       {
@@ -7530,8 +7529,8 @@ export const es = {
     ]
   },
   "Cantabria": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.13583&lon=-4.26363&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cb",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Cantabria&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "No lectivos",
@@ -7551,8 +7550,8 @@ export const es = {
     ]
   },
   "Castilla y León": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.80371&lon=-4.74717&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cl",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Castilla+y+Le%C3%B3n&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7610,8 +7609,8 @@ export const es = {
     ]
   },
   "Castilla-La Mancha": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.41779&lon=-2.62323&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "cm",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Castilla-La+Mancha&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Descanso de Navidad",
@@ -7669,8 +7668,8 @@ export const es = {
     ]
   },
   "Cataluña": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.85230&lon=1.57450&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,oc",
-    "_state_code": "ct"
+    "_state_code": "ct",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Catalu%C3%B1a&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Catalunya": {
     "_state_code": "ct",
@@ -7711,8 +7710,8 @@ export const es = {
     ]
   },
   "Ceuta": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.89429&lon=-5.35568&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "ce",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Ceuta&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7773,8 +7772,8 @@ export const es = {
     ]
   },
   "Comunidad de Madrid": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=40.52483&lon=-3.77156&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "md",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Comunidad+de+Madrid&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7827,12 +7826,13 @@ export const es = {
       },
     ]
   },
-  "Comunidad Valenciana": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.68195&lon=-0.76544&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
-    "_state_code": "vc"
+  "Comunidad Foral de Navarra": {
+    "_state_code": "nc",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Comunidad+Foral+de+Navarra&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Comunitat Valenciana": {
     "_state_code": "vc",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Comunitat+Valenciana&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -7965,8 +7965,8 @@ export const es = {
     ]
   },
   "Extremadura": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.17484&lon=-6.15298&zoom=18&addressdetails=1&limit=1&accept-language=es,ast",
     "_state_code": "ex",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Extremadura&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8028,8 +8028,8 @@ export const es = {
     ]
   },
   "Galicia": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.61946&lon=-7.86311&zoom=18&addressdetails=1&limit=1&accept-language=es,gl",
     "_state_code": "ga",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Galicia&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8215,6 +8215,7 @@ export const es = {
   },
   "Illes Balears": {
     "_state_code": "ib",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Illes+Balears&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8261,9 +8262,9 @@ export const es = {
       },
     ]
   },
-  "Islas Baleares": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=39.61340&lon=2.88043&zoom=18&addressdetails=1&limit=1&accept-language=es,ca",
-    "_state_code": "ib"
+  "Islas Canarias": {
+    "_state_code": "cn",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Islas+Canarias&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Jaén": {
     "_state_code": "an-ja",
@@ -8319,8 +8320,8 @@ export const es = {
     ]
   },
   "La Rioja": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.32855&lon=-2.46749&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "ri",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=La+Rioja&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8430,8 +8431,8 @@ export const es = {
     ]
   },
   "Melilla": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.29186&lon=-2.94090&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "ml",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Melilla&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
@@ -8533,17 +8534,13 @@ export const es = {
       },
     ]
   },
-  "Navarra": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.61254&lon=-1.83078&zoom=18&addressdetails=1&limit=1&accept-language=es,eu",
-    "_state_code": "nc"
-  },
   "País Vasco": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=42.99118&lon=-2.55430&zoom=18&addressdetails=1&limit=1&accept-language=es,eu",
-    "_state_code": "pv"
+    "_state_code": "pv",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Pa%C3%ADs+Vasco&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
   },
   "Región de Murcia": {
-    "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=38.06343&lon=-1.67180&zoom=18&addressdetails=1&limit=1&accept-language=es",
     "_state_code": "mc",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=Espa%C3%B1a&state=Regi%C3%B3n+de+Murcia&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast",
     SH: [
       {
         name: "Vacaciones de Navidad",
