@@ -1542,6 +1542,9 @@ With [34m[1mwarnings[22m[39m:
 "Calculations based on month range" for "Mar Su[-1] - Dec 25-Su-28 days: 12:00-13:00": [33m[1mIGNORED[22m[39m, reason: not implemented yet
 "Calculations based on month range" for "Mo-Fr 09:00-12:30; Sa 09:00-13:00; Dec 25-Su-28 days - Dec 24: Mo-Fr 09:00-16:00,Sa 09:00-16:00": [33m[1mIGNORED[22m[39m, reason: not implemented yet
 "Calculations based on month range" for "Mo-Su 10:00-01:00; Sep 15+Sa-Oct Su[1],Oct 01-3: Mo-Su 07:30-03:00": [33m[1mIGNORED[22m[39m, reason: not implemented yet
+"Nth weekday is inclusive as the end of a monthday range (#632)" for "Aug 02-Aug Mo[1]": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Aug 02-Aug Mo[1] <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Error tolerance: case and whitespace" for "Mo,Tu,We,Th 12:00-20:00; 14:00-16:00 off": [32m[1mPASSED[22m[39m
 "Error tolerance: case and whitespace" for "   monday,    Tu, wE,   TH    12:00 - 20:00  ; 14:00-16:00	Off  ": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
@@ -2655,7 +2658,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1024/1024 tests passed. 0 did not pass.
+1025/1025 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
