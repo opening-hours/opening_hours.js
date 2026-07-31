@@ -28,6 +28,11 @@ const maxValuesToFetch = !isNaN(parsedMax) && parsedMax > 0 ? parsedMax : Infini
 const baseUrl = 'https://taginfo.openstreetmap.org/api/4/key/values';
 const resultsPerPage = 999; // API limit when using filter=all
 
+/**
+ * @param {number} page Page number to fetch.
+ * @param {boolean} [useFilter] Whether to request all values.
+ * @returns {Promise<object>} Parsed Taginfo response.
+ */
 function fetchPage(page, useFilter = false) {
     return new Promise((resolve, reject) => {
         let url = `${baseUrl}?key=${encodeURIComponent(key)}&page=${page}&rp=${resultsPerPage}`;
