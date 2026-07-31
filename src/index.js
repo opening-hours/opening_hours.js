@@ -3843,11 +3843,19 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             }
                         }
                     } else if (has_constrained_weekday[1]) {
-                        to_date = getDateForConstrainedWeekday((has_year[1] ? tokens[at_sec_event_or_month-1][0] : date.getFullYear()), // year
-                            tokens[at_sec_event_or_month][0],   // month
-                            tokens[at_sec_event_or_month+1][0], // weekday
+                        const to_year = has_year[1]
+                            ? tokens[at_sec_event_or_month-1][0]
+                            : date.getFullYear();
+                        const to_month = tokens[at_sec_event_or_month][0];
+                        const to_weekday = tokens[at_sec_event_or_month+1][0];
+
+                        to_date = getDateForConstrainedWeekday(
+                            to_year,
+                            to_month,
+                            to_weekday,
                             has_constrained_weekday[1],
-                            has_calc[1]);
+                            has_calc[1]
+                        );
                         to_date.setDate(to_date.getDate() + 1);
                     } else {
                         to_date = new Date((has_year[1] ? tokens[at_sec_event_or_month-1][0] : date.getFullYear()),
