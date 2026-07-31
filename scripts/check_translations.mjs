@@ -114,6 +114,9 @@ function extractKeysFromLanguage(content, lang) {
 }
 
 // Extract all i18next.t() calls from JS files
+/**
+ * @returns {Set<string>} Translation keys used in JavaScript files.
+ */
 function extractUsedKeys() {
   const usedKeys = new Set();
   const dynamicPrefixes = new Set();
