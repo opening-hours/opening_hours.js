@@ -17,6 +17,7 @@ path = [
   "test/test.de.log",
   "test/test.en.log",
   "types/index.d.ts",
+  "types/js-yaml.d.ts",
   "types/yargs.d.ts",
 ]
 SPDX-FileCopyrightText = "opening_hours.js contributors"
