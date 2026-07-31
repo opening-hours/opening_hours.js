@@ -395,6 +395,7 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
   const commitDate = new Date(submodule.commitUnixTimestamp * 1000).toISOString().split('T')[0];
 
   const lines = [
+    '// @ts-nocheck',
     '/**',
     ' * Auto-generated school holidays from OpenHolidays API Data (Git Submodule)',
     ' * DO NOT EDIT MANUALLY - Run: node scripts/fetch-school-holidays.mjs',

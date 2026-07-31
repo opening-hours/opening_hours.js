@@ -9,6 +9,7 @@ SPDX-PackageDownloadLocation = "https://github.com/opening-hours/opening_hours.j
 [[annotations]]
 path = [
   ".versionrc.json",
+  "jsconfig.json",
   "package.json",
   "package-lock.json",
   "taginfo.json",

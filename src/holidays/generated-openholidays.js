@@ -1,3 +1,4 @@
+// @ts-nocheck
 /**
  * Auto-generated school holidays from OpenHolidays API Data (Git Submodule)
  * DO NOT EDIT MANUALLY - Run: node scripts/fetch-school-holidays.mjs

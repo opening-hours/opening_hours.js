@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "target": "esnext",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "resolveJsonModule": true,
+    "maxNodeModuleJsDepth": 0,
+    "types": ["node"]
+  },
+  "include": [
+    "src/**/*.js",
+    "src/**/*.mjs",
+    "scripts/**/*.js",
+    "scripts/**/*.mjs"
+  ],
+  "exclude": [
+    "build/**",
+    "scripts/PH_SH_exporter.js",
+    "scripts/real_test.js",
+    "submodules/**"
+  ]
+}
