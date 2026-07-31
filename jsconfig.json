@@ -14,7 +14,8 @@
     "src/**/*.js",
     "src/**/*.mjs",
     "scripts/**/*.js",
-    "scripts/**/*.mjs"
+    "scripts/**/*.mjs",
+    "types/**/*.d.ts"
   ],
   "exclude": [
     "build/**",
