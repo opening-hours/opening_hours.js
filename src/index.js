@@ -3848,6 +3848,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             tokens[at_sec_event_or_month+1][0], // weekday
                             has_constrained_weekday[1],
                             has_calc[1]);
+                        to_date.setDate(to_date.getDate() + 1);
                     } else {
                         to_date = new Date((has_year[1] ? tokens[at_sec_event_or_month-1][0] : date.getFullYear()),
                             tokens[at_sec_event_or_month][0], tokens[at_sec_event_or_month+1][0] + 1);
