@@ -114,6 +114,8 @@
   'by(?:_| )?appointments?': '"by appointment"'
   'nach(?: |_)vereinbarung': '"Nach Vereinbarung"'
   'nach(?: |_)absprache': '"Nach Absprache"'
+  "sur(?: |_)rendez(?: |_|-)?vous": "\"Sur rendez-vous\""
+  "sur(?: |_)rdv": "\"Sur rendez-vous\""
   'bis': '-'
   'täglich': Mo-Su
   '(?:schul)?ferien': SH
