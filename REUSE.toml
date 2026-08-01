@@ -9,6 +9,7 @@ SPDX-PackageDownloadLocation = "https://github.com/opening-hours/opening_hours.j
 [[annotations]]
 path = [
   ".versionrc.json",
+  "jsconfig.json",
   "package.json",
   "package-lock.json",
   "taginfo.json",
@@ -16,6 +17,8 @@ path = [
   "test/test.de.log",
   "test/test.en.log",
   "types/index.d.ts",
+  "types/js-yaml.d.ts",
+  "types/yargs.d.ts",
 ]
 SPDX-FileCopyrightText = "opening_hours.js contributors"
 SPDX-License-Identifier = "CC0-1.0"

@@ -41,6 +41,11 @@ function parseI18nResources() {
 }
 
 // Extract all translation keys from a language section
+/**
+ * @param {string} content Translation resource file content.
+ * @param {string} lang Language code to inspect.
+ * @returns {Set<string>} Translation keys found for the language.
+ */
 function extractKeysFromLanguage(content, lang) {
   const keys = new Set();
 
@@ -109,6 +114,9 @@ function extractKeysFromLanguage(content, lang) {
 }
 
 // Extract all i18next.t() calls from JS files
+/**
+ * @returns {Set<string>} Translation keys used in JavaScript files.
+ */
 function extractUsedKeys() {
   const usedKeys = new Set();
   const dynamicPrefixes = new Set();
