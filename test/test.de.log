@@ -1368,6 +1368,13 @@ With [34m[1mwarnings[22m[39m:
 "Additional comment "on appointment"" for "Mo-Fr 08:00-12:00 open "appointment not needed", Mo-Fr 13:00-17:00 open on appointment": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo-Fr 08:00-12:00 open "appointment not needed", Mo-Fr 13:00-17:00 open on appointment <--- (Bitte verwende ""on appointment"" anstelle von "on appointment".)
+"Additional comment "Sur rendez-vous"" for "Mo-Fr 08:00-12:00 open "Sans rendez-vous", Mo-Fr 13:00-17:00 open "Sur rendez-vous"": [32m[1mPASSED[22m[39m
+"Additional comment "Sur rendez-vous"" for "Mo-Fr 08:00-12:00 open "Sans rendez-vous", Mo-Fr 13:00-17:00 open sur_rendez_vous": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo-Fr 08:00-12:00 open "Sans rendez-vous", Mo-Fr 13:00-17:00 open sur_rendez_vous <--- (Bitte verwende ""Sur rendez-vous"" anstelle von "sur_rendez_vous".)
+"Additional comment "Sur rendez-vous"" for "Mo-Fr 08:00-12:00 open "Sans rendez-vous", Mo-Fr 13:00-17:00 open sur rendez vous": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo-Fr 08:00-12:00 open "Sans rendez-vous", Mo-Fr 13:00-17:00 open sur rendez vous <--- (Bitte verwende ""Sur rendez-vous"" anstelle von "sur rendez vous".)
 "Additional comments" for "Mo,Tu 10:00-16:00 open "no warranty"; We 12:00-18:00 open "female only"; Th closed "Not open because we are coding :)"; Fr 10:00-16:00 open "male only"; Sa 10:00-12:00 "Maybe open. Call us."": [32m[1mPASSED[22m[39m
 "Additional comments for unknown" for "Sa 10:00-12:00 "Maybe open. Call us. (testing special tokens in comment: ; ;; ' || | test end)"": [32m[1mPASSED[22m[39m
 "Additional comments for unknown" for "Sa 10:00-12:00 unknown "Maybe open. Call us. (testing special tokens in comment: ; ;; ' || | test end)"": [32m[1mPASSED[22m[39m
@@ -2668,7 +2675,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1035/1035 tests passed. 0 did not pass.
+1038/1038 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

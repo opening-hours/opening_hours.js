@@ -90,6 +90,31 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'off': [ 'off', 'state' ],
         'unknown': [ 'unknown', 'state' ],
     }
+    // Flatten all replacement rules into one longest-pattern-first lookup list,
+    // so a specific phrase wins over a shorter pattern matching its prefix.
+    const correction_entries = Object.entries(word_error_correction)
+        .filter(([comment]) => comment !== 'Ambiguous words')
+        .flatMap(([comment, corrections]) => Object.entries(corrections)
+            .map(([pattern, replacement]) => ({ comment, pattern, replacement })))
+        .sort((left, right) => right.pattern.length - left.pattern.length);
+    // Multi-word rules only; single-word rules must not override valid tokens
+    // such as the month abbreviation "Mar" and are left to returnCorrectWordOrToken.
+    const phrase_correction_entries = correction_entries.filter(({ pattern }) =>
+        pattern.includes(' ') || pattern.includes('\\s')
+    );
+    const findPhraseCorrection = (input) => {
+        for (const correction of phrase_correction_entries) {
+            const match = input.match(new RegExp(
+                '^(' + correction.pattern + ')(\\.?)' +
+                '(?=$|[^\\p{L}\\p{N}_])',
+                'iu'
+            ));
+            if (match) {
+                    return match;
+            }
+        }
+        return undefined;
+    };
     const ambiguous_season_words = new Set([
         'spring', 'summer', 'autumn', 'winter', // en
         'frühling', 'fruehling', 'frühjahr', 'sommer', 'herbst', // de
@@ -710,18 +735,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
             String.raw`^(?!${NUMERIC_DAY_OFFSET_PATTERN})(${ERROR_TOLERANCE_ALTERNATIVES})(\.?)`,
             'iu'
         );
-
         while (value !== '') {
             /* Ordered after likelihood of input for performance reasons.
              * Also, error tolerance is supposed to happen at the end.
              */
             // console.log("Parsing value: " + value);
 
-            // First regex: Match international words (2+ characters) with optional suffixes
-            // Pattern: word characters followed by word boundary, with optional ". before after" suffixes
-            let tmp = value.match(WORD_REGEX);
+            // Check correction phrases before the regular word and error-tolerance patterns.
+            const phrase_match = findPhraseCorrection(value);
+            let tmp = phrase_match || value.match(WORD_REGEX);
             let token_from_map = undefined;
-            if (tmp && tmp[2] === '') {
+            if (!phrase_match && tmp && tmp[2] === '') {
                 token_from_map = string_to_token_map[tmp[1].toLowerCase()];
             }
             if (typeof token_from_map === 'object') {
@@ -789,7 +813,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             'please_use_ok_for_ko', t('please use ok for ko', {'ko': tmp[0], 'ok': ok})]);
                 }
                 value = ok + value.substr(tmp[0].length);
-            } else if ((tmp = value.match(ERROR_TOLERANCE_REGEX))) {
+            } else if ((tmp = phrase_match || value.match(ERROR_TOLERANCE_REGEX))) {
                 /* Handle all remaining words and specific other characters with error tolerance.
                  *
                  * à|á: Word boundary does not work with Unicode chars: 'test à test'.match(/\bà\b/i)
@@ -801,6 +825,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                  */
                 const lower_word = tmp[1].toLowerCase();
                 const warn_count_before = parsing_warnings.length;
+                // returnCorrectWordOrToken looks up the same correction_entries,
+                // so a pre-matched phrase resolves here just like a single word.
                 let correct_val = returnCorrectWordOrToken(lower_word, value.length);
                 // A word_error_correction warning, if any, is the last one pushed by
                 // returnCorrectWordOrToken; remember its index so the resolver can
@@ -1015,36 +1041,22 @@ export default function(value, nominatim_object, optional_conf_parm) {
             return undefined;
         }
 
-        // Standard processing for all other words using flat structure
-        Object.keys(word_error_correction).forEach(function (comment) {
-            if (correctWordOrToken) {
-                return;
-            }
-            // Skip the ambiguous words section for auto-correction
-            if (comment === 'Ambiguous words') {
-                return;
-            }
-            Object.keys(word_error_correction[comment]).forEach(function (old_val) {
-                if (correctWordOrToken) {
-                    return;
-                }
-                if (new RegExp('^' + old_val + '$').test(word)) {
-                    const val = word_error_correction[comment][old_val];
+        const correction = correction_entries.find(entry =>
+            new RegExp('^' + entry.pattern + '$', 'iu').test(word)
+        );
+        if (correction) {
+            if (!done_with_warnings) {
+                const warningMessage = t(correction.comment, {'ko': word, 'ok': correction.replacement});
 
-                    if (!done_with_warnings) {
-                        const warningMessage = t(comment, {'ko': word, 'ok': val});
-
-                        parsing_warnings.push([
-                            -1,
-                            value_length - word.length,
-                            'word_error_correction',
-                            warningMessage
-                        ]);
-                    }
-                    correctWordOrToken = val;
-                }
-            });
-        });
+                parsing_warnings.push([
+                    -1,
+                    value_length - word.length,
+                    'word_error_correction',
+                    warningMessage
+                ]);
+            }
+            correctWordOrToken = correction.replacement;
+        }
 
         return correctWordOrToken;
     }
