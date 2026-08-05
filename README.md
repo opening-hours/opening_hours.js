@@ -148,7 +148,7 @@ See the [Testing](#testing) section for details around writing and running tests
 
 If you are a web developer and want to use this library you can do so by including the current version from here:
 
-<https://openingh.openstreetmap.de/opening_hours.js/opening_hours+deps.min.js>
+<https://openingh.openstreetmap.de/build/opening_hours+deps.min.js>
 
 To get started checkout the [simple_index.html](/examples/simple_index.html) file.
 
