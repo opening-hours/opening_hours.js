@@ -86,7 +86,7 @@ build/opening_hours+deps.min.js: src/index.js src/locales/word_error_correction.
 check: qa-quick check-fast check-package.json
 
 .PHONY: check-full
-check-full: clean check-all-diff check-package.json check-yaml check-holidays check-holiday-state-codes
+check-full: clean check-all-diff check-package.json check-yaml check-holidays check-holiday-state-codes check-translations
 
 .PHONY: benchmark
 benchmark: benchmark-opening_hours.min.js
@@ -158,6 +158,10 @@ check-all: check-package.json check-test check-all-diff osm-tag-data-update-chec
 
 .PHONY: check-test
 check-test: check-opening_hours.js
+
+.PHONY: check-translations
+check-translations:
+	$(NODEJS) scripts/check_translations.mjs
 
 .PHONY: check-fast
 check-fast: check-diff-opening_hours.js
