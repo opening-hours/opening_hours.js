@@ -21,45 +21,62 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const siteDir = join(__dirname, '..', 'site');
 const jsDir = join(siteDir, 'js');
+const REFERENCE_LANGUAGE = 'en';
+const MAX_DISPLAYED_ITEMS = 5;
+const OUTPUT_INDENT = '  ';
+const CHECK_START = '--- TRANSLATION CHECK START ---';
+const CHECK_END = '--- TRANSLATION CHECK END ---';
+const SUCCESS = '✓';
+const WARNING = '⚠';
+const ERROR = '✗';
 
-// Parse i18n-resources.js to extract translations
+/**
+ * Set of fully qualified translation keys.
+ * @typedef {Set<string>} TranslationKeys
+ */
+
+/**
+ * Translation keys grouped by language code.
+ * @typedef {Record<string, TranslationKeys>} KeysByLanguage
+ */
+
+/**
+ * Read the translation resource and list its language blocks.
+ * @returns {{content: string, languages: string[]}} Resource content and languages.
+ */
 function parseI18nResources() {
   const content = readFileSync(join(jsDir, 'i18n-resources.js'), 'utf-8');
 
-  // Extract the resources object using regex
-  // This is a simplified parser - for complex cases, consider using an AST parser
-  const languages = {};
-  const langMatches = content.matchAll(
-    /^\s{4}(\w+):\s*\{\s*\n\s*translation:\s*\{/gm
+  // Find language blocks without evaluating the resource file.
+  const languagePattern = /^\s{4}(\w+):\s*\{\s*\n\s*translation:\s*\{/gm;
+  const languages = Array.from(
+    content.matchAll(languagePattern),
+    (match) => match[1]
   );
 
-  for (const match of langMatches) {
-    languages[match[1]] = new Set();
-  }
-
-  return { content, languages: Object.keys(languages) };
+  return { content, languages };
 }
 
-// Extract all translation keys from a language section
 /**
- * @param {string} content Translation resource file content.
- * @param {string} lang Language code to inspect.
- * @returns {Set<string>} Translation keys found for the language.
+ * Extract all translation keys from one language section.
+ * @param {string} content - Translation resource source.
+ * @param {string} language - Language code to inspect.
+ * @returns {TranslationKeys} Extracted translation keys.
  */
-function extractKeysFromLanguage(content, lang) {
+function extractKeysFromLanguage(content, language) {
   const keys = new Set();
-
-  // Find the start of the language section
   const langStartRegex = new RegExp(
-    `^\\s{4}${lang}:\\s*\\{\\s*\\n\\s*translation:\\s*\\{`,
+    String.raw`^\s{4}${language}:\s*\{\s*\n\s*translation:\s*\{`,
     'm'
   );
   const startMatch = content.match(langStartRegex);
   if (!startMatch) return keys;
 
-  const startIndex = startMatch.index + startMatch[0].length;
+  const matchIndex = startMatch.index;
+  if (matchIndex === undefined) return keys;
+  const startIndex = matchIndex + startMatch[0].length;
 
-  // Extract keys by tracking nested objects
+  // Track nested objects so keys such as "texts.filter.open" keep their path.
   let depth = 1;
   let currentKey = '';
   let inString = false;
@@ -90,16 +107,14 @@ function extractKeysFromLanguage(content, lang) {
           keyPath.pop();
         }
       } else if (char === ':') {
-        // Check if this is a key definition
+        // A key followed by an object starts a nested path; otherwise it is a leaf key.
         const beforeColon = content.substring(i - 50, i).trim();
         const keyMatch = beforeColon.match(/['"]([^'"]+)['"]$/);
         if (keyMatch) {
           currentKey = keyMatch[1];
-          // Check if the next non-whitespace char is { or a value
           let j = i + 1;
           while (j < content.length && /\s/.test(content[j])) j++;
           if (content[j] !== '{') {
-            // This is a leaf key
             const fullKey = [...keyPath, currentKey].join('.');
             keys.add(fullKey);
             currentKey = '';
@@ -113,60 +128,46 @@ function extractKeysFromLanguage(content, lang) {
   return keys;
 }
 
-// Extract all i18next.t() calls from JS files
 /**
- * @returns {Set<string>} Translation keys used in JavaScript files.
+ * Extract literal keys and dynamic key prefixes from all JavaScript files.
+ * @returns {TranslationKeys} Translation keys used in source files.
  */
 function extractUsedKeys() {
   const usedKeys = new Set();
   const dynamicPrefixes = new Set();
-  const jsFiles = readdirSync(jsDir).filter((f) => f.endsWith('.js'));
+  const javascriptFiles = readdirSync(jsDir).filter((file) =>
+    file.endsWith('.js')
+  );
 
-  for (const file of jsFiles) {
+  for (const file of javascriptFiles) {
     const content = readFileSync(join(jsDir, file), 'utf-8');
 
-    // For i18n-resources.js, only scan after the resources definition
-    let scanContent = content;
-    if (file === 'i18n-resources.js') {
-      const functionsStart = content.indexOf(
-        'function getUserSelectTranslateHTMLCode'
-      );
-      if (functionsStart > 0) {
-        scanContent = content.substring(functionsStart);
-      } else {
-        continue; // Skip if we can't find the functions section
-      }
-    }
+    const scanContent = getScannableContent(file, content);
+    if (scanContent === null) continue;
 
-    // First pass: Match string concatenation like i18next.t('prefix ' + variable)
+    // Match concatenation such as i18next.t('words.' + name).
     const concatMatches = scanContent.matchAll(/i18next\.t\(['"]([^'"]+)['"]\s*\+/g);
     for (const match of concatMatches) {
       const prefix = match[1];
-      // Mark as dynamic pattern for concatenation
       dynamicPrefixes.add(prefix);
       usedKeys.add(prefix + '*');
     }
 
-    // Second pass: Match i18next.t('key') and i18next.t("key")
+    // Match ordinary string keys and ignore interpolated template literals here.
     const matches = scanContent.matchAll(/i18next\.t\(['"`]([^'"`]+)['"`]/g);
     for (const match of matches) {
       const key = match[1];
-      // Skip if this is a dynamic prefix we already found
       if (dynamicPrefixes.has(key)) continue;
-      // Handle template literals with interpolation
       if (!key.includes('${')) {
         usedKeys.add(key);
       }
     }
 
-    // Match template literal keys like `texts.mode ${i}`
+    // Match template literals such as i18next.t(`texts.mode ${mode}`).
     const templateMatches = scanContent.matchAll(/i18next\.t\(`([^`]+)`/g);
     for (const match of templateMatches) {
-      const template = match[1];
-      // Extract the static prefix
-      const staticPart = template.split('${')[0];
-      if (staticPart && !staticPart.includes('`')) {
-        // Mark as dynamic key pattern
+      const staticPart = match[1].split('${')[0];
+      if (staticPart) {
         usedKeys.add(staticPart + '*');
       }
     }
@@ -175,170 +176,200 @@ function extractUsedKeys() {
   return usedKeys;
 }
 
-// Main analysis
-console.log('🔍 Translation Checker for opening_hours.js\n');
-console.log('='.repeat(60) + '\n');
+/**
+ * Select the part of a JavaScript file that contains translation usage.
+ * @param {string} file - JavaScript file name.
+ * @param {string} content - File contents.
+ * @returns {string|null} Content that should be scanned, if available.
+ */
+function getScannableContent(file, content) {
+  if (file !== 'i18n-resources.js') return content;
 
-const { content, languages } = parseI18nResources();
-console.log(`📚 Found ${languages.length} languages: ${languages.join(', ')}\n`);
-
-// Extract keys for each language
-const keysByLang = {};
-for (const lang of languages) {
-  keysByLang[lang] = extractKeysFromLanguage(content, lang);
+  // Do not treat the resource definitions themselves as translation usage.
+  const functionsStart = content.indexOf(
+    'function getUserSelectTranslateHTMLCode'
+  );
+  return functionsStart > 0 ? content.substring(functionsStart) : null;
 }
 
-// Use English as the reference
-const referenceKeys = keysByLang['en'] || new Set();
-console.log(`📝 Reference language (en) has ${referenceKeys.size} keys\n`);
+/**
+ * Find reference keys missing from a language.
+ * @param {TranslationKeys} referenceKeys - Reference language keys.
+ * @param {TranslationKeys} languageKeys - Keys for one language.
+ * @returns {string[]} Keys missing from the language.
+ */
+function getMissingKeys(referenceKeys, languageKeys) {
+  return [...referenceKeys].filter((key) => !languageKeys.has(key));
+}
 
-// Check completeness of each language
-console.log('='.repeat(60));
-console.log('📊 TRANSLATION COMPLETENESS CHECK');
-console.log('='.repeat(60) + '\n');
+/**
+ * Extract literal translation keys from the detected keys.
+ * @param {TranslationKeys} usedKeys - Keys found in source files.
+ * @returns {string[]} Literal translation keys.
+ */
+function getLiteralKeys(usedKeys) {
+  return [...usedKeys].filter((key) => {
+    if (key.endsWith('*') || key.endsWith('.')) return false;
+    return !key.split('.').some((part) => part === '');
+  });
+}
 
-let allComplete = true;
-for (const lang of languages) {
-  if (lang === 'en') continue;
+/**
+ * Extract dynamic translation patterns from the detected keys.
+ * @param {TranslationKeys} usedKeys - Keys found in source files.
+ * @returns {string[]} Dynamic translation patterns.
+ */
+function getDynamicPatterns(usedKeys) {
+  return [...usedKeys].filter(
+    (key) => key.endsWith('*') || key.endsWith('.')
+  );
+}
 
-  const langKeys = keysByLang[lang];
-  const missing = [...referenceKeys].filter((k) => !langKeys.has(k));
-  const extra = [...langKeys].filter((k) => !referenceKeys.has(k));
+/**
+ * Find reference keys that are not used literally or through a dynamic prefix.
+ * A key matching a dynamic prefix is considered used even without a literal call.
+ * @param {TranslationKeys} referenceKeys - Reference language keys.
+ * @param {TranslationKeys} usedKeys - Keys found in source files.
+ * @returns {string[]} Reference keys that appear unused.
+ */
+function getUnusedKeys(referenceKeys, usedKeys) {
+  const literalKeys = getLiteralKeys(usedKeys);
+  const dynamicPrefixes = getDynamicPatterns(usedKeys)
+    .filter((pattern) => pattern.endsWith('*'))
+    .map((pattern) => pattern.slice(0, -1));
 
-  if (missing.length === 0 && extra.length === 0) {
-    console.log(`✅ ${lang}: Complete (${langKeys.size} keys)`);
-  } else {
-    allComplete = false;
-    console.log(`\n⚠️  ${lang}: ${langKeys.size} keys`);
-    if (missing.length > 0) {
-      console.log(`   Missing ${missing.length} keys:`);
-      missing.slice(0, 10).forEach((k) => console.log(`     - ${k}`));
-      if (missing.length > 10) {
-        console.log(`     ... and ${missing.length - 10} more`);
-      }
-    }
-    if (extra.length > 0) {
-      console.log(`   Extra ${extra.length} keys (not in en):`);
-      extra.slice(0, 5).forEach((k) => console.log(`     + ${k}`));
-      if (extra.length > 5) {
-        console.log(`     ... and ${extra.length - 5} more`);
-      }
-    }
+  return [...referenceKeys].filter((key) => {
+    if (literalKeys.includes(key)) return false;
+    return !dynamicPrefixes.some((prefix) => key.startsWith(prefix));
+  });
+}
+
+/**
+ * Find a reference-language fallback for a dynamic key prefix.
+ * @param {string} prefix - Dynamic key prefix.
+ * @param {TranslationKeys} referenceKeys - Reference language keys.
+ * @returns {string|undefined} Matching fallback key.
+ */
+function getFallbackKey(prefix, referenceKeys) {
+  // Some languages use a plural or language-specific prefix with a generic fallback.
+  const normalizedPrefix = prefix.replace(/\.$/, '').replace(/\s+$/, '');
+  const possibleFallbacks = [
+    normalizedPrefix,
+    normalizedPrefix.replace(/days/, 'day'),
+    normalizedPrefix.replace(/s /, ' '),
+  ];
+
+  return possibleFallbacks.find((key) => referenceKeys.has(key));
+}
+
+/**
+ * Print a list of keys, truncating long lists for readability.
+ * @param {string} label - List label.
+ * @param {string[]} keys - Items to print.
+ * @param {string} [marker] - Item marker.
+ * @param {number} [limit] - Maximum number of items to print.
+ */
+function printList(label, keys, marker = '-', limit = MAX_DISPLAYED_ITEMS) {
+  if (keys.length === 0) return;
+
+  console.log(`${OUTPUT_INDENT}  ${label} ${keys.length}:`);
+  keys.slice(0, limit).forEach((key) => {
+    console.log(`${OUTPUT_INDENT}    ${marker} ${key}`);
+  });
+  if (keys.length > limit) {
+    console.log(`${OUTPUT_INDENT}    ... and ${keys.length - limit} more`);
   }
 }
 
-// Check used keys
-console.log('\n' + '='.repeat(60));
-console.log('🔎 USAGE CHECK (Keys used in code vs. defined)');
-console.log('='.repeat(60) + '\n');
-
-const usedKeys = extractUsedKeys();
-console.log(`Found ${usedKeys.size} unique keys used in JS files\n`);
-
-// Filter out dynamic patterns (ending with * or containing incomplete paths)
-const staticKeys = [...usedKeys].filter((k) => {
-  if (k.endsWith('*')) return false;
-  if (k.endsWith('.')) return false; // incomplete dynamic key
-  if (k.split('.').some((part) => part === '')) return false;
-  return true;
-});
-
-// Check for undefined keys (used but not in en)
-const undefinedKeys = staticKeys.filter((k) => !referenceKeys.has(k));
-
-if (undefinedKeys.length > 0) {
-  console.log('❌ Static keys used in code but NOT defined in translations:');
-  undefinedKeys.forEach((k) => console.log(`   - ${k}`));
-  console.log('');
-} else {
-  console.log('✅ All static keys used are defined in translations\n');
-}
-
-// Show dynamic patterns found and validate them
-const dynamicPatterns = [...usedKeys].filter(
-  (k) => k.endsWith('*') || k.endsWith('.')
-);
-if (dynamicPatterns.length > 0) {
-  console.log(
-    `ℹ️  ${dynamicPatterns.length} dynamic key patterns detected:\n`
-  );
-
-  for (const pattern of dynamicPatterns) {
-    const prefix = pattern.endsWith('*')
-      ? pattern.slice(0, -1)
-      : pattern;
-
-    const matchingKeys = [...referenceKeys].filter((k) =>
-      k.startsWith(prefix)
+/**
+ * Find dynamic patterns without reference keys or a known fallback.
+ * @param {string[]} patterns - Dynamic translation patterns.
+ * @param {TranslationKeys} referenceKeys - Reference language keys.
+ * @returns {string[]} Patterns that require attention.
+ */
+function getInvalidDynamicPatterns(patterns, referenceKeys) {
+  return patterns.filter((pattern) => {
+    const prefix = pattern.endsWith('*') ? pattern.slice(0, -1) : pattern;
+    const hasMatchingKey = [...referenceKeys].some((key) =>
+      key.startsWith(prefix)
     );
+    return !hasMatchingKey && !getFallbackKey(prefix, referenceKeys);
+  });
+}
 
-    // Check if this is an optional pattern with fallback
-    // Handle both exact match and close variants (e.g., "days" vs "day")
-    const possibleFallbacks = [
-      prefix.replace(/\.$/, '').replace(/\s+$/, ''),
-      prefix.replace(/\.$/, '').replace(/\s+$/, '').replace(/days/, 'day'),
-      prefix.replace(/\.$/, '').replace(/\s+$/, '').replace(/s /, ' '),
-    ];
+/** Run the translation checks and set the process exit code. */
+function main() {
+  console.log(CHECK_START);
 
-    const fallback = possibleFallbacks.find(k => referenceKeys.has(k));
+  const { content, languages } = parseI18nResources();
+  const keysByLanguage = Object.fromEntries(languages.map((language) => [
+    language,
+    extractKeysFromLanguage(content, language),
+  ]));
+  const referenceKeys = keysByLanguage[REFERENCE_LANGUAGE] || new Set();
+  let coverageComplete = true;
+  let coverageReported = false;
 
-    if (matchingKeys.length > 0) {
-      console.log(`   ✅ ${pattern}`);
-      console.log(`      Found ${matchingKeys.length} matching keys:`);
-      matchingKeys.slice(0, 5).forEach((k) =>
-        console.log(`      - ${k}`)
-      );
-      if (matchingKeys.length > 5) {
-        console.log(`      ... and ${matchingKeys.length - 5} more`);
-      }
-    } else if (fallback) {
-      console.log(`   ⚠️  ${pattern} (optional)`);
-      console.log(`      No specific keys in English, but has fallback: "${fallback}"`);
-      console.log('      (Some languages use specific keys for grammar variations)');
-    } else {
-      console.log(`   ❌ ${pattern}`);
-      console.log(`      No keys found starting with "${prefix}"`);
+  for (const language of languages) {
+    if (language === REFERENCE_LANGUAGE) continue;
+    const languageKeys = keysByLanguage[language];
+    const missingKeys = getMissingKeys(referenceKeys, languageKeys);
+    if (missingKeys.length === 0) continue;
+
+    coverageComplete = false;
+    if (!coverageReported) {
+      console.log(`${OUTPUT_INDENT}[TRANSLATION COVERAGE]`);
+      coverageReported = true;
     }
-    console.log('');
+    console.log(`${OUTPUT_INDENT}${WARNING} ${language}: ${languageKeys.size}/${referenceKeys.size} keys`);
+    printList('Missing keys', missingKeys);
   }
-}
 
-// Check for unused keys (defined but not used)
-const staticUsedKeys = [...usedKeys].filter((k) => !k.endsWith('*'));
-const dynamicPrefixes = [...usedKeys]
-  .filter((k) => k.endsWith('*'))
-  .map((k) => k.slice(0, -1));
-
-const unusedKeys = [...referenceKeys].filter((k) => {
-  if (staticUsedKeys.includes(k)) return false;
-  // Check if it matches any dynamic pattern
-  if (dynamicPrefixes.some((p) => k.startsWith(p))) return false;
-  return true;
-});
-
-if (unusedKeys.length > 0) {
-  console.log(
-    `⚠️  ${unusedKeys.length} keys defined but possibly not used (may be used dynamically):`
+  const usedKeys = extractUsedKeys();
+  const undefinedKeys = getLiteralKeys(usedKeys).filter(
+    (key) => !referenceKeys.has(key)
   );
-  unusedKeys.slice(0, 20).forEach((k) => console.log(`   - ${k}`));
-  if (unusedKeys.length > 20) {
-    console.log(`   ... and ${unusedKeys.length - 20} more`);
+  const invalidDynamicPatterns = getInvalidDynamicPatterns(
+    getDynamicPatterns(usedKeys),
+    referenceKeys
+  );
+  const unusedKeys = getUnusedKeys(referenceKeys, usedKeys);
+  const usageHasIssues =
+    undefinedKeys.length > 0 ||
+    invalidDynamicPatterns.length > 0 ||
+    unusedKeys.length > 0;
+
+  if (usageHasIssues) {
+    console.log(`${OUTPUT_INDENT}[TRANSLATION USAGE]`);
+    if (undefinedKeys.length > 0) {
+      console.log(`${OUTPUT_INDENT}${ERROR} Undefined keys used in code:`);
+      printList('Undefined keys', undefinedKeys);
+    }
+    if (invalidDynamicPatterns.length > 0) {
+      console.log(`${OUTPUT_INDENT}${ERROR} Invalid dynamic translation patterns:`);
+      for (const pattern of invalidDynamicPatterns) {
+        const prefix = pattern.endsWith('*') ? pattern.slice(0, -1) : pattern;
+        console.log(`${OUTPUT_INDENT}${OUTPUT_INDENT}${ERROR} ${pattern}`);
+        console.log(`${OUTPUT_INDENT}${OUTPUT_INDENT}${OUTPUT_INDENT}No keys found starting with "${prefix}"`);
+      }
+    }
+    if (unusedKeys.length > 0) {
+      console.log(`${OUTPUT_INDENT}${WARNING} ${unusedKeys.length} defined keys may be unused:`);
+      printList('Possibly unused keys', unusedKeys, '-', 20);
+    }
   }
+
+  console.log(`${OUTPUT_INDENT}[SUMMARY]`);
+  const success = coverageComplete && !usageHasIssues;
+  console.log(
+    `${OUTPUT_INDENT}${success ? SUCCESS : WARNING} ${
+      success
+        ? 'All translations complete; all used keys are defined.'
+        : 'Translation problems found.'
+    }`
+  );
+  console.log(CHECK_END);
+  process.exitCode = success ? 0 : 1;
 }
 
-// Summary
-console.log('\n' + '='.repeat(60));
-console.log('📋 SUMMARY');
-console.log('='.repeat(60) + '\n');
-
-if (allComplete && undefinedKeys.length === 0) {
-  console.log('🎉 All translations are complete and all used keys are defined!');
-} else {
-  if (!allComplete) {
-    console.log('⚠️  Some languages have missing translations');
-  }
-  if (undefinedKeys.length > 0) {
-    console.log('❌ Some used keys are not defined');
-  }
-}
-console.log('');
+main();
