@@ -3180,6 +3180,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'firstAprilMonday'      : new Date(year,  3, firstWeekdayOfMonth(3, 1)),
             'firstMayMonday'        : new Date(year,  4, firstWeekdayOfMonth(4, 1)),
             'firstJuneMonday'       : new Date(year,  5, firstWeekdayOfMonth(5, 1)),
+            'firstJuneFriday'       : new Date(year,  5, firstWeekdayOfMonth(5, 5)),
             'firstJulyMonday'       : new Date(year,  6, firstWeekdayOfMonth(6, 1)),
             'firstAugustMonday'     : new Date(year,  7, firstWeekdayOfMonth(7, 1)),
             'firstSeptemberMonday'  : new Date(year,  8, firstWeekdayOfMonth(8, 1)),
