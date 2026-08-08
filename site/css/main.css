@@ -366,7 +366,6 @@ section {
     border-radius: 8px;
     border: 1px solid var(--border-color);
     box-shadow: 0 1px 3px var(--shadow-sm);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #value-input-section {
@@ -505,7 +504,7 @@ section {
     cursor: pointer;
     font-size: 1em;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     font-weight: 500;
 }
 
@@ -755,7 +754,7 @@ h3 {
     cursor: pointer;
     font-size: 0.9em;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
     font-weight: 500;
 }
@@ -860,7 +859,7 @@ button {
     color: white;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
     white-space: nowrap;
 }
 
@@ -1038,7 +1037,7 @@ button:active {
     border-left: 1px solid var(--border-color);
     cursor: pointer;
     font-size: 1.1rem;
-    transition: all 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -1085,7 +1084,7 @@ button:active {
     font-weight: 500;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .time-jump-btn:hover {
