@@ -8,7 +8,7 @@
 _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=49.2&lon=-2.1&zoom=11&addressdetails=1&accept-language=en
 
 PH:
-  - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday then next monday'}
+  - {'name': 'New Year’s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday'}
   - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
   - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
   - {'name': 'Early May bank holiday', 'variable_date': firstMayMonday}
