@@ -3193,6 +3193,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'firstAugustTuesday'    : new Date(year,  7, firstWeekdayOfMonth(7, 2)),
             'firstAugustFriday'     : new Date(year,  7, firstWeekdayOfMonth(7, 5)),
             'firstNovemberThursday' : new Date(year, 10, firstWeekdayOfMonth(10, 4)),
+            'lastNovemberWednesday' : new Date(year, 10, lastWeekdayOfMonth(10, 3)),
             'lastMayMonday'         : new Date(year,  4, lastWeekdayOfMonth(4, 1)),
             'lastMarchMonday'       : new Date(year,  2, lastWeekdayOfMonth(2, 1)),
             'lastAprilMonday'       : new Date(year,  3, lastWeekdayOfMonth(3, 1)),
