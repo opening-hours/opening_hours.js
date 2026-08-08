@@ -34,6 +34,7 @@
  */
 
 :root {
+    color-scheme: light dark;
     --bg-body: #ffffff;
     --bg-section: #f8f9fa;
     --bg-action: #fafafa;
@@ -77,6 +78,7 @@
 
 /* Dark mode via data-theme attribute */
 body[data-theme="dark"] {
+    color-scheme: dark;
     --bg-body: #1a1a1a;
     --bg-section: #242424;
     --bg-action: #2a2a2a;
@@ -116,6 +118,10 @@ body[data-theme="dark"] {
     --shadow-md: rgba(0, 0, 0, 0.4);
     --hero-gradient-start: #3a4a5a;
     --hero-gradient-end: #2a3a4a;
+}
+
+body[data-theme="light"] {
+    color-scheme: light;
 }
 
 /* Dark mode via browser preference (if no data-theme set) */
