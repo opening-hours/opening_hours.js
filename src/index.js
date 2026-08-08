@@ -3133,6 +3133,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
             return last.getDate() - offset;
         }
 
+        function weekdayBefore(month, day, weekday){
+            const date = new Date(year, month, day);
+            let days = (date.getDay() - weekday + 7) % 7;
+            if (days === 0) days = 7;
+            date.setDate(date.getDate() - days);
+            return date;
+        }
+
         function getDateOfWeekdayInDateRange(weekday, start_date){
             let days_to_dest_date = weekday - start_date.getDay();
             if (days_to_dest_date < 0) {
@@ -3214,6 +3222,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'nextMo-Sa25December'   : getDateOfNextWeekdayRange(1, 6, new Date(year, 11, 25)),
             'springEquinox'         : springEquinoxCalc(year),
             'autumnalEquinox'       : autumnalEquinoxCalc(year),
+            'mondayBefore20Jun'     : weekdayBefore(5, 20, 1),
         };
     }
     /* }}} */
