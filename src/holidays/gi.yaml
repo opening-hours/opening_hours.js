@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: ODbL-1.0
+---
+
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/GI.yaml
+
+PH:
+  - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if saturday,sunday then next monday'}
+  - {'name': 'Commonwealth Day', 'variable_date': firstMarchMonday, 'offset': 7}
+  - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Workers Memorial Day', 'fixed_date': [4, 28]}
+  - {'name': 'May Day', 'fixed_date': [5, 1], 'shift_rule': 'if sunday, saturday then next monday'}
+  - {'name': 'Spring bank holiday', 'variable_date': lastMayMonday}
+  - {'name': 'Late Summer Bank Holiday', 'variable_date': lastAugustMonday}
+  - {'name': 'Gibraltar National Day', 'fixed_date': [9, 10], 'substitute_rule': 'if sunday, saturday then previous monday'}
+  - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
+  - {'name': 'Boxing Day', 'fixed_date': [12, 26], 'substitute_rule': 'if saturday then next monday if sunday then next tuesday'}
+  - {'name': 'Queen''s Birthday', 'variable_date': mondayBefore20Jun}
