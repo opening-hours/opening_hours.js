@@ -2,9 +2,10 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_en_France
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.60333&lon=1.88920&zoom=18&addressdetails=1&accept-language=fr,en'
 
-# https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_en_France
 PH:
   - {'name': 'Jour de l''an', 'fixed_date': [1, 1]}
   - {'name': 'Vendredi saint', 'variable_date': easter, 'offset': -2, 'only_states': [Moselle, Bas-Rhin, Haut-Rhin, Guadeloupe, Martinique, 'Polynésie française']}
@@ -31,3 +32,46 @@ PH:
   - {'name': 'Abolition de l''esclavage (Réunion)', 'fixed_date': [12, 20], 'only_states': [Réunion]}
   - {'name': 'Noël', 'fixed_date': [12, 25]}
   - {'name': 'Saint-Étienne ', 'fixed_date': [12, 26], 'only_states': [Moselle, Bas-Rhin, Haut-Rhin]}
+Grand Est:
+  _state_code: 'ge'
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Grand+Est&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Guadeloupe:
+  _state_code: gp
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Guadeloupe&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Guyane:
+  _state_code: gf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Guyane&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+La Réunion:
+  _state_code: re
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=La+R%C3%A9union&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Martinique:
+  _state_code: mq
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Martinique&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Mayotte:
+  _state_code: yt
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Mayotte&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Nouvelle-Calédonie:
+  _state_code: nc
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Nouvelle-Cal%C3%A9donie&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Polynésie française:
+  _state_code: pf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Polyn%C3%A9sie+fran%C3%A7aise&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Saint-Barthélemy:
+  _state_code: bl
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Saint-Barth%C3%A9lemy&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Saint-Martin:
+  _state_code: mf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Saint-Martin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+
+Wallis-et-Futuna:
+  _state_code: wf
+  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Wallis-et-Futuna&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
