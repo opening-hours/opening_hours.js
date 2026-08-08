@@ -2,862 +2,984 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/US.yaml
+
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=32.3673&lon=-86.2983&zoom=18&addressdetails=1&accept-language=en'
 
 PH:  # https://en.wikipedia.org/wiki/Public_holidays_in_the_United_States
-  - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
+  - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+  - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+  - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
   - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-  - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+  - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+  - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
   - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+  - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
   - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-  - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-  - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+  - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+  - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Alabama:
   _state_code: al
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=32.3673&lon=-86.2983&zoom=18&addressdetails=1&accept-language=en'
-  PH:  # http://www.archives.alabama.gov/intro/holidays.html
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Robert E. Lee/Martin Luther King Birthday', 'variable_date': firstJanuaryMonday, 'offset': 14}
-    - {'name': 'George Washington/Thomas Jefferson Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
+  PH:
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Confederate Memorial Day', 'variable_date': firstAprilMonday, 'offset': 21}
-    - {'name': 'Jefferson Davis'' Birthday', 'variable_date': firstJuneMonday}
+    - {'name': 'Jefferson Davis'' birthday', 'variable_date': firstJuneMonday}
+
 Alaska:
   _state_code: ak
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=64.5082&lon=-165.4066&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Seward''s Day', 'variable_date': lastMarchMonday}
     - {'name': 'Alaska Day', 'fixed_date': [10, 18]}
+
+American Samoa:
+  _state_code: as
+  _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-14.2756&lon=-170.7020&zoom=18&addressdetails=1&accept-language=en'
+  PH:
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
+    - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
+    - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'American Samoa Flag Day', 'fixed_date': [4, 17], 'substitute_rule': 'if sunday then next monday'}
+
 Arizona:
   _state_code: az
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=34.9378&lon=-109.7565&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Dr. Martin Luther King Jr./Civil Rights Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Arkansas:
   _state_code: ar
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=34.74610&lon=-92.29054&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Dr. Martin Luther King Jr. and Robert E. Lee''s Birthdays', 'variable_date': firstJanuaryMonday, 'offset': 14}
-    - {'name': 'George Washington''s Birthday and Daisy Gatson Bates Day', 'variable_date': firstFebruaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+
 California:
   _state_code: ca
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=40.8001&lon=-124.1698&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'César Chávez Day', 'fixed_date': [3, 31]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'César Chávez Day', 'fixed_date': [3, 31], 'substitute_rule': 'if sunday then next monday'}
+
 Colorado:
   _state_code: co
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=39.1804&lon=-106.8218&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Frances Xavier Cabrini Day', 'variable_date': firstOctoberMonday}
+
 Connecticut:
   _state_code: ct
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.9111&lon=-72.16014&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Lincoln''s Birthday', 'fixed_date': [2, 12]}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+
 Delaware:
   _state_code: de
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=38.7113&lon=-75.0978&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Day After Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-'District of Columbia':
+
+District of Columbia:
   _state_code: dc
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=38.8953&lon=-77.0356&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Emancipation Day', 'fixed_date': [4, 16]}
+
 Florida:
   _state_code: fl
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=25.7720&lon=-80.1324&zoom=18&addressdetails=1&accept-language=en'
-  PH:  # http://www.leg.state.fl.us/Statutes/index.cfm?App_mode=Display_Statute&Search_String=&URL=0100-0199/0110/Sections/0110.117.html
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+  PH:
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Friday after Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Susan B. Anthony Day', 'fixed_date': [2, 15]}
+    - {'name': 'Commemoration of America''s 250th Birthday', 'fixed_date': [2, 16], 'year': 2026}
+
 Georgia:
   _state_code: ga
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=31.0823&lon=-81.4192&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Robert E. Lee''s Birthday', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Washington''s Birthday', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Confederate Memorial Day', 'variable_date': lastAprilMonday}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'State Holiday', 'variable_date': lastAprilMonday}
+    - {'name': 'Washington''s Birthday', 'fixed_date': [12, 24], 'substitute_rule': 'if wednesday then next friday'}
+
 Guam:
   _state_code: gu
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=13.4311&lon=144.6549&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Guam Discovery Day', 'fixed_date': [3, 5]}
-    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-    - {'name': 'Liberation Day', 'fixed_date': [7, 21]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Guam History and Chamorro Heritage Day', 'variable_date': firstMarchMonday}
+    - {'name': 'Liberation Day', 'fixed_date': [7, 21], 'shift_rule': 'if sunday then next monday'}
     - {'name': 'All Souls'' Day', 'fixed_date': [11, 2]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Lady of Camarin Day', 'fixed_date': [12, 8]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Our Lady of Camarin Day', 'fixed_date': [12, 8], 'shift_rule': 'if sunday then next monday'}
+
 Hawaii:
   _state_code: hi
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=19.6423&lon=-155.4837&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Prince Jonah Kuhio Kalanianaole Day', 'fixed_date': [3, 26]}
-    - {'name': 'Kamehameha Day', 'fixed_date': [6, 11]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Prince Jonah Kuhio Kalanianaole Day', 'fixed_date': [3, 26], 'substitute_rule': 'if saturday then previous friday if sunday then next monday'}
+    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+    - {'name': 'Kamehameha Day', 'fixed_date': [6, 11], 'substitute_rule': 'if saturday then previous friday if sunday then next monday'}
     - {'name': 'Statehood Day', 'variable_date': firstAugustFriday, 'offset': 14}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
+
 Idaho:
   _state_code: id
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.6710&lon=-116.7671&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr.-Idaho Human Rights Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Illinois:
   _state_code: il
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.05202&lon=-87.67594&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Lincoln''s Birthday', 'fixed_date': [2, 12]}
     - {'name': 'Casimir Pulaski Day', 'variable_date': firstMarchMonday}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
+    - {'name': 'Malcolm X Day', 'fixed_date': [5, 19]}
+
 Indiana:
   _state_code: in
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=40.4179&lon=-86.8969&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Lincoln''s Birthday', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-    - {'name': 'Primary Election Day', 'variable_date': firstMayMonday, 'offset': 1}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
+
 Iowa:
   _state_code: ia
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.9747&lon=-91.6760&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Lincoln''s Birthday', 'fixed_date': [2, 12]}
+
 Kansas:
   _state_code: ks
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=37.6888&lon=-97.3271&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Kentucky:
   _state_code: ky
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=36.8446&lon=-83.3196&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'New Year''s Eve', 'fixed_date': [12, 31]}
-    - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+
 Louisiana:
   _state_code: la
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=30.1800&lon=-90.1787&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Mardi Gras', 'variable_date': easter, 'offset': -47}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
+
 Maine:
   _state_code: me
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=44.7903&lon=-68.7829&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Patriots'' Day', 'variable_date': firstAprilMonday, 'offset': 14}
+
 Maryland:
   _state_code: md
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=38.3206&lon=-75.6213&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Native American Heritage Day', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Massachusetts:
   _state_code: ma
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.3550&lon=-71.0645&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Evacuation Day', 'fixed_date': [3, 17]}
     - {'name': 'Patriots'' Day', 'variable_date': firstAprilMonday, 'offset': 14}
+    - {'name': 'Bunker Hill Day', 'fixed_date': [6, 17]}
+
 Michigan:
   _state_code: mi
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.7153&lon=-84.4995&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'New Year''s Eve', 'fixed_date': [12, 31]}
+
 Minnesota:
   _state_code: mn
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.8278&lon=-90.0484&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Mississippi:
   _state_code: ms
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=30.3986&lon=-88.8820&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King''s and Robert E. Lee''s Birthdays', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Confederate Memorial Day', 'variable_date': lastAprilMonday}
+
 Missouri:
   _state_code: mo
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=37.0799&lon=-94.5060&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Lincoln''s Birthday', 'fixed_date': [2, 12]}
     - {'name': 'Truman Day', 'fixed_date': [5, 8]}
+
 Montana:
   _state_code: mt
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=48.3866&lon=-115.5498&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
     - {'name': 'New Year''s Eve', 'fixed_date': [12, 31]}
+
 Nebraska:
   _state_code: ne
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.2587&lon=-95.9374&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Arbor Day', 'variable_date': lastAprilFriday}
+
 Nevada:
   _state_code: nv
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=36.1215&lon=-115.1704&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Nevada Day', 'variable_date': lastOctoberFriday}
-    - {'name': 'Family Day', 'variable_date': firstNovemberThursday, 'offset': 22}
-'New Hampshire':
+
+New Hampshire:
   _state_code: nh
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=43.5628&lon=-71.9447&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Civil Rights Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Day after Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
-'New Jersey':
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
+New Jersey:
   _state_code: nj
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=39.9475&lon=-75.1066&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Lincoln''s Birthday', 'fixed_date': [2, 12]}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
-'New Mexico':
+
+New Mexico:
   _state_code: nm
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=34.0790&lon=-107.6179&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Day after Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-'New York':
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
+New York:
   _state_code: ny
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.8126&lon=-73.9379&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Lincoln''s Birthday', 'fixed_date': [2, 12]}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
-'North Carolina':
+    - {'name': 'Susan B. Anthony Day', 'fixed_date': [2, 15]}
+
+North Carolina:
   _state_code: nc
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=35.7802&lon=-78.6394&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Day after Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Day after Christmas', 'fixed_date': [12, 26]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
-'North Dakota':
+    - {'name': 'Christmas Eve', 'fixed_date': [12, 24], 'substitute_rule': 'if friday then previous thursday if saturday,sunday then previous friday'}
+
+North Dakota:
   _state_code: nd
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=48.1459&lon=-103.6232&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Ohio:
   _state_code: oh
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.4846&lon=-82.6852&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Oklahoma:
   _state_code: ok
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=36.0514&lon=-95.7892&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Day after Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Oregon:
   _state_code: or
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.3732&lon=-121.6959&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Pennsylvania:
   _state_code: pa
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=40.3340&lon=-75.9300&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Flag Day', 'fixed_date': [6, 14]}
-'Puerto Rico':
+
+Puerto Rico:
   _state_code: pr
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=18.4364&lon=-66.1188&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'Día de Año Nuevo', 'fixed_date': [1, 1]}
-    - {'name': 'Día de Reyes', 'fixed_date': [1, 6]}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
+    - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
+    - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Día de los Reyes Magos', 'fixed_date': [1, 6]}
     - {'name': 'Natalicio de Eugenio María de Hostos', 'variable_date': firstJanuaryMonday, 'offset': 7}
-    - {'name': 'Natalicio de Martin Luther King, Jr.', 'variable_date': firstJanuaryMonday, 'offset': 14}
-    - {'name': 'Día de los Presidentes', 'variable_date': firstFebruaryMonday, 'offset': 14}
+    - {'name': 'Natalicio de Luis Muñoz Marín', 'fixed_date': [2, 18]}
+    - {'name': 'Día de la Ciudadanía Americana', 'fixed_date': [3, 2]}
     - {'name': 'Día de la Abolición de Esclavitud', 'fixed_date': [3, 22]}
-    - {'name': 'Viernes Santo', 'variable_date': easter, 'offset': -2}
-    - {'name': 'Natalicio de José de Diego', 'variable_date': firstAprilMonday, 'offset': 14}
-    - {'name': 'Recordación de los Muertos de la Guerra', 'variable_date': lastMayMonday}
-    - {'name': 'Día de la Independencia', 'fixed_date': [7, 4]}
+    - {'name': 'Natalicio de José de Diego', 'fixed_date': [4, 16]}
+    - {'name': 'Natalicio de Don Luis Muñoz Rivera', 'variable_date': firstJulyMonday, 'offset': 14}
     - {'name': 'Constitución de Puerto Rico', 'fixed_date': [7, 25]}
     - {'name': 'Natalicio de Dr. José Celso Barbosa', 'fixed_date': [7, 27]}
-    - {'name': 'Día del Trabajo', 'variable_date': firstSeptemberMonday}
-    - {'name': 'Día de la Raza Descubrimiento de América', 'variable_date': firstOctoberMonday, 'offset': 7}
-    - {'name': 'Día del Veterano', 'fixed_date': [11, 11]}
     - {'name': 'Día del Descubrimiento de Puerto Rico', 'fixed_date': [11, 19]}
-    - {'name': 'Día de Acción de Gracias', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Noche Buena', 'fixed_date': [12, 24]}
-    - {'name': 'Día de Navidad', 'fixed_date': [12, 25]}
-'Rhode Island':
+
+Rhode Island:
   _state_code: ri
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.8251&lon=-71.4194&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Victory Day', 'variable_date': firstAugustMonday, 'offset': 7}
-'South Carolina':
+
+South Carolina:
   _state_code: sc
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=32.7878&lon=-79.9392&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Confederate Memorial Day', 'fixed_date': [5, 10]}
-'South Dakota':
+    - {'name': 'Boxing Day', 'fixed_date': [12, 26]}
+
+South Dakota:
   _state_code: sd
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=43.7148&lon=-98.0249&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
-    - {'name': 'Native American Day', 'variable_date': firstOctoberMonday, 'offset': 7}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Tennessee:
   _state_code: tn
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=35.1438&lon=-90.0231&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
+    - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
+
 Texas:
   _state_code: tx
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=30.2655&lon=-97.7559&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Friday after Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 22}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Christmas Eve', 'fixed_date': [12, 24]}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
     - {'name': 'Day after Christmas', 'fixed_date': [12, 26]}
-'United States Virgin Islands':
+
+United States Virgin Islands:
   _state_code: vi
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=18.3433&lon=-64.9347&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
-    - {'name': 'Virgin Islands-Puerto Rico Friendship Day', 'variable_date': firstOctoberMonday, 'offset': 7}
+    - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Three Kings Day', 'fixed_date': [1, 6]}
     - {'name': 'Transfer Day', 'fixed_date': [3, 31]}
-    - {'name': 'Holy Thursday', 'variable_date': easter, 'offset': -3}
+    - {'name': 'Maundy Thursday', 'variable_date': easter, 'offset': -3}
     - {'name': 'Good Friday', 'variable_date': easter, 'offset': -2}
     - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
     - {'name': 'Emancipation Day', 'fixed_date': [7, 3]}
     - {'name': 'Hurricane Supplication Day', 'variable_date': firstJulyMonday, 'offset': 21}
-    - {'name': 'Hurricane Thanksgiving', 'fixed_date': [10, 25]}
-    - {'name': 'Liberty Day', 'fixed_date': [11, 1]}
-    - {'name': 'Christmas Second Day', 'fixed_date': [12, 26]}
-    - {'name': 'New Year''s Eve', 'fixed_date': [12, 31]}
+
 Utah:
   _state_code: ut
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=40.5888&lon=-111.6378&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Pioneer Day', 'fixed_date': [7, 24]}
+
 Vermont:
   _state_code: vt
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=44.2597&lon=-72.5800&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Town Meeting Day', 'variable_date': firstMarchTuesday}
-    - {'name': 'Battle of Bennington', 'variable_date': firstAugustMonday, 'offset': 14}
+    - {'name': 'Bennington Battle Day', 'variable_date': firstAugustMonday, 'offset': 14}
+
 Virginia:
   _state_code: va
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=36.9454&lon=-76.2888&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
 Washington:
   _state_code: wa
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.8598&lon=-121.7256&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-'West Virginia':
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+
+West Virginia:
   _state_code: wv
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=38.3686&lon=-81.6070&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Susan B. Anthony Day', 'fixed_date': [2, 15]}
     - {'name': 'West Virginia Day', 'fixed_date': [6, 20]}
-    - {'name': 'Lincoln''s Day', 'variable_date': firstNovemberThursday, 'offset': 22}
+
 Wisconsin:
   _state_code: wi
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.8719&lon=-89.6930&zoom=18&addressdetails=1&accept-language=en'
-  PH:  # http://docs.legis.wisconsin.gov/statutes/statutes/995/20
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+  PH:
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-    - {'name': 'Primary Election Day', 'variable_date': firstAugustTuesday, 'offset': 7}
-    - {'name': 'Election Day', 'variable_date': firstNovemberMonday, 'offset': 1}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Susan B. Anthony Day', 'fixed_date': [2, 15]}
+    - {'name': 'Primary Election Day', 'variable_date': firstSeptemberTuesday, 'offset': 7}
+
 Wyoming:
   _state_code: wy
   _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=42.8590&lon=-106.3126&zoom=18&addressdetails=1&accept-language=en'
   PH:
-    - {'name': 'New Year''s Day', 'fixed_date': [1, 1]}
-    - {'name': 'Martin Luther King, Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
+    - {'name': 'New Year''s Day', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Martin Luther King Jr. Day', 'variable_date': firstJanuaryMonday, 'offset': 14}
     - {'name': 'Washington''s Birthday', 'variable_date': firstFebruaryMonday, 'offset': 14}
     - {'name': 'Memorial Day', 'variable_date': lastMayMonday}
-    - {'name': 'Independence Day', 'fixed_date': [7, 4]}
+    - {'name': 'Juneteenth', 'fixed_date': [6, 19], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
+    - {'name': 'Independence Day', 'fixed_date': [7, 4], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}
     - {'name': 'Labor Day', 'variable_date': firstSeptemberMonday}
     - {'name': 'Columbus Day', 'variable_date': firstOctoberMonday, 'offset': 7}
     - {'name': 'Veterans Day', 'fixed_date': [11, 11]}
-    - {'name': 'Thanksgiving', 'variable_date': firstNovemberThursday, 'offset': 21}
-    - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
+    - {'name': 'Thanksgiving Day', 'variable_date': firstNovemberThursday, 'offset': 21}
+    - {'name': 'Christmas Day', 'fixed_date': [12, 25], 'substitute_rule': 'if sunday then next monday if saturday then previous friday'}

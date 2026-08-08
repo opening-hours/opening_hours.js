@@ -2,11 +2,14 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/SI.yaml
+
 _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.0569&lon=14.5058&zoom=18&addressdetails=1&accept-language=sl,en'
 
-# https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/
 PH:
   - {'name': 'novo leto', 'fixed_date': [1, 1]}
+  - {'name': 'novo leto', 'fixed_date': [1, 2]}
   - {'name': 'Prešernov dan, slovenski kulturni praznik', 'fixed_date': [2, 8]}
   - {'name': 'velikonočna nedelja', 'variable_date': easter}
   - {'name': 'velikonočni ponedeljek', 'variable_date': easter, 'offset': 1}

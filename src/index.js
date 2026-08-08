@@ -3133,6 +3133,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
             return last.getDate() - offset;
         }
 
+        function weekdayBefore(month, day, weekday){
+            const date = new Date(year, month, day);
+            let days = (date.getDay() - weekday + 7) % 7;
+            if (days === 0) days = 7;
+            date.setDate(date.getDate() - days);
+            return date;
+        }
+
         function getDateOfWeekdayInDateRange(weekday, start_date){
             let days_to_dest_date = weekday - start_date.getDay();
             if (days_to_dest_date < 0) {
@@ -3180,6 +3188,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'firstAprilMonday'      : new Date(year,  3, firstWeekdayOfMonth(3, 1)),
             'firstMayMonday'        : new Date(year,  4, firstWeekdayOfMonth(4, 1)),
             'firstJuneMonday'       : new Date(year,  5, firstWeekdayOfMonth(5, 1)),
+            'firstJuneFriday'       : new Date(year,  5, firstWeekdayOfMonth(5, 5)),
             'firstJulyMonday'       : new Date(year,  6, firstWeekdayOfMonth(6, 1)),
             'firstAugustMonday'     : new Date(year,  7, firstWeekdayOfMonth(7, 1)),
             'firstSeptemberMonday'  : new Date(year,  8, firstWeekdayOfMonth(8, 1)),
@@ -3192,6 +3201,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'firstAugustTuesday'    : new Date(year,  7, firstWeekdayOfMonth(7, 2)),
             'firstAugustFriday'     : new Date(year,  7, firstWeekdayOfMonth(7, 5)),
             'firstNovemberThursday' : new Date(year, 10, firstWeekdayOfMonth(10, 4)),
+            'lastNovemberWednesday' : new Date(year, 10, lastWeekdayOfMonth(10, 3)),
             'lastMayMonday'         : new Date(year,  4, lastWeekdayOfMonth(4, 1)),
             'lastMarchMonday'       : new Date(year,  2, lastWeekdayOfMonth(2, 1)),
             'lastAprilMonday'       : new Date(year,  3, lastWeekdayOfMonth(3, 1)),
@@ -3212,6 +3222,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'nextMo-Sa25December'   : getDateOfNextWeekdayRange(1, 6, new Date(year, 11, 25)),
             'springEquinox'         : springEquinoxCalc(year),
             'autumnalEquinox'       : autumnalEquinoxCalc(year),
+            'mondayBefore20Jun'     : weekdayBefore(5, 20, 1),
         };
     }
     /* }}} */

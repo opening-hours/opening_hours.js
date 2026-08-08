@@ -1,0 +1,19 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: ODbL-1.0
+---
+
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/SJ.yaml
+
+PH:
+  - {'name': 'Første nyttårsdag', 'fixed_date': [1, 1]}
+  - {'name': 'Skjærtorsdag', 'variable_date': easter, 'offset': -3}
+  - {'name': 'Langfredag', 'variable_date': easter, 'offset': -2}
+  - {'name': 'Første påskedag', 'variable_date': easter}
+  - {'name': 'Andre påskedag', 'variable_date': easter, 'offset': 1}
+  - {'name': 'Arbeidernes dag', 'fixed_date': [5, 1]}
+  - {'name': 'Grunnlovsdagen', 'fixed_date': [5, 17]}
+  - {'name': 'Kristi himmelfartsdag', 'variable_date': easter, 'offset': 39}
+  - {'name': 'Første pinsedag', 'variable_date': easter, 'offset': 49}
+  - {'name': 'Andre pinsedag', 'variable_date': easter, 'offset': 50}
+  - {'name': 'Første juledag', 'fixed_date': [12, 25]}
+  - {'name': 'Andre juledag', 'fixed_date': [12, 26]}
