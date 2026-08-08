@@ -171,7 +171,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.4s ease;
 }
 
 header {
@@ -195,48 +195,30 @@ header {
 }
 
 #theme-toggle {
-    padding: 0.5rem;
-    background: var(--bg-section);
-    border: 2px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--border-color);
     border-radius: 50%;
+    background: var(--bg-section);
+    color: var(--text-muted);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1;
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
 }
 
 #theme-toggle:hover {
-    transform: scale(1.1);
     background: var(--bg-action);
+    border-color: var(--border-color);
+    color: var(--text-primary);
 }
 
-.theme-icon {
-    display: block;
-}
-
-body[data-theme="dark"] .theme-icon::before {
-    content: "🌙";
-}
-
-body[data-theme="light"] .theme-icon::before {
-    content: "☀️";
-}
-
-@media (prefers-color-scheme: dark) {
-    body:not([data-theme]) .theme-icon::before {
-        content: "🌙";
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body:not([data-theme]) .theme-icon::before {
-        content: "☀️";
-    }
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 1px;
 }
 
 .header-logo {
@@ -661,6 +643,17 @@ span.time    { background: var(--token-time-bg); color: var(--token-time-text) }
 span.rule_separator    { background: var(--token-separator-bg); color: var(--token-separator-text) } /* Olive */
 /* span.one_rule { text-decoration: underline } */
 a.specification { color: inherit; text-decoration: none }
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+a:hover {
+    text-decoration-style: solid;
+}
+
 span.state   { background: var(--token-state-bg); color: var(--token-state-text) }
 span.comment { background: var(--token-comment-bg); color: var(--token-comment-text) } /* Silver */
 
@@ -1316,32 +1309,4 @@ button:active {
 #footer a:hover {
     text-decoration-style: solid;
     color: #6c94c4;
-}
-
-body[data-theme="dark"] #footer {
-    border-top-color: var(--border-color);
-    background: linear-gradient(to bottom, var(--bg-section), var(--bg-body));
-}
-
-body[data-theme="dark"] #show_warnings_or_errors {
-    background-color: var(--bg-section);
-    border-color: var(--border-color);
-    color: var(--text-primary);
-}
-
-body[data-theme="dark"] div.warning_error_message {
-    background-color: var(--bg-body);
-}
-
-body[data-theme="dark"] a {
-    color: #6c94c4;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: rgba(108, 148, 196, 0.4);
-}
-
-body[data-theme="dark"] a:hover {
-    color: #8bb4e0;
-    text-decoration-style: solid;
-    text-decoration-color: #8bb4e0;
 }
