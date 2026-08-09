@@ -34,6 +34,7 @@
  */
 
 :root {
+    color-scheme: light dark;
     --bg-body: #ffffff;
     --bg-section: #f8f9fa;
     --bg-action: #fafafa;
@@ -77,6 +78,7 @@
 
 /* Dark mode via data-theme attribute */
 body[data-theme="dark"] {
+    color-scheme: dark;
     --bg-body: #1a1a1a;
     --bg-section: #242424;
     --bg-action: #2a2a2a;
@@ -116,6 +118,10 @@ body[data-theme="dark"] {
     --shadow-md: rgba(0, 0, 0, 0.4);
     --hero-gradient-start: #3a4a5a;
     --hero-gradient-end: #2a3a4a;
+}
+
+body[data-theme="light"] {
+    color-scheme: light;
 }
 
 /* Dark mode via browser preference (if no data-theme set) */
@@ -171,7 +177,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.5s ease, color 0.4s ease;
 }
 
 header {
@@ -195,48 +201,30 @@ header {
 }
 
 #theme-toggle {
-    padding: 0.5rem;
-    background: var(--bg-section);
-    border: 2px solid var(--border-color);
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: 1px solid var(--border-color);
     border-radius: 50%;
+    background: var(--bg-section);
+    color: var(--text-muted);
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1;
-    transition: all 0.2s ease;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
 }
 
 #theme-toggle:hover {
-    transform: scale(1.1);
     background: var(--bg-action);
+    border-color: var(--border-color);
+    color: var(--text-primary);
 }
 
-.theme-icon {
-    display: block;
-}
-
-body[data-theme="dark"] .theme-icon::before {
-    content: "🌙";
-}
-
-body[data-theme="light"] .theme-icon::before {
-    content: "☀️";
-}
-
-@media (prefers-color-scheme: dark) {
-    body:not([data-theme]) .theme-icon::before {
-        content: "🌙";
-    }
-}
-
-@media (prefers-color-scheme: light) {
-    body:not([data-theme]) .theme-icon::before {
-        content: "☀️";
-    }
+#theme-toggle:focus-visible {
+    outline: 2px solid var(--link-color);
+    outline-offset: 1px;
 }
 
 .header-logo {
@@ -378,7 +366,6 @@ section {
     border-radius: 8px;
     border: 1px solid var(--border-color);
     box-shadow: 0 1px 3px var(--shadow-sm);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 #value-input-section {
@@ -517,7 +504,7 @@ section {
     cursor: pointer;
     font-size: 1em;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     font-weight: 500;
 }
 
@@ -661,6 +648,17 @@ span.time    { background: var(--token-time-bg); color: var(--token-time-text) }
 span.rule_separator    { background: var(--token-separator-bg); color: var(--token-separator-text) } /* Olive */
 /* span.one_rule { text-decoration: underline } */
 a.specification { color: inherit; text-decoration: none }
+
+a {
+    color: var(--link-color);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+a:hover {
+    text-decoration-style: solid;
+}
+
 span.state   { background: var(--token-state-bg); color: var(--token-state-text) }
 span.comment { background: var(--token-comment-bg); color: var(--token-comment-text) } /* Silver */
 
@@ -756,7 +754,7 @@ h3 {
     cursor: pointer;
     font-size: 0.9em;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
     flex-shrink: 0;
     font-weight: 500;
 }
@@ -861,7 +859,7 @@ button {
     color: white;
     font-size: 0.85rem;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
     white-space: nowrap;
 }
 
@@ -1039,7 +1037,7 @@ button:active {
     border-left: 1px solid var(--border-color);
     cursor: pointer;
     font-size: 1.1rem;
-    transition: all 0.2s;
+    transition: background-color 0.2s, color 0.2s;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
@@ -1086,7 +1084,7 @@ button:active {
     font-weight: 500;
     cursor: pointer;
     text-decoration: none;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .time-jump-btn:hover {
@@ -1316,32 +1314,4 @@ button:active {
 #footer a:hover {
     text-decoration-style: solid;
     color: #6c94c4;
-}
-
-body[data-theme="dark"] #footer {
-    border-top-color: var(--border-color);
-    background: linear-gradient(to bottom, var(--bg-section), var(--bg-body));
-}
-
-body[data-theme="dark"] #show_warnings_or_errors {
-    background-color: var(--bg-section);
-    border-color: var(--border-color);
-    color: var(--text-primary);
-}
-
-body[data-theme="dark"] div.warning_error_message {
-    background-color: var(--bg-body);
-}
-
-body[data-theme="dark"] a {
-    color: #6c94c4;
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    text-decoration-color: rgba(108, 148, 196, 0.4);
-}
-
-body[data-theme="dark"] a:hover {
-    color: #8bb4e0;
-    text-decoration-style: solid;
-    text-decoration-color: #8bb4e0;
 }

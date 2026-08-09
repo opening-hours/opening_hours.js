@@ -102,6 +102,19 @@ function initializeUI() {
     // Page title
     document.getElementById('page-title').textContent = i18next.t('texts.title');
 
+    // Theme selector
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        const updateThemeLabel = () => {
+            const theme = themeToggle.dataset.theme || 'auto';
+            const label = i18next.t(`texts.theme ${theme}`);
+            themeToggle.setAttribute('aria-label', label);
+            themeToggle.title = label;
+        };
+        themeToggle.addEventListener('themechange', updateThemeLabel);
+        updateThemeLabel();
+    }
+
     // Language selector
     document.getElementById('language-selector').innerHTML = getUserSelectTranslateHTMLCode();
 

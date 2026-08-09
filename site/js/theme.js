@@ -4,63 +4,70 @@
  * SPDX-License-Identifier: LGPL-3.0-only
  */
 
-// Theme management: localStorage -> browser preference -> fallback (light)
+// Theme management: explicit preference or browser preference in auto mode
 (function() {
     'use strict';
 
     const STORAGE_KEY = 'theme-preference';
+    const THEMES = ['auto', 'light', 'dark'];
+    const THEME_ICONS = { auto: '🌗', light: '☀️', dark: '🌙' };
 
     function getThemePreference() {
-        // 1. Check localStorage
         const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
+        if (stored === 'light' || stored === 'dark') {
             return stored;
         }
-
-        // 2. Check browser preference
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
+        if (stored !== null) {
+            localStorage.removeItem(STORAGE_KEY);
         }
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            return 'light';
+        return 'auto';
+    }
+
+    const themeToggle = document.getElementById('theme-toggle');
+
+    function applyTheme(theme) {
+        if (theme === 'auto') {
+            document.body.removeAttribute('data-theme');
+        } else {
+            document.body.setAttribute('data-theme', theme);
         }
 
-        // 3. Fallback to light
-        return 'light';
+        const currentIcon = document.getElementById('theme-current-icon');
+        if (currentIcon) {
+            currentIcon.textContent = THEME_ICONS[theme];
+        }
+
+        if (themeToggle) {
+            themeToggle.dataset.theme = theme;
+            themeToggle.dispatchEvent(new CustomEvent('themechange', { detail: theme }));
+        }
     }
 
     function setTheme(theme) {
-        document.body.setAttribute('data-theme', theme);
-        localStorage.setItem(STORAGE_KEY, theme);
-    }
+        const selectedTheme = THEMES.includes(theme) ? theme : 'auto';
+        applyTheme(selectedTheme);
 
-    function toggleTheme() {
-        const currentTheme = document.body.getAttribute('data-theme') || getThemePreference();
-        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    }
-
-    // Initialize theme immediately to avoid FOUC
-    const theme = getThemePreference();
-    setTheme(theme);
-
-    // Set up toggle button (script loads with defer, so DOM is ready)
-    initToggleButton();
-
-    function initToggleButton() {
-        const toggleBtn = document.getElementById('theme-toggle');
-        if (toggleBtn) {
-            toggleBtn.addEventListener('click', toggleTheme);
-        }
-
-        // Listen for system theme changes (only if no localStorage preference)
-        if (!localStorage.getItem(STORAGE_KEY)) {
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            darkModeQuery.addEventListener('change', (e) => {
-                if (!localStorage.getItem(STORAGE_KEY)) {
-                    setTheme(e.matches ? 'dark' : 'light');
-                }
-            });
+        if (selectedTheme === 'auto') {
+            localStorage.removeItem(STORAGE_KEY);
+        } else {
+            localStorage.setItem(STORAGE_KEY, selectedTheme);
         }
     }
+
+    applyTheme(getThemePreference());
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = getThemePreference();
+            const nextTheme = THEMES[(THEMES.indexOf(currentTheme) + 1) % THEMES.length];
+            setTheme(nextTheme);
+        });
+    }
+
+    const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkModeQuery.addEventListener('change', () => {
+        if (getThemePreference() === 'auto') {
+            applyTheme('auto');
+        }
+    });
 })();
