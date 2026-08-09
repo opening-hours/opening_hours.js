@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "i18next": "^26.3.6",
-    "suncalc": "^2.0.0"
+    "suncalc": "^2.0.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^21.2.1",
@@ -81,28 +81,28 @@
     "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-yaml": "^5.0.0",
     "@stylistic/eslint-plugin": "^5.10.0",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.2.0",
     "cldr-dates-full": "^48.2.0",
     "cldr-localenames-full": "^48.2.0",
-    "commit-and-tag-version": "^12.7.3",
+    "commit-and-tag-version": "^13.1.2",
     "commitizen": "^4.3.2",
     "cz-conventional-changelog": "^3.3.0",
     "doctoc": "^2.5.0",
-    "eslint": "^10.7.0",
-    "eslint-plugin-jsdoc": "^63.3.1",
+    "eslint": "^10.8.1",
+    "eslint-plugin-jsdoc": "^64.0.1",
     "glob": "^13.0.6",
-    "globals": "^17.7.0",
+    "globals": "^17.9.0",
     "husky": "^9.1.7",
-    "lint-staged": "^17.0.8",
-    "npm-check-updates": "^22.2.9",
+    "lint-staged": "^17.3.0",
+    "npm-check-updates": "^23.0.2",
     "package-json-validator-cli": "^0.1.11",
-    "rollup": "^4.62.2",
-    "terser": "^5.49.0",
+    "rollup": "^4.62.4",
+    "terser": "^5.49.2",
     "timekeeper": "^2.3.1",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.63.0",
+    "typescript-eslint": "^8.66.0",
     "yaml": "^2.9.0",
-    "yargs": "^18.0.0"
+    "yargs": "^18.1.0"
   },
   "engines": {
     "node": ">=14"
