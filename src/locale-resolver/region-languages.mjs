@@ -9,7 +9,7 @@
  * plausible at that location (its official languages).
  *
  * The data itself is generated from CLDR `territoryInfo` into `layers.regionLangs`
- * (see gen-layers.mjs), so this module ships no CLDR dependency — it only looks
+ * (see gen_locale_resolver_layers.mjs), so this module ships no CLDR dependency — it only looks
  * up and caches.
  */
 

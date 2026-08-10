@@ -27,7 +27,7 @@
  * established non-CLDR abbreviations used in opening_hours data.
  * Output: src/locale-resolver/layers.json
  *
- * Run from the repo root:  node src/locale-resolver/gen-layers.mjs
+ * Run from the repo root:  node scripts/gen_locale_resolver_layers.mjs
  */
 
 /** @typedef {Record<string, any>} JsonObject */ // eslint-disable-line jsdoc/reject-any-type
@@ -39,17 +39,16 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import yaml from 'yaml';
-import { normalizeToken } from './normalize.mjs';
+import { normalizeToken } from '../src/locale-resolver/normalize.mjs';
 
-const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const basePath = process.cwd();
+const localeResolverPath = path.resolve(basePath, 'src/locale-resolver');
 const cldrDatesMainPath = path.resolve(basePath, 'node_modules/cldr-dates-full/main');
 const cldrPackageJson = path.resolve(basePath, 'node_modules/cldr-dates-full/package.json');
 const territoryInfoPath = path.resolve(basePath, 'node_modules/cldr-core/supplemental/territoryInfo.json');
-const manualAliasesPath = path.join(scriptDir, 'manual-aliases.yaml');
-const outputPath = path.join(scriptDir, 'layers.json');
+const manualAliasesPath = path.join(localeResolverPath, 'manual-aliases.yaml');
+const outputPath = path.join(localeResolverPath, 'layers.json');
 
 // Type definitions: canonical order matches src/index.js string_to_token_map.
 /** @type {Record<string, LayerSpec>} */
