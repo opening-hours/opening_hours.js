@@ -17,7 +17,7 @@ const cache = new Map();
 
 /**
  * @param {string|undefined} countryCode - e.g. "de", "LT" (case-insensitive).
- * @param {object} layers - generated layer data; uses `layers.regionLangs`.
+ * @param {{ regionLangs?: Record<string, string[]> }} layers - generated layer data; uses `layers.regionLangs`.
  * @returns {Set<string>} language codes plausible at that location (may be empty).
  */
 export function regionLanguages(countryCode, layers) {

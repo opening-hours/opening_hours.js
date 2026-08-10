@@ -23,12 +23,19 @@
  * to the geo/country languages). A former per-locale table would be 100 %
  * recoverable from crossLocale by base language, so it is not emitted.
  *
- * Sources: pinned cldr-dates-full package and manual-aliases.json for
+ * Sources: pinned cldr-dates-full package and manual-aliases.yaml for
  * established non-CLDR abbreviations used in opening_hours data.
  * Output: src/locale-resolver/layers.json
  *
  * Run from the repo root:  node src/locale-resolver/gen-layers.mjs
  */
+
+/** @typedef {Record<string, any>} JsonObject */ // eslint-disable-line jsdoc/reject-any-type
+/** @typedef {'weekday'|'month'} LayerType */
+/** @typedef {{ token: string, meaning: string }} LocaleTerm */
+/** @typedef {{ lang: string, meaning: string, type: LayerType }} Candidate */
+/** @typedef {Record<string, any>} GenericRecord */ // eslint-disable-line jsdoc/reject-any-type
+/** @typedef {{ keys: string[], meanings: string[], tables: (gregorian: JsonObject|undefined) => any[], canonical: Record<string, string>, universal: Record<string, string> }} LayerSpec */ // eslint-disable-line jsdoc/reject-any-type
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -45,6 +52,7 @@ const manualAliasesPath = path.join(scriptDir, 'manual-aliases.yaml');
 const outputPath = path.join(scriptDir, 'layers.json');
 
 // Type definitions: canonical order matches src/index.js string_to_token_map.
+/** @type {Record<string, LayerSpec>} */
 const TYPES = {
     weekday: {
         keys: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
@@ -79,6 +87,10 @@ const TYPES = {
     },
 };
 
+/**
+ * @param {string} filePath - JSON file to read.
+ * @returns {JsonObject} Parsed JSON object.
+ */
 function readJson(filePath) {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
@@ -94,14 +106,25 @@ function listCldrLocales() {
         .sort((a, b) => a.localeCompare(b, 'en'));
 }
 
+/**
+ * @param {string} locale - CLDR locale identifier.
+ * @returns {JsonObject|undefined} Gregorian calendar data, if available.
+ */
 function loadGregorian(locale) {
     const filePath = path.join(cldrDatesMainPath, locale, 'ca-gregorian.json');
     return readJson(filePath)?.main?.[locale]?.dates?.calendars?.gregorian;
 }
 
-// All lexemes of a given type for a locale: wide + abbreviated, format + stand-alone.
+/**
+ * Collect all lexemes of a given type for a locale: wide + abbreviated,
+ * format + stand-alone.
+ * @param {JsonObject|undefined} gregorian - CLDR Gregorian calendar data.
+ * @param {string} type - Layer type to collect.
+ * @returns {LocaleTerm[]} Normalized locale terms.
+ */
 function localeTerms(gregorian, type) {
     const spec = TYPES[type];
+    /** @type {LocaleTerm[]} */
     const terms = [];
     for (const table of spec.tables(gregorian)) {
         if (!table) {
@@ -117,12 +140,17 @@ function localeTerms(gregorian, type) {
     return terms;
 }
 
+/**
+ * @param {GenericRecord} obj - Object to sort.
+ * @returns {GenericRecord} Sorted object.
+ */
 function sortObject(obj) {
     return Object.fromEntries(
         Object.keys(obj).sort((a, b) => a.localeCompare(b, 'en')).map(key => [key, obj[key]]),
     );
 }
 
+/** @returns {Record<string, Record<string, Record<string, string>>>} Manual aliases by type and language. */
 function loadManualAliases() {
     if (!fs.existsSync(manualAliasesPath)) {
         return {};
@@ -140,6 +168,7 @@ function buildRegionLangs() {
     }
     const info = readJson(territoryInfoPath).supplemental.territoryInfo;
     const OFFICIAL = new Set(['official', 'de_facto_official']);
+    /** @type {Record<string, string[]>} */
     const regionLangs = {};
     for (const [territory, data] of Object.entries(info)) {
         if (!/^[A-Z]{2}$/.test(territory)) {
@@ -169,7 +198,9 @@ console.log(`  CLDR locales: ${locales.length} (cldr-dates-full ${cldrVersion})`
 const regionLangs = buildRegionLangs();
 const officialLangs = new Set(Object.values(regionLangs).flat());
 
+/** @type {Record<string, Record<string, string>>} */
 const canonical = {};
+/** @type {Record<string, Record<string, string>>} */
 const universal = {};
 for (const type of Object.keys(TYPES)) {
     canonical[type] = TYPES[type].canonical;
@@ -178,6 +209,7 @@ for (const type of Object.keys(TYPES)) {
 
 const manualAliases = loadManualAliases();
 
+/** @type {Map<string, Map<string, Candidate>>} */
 const crossLocaleSets = new Map(); // token -> Map(`${lang}|${meaning}|${type}` -> candidate)
 
 for (const locale of locales) {
@@ -205,8 +237,13 @@ for (const locale of locales) {
             if (!officialLangs.has(baseLang)) {
                 continue;
             }
-            const set = crossLocaleSets.get(token) || crossLocaleSets.set(token, new Map()).get(token);
-            set.set(`${baseLang}|${meaning}|${type}`, { lang: baseLang, meaning, type });
+            const set = crossLocaleSets.get(token) ?? new Map();
+            crossLocaleSets.set(token, set);
+            set.set(`${baseLang}|${meaning}|${type}`, {
+                lang: baseLang,
+                meaning,
+                type: /** @type {LayerType} */ (type),
+            });
         }
     }
 }
@@ -218,12 +255,18 @@ for (const [type, languages] of Object.entries(manualAliases)) {
             if (!token || token in canonical[type] || token in universal[type]) {
                 continue;
             }
-            const set = crossLocaleSets.get(token) || crossLocaleSets.set(token, new Map()).get(token);
-            set.set(`${lang}|${meaning}|${type}`, { lang, meaning, type });
+            const set = crossLocaleSets.get(token) ?? new Map();
+            crossLocaleSets.set(token, set);
+            set.set(`${lang}|${meaning}|${type}`, {
+                lang,
+                meaning,
+                type: /** @type {LayerType} */ (type),
+            });
         }
     }
 }
 
+/** @type {Record<string, Candidate[]>} */
 const crossLocale = {};
 for (const [token, set] of crossLocaleSets) {
     crossLocale[token] = [...set.values()].sort(
