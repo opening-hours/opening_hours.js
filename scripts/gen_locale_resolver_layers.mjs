@@ -293,6 +293,19 @@ const output = {
     regionLangs,
 };
 
+// Keep the date stable when the generated data is unchanged, so regular builds
+// do not create a needless diff in the generated file.
+if (fs.existsSync(outputPath)) {
+    const previous = readJson(outputPath);
+    const currentGenerated = output.meta.generated;
+    if (typeof previous.meta.generated === 'string') {
+        output.meta.generated = previous.meta.generated;
+        if (JSON.stringify(previous) !== JSON.stringify(output)) {
+            output.meta.generated = currentGenerated;
+        }
+    }
+}
+
 fs.writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`);
 console.log(`  Layer 3 tokens  : ${output.meta.crossLocaleTokens} (${candidateCount} candidates)`);
 console.log(`  Region langs    : ${output.meta.regionCount} countries`);
