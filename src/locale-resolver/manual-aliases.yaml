@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: © opening_hours.js contributors
+# SPDX-License-Identifier: LGPL-3.0-only
+---
+# Established weekday abbreviations not included in CLDR.
+weekday:
+  pl:
+    # CLDR provides "pon." for Polish Monday. "pn" is also an established
+    # Polish calendar abbreviation, but conflicts with Lithuanian "pn" = Friday.
+    pn: Mo

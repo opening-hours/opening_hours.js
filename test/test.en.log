@@ -1780,6 +1780,22 @@ With [34m[1mwarnings[22m[39m:
 "Time intervals (not specified/documented use of colon, please avoid this)" for "00:00-24:00; Mo: 15:00-16:00 off": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*00:00-24:00; Mo:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
+"Polish pn means Monday" for "Mo 10:00-12:00": [32m[1mPASSED[22m[39m
+"Polish pn means Monday" for "pn 10:00-12:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*pn <--- (Please use the English abbreviation "Mo" for "pn". Note that "pn" can also mean Fr (lt) in other languages.)
+"Polish pn means Monday" for "pn. 10:00-12:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*pn <--- (Please use the English abbreviation "Mo" for "pn". Note that "pn" can also mean Fr (lt) in other languages.)
+	*pn. <--- (Please omit ".".)
+"Lithuanian pn means Friday" for "Fr 10:00-12:00": [32m[1mPASSED[22m[39m
+"Lithuanian pn means Friday" for "pn 10:00-12:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*pn <--- (Please use the English abbreviation "Fr" for "pn". Note that "pn" can also mean Mo (pl) in other languages.)
+"Lithuanian pn means Friday" for "pn. 10:00-12:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*pn <--- (Please use the English abbreviation "Fr" for "pn". Note that "pn" can also mean Mo (pl) in other languages.)
+	*pn. <--- (Please omit ".".)
 "Reordered selectors without comments still emit switched warnings" for "Mo-Fr 10:00-20:00 open; open We 10:00-16:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo-Fr 10:00-20:00 open; We <--- (The selector "weekday" was switched with the selector "state" for readability and compatibility reasons.)
@@ -2665,7 +2681,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1028/1028 tests passed. 0 did not pass.
+1034/1034 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

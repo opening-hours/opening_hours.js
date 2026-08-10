@@ -23,7 +23,8 @@
  * to the geo/country languages). A former per-locale table would be 100 %
  * recoverable from crossLocale by base language, so it is not emitted.
  *
- * Source: pinned cldr-dates-full package (same data the existing generator uses).
+ * Sources: pinned cldr-dates-full package and manual-aliases.json for
+ * established non-CLDR abbreviations used in opening_hours data.
  * Output: src/locale-resolver/layers.json
  *
  * Run from the repo root:  node src/locale-resolver/gen-layers.mjs
@@ -32,6 +33,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import yaml from 'yaml';
 import { normalizeToken } from './normalize.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
@@ -39,6 +41,7 @@ const basePath = process.cwd();
 const cldrDatesMainPath = path.resolve(basePath, 'node_modules/cldr-dates-full/main');
 const cldrPackageJson = path.resolve(basePath, 'node_modules/cldr-dates-full/package.json');
 const territoryInfoPath = path.resolve(basePath, 'node_modules/cldr-core/supplemental/territoryInfo.json');
+const manualAliasesPath = path.join(scriptDir, 'manual-aliases.yaml');
 const outputPath = path.join(scriptDir, 'layers.json');
 
 // Type definitions: canonical order matches src/index.js string_to_token_map.
@@ -120,6 +123,13 @@ function sortObject(obj) {
     );
 }
 
+function loadManualAliases() {
+    if (!fs.existsSync(manualAliasesPath)) {
+        return {};
+    }
+    return yaml.parse(fs.readFileSync(manualAliasesPath, 'utf8')) || {};
+}
+
 // Layer 2b (geo): official languages per country, from CLDR supplemental territoryInfo.
 // Only 2-letter country codes (matching nominatim country_code); only official +
 // de_facto_official status (regional/minority languages are intentionally excluded
@@ -166,6 +176,8 @@ for (const type of Object.keys(TYPES)) {
     universal[type] = TYPES[type].universal;
 }
 
+const manualAliases = loadManualAliases();
+
 const crossLocaleSets = new Map(); // token -> Map(`${lang}|${meaning}|${type}` -> candidate)
 
 for (const locale of locales) {
@@ -195,6 +207,19 @@ for (const locale of locales) {
             }
             const set = crossLocaleSets.get(token) || crossLocaleSets.set(token, new Map()).get(token);
             set.set(`${baseLang}|${meaning}|${type}`, { lang: baseLang, meaning, type });
+        }
+    }
+}
+
+for (const [type, languages] of Object.entries(manualAliases)) {
+    for (const [lang, aliases] of Object.entries(languages)) {
+        for (const [rawToken, meaning] of Object.entries(aliases)) {
+            const token = normalizeToken(rawToken);
+            if (!token || token in canonical[type] || token in universal[type]) {
+                continue;
+            }
+            const set = crossLocaleSets.get(token) || crossLocaleSets.set(token, new Map()).get(token);
+            set.set(`${lang}|${meaning}|${type}`, { lang, meaning, type });
         }
     }
 }
