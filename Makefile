@@ -79,7 +79,8 @@ build/opening_hours.js \
 build/opening_hours.min.js \
 build/opening_hours.esm.mjs \
 build/opening_hours+deps.js \
-build/opening_hours+deps.min.js: src/index.js src/locales/word_error_correction.yaml
+build/opening_hours+deps.min.js: src/index.js src/locales/word_error_correction.yaml \
+src/locale-resolver/layers.json
 	node_modules/.bin/rollup -c
 
 .PHONY: check
@@ -514,6 +515,10 @@ osm-tag-data-gen-stats-sort:
 src/locales/word_error_correction.yaml: scripts/gen_word_error_correction.mjs
 	@echo "Generating word error correction data..."
 	$(NODEJS) scripts/gen_word_error_correction.mjs >/dev/null
+
+src/locale-resolver/layers.json: scripts/gen_locale_resolver_layers.mjs src/locale-resolver/manual-aliases.yaml
+	@echo "Generating locale resolver layers..."
+	$(NODEJS) scripts/gen_locale_resolver_layers.mjs >/dev/null
 
 README.html:
 

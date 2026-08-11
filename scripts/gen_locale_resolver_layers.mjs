@@ -23,25 +23,35 @@
  * to the geo/country languages). A former per-locale table would be 100 %
  * recoverable from crossLocale by base language, so it is not emitted.
  *
- * Source: pinned cldr-dates-full package (same data the existing generator uses).
+ * Sources: pinned cldr-dates-full package and manual-aliases.yaml for
+ * established non-CLDR abbreviations used in opening_hours data.
  * Output: src/locale-resolver/layers.json
  *
- * Run from the repo root:  node src/locale-resolver/gen-layers.mjs
+ * Run from the repo root:  node scripts/gen_locale_resolver_layers.mjs
  */
+
+/** @typedef {Record<string, any>} JsonObject */ // eslint-disable-line jsdoc/reject-any-type
+/** @typedef {'weekday'|'month'} LayerType */
+/** @typedef {{ token: string, meaning: string }} LocaleTerm */
+/** @typedef {{ lang: string, meaning: string, type: LayerType }} Candidate */
+/** @typedef {Record<string, any>} GenericRecord */ // eslint-disable-line jsdoc/reject-any-type
+/** @typedef {{ keys: string[], meanings: string[], tables: (gregorian: JsonObject|undefined) => any[], canonical: Record<string, string>, universal: Record<string, string> }} LayerSpec */ // eslint-disable-line jsdoc/reject-any-type
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { normalizeToken } from './normalize.mjs';
+import yaml from 'yaml';
+import { normalizeToken } from '../src/locale-resolver/normalize.mjs';
 
-const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const basePath = process.cwd();
+const localeResolverPath = path.resolve(basePath, 'src/locale-resolver');
 const cldrDatesMainPath = path.resolve(basePath, 'node_modules/cldr-dates-full/main');
 const cldrPackageJson = path.resolve(basePath, 'node_modules/cldr-dates-full/package.json');
 const territoryInfoPath = path.resolve(basePath, 'node_modules/cldr-core/supplemental/territoryInfo.json');
-const outputPath = path.join(scriptDir, 'layers.json');
+const manualAliasesPath = path.join(localeResolverPath, 'manual-aliases.yaml');
+const outputPath = path.join(localeResolverPath, 'layers.json');
 
 // Type definitions: canonical order matches src/index.js string_to_token_map.
+/** @type {Record<string, LayerSpec>} */
 const TYPES = {
     weekday: {
         keys: ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'],
@@ -76,6 +86,10 @@ const TYPES = {
     },
 };
 
+/**
+ * @param {string} filePath - JSON file to read.
+ * @returns {JsonObject} Parsed JSON object.
+ */
 function readJson(filePath) {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
@@ -91,14 +105,25 @@ function listCldrLocales() {
         .sort((a, b) => a.localeCompare(b, 'en'));
 }
 
+/**
+ * @param {string} locale - CLDR locale identifier.
+ * @returns {JsonObject|undefined} Gregorian calendar data, if available.
+ */
 function loadGregorian(locale) {
     const filePath = path.join(cldrDatesMainPath, locale, 'ca-gregorian.json');
     return readJson(filePath)?.main?.[locale]?.dates?.calendars?.gregorian;
 }
 
-// All lexemes of a given type for a locale: wide + abbreviated, format + stand-alone.
+/**
+ * Collect all lexemes of a given type for a locale: wide + abbreviated,
+ * format + stand-alone.
+ * @param {JsonObject|undefined} gregorian - CLDR Gregorian calendar data.
+ * @param {string} type - Layer type to collect.
+ * @returns {LocaleTerm[]} Normalized locale terms.
+ */
 function localeTerms(gregorian, type) {
     const spec = TYPES[type];
+    /** @type {LocaleTerm[]} */
     const terms = [];
     for (const table of spec.tables(gregorian)) {
         if (!table) {
@@ -114,10 +139,22 @@ function localeTerms(gregorian, type) {
     return terms;
 }
 
+/**
+ * @param {GenericRecord} obj - Object to sort.
+ * @returns {GenericRecord} Sorted object.
+ */
 function sortObject(obj) {
     return Object.fromEntries(
         Object.keys(obj).sort((a, b) => a.localeCompare(b, 'en')).map(key => [key, obj[key]]),
     );
+}
+
+/** @returns {Record<string, Record<string, Record<string, string>>>} Manual aliases by type and language. */
+function loadManualAliases() {
+    if (!fs.existsSync(manualAliasesPath)) {
+        return {};
+    }
+    return yaml.parse(fs.readFileSync(manualAliasesPath, 'utf8')) || {};
 }
 
 // Layer 2b (geo): official languages per country, from CLDR supplemental territoryInfo.
@@ -130,6 +167,7 @@ function buildRegionLangs() {
     }
     const info = readJson(territoryInfoPath).supplemental.territoryInfo;
     const OFFICIAL = new Set(['official', 'de_facto_official']);
+    /** @type {Record<string, string[]>} */
     const regionLangs = {};
     for (const [territory, data] of Object.entries(info)) {
         if (!/^[A-Z]{2}$/.test(territory)) {
@@ -159,14 +197,19 @@ console.log(`  CLDR locales: ${locales.length} (cldr-dates-full ${cldrVersion})`
 const regionLangs = buildRegionLangs();
 const officialLangs = new Set(Object.values(regionLangs).flat());
 
+/** @type {Record<string, Record<string, string>>} */
 const canonical = {};
+/** @type {Record<string, Record<string, string>>} */
 const universal = {};
 for (const type of Object.keys(TYPES)) {
     canonical[type] = TYPES[type].canonical;
     universal[type] = TYPES[type].universal;
 }
 
-const crossLocaleSets = new Map(); // token -> Map(`${lang}|${meaning}|${type}` -> candidate)
+const manualAliases = loadManualAliases();
+
+/** @type {Map<string, Map<string, Candidate>>} */
+const candidatesByToken = new Map(); // token -> Map(`${lang}|${meaning}|${type}` -> candidate)
 
 for (const locale of locales) {
     const baseLang = locale.split('-')[0].toLowerCase();
@@ -193,15 +236,39 @@ for (const locale of locales) {
             if (!officialLangs.has(baseLang)) {
                 continue;
             }
-            const set = crossLocaleSets.get(token) || crossLocaleSets.set(token, new Map()).get(token);
-            set.set(`${baseLang}|${meaning}|${type}`, { lang: baseLang, meaning, type });
+            const candidatesByKey = candidatesByToken.get(token) ?? new Map();
+            candidatesByToken.set(token, candidatesByKey);
+            candidatesByKey.set(`${baseLang}|${meaning}|${type}`, {
+                lang: baseLang,
+                meaning,
+                type: /** @type {LayerType} */ (type),
+            });
         }
     }
 }
 
+for (const [type, languages] of Object.entries(manualAliases)) {
+    for (const [lang, aliases] of Object.entries(languages)) {
+        for (const [rawToken, meaning] of Object.entries(aliases)) {
+            const token = normalizeToken(rawToken);
+            if (!token || token in canonical[type] || token in universal[type]) {
+                continue;
+            }
+            const candidatesByKey = candidatesByToken.get(token) ?? new Map();
+            candidatesByToken.set(token, candidatesByKey);
+            candidatesByKey.set(`${lang}|${meaning}|${type}`, {
+                lang,
+                meaning,
+                type: /** @type {LayerType} */ (type),
+            });
+        }
+    }
+}
+
+/** @type {Record<string, Candidate[]>} */
 const crossLocale = {};
-for (const [token, set] of crossLocaleSets) {
-    crossLocale[token] = [...set.values()].sort(
+for (const [token, candidatesByKey] of candidatesByToken) {
+    crossLocale[token] = [...candidatesByKey.values()].sort(
         (a, b) => a.lang.localeCompare(b.lang, 'en')
             || a.type.localeCompare(b.type, 'en')
             || a.meaning.localeCompare(b.meaning, 'en'),
@@ -225,6 +292,19 @@ const output = {
     crossLocale: sortObject(crossLocale),
     regionLangs,
 };
+
+// Keep the date stable when the generated data is unchanged, so regular builds
+// do not create a needless diff in the generated file.
+if (fs.existsSync(outputPath)) {
+    const previous = readJson(outputPath);
+    const currentGenerated = output.meta.generated;
+    if (typeof previous.meta.generated === 'string') {
+        output.meta.generated = previous.meta.generated;
+        if (JSON.stringify(previous) !== JSON.stringify(output)) {
+            output.meta.generated = currentGenerated;
+        }
+    }
+}
 
 fs.writeFileSync(outputPath, `${JSON.stringify(output, null, 2)}\n`);
 console.log(`  Layer 3 tokens  : ${output.meta.crossLocaleTokens} (${candidateCount} candidates)`);

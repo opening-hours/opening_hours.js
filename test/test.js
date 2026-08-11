@@ -5478,6 +5478,20 @@ test.addStructuredWarnings('Structured warning: word error correction has stable
         [ 'word_error_correction', 'vague' ],
         nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
 
+test.addTest('Polish pn means Monday',
+    [ 'Mo 10:00-12:00', 'pn 10:00-12:00', 'pn. 10:00-12:00' ],
+    '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-01 10:00', '2012-10-01 12:00' ],
+    ], 1000 * 60 * 60 * 2, 0, true,
+    { address: { country_code: 'pl' } }, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addTest('Lithuanian pn means Friday',
+    [ 'Fr 10:00-12:00', 'pn 10:00-12:00', 'pn. 10:00-12:00' ],
+    '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-05 10:00', '2012-10-05 12:00' ],
+    ], 1000 * 60 * 60 * 2, 0, true,
+    { address: { country_code: 'lt' } }, 'not only test', { 'tag_key': 'opening_hours' });
+
 test.addStructuredWarnings('Structured warning: no warnings yields empty list',
         'Mo 10:00-12:00',
         [],

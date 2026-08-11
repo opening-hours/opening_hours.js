@@ -9,7 +9,7 @@
  * plausible at that location (its official languages).
  *
  * The data itself is generated from CLDR `territoryInfo` into `layers.regionLangs`
- * (see gen-layers.mjs), so this module ships no CLDR dependency — it only looks
+ * (see gen_locale_resolver_layers.mjs), so this module ships no CLDR dependency — it only looks
  * up and caches.
  */
 
@@ -17,7 +17,7 @@ const cache = new Map();
 
 /**
  * @param {string|undefined} countryCode - e.g. "de", "LT" (case-insensitive).
- * @param {object} layers - generated layer data; uses `layers.regionLangs`.
+ * @param {{ regionLangs?: Record<string, string[]> }} layers - generated layer data; uses `layers.regionLangs`.
  * @returns {Set<string>} language codes plausible at that location (may be empty).
  */
 export function regionLanguages(countryCode, layers) {
