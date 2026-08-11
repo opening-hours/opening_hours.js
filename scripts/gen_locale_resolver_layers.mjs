@@ -209,7 +209,7 @@ for (const type of Object.keys(TYPES)) {
 const manualAliases = loadManualAliases();
 
 /** @type {Map<string, Map<string, Candidate>>} */
-const crossLocaleSets = new Map(); // token -> Map(`${lang}|${meaning}|${type}` -> candidate)
+const candidatesByToken = new Map(); // token -> Map(`${lang}|${meaning}|${type}` -> candidate)
 
 for (const locale of locales) {
     const baseLang = locale.split('-')[0].toLowerCase();
@@ -236,9 +236,9 @@ for (const locale of locales) {
             if (!officialLangs.has(baseLang)) {
                 continue;
             }
-            const set = crossLocaleSets.get(token) ?? new Map();
-            crossLocaleSets.set(token, set);
-            set.set(`${baseLang}|${meaning}|${type}`, {
+            const candidatesByKey = candidatesByToken.get(token) ?? new Map();
+            candidatesByToken.set(token, candidatesByKey);
+            candidatesByKey.set(`${baseLang}|${meaning}|${type}`, {
                 lang: baseLang,
                 meaning,
                 type: /** @type {LayerType} */ (type),
@@ -254,9 +254,9 @@ for (const [type, languages] of Object.entries(manualAliases)) {
             if (!token || token in canonical[type] || token in universal[type]) {
                 continue;
             }
-            const set = crossLocaleSets.get(token) ?? new Map();
-            crossLocaleSets.set(token, set);
-            set.set(`${lang}|${meaning}|${type}`, {
+            const candidatesByKey = candidatesByToken.get(token) ?? new Map();
+            candidatesByToken.set(token, candidatesByKey);
+            candidatesByKey.set(`${lang}|${meaning}|${type}`, {
                 lang,
                 meaning,
                 type: /** @type {LayerType} */ (type),
@@ -267,8 +267,8 @@ for (const [type, languages] of Object.entries(manualAliases)) {
 
 /** @type {Record<string, Candidate[]>} */
 const crossLocale = {};
-for (const [token, set] of crossLocaleSets) {
-    crossLocale[token] = [...set.values()].sort(
+for (const [token, candidatesByKey] of candidatesByToken) {
+    crossLocale[token] = [...candidatesByKey.values()].sort(
         (a, b) => a.lang.localeCompare(b.lang, 'en')
             || a.type.localeCompare(b.type, 'en')
             || a.meaning.localeCompare(b.meaning, 'en'),
