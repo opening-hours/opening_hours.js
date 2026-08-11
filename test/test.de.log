@@ -272,6 +272,7 @@ With [34m[1mwarnings[22m[39m:
 "Time ranges spanning midnight" for "22:00-26:00": [32m[1mPASSED[22m[39m
 "Time ranges spanning midnight" for "22-2": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*22-2 <--- (Einstellige Stunde "2" ohne führende Null - könnte 2 Uhr (morgens) oder 14 Uhr (nachmittags) bedeuten. Führende Null ergänzen, z.B. "02", oder auf "14" ändern, um dies eindeutig zu machen.)
 	*22-2 <--- (Zeitspanne ohne Minutenangabe angegeben. Das ist nicht sehr eindeutig! Bitte verwende stattdessen folgende Syntax "22:00-02:00".)
 "Time ranges spanning midnight" for "22:00-26:00": [32m[1mPASSED[22m[39m
 "Time ranges spanning midnight" for "22-26": [32m[1mPASSED[22m[39m
@@ -2074,11 +2075,18 @@ With [34m[1mwarnings[22m[39m:
 "Structured warning: ambiguous single-digit end hour only" for "11:00-6:00": [32m[1mPASSED[22m[39m
 "Structured warning: ambiguous single-digit end hour with leading-zero start" for "09:00-6:00": [32m[1mPASSED[22m[39m
 "Structured warning: no warning for unambiguous single-digit hours" for "Mo 8:00-22:00": [32m[1mPASSED[22m[39m
-"Structured warning: no warning for afternoon single-digit end hour" for "9:00-15:00": [32m[1mPASSED[22m[39m
 "Structured warning: no warning for unambiguous end hour >= 12" for "7:00-13:00": [32m[1mPASSED[22m[39m
+"Structured warning: no ambiguity warning with am/pm" for "6:00am-7:00am": [32m[1mPASSED[22m[39m
+"Structured warning: implicit pm start hour" for "4-10 pm": [32m[1mPASSED[22m[39m
+"Structured warning: implicit pm start hour with minutes" for "4:00-10:00 pm": [32m[1mPASSED[22m[39m
+"Structured warning: no implicit pm warning with explicit am start" for "4 am-10 pm": [32m[1mPASSED[22m[39m
+"Structured warning: implicit pm start hour with corrected separator" for "2 a 6 pm": [32m[1mPASSED[22m[39m
 "Structured warning: ambiguous single-digit end hour with afternoon start" for "12:00-6:00": [32m[1mPASSED[22m[39m
 "Structured warning: ambiguous single-digit end hour with evening start" for "20:00-6:00": [32m[1mPASSED[22m[39m
 "Structured warning: ambiguous single-digit end hour with variable-time start" for "sunrise-9:00": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit hours without minutes" for "6-7": [32m[1mPASSED[22m[39m
+"Structured warning: ambiguous single-digit end hour without minutes" for "11-6": [32m[1mPASSED[22m[39m
+"Structured warning: no ambiguity warning for unambiguous hours without minutes" for "6-15": [32m[1mPASSED[22m[39m
 "Structured warning: no warning for variable-time start with unambiguous end hour" for "sunrise-15:00": [32m[1mPASSED[22m[39m
 "Structured warning: no warning for variable-time start with leading-zero end" for "sunrise-09:00": [32m[1mPASSED[22m[39m
 "Structured warning: no warning when leading zeros are used" for "09:00-06:00": [32m[1mPASSED[22m[39m
@@ -2691,7 +2699,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1044/1044 tests passed. 0 did not pass.
+1051/1051 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
