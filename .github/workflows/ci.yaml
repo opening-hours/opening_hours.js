@@ -16,6 +16,7 @@ permissions:
 env:
   npm_config_cache: /tmp/npm-cache
   npm_config_min_release_age: 7
+  NODE_OPTIONS: --use-system-ca
 
 jobs:
   code-style-check:
@@ -51,6 +52,32 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Use latest Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+      - id: npm-cache
+        name: Restore npm cache
+        uses: actions/cache@v6
+        with:
+          key: npm-cache-${{ github.ref_name }}
+          path: ${{ env.npm_config_cache }}
+      - name: Install dependencies
+        run: make dependencies-get
+      - name: Build
+        run: make build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: opening-hours-build
+          path: build/
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
@@ -66,13 +93,14 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
-      - id: npm-cache
-        name: Restore npm cache
-        uses: actions/cache@v6
-        with:
-          key: npm-cache-${{ github.ref_name }}
-          path: ${{ env.npm_config_cache }}
       - name: Install dependencies
-        run: make dependencies-get
+        run: npm ci --ignore-scripts
+      - name: Download build artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: opening-hours-build
+          path: build/
+      - name: Mark build artifact as current
+        run: touch build/*
       - name: Run full test suite
-        run: make check-full
+        run: make check-all
