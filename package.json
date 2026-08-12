@@ -107,6 +107,16 @@
   "engines": {
     "node": ">=14"
   },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11",
+      "onFail": "error"
+    }
+  },
+  "allowScripts": {
+    "fsevents": false
+  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

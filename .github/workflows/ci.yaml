@@ -16,6 +16,7 @@ permissions:
 env:
   npm_config_cache: /tmp/npm-cache
   npm_config_min_release_age: 7
+  NODE_EXTRA_CA_CERTS: /etc/ssl/certs/ca-certificates.crt
 
 jobs:
   code-style-check:
@@ -29,8 +30,8 @@ jobs:
       - name: "Use Node.js"
         uses: actions/setup-node@v7
         with:
-          node-version: lts/*
-          cache: "npm"
+          node-version: "26.x"
+          package-manager-cache: false
       - name: Install dependencies
         run: npm ci --ignore-scripts
       - name: Run linter tests
@@ -51,6 +52,33 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Use latest Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "26.x"
+          package-manager-cache: false
+      - id: npm-cache
+        name: Restore npm cache
+        uses: actions/cache@v6
+        with:
+          key: npm-cache-${{ github.ref_name }}
+          path: ${{ env.npm_config_cache }}
+      - name: Install dependencies
+        run: git submodule update --init --recursive && npm install
+      - name: Build
+        run: make build
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: opening-hours-build
+          path: build/
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version:
@@ -66,13 +94,17 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
-      - id: npm-cache
-        name: Restore npm cache
-        uses: actions/cache@v6
-        with:
-          key: npm-cache-${{ github.ref_name }}
-          path: ${{ env.npm_config_cache }}
+          package-manager-cache: false
       - name: Install dependencies
-        run: make dependencies-get
+        # Simplify once all matrix Node.js versions ship npm 11; npm 10
+        # cannot bootstrap npm 11 from the project because of devEngines.
+        run: cd /tmp && npx --yes npm@11 --prefix "$GITHUB_WORKSPACE" ci --ignore-scripts
+      - name: Download build artifact
+        uses: actions/download-artifact@v6
+        with:
+          name: opening-hours-build
+          path: build/
+      - name: Mark build artifact as current
+        run: touch build/*
       - name: Run full test suite
         run: make check-full
