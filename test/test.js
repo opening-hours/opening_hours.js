@@ -5933,6 +5933,18 @@ test.addPrettifyValue('Regression: prettifyValue should preserve malformed time 
         'Tu-We 09:00-12:30,14:00-18:00; Th 09:00-12:30,:15:00-18:00, Fr 09:00-12:30, 14:00-18:00; Sa 09:00-12:30,13:30-16:30',
     ], 'all', 'Tu-We 09:00-12:30,14:00-18:00; Th 09:00-12:30, :15:00-18:00, Fr 09:00-12:30,14:00-18:00; Sa 09:00-12:30,13:30-16:30');
 
+// locale-aware day/month order (issue #587)
+// fr: space separator, no zero-padding when day is before month
+test.addPrettifyValue('locale-aware day/month order (fr)', ['Mar 06-Jul 15'], 'fr', '6 mars-15 juil.', 'not only test');
+test.addPrettifyValue('locale-aware day/month order: month range without day unaffected (fr)', ['Mar-Jul'], 'fr', 'mars-juil.', 'not only test');
+test.addPrettifyValue('locale-aware day/month order: year+month+day unaffected (fr)', ['2024 Mar 06'], 'fr', '2024 mars 06', 'not only test');
+test.addPrettifyValue('locale-aware day/month order: week unaffected (fr)', ['week 01-05/2'], 'fr', 'week 01-05/2', 'not only test');
+// de: ". " separator, no zero-padding when day is before month
+test.addPrettifyValue('locale-aware day/month order (de)', ['Jan 06-Jul 15'], 'de', '6. Jan-15. Jul', 'not only test');
+test.addPrettifyValue('locale-aware day/month order: month range without day unaffected (de)', ['Jan-Jul'], 'de', 'Jan-Jul', 'not only test');
+// es: space separator (short)
+test.addPrettifyValue('locale-aware day/month order (es)', ['Jan 06-Jul 15'], 'es', '6 ene-15 jul', 'not only test');
+
 /* }}} */
 
 /* isEqualTo {{{ */
