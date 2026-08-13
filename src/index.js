@@ -57,6 +57,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     };
     const months   = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
     const weekdays = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+    const INTL_DAY_MONTH_REF_DATE = new Date(2024, 2, 6); // fixed reference date for Intl.DateTimeFormat#formatToParts
     const string_to_token_map = {
         'su': [ 0, 'weekday' ],
         'mo': [ 1, 'weekday' ],
@@ -1480,6 +1481,26 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 user_conf[key] = default_prettify_conf[key];
             }
         });
+
+        // Locale-aware day/month order and separator for month-day pairs.
+        // Uses Intl.DateTimeFormat#formatToParts to derive both the order (e.g. "6 mars" vs "March 6")
+        // and the literal separator (e.g. ". " for de, " de " for long es).
+        // Skipped for 'en' (always month-first) and 'all' ('all' is not a valid BCP 47 tag).
+        const _is_en_or_all = user_conf['locale'] === 'en' || user_conf['locale'] === 'all';
+        let day_before_month = false;
+        let day_month_sep = ' ';
+        if (!_is_en_or_all) {
+            const dmParts = new Intl.DateTimeFormat(user_conf['locale'], { day: 'numeric', month: user_conf['date_format'] })
+                .formatToParts(INTL_DAY_MONTH_REF_DATE);
+            const dayIdx   = dmParts.findIndex(p => p.type === 'day');
+            const monthIdx = dmParts.findIndex(p => p.type === 'month');
+            day_before_month = dayIdx < monthIdx;
+            day_month_sep = dmParts
+                .slice(Math.min(dayIdx, monthIdx) + 1, Math.max(dayIdx, monthIdx))
+                .map(p => p.value).join('');
+        }
+        user_conf['day_before_month'] = day_before_month;
+        user_conf['day_month_sep']    = day_month_sep;
 
         for (let nrule = 0; nrule < new_tokens.length; nrule++) {
             if (new_tokens[nrule][0].length === 0) continue;
@@ -4434,9 +4455,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     && matchTokens(tokens, at-1, 'year')) {
                 prettified_value += ' ' + tokens[at][0];
             } else if (matchTokens(tokens, at, 'month')) {
-                prettified_value += translatePrettyToken(token_value, 'month', conf);
-                if (at + 1 <= selector_end && matchTokens(tokens, at+1, 'weekday'))
-                    prettified_value += ' ';
+                if (conf.day_before_month && at + 1 <= selector_end && matchTokens(tokens, at+1, 'number')) {
+                    prettified_value += tokens[at+1][0] + conf.day_month_sep + translatePrettyToken(token_value, 'month', conf);
+                    at++;
+                } else {
+                    prettified_value += translatePrettyToken(token_value, 'month', conf);
+                    if (at + 1 <= selector_end && matchTokens(tokens, at+1, 'weekday'))
+                        prettified_value += ' ';
+                }
             } else if (at + 2 <= selector_end
                     && (matchTokens(tokens, at, '-') || matchTokens(tokens, at, '+'))
                     && matchTokens(tokens, at+1, 'number', 'calcday')) {
