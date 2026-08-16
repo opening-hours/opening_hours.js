@@ -5946,6 +5946,8 @@ test.addPrettifyValueForLocale('locale-aware day/month order: month range withou
 test.addPrettifyValueForLocale('locale-aware day/month order (es)', ['Jan 06-Jul 15'], 'es', '6 ene-15 jul');
 // fa: Gregorian calendar, despite the locale's default Persian calendar
 test.addPrettifyValueForLocale('locale-aware day/month order: Gregorian calendar', ['Mar 06-Jul 15'], 'fa', '6 مارس-15 ژوئیه');
+// all: deterministic month-first order regardless of the runtime locale
+test.addPrettifyValueForLocale('locale-aware day/month order (all)', ['Jan 06-Jul 15'], 'all', 'Jan 06-Jul 15');
 
 /* }}} */
 
