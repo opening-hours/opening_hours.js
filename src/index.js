@@ -4029,13 +4029,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     checkIfDateIsValid(month, range_to - 1 /* added previously */,
                         nrule, at_range_to);
 
-                    // An explicit range that already fully elapsed.
-                    if (has_year && is_range && new Date(year, month, range_to) < new Date()) {
+                    // An explicit date or range that already fully elapsed.
+                    if (has_year && new Date(year, month, range_to) < new Date()) {
+                        const warning_type = is_range ? 'date_range_past' : 'date_past';
+                        const warning_message = is_range ? t('date range past') : t('date past');
                         parsing_warnings.push([
                             nrule,
                             at_range_to,
-                            'date_range_past',
-                            t('date range past')
+                            warning_type,
+                            warning_message
                         ]);
                     }
                     /* }}} */

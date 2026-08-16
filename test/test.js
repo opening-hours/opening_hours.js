@@ -5508,6 +5508,11 @@ test.addStructuredWarnings('Structured warning: year in the past',
     [ 'year_past' ],
     nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
 
+test.addStructuredWarnings('Structured warning: date in the past',
+    '2012 Jan 01 00:00-24:00',
+    [ 'date_past' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
 test.addStructuredWarnings('Structured warning: fully past explicit date range',
     '2024 Sep 06 - 2024 Oct 05 Fr-Sa 10:00-17:00; Su 12:00-17:00',
     [ 'date_range_past' ],
@@ -5522,6 +5527,16 @@ test.addStructuredWarnings('Structured warning: date range ending today is not p
 test.addStructuredWarnings('Structured warning: date range ending yesterday is past',
     '2025 May 01-22 00:00-24:00',
     [ 'date_range_past' ],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: single date of today is not past yet',
+    '2025 May 23 00:00-24:00',
+    [],
+    nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addStructuredWarnings('Structured warning: single date of yesterday is past',
+    '2025 May 22 00:00-24:00',
+    [ 'date_past' ],
     nominatim_default, 'not only test', { 'tag_key': 'opening_hours' });
 
 test.addStructuredWarnings('Structured warning: time range without minutes',
