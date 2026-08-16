@@ -3961,6 +3961,18 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                 }}(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday);
 
+                // An explicit-year range that has already ended is permanently inactive.
+                const [, next_change] = selector(new Date());
+                const is_past_explicit_range = has_year[0] && typeof next_change === 'undefined';
+                if (is_past_explicit_range) {
+                    parsing_warnings.push([
+                        nrule,
+                        has_year[1] ? at_sec_event_or_month - 1 : at,
+                        'date_range_past',
+                        t('date range past')
+                    ]);
+                }
+
                 if (push_to_month === true)
                     rule.month.push(selector);
                 else
@@ -3986,7 +3998,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     const range_from = tokens[at+1 + has_year][0];
                     is_range = matchTokens(tokens, at+2+has_year, '-', 'number');
                     let period = undefined;
-                    const range_to = tokens[at+has_year+(is_range ? 3 : 1)][0] + 1;
+                    const at_range_to = at+has_year+(is_range ? 3 : 1); // position of the range_to token
+                    const range_to = tokens[at_range_to][0] + 1;
                     if (is_range && matchTokens(tokens, at+has_year+4, '/', 'number')) {
                         period = tokens[at+has_year+5][0];
                         tokens[at+has_year+5][4] = 'positive_number';
@@ -4014,7 +4027,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                     checkIfDateIsValid(month, range_from, nrule, at+1 + has_year);
                     checkIfDateIsValid(month, range_to - 1 /* added previously */,
-                        nrule, at+has_year+(is_range ? 3 : 1));
+                        nrule, at_range_to);
+
+                    // An explicit range that already fully elapsed.
+                    if (has_year && is_range && new Date(year, month, range_to) < new Date()) {
+                        parsing_warnings.push([
+                            nrule,
+                            at_range_to,
+                            'date_range_past',
+                            t('date range past')
+                        ]);
+                    }
                     /* }}} */
 
                     const selector = function(year, has_year, month, range_from, range_to, period) { return function(date) {

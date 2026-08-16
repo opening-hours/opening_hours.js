@@ -1108,6 +1108,7 @@ With [34m[1mwarnings[22m[39m:
 	*Jan 01,Dec 24,25; Nov Th[4] <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Month ranges" for "2012 Jan 01,2012 Dec 24-25; 2012 Nov Th[4]": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2012 Jan 01,2012 Dec 24-25 <--- (This date range is entirely in the past.)
 	*2012 Jan 01,2012 Dec 24-25; 2012  <--- (The year is in the past.)
 	*2012 Jan 01,2012 Dec 24-25 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 	*2012 Jan 01,2012 Dec 24-25; 2012 Nov Th[4] <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1121,6 +1122,8 @@ With [34m[1mwarnings[22m[39m:
 "Monthday ranges" for "Jan 23-Feb 12 00:00-24:00": [32m[1mPASSED[22m[39m
 "Monthday ranges" for "Jan 23-Feb 12: 00:00-24:00": [32m[1mPASSED[22m[39m
 "Monthday ranges" for "2012 Jan 23-2012 Feb 12 00:00-24:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*2012 Jan 23-2012  <--- (This date range is entirely in the past.)
 "Monthday ranges" for "Jan 31-Feb 01,Aug 00:00-24:00": [32m[1mPASSED[22m[39m
 "Monthday ranges" for "Jan 31-Feb 01,Aug: 00:00-24:00": [32m[1mPASSED[22m[39m
 "Monthday ranges" for "Aug,Jan 31-Feb 01": [32m[1mPASSED[22m[39m
@@ -1138,6 +1141,9 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*Dec 24. <--- (Please omit ".".)
 "Monthday ranges (with year)" for "2012 Jan 23-31 00:00-24:00; 2012 Feb 01-12 00:00-24:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*2012 Jan 23-31  <--- (This date range is entirely in the past.)
+	*2012 Jan 23-31 00:00-24:00; 2012 Feb 01-12  <--- (This date range is entirely in the past.)
 "Monthday ranges spanning year boundary" for "Dec 31-Jan 01": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Dec 31-Jan 01 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1164,8 +1170,12 @@ With [34m[1mwarnings[22m[39m:
 	*2013 Dec 31; 2014 Jan 05 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Monthday (with year) ranges spanning year boundary" for "2013 Dec 31-2014 Jan 02": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2013 Dec 31-2014  <--- (This date range is entirely in the past.)
 	*2013 Dec 31-2014 Jan 02 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Monthday (with year) ranges spanning year boundary" for "open; 2010 Jan 01-2013 Dec 30 off; 2014 Jan 03-2016 Jan 01 off": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*open; 2010 Jan 01-2013  <--- (This date range is entirely in the past.)
+	*open; 2010 Jan 01-2013 Dec 30 off; 2014 Jan 03-2016  <--- (This date range is entirely in the past.)
 "Monthday ranges with constrained weekday" for "Jan Su[2]-Jan 15": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Jan Su[2]-Jan 15 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1190,6 +1200,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mar Su[-1]-Oct Su[-1] -1 day open <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Month ranges with year" for "2012 Jan 10-15,Jan 11": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2012 Jan 10-15 <--- (This date range is entirely in the past.)
 	*2012 Jan 10-15,Jan 11 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Complex monthday ranges" for "Jan 23-31,Feb 01-12 00:00-24:00": [32m[1mPASSED[22m[39m
 "Complex monthday ranges" for "Jan 23-Feb 11,Feb 12 00:00-24:00": [32m[1mPASSED[22m[39m
@@ -1217,20 +1228,28 @@ With [34m[1mwarnings[22m[39m:
 	*Jan 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Periodical monthdays" for "2012 Jan 01-31/8": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2012 Jan 01-31 <--- (This date range is entirely in the past.)
 	*2012 Jan 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Periodical monthdays" for "2012 Jan 01-31/8; 2010 Dec 01-31/8": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2012 Jan 01-31 <--- (This date range is entirely in the past.)
+	*2012 Jan 01-31/8; 2010 Dec 01-31 <--- (This date range is entirely in the past.)
 	*2012 Jan 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 	*2012 Jan 01-31/8; 2010 Dec 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Periodical monthdays" for "2012 Jan 01-31/8; 2015 Dec 01-31/8": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2012 Jan 01-31 <--- (This date range is entirely in the past.)
+	*2012 Jan 01-31/8; 2015 Dec 01-31 <--- (This date range is entirely in the past.)
 	*2012 Jan 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 	*2012 Jan 01-31/8; 2015 Dec 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Periodical monthdays" for "2012 Jan 01-31/8; 2025 Dec 01-31/8": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
+	*2012 Jan 01-31 <--- (This date range is entirely in the past.)
 	*2012 Jan 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 	*2012 Jan 01-31/8; 2025 Dec 01-31/8 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Periodical monthdays" for "2012 Jan 01-31/8: 00:00-24:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*2012 Jan 01-31 <--- (This date range is entirely in the past.)
 "Periodical monthdays" for "Jan 10-31/7": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Jan 10-31/7 <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
@@ -1503,6 +1522,8 @@ With [34m[1mwarnings[22m[39m:
 "Calculations based on variable events" for "easter-Apr 20: open "Around easter"": [32m[1mPASSED[22m[39m
 "Calculations based on variable events" for "easter-Apr 02: open "Around easter"": [32m[1mPASSED[22m[39m
 "Calculations based on variable events" for "2012 easter -2 days-2012 easter +2 days: open "Around easter"": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*2012 easter -2 days-2012  <--- (This date range is entirely in the past.)
 "Calculations based on variable events" for "easter -2 days-easter +2 days: open "Around easter"": [32m[1mPASSED[22m[39m
 "Calculations based on variable events" for "easter -2 days-easter +2 days open "Around easter"": [32m[1mPASSED[22m[39m
 "Additional rules with comment" for "Fr 08:00-12:00, Fr 12:00-16:00 open "Notfallsprechstunde"": [32m[1mPASSED[22m[39m
@@ -1537,6 +1558,8 @@ With [34m[1mwarnings[22m[39m:
 "Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th,Fr 05:45; Mo[1] 07:30; SH Mo-Fr (sunrise+03:00); PH off": [32m[1mPASSED[22m[39m
 "Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off": [32m[1mPASSED[22m[39m
 "Points in time, extrem example useful for ComplexAlarm" for "Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off; easter -2 days-easter +2 days off "My little break from work every year."; 2024 Sep 02-2024 Sep 06 off "My vacations …"": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Mo-We 07:00; Th 05:45; week 01-53/2 Fr 07:05; week 02-53/2 Fr 05:45; SH Mo-Fr (sunrise+03:00); PH off; easter -2 days-easter +2 days off "My little break from work every year."; 2024 Sep 02-2024  <--- (This date range is entirely in the past.)
 "Points in time, period times" for "Mo-Fr 10:00-16:00/01:30": [32m[1mPASSED[22m[39m
 "Points in time, period times" for "Mo-Fr 10:00-16:00/90": [32m[1mPASSED[22m[39m
 "Points in time, period times" for "Mo-Fr 10:00-16:00/90; Sa off "testing at end for parser"": [32m[1mPASSED[22m[39m
@@ -2091,6 +2114,10 @@ With [34m[1mwarnings[22m[39m:
 "Structured warning: no warning for variable-time start with leading-zero end" for "sunrise-09:00": [32m[1mPASSED[22m[39m
 "Structured warning: no warning when leading zeros are used" for "09:00-06:00": [32m[1mPASSED[22m[39m
 "Structured warning: no warning with leading zeros and weekdays" for "Tu-Sa 09:00-06:00": [32m[1mPASSED[22m[39m
+"Structured warning: year in the past" for "2024 00:00-24:00": [32m[1mPASSED[22m[39m
+"Structured warning: fully past explicit date range" for "2024 Sep 06 - 2024 Oct 05 Fr-Sa 10:00-17:00; Su 12:00-17:00": [32m[1mPASSED[22m[39m
+"Structured warning: date range ending today is not past yet" for "2025 May 01-23 00:00-24:00": [32m[1mPASSED[22m[39m
+"Structured warning: date range ending yesterday is past" for "2025 May 01-22 00:00-24:00": [32m[1mPASSED[22m[39m
 "Structured warning: time range without minutes" for "Mo 10-12": [32m[1mPASSED[22m[39m
 "Structured warning: word error correction has stable type" for "Mon": [32m[1mPASSED[22m[39m
 "Structured warning: no warnings yields empty list" for "Mo 10:00-12:00": [32m[1mPASSED[22m[39m
@@ -2698,7 +2725,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1050/1050 tests passed. 0 did not pass.
+1054/1054 tests passed. 0 did not pass.
 41 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
