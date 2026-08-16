@@ -103,6 +103,8 @@ en:
     'year range one year': 'A year range in which the start year is equal to the end year does not make sense. Please remove the end year. E.g. "{{year}} May 23"'
     'year range reverse': 'A year range in which the start year is greater than the end year does not make sense. Please turn it over.'
     'year past': 'The year is in the past.'
+    'date past': 'This date is in the past.'
+    'date range past': 'This date range is entirely in the past.'
     'unexpected token year range': 'Unexpected token in year range: {{token}}'
     'week range reverse': 'You have specified a week range in reverse order or leaping over a year. This is (currently) not supported.'
     'week negative': 'You have specified a week date less then one. A valid week date range is 1-53.'
@@ -250,6 +252,8 @@ de:
     year range one year: "Eine Jahres-Spanne mit gleichem Jahr als Beginn und Ende ergibt keinen Sinn. Bitte entferne das Ende-Jahr. zum Beispiel: \"{{year}} May 23\""
     year range reverse: "Eine Jahres-Spanne mit Beginn größer als Ende ergibt keinen Sinn. Bitte umdrehen."
     year past: "Das Jahr liegt in der Vergangenheit."
+    date past: "Dieses Datum liegt in der Vergangenheit."
+    date range past: "Dieser Datumsbereich liegt vollständig in der Vergangenheit."
     unexpected token year range: "Unerwartetes Token in der Jahres-Spanne: {{token}}"
     week range reverse: "Du hast eine Wochen-Spanne in umgekehrter Reihenfolge oder mehrere Jahre umfassende angegeben. Dies ist aktuell nicht unterstützt."
     week negative: "Du hast eine Kalenderwoche kleiner 1 angegeben. Korrekte Angaben sind 1-53."
@@ -417,6 +421,8 @@ fr:
     year range one year: "Une plage d'années avec la même année comme début et fin n'a pas de sens. Veuillez supprimer l'année de fin. Par exemple : \"{{year}} May 23\"."
     year range reverse: "Une plage d'années avec un début supérieur à la fin n'a pas de sens. Veuillez inverser."
     year past: "L'année est dans le passé."
+    date past: "Cette date est dans le passé."
+    date range past: "Cette plage de dates est entièrement dans le passé."
     unexpected token year range: "Token inattendu dans la plage d'années : {{token}}"
     week range reverse: "Vous avez spécifié une plage de semaines en ordre inverse ou couvrant plusieurs années. Ceci n'est actuellement pas pris en charge."
     week negative: "Vous avez spécifié un numéro de semaine inférieur à 1. Les valeurs valides sont 1-53."

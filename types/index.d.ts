@@ -5,6 +5,8 @@ declare module 'opening_hours' {
     | 'additional_rule_which_evaluates_to_closed'
     | 'ambiguous_word'
     | 'combine_rules'
+    | 'date_past'
+    | 'date_range_past'
     | 'default_state'
     | 'empty_comment'
     | 'hour_min_separator'
