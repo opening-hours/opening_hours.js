@@ -1490,7 +1490,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         let day_before_month = false;
         let day_month_sep = ' ';
         if (!_is_en_or_all) {
-            const dmParts = new Intl.DateTimeFormat(user_conf['locale'], { day: 'numeric', month: user_conf['date_format'] })
+            const dmParts = new Intl.DateTimeFormat(user_conf['locale'], { day: 'numeric', month: user_conf['date_format'], calendar: 'gregory' })
                 .formatToParts(INTL_DAY_MONTH_REF_DATE);
             const dayIdx   = dmParts.findIndex(p => p.type === 'day');
             const monthIdx = dmParts.findIndex(p => p.type === 'month');
@@ -4341,11 +4341,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
             localized_name_cache[cache_key] = kind === 'weekday'
                 // 2026-02-01 is a Sunday, so day 1..7 maps to Su..Sa.
                 ? [1, 2, 3, 4, 5, 6, 7].map(function (weekday) {
-                    return new Date(2026, 1, weekday).toLocaleString(conf['locale'], {weekday: conf['date_format']});
+                    return new Date(2026, 1, weekday).toLocaleString(conf['locale'], {weekday: conf['date_format'], calendar: 'gregory'});
                 })
                 // The year is arbitrary; only the month index affects the name.
                 : [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (month) {
-                    return new Date(2026, month - 1, 1).toLocaleString(conf['locale'], {month: conf['date_format']});
+                    return new Date(2026, month - 1, 1).toLocaleString(conf['locale'], {month: conf['date_format'], calendar: 'gregory'});
                 });
         }
         return localized_name_cache[cache_key];

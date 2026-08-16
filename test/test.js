@@ -5935,15 +5935,17 @@ test.addPrettifyValue('Regression: prettifyValue should preserve malformed time 
 
 // locale-aware day/month order (issue #587)
 // fr: space separator, no zero-padding when day is before month
-test.addPrettifyValue('locale-aware day/month order (fr)', ['Mar 06-Jul 15'], 'fr', '6 mars-15 juil.', 'not only test');
-test.addPrettifyValue('locale-aware day/month order: month range without day unaffected (fr)', ['Mar-Jul'], 'fr', 'mars-juil.', 'not only test');
-test.addPrettifyValue('locale-aware day/month order: year+month+day unaffected (fr)', ['2024 Mar 06'], 'fr', '2024 mars 06', 'not only test');
-test.addPrettifyValue('locale-aware day/month order: week unaffected (fr)', ['week 01-05/2'], 'fr', 'week 01-05/2', 'not only test');
+test.addPrettifyValueForLocale('locale-aware day/month order (fr)', ['Mar 06-Jul 15'], 'fr', '6 mars-15 juil.');
+test.addPrettifyValueForLocale('locale-aware day/month order: month range without day unaffected (fr)', ['Mar-Jul'], 'fr', 'mars-juil.');
+test.addPrettifyValueForLocale('locale-aware day/month order: year+month+day unaffected (fr)', ['2024 Mar 06'], 'fr', '2024 mars 06');
+test.addPrettifyValueForLocale('locale-aware day/month order: week unaffected (fr)', ['week 01-05/2'], 'fr', 'week 01-05/2');
 // de: ". " separator, no zero-padding when day is before month
-test.addPrettifyValue('locale-aware day/month order (de)', ['Jan 06-Jul 15'], 'de', '6. Jan-15. Jul', 'not only test');
-test.addPrettifyValue('locale-aware day/month order: month range without day unaffected (de)', ['Jan-Jul'], 'de', 'Jan-Jul', 'not only test');
+test.addPrettifyValueForLocale('locale-aware day/month order (de)', ['Jan 06-Jul 15'], 'de', '6. Jan-15. Jul');
+test.addPrettifyValueForLocale('locale-aware day/month order: month range without day unaffected (de)', ['Jan-Jul'], 'de', 'Jan-Jul');
 // es: space separator (short)
-test.addPrettifyValue('locale-aware day/month order (es)', ['Jan 06-Jul 15'], 'es', '6 ene-15 jul', 'not only test');
+test.addPrettifyValueForLocale('locale-aware day/month order (es)', ['Jan 06-Jul 15'], 'es', '6 ene-15 jul');
+// fa: Gregorian calendar, despite the locale's default Persian calendar
+test.addPrettifyValueForLocale('locale-aware day/month order: Gregorian calendar', ['Mar 06-Jul 15'], 'fa', '6 مارس-15 ژوئیه');
 
 /* }}} */
 
@@ -6736,6 +6738,17 @@ function opening_hours_test() {
     // }}}
 
     // add test to check if prettifyValue feature works {{{
+    this.addPrettifyValueForLocale = function(name, values, prettify_locale, expected_prettified_value, last) {
+        this.handle_only_test(last);
+
+        if (typeof values === 'string') {
+            this.tests_prettify_value.push([name, values, prettify_locale, expected_prettified_value]);
+        } else {
+            for (let value_ind = 0; value_ind < values.length; value_ind++)
+                this.tests_prettify_value.push([name, values[value_ind], prettify_locale, expected_prettified_value]);
+        }
+    };
+
     this.addPrettifyValue = function(name, values, only_test_for_locale, expected_prettified_value, last) {
         if (this.last === true)  {
             return;
@@ -6745,14 +6758,8 @@ function opening_hours_test() {
         if (
                 typeof only_test_for_locale === 'string'
                 && (argv.locale === only_test_for_locale || only_test_for_locale === 'all')
-           ) {
-
-            if (typeof values === 'string') {
-                this.tests_prettify_value.push([name, values, only_test_for_locale, expected_prettified_value]);
-            } else {
-                for (let value_ind = 0; value_ind < values.length; value_ind++)
-                    this.tests_prettify_value.push([name, values[value_ind], only_test_for_locale, expected_prettified_value]);
-            }
+            ) {
+            this.addPrettifyValueForLocale(name, values, only_test_for_locale, expected_prettified_value);
         }
     };
     // }}}
