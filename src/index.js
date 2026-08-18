@@ -3255,6 +3255,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'firstAugustTuesday'    : new Date(year,  7, firstWeekdayOfMonth(7, 2)),
             'firstAugustFriday'     : new Date(year,  7, firstWeekdayOfMonth(7, 5)),
             'firstNovemberThursday' : new Date(year, 10, firstWeekdayOfMonth(10, 4)),
+            'firstOctoberSunday'    : new Date(year,  9, firstWeekdayOfMonth(9, 0)),
             'lastNovemberWednesday' : new Date(year, 10, lastWeekdayOfMonth(10, 3)),
             'lastMayMonday'         : new Date(year,  4, lastWeekdayOfMonth(4, 1)),
             'lastMarchMonday'       : new Date(year,  2, lastWeekdayOfMonth(2, 1)),
@@ -3265,6 +3266,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             'lastSeptemberFriday'   : new Date(year,  8, lastWeekdayOfMonth(8, 5)),
             'lastOctoberMonday'     : new Date(year,  9, lastWeekdayOfMonth(9, 1)),
             'lastOctoberFriday'     : new Date(year,  9, lastWeekdayOfMonth(9, 5)),
+            'lastOctoberSunday'     : new Date(year,  9, lastWeekdayOfMonth(9, 0)),
             'nextSaturday20Jun'     : getDateOfWeekdayInDateRange(6, new Date(year, 5, 20)),
             'nextSaturday31Oct'     : getDateOfWeekdayInDateRange(6, new Date(year, 9, 31)),
             'nextWednesday16Nov'    : getDateOfWeekdayInDateRange(3, new Date(year, 10, 16)),
@@ -3389,7 +3391,19 @@ export default function(value, nominatim_object, optional_conf_parm) {
         /* Pass 1: resolve the base date of every holiday (no shift, no add_days). */
         const resolved = applying_holidays
             .filter(function (holiday_item) {
-                return !('year' in holiday_item) || holiday_item.year === year;
+                // A holiday may apply to one specific year.
+                if ('year' in holiday_item && holiday_item.year !== year) {
+                    return false;
+                }
+                // Some holidays only apply in even or odd years.
+                if (holiday_item.years === 'even' && year % 2 !== 0) {
+                    return false;
+                }
+                if (holiday_item.years === 'odd' && year % 2 !== 1) {
+                    return false;
+                }
+                // No year restriction, or all restrictions matched.
+                return true;
             })
             .map(function (holiday_item) {
                 let base_date;
