@@ -937,6 +937,20 @@ test.addTest('Variable days: public holidays (Scotland substitute collision orde
         },
     }, 'not last test');
 
+test.addTest('Public holidays with even-year restriction', [
+        'PH 12:00-13:00',
+    ], '2024-10-05 0:00', '2024-10-29 0:00', [
+        [ '2024-10-06 12:00', '2024-10-06 13:00', false, 'Dia de Eleição' ],
+        [ '2024-10-12 12:00', '2024-10-12 13:00', false, 'Nossa Senhora Aparecida' ],
+        [ '2024-10-27 12:00', '2024-10-27 13:00', false, 'Dia de Eleição' ],
+    ], 1000 * 60 * 60 * 3, 0, false, nominatim_by_loc.br, 'not last test');
+
+test.addTest('Even-year holidays are absent in odd years', [
+        'PH 12:00-13:00',
+    ], '2025-10-05 0:00', '2025-10-29 0:00', [
+        [ '2025-10-12 12:00', '2025-10-12 13:00', false, 'Nossa Senhora Aparecida' ],
+    ], 1000 * 60 * 60, 0, false, nominatim_by_loc.br, 'not last test');
+
 test.addTest('PH: Only if PH is Wednesday', [
         'PH We,Fr',
         'PH: We,Fr', // Please don’t use ":" after holiday.

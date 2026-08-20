@@ -13,7 +13,9 @@ PH:
   - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
   - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
   - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+  - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
   - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+  - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
   - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
   - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
   - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -32,7 +34,9 @@ Acre:
     - {'name': 'Aniversário do estado', 'fixed_date': [6, 15]}
     - {'name': 'Dia da Amazônia', 'fixed_date': [9, 5]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -50,7 +54,9 @@ Alagoas:
     - {'name': 'São Pedro', 'fixed_date': [6, 29]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
     - {'name': 'Emancipação política', 'fixed_date': [9, 16]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Morte de Zumbi dos Palmares', 'fixed_date': [11, 20]}
@@ -67,7 +73,9 @@ Amapá:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
     - {'name': 'Criação do Território Federal', 'fixed_date': [9, 13]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -83,7 +91,9 @@ Amazonas:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Elevação do Amazonas à categoria de província', 'fixed_date': [9, 5]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -99,7 +109,9 @@ Bahia:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Independência da Bahia', 'fixed_date': [7, 2]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -115,7 +127,9 @@ Ceará:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -130,7 +144,9 @@ Distrito Federal:
     - {'name': 'Fundação de Brasília', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -147,7 +163,9 @@ Espírito Santo:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -164,8 +182,10 @@ Goiás:
     - {'name': 'Nossa Senhora Auxiliadora', 'fixed_date': [5, 24]}
     - {'name': 'Fundação da Cidade de Goiás', 'fixed_date': [7, 26]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
     - {'name': 'Lançamento da pedra fundamental de Goiânia', 'fixed_date': [10, 24]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -181,7 +201,9 @@ Maranhão:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Adesão do Maranhão à independência do Brasil', 'fixed_date': [7, 28]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -196,7 +218,9 @@ Mato Grosso:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -211,8 +235,10 @@ Mato Grosso do Sul:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Criação do estado', 'fixed_date': [10, 11]}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -228,7 +254,9 @@ Minas Gerais:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Assunção de Nossa Senhora', 'fixed_date': [8, 15]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -245,7 +273,9 @@ Pará:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Adesão do Grão-Pará à independência do Brasil', 'fixed_date': [8, 15]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -262,7 +292,9 @@ Paraíba:
     - {'name': 'Homenagem à memória do ex-presidente João Pessoa', 'fixed_date': [7, 26]}
     - {'name': 'Nossa Senhora das Neves', 'fixed_date': [8, 5]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -278,7 +310,9 @@ Paraná:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
     - {'name': 'Nossa Senhora da Luz dos Pinhais', 'fixed_date': [9, 8]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -296,7 +330,9 @@ Pernambuco:
     - {'name': 'São João', 'fixed_date': [6, 24]}
     - {'name': 'Nossa Senhora do Carmo', 'fixed_date': [7, 16]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -312,8 +348,10 @@ Piauí:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
     - {'name': 'Dia do Piauí', 'fixed_date': [10, 19]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -331,7 +369,9 @@ Rio de Janeiro:
     - {'name': 'Dia de São Jorge', 'fixed_date': [4, 23]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -346,8 +386,10 @@ Rio Grande do Norte:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Mártires de Cunhaú e Uruaçu', 'fixed_date': [10, 3]}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -363,7 +405,9 @@ Rio Grande do Sul:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
     - {'name': 'Proclamação da República Rio-Grandense', 'fixed_date': [9, 20]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -380,7 +424,9 @@ Rondônia:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia do evangélico', 'fixed_date': [6, 18]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -395,8 +441,10 @@ Roraima:
     - {'name': 'Dia de Tiradentes', 'fixed_date': [4, 21]}
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Criação do estado', 'fixed_date': [10, 5]}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -412,7 +460,9 @@ Santa Catarina:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia de Santa Catarina', 'fixed_date': [8, 11], 'shift_rule': 'if monday,tuesday,wednesday,thursday,friday,saturday then next sunday'}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -431,7 +481,9 @@ São Paulo:
     - {'name': 'Corpo de Deus', 'variable_date': easter, 'offset': 60}
     - {'name': 'Revolução Constitucionalista', 'fixed_date': [7, 9]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -447,7 +499,9 @@ Sergipe:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Emancipação política de Sergipe', 'fixed_date': [7, 8]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
@@ -464,8 +518,10 @@ Tocantins:
     - {'name': 'Dia do trabalhador', 'fixed_date': [5, 1]}
     - {'name': 'Dia da Independência', 'fixed_date': [9, 7]}
     - {'name': 'Nossa Senhora da Natividade', 'fixed_date': [9, 8]}
+    - {'name': 'Dia de Eleição', 'variable_date': firstOctoberSunday, 'years': even}
     - {'name': 'Criação do estado', 'fixed_date': [10, 5]}
     - {'name': 'Nossa Senhora Aparecida', 'fixed_date': [10, 12]}
+    - {'name': 'Dia de Eleição', 'variable_date': lastOctoberSunday, 'years': even}
     - {'name': 'Dia de Finados', 'fixed_date': [11, 2]}
     - {'name': 'Proclamação da República', 'fixed_date': [11, 15]}
     - {'name': 'Dia da Consciência Negra', 'fixed_date': [11, 20]}
