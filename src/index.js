@@ -1502,6 +1502,24 @@ export default function(value, nominatim_object, optional_conf_parm) {
         user_conf['day_before_month'] = day_before_month;
         user_conf['day_month_sep']    = day_month_sep;
 
+        // Locale-aware weekday position relative to a month-day pair.
+        // Uses Intl.DateTimeFormat#formatToParts to determine whether the weekday
+        // precedes the day number (e.g. "mer. 6 mars" in fr, "Mi., 6. März" in de).
+        let weekday_before_date = false;
+        let weekday_date_sep = ' ';
+        if (!_is_en_or_all) {
+            const wdParts = new Intl.DateTimeFormat(user_conf['locale'], { weekday: 'short', day: 'numeric', month: user_conf['date_format'] })
+                .formatToParts(INTL_DAY_MONTH_REF_DATE);
+            const wdIdx  = wdParts.findIndex(p => p.type === 'weekday');
+            const dayIdx = wdParts.findIndex(p => p.type === 'day');
+            weekday_before_date = wdIdx < dayIdx;
+            weekday_date_sep = wdParts
+                .slice(Math.min(wdIdx, dayIdx) + 1, Math.max(wdIdx, dayIdx))
+                .map(p => p.value).join('');
+        }
+        user_conf['weekday_before_date'] = weekday_before_date;
+        user_conf['weekday_date_sep']    = weekday_date_sep;
+
         for (let nrule = 0; nrule < new_tokens.length; nrule++) {
             if (new_tokens[nrule][0].length === 0) continue;
             // Rule does contain nothing useful e.g. second rule of '10:00-12:00;' (empty) which needs to be handled.
@@ -1573,6 +1591,18 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
 
             const old_prettified_value_length = prettified_value.length;
+
+            // For locales where the weekday precedes the date (e.g. fr, de, es),
+            // swap adjacent month/weekday selector pairs so weekday is printed first.
+            if (user_conf['weekday_before_date']) {
+                for (let i = 0; i < prettified_group_value.length - 1; i++) {
+                    if (prettified_group_value[i][0][2] === 'month' && prettified_group_value[i+1][0][2] === 'weekday') {
+                        const tmp = prettified_group_value[i];
+                        prettified_group_value[i] = prettified_group_value[i+1];
+                        prettified_group_value[i+1] = tmp;
+                    }
+                }
+            }
 
             prettified_value += prettified_group_value.map(function (array) {
                 return array[1];
