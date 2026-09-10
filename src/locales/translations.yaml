@@ -34,7 +34,6 @@ en:
     'weekdays': weekdays
     'time ranges': 'time ranges'
     'week ranges': 'week ranges'
-    'ranges': ranges
     'default state': 'This rule which changes the default state (which is closed) for all following rules is not the first rule. The rule will overwrite all previous rules. It can be legitimate to change the default state to open for example and then only specify for which times the facility is closed.'
     'vague': 'This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.'
     'empty comment': 'You have used an empty comment. Please either write something in the comment or use the keyword unknown instead.'
@@ -178,7 +177,6 @@ de:
     comments: "Kommentare"
     months: "Monate"
     weekdays: "Wochentage"
-    ranges: "Zeitspannen"
     default state: "Diese Regel, welche den Standard-Status (d.h. geschlossen) für alle folgenden Regeln ändert, ist nicht die erste Regel. Diese Regel überschreibt alle vorherigen Regeln. Es kann legitim sein, den Standard-Status z.B. auf geöffnet festzulegen und dann nur die Zeiten, zu denen geschlossen ist, anzugeben."
     vague: 'Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.'
     empty comment: "Du hast einen leeren Kommentar verwendet.\" Bitte schreibe entweder einen Kommentar-Text oder benutze stattdessen das Schlüsselwort \"unknown\"."
@@ -346,7 +344,6 @@ fr:
     comments: "Commentaires"
     months: "Mois"
     weekdays: "Jours de la semaine"
-    ranges: "Plages horaires"
     default state: "Cette règle, qui modifie l'état par défaut (c.-à-d. fermé) pour toutes les règles suivantes, n'est pas la première règle. Elle remplace toutes les règles précédentes. Il peut être légitime de définir l'état par défaut sur ouvert puis d'indiquer uniquement les heures de fermeture."
     vague: "Cette règle n'est pas très précise car aucun sélecteur de temps n'a été spécifié. Un sélecteur de temps indique à quelle heure de la journée un lieu est ouvert, par exemple \"10:00-19:00\". Veuillez ajouter une heure ou un commentaire pour améliorer cela."
     empty comment: "Vous avez utilisé un commentaire vide. Veuillez soit écrire un texte de commentaire, soit utiliser le mot-clé \"unknown\" à la place."
