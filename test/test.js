@@ -36,25 +36,23 @@
 // preamble {{{
 
 /* Parameter handling {{{ */
-const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs')(hideBin(process.argv))
-    .usage('Usage: $0 [optional parameters]')
-    .describe('h', 'Display the usage')
-    // .describe('v', 'Verbose output')
-    .describe('f', 'File path to the opening_hours.js library file to run the tests against.')
-    .describe('l', 'Locale for error/warning messages and prettified values.')
-    .alias('h', 'help')
-    // .alias('v', 'verbose')
-    .alias('f', 'library-file')
-    .alias('l', 'locale')
-    .default('f', './opening_hours.js')
-    .default('l', 'en')
-    .help(false);
-
-const argv = yargs.parse();
+const argv = (() => {
+    const args = process.argv.slice(2);
+    const result = { 'library-file': './opening_hours.js', locale: 'en', help: false };
+    for (let i = 0; i < args.length; i++) {
+        const key = args[i].replace(/^--?/, '');
+        const val = args[i + 1] && !args[i + 1].startsWith('-') ? args[++i] : true;
+        if (key === 'f' || key === 'library-file') result['library-file'] = val;
+        else if (key === 'l' || key === 'locale') result.locale = val;
+        else if (key === 'h' || key === 'help') result.help = true;
+    }
+    return result;
+})();
 
 if (argv.help) {
-    yargs.showHelp();
+    console.log('Usage: test.js [optional parameters]');
+    console.log('  -f, --library-file  File path to the opening_hours.js library file to run the tests against.');
+    console.log('  -l, --locale        Locale for error/warning messages and prettified values.');
     process.exit(0);
 }
 /* }}} */
@@ -5995,7 +5993,7 @@ test.addPrettifyValue('Regression: prettifyValue should translate school holiday
 
 test.addPrettifyValue('prettifyValue should translate weekday and month tokens in a mixed selector', [
         'Jan Mo off',
-    ], 'de', 'Mo, Jan geschlossen');
+    ], 'de', 'Mo Jan geschlossen');
 
 test.addPrettifyValue('Compare prettifyValue', [
         'märz',

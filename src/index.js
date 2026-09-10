@@ -1551,7 +1551,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         let weekday_date_sep    = ' ';
         if (uses_locale_aware_order) {
             try {
-                const localeParts = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: date_format })
+                const localeParts = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: date_format, calendar: 'gregory' })
                     .formatToParts(INTL_DAY_MONTH_REF_DATE);
                 const wdIdx    = localeParts.findIndex(p => p.type === 'weekday');
                 const dayIdx   = localeParts.findIndex(p => p.type === 'day');
