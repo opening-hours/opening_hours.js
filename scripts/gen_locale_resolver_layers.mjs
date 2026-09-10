@@ -58,7 +58,9 @@ const TYPES = {
         meanings: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
         tables: gregorian => [
             gregorian?.days?.format?.wide, gregorian?.days?.format?.abbreviated,
+            gregorian?.days?.format?.short,
             gregorian?.days?.['stand-alone']?.wide, gregorian?.days?.['stand-alone']?.abbreviated,
+            gregorian?.days?.['stand-alone']?.short,
         ],
         canonical: { su: 'Su', mo: 'Mo', tu: 'Tu', we: 'We', th: 'Th', fr: 'Fr', sa: 'Sa' },
         universal: {
@@ -115,7 +117,7 @@ function loadGregorian(locale) {
 }
 
 /**
- * Collect all lexemes of a given type for a locale: wide + abbreviated,
+ * Collect all lexemes of a given type for a locale: wide + abbreviated + short,
  * format + stand-alone.
  * @param {JsonObject|undefined} gregorian - CLDR Gregorian calendar data.
  * @param {string} type - Layer type to collect.

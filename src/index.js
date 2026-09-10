@@ -672,6 +672,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const WORD_REGEX = /^([^\s\d\p{P}\p{S}\p{C}]{2,})(?=\s|$|[\s\d\p{P}\p{S}\p{C}])((?:[.]| before| after)?)/iu;
 
         const all_tokens     = [];
+        /** @type {Array<ParserToken>} */
         let curr_rule_tokens = [];
 
         // Two-phase locale resolver: collect the raw lexemes of the weekday/month
@@ -754,9 +755,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
             curr_rule_range_raw = { weekday: [], month: [] };
         };
 
-        // Recognise a word the flat map does not know but the cross-locale index
-        // does (e.g. an ambiguous foreign weekday like `ne`). Returns a provisional
-        // { index, type }; finalizeRuleRanges resolves the real meaning by context.
+        /**
+         * Recognise a word the flat map does not know but the cross-locale index
+         * does (e.g. an ambiguous foreign weekday like `ne`). Returns a provisional
+         * `{ index, type }`; finalizeRuleRanges resolves the real meaning by context.
+         * @param {string} word Word to resolve.
+         * @returns {{index: number, type: 'weekday'|'month'}|null} Provisional range token.
+         */
         const recognizeRangeToken = (word) => {
             const candidates = resolver_layers.crossLocale[normalizeToken(word)];
             if (!candidates) {
@@ -777,6 +782,22 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 return { index: months.indexOf(month.meaning), type: 'month' };
             }
             return null;
+        };
+
+        /**
+         * Check whether a token is an unknown single-letter word fragment.
+         * @param {ParserToken|unknown} token Token to inspect.
+         * @returns {boolean} Whether the token represents one unknown letter.
+         */
+        const isUnknownSingleLetterToken = (token) => {
+            if (!Array.isArray(token)) {
+                return false;
+            }
+
+            const [token_value, token_type] = token;
+            return typeof token_value === 'string'
+                && token_value === token_type
+                && /^\p{L}$/u.test(token_value);
         };
 
         let last_rule_fallback_terminated = false;
@@ -949,7 +970,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // value = correct_val + value.substr(tmp[0].length);
                     // Does not work because it would generate the wrong length for formatWarnErrorMessage.
                 } else {
-                    const recognized = recognizeRangeToken(lower_word);
+                    /** @type {ParserToken|undefined} */
+                    const previous_token = curr_rule_tokens[curr_rule_tokens.length - 1];
+                    /** @type {{index: number, type: 'weekday'|'month'}|null} */
+                    const recognized = isUnknownSingleLetterToken(previous_token)
+                        ? null
+                        : recognizeRangeToken(lower_word);
                     if (recognized && recognized.index >= 0) {
                         // Not in the flat map, but the cross-locale index recognises it
                         // as a weekday/month name. Push provisionally; finalizeRuleRanges
