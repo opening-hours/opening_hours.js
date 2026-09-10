@@ -1566,7 +1566,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     weekday_before_date = wdIdx < dayIdx;
                     weekday_date_sep    = localeParts
                         .slice(Math.min(wdIdx, dayIdx) + 1, Math.max(wdIdx, dayIdx))
-                        .map(p => p.value).join('');
+                        .map(p => p.value).join('').replace(/,/g, '').trim() || ' ';
                 }
             } catch { /* Keep fallback order if locale is unsupported in runtime. */ }
         }
