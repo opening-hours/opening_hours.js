@@ -1,14 +1,14 @@
 {
   "meta": {
-    "generated": "2026-08-09",
+    "generated": "2026-09-10",
     "cldrDatesFull": "48.2.0",
     "localeCount": 766,
     "types": [
       "weekday",
       "month"
     ],
-    "crossLocaleTokens": 2870,
-    "crossLocaleCandidates": 3686,
+    "crossLocaleTokens": 3068,
+    "crossLocaleCandidates": 3967,
     "regionCount": 250
   },
   "canonical": {
@@ -498,6 +498,13 @@
         "type": "month"
       }
     ],
+    "۱ش": [
+      {
+        "lang": "fa",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "1월": [
       {
         "lang": "ko",
@@ -543,6 +550,13 @@
         "type": "month"
       }
     ],
+    "۲ش": [
+      {
+        "lang": "fa",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "2월": [
       {
         "lang": "ko",
@@ -579,6 +593,13 @@
         "lang": "mn",
         "meaning": "Mar",
         "type": "month"
+      }
+    ],
+    "۳ش": [
+      {
+        "lang": "fa",
+        "meaning": "Tu",
+        "type": "weekday"
       }
     ],
     "3᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
@@ -633,6 +654,13 @@
         "type": "month"
       }
     ],
+    "۴ش": [
+      {
+        "lang": "fa",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "4월": [
       {
         "lang": "ko",
@@ -676,6 +704,13 @@
         "lang": "mn",
         "meaning": "May",
         "type": "month"
+      }
+    ],
+    "۵ش": [
+      {
+        "lang": "fa",
+        "meaning": "Th",
+        "type": "weekday"
       }
     ],
     "5월": [
@@ -1129,6 +1164,13 @@
         "type": "month"
       }
     ],
+    "ah": [
+      {
+        "lang": "ms",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "ahad": [
       {
         "lang": "ms",
@@ -1337,6 +1379,11 @@
         "lang": "lt",
         "meaning": "Tu",
         "type": "weekday"
+      },
+      {
+        "lang": "tk",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "ann": [
@@ -1357,6 +1404,13 @@
       {
         "lang": "lt",
         "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "ao": [
+      {
+        "lang": "ga",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -2134,6 +2188,13 @@
         "type": "month"
       }
     ],
+    "bu": [
+      {
+        "lang": "hi",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "budh": [
       {
         "lang": "hi",
@@ -2176,6 +2237,13 @@
         "type": "weekday"
       }
     ],
+    "ça": [
+      {
+        "lang": "tr",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "çar": [
       {
         "lang": "tk",
@@ -2199,6 +2267,34 @@
       {
         "lang": "tk",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "çb": [
+      {
+        "lang": "tk",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "ce": [
+      {
+        "lang": "lv",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "cé": [
+      {
+        "lang": "ga",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "če": [
+      {
+        "lang": "sr",
+        "meaning": "Th",
         "type": "weekday"
       }
     ],
@@ -2308,6 +2404,13 @@
       {
         "lang": "az",
         "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "ch": [
+      {
+        "lang": "uz",
+        "meaning": "We",
         "type": "weekday"
       }
     ],
@@ -2439,8 +2542,20 @@
     ],
     "cn": [
       {
+        "lang": "sn",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
         "lang": "vi",
         "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
+    "cp": [
+      {
+        "lang": "sn",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -2449,12 +2564,29 @@
         "lang": "hu",
         "meaning": "Th",
         "type": "weekday"
+      },
+      {
+        "lang": "sn",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "csütörtök": [
       {
         "lang": "hu",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "ct": [
+      {
+        "lang": "sn",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "tr",
+        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -2476,6 +2608,11 @@
       {
         "lang": "rn",
         "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "tr",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -2626,10 +2763,31 @@
         "type": "month"
       }
     ],
+    "db": [
+      {
+        "lang": "tk",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "dc": [
       {
         "lang": "ca",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "dé": [
+      {
+        "lang": "ga",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "dë": [
+      {
+        "lang": "lb",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -3141,6 +3299,16 @@
         "type": "weekday"
       },
       {
+        "lang": "fr",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "ht",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
         "lang": "nl",
         "meaning": "Tu",
         "type": "weekday"
@@ -3426,6 +3594,21 @@
         "type": "weekday"
       },
       {
+        "lang": "es",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "ga",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "lb",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
         "lang": "nl",
         "meaning": "Th",
         "type": "weekday"
@@ -3530,6 +3713,16 @@
       {
         "lang": "gsw",
         "meaning": "Th",
+        "type": "weekday"
+      },
+      {
+        "lang": "ro",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "uz",
+        "meaning": "Mo",
         "type": "weekday"
       }
     ],
@@ -4182,6 +4375,13 @@
         "type": "month"
       }
     ],
+    "fi": [
+      {
+        "lang": "is",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "fim": [
       {
         "lang": "is",
@@ -4193,6 +4393,13 @@
       {
         "lang": "is",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "fö": [
+      {
+        "lang": "is",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -4565,6 +4772,13 @@
         "type": "weekday"
       }
     ],
+    "gu": [
+      {
+        "lang": "hi",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "gum": [
       {
         "lang": "sn",
@@ -4796,6 +5010,13 @@
         "type": "month"
       }
     ],
+    "hó": [
+      {
+        "lang": "fo",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "hós": [
       {
         "lang": "fo",
@@ -4994,6 +5215,13 @@
       {
         "lang": "mt",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "is": [
+      {
+        "lang": "ms",
+        "meaning": "Mo",
         "type": "weekday"
       }
     ],
@@ -5497,6 +5725,18 @@
         "type": "month"
       }
     ],
+    "je": [
+      {
+        "lang": "fr",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
+        "lang": "ht",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "jed": [
       {
         "lang": "gv",
@@ -5654,6 +5894,13 @@
         "type": "weekday"
       }
     ],
+    "jo": [
+      {
+        "lang": "ro",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "joi": [
       {
         "lang": "ro",
@@ -5708,6 +5955,23 @@
         "lang": "fi",
         "meaning": "Dec",
         "type": "month"
+      }
+    ],
+    "ju": [
+      {
+        "lang": "es",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
+        "lang": "ms",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "uz",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "jue": [
@@ -6386,6 +6650,13 @@
         "type": "weekday"
       }
     ],
+    "kh": [
+      {
+        "lang": "ms",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "kha": [
       {
         "lang": "ms",
@@ -6727,6 +6998,11 @@
         "type": "weekday"
       },
       {
+        "lang": "is",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
         "lang": "nn",
         "meaning": "Sa",
         "type": "weekday"
@@ -6902,6 +7178,13 @@
     "lâyenga": [
       {
         "lang": "sg",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "le": [
+      {
+        "lang": "fo",
         "meaning": "Sa",
         "type": "weekday"
       }
@@ -7090,6 +7373,30 @@
         "type": "month"
       }
     ],
+    "lö": [
+      {
+        "lang": "sv",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "lø": [
+      {
+        "lang": "da",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
+        "lang": "nb",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
+        "lang": "no",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "loka": [
       {
         "lang": "fi",
@@ -7156,6 +7463,33 @@
       {
         "lang": "no",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "lu": [
+      {
+        "lang": "es",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "fr",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "ga",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "ht",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "ro",
+        "meaning": "Mo",
         "type": "weekday"
       }
     ],
@@ -7833,7 +8167,37 @@
     ],
     "ma": [
       {
+        "lang": "da",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "es",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
         "lang": "fi",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "fr",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "hi",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "ht",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "nb",
         "meaning": "Mo",
         "type": "weekday"
       },
@@ -7841,11 +8205,43 @@
         "lang": "nl",
         "meaning": "Mo",
         "type": "weekday"
+      },
+      {
+        "lang": "no",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "ro",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "má": [
+      {
+        "lang": "fo",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "ga",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "is",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "må": [
       {
         "lang": "nn",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "sv",
         "meaning": "Mo",
         "type": "weekday"
       }
@@ -8847,9 +9243,33 @@
     ],
     "me": [
       {
+        "lang": "fr",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "ht",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
         "lang": "tpi",
         "meaning": "May",
         "type": "month"
+      }
+    ],
+    "mé": [
+      {
+        "lang": "lb",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "më": [
+      {
+        "lang": "lb",
+        "meaning": "We",
+        "type": "weekday"
       }
     ],
     "mē": [
@@ -9065,6 +9485,13 @@
         "type": "month"
       }
     ],
+    "mg": [
+      {
+        "lang": "sn",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "mgq": [
       {
         "lang": "nd",
@@ -9086,7 +9513,27 @@
         "type": "weekday"
       },
       {
+        "lang": "es",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "fo",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
         "lang": "gsw",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "is",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "ro",
         "meaning": "We",
         "type": "weekday"
       }
@@ -9372,6 +9819,13 @@
         "type": "month"
       }
     ],
+    "mu": [
+      {
+        "lang": "sn",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "mug": [
       {
         "lang": "sn",
@@ -9523,6 +9977,11 @@
       },
       {
         "lang": "sk",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "sr",
         "meaning": "Su",
         "type": "weekday"
       },
@@ -9686,6 +10145,13 @@
         "lang": "nd",
         "meaning": "Feb",
         "type": "month"
+      }
+    ],
+    "nie": [
+      {
+        "lang": "pl",
+        "meaning": "Su",
+        "type": "weekday"
       }
     ],
     "niedz": [
@@ -10606,7 +11072,27 @@
     ],
     "on": [
       {
+        "lang": "da",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "nb",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
         "lang": "nn",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "no",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "sv",
         "meaning": "We",
         "type": "weekday"
       }
@@ -10833,6 +11319,13 @@
         "type": "month"
       }
     ],
+    "ot": [
+      {
+        "lang": "lv",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "otrd": [
       {
         "lang": "lv",
@@ -10976,6 +11469,18 @@
         "type": "weekday"
       }
     ],
+    "pa": [
+      {
+        "lang": "tr",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "uz",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "pá": [
       {
         "lang": "cs",
@@ -11060,10 +11565,27 @@
         "type": "month"
       }
     ],
+    "pb": [
+      {
+        "lang": "tk",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "pe": [
       {
         "lang": "fi",
         "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "sr",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "tr",
+        "meaning": "Th",
         "type": "weekday"
       }
     ],
@@ -11272,6 +11794,13 @@
         "type": "weekday"
       }
     ],
+    "pią": [
+      {
+        "lang": "pl",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "piątek": [
       {
         "lang": "pl",
@@ -11335,6 +11864,13 @@
         "type": "weekday"
       }
     ],
+    "pk": [
+      {
+        "lang": "lv",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "pn": [
       {
         "lang": "lt",
@@ -11355,6 +11891,11 @@
       },
       {
         "lang": "sk",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "sr",
         "meaning": "Mo",
         "type": "weekday"
       }
@@ -11443,6 +11984,11 @@
         "lang": "lt",
         "meaning": "Mo",
         "type": "weekday"
+      },
+      {
+        "lang": "lv",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "pre": [
@@ -11510,6 +12056,11 @@
       {
         "lang": "pl",
         "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "tr",
+        "meaning": "Mo",
         "type": "weekday"
       }
     ],
@@ -11615,6 +12166,18 @@
       {
         "lang": "et",
         "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
+    "ra": [
+      {
+        "lang": "hi",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "ms",
+        "meaning": "We",
         "type": "weekday"
       }
     ],
@@ -11806,6 +12369,20 @@
     "ş": [
       {
         "lang": "az",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "sá": [
+      {
+        "lang": "es",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "sâ": [
+      {
+        "lang": "ro",
         "meaning": "Sa",
         "type": "weekday"
       }
@@ -12101,10 +12678,41 @@
         "type": "month"
       }
     ],
+    "sb": [
+      {
+        "lang": "tk",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "şb": [
+      {
+        "lang": "tk",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "sbti": [
       {
         "lang": "so",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "se": [
+      {
+        "lang": "lv",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
+        "lang": "ms",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "uz",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -12540,6 +13148,20 @@
         "type": "weekday"
       }
     ],
+    "sh": [
+      {
+        "lang": "uz",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "sha": [
+      {
+        "lang": "hi",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "shan": [
       {
         "lang": "uz",
@@ -12599,6 +13221,13 @@
         "lang": "sq",
         "meaning": "Sep",
         "type": "month"
+      }
+    ],
+    "shu": [
+      {
+        "lang": "hi",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "shukra": [
@@ -12779,14 +13408,46 @@
         "type": "weekday"
       },
       {
+        "lang": "hi",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "lb",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
         "lang": "sk",
         "meaning": "Sa",
         "type": "weekday"
       }
     ],
+    "sö": [
+      {
+        "lang": "sv",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "sø": [
       {
+        "lang": "da",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "nb",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
         "lang": "nn",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "no",
         "meaning": "Su",
         "type": "weekday"
       }
@@ -12963,6 +13624,13 @@
         "type": "month"
       }
     ],
+    "sr": [
+      {
+        "lang": "sr",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "śr": [
       {
         "lang": "pl",
@@ -13024,6 +13692,13 @@
       },
       {
         "lang": "sr",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "śro": [
+      {
+        "lang": "pl",
         "meaning": "We",
         "type": "weekday"
       }
@@ -13285,6 +13960,18 @@
         "type": "month"
       }
     ],
+    "sv": [
+      {
+        "lang": "lv",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "sn",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "svētd": [
       {
         "lang": "lv",
@@ -13409,6 +14096,48 @@
         "lang": "gv",
         "meaning": "Feb",
         "type": "month"
+      }
+    ],
+    "t2": [
+      {
+        "lang": "vi",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "t3": [
+      {
+        "lang": "vi",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "t4": [
+      {
+        "lang": "vi",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "t5": [
+      {
+        "lang": "vi",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "t6": [
+      {
+        "lang": "vi",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
+    "t7": [
+      {
+        "lang": "vi",
+        "meaning": "Sa",
+        "type": "weekday"
       }
     ],
     "tāi": [
@@ -13801,7 +14530,27 @@
     ],
     "ti": [
       {
+        "lang": "da",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
         "lang": "fi",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "nb",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "no",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "sv",
         "meaning": "Tu",
         "type": "weekday"
       }
@@ -13935,12 +14684,32 @@
     ],
     "to": [
       {
+        "lang": "da",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
         "lang": "fi",
         "meaning": "Th",
         "type": "weekday"
       },
       {
+        "lang": "nb",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
         "lang": "nn",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
+        "lang": "no",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
+        "lang": "sv",
         "meaning": "Th",
         "type": "weekday"
       }
@@ -14074,6 +14843,11 @@
         "lang": "lt",
         "meaning": "We",
         "type": "weekday"
+      },
+      {
+        "lang": "lv",
+        "meaning": "We",
+        "type": "weekday"
       }
     ],
     "tra": [
@@ -14151,6 +14925,13 @@
         "type": "month"
       }
     ],
+    "tū": [
+      {
+        "lang": "mi",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "tuʻa": [
       {
         "lang": "to",
@@ -14203,6 +14984,13 @@
     "ty": [
       {
         "lang": "nn",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "tý": [
+      {
+        "lang": "fo",
         "meaning": "Tu",
         "type": "weekday"
       }
@@ -14327,6 +15115,11 @@
         "type": "weekday"
       },
       {
+        "lang": "sr",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
         "lang": "wo",
         "meaning": "Aug",
         "type": "month"
@@ -14422,6 +15215,18 @@
         "type": "weekday"
       }
     ],
+    "ve": [
+      {
+        "lang": "fr",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "ht",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "veebr": [
       {
         "lang": "et",
@@ -14489,6 +15294,18 @@
     "venerdì": [
       {
         "lang": "it",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
+    "vi": [
+      {
+        "lang": "es",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "ro",
         "meaning": "Fr",
         "type": "weekday"
       }
@@ -14620,10 +15437,24 @@
         "type": "weekday"
       }
     ],
+    "wto": [
+      {
+        "lang": "pl",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "wtorek": [
       {
         "lang": "pl",
         "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "ya": [
+      {
+        "lang": "uz",
+        "meaning": "Su",
         "type": "weekday"
       }
     ],
@@ -14684,6 +15515,13 @@
         "lang": "tk",
         "meaning": "Jan",
         "type": "month"
+      }
+    ],
+    "ýb": [
+      {
+        "lang": "tk",
+        "meaning": "Su",
+        "type": "weekday"
       }
     ],
     "yeb": [
@@ -14868,6 +15706,13 @@
         "type": "month"
       }
     ],
+    "þr": [
+      {
+        "lang": "is",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "þri": [
       {
         "lang": "is",
@@ -14950,6 +15795,13 @@
         "lang": "el",
         "meaning": "Aug",
         "type": "month"
+      }
+    ],
+    "δε": [
+      {
+        "lang": "el",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "δεκ": [
@@ -15062,6 +15914,13 @@
         "lang": "el",
         "meaning": "Jun",
         "type": "month"
+      }
+    ],
+    "κυ": [
+      {
+        "lang": "el",
+        "meaning": "Su",
+        "type": "weekday"
       }
     ],
     "κυρ": [
@@ -15204,6 +16063,13 @@
         "type": "month"
       }
     ],
+    "πα": [
+      {
+        "lang": "el",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "παρ": [
       {
         "lang": "el",
@@ -15218,6 +16084,13 @@
         "type": "weekday"
       }
     ],
+    "πέ": [
+      {
+        "lang": "el",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "πέμ": [
       {
         "lang": "el",
@@ -15229,6 +16102,13 @@
       {
         "lang": "el",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "σά": [
+      {
+        "lang": "el",
+        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -15267,6 +16147,13 @@
         "type": "month"
       }
     ],
+    "τε": [
+      {
+        "lang": "el",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "τετ": [
       {
         "lang": "el",
@@ -15278,6 +16165,13 @@
       {
         "lang": "el",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "τρ": [
+      {
+        "lang": "el",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -15666,6 +16560,13 @@
         "type": "weekday"
       }
     ],
+    "бш": [
+      {
+        "lang": "ky",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "бя": [
       {
         "lang": "mn",
@@ -15954,6 +16855,13 @@
         "type": "weekday"
       }
     ],
+    "ду": [
+      {
+        "lang": "uz",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "душ": [
       {
         "lang": "uz",
@@ -15990,6 +16898,13 @@
       }
     ],
     "дүйшөмбү": [
+      {
+        "lang": "ky",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "дш": [
       {
         "lang": "ky",
         "meaning": "Mo",
@@ -16050,6 +16965,11 @@
         "lang": "kk",
         "meaning": "Fr",
         "type": "weekday"
+      },
+      {
+        "lang": "ky",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "жні": [
@@ -16101,6 +17021,13 @@
         "type": "weekday"
       }
     ],
+    "жу": [
+      {
+        "lang": "uz",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "жум": [
       {
         "lang": "uz",
@@ -16124,6 +17051,13 @@
       {
         "lang": "kk",
         "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
+    "жш": [
+      {
+        "lang": "ky",
+        "meaning": "Su",
         "type": "weekday"
       }
     ],
@@ -16160,6 +17094,13 @@
         "lang": "az",
         "meaning": "Jun",
         "type": "month"
+      }
+    ],
+    "иш": [
+      {
+        "lang": "ky",
+        "meaning": "Sa",
+        "type": "weekday"
       }
     ],
     "ишемби": [
@@ -16863,6 +17804,13 @@
         "type": "weekday"
       }
     ],
+    "не": [
+      {
+        "lang": "sr",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "нед": [
       {
         "lang": "bs",
@@ -17181,6 +18129,13 @@
         "type": "weekday"
       }
     ],
+    "па": [
+      {
+        "lang": "uz",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "пай": [
       {
         "lang": "uz",
@@ -17206,6 +18161,13 @@
       {
         "lang": "be",
         "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "пе": [
+      {
+        "lang": "sr",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -17270,6 +18232,13 @@
       },
       {
         "lang": "uk",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "по": [
+      {
+        "lang": "sr",
         "meaning": "Mo",
         "type": "weekday"
       }
@@ -17473,6 +18442,13 @@
       {
         "lang": "uk",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "се": [
+      {
+        "lang": "uz",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -17730,6 +18706,11 @@
         "type": "weekday"
       },
       {
+        "lang": "sr",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
         "lang": "uk",
         "meaning": "We",
         "type": "weekday"
@@ -17821,6 +18802,13 @@
         "lang": "be",
         "meaning": "Jan",
         "type": "month"
+      }
+    ],
+    "су": [
+      {
+        "lang": "sr",
+        "meaning": "Sa",
+        "type": "weekday"
       }
     ],
     "суб": [
@@ -17918,6 +18906,13 @@
         "lang": "uk",
         "meaning": "May",
         "type": "month"
+      }
+    ],
+    "ут": [
+      {
+        "lang": "sr",
+        "meaning": "Tu",
+        "type": "weekday"
       }
     ],
     "уто": [
@@ -18097,6 +19092,13 @@
         "type": "weekday"
       }
     ],
+    "че": [
+      {
+        "lang": "sr",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "черв": [
       {
         "lang": "uk",
@@ -18172,6 +19174,13 @@
       {
         "lang": "bg",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "чо": [
+      {
+        "lang": "uz",
+        "meaning": "We",
         "type": "weekday"
       }
     ],
@@ -18297,6 +19306,13 @@
         "type": "weekday"
       }
     ],
+    "ша": [
+      {
+        "lang": "uz",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "шан": [
       {
         "lang": "uz",
@@ -18374,6 +19390,20 @@
         "type": "weekday"
       }
     ],
+    "шр": [
+      {
+        "lang": "ky",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "шш": [
+      {
+        "lang": "ky",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "юли": [
       {
         "lang": "bg",
@@ -18386,6 +19416,13 @@
         "lang": "bg",
         "meaning": "Jun",
         "type": "month"
+      }
+    ],
+    "як": [
+      {
+        "lang": "uz",
+        "meaning": "Su",
+        "type": "weekday"
       }
     ],
     "якш": [
@@ -18581,6 +19618,13 @@
         "type": "month"
       }
     ],
+    "კვ": [
+      {
+        "lang": "ka",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "კვი": [
       {
         "lang": "ka",
@@ -18637,6 +19681,13 @@
         "type": "month"
       }
     ],
+    "ოთ": [
+      {
+        "lang": "ka",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "ოთხ": [
       {
         "lang": "ka",
@@ -18648,6 +19699,13 @@
       {
         "lang": "ka",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "ორ": [
+      {
+        "lang": "ka",
+        "meaning": "Mo",
         "type": "weekday"
       }
     ],
@@ -18693,6 +19751,13 @@
         "type": "weekday"
       }
     ],
+    "პრ": [
+      {
+        "lang": "ka",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "სამ": [
       {
         "lang": "ka",
@@ -18721,6 +19786,13 @@
         "type": "month"
       }
     ],
+    "სმ": [
+      {
+        "lang": "ka",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "შაბ": [
       {
         "lang": "ka",
@@ -18732,6 +19804,20 @@
       {
         "lang": "ka",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "შბ": [
+      {
+        "lang": "ka",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "ხთ": [
+      {
+        "lang": "ka",
+        "meaning": "Th",
         "type": "weekday"
       }
     ],
@@ -18791,6 +19877,13 @@
         "type": "month"
       }
     ],
+    "եկ": [
+      {
+        "lang": "hy",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "երեքշաբթի": [
       {
         "lang": "hy",
@@ -18819,6 +19912,13 @@
         "type": "weekday"
       }
     ],
+    "եք": [
+      {
+        "lang": "hy",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "կիր": [
       {
         "lang": "hy",
@@ -18830,6 +19930,20 @@
       {
         "lang": "hy",
         "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
+    "կր": [
+      {
+        "lang": "hy",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
+    "հգ": [
+      {
+        "lang": "hy",
+        "meaning": "Th",
         "type": "weekday"
       }
     ],
@@ -19001,10 +20115,24 @@
         "type": "weekday"
       }
     ],
+    "շբ": [
+      {
+        "lang": "hy",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "շբթ": [
       {
         "lang": "hy",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "ու": [
+      {
+        "lang": "hy",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -19030,6 +20158,13 @@
       }
     ],
     "չրք": [
+      {
+        "lang": "hy",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "չք": [
       {
         "lang": "hy",
         "meaning": "We",
@@ -19099,6 +20234,13 @@
         "type": "month"
       }
     ],
+    "א׳": [
+      {
+        "lang": "he",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "אוג׳": [
       {
         "lang": "he",
@@ -19141,6 +20283,27 @@
         "type": "month"
       }
     ],
+    "ב׳": [
+      {
+        "lang": "he",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "ג׳": [
+      {
+        "lang": "he",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "ד׳": [
+      {
+        "lang": "he",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "דצמ׳": [
       {
         "lang": "he",
@@ -19153,6 +20316,20 @@
         "lang": "he",
         "meaning": "Dec",
         "type": "month"
+      }
+    ],
+    "ה׳": [
+      {
+        "lang": "he",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "ו׳": [
+      {
+        "lang": "he",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "יולי": [
@@ -19330,6 +20507,13 @@
         "type": "month"
       }
     ],
+    "ש׳": [
+      {
+        "lang": "he",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "שבת": [
       {
         "lang": "he",
@@ -19370,6 +20554,20 @@
         "lang": "ar",
         "meaning": "Apr",
         "type": "month"
+      }
+    ],
+    "أحد": [
+      {
+        "lang": "ar",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
+    "أربعاء": [
+      {
+        "lang": "ar",
+        "meaning": "We",
+        "type": "weekday"
       }
     ],
     "أغسطس": [
@@ -19426,6 +20624,13 @@
         "lang": "ar",
         "meaning": "Apr",
         "type": "month"
+      }
+    ],
+    "إثنين": [
+      {
+        "lang": "ar",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "اپر": [
@@ -19608,6 +20813,13 @@
         "type": "weekday"
       }
     ],
+    "بە": [
+      {
+        "lang": "kk",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "بەي": [
       {
         "lang": "kk",
@@ -19690,7 +20902,19 @@
         "type": "month"
       }
     ],
+    "ثلاثاء": [
+      {
+        "lang": "ar",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "ج": [
+      {
+        "lang": "fa",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
       {
         "lang": "uz",
         "meaning": "Fr",
@@ -19702,6 +20926,13 @@
         "lang": "ar",
         "meaning": "Jan",
         "type": "month"
+      }
+    ],
+    "جمعة": [
+      {
+        "lang": "ar",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "جمعرات": [
@@ -19769,6 +21000,13 @@
         "lang": "uz",
         "meaning": "Jan",
         "type": "month"
+      }
+    ],
+    "جە": [
+      {
+        "lang": "kk",
+        "meaning": "Su",
+        "type": "weekday"
       }
     ],
     "جەك": [
@@ -19864,6 +21102,13 @@
         "type": "month"
       }
     ],
+    "جۇ": [
+      {
+        "lang": "kk",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "جۇم": [
       {
         "lang": "kk",
@@ -19902,6 +21147,13 @@
         "lang": "ar",
         "meaning": "Jun",
         "type": "month"
+      }
+    ],
+    "خميس": [
+      {
+        "lang": "ar",
+        "meaning": "Th",
+        "type": "weekday"
       }
     ],
     "څلرنۍ": [
@@ -19999,6 +21251,13 @@
         "type": "weekday"
       }
     ],
+    "دۇ": [
+      {
+        "lang": "kk",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "دۇي": [
       {
         "lang": "kk",
@@ -20062,6 +21321,13 @@
         "type": "weekday"
       }
     ],
+    "سا": [
+      {
+        "lang": "kk",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "سار": [
       {
         "lang": "kk",
@@ -20073,6 +21339,13 @@
       {
         "lang": "kk",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "سبت": [
+      {
+        "lang": "ar",
+        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -20121,6 +21394,13 @@
         "type": "month"
       }
     ],
+    "سن": [
+      {
+        "lang": "kk",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "سه‌شنبه": [
       {
         "lang": "fa",
@@ -20129,6 +21409,13 @@
       },
       {
         "lang": "uz",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "سە": [
+      {
+        "lang": "kk",
         "meaning": "Tu",
         "type": "weekday"
       }
@@ -20169,6 +21456,11 @@
       }
     ],
     "ش": [
+      {
+        "lang": "fa",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
       {
         "lang": "uz",
         "meaning": "Sa",
@@ -20587,6 +21879,13 @@
         "type": "month"
       }
     ],
+    "ሐ": [
+      {
+        "lang": "am",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "ሐሙስ": [
       {
         "lang": "am",
@@ -20678,6 +21977,13 @@
         "type": "month"
       }
     ],
+    "ማ": [
+      {
+        "lang": "am",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "ማርች": [
       {
         "lang": "am",
@@ -20706,6 +22012,13 @@
         "type": "month"
       }
     ],
+    "ረ": [
+      {
+        "lang": "am",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "ረቡ": [
       {
         "lang": "ti",
@@ -20722,6 +22035,13 @@
       {
         "lang": "ti",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "ሰ": [
+      {
+        "lang": "am",
+        "meaning": "Mo",
         "type": "weekday"
       }
     ],
@@ -20809,6 +22129,13 @@
         "type": "weekday"
       }
     ],
+    "ቅ": [
+      {
+        "lang": "am",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "ቅዳሜ": [
       {
         "lang": "am",
@@ -20872,6 +22199,13 @@
         "type": "month"
       }
     ],
+    "እ": [
+      {
+        "lang": "am",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "እሑድ": [
       {
         "lang": "am",
@@ -20905,6 +22239,13 @@
         "lang": "am",
         "meaning": "Aug",
         "type": "month"
+      }
+    ],
+    "ዓ": [
+      {
+        "lang": "am",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "ዓር": [
@@ -21089,6 +22430,13 @@
         "type": "weekday"
       }
     ],
+    "गु": [
+      {
+        "lang": "hi",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "गुरु": [
       {
         "lang": "hi",
@@ -21232,6 +22580,13 @@
         "type": "weekday"
       }
     ],
+    "बु": [
+      {
+        "lang": "hi",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "बुध": [
       {
         "lang": "hi",
@@ -21255,6 +22610,13 @@
       {
         "lang": "hi",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "मं": [
+      {
+        "lang": "hi",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -21312,6 +22674,13 @@
         "type": "month"
       }
     ],
+    "र": [
+      {
+        "lang": "hi",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "रवि": [
       {
         "lang": "hi",
@@ -21323,6 +22692,13 @@
       {
         "lang": "hi",
         "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
+    "श": [
+      {
+        "lang": "hi",
+        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -21349,6 +22725,13 @@
       {
         "lang": "hi",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "शु": [
+      {
+        "lang": "hi",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -21397,6 +22780,13 @@
         "lang": "ne",
         "meaning": "Sep",
         "type": "month"
+      }
+    ],
+    "सो": [
+      {
+        "lang": "hi",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "सोम": [
@@ -21565,6 +22955,13 @@
         "type": "month"
       }
     ],
+    "বুঃ": [
+      {
+        "lang": "bn",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "বুধ": [
       {
         "lang": "bn",
@@ -21579,6 +22976,13 @@
         "type": "weekday"
       }
     ],
+    "বৃঃ": [
+      {
+        "lang": "bn",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "বৃহস্পতি": [
       {
         "lang": "bn",
@@ -21590,6 +22994,13 @@
       {
         "lang": "bn",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "মঃ": [
+      {
+        "lang": "bn",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -21621,6 +23032,13 @@
         "type": "month"
       }
     ],
+    "রঃ": [
+      {
+        "lang": "bn",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "রবি": [
       {
         "lang": "bn",
@@ -21635,6 +23053,13 @@
         "type": "weekday"
       }
     ],
+    "শঃ": [
+      {
+        "lang": "bn",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "শনি": [
       {
         "lang": "bn",
@@ -21646,6 +23071,13 @@
       {
         "lang": "bn",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "শুঃ": [
+      {
+        "lang": "bn",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -21689,6 +23121,13 @@
         "lang": "bn",
         "meaning": "Sep",
         "type": "month"
+      }
+    ],
+    "সোঃ": [
+      {
+        "lang": "bn",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "সোম": [
@@ -21747,10 +23186,24 @@
         "type": "month"
       }
     ],
+    "ச": [
+      {
+        "lang": "ta",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "சனி": [
       {
         "lang": "ta",
         "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
+    "செ": [
+      {
+        "lang": "ta",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -21782,6 +23235,13 @@
         "type": "weekday"
       }
     ],
+    "ஞா": [
+      {
+        "lang": "ta",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "ஞாயி": [
       {
         "lang": "ta",
@@ -21808,6 +23268,13 @@
         "lang": "ta",
         "meaning": "Dec",
         "type": "month"
+      }
+    ],
+    "தி": [
+      {
+        "lang": "ta",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "திங்": [
@@ -21852,6 +23319,13 @@
         "type": "month"
       }
     ],
+    "பு": [
+      {
+        "lang": "ta",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "புத": [
       {
         "lang": "ta",
@@ -21887,6 +23361,13 @@
         "type": "month"
       }
     ],
+    "வி": [
+      {
+        "lang": "ta",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "வியா": [
       {
         "lang": "ta",
@@ -21898,6 +23379,13 @@
       {
         "lang": "ta",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "வெ": [
+      {
+        "lang": "ta",
+        "meaning": "Fr",
         "type": "weekday"
       }
     ],
@@ -21943,6 +23431,13 @@
         "type": "month"
       }
     ],
+    "අඟ": [
+      {
+        "lang": "si",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "අඟහ": [
       {
         "lang": "si",
@@ -21962,6 +23457,13 @@
         "lang": "si",
         "meaning": "Jul",
         "type": "month"
+      }
+    ],
+    "ඉරි": [
+      {
+        "lang": "si",
+        "meaning": "Su",
+        "type": "weekday"
       }
     ],
     "ඉරිදා": [
@@ -22020,6 +23522,13 @@
         "type": "month"
       }
     ],
+    "බදා": [
+      {
+        "lang": "si",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "බදාදා": [
       {
         "lang": "si",
@@ -22032,6 +23541,13 @@
         "lang": "si",
         "meaning": "Sep",
         "type": "month"
+      }
+    ],
+    "බ්‍රහ": [
+      {
+        "lang": "si",
+        "meaning": "Th",
+        "type": "weekday"
       }
     ],
     "බ්‍රහස්": [
@@ -22067,6 +23583,13 @@
         "lang": "si",
         "meaning": "May",
         "type": "month"
+      }
+    ],
+    "සඳු": [
+      {
+        "lang": "si",
+        "meaning": "Mo",
+        "type": "weekday"
       }
     ],
     "සඳුදා": [
@@ -22146,6 +23669,13 @@
         "type": "month"
       }
     ],
+    "จ": [
+      {
+        "lang": "th",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "จันทร์": [
       {
         "lang": "th",
@@ -22181,6 +23711,13 @@
         "type": "month"
       }
     ],
+    "พ": [
+      {
+        "lang": "th",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "พ.ค": [
       {
         "lang": "th",
@@ -22193,6 +23730,13 @@
         "lang": "th",
         "meaning": "Nov",
         "type": "month"
+      }
+    ],
+    "พฤ": [
+      {
+        "lang": "th",
+        "meaning": "Th",
+        "type": "weekday"
       }
     ],
     "พฤศจิกายน": [
@@ -22328,10 +23872,24 @@
         "type": "weekday"
       }
     ],
+    "ศ": [
+      {
+        "lang": "th",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "ศุกร์": [
       {
         "lang": "th",
         "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
+    "ส": [
+      {
+        "lang": "th",
+        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -22356,10 +23914,24 @@
         "type": "weekday"
       }
     ],
+    "อ": [
+      {
+        "lang": "th",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "อังคาร": [
       {
         "lang": "th",
         "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "อา": [
+      {
+        "lang": "th",
+        "meaning": "Su",
         "type": "weekday"
       }
     ],
@@ -22412,10 +23984,24 @@
         "type": "month"
       }
     ],
+    "ຈ": [
+      {
+        "lang": "lo",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "ຈັນ": [
       {
         "lang": "lo",
         "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
+    "ສ": [
+      {
+        "lang": "lo",
+        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -22431,6 +24017,13 @@
         "lang": "lo",
         "meaning": "Aug",
         "type": "month"
+      }
+    ],
+    "ສຸ": [
+      {
+        "lang": "lo",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "ສຸກ": [
@@ -22475,6 +24068,13 @@
         "type": "month"
       }
     ],
+    "ພ": [
+      {
+        "lang": "lo",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "ພ.ຈ": [
       {
         "lang": "lo",
@@ -22487,6 +24087,13 @@
         "lang": "lo",
         "meaning": "May",
         "type": "month"
+      }
+    ],
+    "ພຫ": [
+      {
+        "lang": "lo",
+        "meaning": "Th",
+        "type": "weekday"
       }
     ],
     "ພະຈິກ": [
@@ -22622,10 +24229,24 @@
         "type": "weekday"
       }
     ],
+    "ອ": [
+      {
+        "lang": "lo",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "ອັງຄານ": [
       {
         "lang": "lo",
         "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "ອາ": [
+      {
+        "lang": "lo",
+        "meaning": "Su",
         "type": "weekday"
       }
     ],
@@ -22986,10 +24607,24 @@
         "type": "weekday"
       }
     ],
+    "ကြာ": [
+      {
+        "lang": "my",
+        "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
     "ကြာသပတေး": [
       {
         "lang": "my",
         "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "ဂါ": [
+      {
+        "lang": "my",
+        "meaning": "Tu",
         "type": "weekday"
       }
     ],
@@ -23063,6 +24698,13 @@
         "type": "weekday"
       }
     ],
+    "တေး": [
+      {
+        "lang": "my",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "ဒီ": [
       {
         "lang": "my",
@@ -23077,6 +24719,13 @@
         "type": "month"
       }
     ],
+    "နွေ": [
+      {
+        "lang": "my",
+        "meaning": "Su",
+        "type": "weekday"
+      }
+    ],
     "နို": [
       {
         "lang": "my",
@@ -23089,6 +24738,13 @@
         "lang": "my",
         "meaning": "Nov",
         "type": "month"
+      }
+    ],
+    "နေ": [
+      {
+        "lang": "my",
+        "meaning": "Sa",
+        "type": "weekday"
       }
     ],
     "ဖေ": [
@@ -23126,10 +24782,24 @@
         "type": "month"
       }
     ],
+    "လာ": [
+      {
+        "lang": "my",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "သောကြာ": [
       {
         "lang": "my",
         "meaning": "Fr",
+        "type": "weekday"
+      }
+    ],
+    "ဟူး": [
+      {
+        "lang": "my",
+        "meaning": "We",
         "type": "weekday"
       }
     ],
@@ -23203,6 +24873,13 @@
         "type": "month"
       }
     ],
+    "ច": [
+      {
+        "lang": "km",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "ចន្ទ": [
       {
         "lang": "km",
@@ -23231,10 +24908,24 @@
         "type": "month"
       }
     ],
+    "ពុ": [
+      {
+        "lang": "km",
+        "meaning": "We",
+        "type": "weekday"
+      }
+    ],
     "ពុធ": [
       {
         "lang": "km",
         "meaning": "We",
+        "type": "weekday"
+      }
+    ],
+    "ព្រ": [
+      {
+        "lang": "km",
+        "meaning": "Th",
         "type": "weekday"
       }
     ],
@@ -23287,11 +24978,25 @@
         "type": "month"
       }
     ],
+    "ស": [
+      {
+        "lang": "km",
+        "meaning": "Sa",
+        "type": "weekday"
+      }
+    ],
     "សីហា": [
       {
         "lang": "km",
         "meaning": "Aug",
         "type": "month"
+      }
+    ],
+    "សុ": [
+      {
+        "lang": "km",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "សុក្រ": [
@@ -23308,10 +25013,24 @@
         "type": "weekday"
       }
     ],
+    "អ": [
+      {
+        "lang": "km",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "អង្គារ": [
       {
         "lang": "km",
         "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
+    "អា": [
+      {
+        "lang": "km",
+        "meaning": "Su",
         "type": "weekday"
       }
     ],
@@ -23875,6 +25594,18 @@
         "type": "month"
       }
     ],
+    "一": [
+      {
+        "lang": "yue",
+        "meaning": "Mo",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
+        "meaning": "Mo",
+        "type": "weekday"
+      }
+    ],
     "一月": [
       {
         "lang": "zh",
@@ -23887,6 +25618,18 @@
         "lang": "zh",
         "meaning": "Jul",
         "type": "month"
+      }
+    ],
+    "三": [
+      {
+        "lang": "yue",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
+        "meaning": "We",
+        "type": "weekday"
       }
     ],
     "三月": [
@@ -23903,11 +25646,35 @@
         "type": "month"
       }
     ],
+    "二": [
+      {
+        "lang": "yue",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "二月": [
       {
         "lang": "zh",
         "meaning": "Feb",
         "type": "month"
+      }
+    ],
+    "五": [
+      {
+        "lang": "yue",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
+        "meaning": "Fr",
+        "type": "weekday"
       }
     ],
     "五月": [
@@ -23922,6 +25689,18 @@
         "lang": "zh",
         "meaning": "Aug",
         "type": "month"
+      }
+    ],
+    "六": [
+      {
+        "lang": "yue",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
+        "meaning": "Sa",
+        "type": "weekday"
       }
     ],
     "六月": [
@@ -24001,6 +25780,18 @@
         "type": "weekday"
       }
     ],
+    "四": [
+      {
+        "lang": "yue",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
     "四月": [
       {
         "lang": "zh",
@@ -24025,6 +25816,16 @@
     "日": [
       {
         "lang": "ja",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "yue",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "zh",
         "meaning": "Su",
         "type": "weekday"
       }

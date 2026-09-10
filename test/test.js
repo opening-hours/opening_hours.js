@@ -800,6 +800,17 @@ test.addTest('Regression: sunrise-sunset interval vanishes for a location far fr
         [ '2021-04-17 22:49', '2021-04-18 09:50' ],
     ], 1000 * 60 * 661, 0, false, { lat: '-37.818', lon: '144.951' }); // Melbourne
 
+test.addTest('Regression: French weekday abbreviations in ranges (#669)', [
+    'We-Su 10:00-12:00',
+        'Me-Di 10:00-12:00',
+    ], '2026-09-09 00:00', '2026-09-15 00:00', [
+        [ '2026-09-09 10:00', '2026-09-09 12:00' ],
+        [ '2026-09-10 10:00', '2026-09-10 12:00' ],
+        [ '2026-09-11 10:00', '2026-09-11 12:00' ],
+        [ '2026-09-12 10:00', '2026-09-12 12:00' ],
+        [ '2026-09-13 10:00', '2026-09-13 12:00' ],
+    ], 1000 * 60 * 600, 0, true, nominatim_default, 'not last test', { locale: 'fr' });
+
 test.addTest('Variable times spanning midnight', [
         'sunset-sunrise',
         'Mo-Su sunset-sunrise',

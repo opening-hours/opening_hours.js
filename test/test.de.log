@@ -386,6 +386,11 @@ With [34m[1mwarnings[22m[39m:
 "Variable times which moves over fix end time" for "sunrise-05:59": [33m[1mIGNORED[22m[39m, reason: not implemented yet
 "Regression: sunrise-sunset interval vanishes for a location far from the process time zone (#377)" for "Mo-Su sunrise-sunset": [32m[1mPASSED[22m[39m
 "Regression: sunrise-sunset interval vanishes for a location far from the process time zone (#377)" for "Mo-Su sunrise-sunset": [32m[1mPASSED[22m[39m
+"Regression: French weekday abbreviations in ranges (#669)" for "We-Su 10:00-12:00": [32m[1mPASSED[22m[39m
+"Regression: French weekday abbreviations in ranges (#669)" for "Me-Di 10:00-12:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Me <--- (Veuillez utiliser l'abréviation anglaise "We" pour "me".)
+	*Me-Di <--- (Veuillez utiliser l'abréviation anglaise "Su" pour "di". Notez que "di" peut aussi signifier Tu (de, nl) dans d'autres langues.)
 "Variable times spanning midnight" for "sunset-sunrise": [32m[1mPASSED[22m[39m
 "Variable times spanning midnight" for "Mo-Su sunset-sunrise": [32m[1mPASSED[22m[39m
 "Variable times spanning midnight" for "sunset-sunrise": [32m[1mPASSED[22m[39m
@@ -1450,8 +1455,8 @@ With [34m[1mwarnings[22m[39m:
 	*Mo – Fr: 9 – <--- (Bitte verwende "-" für "–". Auch wenn "–" typografisch korrekt ist, ist dies in der opening_hours Syntax nicht definiert. Korrekte Typographie sollte auf Anwendungsebene sichergestellt werden …)
 	*Mo – Fr: 9 – 12 Uhr <--- (Bitte verzichte auf "uhr".)
 	*Mo – Fr: 9 – 12 Uhr und <--- (Bitte verwende "," anstelle von "und".)
-	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di".)
-	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Bitte benutze die englische Abkürzung "Th" für "do".)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di". Beachte, dass "di" anderswo auch Su (fr, ht) bedeuten kann.)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Bitte benutze die englische Abkürzung "Th" für "do". Beachte, dass "do" anderswo auch Su (es, ga) bedeuten kann.)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – <--- (Bitte verwende "-" für "–". Auch wenn "–" typografisch korrekt ist, ist dies in der opening_hours Syntax nicht definiert. Korrekte Typographie sollte auf Anwendungsebene sichergestellt werden …)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr <--- (Bitte verzichte auf "uhr".)
 	*Mo – Fr: 9 – 12 Uhr  <--- (Zeitspanne ohne Minutenangabe angegeben. Das ist nicht sehr eindeutig! Bitte verwende stattdessen folgende Syntax "09:00-12:00".)
@@ -1466,7 +1471,7 @@ With [34m[1mwarnings[22m[39m:
 "Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo: geschlossen <--- (Bitte benutze "off" für "geschlossen". Beispiel: "Mo-Fr 08:00-12:00; Tu off".)
-	*Mo: geschlossen, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di".)
+	*Mo: geschlossen, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di". Beachte, dass "di" anderswo auch Su (fr, ht) bedeuten kann.)
 	*Mo: geschlossen, Di: 14-18Uhr <--- (Bitte verzichte auf "uhr".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi <--- (Bitte benutze die englische Abkürzung "We" für "mi".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr <--- (Bitte verzichte auf "uhr".)
@@ -1887,7 +1892,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mo:  <--- (Du hast das optionale Symbol <separator_for_readability> an der falschen Stelle benutzt. Bitte lies die Syntax-Spezifikation um zu sehen, wo es verwendet werden kann, oder entferne es.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo-Do 8:30-20:00 Fr 8:29-18:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
-	*Mo-Do <--- (Bitte benutze die englische Abkürzung "Th" für "do".)
+	*Mo-Do <--- (Bitte benutze die englische Abkürzung "Th" für "do". Beachte, dass "do" anderswo auch Su (es, ga) bedeuten kann.)
 	*Mo-Do 8:30-20:00 Fr  <--- (Du hast 2 nicht verbundene Wochentage in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
 	*Mo-Do 8:30-20:00 Fr 8:29-18:00 <--- (Du hast 2 nicht verbundene Zeitspannen in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo 12:00-14:00 16:00-18:00 20:00-22:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
@@ -1895,7 +1900,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mo 12:00-14:00 16:00-18:00 20:00-22:00 <--- (Du hast 3 nicht verbundene Zeitspannen in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo-So 08:00-22:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
-	*Mo-So <--- (Bitte benutze die englische Abkürzung "Su" für "so". Beachte, dass "so" anderswo auch Sa (cs, sk) bedeuten kann.)
+	*Mo-So <--- (Bitte benutze die englische Abkürzung "Su" für "so". Beachte, dass "so" anderswo auch Sa (cs, sk); Mo (hi) bedeuten kann.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo Tu Fr; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo Tu Fr <--- (Du hast 3 nicht verbundene Wochentage in einer Regel benutzt. Das ist vermutlich ein Fehler. Gleiche Selektoren können (und sollten) immer zusammen und durch Kommas getrennt geschrieben werden. Beispiel für Zeitspannen "12:00-13:00,15:00-18:00". Beispiel für Wochentage "Mo-We,Fr". Einzelne Regeln können mit ";" getrennt werden.)
@@ -2179,10 +2184,10 @@ Mo-Fr 17:00-12:00; Sa-Su 24:00 <--- (Zeitspanne beginnt außerhalb des aktuellen
  <--- (Token "listopad" is ambiguous across languages (Nov (cs), Oct (hr), Nov (pl)). Use a canonical abbreviation (Jan, Feb, Mar, … Dec) or set the intended locale.)
 
 "#588: locale-mismatched weekday token rejected (Mo-Tr)" for "Mo-Tr 17:00-20:00": [32m[1mPASSED[22m[39m
-Mo- <--- (Token "tr" is not valid for locale "de"; it only matches We (lt). Use a canonical abbreviation (Mo, Tu, We, Th, Fr, Sa, Su) or set the intended locale.)
+Mo- <--- (Token "tr" is not valid for locale "de"; it only matches We (lt), We (lv). Use a canonical abbreviation (Mo, Tu, We, Th, Fr, Sa, Su) or set the intended locale.)
 
 "Incorrect syntax which should throw an error" for "sdasdlasdj a3reaw": [32m[1mPASSED[22m[39m
-sd <--- (Unerwartetes Zeichen: "s" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) sdasdlasdj <--- (Bitte benutze die englische Abkürzung "Th" für "dj".); sdasdlasdj a <--- (Bitte verwende "-" anstelle von "a".); sdasdlasdj a3reaw <--- ("w" wird als "We" interpretiert.)
+sd <--- (Unerwartetes Zeichen: "s" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) sdasdlasdj a <--- (Bitte verwende "-" anstelle von "a".); sdasdlasdj a3reaw <--- ("w" wird als "We" interpretiert.)
 
 "Incorrect syntax which should throw an error" for "": [32m[1mPASSED[22m[39m
 Der Wert enthält nichts, was ausgewertet werden könnte.
@@ -2461,10 +2466,10 @@ Tu 23:59-48:00+ <--- (Zeitspanne welche mehrmals Mitternacht beinhaltet wird nic
 』t <--- (Unerwartetes Zeichen: "』" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 
 
 "Incorrect syntax which should throw an error" for "』testing"; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-』t <--- (Unerwartetes Zeichen: "』" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 』testing"; 00:23-00:42 unknown "warning at <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); 』testing"; 00:23-00:42 unknown "warning at correct <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); 』testing"; 00:23-00:42 unknown "warning at correct position <--- (Bitte benutze die englische Abkürzung "We" für "on".); 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
+』t <--- (Unerwartetes Zeichen: "』" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
 
 "Incorrect syntax which should throw an error" for ""testing«; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-"testing«; 00:23-00:42 unknown "wa <--- (Unerwartetes Zeichen: "w" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) "testing«; 00:23-00:42 unknown "warning at <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); "testing«; 00:23-00:42 unknown "warning at correct <--- (Bitte benutze die englische Abkürzung "Tu" für "t".); "testing«; 00:23-00:42 unknown "warning at correct position <--- (Bitte benutze die englische Abkürzung "We" für "on".); "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
+"testing«; 00:23-00:42 unknown "wa <--- (Unerwartetes Zeichen: "w" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Bitte verwende eine FIXME Notiz.)
 
 "Incorrect syntax which should throw an error" for " || open; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
  || <--- (Die Regel vor der Fallback-Regel enthält nichts nützliches)
@@ -2768,7 +2773,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1081/1081 tests passed. 0 did not pass.
+1083/1083 tests passed. 0 did not pass.
 40 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

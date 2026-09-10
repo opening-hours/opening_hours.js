@@ -386,6 +386,11 @@ With [34m[1mwarnings[22m[39m:
 "Variable times which moves over fix end time" for "sunrise-05:59": [33m[1mIGNORED[22m[39m, reason: not implemented yet
 "Regression: sunrise-sunset interval vanishes for a location far from the process time zone (#377)" for "Mo-Su sunrise-sunset": [32m[1mPASSED[22m[39m
 "Regression: sunrise-sunset interval vanishes for a location far from the process time zone (#377)" for "Mo-Su sunrise-sunset": [32m[1mPASSED[22m[39m
+"Regression: French weekday abbreviations in ranges (#669)" for "We-Su 10:00-12:00": [32m[1mPASSED[22m[39m
+"Regression: French weekday abbreviations in ranges (#669)" for "Me-Di 10:00-12:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*Me <--- (Veuillez utiliser l'abréviation anglaise "We" pour "me".)
+	*Me-Di <--- (Veuillez utiliser l'abréviation anglaise "Su" pour "di". Notez que "di" peut aussi signifier Tu (de, nl) dans d'autres langues.)
 "Variable times spanning midnight" for "sunset-sunrise": [32m[1mPASSED[22m[39m
 "Variable times spanning midnight" for "Mo-Su sunset-sunrise": [32m[1mPASSED[22m[39m
 "Variable times spanning midnight" for "sunset-sunrise": [32m[1mPASSED[22m[39m
@@ -1450,8 +1455,8 @@ With [34m[1mwarnings[22m[39m:
 	*Mo – Fr: 9 – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
 	*Mo – Fr: 9 – 12 Uhr <--- (Please omit "uhr".)
 	*Mo – Fr: 9 – 12 Uhr und <--- (Please use notation "," for "und".)
-	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Please use the English abbreviation "Tu" for "di".)
-	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Please use the English abbreviation "Th" for "do".)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Please use the English abbreviation "Tu" for "di". Note that "di" can also mean Su (fr, ht) in other languages.)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Please use the English abbreviation "Th" for "do". Note that "do" can also mean Su (es, ga) in other languages.)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr <--- (Please omit "uhr".)
 	*Mo – Fr: 9 – 12 Uhr  <--- (Time range without minutes specified. Not very explicit! Please use this syntax instead "09:00-12:00".)
@@ -1466,7 +1471,7 @@ With [34m[1mwarnings[22m[39m:
 "Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo: geschlossen <--- (Please use "off" for "geschlossen". Example: "Mo-Fr 08:00-12:00; Tu off".)
-	*Mo: geschlossen, Di <--- (Please use the English abbreviation "Tu" for "di".)
+	*Mo: geschlossen, Di <--- (Please use the English abbreviation "Tu" for "di". Note that "di" can also mean Su (fr, ht) in other languages.)
 	*Mo: geschlossen, Di: 14-18Uhr <--- (Please omit "uhr".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi <--- (Please use the English abbreviation "We" for "mi".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr <--- (Please omit "uhr".)
@@ -1887,7 +1892,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mo:  <--- (You have used the optional symbol <separator_for_readability> in the wrong place. Please check the syntax specification to see where it could be used or remove it.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo-Do 8:30-20:00 Fr 8:29-18:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
-	*Mo-Do <--- (Please use the English abbreviation "Th" for "do".)
+	*Mo-Do <--- (Please use the English abbreviation "Th" for "do". Note that "do" can also mean Su (es, ga) in other languages.)
 	*Mo-Do 8:30-20:00 Fr  <--- (You have used 2 not connected weekdays in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
 	*Mo-Do 8:30-20:00 Fr 8:29-18:00 <--- (You have used 2 not connected time ranges in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo 12:00-14:00 16:00-18:00 20:00-22:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
@@ -1895,7 +1900,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mo 12:00-14:00 16:00-18:00 20:00-22:00 <--- (You have used 3 not connected time ranges in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo-So 08:00-22:00; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
-	*Mo-So <--- (Please use the English abbreviation "Su" for "so". Note that "so" can also mean Sa (cs, sk) in other languages.)
+	*Mo-So <--- (Please use the English abbreviation "Su" for "so". Note that "so" can also mean Sa (cs, sk); Mo (hi) in other languages.)
 "Value not ideal (probably wrong). Should throw a warning." for "Mo Tu Fr; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo Tu Fr <--- (You have used 3 not connected weekdays in one rule. This is probably an error. Equal selector types can (and should) always be written in conjunction separated by comma. Example for time ranges "12:00-13:00,15:00-18:00". Example for weekdays "Mo-We,Fr". Rules can be separated by ";".)
@@ -2179,10 +2184,10 @@ Mo-Fr 17:00-12:00; Sa-Su 24:00 <--- (Time range starts outside of the current da
  <--- (Token "listopad" is ambiguous across languages (Nov (cs), Oct (hr), Nov (pl)). Use a canonical abbreviation (Jan, Feb, Mar, … Dec) or set the intended locale.)
 
 "#588: locale-mismatched weekday token rejected (Mo-Tr)" for "Mo-Tr 17:00-20:00": [32m[1mPASSED[22m[39m
-Mo- <--- (Token "tr" is not valid for locale "en"; it only matches We (lt). Use a canonical abbreviation (Mo, Tu, We, Th, Fr, Sa, Su) or set the intended locale.)
+Mo- <--- (Token "tr" is not valid for locale "en"; it only matches We (lt), We (lv). Use a canonical abbreviation (Mo, Tu, We, Th, Fr, Sa, Su) or set the intended locale.)
 
 "Incorrect syntax which should throw an error" for "sdasdlasdj a3reaw": [32m[1mPASSED[22m[39m
-sd <--- (Unexpected token: "s" This means that the syntax is not valid at that point or it is currently not supported.) sdasdlasdj <--- (Please use the English abbreviation "Th" for "dj".); sdasdlasdj a <--- (Please use notation "-" for "a".); sdasdlasdj a3reaw <--- (Assuming "We" for "w".)
+sd <--- (Unexpected token: "s" This means that the syntax is not valid at that point or it is currently not supported.) sdasdlasdj a <--- (Please use notation "-" for "a".); sdasdlasdj a3reaw <--- (Assuming "We" for "w".)
 
 "Incorrect syntax which should throw an error" for "": [32m[1mPASSED[22m[39m
 The value contains nothing meaningful which can be parsed.
@@ -2461,10 +2466,10 @@ Tu 23:59-48:00+ <--- (Time spanning more than two midnights not supported)
 』t <--- (Unexpected token: "』" This means that the syntax is not valid at that point or it is currently not supported.) 
 
 "Incorrect syntax which should throw an error" for "』testing"; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-』t <--- (Unexpected token: "』" This means that the syntax is not valid at that point or it is currently not supported.) 』testing"; 00:23-00:42 unknown "warning at <--- (Please use the English abbreviation "Tu" for "t".); 』testing"; 00:23-00:42 unknown "warning at correct <--- (Please use the English abbreviation "Tu" for "t".); 』testing"; 00:23-00:42 unknown "warning at correct position <--- (Please use the English abbreviation "We" for "on".); 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
+』t <--- (Unexpected token: "』" This means that the syntax is not valid at that point or it is currently not supported.) 』testing"; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
 
 "Incorrect syntax which should throw an error" for ""testing«; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
-"testing«; 00:23-00:42 unknown "wa <--- (Unexpected token: "w" This means that the syntax is not valid at that point or it is currently not supported.) "testing«; 00:23-00:42 unknown "warning at <--- (Please use the English abbreviation "Tu" for "t".); "testing«; 00:23-00:42 unknown "warning at correct <--- (Please use the English abbreviation "Tu" for "t".); "testing«; 00:23-00:42 unknown "warning at correct position <--- (Please use the English abbreviation "We" for "on".); "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
+"testing«; 00:23-00:42 unknown "wa <--- (Unexpected token: "w" This means that the syntax is not valid at that point or it is currently not supported.) "testing«; 00:23-00:42 unknown "warning at correct position? <--- (Please consider adding a FIXME tag instead.)
 
 "Incorrect syntax which should throw an error" for " || open; 00:23-00:42 unknown "warning at correct position?"": [32m[1mPASSED[22m[39m
  || <--- (Rule before fallback rule does not contain anything useful)
@@ -2758,7 +2763,7 @@ The optional_conf_parm["tag_key"] is missing, required by optional_conf_parm["ma
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1071/1071 tests passed. 0 did not pass.
+1073/1073 tests passed. 0 did not pass.
 40 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet
