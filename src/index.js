@@ -1542,30 +1542,38 @@ export default function(value, nominatim_object, optional_conf_parm) {
         }
 
         user_conf = normalizePrettifyConf(user_conf, default_prettify_conf);
-        let day_before_month = false;
-        let day_month_sep = ' ';
         const locale = /** @type {string} */ (user_conf['locale']);
         const date_format = /** @type {'short' | 'long'} */ (user_conf['date_format']);
         const uses_locale_aware_order = locale !== 'en' && locale !== 'all';
+        let day_before_month    = false;
+        let day_month_sep       = ' ';
+        let weekday_before_date = false;
+        let weekday_date_sep    = ' ';
         if (uses_locale_aware_order) {
             try {
-                const dmParts = new Intl.DateTimeFormat(locale, {
-                    day: 'numeric',
-                    month: date_format,
-                    calendar: 'gregory',
-                }).formatToParts(INTL_DAY_MONTH_REF_DATE);
-                const dayIdx = dmParts.findIndex(part => part.type === 'day');
-                const monthIdx = dmParts.findIndex(part => part.type === 'month');
+                const localeParts = new Intl.DateTimeFormat(locale, { weekday: 'short', day: 'numeric', month: date_format, calendar: 'gregory' })
+                    .formatToParts(INTL_DAY_MONTH_REF_DATE);
+                const wdIdx    = localeParts.findIndex(p => p.type === 'weekday');
+                const dayIdx   = localeParts.findIndex(p => p.type === 'day');
+                const monthIdx = localeParts.findIndex(p => p.type === 'month');
                 if (dayIdx !== -1 && monthIdx !== -1) {
                     day_before_month = dayIdx < monthIdx;
-                    day_month_sep = dmParts
+                    day_month_sep    = localeParts
                         .slice(Math.min(dayIdx, monthIdx) + 1, Math.max(dayIdx, monthIdx))
-                        .map(part => part.value).join('');
+                        .map(p => p.value).join('');
+                }
+                if (wdIdx !== -1 && dayIdx !== -1) {
+                    weekday_before_date = wdIdx < dayIdx;
+                    weekday_date_sep    = localeParts
+                        .slice(Math.min(wdIdx, dayIdx) + 1, Math.max(wdIdx, dayIdx))
+                        .map(p => p.value).join('').replace(/,/g, '').trim() || ' ';
                 }
             } catch { /* Keep fallback order if locale is unsupported in runtime. */ }
         }
-        user_conf['day_before_month'] = day_before_month;
-        user_conf['day_month_sep']    = day_month_sep;
+        user_conf['day_before_month']    = day_before_month;
+        user_conf['day_month_sep']       = day_month_sep;
+        user_conf['weekday_before_date'] = weekday_before_date;
+        user_conf['weekday_date_sep']    = weekday_date_sep;
 
         for (let nrule = 0; nrule < new_tokens.length; nrule++) {
             const rule_entry = new_tokens[nrule];
@@ -1619,24 +1627,46 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
             const old_prettified_value_length = prettified_value.length;
 
-            prettified_value += prettified_group_value.map(function (array) {
-                return array[1];
-            }).join(' ');
+            // Snapshot before the locale swap so the ordering-warning check below compares
+            // against the canonical sorted order, not the locale-swapped one.
+            const sorted_prettified_group_value = prettified_group_value.slice();
+
+            // Reorder at join time (not in prettifySelector) because the swap is only meaningful
+            // when both a month and a weekday selector are present in the same group.
+            if (user_conf['weekday_before_date']) {
+                for (let i = 0; i < prettified_group_value.length - 1; i++) {
+                    if (prettified_group_value[i][0][2] === 'month' && prettified_group_value[i+1][0][2] === 'weekday') {
+                        const tmp = prettified_group_value[i];
+                        prettified_group_value[i] = prettified_group_value[i+1];
+                        prettified_group_value[i+1] = tmp;
+                    }
+                }
+            }
+
+            prettified_value += prettified_group_value.reduce(function (acc, entry, i) {
+                if (i === 0) return entry[1];
+                const sep = (user_conf['weekday_before_date']
+                    && prettified_group_value[i-1][0][2] === 'weekday'
+                    && entry[0][2] === 'month')
+                    ? user_conf['weekday_date_sep']
+                    : ' ';
+                return acc + sep + entry[1];
+            }, '');
 
             prettified_value_array.push( prettified_group_value );
 
             if (!done_with_selector_reordering_warnings) {
                 for (let i = 0, l = not_sorted_prettified_group_value.length; i < l; i++) {
-                    if (not_sorted_prettified_group_value[i] !== prettified_group_value[i]) {
-                        // console.log(i + ': ' + prettified_group_value[i][0][2]);
+                    if (not_sorted_prettified_group_value[i] !== sorted_prettified_group_value[i]) {
+                        // console.log(i + ': ' + sorted_prettified_group_value[i][0][2]);
                         let length = i + old_prettified_value_length; // i: Number of spaces in string.
                         for (let x = 0; x <= i; x++) {
-                            length += prettified_group_value[x][1].length;
-                            // console.log('Length: ' + length + ' ' + prettified_group_value[x][1]);
+                            length += sorted_prettified_group_value[x][1].length;
+                            // console.log('Length: ' + length + ' ' + sorted_prettified_group_value[x][1]);
                         }
                         // console.log(length);
                         parsing_warnings.push([ prettified_value, length, 'switched', t('switched', {
-                            'first': prettified_group_value[i][0][2],
+                            'first': sorted_prettified_group_value[i][0][2],
                             'second': not_sorted_prettified_group_value[i][0][2]
                         })
                         ]);
