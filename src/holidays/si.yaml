@@ -5,21 +5,21 @@
 # @attrib https://www.gov.si/teme/drzavni-prazniki-in-dela-prosti-dnevi/
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/SI.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.0569&lon=14.5058&zoom=18&addressdetails=1&accept-language=sl,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.0569&lon=14.5058&zoom=18&addressdetails=1&accept-language=sl,en"
 
 PH:
-  - {'name': 'novo leto', 'fixed_date': [1, 1]}
-  - {'name': 'novo leto', 'fixed_date': [1, 2]}
-  - {'name': 'Prešernov dan, slovenski kulturni praznik', 'fixed_date': [2, 8]}
-  - {'name': 'velikonočna nedelja', 'variable_date': easter}
-  - {'name': 'velikonočni ponedeljek', 'variable_date': easter, 'offset': 1}
-  - {'name': 'dan upora proti okupatorju', 'fixed_date': [4, 27]}
-  - {'name': 'praznik dela 1', 'fixed_date': [5, 1]}
-  - {'name': 'praznik dela 2', 'fixed_date': [5, 2]}
-  - {'name': 'binkoštna nedelja - binkošti', 'variable_date': easter, 'offset': 49}
-  - {'name': 'dan državnosti', 'fixed_date': [6, 25]}
-  - {'name': 'Marijino vnebovzetje', 'fixed_date': [8, 15]}
-  - {'name': 'dan reformacije', 'fixed_date': [10, 31]}
-  - {'name': 'dan spomina na mrtve', 'fixed_date': [11, 1]}
-  - {'name': 'božič', 'fixed_date': [12, 25]}
-  - {'name': 'dan samostojnosti in enotnosti', 'fixed_date': [12, 26]}
+  - {name: novo leto, fixed_date: [1, 1]}
+  - {name: novo leto, fixed_date: [1, 2]}
+  - {name: "Prešernov dan, slovenski kulturni praznik", fixed_date: [2, 8]}
+  - {name: velikonočna nedelja, variable_date: easter}
+  - {name: velikonočni ponedeljek, variable_date: easter, offset: 1}
+  - {name: dan upora proti okupatorju, fixed_date: [4, 27]}
+  - {name: praznik dela 1, fixed_date: [5, 1]}
+  - {name: praznik dela 2, fixed_date: [5, 2]}
+  - {name: binkoštna nedelja - binkošti, variable_date: easter, offset: 49}
+  - {name: dan državnosti, fixed_date: [6, 25]}
+  - {name: Marijino vnebovzetje, fixed_date: [8, 15]}
+  - {name: dan reformacije, fixed_date: [10, 31]}
+  - {name: dan spomina na mrtve, fixed_date: [11, 1]}
+  - {name: božič, fixed_date: [12, 25]}
+  - {name: dan samostojnosti in enotnosti, fixed_date: [12, 26]}

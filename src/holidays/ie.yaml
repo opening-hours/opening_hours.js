@@ -6,16 +6,16 @@
 # @attrib https://en.wikipedia.org/wiki/Public_holidays_in_the_Republic_of_Ireland
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/IE.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=53.1424&lon=-7.6921&zoom=18&addressdetails=1&accept-language=ga,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=53.1424&lon=-7.6921&zoom=18&addressdetails=1&accept-language=ga,en"
 
 PH:
-  - {'name': 'New Year’s Day', 'fixed_date': [1, 1]}
-  - {'name': 'St. Brigid’s Day', 'fixed_date': [2, 1], 'shift_rule': 'if tuesday,wednesday,thursday,saturday,sunday then next monday'}
-  - {'name': 'St. Patrick’s Day', 'fixed_date': [3, 17]}
-  - {'name': 'Easter Monday', 'variable_date': easter, 'offset': 1}
-  - {'name': 'First Monday in May', 'variable_date': firstMayMonday}
-  - {'name': 'First Monday in June', 'variable_date': firstJuneMonday}
-  - {'name': 'First Monday in August', 'variable_date': firstAugustMonday}
-  - {'name': 'Last Monday in October', 'variable_date': lastOctoberMonday}
-  - {'name': 'Christmas Day', 'fixed_date': [12, 25]}
-  - {'name': 'St. Stephen’s Day', 'fixed_date': [12, 26]}
+  - {name: New Year’s Day, fixed_date: [1, 1]}
+  - {name: St. Brigid’s Day, fixed_date: [2, 1], shift_rule: "if tuesday,wednesday,thursday,saturday,sunday then next monday"}
+  - {name: St. Patrick’s Day, fixed_date: [3, 17]}
+  - {name: Easter Monday, variable_date: easter, offset: 1}
+  - {name: First Monday in May, variable_date: firstMayMonday}
+  - {name: First Monday in June, variable_date: firstJuneMonday}
+  - {name: First Monday in August, variable_date: firstAugustMonday}
+  - {name: Last Monday in October, variable_date: lastOctoberMonday}
+  - {name: Christmas Day, fixed_date: [12, 25]}
+  - {name: St. Stephen’s Day, fixed_date: [12, 26]}

@@ -5,23 +5,23 @@
 # @attrib https://ro.wikipedia.org/wiki/S%C4%83rb%C4%83tori_publice_%C3%AEn_Rom%C3%A2nia#Zile_oficiale_de_s.C4.83rb.C4.83toare_.C3.AEn_care_nu_se_lucreaz.C4.83
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/RO.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=45.9852129&lon=24.6859225&zoom=18&addressdetails=1&accept-language=ro,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=45.9852129&lon=24.6859225&zoom=18&addressdetails=1&accept-language=ro,en"
 
 PH:
-  - {'name': 'Anul nou', 'fixed_date': [1, 1]}
-  - {'name': 'Anul nou', 'fixed_date': [1, 2]}
-  - {'name': 'Bobotează', 'fixed_date': [1, 6]}
-  - {'name': 'Sfântul Ioan Botezătorul', 'fixed_date': [1, 7]}
-  - {'name': 'Ziua Unirii Principatelor Române', 'fixed_date': [1, 24]}
-  - {'name': 'Vinerea Mare', 'variable_date': orthodox easter, 'offset': -2}
-  - {'name': 'Paștele', 'variable_date': orthodox easter}
-  - {'name': 'A doua zi de Paști', 'variable_date': orthodox easter, 'offset': 1}
-  - {'name': 'Rusaliile', 'variable_date': orthodox easter, 'offset': 49}
-  - {'name': 'A doua zi de Rusalii', 'variable_date': orthodox easter, 'offset': 50}
-  - {'name': 'Ziua muncii', 'fixed_date': [5, 1]}
-  - {'name': 'Ziua Copilului', 'fixed_date': [6, 1]}
-  - {'name': 'Adormirea Maicii Domnului', 'fixed_date': [8, 15]}
-  - {'name': 'Sfântul Andrei', 'fixed_date': [11, 30]}
-  - {'name': 'Ziua națională, Ziua Marii Uniri', 'fixed_date': [12, 1]}
-  - {'name': 'Crăciunul', 'fixed_date': [12, 25]}
-  - {'name': 'A doua zi de Crăciun', 'fixed_date': [12, 26]}
+  - {name: Anul nou, fixed_date: [1, 1]}
+  - {name: Anul nou, fixed_date: [1, 2]}
+  - {name: Bobotează, fixed_date: [1, 6]}
+  - {name: Sfântul Ioan Botezătorul, fixed_date: [1, 7]}
+  - {name: Ziua Unirii Principatelor Române, fixed_date: [1, 24]}
+  - {name: Vinerea Mare, variable_date: orthodox easter, offset: -2}
+  - {name: Paștele, variable_date: orthodox easter}
+  - {name: A doua zi de Paști, variable_date: orthodox easter, offset: 1}
+  - {name: Rusaliile, variable_date: orthodox easter, offset: 49}
+  - {name: A doua zi de Rusalii, variable_date: orthodox easter, offset: 50}
+  - {name: Ziua muncii, fixed_date: [5, 1]}
+  - {name: Ziua Copilului, fixed_date: [6, 1]}
+  - {name: Adormirea Maicii Domnului, fixed_date: [8, 15]}
+  - {name: Sfântul Andrei, fixed_date: [11, 30]}
+  - {name: "Ziua națională, Ziua Marii Uniri", fixed_date: [12, 1]}
+  - {name: Crăciunul, fixed_date: [12, 25]}
+  - {name: A doua zi de Crăciun, fixed_date: [12, 26]}

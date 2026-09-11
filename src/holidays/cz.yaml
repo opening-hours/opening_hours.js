@@ -5,19 +5,19 @@
 # @attrib https://en.wikipedia.org/wiki/Public_holidays_in_the_Czech_Republic
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/CZ.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=50.0874401&lon=14.4212556&zoom=18&addressdetails=1&accept-language=cs,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=50.0874401&lon=14.4212556&zoom=18&addressdetails=1&accept-language=cs,en"
 
 PH:
-  - {'name': 'Nový rok a Den obnovy samostatného českého státu', 'fixed_date': [1, 1]}
-  - {'name': 'Velký pátek', 'variable_date': easter, 'offset': -2}
-  - {'name': 'Velikonoční pondělí', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Svátek práce', 'fixed_date': [5, 1]}
-  - {'name': 'Den vítězství', 'fixed_date': [5, 8]}
-  - {'name': 'Den slovanských věrozvěstů Cyrila a Metoděje', 'fixed_date': [7, 5]}
-  - {'name': 'Den upálení mistra Jana Husa', 'fixed_date': [7, 6]}
-  - {'name': 'Den české státnosti', 'fixed_date': [9, 28]}
-  - {'name': 'Den vzniku samostatného československého státu', 'fixed_date': [10, 28]}
-  - {'name': 'Den boje za svobodu a demokracii', 'fixed_date': [11, 17]}
-  - {'name': 'Štědrý den', 'fixed_date': [12, 24]}
-  - {'name': '1. svátek vánoční', 'fixed_date': [12, 25]}
-  - {'name': '2. svátek vánoční', 'fixed_date': [12, 26]}
+  - {name: Nový rok a Den obnovy samostatného českého státu, fixed_date: [1, 1]}
+  - {name: Velký pátek, variable_date: easter, offset: -2}
+  - {name: Velikonoční pondělí, variable_date: easter, offset: 1}
+  - {name: Svátek práce, fixed_date: [5, 1]}
+  - {name: Den vítězství, fixed_date: [5, 8]}
+  - {name: Den slovanských věrozvěstů Cyrila a Metoděje, fixed_date: [7, 5]}
+  - {name: Den upálení mistra Jana Husa, fixed_date: [7, 6]}
+  - {name: Den české státnosti, fixed_date: [9, 28]}
+  - {name: Den vzniku samostatného československého státu, fixed_date: [10, 28]}
+  - {name: Den boje za svobodu a demokracii, fixed_date: [11, 17]}
+  - {name: Štědrý den, fixed_date: [12, 24]}
+  - {name: 1. svátek vánoční, fixed_date: [12, 25]}
+  - {name: 2. svátek vánoční, fixed_date: [12, 26]}

@@ -7,9 +7,14 @@ import jsdoc from 'eslint-plugin-jsdoc';
 import markdown from '@eslint/markdown'
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
+import yml from 'eslint-plugin-yml'
 
 export default defineConfig([
-  globalIgnores(['build/*', 'submodules/*', '**/yohours_model.js', 'src/holidays/generated-openholidays.js']),
+  globalIgnores(['build/*', 'submodules/*', '**/yohours_model.js', 'src/holidays/generated-openholidays.js', 'src/holidays/nominatim_cache/**']),
+  {
+    files: ['**/*.yaml', '**/*.yml'],
+    extends: [yml.configs.standard],
+  },
   {
     files: ['**/*.js', '**/*.mjs'],
     extends: [js.configs.recommended, jsdoc.configs['flat/recommended'],],

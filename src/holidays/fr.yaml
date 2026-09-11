@@ -4,74 +4,74 @@
 
 # @attrib https://fr.wikipedia.org/wiki/F%C3%AAtes_et_jours_f%C3%A9ri%C3%A9s_en_France
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=46.60333&lon=1.88920&zoom=18&addressdetails=1&accept-language=fr,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.60333&lon=1.88920&zoom=18&addressdetails=1&accept-language=fr,en"
 
 PH:
-  - {'name': 'Jour de l''an', 'fixed_date': [1, 1]}
-  - {'name': 'Vendredi saint', 'variable_date': easter, 'offset': -2, 'only_states': [Moselle, Bas-Rhin, Haut-Rhin, Guadeloupe, Martinique, 'Polynésie française']}
-  - {'name': 'Lundi de Pâques', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Abolition de l''esclavage (Mayotte)', 'fixed_date': [4, 27], 'only_states': [Mayotte]}
-  - {'name': 'Saint-Pierre-Chanel', 'fixed_date': [4, 28], 'only_states': [Wallis-et-Futuna]}
-  - {'name': 'Fête du Travail', 'fixed_date': [5, 1]}
-  - {'name': 'Fête de la Victoire', 'fixed_date': [5, 8]}
-  - {'name': 'Abolition de l''esclavage (Martinique)', 'fixed_date': [5, 22], 'only_states': [Martinique]}
-  - {'name': 'Abolition de l''esclavage (Guadeloupe)', 'fixed_date': [5, 27], 'only_states': [Guadeloupe]}
-  - {'name': 'Abolition de l''esclavage (Saint-Martin)', 'fixed_date': [5, 28], 'only_states': [Saint-Martin (France)]}
-  - {'name': 'Jeudi de l''Ascension', 'variable_date': easter, 'offset': 39}
-  - {'name': 'Lundi de Pentecôte', 'variable_date': easter, 'offset': 50}
-  - {'name': 'Abolition de l''esclavage (Guyane)', 'fixed_date': [6, 10], 'only_states': [Guyane]}
-  - {'name': 'Fête de l''autonomie', 'fixed_date': [6, 29], 'only_states': ['Polynésie française']}
-  - {'name': 'Fête nationale', 'fixed_date': [7, 14]}
-  - {'name': 'Fête Victor Schoelcher', 'fixed_date': [7, 21], 'only_states': [Guadeloupe, Martinique]}
-  - {'name': 'Fête du Territoire', 'fixed_date': [7, 29], 'only_states': [Wallis-et-Futuna]}
-  - {'name': 'Assomption', 'fixed_date': [8, 15]}
-  - {'name': 'Fête de la citoyenneté', 'fixed_date': [9, 24], 'only_states': [Nouvelle-Calédonie]}
-  - {'name': 'Abolition de l''esclavage (Saint-Barthélemy)', 'fixed_date': [10, 9], 'only_states': [Saint-Barthélemy]}
-  - {'name': 'Toussaint', 'fixed_date': [11, 1]}
-  - {'name': 'Armistice', 'fixed_date': [11, 11]}
-  - {'name': 'Abolition de l''esclavage (Réunion)', 'fixed_date': [12, 20], 'only_states': [Réunion]}
-  - {'name': 'Noël', 'fixed_date': [12, 25]}
-  - {'name': 'Saint-Étienne ', 'fixed_date': [12, 26], 'only_states': [Moselle, Bas-Rhin, Haut-Rhin]}
+  - {name: "Jour de l'an", fixed_date: [1, 1]}
+  - {name: Vendredi saint, variable_date: easter, offset: -2, only_states: [Moselle, Bas-Rhin, Haut-Rhin, Guadeloupe, Martinique, Polynésie française]}
+  - {name: Lundi de Pâques, variable_date: easter, offset: 1}
+  - {name: "Abolition de l'esclavage (Mayotte)", fixed_date: [4, 27], only_states: [Mayotte]}
+  - {name: Saint-Pierre-Chanel, fixed_date: [4, 28], only_states: [Wallis-et-Futuna]}
+  - {name: Fête du Travail, fixed_date: [5, 1]}
+  - {name: Fête de la Victoire, fixed_date: [5, 8]}
+  - {name: "Abolition de l'esclavage (Martinique)", fixed_date: [5, 22], only_states: [Martinique]}
+  - {name: "Abolition de l'esclavage (Guadeloupe)", fixed_date: [5, 27], only_states: [Guadeloupe]}
+  - {name: "Abolition de l'esclavage (Saint-Martin)", fixed_date: [5, 28], only_states: [Saint-Martin (France)]}
+  - {name: "Jeudi de l'Ascension", variable_date: easter, offset: 39}
+  - {name: Lundi de Pentecôte, variable_date: easter, offset: 50}
+  - {name: "Abolition de l'esclavage (Guyane)", fixed_date: [6, 10], only_states: [Guyane]}
+  - {name: "Fête de l'autonomie", fixed_date: [6, 29], only_states: [Polynésie française]}
+  - {name: Fête nationale, fixed_date: [7, 14]}
+  - {name: Fête Victor Schoelcher, fixed_date: [7, 21], only_states: [Guadeloupe, Martinique]}
+  - {name: Fête du Territoire, fixed_date: [7, 29], only_states: [Wallis-et-Futuna]}
+  - {name: Assomption, fixed_date: [8, 15]}
+  - {name: Fête de la citoyenneté, fixed_date: [9, 24], only_states: [Nouvelle-Calédonie]}
+  - {name: "Abolition de l'esclavage (Saint-Barthélemy)", fixed_date: [10, 9], only_states: [Saint-Barthélemy]}
+  - {name: Toussaint, fixed_date: [11, 1]}
+  - {name: Armistice, fixed_date: [11, 11]}
+  - {name: "Abolition de l'esclavage (Réunion)", fixed_date: [12, 20], only_states: [Réunion]}
+  - {name: Noël, fixed_date: [12, 25]}
+  - {name: "Saint-Étienne ", fixed_date: [12, 26], only_states: [Moselle, Bas-Rhin, Haut-Rhin]}
 Grand Est:
-  _state_code: 'ge'
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Grand+Est&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _state_code: ge
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Grand+Est&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Guadeloupe:
   _state_code: gp
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Guadeloupe&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Guadeloupe&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Guyane:
   _state_code: gf
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Guyane&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Guyane&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 La Réunion:
   _state_code: re
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=La+R%C3%A9union&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=La+R%C3%A9union&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Martinique:
   _state_code: mq
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Martinique&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Martinique&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Mayotte:
   _state_code: yt
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Mayotte&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Mayotte&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Nouvelle-Calédonie:
   _state_code: nc
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Nouvelle-Cal%C3%A9donie&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Nouvelle-Cal%C3%A9donie&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Polynésie française:
   _state_code: pf
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Polyn%C3%A9sie+fran%C3%A7aise&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Polyn%C3%A9sie+fran%C3%A7aise&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Saint-Barthélemy:
   _state_code: bl
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Saint-Barth%C3%A9lemy&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Saint-Barth%C3%A9lemy&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Saint-Martin:
   _state_code: mf
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Saint-Martin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Saint-Martin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Wallis-et-Futuna:
   _state_code: wf
-  _nominatim_url: 'https://nominatim.openstreetmap.org/search?format=json&country=France&state=Wallis-et-Futuna&zoom=18&addressdetails=1&limit=1&accept-language=fr,en'
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Wallis-et-Futuna&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"

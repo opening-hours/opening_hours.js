@@ -7,22 +7,22 @@
 # @attrib https://ja.wikipedia.org/wiki/%E5%9B%BD%E6%B0%91%E3%81%AE%E7%A5%9D%E6%97%A5
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/JP.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=35.39291572&lon=139.44288869&zoom=18&addressdetails=1&accept-language=ja,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=35.39291572&lon=139.44288869&zoom=18&addressdetails=1&accept-language=ja,en"
 
 PH:
-  - {'name': '元日', 'fixed_date': [1, 1], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '成人の日', 'variable_date': firstJanuaryMonday, 'offset': 7}
-  - {'name': '建国記念の日', 'fixed_date': [2, 11], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '天皇誕生日', 'fixed_date': [2, 23], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '昭和の日', 'fixed_date': [4, 29], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '憲法記念日', 'fixed_date': [5, 3], 'substitute_rule': 'if sunday then next wednesday'}
-  - {'name': 'みどりの日', 'fixed_date': [5, 4], 'substitute_rule': 'if sunday then next tuesday'}
-  - {'name': 'こどもの日', 'fixed_date': [5, 5], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '海の日', 'variable_date': firstJulyMonday, 'offset': 14}
-  - {'name': '山の日', 'fixed_date': [8, 11], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '敬老の日', 'variable_date': firstSeptemberMonday, 'offset': 14}
-  - {'name': 'スポーツの日', 'variable_date': firstOctoberMonday, 'offset': 7}
-  - {'name': '文化の日', 'fixed_date': [11, 3], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '勤労感謝の日', 'fixed_date': [11, 23], 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '春分の日', 'variable_date': springEquinox, 'substitute_rule': 'if sunday then next monday'}
-  - {'name': '秋分の日', 'variable_date': autumnalEquinox, 'substitute_rule': 'if sunday then next monday'}
+  - {name: 元日, fixed_date: [1, 1], substitute_rule: if sunday then next monday}
+  - {name: 成人の日, variable_date: firstJanuaryMonday, offset: 7}
+  - {name: 建国記念の日, fixed_date: [2, 11], substitute_rule: if sunday then next monday}
+  - {name: 天皇誕生日, fixed_date: [2, 23], substitute_rule: if sunday then next monday}
+  - {name: 昭和の日, fixed_date: [4, 29], substitute_rule: if sunday then next monday}
+  - {name: 憲法記念日, fixed_date: [5, 3], substitute_rule: if sunday then next wednesday}
+  - {name: みどりの日, fixed_date: [5, 4], substitute_rule: if sunday then next tuesday}
+  - {name: こどもの日, fixed_date: [5, 5], substitute_rule: if sunday then next monday}
+  - {name: 海の日, variable_date: firstJulyMonday, offset: 14}
+  - {name: 山の日, fixed_date: [8, 11], substitute_rule: if sunday then next monday}
+  - {name: 敬老の日, variable_date: firstSeptemberMonday, offset: 14}
+  - {name: スポーツの日, variable_date: firstOctoberMonday, offset: 7}
+  - {name: 文化の日, fixed_date: [11, 3], substitute_rule: if sunday then next monday}
+  - {name: 勤労感謝の日, fixed_date: [11, 23], substitute_rule: if sunday then next monday}
+  - {name: 春分の日, variable_date: springEquinox, substitute_rule: if sunday then next monday}
+  - {name: 秋分の日, variable_date: autumnalEquinox, substitute_rule: if sunday then next monday}

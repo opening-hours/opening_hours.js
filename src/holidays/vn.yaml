@@ -1,20 +1,20 @@
 # SPDX-FileCopyrightText: © opening_hours.js contributors
 # SPDX-License-Identifier: ODbL-1.0
 ---
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=10.77374&lon=106.70094&zoom=16&addressdetails=1&accept-language=en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=10.77374&lon=106.70094&zoom=16&addressdetails=1&accept-language=en"
 
 # https://vi.wikipedia.org/wiki/C%C3%A1c_ng%C3%A0y_l%E1%BB%85_%E1%BB%9F_Vi%E1%BB%87t_Nam
 
 PH:
-  - {'name': 'Tết Dương Lịch', 'fixed_date': [1, 1]}
-  - {'name': 'Ngày Quốc tế Phụ nữ', 'fixed_date': [3, 8]}
-  - {'name': 'Ngày thành lập Đoàn Thanh niên Cộng sản Hồ Chí Minh', 'fixed_date': [3, 26]}
-  - {'name': 'Ngày Quốc tế Thiếu nhi', 'fixed_date': [6, 1]}
-  - {'name': 'Ngày Nhà giáo Việt Nam', 'fixed_date': [11, 20]}
-  - {'name': 'Ngày Giải phóng miền Nam, Thống nhất Đất nước', 'fixed_date': [4, 30]}
-  - {'name': 'Ngày Quốc tế lao động', 'fixed_date': [5, 1]}
-  - {'name': 'Quốc Khánh', 'fixed_date': [9, 2]}
-  - {'name': 'Lễ Giáng Sinh', 'fixed_date': [12, 25]}
+  - {name: Tết Dương Lịch, fixed_date: [1, 1]}
+  - {name: Ngày Quốc tế Phụ nữ, fixed_date: [3, 8]}
+  - {name: Ngày thành lập Đoàn Thanh niên Cộng sản Hồ Chí Minh, fixed_date: [3, 26]}
+  - {name: Ngày Quốc tế Thiếu nhi, fixed_date: [6, 1]}
+  - {name: Ngày Nhà giáo Việt Nam, fixed_date: [11, 20]}
+  - {name: "Ngày Giải phóng miền Nam, Thống nhất Đất nước", fixed_date: [4, 30]}
+  - {name: Ngày Quốc tế lao động, fixed_date: [5, 1]}
+  - {name: Quốc Khánh, fixed_date: [9, 2]}
+  - {name: Lễ Giáng Sinh, fixed_date: [12, 25]}
 
 # Vietnam uses lunar year calendar for some of its public holidays,
 # so I'll be using school holidays here to accommodate for these since

@@ -2,21 +2,21 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=63.1151&lon=16.5767&zoom=18&addressdetails=1&accept-language=sv,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=63.1151&lon=16.5767&zoom=18&addressdetails=1&accept-language=sv,en"
 
 # https://www.riksdagen.se/sv/dokument-lagar/dokument/svensk-forfattningssamling/lag-1989253-om-allmanna-helgdagar_sfs-1989-253
 # https://en.wikipedia.org/wiki/Public_holidays_in_Sweden
 PH:
-  - {'name': 'nyårsdagen', 'fixed_date': [1, 1]}
-  - {'name': 'trettondedag jul', 'fixed_date': [1, 6]}
-  - {'name': 'långfredagen', 'variable_date': easter, 'offset': -2}
-  - {'name': 'påskdagen', 'variable_date': easter}
-  - {'name': 'annandag påsk', 'variable_date': easter, 'offset': 1}
-  - {'name': 'första maj', 'fixed_date': [5, 1]}
-  - {'name': 'Kristi himmelsfärdsdag', 'variable_date': easter, 'offset': 39}
-  - {'name': 'pingstdagen', 'variable_date': easter, 'offset': 49}
-  - {'name': 'nationaldagen', 'fixed_date': [6, 6]}
-  - {'name': 'midsommardagen', 'variable_date': nextSaturday20Jun}
-  - {'name': 'alla helgons dag', 'variable_date': nextSaturday31Oct}
-  - {'name': 'juldagen', 'fixed_date': [12, 25]}
-  - {'name': 'annandag jul', 'fixed_date': [12, 26]}
+  - {name: nyårsdagen, fixed_date: [1, 1]}
+  - {name: trettondedag jul, fixed_date: [1, 6]}
+  - {name: långfredagen, variable_date: easter, offset: -2}
+  - {name: påskdagen, variable_date: easter}
+  - {name: annandag påsk, variable_date: easter, offset: 1}
+  - {name: första maj, fixed_date: [5, 1]}
+  - {name: Kristi himmelsfärdsdag, variable_date: easter, offset: 39}
+  - {name: pingstdagen, variable_date: easter, offset: 49}
+  - {name: nationaldagen, fixed_date: [6, 6]}
+  - {name: midsommardagen, variable_date: nextSaturday20Jun}
+  - {name: alla helgons dag, variable_date: nextSaturday31Oct}
+  - {name: juldagen, fixed_date: [12, 25]}
+  - {name: annandag jul, fixed_date: [12, 26]}
