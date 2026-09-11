@@ -91,6 +91,7 @@
     "doctoc": "^2.5.0",
     "eslint": "^10.8.1",
     "eslint-plugin-jsdoc": "^64.0.1",
+    "eslint-plugin-yml": "^3.8.1",
     "glob": "^13.0.6",
     "globals": "^17.9.0",
     "husky": "^9.1.7",

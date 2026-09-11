@@ -87,7 +87,7 @@ src/locale-resolver/layers.json
 check: qa-quick check-fast check-package.json
 
 .PHONY: check-full
-check-full: clean check-all-diff check-package.json check-yaml check-holidays check-holiday-state-codes check-translations
+check-full: clean check-all-diff check-package.json lint check-holidays check-holiday-state-codes check-translations
 
 .PHONY: benchmark
 benchmark: benchmark-opening_hours.min.js
@@ -143,6 +143,10 @@ run-interactive_testing: ./scripts/interactive_testing.js ./build/opening_hours.
 ## }}}
 
 ## source code QA {{{
+.PHONY: lint
+lint:
+	npm run lint
+
 .PHONY: qa-quick
 qa-quick: qa-phrases-to-avoid
 
@@ -226,11 +230,6 @@ check-holidays: scripts/PH_SH_exporter.js
 .PHONY: check-holiday-state-codes
 check-holiday-state-codes: scripts/check_holiday_state_codes.mjs
 	$(NODEJS) scripts/check_holiday_state_codes.mjs
-
-.PHONY: check-yaml
-check-yaml:
-	yamllint --version
-	yamllint --strict .
 
 .PHONY: check-html
 check-html:
