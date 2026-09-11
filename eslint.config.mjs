@@ -4,6 +4,7 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import js from '@eslint/js'
 import jsdoc from 'eslint-plugin-jsdoc';
+import html from '@html-eslint/eslint-plugin'
 import markdown from '@eslint/markdown'
 import stylistic from '@stylistic/eslint-plugin'
 import tseslint from 'typescript-eslint'
@@ -14,6 +15,15 @@ export default defineConfig([
   {
     files: ['**/*.yaml', '**/*.yml'],
     extends: [yml.configs.standard],
+  },
+  {
+      files: ['**/*.html'],
+      plugins: { html },
+      extends: ['html/recommended'],
+      language: 'html/html',
+      rules: {
+        'html/attrs-newline': 'off'
+      },
   },
   {
     files: ['**/*.js', '**/*.mjs'],

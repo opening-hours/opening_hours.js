@@ -8,8 +8,8 @@
         <meta name="viewport" content="width=device-width">
         <title>opening_hours evaluation tool</title>
         <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
-        <link rel="stylesheet" href="css/main.css"/>
-        <link rel="stylesheet" href="css/table.css"/>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/table.css">
         <script defer src="../build/opening_hours+deps.min.js"></script>
         <script defer src="js/theme.js"></script>
         <script type="module" src="js/main.js"></script>
@@ -45,7 +45,7 @@
                             <input id="expression"
                                 name="expression"
                                 value="Mo-Fr 10:00-20:00; PH off"
-                            />
+                            >
                             <button type="button" class="input-btn copy-input-btn" id="copy-expression-btn" data-i18n-title="copy">📋</button>
                             <button type="button" class="input-btn clear-input-btn" id="clear-expression-btn" data-i18n-title="clear">×</button>
                         </div>
@@ -61,7 +61,7 @@
                             <input
                                 id="diff_value"
                                 type="text"
-                            />
+                            >
                             <button type="button" class="input-btn clear-input-btn" id="clear-diff-btn" data-i18n-title="clear">×</button>
                         </div>
                         <div id="compare-result"></div>
@@ -114,91 +114,91 @@
                     </div>
                 </section>
 
-            <section>
-                <button type="button" id="examples-toggle" class="examples-toggle-btn">
-                    <span class="toggle-icon">▼</span>
-                    <h2 id="examples"></h2>
-                </button>
-                <div id="user_examples">
-                <ol>
-                    <li><a href="#check" class="example-link">Mo-Fr 10:00-20:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mo,Tu,Th,Fr 12:00-18:00; Sa,PH 12:00-17:00; Th[3],Th[-1] off</a></li>
-                    <li><a href="#check" class="example-link">00:00-24:00; Tu-Su,PH 08:30-09:00 off; Tu-Su 14:00-14:30 off; Mo 08:00-13:00 off</a></li>
-                    <li><a href="#check" class="example-link">Fr-Sa 18:00-06:00; PH 18:00-06:00 off</a></li>
-                    <li><a href="#check" class="example-link">Mo 10:00-12:00,12:30-15:00</a></li>
-                    <li><a href="#check" class="example-link">Mo 10:00-12:00,12:30-15:00; Tu-Fr 08:00-12:00,12:30-15:00; Sa 08:00-12:00</a></li>
-                    <li><a href="#check" class="example-link">24/7</a></li>
-                    <li><a href="#check" class="example-link">"only after registration"; PH off</a></li>
-                    <li><a href="#check" class="example-link">22:00-23:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">08:00-11:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">open; Mo 15:00-16:00 off; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mo-Su 22:00-23:00; We,PH off</a></li>
-                    <li><a href="#check" class="example-link">We-Fr 10:00-24:00 open "it is open" || "please call"; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mo-Fr 08:00-11:00 || Tu-Th,PH open "Emergency only"</a></li>
-                    <li><a href="#check" class="example-link">Tu-Th,We 22:00-23:00 open "Hot meals"; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mo 12:00-14:00 open "female only", Mo 14:00-16:00 open "male only"; PH off</a></li>
-                    <li><a href="#check" class="example-link">Apr: 22:00-23:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Jul-Jan: 22:00-23:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Jan-Jul: 22:00-23:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Jul 23-Jan 3: "needs reservation by phone"; PH off</a></li>
-                    <li><a href="#check" class="example-link">Jul 23-Jan 3: 22:00-23:00 "Please make a reservation by phone."; PH off</a></li>
-                    <li><a href="#check" class="example-link">Jul 23-Jan 3: 08:00-11:00 "Please make a reservation by phone."; PH off</a></li>
-                    <li><a href="#check" class="example-link">Jan 23-Jul 3: 22:00-23:00 "Please make a reservation by phone."; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mar Su[-1]-Dec Su[1] -2 days: 22:00-23:00; PH off</a></li>
-                    <!-- <li><a href="#check" class="example-link">Mar Su[&#45;1] &#45; Dec 25&#45;Su&#45;28 days: 22:00&#45;23:00; PH off</a></li> -->
-                    <!-- <li><a href="#check" class="example-link">Dec 25&#45;Su&#45;28 days &#45; Mar Su[&#45;1]: 22:00&#45;23:00; PH off</a></li> -->
-                    <!-- Currently used around 6 times: /\d\s*&#45;\s*(mo|tu|we|th|fr|sa|su)\b/ -->
-                    <li><a href="#check" class="example-link">Sa[1],Sa[1] +1 day 10:00-12:00 open "first weekend in the month"; PH off</a></li>
-                    <li><a href="#check" class="example-link">Sa[-1],Sa[-1] +1 day 10:00-12:00 open "last weekend in the month"; PH off</a></li>
-                    <li><a href="#check" class="example-link">Sa-Su 00:00-24:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mo-Fr 00:00-24:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">sunrise-sunset open "Beware of sunburn!"; PH off</a></li>
-                    <li><a href="#check" class="example-link">sunset-sunrise open "Beware of vampires!"; PH off</a></li>
-                    <li><a href="#check" class="example-link">(sunset+01:00)-24:00 || closed "No drink before sunset!"; PH off</a></li>
-                    <li><a href="#check" class="example-link">22:00+; PH 22:00-12:00 off</a></li>
-                    <!-- <li><a href="#check" class="example-link">&#45;23:00; PH off</a></li> -->
-                    <li><a href="#check" class="example-link">Tu,PH 23:59-22:59</a></li>
-                    <li><a href="#check" class="example-link">We-Mo,PH 23:59-22:59</a></li>
-                    <li><a href="#check" class="example-link">week 2-52/2 We 00:00-24:00; week 1-53/2 Sa 00:00-24:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">week 4-16 We 00:00-24:00; week 38-42 Sa 00:00-24:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">2012 easter -2 days-2012 easter +2 days: open "Around easter"; PH off</a></li>
-                    <li><a href="#check" class="example-link">24/7 closed "always closed"</a></li>
-                    <li>
-                        <a href="#check" class="example-link">2013,2015,2050-2053,2055/2,2020-2029/3,2060+ Jan 1</a>,
-                        <a id="year-ranges-docu" href="" target="_blank"></a>
-                    </li>
-                    <li><a href="#check" class="example-link">Jan 23-Feb 11,Feb 12 00:00-24:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Apr-Oct Su[2] 14:00-18:00; Aug Su[-1] -1 day 10:00-18:00; Aug Su[-1] 10:00-18:00; PH off</a></li>
-                    <li><a href="#check" class="example-link">Mo-Fr 08:00-12:00, We 14:00-18:00; Su,PH off</a></li>
-                    <li><a href="#check" class="example-link">00:00-24:00 week 6 Mo-Su Feb; PH off</a>,
-                        <span id="hint-error-correction-1"></span>
-                    </li>
-                    <li><a href="#check" class="example-link">   monday,    Tu, wE,   TH    12:00 - 20:00  ; 14:00-16:00      Off  ; closed public Holiday</a>,
-                        <span id="hint-error-correction-2"></span>
-                    </li>
-                    <li><a href="#check" class="example-link">We; PH off</a></li>
-                    <li><a href="#check" class="example-link">PH</a></li>
-                    <li><a href="#check" class="example-link">PH Mo-Fr</a>
-                        <span id="hint-ph-mo-fr"></span>
-                    </li>
-                    <li><a href="#check" class="example-link">PH -1 day</a></li>
-                    <li><a href="#check" class="example-link">SH</a></li>
-                    <li><a href="#check" class="example-link">SH,PH</a></li>
-                    <li><a href="#check" class="example-link">PH,SH</a>
-                        <span id="hint-sh-ph"></span>
-                    </li>
-                    <li><a href="#check" class="example-link">We[1-3]</a></li>
-                    <li><a href="#check" class="example-link">We[3-5]</a></li>
-                    <li><a href="#check" class="example-link">Sa</a></li>
-                    <li><a href="#check" class="example-link">Sa[1]</a></li>
-                    <li><a href="#check" class="example-link">Sa[1-3]</a></li>
-                    <li><a href="#check" class="example-link">Tu-Th</a></li>
-                    <li><a href="#check" class="example-link">Fr-Mo</a></li>
-                    <li><a href="#check" class="example-link">Mo-Su; We "only after registration"</a></li>
-                    <li><a href="#check" class="example-link">Oct: We[1]</a></li>
-                </ol>
-                </div>
-            </section>
+                <section>
+                    <button type="button" id="examples-toggle" class="examples-toggle-btn">
+                        <span class="toggle-icon">▼</span>
+                        <h2 id="examples"></h2>
+                    </button>
+                    <div id="user_examples">
+                        <ol>
+                            <li><a href="#check" class="example-link">Mo-Fr 10:00-20:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mo,Tu,Th,Fr 12:00-18:00; Sa,PH 12:00-17:00; Th[3],Th[-1] off</a></li>
+                            <li><a href="#check" class="example-link">00:00-24:00; Tu-Su,PH 08:30-09:00 off; Tu-Su 14:00-14:30 off; Mo 08:00-13:00 off</a></li>
+                            <li><a href="#check" class="example-link">Fr-Sa 18:00-06:00; PH 18:00-06:00 off</a></li>
+                            <li><a href="#check" class="example-link">Mo 10:00-12:00,12:30-15:00</a></li>
+                            <li><a href="#check" class="example-link">Mo 10:00-12:00,12:30-15:00; Tu-Fr 08:00-12:00,12:30-15:00; Sa 08:00-12:00</a></li>
+                            <li><a href="#check" class="example-link">24/7</a></li>
+                            <li><a href="#check" class="example-link">"only after registration"; PH off</a></li>
+                            <li><a href="#check" class="example-link">22:00-23:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">08:00-11:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">open; Mo 15:00-16:00 off; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mo-Su 22:00-23:00; We,PH off</a></li>
+                            <li><a href="#check" class="example-link">We-Fr 10:00-24:00 open "it is open" || "please call"; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mo-Fr 08:00-11:00 || Tu-Th,PH open "Emergency only"</a></li>
+                            <li><a href="#check" class="example-link">Tu-Th,We 22:00-23:00 open "Hot meals"; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mo 12:00-14:00 open "female only", Mo 14:00-16:00 open "male only"; PH off</a></li>
+                            <li><a href="#check" class="example-link">Apr: 22:00-23:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Jul-Jan: 22:00-23:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Jan-Jul: 22:00-23:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Jul 23-Jan 3: "needs reservation by phone"; PH off</a></li>
+                            <li><a href="#check" class="example-link">Jul 23-Jan 3: 22:00-23:00 "Please make a reservation by phone."; PH off</a></li>
+                            <li><a href="#check" class="example-link">Jul 23-Jan 3: 08:00-11:00 "Please make a reservation by phone."; PH off</a></li>
+                            <li><a href="#check" class="example-link">Jan 23-Jul 3: 22:00-23:00 "Please make a reservation by phone."; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mar Su[-1]-Dec Su[1] -2 days: 22:00-23:00; PH off</a></li>
+                            <!-- <li><a href="#check" class="example-link">Mar Su[&#45;1] &#45; Dec 25&#45;Su&#45;28 days: 22:00&#45;23:00; PH off</a></li> -->
+                            <!-- <li><a href="#check" class="example-link">Dec 25&#45;Su&#45;28 days &#45; Mar Su[&#45;1]: 22:00&#45;23:00; PH off</a></li> -->
+                            <!-- Currently used around 6 times: /\d\s*&#45;\s*(mo|tu|we|th|fr|sa|su)\b/ -->
+                            <li><a href="#check" class="example-link">Sa[1],Sa[1] +1 day 10:00-12:00 open "first weekend in the month"; PH off</a></li>
+                            <li><a href="#check" class="example-link">Sa[-1],Sa[-1] +1 day 10:00-12:00 open "last weekend in the month"; PH off</a></li>
+                            <li><a href="#check" class="example-link">Sa-Su 00:00-24:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mo-Fr 00:00-24:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">sunrise-sunset open "Beware of sunburn!"; PH off</a></li>
+                            <li><a href="#check" class="example-link">sunset-sunrise open "Beware of vampires!"; PH off</a></li>
+                            <li><a href="#check" class="example-link">(sunset+01:00)-24:00 || closed "No drink before sunset!"; PH off</a></li>
+                            <li><a href="#check" class="example-link">22:00+; PH 22:00-12:00 off</a></li>
+                            <!-- <li><a href="#check" class="example-link">&#45;23:00; PH off</a></li> -->
+                            <li><a href="#check" class="example-link">Tu,PH 23:59-22:59</a></li>
+                            <li><a href="#check" class="example-link">We-Mo,PH 23:59-22:59</a></li>
+                            <li><a href="#check" class="example-link">week 2-52/2 We 00:00-24:00; week 1-53/2 Sa 00:00-24:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">week 4-16 We 00:00-24:00; week 38-42 Sa 00:00-24:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">2012 easter -2 days-2012 easter +2 days: open "Around easter"; PH off</a></li>
+                            <li><a href="#check" class="example-link">24/7 closed "always closed"</a></li>
+                            <li>
+                                <a href="#check" class="example-link">2013,2015,2050-2053,2055/2,2020-2029/3,2060+ Jan 1</a>,
+                                <a id="year-ranges-docu" href="" target="_blank"></a>
+                            </li>
+                            <li><a href="#check" class="example-link">Jan 23-Feb 11,Feb 12 00:00-24:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Apr-Oct Su[2] 14:00-18:00; Aug Su[-1] -1 day 10:00-18:00; Aug Su[-1] 10:00-18:00; PH off</a></li>
+                            <li><a href="#check" class="example-link">Mo-Fr 08:00-12:00, We 14:00-18:00; Su,PH off</a></li>
+                            <li><a href="#check" class="example-link">00:00-24:00 week 6 Mo-Su Feb; PH off</a>,
+                                <span id="hint-error-correction-1"></span>
+                            </li>
+                            <li><a href="#check" class="example-link">   monday,    Tu, wE,   TH    12:00 - 20:00  ; 14:00-16:00      Off  ; closed public Holiday</a>,
+                                <span id="hint-error-correction-2"></span>
+                            </li>
+                            <li><a href="#check" class="example-link">We; PH off</a></li>
+                            <li><a href="#check" class="example-link">PH</a></li>
+                            <li><a href="#check" class="example-link">PH Mo-Fr</a>
+                                <span id="hint-ph-mo-fr"></span>
+                            </li>
+                            <li><a href="#check" class="example-link">PH -1 day</a></li>
+                            <li><a href="#check" class="example-link">SH</a></li>
+                            <li><a href="#check" class="example-link">SH,PH</a></li>
+                            <li><a href="#check" class="example-link">PH,SH</a>
+                                <span id="hint-sh-ph"></span>
+                            </li>
+                            <li><a href="#check" class="example-link">We[1-3]</a></li>
+                            <li><a href="#check" class="example-link">We[3-5]</a></li>
+                            <li><a href="#check" class="example-link">Sa</a></li>
+                            <li><a href="#check" class="example-link">Sa[1]</a></li>
+                            <li><a href="#check" class="example-link">Sa[1-3]</a></li>
+                            <li><a href="#check" class="example-link">Tu-Th</a></li>
+                            <li><a href="#check" class="example-link">Fr-Mo</a></li>
+                            <li><a href="#check" class="example-link">Mo-Su; We "only after registration"</a></li>
+                            <li><a href="#check" class="example-link">Oct: We[1]</a></li>
+                        </ol>
+                    </div>
+                </section>
             </form>
             <footer id="footer"></footer>
 
