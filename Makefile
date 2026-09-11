@@ -231,10 +231,6 @@ check-holidays: scripts/PH_SH_exporter.js
 check-holiday-state-codes: scripts/check_holiday_state_codes.mjs
 	$(NODEJS) scripts/check_holiday_state_codes.mjs
 
-.PHONY: check-html
-check-html:
-	html5validator --show-warnings --root . --blacklist node_modules submodules
-
 ## }}}
 
 ## release {{{

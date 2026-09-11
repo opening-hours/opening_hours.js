@@ -1,6 +1,5 @@
 # SPDX-FileCopyrightText: © opening_hours.js contributors
 # SPDX-License-Identifier: CC0-1.0
 hc
-html5validator
 ruamel.yaml>=0.16
 requests-cache>=0.6.0.dev1 # not directly required, pinned by Snyk to avoid a vulnerability
