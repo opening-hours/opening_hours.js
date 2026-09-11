@@ -2,39 +2,39 @@
 <!-- SPDX-License-Identifier: LGPL-3.0-only -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Simple page using opening_hours.js</title>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" type="image/svg+xml" href="https://openingh.openstreetmap.de/evaluation_tool/img/favicon.svg">
-    <script src="https://openingh.openstreetmap.de/build/opening_hours+deps.min.js"></script>
-  </head>
+    <head>
+        <title>Simple page using opening_hours.js</title>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type="image/svg+xml" href="https://openingh.openstreetmap.de/evaluation_tool/img/favicon.svg">
+        <script src="https://openingh.openstreetmap.de/build/opening_hours+deps.min.js"></script>
+    </head>
 
-  <body>
+    <body>
 
-    <h1>Nothing to see here, open a debug console in your browser to see the interesting stuff.</h1>
+        <h1>Nothing to see here, open a debug console in your browser to see the interesting stuff.</h1>
 
-    <script>
-      // Input string (English and German mixed) - intentionally using mixed languages to demonstrate prettification.
-      let input_value = "Mo-Tu,Do-Fr 10:00-20:00; Samstag und Sonntag geschlossen";
+        <script>
+            // Input string (English and German mixed) - intentionally using mixed languages to demonstrate prettification.
+            let input_value = "Mo-Tu,Do-Fr 10:00-20:00; Samstag und Sonntag geschlossen";
 
-      // Language for the warnings (get it from the browser settings).
-      let locale = navigator.language;
+            // Language for the warnings (get it from the browser settings).
+            let locale = navigator.language;
 
-      // Create opening_hours object.
-      let oh = new opening_hours(input_value, {}, { locale: locale });
+            // Create opening_hours object.
+            let oh = new opening_hours(input_value, {}, { locale: locale });
 
-      // Prettify the value in different languages.
-      let prettified_value_de = oh.prettifyValue({ conf: { locale: "de" } });
-      let prettified_value_en = oh.prettifyValue({ conf: { locale: "en" } });
-      let prettified_value_ru = oh.prettifyValue({ conf: { locale: "ru" } });
+            // Prettify the value in different languages.
+            let prettified_value_de = oh.prettifyValue({ conf: { locale: "de" } });
+            let prettified_value_en = oh.prettifyValue({ conf: { locale: "en" } });
+            let prettified_value_ru = oh.prettifyValue({ conf: { locale: "ru" } });
 
-      // Console outputs.
-      console.log(`Input value (German and English mixed): ${input_value}`);
-      console.log(`Prettified value (de):                  ${prettified_value_de}`);
-      console.log(`Prettified value (en):                  ${prettified_value_en}`);
-      console.log(`Prettified value (ru):                  ${prettified_value_ru}`);
-      console.log(`Warnings:\n  ${oh.getWarnings().join("\n  ")}`);
-    </script>
+            // Console outputs.
+            console.log(`Input value (German and English mixed): ${input_value}`);
+            console.log(`Prettified value (de):                  ${prettified_value_de}`);
+            console.log(`Prettified value (en):                  ${prettified_value_en}`);
+            console.log(`Prettified value (ru):                  ${prettified_value_ru}`);
+            console.log(`Warnings:\n  ${oh.getWarnings().join("\n  ")}`);
+        </script>
 
-  </body>
+    </body>
 </html>
