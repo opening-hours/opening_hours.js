@@ -6,17 +6,17 @@
 # @attrib https://sk.wikipedia.org/wiki/Zoznam_sviatkov_na_SlovenskuS
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/SK.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=48.7411522&lon=19.4528646&zoom=18&addressdetails=1&accept-language=sk,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=48.7411522&lon=19.4528646&zoom=18&addressdetails=1&accept-language=sk,en"
 
 PH:
-  - {'name': 'Deň vzniku Slovenskej republiky', 'fixed_date': [1, 1]}
-  - {'name': 'Zjavenie Pána', 'fixed_date': [1, 6]}
-  - {'name': 'Veľký piatok', 'variable_date': easter, 'offset': -2}
-  - {'name': 'Veľkonočný pondelok', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Sviatok práce', 'fixed_date': [5, 1]}
-  - {'name': 'Sviatok svätého Cyrila a Metoda', 'fixed_date': [7, 5]}
-  - {'name': 'Výročie Slovenského národného povstania', 'fixed_date': [8, 29]}
-  - {'name': 'Sviatok všetkých svätých', 'fixed_date': [11, 1]}
-  - {'name': 'Štedrý deň', 'fixed_date': [12, 24]}
-  - {'name': 'Prvý sviatok vianočný', 'fixed_date': [12, 25]}
-  - {'name': 'Druhý sviatok vianočný', 'fixed_date': [12, 26]}
+  - {name: Deň vzniku Slovenskej republiky, fixed_date: [1, 1]}
+  - {name: Zjavenie Pána, fixed_date: [1, 6]}
+  - {name: Veľký piatok, variable_date: easter, offset: -2}
+  - {name: Veľkonočný pondelok, variable_date: easter, offset: 1}
+  - {name: Sviatok práce, fixed_date: [5, 1]}
+  - {name: Sviatok svätého Cyrila a Metoda, fixed_date: [7, 5]}
+  - {name: Výročie Slovenského národného povstania, fixed_date: [8, 29]}
+  - {name: Sviatok všetkých svätých, fixed_date: [11, 1]}
+  - {name: Štedrý deň, fixed_date: [12, 24]}
+  - {name: Prvý sviatok vianočný, fixed_date: [12, 25]}
+  - {name: Druhý sviatok vianočný, fixed_date: [12, 26]}

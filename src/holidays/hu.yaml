@@ -2,23 +2,23 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=47.4821&lon=19.0640&zoom=18&addressdetails=1&accept-language=hu,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=47.4821&lon=19.0640&zoom=18&addressdetails=1&accept-language=hu,en"
 
 # https://hu.wikipedia.org/wiki/Magyarorsz%C3%A1gi_%C3%BCnnepek_%C3%A9s_eml%C3%A9knapok_list%C3%A1ja
 PH:
-  - {'name': 'újév', 'fixed_date': [1, 1]}
-  - {'name': 'az 1848-as forradalom ünnepe', 'fixed_date': [3, 15]}
-  - {'name': 'nagypéntek', 'variable_date': easter, 'offset': -2}
-  - {'name': 'húsvétvasárnap', 'variable_date': easter}
-  - {'name': 'húsvéthétfő', 'variable_date': easter, 'offset': 1}
-  - {'name': 'pünkösdvasárnap', 'variable_date': easter, 'offset': 49}
-  - {'name': 'pünkösdhétfő', 'variable_date': easter, 'offset': 50}
-  - {'name': 'a munka ünnepe', 'fixed_date': [5, 1]}
-  - {'name': 'az államalapítás ünnepe', 'fixed_date': [8, 20]}
-  - {'name': 'az 1956-os forradalom ünnepe', 'fixed_date': [10, 23]}
-  - {'name': 'mindenszentek', 'fixed_date': [11, 1]}
-  - {'name': 'karácsony', 'fixed_date': [12, 25]}
-  - {'name': 'karácsony másnap', 'fixed_date': [12, 26]}
+  - {name: újév, fixed_date: [1, 1]}
+  - {name: az 1848-as forradalom ünnepe, fixed_date: [3, 15]}
+  - {name: nagypéntek, variable_date: easter, offset: -2}
+  - {name: húsvétvasárnap, variable_date: easter}
+  - {name: húsvéthétfő, variable_date: easter, offset: 1}
+  - {name: pünkösdvasárnap, variable_date: easter, offset: 49}
+  - {name: pünkösdhétfő, variable_date: easter, offset: 50}
+  - {name: a munka ünnepe, fixed_date: [5, 1]}
+  - {name: az államalapítás ünnepe, fixed_date: [8, 20]}
+  - {name: az 1956-os forradalom ünnepe, fixed_date: [10, 23]}
+  - {name: mindenszentek, fixed_date: [11, 1]}
+  - {name: karácsony, fixed_date: [12, 25]}
+  - {name: karácsony másnap, fixed_date: [12, 26]}
 
 # 35/2014. (IV. 30.) EMMI rendelet a 2014/2015. tanév rendjéről és az egyes oktatást szabályozó miniszteri rendeletek módosításáról
 # 28/2015. (V. 28.) EMMI rendelet a 2015/2016. tanév rendjéről

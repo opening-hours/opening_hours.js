@@ -6,11 +6,11 @@
 
 # Initially taken form https://www.netzwolf.info/j/osm/time_domain.js Credits go to Netzwolf.
 
-'assuming ok for ko':
+assuming ok for ko:
   daytime: sunrise-sunset
-  _: '-'
-  '=': '-'
-  gesloten: 'off'
+  _: "-"
+  =: "-"
+  gesloten: off
   feestdag: PH
   feestdagen: PH
   m: Mo
@@ -19,24 +19,24 @@
   # TODO: Needs code refactor to support this.
   # außer: '; off'
 
-'please use English written ok for ko':
-  '(?:an )?feiertag(?:s|en?)?': PH
-'please use off for ko':
-  'ruhetage?': 'off'
-  'geschlossen': 'off'
-  'geschl': 'off'
-  except: 'off'
-'please use ok for workday':
+please use English written ok for ko:
+  "(?:an )?feiertag(?:s|en?)?": PH
+please use off for ko:
+  ruhetage?: off
+  geschlossen: off
+  geschl: off
+  except: off
+please use ok for workday:
   # Used around 260 times but the problem is, that work day might be different in other countries.
-  'wd': Mo-Fr
-  'on work days?': Mo-Fr
-  'weekdays?': Mo-Fr
+  wd: Mo-Fr
+  on work days?: Mo-Fr
+  weekdays?: Mo-Fr
   # https://www.gesetze-im-internet.de/burlg/__3.html
-  'werktags?': Mo-Sa
-  'vardagar': Mo-Fr
-'omit hour keyword':
+  werktags?: Mo-Sa
+  vardagar: Mo-Fr
+omit hour keyword:
   h: ""
-'omit ko':
+omit ko:
   season: ""
   hs: ""
   hrs: ""
@@ -46,87 +46,87 @@
   zwischen: ""
   ist: ""
   durchgehend: ""
-  'öffnungszeit(?:en)?:?': ""
-'omit tag key':
+  "öffnungszeit(?:en)?:?": ""
+omit tag key:
   'opening_hours\s*=': ""
-'omit wrong keyword open end':
+omit wrong keyword open end:
   from: ""
   ab: ""
   von: ""
-'assuming open end for ko':
-  '(?:bis|till?|-|–)? ?(?:open ?end|late)': +
-'please use ok for uncertainty':
-  '~': '-'
-  ～: '-'
-'please use fallback rule':
-  otherwise: '||'
-'please use ok for missing data':
-  '\?': ''
-'please use ok for ko':
-  →: '-'
-  ‐: '-'
-  ‑: '-'
-  ‒: '-'
-  −: '-'
-  —: '-'
-  ー: '-'
-  to: '-'
-  до: '-'
-  a: '-'
-  as: '-'
-  á: '-'
-  ás: '-'
-  às: '-'
-  ate: '-'
-  'till?': '-'
-  'until': '-'
-  'through': '-'
-  'and': ','
-  '&': ','
-  ：: ':'
-  '''': '"'
-  'always': 24/7
-  'always open': 24/7
-  'always closed': closed
-  'nonstop': 24/7
-  '24x7': 24/7
-  'anytime': 24/7
-  'all day': 24/7
-  'daily': Mo-Su
-  'everyday': Mo-Su
-  'every day': Mo-Su
-  'all days': Mo-Su
-  '7j/7': Mo-Su
-  '7/7': Mo-Su
-  '7 days a week': Mo-Su
-  '7 days/week': Mo-Su
-  '24 hours 7 days a week': 24/7
-  '24 hours': '00:00-24:00'
-  'midday': '12:00'
-  'midnight': '00:00'
-  '(?:public )?holidays?': PH
-  '(?:one )?day after public holiday': 'PH +1 day'
-  '(?:one )?day before public holiday': 'PH -1 day'
-  'school ?holidays?': SH
-  'weekends?': 'Sa,Su'
-  'daylight': sunrise-sunset
-  'on(?:_| )?appointments?': '"on appointment"'
-  'by(?:_| )?appointments?': '"by appointment"'
-  'nach(?: |_)vereinbarung': '"Nach Vereinbarung"'
-  'nach(?: |_)absprache': '"Nach Absprache"'
+assuming open end for ko:
+  "(?:bis|till?|-|–)? ?(?:open ?end|late)": +
+please use ok for uncertainty:
+  "~": "-"
+  ～: "-"
+please use fallback rule:
+  otherwise: "||"
+please use ok for missing data:
+  '\?': ""
+please use ok for ko:
+  →: "-"
+  ‐: "-"
+  ‑: "-"
+  ‒: "-"
+  −: "-"
+  —: "-"
+  ー: "-"
+  to: "-"
+  до: "-"
+  a: "-"
+  as: "-"
+  á: "-"
+  ás: "-"
+  às: "-"
+  ate: "-"
+  till?: "-"
+  until: "-"
+  through: "-"
+  and: ","
+  "&": ","
+  ：: ":"
+  "'": '"'
+  always: 24/7
+  always open: 24/7
+  always closed: closed
+  nonstop: 24/7
+  24x7: 24/7
+  anytime: 24/7
+  all day: 24/7
+  daily: Mo-Su
+  everyday: Mo-Su
+  every day: Mo-Su
+  all days: Mo-Su
+  7j/7: Mo-Su
+  7/7: Mo-Su
+  7 days a week: Mo-Su
+  7 days/week: Mo-Su
+  24 hours 7 days a week: 24/7
+  24 hours: "00:00-24:00"
+  midday: "12:00"
+  midnight: "00:00"
+  "(?:public )?holidays?": PH
+  "(?:one )?day after public holiday": "PH +1 day"
+  "(?:one )?day before public holiday": PH -1 day
+  school ?holidays?: SH
+  weekends?: "Sa,Su"
+  daylight: sunrise-sunset
+  "on(?:_| )?appointments?": '"on appointment"'
+  "by(?:_| )?appointments?": '"by appointment"'
+  "nach(?: |_)vereinbarung": '"Nach Vereinbarung"'
+  "nach(?: |_)absprache": '"Nach Absprache"'
   "sur(?: |_)rendez(?: |_|-)?vous": "\"Sur rendez-vous\""
   "sur(?: |_)rdv": "\"Sur rendez-vous\""
-  'bis': '-'
-  'täglich': Mo-Su
-  '(?:schul)?ferien': SH
-  '(?:an|nur)? ?sonn-?(?: und |/)feiertag(?:s|en?)?': 'PH,Su'
-  und: ','
-  u: ','
-  auch: ','
-  fermé: 'off'
-  et: ','
-  à: '-'
-  'jours fériés': PH
+  bis: "-"
+  täglich: Mo-Su
+  "(?:schul)?ferien": SH
+  "(?:an|nur)? ?sonn-?(?: und |/)feiertag(?:s|en?)?": "PH,Su"
+  und: ","
+  u: ","
+  auch: ","
+  fermé: off
+  et: ","
+  à: "-"
+  jours fériés: PH
 
 
   # timevar: Special time variables which actual value depends on the date and the position of the facility.
@@ -143,7 +143,7 @@
   # German
   ostern: easter
 
-'please use English abbreviation ok for ko':
+please use English abbreviation ok for ko:
   # weekday: Good source: https://www.omniglot.com/language/time/days.htm
   sun: Su
   sundays?: Su
@@ -202,8 +202,8 @@
   piatek: Fr
 
   # Russian
-  'voskresen''ye': Su
-  'ponedel''nik': Mo
+  "voskresen'ye": Su
+  "ponedel'nik": Mo
   vtornik: Tu
   chetverk: Th
   pyatnitsa: Fr
@@ -234,20 +234,20 @@
   # Italian
   giugno?: Jun
   luglio?: Jul
-'please use ok for similar looking ko':
-  оff: 'off'
-'please use 24 hours time for ko':
-  pm: "pm"
-  p.m.: "pm"
-  рм: "pm"
-  am: "am"
-  a.m.: "am"
-  ам: "am"
-'please use restriction comment time for ko':
+please use ok for similar looking ko:
+  оff: off
+please use 24 hours time for ko:
+  pm: pm
+  p.m.: pm
+  рм: pm
+  am: am
+  a.m.: am
+  ам: am
+please use restriction comment time for ko:
   damen: 'open "Damen"'
   herren: 'open "Herren"'
-'please use ok for typographically correct':
-  –: '-'
+please use ok for typographically correct:
+  –: "-"
   „: '"'
   “: '"'
   ”: '"'

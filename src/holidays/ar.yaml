@@ -2,28 +2,28 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.60377&lon=-58.38159&zoom=16&addressdetails=1&accept-language=es'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=-34.60377&lon=-58.38159&zoom=16&addressdetails=1&accept-language=es"
 
 # https://www.argentina.gob.ar/feriados
 # https://www.boletinoficial.gob.ar/detalleAviso/primera/336753/20251226
 # https://github.com/commenthol/date-holidays/blob/master/data/countries/AR.yaml
 
 PH:
-  - {'name': 'Año Nuevo', 'fixed_date': [1, 1]}
-  - {'name': 'Carnaval', 'variable_date': easter, 'offset': -48}
-  - {'name': 'Carnaval', 'variable_date': easter, 'offset': -47}
-  - {'name': 'Día Nacional de la Memoria por la Verdad y la Justicia', 'fixed_date': [3, 24]}
-  - {'name': 'Viernes Santo', 'variable_date': easter, 'offset': -2}
-  - {'name': 'Día del Veterano y de los Caídos en la Guerra de Malvinas', 'fixed_date': [4, 2]}
-  - {'name': 'Día del Trabajador', 'fixed_date': [5, 1]}
-  - {'name': 'Día de la Revolución de Mayo', 'fixed_date': [5, 25]}
-  - {'name': 'Paso a la Inmortalidad del General Don Martín Miguel de Güemes', 'fixed_date': [6, 17], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
-  - {'name': 'Paso a la Inmortalidad del General D. Manuel Belgrano', 'fixed_date': [6, 20]}
-  - {'name': 'Día de la Independencia', 'fixed_date': [7, 9]}
-  - {'name': 'Día no laborable con fines turísticos', 'fixed_date': [7, 10], 'year': 2026}
-  - {'name': 'Paso a la Inmortalidad del General José de San Martín', 'fixed_date': [8, 17], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
-  - {'name': 'Día del Respeto a la Diversidad Cultural', 'fixed_date': [10, 12], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
-  - {'name': 'Día de la Soberanía Nacional', 'fixed_date': [11, 20], 'shift_rule': 'if tuesday,wednesday then previous monday if thursday,friday then next monday'}
-  - {'name': 'Día no laborable con fines turísticos', 'fixed_date': [12, 7], 'year': 2026}
-  - {'name': 'Inmaculada Concepción de María', 'fixed_date': [12, 8]}
-  - {'name': 'Navidad', 'fixed_date': [12, 25]}
+  - {name: Año Nuevo, fixed_date: [1, 1]}
+  - {name: Carnaval, variable_date: easter, offset: -48}
+  - {name: Carnaval, variable_date: easter, offset: -47}
+  - {name: Día Nacional de la Memoria por la Verdad y la Justicia, fixed_date: [3, 24]}
+  - {name: Viernes Santo, variable_date: easter, offset: -2}
+  - {name: Día del Veterano y de los Caídos en la Guerra de Malvinas, fixed_date: [4, 2]}
+  - {name: Día del Trabajador, fixed_date: [5, 1]}
+  - {name: Día de la Revolución de Mayo, fixed_date: [5, 25]}
+  - {name: Paso a la Inmortalidad del General Don Martín Miguel de Güemes, fixed_date: [6, 17], shift_rule: "if tuesday,wednesday then previous monday if thursday,friday then next monday"}
+  - {name: Paso a la Inmortalidad del General D. Manuel Belgrano, fixed_date: [6, 20]}
+  - {name: Día de la Independencia, fixed_date: [7, 9]}
+  - {name: Día no laborable con fines turísticos, fixed_date: [7, 10], year: 2026}
+  - {name: Paso a la Inmortalidad del General José de San Martín, fixed_date: [8, 17], shift_rule: "if tuesday,wednesday then previous monday if thursday,friday then next monday"}
+  - {name: Día del Respeto a la Diversidad Cultural, fixed_date: [10, 12], shift_rule: "if tuesday,wednesday then previous monday if thursday,friday then next monday"}
+  - {name: Día de la Soberanía Nacional, fixed_date: [11, 20], shift_rule: "if tuesday,wednesday then previous monday if thursday,friday then next monday"}
+  - {name: Día no laborable con fines turísticos, fixed_date: [12, 7], year: 2026}
+  - {name: Inmaculada Concepción de María, fixed_date: [12, 8]}
+  - {name: Navidad, fixed_date: [12, 25]}

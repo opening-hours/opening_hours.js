@@ -6,19 +6,19 @@
 # @source https://www.quirinale.it/elementi/141022
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/IT.yaml
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=41.9808038&lon=12.7662312&zoom=18&addressdetails=1&accept-language=it,en'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.9808038&lon=12.7662312&zoom=18&addressdetails=1&accept-language=it,en"
 
 PH:
-  - {'name': 'Capodanno', 'fixed_date': [1, 1]}
-  - {'name': 'Epifania', 'fixed_date': [1, 6]}
-  - {'name': 'Pasqua', 'variable_date': easter}
-  - {'name': 'Lunedì di Pasqua', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Liberazione dal nazifascismo (1945)', 'fixed_date': [4, 25]}
-  - {'name': 'Festa del lavoro', 'fixed_date': [5, 1]}
-  - {'name': 'Festa della Repubblica', 'fixed_date': [6, 2]}
-  - {'name': 'Assunzione di Maria', 'fixed_date': [8, 15]}
-  - {'name': 'Festa nazionale di San Francesco d''Assisi', 'fixed_date': [10, 4]}
-  - {'name': 'Ognissanti', 'fixed_date': [11, 1]}
-  - {'name': 'Immacolata Concezione', 'fixed_date': [12, 8]}
-  - {'name': 'Natale di Gesù', 'fixed_date': [12, 25]}
-  - {'name': 'Santo Stefano', 'fixed_date': [12, 26]}
+  - {name: Capodanno, fixed_date: [1, 1]}
+  - {name: Epifania, fixed_date: [1, 6]}
+  - {name: Pasqua, variable_date: easter}
+  - {name: Lunedì di Pasqua, variable_date: easter, offset: 1}
+  - {name: Liberazione dal nazifascismo (1945), fixed_date: [4, 25]}
+  - {name: Festa del lavoro, fixed_date: [5, 1]}
+  - {name: Festa della Repubblica, fixed_date: [6, 2]}
+  - {name: Assunzione di Maria, fixed_date: [8, 15]}
+  - {name: "Festa nazionale di San Francesco d'Assisi", fixed_date: [10, 4]}
+  - {name: Ognissanti, fixed_date: [11, 1]}
+  - {name: Immacolata Concezione, fixed_date: [12, 8]}
+  - {name: Natale di Gesù, fixed_date: [12, 25]}
+  - {name: Santo Stefano, fixed_date: [12, 26]}

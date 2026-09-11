@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
-_nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=5.3203570&lon=-4.0161070&zoom=18&addressdetails=1&accept-language=fr'
+_nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=5.3203570&lon=-4.0161070&zoom=18&addressdetails=1&accept-language=fr"
 
 # https://fr.wikipedia.org/wiki/Jour_f%C3%A9ri%C3%A9#_C%C3%B4te_d%27Ivoire
 # In the Islamic calender, the start of a month depends on the local
@@ -12,16 +12,16 @@ _nominatim_url: 'https://nominatim.openstreetmap.org/reverse?format=json&lat=5.3
 # Therefore, they are not supported here.
 
 PH:
-  - {'name': 'Fête du 1ᵉʳ janvier', 'fixed_date': [1, 1]}
-  - {'name': 'Lundi de Pâques', 'variable_date': easter, 'offset': 1}
-  - {'name': 'Fête du travail', 'fixed_date': [5, 1]}
-  - {'name': 'Lendemain de la Fête du travail', 'variable_date': 'nextMo-Sa01May'}
-  - {'name': 'Jour de l’Ascension', 'variable_date': easter, 'offset': 39}
-  - {'name': 'Lundi de la Pentecôte', 'variable_date': easter, 'offset': 50}
-  - {'name': 'Fête nationale', 'fixed_date': [8, 7]}
-  - {'name': 'Lendemain de la Fête nationale', 'variable_date': 'nextMo-Sa07August'}
-  - {'name': 'Fête de l’Assomption', 'fixed_date': [8, 15]}
-  - {'name': 'Fête de la Toussaint', 'fixed_date': [11, 1]}
-  - {'name': 'Journée Nationale de la Paix', 'fixed_date': [11, 15]}
-  - {'name': 'Fête de Noël', 'fixed_date': [12, 25]}
-  - {'name': 'Lendemain de la Fête de Noël', 'variable_date': 'nextMo-Sa25December'}
+  - {name: Fête du 1ᵉʳ janvier, fixed_date: [1, 1]}
+  - {name: Lundi de Pâques, variable_date: easter, offset: 1}
+  - {name: Fête du travail, fixed_date: [5, 1]}
+  - {name: Lendemain de la Fête du travail, variable_date: nextMo-Sa01May}
+  - {name: Jour de l’Ascension, variable_date: easter, offset: 39}
+  - {name: Lundi de la Pentecôte, variable_date: easter, offset: 50}
+  - {name: Fête nationale, fixed_date: [8, 7]}
+  - {name: Lendemain de la Fête nationale, variable_date: nextMo-Sa07August}
+  - {name: Fête de l’Assomption, fixed_date: [8, 15]}
+  - {name: Fête de la Toussaint, fixed_date: [11, 1]}
+  - {name: Journée Nationale de la Paix, fixed_date: [11, 15]}
+  - {name: Fête de Noël, fixed_date: [12, 25]}
+  - {name: Lendemain de la Fête de Noël, variable_date: nextMo-Sa25December}
