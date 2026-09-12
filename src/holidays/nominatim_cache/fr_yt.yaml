@@ -1,0 +1,27 @@
+---
+place_id: 37298752
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 7889486262
+lat: '-12.8369679'
+lon: '45.1586516'
+display_name: Ongojou, Dembéni, Mayotte, 97660, France
+address:
+  village: Ongojou
+  state: Mayotte
+  ISO3166-2-lvl4: FR-976
+  ISO3166-2-lvl3: FR-976
+  postcode: '97660'
+  country: France
+  country_code: fr
+addresstype: village
+boundingbox:
+  - '-12.8569679'
+  - '-12.8169679'
+  - '45.1386516'
+  - '45.1786516'
+class: place
+importance: 0.1467114831769283
+name: Ongojou
+place_rank: 19
+type: village

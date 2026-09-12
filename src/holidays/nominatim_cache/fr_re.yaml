@@ -1,0 +1,29 @@
+---
+place_id: 35990168
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11475719069
+lat: '-21.1337971'
+lon: '55.5247898'
+display_name: Sentier Jacky Inard, Saint-Benoît, La Réunion, 97414, France
+address:
+  road: Sentier Jacky Inard
+  town: Saint-Benoît
+  municipality: Saint-Benoît
+  state: La Réunion
+  ISO3166-2-lvl4: FR-RE
+  ISO3166-2-lvl3: FR-974
+  postcode: '97414'
+  country: France
+  country_code: fr
+addresstype: highway
+boundingbox:
+  - '-21.1338471'
+  - '-21.1337471'
+  - '55.5247398'
+  - '55.5248398'
+class: highway
+importance: 0.000051199359121034826
+name: ''
+place_rank: 30
+type: bus_stop

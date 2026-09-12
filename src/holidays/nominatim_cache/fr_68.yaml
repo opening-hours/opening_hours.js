@@ -1,0 +1,33 @@
+---
+place_id: 93611190
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 55260122
+lat: '47.8685021'
+lon: '7.2373074'
+display_name: Chemin Saint-Georges, Soultz-Haut-Rhin, Thann-Guebwiller, Haut-Rhin, Collectivité européenne d'Alsace, Grand Est, France métropolitaine, 68360, France
+address:
+  road: Chemin Saint-Georges
+  village: Soultz-Haut-Rhin
+  municipality: Thann-Guebwiller
+  county: Haut-Rhin
+  ISO3166-2-lvl6: FR-68
+  state_district: Collectivité européenne d'Alsace
+  ISO3166-2-lvl5: FR-6AE
+  state: Grand Est
+  ISO3166-2-lvl4: FR-GES
+  region: France métropolitaine
+  postcode: '68360'
+  country: France
+  country_code: fr
+addresstype: road
+boundingbox:
+  - '47.8621992'
+  - '47.8685021'
+  - '7.2373074'
+  - '7.2434647'
+class: highway
+importance: 0.05339507057297624
+name: Chemin Saint-Georges
+place_rank: 26
+type: track

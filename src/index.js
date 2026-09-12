@@ -47,6 +47,36 @@ const holidayDefinitions = holiday_definitions;
 /** @typedef {import('./holidays/holiday-definitions.d.ts').HolidayItem} HolidayItem */
 
 /**
+ * Resolve a state name from ISO3166-2 fields in a Nominatim address.
+ * @param {Record<string, unknown>} address Nominatim address object.
+ * @param {Record<string, string>} stateByCode Lowercase state code to name map.
+ * @returns {string|undefined} Resolved state name, if any.
+ */
+function getStateFromIso3166Address(address, stateByCode) {
+    const iso3166Fields = Object.keys(address)
+        .filter((key) => /^ISO3166-2-lvl\d+$/i.test(key))
+        // Prefer the most specific subdivision (e.g. lvl6 over lvl4).
+        .sort((left, right) => {
+            const leftLevel = Number(left.slice(left.lastIndexOf('lvl') + 3));
+            const rightLevel = Number(right.slice(right.lastIndexOf('lvl') + 3));
+            return rightLevel - leftLevel;
+        });
+
+    for (const field of iso3166Fields) {
+        const value = address[field];
+        if (typeof value !== 'string') {
+            continue;
+        }
+        const localCode = value.toLowerCase().replace(/^[^-]+-/, '');
+        if (stateByCode[localCode]) {
+            return stateByCode[localCode];
+        }
+    }
+
+    return undefined;
+}
+
+/**
  * Resolve a state name from a Nominatim address.
  * Prefer matching ISO3166-2 fields (e.g. "DE-BE" -> "Berlin"), then fall back
  * to the address.state and address.county fields.
@@ -73,14 +103,9 @@ function getStateFromAddress(address, countryCode) {
                 }
             }
 
-            for (const [key, value] of Object.entries(address)) {
-                if (key.startsWith('ISO3166-2') && typeof value === 'string') {
-                    const lower = value.toLowerCase();
-                    const localCode = lower.slice(lower.indexOf('-') + 1);
-                    if (stateByCode[localCode]) {
-                        return stateByCode[localCode];
-                    }
-                }
+            const stateFromIso3166 = getStateFromIso3166Address(address, stateByCode);
+            if (stateFromIso3166) {
+                return stateFromIso3166;
             }
         }
     }

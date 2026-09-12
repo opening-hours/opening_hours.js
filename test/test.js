@@ -170,6 +170,14 @@ const nominatim_berlin_iso_only = {
     }
 };
 
+const nominatim_bas_rhin_iso_only = {
+    'address': {
+        'ISO3166-2-lvl6': 'FR-67',
+        'ISO3166-2-lvl4': 'FR-GES',
+        'country_code': 'fr'
+    }
+};
+
 /* }}} */
 
 const sane_value_suffix = '; 00:01-00:02 closed "warning at correct position?"';
@@ -949,6 +957,12 @@ test.addTest('Variable days: public holidays. Berlin Frauentag resolved via ISO3
     ], '2025-03-07 0:00', '2025-03-09 0:00', [
         [ '2025-03-08 00:00', '2025-03-09 00:00', false, 'Internationaler Frauentag' ],
     ], 1000 * 60 * 60 * 24, 0, false, nominatim_berlin_iso_only, 'not only test');
+
+test.addTest('Variable days: public holidays. Bas-Rhin resolved via ISO3166-2-lvl6', [
+        'PH',
+    ], '2024-12-26 0:00', '2024-12-27 0:00', [
+        [ '2024-12-26 00:00', '2024-12-27 00:00', false, 'Lendemain de Noël' ],
+    ], 1000 * 60 * 60 * 24, 0, false, nominatim_bas_rhin_iso_only, 'not only test');
 
 /* }}} */
 

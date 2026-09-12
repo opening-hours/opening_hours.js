@@ -1,22 +1,28 @@
 ---
-place_id: 199108554
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 132031
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: relation
 osm_id: 6062932
-lat: '-16.88370465'
-lon: '-144.749871887773'
-display_name: Tahanea, Faaite, Anaa, Tuamotu-Gambier, Polynésie française, 98760, France
+lat: '-16.8837046'
+lon: '-144.7498719'
+display_name: Tahanea, Faaite, Anaa, Tuamotu-Gambier, Polynésie française, France
 address:
-  city: Anaa
+  suburb: Tahanea
   city_district: Faaite
+  city: Anaa
+  archipelago: Tuamotu-Gambier
+  state: Polynésie française
+  ISO3166-2-lvl3: FR-PF
   country: France
   country_code: fr
-  county: Tuamotu-Gambier
-  postcode: '98760'
-  state: Polynésie française
-  suburb: Tahanea
+addresstype: suburb
 boundingbox:
   - '-17.1980006'
   - '-16.5727335'
   - '-145.1156128'
   - '-144.4120271'
+class: boundary
+importance: 0.4491022588632987
+name: Tahanea
+place_rank: 20
+type: administrative

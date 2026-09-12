@@ -8707,7 +8707,7 @@ export const fi = {
 
 /** @type {import('./holiday-definitions.d.ts').CountryHolidayDefinitions} */
 export const fr = {
-  PH: [{"name":"Jour de l'an","fixed_date":[1,1]},{"name":"Vendredi saint","variable_date":"easter","offset":-2,"only_states":["Moselle","Bas-Rhin","Haut-Rhin","Guadeloupe","Martinique","Polynésie française"]},{"name":"Lundi de Pâques","variable_date":"easter","offset":1},{"name":"Abolition de l'esclavage (Mayotte)","fixed_date":[4,27],"only_states":["Mayotte"]},{"name":"Saint-Pierre-Chanel","fixed_date":[4,28],"only_states":["Wallis-et-Futuna"]},{"name":"Fête du Travail","fixed_date":[5,1]},{"name":"Fête de la Victoire","fixed_date":[5,8]},{"name":"Abolition de l'esclavage (Martinique)","fixed_date":[5,22],"only_states":["Martinique"]},{"name":"Abolition de l'esclavage (Guadeloupe)","fixed_date":[5,27],"only_states":["Guadeloupe"]},{"name":"Abolition de l'esclavage (Saint-Martin)","fixed_date":[5,28],"only_states":["Saint-Martin (France)"]},{"name":"Jeudi de l'Ascension","variable_date":"easter","offset":39},{"name":"Lundi de Pentecôte","variable_date":"easter","offset":50},{"name":"Abolition de l'esclavage (Guyane)","fixed_date":[6,10],"only_states":["Guyane"]},{"name":"Fête de l'autonomie","fixed_date":[6,29],"only_states":["Polynésie française"]},{"name":"Fête nationale","fixed_date":[7,14]},{"name":"Fête Victor Schoelcher","fixed_date":[7,21],"only_states":["Guadeloupe","Martinique"]},{"name":"Fête du Territoire","fixed_date":[7,29],"only_states":["Wallis-et-Futuna"]},{"name":"Assomption","fixed_date":[8,15]},{"name":"Fête de la citoyenneté","fixed_date":[9,24],"only_states":["Nouvelle-Calédonie"]},{"name":"Abolition de l'esclavage (Saint-Barthélemy)","fixed_date":[10,9],"only_states":["Saint-Barthélemy"]},{"name":"Toussaint","fixed_date":[11,1]},{"name":"Armistice","fixed_date":[11,11]},{"name":"Abolition de l'esclavage (Réunion)","fixed_date":[12,20],"only_states":["Réunion"]},{"name":"Noël","fixed_date":[12,25]},{"name":"Saint-Étienne ","fixed_date":[12,26],"only_states":["Moselle","Bas-Rhin","Haut-Rhin"]}],
+  PH: [{"name":"Nouvel An","fixed_date":[1,1]},{"name":"Lundi de Pâques","variable_date":"easter","offset":1},{"name":"Fête du travail","fixed_date":[5,1]},{"name":"Fête de la Victoire 1945","fixed_date":[5,8]},{"name":"Ascension","variable_date":"easter","offset":39},{"name":"Lundi de Pentecôte","variable_date":"easter","offset":50},{"name":"Fête Nationale de la France","fixed_date":[7,14]},{"name":"Assomption","fixed_date":[8,15]},{"name":"Toussaint","fixed_date":[11,1]},{"name":"Armistice 1918","fixed_date":[11,11]},{"name":"Noël","fixed_date":[12,25]},{"name":"Arrivée de l’Évangile","fixed_date":[3,5],"only_states":["Polynésie française"]},{"name":"Vendredi saint","variable_date":"easter","offset":-2,"only_states":["Bas-Rhin","Guadeloupe","Haut-Rhin","Martinique","Moselle","Polynésie française","Saint-Barthélemy"]},{"name":"Abolition de l’esclavage","fixed_date":[4,27],"only_states":["Mayotte"]},{"name":"Fête de Saint Pierre-Chanel","fixed_date":[4,28],"only_states":["Wallis-et-Futuna"]},{"name":"Abolition de l’esclavage","fixed_date":[5,22],"only_states":["Martinique"]},{"name":"Abolition de l’esclavage","fixed_date":[5,27],"only_states":["Guadeloupe","Saint-Martin"]},{"name":"Abolition de l’esclavage","fixed_date":[6,10],"only_states":["Guyane"]},{"name":"Saint Pierre et Paul","fixed_date":[6,29],"only_states":["Wallis-et-Futuna"]},{"name":"Jour de Victor Schoelcher","fixed_date":[7,21],"only_states":["Guadeloupe","Martinique"]},{"name":"Fête du Territoire","fixed_date":[7,29],"only_states":["Wallis-et-Futuna"]},{"name":"Fête de la Citoyenneté","fixed_date":[9,24],"only_states":["Nouvelle-Calédonie"]},{"name":"Abolition de l’esclavage","fixed_date":[10,9],"only_states":["Saint-Barthélemy"]},{"name":"Matari’i","fixed_date":[11,20],"only_states":["Polynésie française"]},{"name":"Abolition de l’esclavage","fixed_date":[12,20],"only_states":["La Réunion"]},{"name":"Lendemain de Noël","fixed_date":[12,26],"only_states":["Bas-Rhin","Haut-Rhin","Moselle"]}],
   "_nominatim_url": "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.60333&lon=1.88920&zoom=18&addressdetails=1&accept-language=fr,en",
   "Auvergne-Rhône-Alpes": {
     "_state_code": "ar",
@@ -8788,6 +8788,10 @@ export const fr = {
         2027: [7,3,7,3],
       },
     ]
+  },
+  "Bas-Rhin": {
+    "_state_code": "67",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Bas-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
   },
   "Bourgogne-Franche-Comté": {
     "_state_code": "bf",
@@ -9097,7 +9101,6 @@ export const fr = {
   },
   "Grand Est": {
     "_state_code": "ge",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Grand+Est&zoom=18&addressdetails=1&limit=1&accept-language=fr,en",
     SH: [
       {
         name: "Vacances d'hiver",
@@ -9311,6 +9314,10 @@ export const fr = {
         2026: [7,4,7,4],
       },
     ]
+  },
+  "Haut-Rhin": {
+    "_state_code": "68",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Haut-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
   },
   "Hauts-de-France": {
     "_state_code": "hf",
@@ -9659,6 +9666,10 @@ export const fr = {
         2026: [7,4,8,21],
       },
     ]
+  },
+  "Moselle": {
+    "_state_code": "57",
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Moselle&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
   },
   "Normandie": {
     "_state_code": "no",

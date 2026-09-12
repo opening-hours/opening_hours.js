@@ -1,0 +1,28 @@
+---
+place_id: 300527889
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1663804
+lat: '4.8252673'
+lon: '-53.2888215'
+display_name: Saint-Élie, Cayenne, Guyane, 97312, France
+address:
+  hamlet: Saint-Élie
+  municipality: Cayenne
+  state: Guyane
+  ISO3166-2-lvl4: FR-GF
+  ISO3166-2-lvl3: FR-973
+  postcode: '97312'
+  country: France
+  country_code: fr
+addresstype: hamlet
+boundingbox:
+  - '3.9061149'
+  - '5.0660796'
+  - '-53.4329746'
+  - '-52.7827508'
+class: boundary
+importance: 0.3960456341796639
+name: Saint-Élie
+place_rank: 16
+type: administrative
