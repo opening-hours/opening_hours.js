@@ -1,0 +1,32 @@
+---
+place_id: 118732918
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 12443507957
+lat: '49.0209039'
+lon: '6.5401579'
+display_name: 8, Chemin du Berger, Mainvillers, Forbach-Boulay-Moselle, Moselle, Grand Est, France métropolitaine, 57380, France
+address:
+  house_number: '8'
+  road: Chemin du Berger
+  village: Mainvillers
+  municipality: Forbach-Boulay-Moselle
+  county: Moselle
+  ISO3166-2-lvl6: FR-57
+  state: Grand Est
+  ISO3166-2-lvl4: FR-GES
+  region: France métropolitaine
+  postcode: '57380'
+  country: France
+  country_code: fr
+addresstype: place
+boundingbox:
+  - '49.0208539'
+  - '49.0209539'
+  - '6.5401079'
+  - '6.5402079'
+class: place
+importance: 0.00006534752422365175
+name: ''
+place_rank: 30
+type: house

@@ -1,0 +1,32 @@
+---
+place_id: 300795767
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 45817598
+lat: '16.2531446'
+lon: '-61.5687123'
+display_name: Rue Thomas Edison, ZAC de la Jaille 1, La Jaille, Fond Sarrail, Baie-Mahault, Basse-Terre, Guadeloupe, 97122, France
+address:
+  road: Rue Thomas Edison
+  retail: ZAC de la Jaille 1
+  quarter: La Jaille
+  hamlet: Fond Sarrail
+  town: Baie-Mahault
+  municipality: Basse-Terre
+  state: Guadeloupe
+  ISO3166-2-lvl4: FR-971
+  ISO3166-2-lvl3: FR-971
+  postcode: '97122'
+  country: France
+  country_code: fr
+addresstype: road
+boundingbox:
+  - '16.2530250'
+  - '16.2536237'
+  - '-61.5705817'
+  - '-61.5610460'
+class: highway
+importance: 0.05338729762722206
+name: Rue Thomas Edison
+place_rank: 26
+type: unclassified

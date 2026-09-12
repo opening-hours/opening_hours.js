@@ -1,0 +1,34 @@
+---
+place_id: 120561623
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 304707197
+lat: '48.6017686'
+lon: '7.5339156'
+display_name: D 225, Scharrachbergheim, Dahlenheim, Molsheim, Bas-Rhin, Collectivité européenne d'Alsace, Grand Est, France métropolitaine, 67520, France
+address:
+  road: D 225
+  city_district: Scharrachbergheim
+  village: Dahlenheim
+  municipality: Molsheim
+  county: Bas-Rhin
+  ISO3166-2-lvl6: FR-67
+  state_district: Collectivité européenne d'Alsace
+  ISO3166-2-lvl5: FR-6AE
+  state: Grand Est
+  ISO3166-2-lvl4: FR-GES
+  region: France métropolitaine
+  postcode: '67520'
+  country: France
+  country_code: fr
+addresstype: road
+boundingbox:
+  - '48.5935602'
+  - '48.6020946'
+  - '7.5040896'
+  - '7.5510542'
+class: highway
+importance: 0.05339784466315706
+name: D 225
+place_rank: 26
+type: tertiary

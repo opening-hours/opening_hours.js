@@ -1,0 +1,29 @@
+---
+place_id: 300795652
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1418444276
+lat: '14.6118129'
+lon: '-60.9628201'
+display_name: Chemin Bellonie, Le Lamentin, Fort-de-France, Martinique, 97232, France
+address:
+  road: Chemin Bellonie
+  town: Le Lamentin
+  municipality: Fort-de-France
+  state: Martinique
+  ISO3166-2-lvl4: FR-972
+  ISO3166-2-lvl3: FR-972
+  postcode: '97232'
+  country: France
+  country_code: fr
+addresstype: road
+boundingbox:
+  - '14.6090670'
+  - '14.6136386'
+  - '-60.9647461'
+  - '-60.9627061'
+class: highway
+importance: 0.05338406118867777
+name: Chemin Bellonie
+place_rank: 26
+type: tertiary

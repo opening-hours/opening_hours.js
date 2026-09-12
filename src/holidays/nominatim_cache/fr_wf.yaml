@@ -1,19 +1,29 @@
 ---
-place_id: 89800125
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 113596
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 53586327
-lat: '-13.2987550896755'
-lon: '-176.199474096783'
-display_name: RT 2, Lavegahau, Wallis-et-Futuna, France, Wallis-et-Futuna (eaux territoriales)
+osm_id: 259559555
+lat: '-13.2840937'
+lon: '-176.2049626'
+display_name: RT 3, Falaleu, Uvea, Wallis-et-Futuna, 98600, France
 address:
-  country: France, Wallis-et-Futuna (eaux territoriales)
-  country_code: fr
-  road: RT 2
+  road: RT 3
+  village: Falaleu
+  city: Uvea
+  ISO3166-2-lvl8: WF-UV
   state: Wallis-et-Futuna
-  village: Lavegahau
+  ISO3166-2-lvl3: FR-WF
+  postcode: '98600'
+  country: France
+  country_code: fr
+addresstype: road
 boundingbox:
-  - '-13.3057979'
-  - '-13.2948908'
-  - '-176.1995685'
-  - '-176.1987089'
+  - '-13.2841650'
+  - '-13.2804461'
+  - '-176.2083059'
+  - '-176.1964275'
+class: highway
+importance: 0.053384035248340546
+name: RT 3
+place_rank: 26
+type: tertiary

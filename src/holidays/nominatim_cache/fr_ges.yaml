@@ -11,8 +11,10 @@ address:
   country: France
   country_code: fr
   county: Nancy
+  ISO3166-2-lvl6: FR-54
   postcode: '54330'
   state: Grand Est
+  ISO3166-2-lvl4: FR-GES
 boundingbox:
   - '48.4812149'
   - '48.508714'

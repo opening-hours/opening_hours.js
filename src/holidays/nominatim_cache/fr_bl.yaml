@@ -1,20 +1,31 @@
 ---
-place_id: 239421886
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: way
-osm_id: 24552759
-lat: '17.898035119474'
-lon: '-62.830675038479'
-display_name: Morne de Dépoudré, Saint-Barthélemy, 97133, France
+place_id: 298968082
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11928298028
+lat: '17.8961320'
+lon: '-62.8258070'
+display_name: 190, Chemin Boyé, Grande Saline, Gustavia, Saint-Barthélemy, 97133, France
 address:
+  house_number: '190'
+  road: Chemin Boyé
+  neighbourhood: Grande Saline
+  quarter: Grande Saline
+  town: Gustavia
+  city: Saint-Barthélemy
+  state: Saint-Barthélemy
+  ISO3166-2-lvl3: FR-BL
+  postcode: '97133'
   country: France
   country_code: fr
-  neighbourhood: Morne de Dépoudré
-  postcode: '97133'
-  state: Saint-Barthélemy
-  town: Saint-Barthélemy
+addresstype: place
 boundingbox:
-  - '17.8980334'
-  - '17.9012471'
-  - '-62.8337719'
-  - '-62.8292748'
+  - '17.8960820'
+  - '17.8961820'
+  - '-62.8258570'
+  - '-62.8257570'
+class: place
+importance: 0.00006704890516513341
+name: ''
+place_rank: 30
+type: house
