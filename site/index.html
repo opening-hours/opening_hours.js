@@ -12,6 +12,14 @@
         <link rel="stylesheet" href="css/table.css">
         <script defer src="../build/opening_hours+deps.min.js"></script>
         <script defer src="js/theme.js"></script>
+        <!-- Resolves bare "i18next" specifier independent of the URL depth this page is served from (e.g. direct vs. symlinked into opening_hours_map). -->
+        <script type="importmap">
+            {
+                "imports": {
+                    "i18next": "../node_modules/i18next/dist/esm/i18next.js"
+                }
+            }
+        </script>
         <script type="module" src="js/main.js"></script>
     </head>
     <body>

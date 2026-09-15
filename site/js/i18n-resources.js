@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LGPL-3.0-only
  */
 // Import i18next for use in helper functions
-import i18next from '../../node_modules/i18next/dist/esm/i18next.js';
+import i18next from 'i18next';
 
 // localization {{{
 export const resources = { // English is fallback language.
