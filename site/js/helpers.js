@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: LGPL-3.0-only
  */
 // Import dependencies
-import i18next from '../../node_modules/i18next/dist/esm/i18next.js';
+import i18next from 'i18next';
 import { OpeningHoursTable } from './opening_hours_table.js';
 import { mapCountryToLanguage } from './countryToLanguageMapping.js';
 import { updateTimeButtonLabels } from './main.js';
