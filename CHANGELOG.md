@@ -8,6 +8,125 @@ SPDX-License-Identifier: LGPL-3.0-only
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [3.15.0](///compare/v3.14.0...v3.15.0) (2026-09-21)
+
+### Features
+
+* **evaluation-tool:** add automatic theme selection dd770c9
+* **evaluation-tool:** structure warning output 43f543c
+* **holidays:** add first June Friday 6e247e0
+* **holidays:** add last November Wednesday 1c3a354
+* **holidays:** add Monday before June 20 a7952ac
+* **holidays:** add state code to merged subdivision entries 81d9b53
+* **holidays:** resolve regions from ISO3166-2 codes 36888a7
+* **holidays:** support even and odd years 6385667
+* **holidays:** support year-specific holidays 575ed2c
+* **i18n:** add Indonesian localization d4b82cb
+* **i18n:** add missing translations b9f342c
+* locale-aware day/month order in prettifyValue output 55ac3ef, closes #587
+* **parser:** warn on past date ranges a58998e
+* **parser:** warn on past explicit dates faec851
+* **public-holiday:** add date-specific holiday context a2d1529
+
+### Bug Fixes
+
+* add calendar gregory and remove comma in weekday-month separator 7c5b313
+* define correct style for all dark mode situations 49ed6a2
+* **docs:** link to latest hosted version 499a4a8
+* **evaluation-tool:** reduce unnecessary theme transitions 14ddaa6
+* **evaluation-tool:** support native theme color schemes 84be92c
+* **holidays:** resolve regions from Nominatim ISO codes c6fe2e2
+* **i18n:** add missing range translations 7828d3d
+* locale-aware weekday position and separator before date 6ad5e07
+* **locale-resolver:** add Polish pn alias 2e67cc8
+* **locale-resolver:** add types to resolver scripts add15c1
+* **locale-resolver:** preserve layer generation date 95a1c9c
+* **locale:** force Gregorian date formatting a8d354d
+* **locale:** include CLDR short forms b40f264
+* **parser:** detect full-year range as week-stable 665f738
+* **parser:** handle long correction phrases first c6033b6
+* **parser:** handle numeric day offsets without special cases ad744d9
+* **parser:** include constrained weekday end dates a58fde6, references #632
+* **parser:** resolve "Sur rendez-vous" without quotes 6de28de
+* **parser:** warn about ambiguous single-digit hours 62e9754
+* **site:** go up one more dir so that we hit the HTTP root of the map 4ed3460
+* strip commas from weekday-date separator to produce valid OH syntax 91be16f
+* target all anchors for nice colors in dark mode 74dff5f, closes #626
+* **types:** type taginfo page parameter 7c47a0a
+* **types:** type translation key extraction d6927c0
+* **types:** type translation key parameters 9defb6e
+* **variable-times:** resolve variable-time selectors across time zones 8687143
+
+### Data Updates
+
+* add missing state codes a26bd37
+* add/update year-specific holidays for ar, de, and nz 98cab1b
+* **br:** add Brazilian election days 83966e2
+* **br:** align with date-holidays 7d6b19a
+* **ca:** align with wikipedia and date-holidays 33a25a5
+* **ca:** sort 689c629
+* **ch:** align with date-holidays 0cc810b
+* **ch:** rename Sankt Gallen to St. Gallen ba6d418
+* **ch:** sort nationwide holidays before regional ones c6d255e
+* **cz:** align name date-holidays 9aacdcf
+* **de:** align with date-holidays 7fc89fa
+* **de:** sort nationwide holidays before regional ones 9be2f9f
+* **es:** align with date-holidays 9d63d24
+* **es:** sort nationwide holidays before regional ones f071152
+* **fr:** add _state_code and _nominatim_url for French overseas regions c9ac2e5
+* **fr:** update holidays and add French territory locations b6ee16c
+* **gg:** add holiday data for Guernsey bd21fa1
+* **gi:** add holiday data for Gibraltar e17399b
+* **holidays:** update generated holiday file e83c697
+* **holidays:** update generated holiday file aef46bd
+* **ie:** align holidays with official source 649aadf
+* **im:** add holiday data for Isle of Man c167c80
+* **it:** add Italian 4 October holiday a738c42
+* **je:** add substitute rules 72d301c
+* **je:** remove invalid Jersey state wrapper fede4f5
+* **je:** update generated holiday file 0f5f9f9
+* **je:** update substitute rule for New Year’s Day holiday 3dd7014
+* **jp:** add substitute rules for equinox holidays 5cbfe32
+* **jp:** add substitute rules for public holidays 0d714f3
+* **nf:** add holiday data for Norfolk Island a93e555
+* **nl:** add shift rule for Koningsdag dfd46c8
+* **pm:** add holiday data for French Polynesia be64fde
+* **ro:** align with wikipedia and date-holidays df11304
+* **ru:** add substitute rule for International Women's Day holiday 02ee2fd
+* **si:** add second novo leto holiday 8e378a0
+* **sj:** add holiday data for Svalbard and Jan Mayen 3621e06
+* **sk:** update source/attribution links and remove Easter Sunday de2c543
+* **sm:** align with date-holidays ebc33e2
+* **ua:** align with date-holidays 58bde05
+* **us:** align with date-holidays cc0502c
+* **us:** update nominatim URLs 3f1ac27
+
+### Documentation
+
+* fix JSDoc lint issues 88b8d13
+
+### Code Refactoring
+
+* decouple iterator from state lookup be5e34d
+* **evaluation-tool:** restructure result layout 9991542, references #610
+* **evaluation-tool:** use DOM API for evaluation output 97fdc62
+* **holidays:** import generated data directly d804abd
+* **holidays:** type generated data 99b2000
+* **holidays:** type holiday definitions 258d6d8
+* **i18n:** restructure translation checker 5e92274
+* **iterator:** remove redundant date state 9690d53
+* **iterator:** replace anonymous iterator constructor c57b025
+* **locale-resolver:** move layer generator to scripts 1a8b825
+* **locale-resolver:** use clearer variable names 0211c02
+* **parser:** remove var token workaround 5e3730d
+* **parser:** simplify constrained weekday date calculation f783a81
+* **parser:** tighten token rule typing 33e24a8
+* **prettify:** extract helpers, dedupe matchTokens e807995
+* **prettify:** simplify locale-aware date formatting 35daead
+* simplify token handling in rule processing 2ac6ddc
+* **site:** resolve i18next via import map 39d8b58
+* switch to standard jsdoc syntax 3502bce
+* type token rules safely d1b6d6f
 ## [3.14.0](https://github.com/opening-hours/opening_hours.js/compare/v3.13.0...v3.14.0) (2026-07-15)
 
 
