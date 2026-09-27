@@ -68,6 +68,9 @@ Holidays can be added to the file [index.js][ohlib.opening_hours.js]. Have a loo
 
 Please refer to the [holiday documentation][ohlib.docs.holiday] for more details about the data format.
 
+When changing `_nominatim_url` entries or location/state resolution, also
+check the [Nominatim cache fixtures][ohlib.docs.nominatim-cache].
+
 Please consider adding a test (with a time range of one year for example) to see if everything works as expected and to ensure that it will stay that way.
 See under [testing][ohlib.testing].
 
@@ -188,6 +191,7 @@ Thank you for contributing!
 
 [opening_hours_map]: https://github.com/opening-hours/opening_hours_map
 [ohlib.docs.holiday]: src/holidays/README.md
+[ohlib.docs.nominatim-cache]: src/holidays/nominatim_cache/README.md
 [ohlib.holidays]: README.md#holidays
 [ohlib.js/locales/translations.yaml]: src/locales/translations.yaml
 [ohlib.js/i18n-resources.js]: site/js/i18n-resources.js
