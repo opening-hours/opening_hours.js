@@ -1,21 +1,29 @@
 ---
-place_id: 54222076
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 73486585
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: 4406779164
-lat: '46.3532827'
-lon: '8.7597887'
-display_name: Al Fracèd, Sonogno, Circolo della Verzasca, Bezirk Locarno, Tessin, 6637, Schweiz
+osm_id: 9990826841
+lat: '46.3460909'
+lon: '8.7417860'
+display_name: Corte di Mezzo, Verzasca, Kreis Verzasca, Bezirk Locarno, Tessin, 6637, Schweiz
 address:
+  locality: Corte di Mezzo
+  city: Verzasca
+  municipality: Kreis Verzasca
+  county: Bezirk Locarno
+  state: Tessin
+  ISO3166-2-lvl4: CH-TI
+  postcode: '6637'
   country: Schweiz
   country_code: ch
-  county: Bezirk Locarno
-  locality: Al Fracèd
-  postcode: '6637'
-  state: Tessin
-  village: Sonogno
+addresstype: locality
 boundingbox:
-  - '46.3332827'
-  - '46.3732827'
-  - '8.7397887'
-  - '8.7797887'
+  - '46.3360909'
+  - '46.3560909'
+  - '8.7317860'
+  - '8.7517860'
+class: place
+importance: 0.06671666819256886
+name: Corte di Mezzo
+place_rank: 25
+type: locality

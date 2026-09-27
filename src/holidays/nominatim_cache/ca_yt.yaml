@@ -1,0 +1,24 @@
+---
+place_id: 379875164
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 391455
+lat: '63.0001470'
+lon: '-136.0025020'
+display_name: Yukon, Canada
+address:
+  state: Yukon
+  ISO3166-2-lvl4: CA-YT
+  country: Canada
+  country_code: ca
+addresstype: state
+boundingbox:
+  - '59.9985416'
+  - '69.8458800'
+  - '-141.0027500'
+  - '-123.8102524'
+class: boundary
+importance: 0.6282516365790685
+name: Yukon
+place_rank: 8
+type: administrative

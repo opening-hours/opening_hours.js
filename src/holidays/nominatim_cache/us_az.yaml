@@ -1,19 +1,25 @@
 ---
-place_id: '128696839'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '284558228'
-lat: '34.9381065'
-lon: '-109.7597016'
-display_name: Blue Mesa Trail, Apache County, Arizona, United States of America
+place_id: 319757612
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1832215
+lat: '34.5668857'
+lon: '-112.5515965'
+display_name: Yavapai County, Arizona, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Apache County
-  footway: Blue Mesa Trail
+  county: Yavapai County
   state: Arizona
+  ISO3166-2-lvl4: US-AZ
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '34.9361754'
-  - '34.939458'
-  - '-109.7611979'
-  - '-109.756191'
+  - '33.8821600'
+  - '35.5311500'
+  - '-113.3344800'
+  - '-111.4612685'
+class: boundary
+importance: 0.5214172179713255
+name: Yavapai County
+place_rank: 12
+type: administrative

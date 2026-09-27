@@ -1,24 +1,31 @@
 ---
-place_id: '844137'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 149271063
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: '276862802'
-lat: '54.1854669'
-lon: '9.8221744'
-display_name: Geographischer Mittelpunkt Schleswig-Holsteins, Weg zum Mittelpunkt, Thienbüttel, Nortorf, Nortorfer Land, Kreis
-  Rendsburg-Eckernförde, Schleswig-Holstein, 24589, Deutschland
+osm_id: 600795839
+lat: '54.1839153'
+lon: '9.8209671'
+display_name: Geographischer Mittelpunkt von Schleswig-Holstein, Weg zum Mittelpunkt, Thienbüttel, Nortorf, Amt Nortorfer Land, Kreis Rendsburg-Eckernförde, Schleswig-Holstein, 24589, Deutschland
 address:
+  tourism: Geographischer Mittelpunkt von Schleswig-Holstein
+  road: Weg zum Mittelpunkt
+  village: Thienbüttel
+  town: Nortorf
+  municipality: Amt Nortorfer Land
+  county: Kreis Rendsburg-Eckernförde
+  state: Schleswig-Holstein
+  ISO3166-2-lvl4: DE-SH
+  postcode: '24589'
   country: Deutschland
   country_code: de
-  county: Nortorfer Land
-  information: Geographischer Mittelpunkt Schleswig-Holsteins
-  postcode: '24589'
-  road: Weg zum Mittelpunkt
-  state: Schleswig-Holstein
-  suburb: Thienbüttel
-  town: Nortorf
+addresstype: tourism
 boundingbox:
-  - '54.1853669'
-  - '54.1855669'
-  - '9.8220744'
-  - '9.8222744'
+  - '54.1838653'
+  - '54.1839653'
+  - '9.8209171'
+  - '9.8210171'
+class: tourism
+importance: 0.00005669413290603521
+name: Geographischer Mittelpunkt von Schleswig-Holstein
+place_rank: 30
+type: viewpoint

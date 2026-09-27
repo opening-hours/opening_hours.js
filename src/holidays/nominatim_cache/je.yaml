@@ -1,0 +1,24 @@
+---
+place_id: 291594354
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 2371948
+lat: '49.1856637'
+lon: '-2.1102277'
+display_name: St Helier, Jersey
+address:
+  country: Jersey
+  country_code: je
+  # addresstype: town
+  # town: St Helier
+
+boundingbox:
+  - '49.1678468'
+  - '49.2188866'
+  - '-2.1369420'
+  - '-2.0849498'
+class: boundary
+importance: 0.5234400788769805
+name: St Helier
+place_rank: 16
+type: administrative

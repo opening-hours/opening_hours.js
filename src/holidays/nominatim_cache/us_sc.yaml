@@ -1,22 +1,27 @@
 ---
-place_id: '120315788'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 343225407
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '241968972'
-lat: '32.78764065'
-lon: '-79.9386668786502'
-display_name: Dream Factory, Warren Street, Charleston, Charleston County, South Carolina, 29403, United States of America
+osm_id: 12321464
+lat: '33.6909125'
+lon: '-80.4399161'
+display_name: Mc Lochlan Road, Clarendon County, South Carolina, 29125, United States
 address:
-  building: Dream Factory
-  city: Charleston
-  country: United States of America
-  country_code: us
-  county: Charleston County
-  postcode: '29403'
-  road: Warren Street
+  road: Mc Lochlan Road
+  county: Clarendon County
   state: South Carolina
+  ISO3166-2-lvl4: US-SC
+  postcode: '29125'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '32.787503'
-  - '32.7877555'
-  - '-79.9387808'
-  - '-79.9385305'
+  - '33.6873724'
+  - '33.6998601'
+  - '-80.4451826'
+  - '-80.4175554'
+class: highway
+importance: 0.0533433333333333
+name: Mc Lochlan Road
+place_rank: 26
+type: residential

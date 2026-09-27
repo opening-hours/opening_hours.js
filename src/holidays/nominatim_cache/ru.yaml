@@ -1,26 +1,32 @@
 ---
-place_id: '6785522'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '702354243'
-lat: '55.7781934'
-lon: '49.1296756'
-display_name: Гранд синема, 6, Спартаковская улица, Старо-Татарская слобода, Вахитовский район, Казань, городской округ Казань,
-  Татарстан, Приволжский федеральный округ, 420107, РФ
+place_id: 200374918
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 475164455
+lat: '55.7780038'
+lon: '49.1302361'
+display_name: Суконная слобода, Старо-Татарская слобода, Вахитовский район, Казань, городской округ Казань, Татарстан, Приволжский федеральный округ, 420107, Россия
 address:
-  country: РФ
+  country: Россия
   country_code: ru
-  # cinema: Гранд синема
+  # addresstype: road
+  # ISO3166-2-lvl4: RU-TA
   # city: Казань
   # city_district: Вахитовский район
   # county: городской округ Казань
-  # house_number: 6
-  # postcode: 420107
-  # road: Спартаковская улица
+  # neighbourhood: Суконная слобода
+  # postcode: "420107"
+  # region: Приволжский федеральный округ
   # state: Татарстан
   # suburb: Старо-Татарская слобода
+
 boundingbox:
-  - '55.7780934'
-  - '55.7782934'
-  - '49.1295756'
-  - '49.1297756'
+  - '55.7777590'
+  - '55.7787341'
+  - '49.1302214'
+  - '49.1302801'
+class: highway
+importance: 0.05340729304951549
+name: ''
+place_rank: 26
+type: construction

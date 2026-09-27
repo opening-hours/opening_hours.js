@@ -1,23 +1,30 @@
 ---
-place_id: '92837005'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 353630084
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '126855890'
-lat: '42.81240725'
-lon: '-73.9381958169258'
-display_name: Franklin Plaza, Lafayette Street, City of Schenectady, Schenectady County, New York, 12305, United States of
-  America
+osm_id: 934935561
+lat: '43.1561517'
+lon: '-75.8450329'
+display_name: 138, Madison Avenue, Oneida Lake Beach West, Village of Canastota, Madison County, New York, 13032, United States
 address:
-  building: Franklin Plaza
-  city: City of Schenectady
-  country: United States of America
-  country_code: us
-  county: Schenectady County
-  postcode: '12305'
-  road: Lafayette Street
+  house_number: '138'
+  road: Madison Avenue
+  hamlet: Oneida Lake Beach West
+  town: Village of Canastota
+  county: Madison County
   state: New York
+  ISO3166-2-lvl4: US-NY
+  postcode: '13032'
+  country: United States
+  country_code: us
+addresstype: building
 boundingbox:
-  - '42.812197'
-  - '42.8126735'
-  - '-73.9384539'
-  - '-73.9377289'
+  - '43.1560785'
+  - '43.1562249'
+  - '-75.8451267'
+  - '-75.8449391'
+class: building
+importance: 0.00003750133516437045
+name: ''
+place_rank: 30
+type: yes

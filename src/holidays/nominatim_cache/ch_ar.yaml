@@ -1,22 +1,29 @@
 ---
-place_id: 96062981
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 72948188
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 36568429
-lat: '47.39708498211328'
-lon: '9.370622457762366'
-display_name: Spiesenrüti, Battenhaus, Teufen (AR), Mittelland, Appenzell Ausserrhoden, 9052, Schweiz
+osm_id: 317842801
+lat: '47.3951636'
+lon: '9.3708800'
+display_name: 509, Feldwald, Niederteufen, Teufen (AR), Mittelland, Appenzell Ausserrhoden, 9053, Schweiz
 address:
-  city: Teufen (AR)
+  house_number: '509'
+  locality: Feldwald
+  village: Niederteufen
+  county: Mittelland
+  state: Appenzell Ausserrhoden
+  ISO3166-2-lvl4: CH-AR
+  postcode: '9053'
   country: Schweiz
   country_code: ch
-  county: Mittelland
-  hamlet: Battenhaus
-  postcode: '9052'
-  road: Spiesenrüti
-  state: Appenzell Ausserrhoden
+addresstype: building
 boundingbox:
-  - '47.3967963'
-  - '47.3996315'
-  - '9.3654191'
-  - '9.3730603'
+  - '47.3950638'
+  - '47.3952633'
+  - '9.3707642'
+  - '9.3709957'
+class: building
+importance: 0.000042274357213657094
+name: ''
+place_rank: 30
+type: yes

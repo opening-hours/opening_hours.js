@@ -1,22 +1,29 @@
 ---
-place_id: 180477570
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 298664779
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 413029356
-lat: '35.895525'
-lon: '-5.354947'
-display_name: Cortafuegos del Renegado, Barriada Postigo, Puente del Quemadero, Ceuta, 51002, España
+osm_id: 363348379
+lat: '35.8886072'
+lon: '-5.3041846'
+display_name: Colegio de Educación Infantil y Primaria Lope de Vega, Calle Canalejas, La Salud, San Amaro, Ceuta, 51001, España
 address:
+  amenity: Colegio de Educación Infantil y Primaria Lope de Vega
+  road: Calle Canalejas
+  neighbourhood: La Salud
+  suburb: San Amaro
   city: Ceuta
+  ISO3166-2-lvl4: ES-CE
+  postcode: '51001'
   country: España
   country_code: es
-  neighbourhood: Barriada Postigo
-  path: Cortafuegos del Renegado
-  postcode: '51002'
-  state: Ceuta
-  suburb: Puente del Quemadero
+addresstype: amenity
 boundingbox:
-  - '35.8952771'
-  - '35.898652'
-  - '-5.360432'
-  - '-5.3541136'
+  - '35.8883697'
+  - '35.8890056'
+  - '-5.3045058'
+  - '-5.3038486'
+class: amenity
+importance: 0.00006987945372697059
+name: Colegio de Educación Infantil y Primaria Lope de Vega
+place_rank: 30
+type: school

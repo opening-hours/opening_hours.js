@@ -1,0 +1,30 @@
+---
+place_id: 311197970
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 19430125
+lat: '19.4326468'
+lon: '-99.1331985'
+display_name: Plaza de la Constitución, Centro, Ciudad de México, Cuauhtémoc, Ciudad de México, 06060, México
+address:
+  country: México
+  country_code: mx
+  # addresstype: road
+  # ISO3166-2-lvl4: MX-CMX
+  # borough: Cuauhtémoc
+  # city: Ciudad de México
+  # neighbourhood: Centro
+  # postcode: "06060"
+  # road: Plaza de la Constitución
+  # state: Ciudad de México
+
+boundingbox:
+  - '19.4319440'
+  - '19.4333304'
+  - '-99.1340402'
+  - '-99.1323450'
+class: highway
+importance: 0.46871289517150294
+name: Plaza de la Constitución
+place_rank: 26
+type: pedestrian

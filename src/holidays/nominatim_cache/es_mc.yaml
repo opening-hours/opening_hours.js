@@ -1,22 +1,30 @@
 ---
-place_id: 225079060
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: way
-osm_id: 694071872
-lat: '38.0660077'
-lon: '-1.6710268'
-display_name: El Cabezo, Bullas, Noroeste, Región de Murcia, 30180, España
+place_id: 294844183
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 1243032794
+lat: '37.9253649'
+lon: '-1.4689399'
+display_name: La Perala, Mula, Río Mula, Región de Murcia, 30848, España
 address:
+  locality: La Perala
+  town: Mula
+  county: Río Mula
+  state_district: Región de Murcia
+  ISO3166-2-lvl6: ES-MU
+  state: Región de Murcia
+  ISO3166-2-lvl4: ES-MC
+  postcode: '30848'
   country: España
   country_code: es
-  county: Región de Murcia
-  municipality: Noroeste
-  postcode: '30180'
-  state: Región de Murcia
-  suburb: El Cabezo
-  town: Bullas
+addresstype: locality
 boundingbox:
-  - '38.0619676'
-  - '38.0669325'
-  - '-1.6726938'
-  - '-1.6624704'
+  - '37.9153649'
+  - '37.9353649'
+  - '-1.4789399'
+  - '-1.4589399'
+class: place
+importance: 0.06671876020447089
+name: La Perala
+place_rank: 25
+type: locality

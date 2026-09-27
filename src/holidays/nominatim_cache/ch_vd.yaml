@@ -1,20 +1,30 @@
 ---
-place_id: 111001855
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 92719570
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 112050127
-lat: '46.6367872'
-lon: '6.5307259'
-display_name: Lussery-Villars, District du Gros-de-Vaud, Waadt, 1307, Schweiz
+osm_id: 557381798
+lat: '46.6368873'
+lon: '6.5309260'
+display_name: 5, Rue de Villars, Villars, Lussery-Villars, District du Gros-de-Vaud, Waadt, 1307, Schweiz
 address:
+  house_number: '5'
+  road: Rue de Villars
+  neighbourhood: Villars
+  village: Lussery-Villars
+  county: District du Gros-de-Vaud
+  state: Waadt
+  ISO3166-2-lvl4: CH-VD
+  postcode: '1307'
   country: Schweiz
   country_code: ch
-  county: District du Gros-de-Vaud
-  postcode: '1307'
-  state: Waadt
-  village: Lussery-Villars
+addresstype: building
 boundingbox:
-  - '46.6346531'
-  - '46.6376917'
-  - '6.529513'
-  - '6.5314124'
+  - '46.6367871'
+  - '46.6369800'
+  - '6.5308231'
+  - '6.5310374'
+class: building
+importance: 0.00007429846646825387
+name: ''
+place_rank: 30
+type: yes

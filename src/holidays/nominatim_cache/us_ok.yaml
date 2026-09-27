@@ -1,22 +1,25 @@
 ---
-place_id: '185330470'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '185330470'
-lat: '36.0514724693878'
-lon: '-95.7892149183673'
-display_name: 208, East Commercial Street, Broken Arrow, Tulsa County, Oklahoma, 74012, United States of America
+place_id: 333921515
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1822226
+lat: '34.9756991'
+lon: '-97.4811670'
+display_name: McClain County, Oklahoma, United States
 address:
-  city: Broken Arrow
-  country: United States of America
-  country_code: us
-  county: Tulsa County
-  house_number: '208'
-  postcode: '74012'
-  road: East Commercial Street
+  county: McClain County
   state: Oklahoma
+  ISO3166-2-lvl4: US-OK
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '36.051372469388'
-  - '36.051572469388'
-  - '-95.789314918367'
-  - '-95.789114918367'
+  - '34.8546026'
+  - '35.3335737'
+  - '-97.6709810'
+  - '-96.9307101'
+class: boundary
+importance: 0.525165625484829
+name: McClain County
+place_rank: 12
+type: administrative

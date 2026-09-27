@@ -1,22 +1,27 @@
 ---
-place_id: '101355560'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 332279616
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '161510053'
-lat: '37.6887661'
-lon: '-97.3278952567447'
-display_name: Old Town Parking Garage, North Rock Island, Wichita, Sedgwick County, Kansas, 67202, United States of America
+osm_id: 12984800
+lat: '38.2755711'
+lon: '-98.5821869'
+display_name: Southeast 60 Road, Barton County, Kansas, 67530, United States
 address:
-  city: Wichita
-  country: United States of America
-  country_code: us
-  county: Sedgwick County
-  parking: Old Town Parking Garage
-  postcode: '67202'
-  road: North Rock Island
+  road: Southeast 60 Road
+  county: Barton County
   state: Kansas
+  ISO3166-2-lvl4: US-KS
+  postcode: '67530'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '37.6885241'
-  - '37.6890067'
-  - '-97.328133'
-  - '-97.3276582'
+  - '38.2753230'
+  - '38.2757670'
+  - '-98.7745840'
+  - '-98.4982790'
+class: highway
+importance: 0.0533433333333333
+name: Southeast 60 Road
+place_rank: 26
+type: residential

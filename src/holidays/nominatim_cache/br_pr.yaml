@@ -1,0 +1,26 @@
+---
+place_id: 6744767
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 689830154
+lat: '-24.4842561'
+lon: '-51.8147851'
+display_name: Pitanga, Paraná, Região Sul, Brasil
+address:
+  town: Pitanga
+  state: Paraná
+  ISO3166-2-lvl4: BR-PR
+  region: Região Sul
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-24.4863150'
+  - '-24.4817588'
+  - '-51.8221048'
+  - '-51.7989761'
+class: highway
+importance: 0.053390367742427676
+name: ''
+place_rank: 26
+type: unclassified

@@ -1,0 +1,27 @@
+---
+place_id: 11059290
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 893416565
+lat: '-18.5261791'
+lon: '-44.1605517'
+display_name: Capão, Presidente Juscelino, Minas Gerais, Região Sudeste, Brasil
+address:
+  hamlet: Capão
+  village: Presidente Juscelino
+  state: Minas Gerais
+  ISO3166-2-lvl4: BR-MG
+  region: Região Sudeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-18.5264105'
+  - '-18.5248541'
+  - '-44.1622925'
+  - '-44.1605517'
+class: highway
+importance: 0.053383334859235486
+name: ''
+place_rank: 26
+type: unclassified

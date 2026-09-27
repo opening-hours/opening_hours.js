@@ -1,22 +1,29 @@
 ---
-place_id: 98916994
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 257047800
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 35114072
-lat: '10.773900408852988'
-lon: '106.70075980362552'
-display_name: Le Loi Street, Khu phố 6, Ben Thanh Ward, District 1, Ho Chi Minh City, 00084, Vietnam
+osm_id: 1232849515
+lat: '10.7738703'
+lon: '106.7008021'
+display_name: Le Loi Boulevard, Khu phố 5, Saigon, Ho Chi Minh City, 71006, Vietnam
 address:
   country: Vietnam
   country_code: vn
+  # addresstype: road
+  # ISO3166-2-lvl4: VN-SG
   # city: Ho Chi Minh City
-  # city_district: District 1
-  # postcode: 00084
-  # quarter: Khu phố 6
-  # road: Le Loi Street
-  # suburb: Ben Thanh Ward
+  # neighbourhood: Khu phố 5
+  # postcode: "71006"
+  # road: Le Loi Boulevard
+  # suburb: Saigon
+
 boundingbox:
-  - '10.7717135'
-  - '10.7742349'
-  - '106.6987958'
-  - '106.7010579'
+  - '10.7732070'
+  - '10.7741609'
+  - '106.7001788'
+  - '106.7010766'
+class: highway
+importance: 0.05340036697947658
+name: Le Loi Boulevard
+place_rank: 26
+type: tertiary

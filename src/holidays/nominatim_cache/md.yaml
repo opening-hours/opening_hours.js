@@ -1,0 +1,31 @@
+---
+place_id: 61886620
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 846404748
+lat: '47.0106226'
+lon: '28.8641742'
+display_name: Haltei Street, Hrușca, Chișinău, Centru, Municipiul Chișinău, MD-2023, Moldova
+address:
+  country: Moldova
+  country_code: md
+  # addresstype: man_made
+  # ISO3166-2-lvl4: MD-CU
+  # ISO3166-2-lvl8: MD-CU
+  # city: Chișinău
+  # municipality: Municipiul Chișinău
+  # postcode: MD-2023
+  # quarter: Hrușca
+  # road: Haltei Street
+  # suburb: Centru
+
+boundingbox:
+  - '47.0105828'
+  - '47.0106558'
+  - '28.8641207'
+  - '28.8642272'
+class: man_made
+importance: 0.00007086518654149718
+name: ''
+place_rank: 30
+type: water_tower

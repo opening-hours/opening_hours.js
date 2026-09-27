@@ -1,0 +1,28 @@
+---
+place_id: 7530460
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 917675912
+lat: '-27.0625963'
+lon: '-51.1171486'
+display_name: Linha Aparecida, Videira, Santa Catarina, Região Sul, 89560-000, Brasil
+address:
+  hamlet: Linha Aparecida
+  town: Videira
+  state: Santa Catarina
+  ISO3166-2-lvl4: BR-SC
+  region: Região Sul
+  postcode: 89560-000
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-27.0636390'
+  - '-27.0547415'
+  - '-51.1173409'
+  - '-51.1067569'
+class: highway
+importance: 0.05338944151979855
+name: ''
+place_rank: 26
+type: unclassified

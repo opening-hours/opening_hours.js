@@ -1,0 +1,27 @@
+---
+place_id: 362998936
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 151123205
+lat: '46.4983675'
+lon: '-66.7520546'
+display_name: Parker Ridge, Stanley Parish, Rural Community of Upper Miramichi, York County, New Brunswick, Canada
+address:
+  city_district: Parker Ridge
+  city: Stanley Parish
+  county: Rural Community of Upper Miramichi
+  state: New Brunswick
+  ISO3166-2-lvl4: CA-NB
+  country: Canada
+  country_code: ca
+addresstype: road
+boundingbox:
+  - '46.4640813'
+  - '46.5000000'
+  - '-66.7542378'
+  - '-66.7435554'
+class: highway
+importance: 0.0533433333333333
+name: ''
+place_rank: 26
+type: unclassified

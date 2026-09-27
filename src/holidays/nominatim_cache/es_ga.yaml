@@ -1,22 +1,31 @@
 ---
-place_id: 118850241
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 292006974
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 142181655
 lat: '42.6185094'
-lon: '-7.864985'
-display_name: Fontela, Chantada, Lugo, Galicia, 27513, España
+lon: '-7.8649850'
+display_name: Fontela, Requeixo, Chantada, Lugo, Galicia, 27513, España
 address:
-  city: Chantada
+  hamlet: Fontela
+  civil_parish: Requeixo
+  municipality: Chantada
+  county: Chantada
+  state_district: Lugo
+  ISO3166-2-lvl6: ES-LU
+  state: Galicia
+  ISO3166-2-lvl4: ES-GA
+  postcode: '27513'
   country: España
   country_code: es
-  county: Chantada
-  hamlet: Fontela
-  postcode: '27513'
-  province: Lugo
-  state: Galicia
+addresstype: road
 boundingbox:
   - '42.6121986'
   - '42.6239369'
   - '-7.8741729'
   - '-7.8648513'
+class: highway
+importance: 0.053387468528267305
+name: ''
+place_rank: 26
+type: unclassified

@@ -1,0 +1,27 @@
+---
+place_id: 15210133
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 419763772
+lat: '-8.4135142'
+lon: '-37.5915942'
+display_name: Ibimirim, Pernambuco, Região Nordeste, Brasil
+address:
+  city_district: Ibimirim
+  town: Ibimirim
+  state: Pernambuco
+  ISO3166-2-lvl4: BR-PE
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-8.4245766'
+  - '-8.4072151'
+  - '-37.5920871'
+  - '-37.5737454'
+class: highway
+importance: 0.053383334859235486
+name: ''
+place_rank: 26
+type: unclassified

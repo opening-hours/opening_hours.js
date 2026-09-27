@@ -1,24 +1,28 @@
 ---
-place_id: '72433317'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 372554486
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '33908928'
-lat: '42.05189995'
-lon: '-87.6759578506092'
-display_name: University Hall, 1897, Sheridan Road, Downtown, Evanston, Cook County, Illinois, 60208, United States of America
+osm_id: 21843340
+lat: '40.0795386'
+lon: '-89.4335847'
+display_name: US 66 Hist, Fogarty, Logan County, Illinois, 63634, United States
 address:
-  building: University Hall
-  city: Evanston
-  country: United States of America
-  country_code: us
-  county: Cook County
-  house_number: '1897'
-  neighbourhood: Downtown
-  postcode: '60208'
-  road: Sheridan Road
+  road: US 66 Hist
+  hamlet: Fogarty
+  county: Logan County
   state: Illinois
+  ISO3166-2-lvl4: US-IL
+  postcode: '63634'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '42.0517375'
-  - '42.0520571'
-  - '-87.6761203'
-  - '-87.6757928'
+  - '40.0714433'
+  - '40.1068365'
+  - '-89.4404409'
+  - '-89.4104851'
+class: highway
+importance: 0.05336833524071104
+name: US 66 Hist
+place_rank: 26
+type: secondary

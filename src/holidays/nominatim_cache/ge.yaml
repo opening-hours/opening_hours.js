@@ -1,0 +1,29 @@
+---
+place_id: 208431487
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 56323923
+lat: '41.7158823'
+lon: '44.8262951'
+display_name: ზაირა არსენიშვილის ქუჩა, ზემო ჩუღურეთი, ჩუღურეთის რაიონი, თბილისი, 0102, საქართველო
+address:
+  country: საქართველო
+  country_code: ge
+  # addresstype: road
+  # ISO3166-2-lvl4: GE-TB
+  # city: თბილისი
+  # postcode: "0102"
+  # quarter: ზემო ჩუღურეთი
+  # road: ზაირა არსენიშვილის ქუჩა
+  # suburb: ჩუღურეთის რაიონი
+
+boundingbox:
+  - '41.7135134'
+  - '41.7179588'
+  - '44.8249177'
+  - '44.8282591'
+class: highway
+importance: 0.053408019378957776
+name: ზაირა არსენიშვილის ქუჩა
+place_rank: 26
+type: tertiary

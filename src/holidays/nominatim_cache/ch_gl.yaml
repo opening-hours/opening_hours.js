@@ -1,20 +1,28 @@
 ---
-place_id: 67287794
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: node
-osm_id: 5852253156
-lat: '46.9768339'
-lon: '9.0908325'
-display_name: Nüenhüttli, Glarus Süd, Glarus, 8773, Schweiz
+place_id: 73278592
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 307091131
+lat: '46.9769703'
+lon: '9.1079651'
+display_name: 3, Nüenhütten, Glarus Süd, Glarus, 8762, Schweiz
 address:
+  house_number: '3'
+  locality: Nüenhütten
   city: Glarus Süd
+  state: Glarus
+  ISO3166-2-lvl4: CH-GL
+  postcode: '8762'
   country: Schweiz
   country_code: ch
-  locality: Nüenhüttli
-  postcode: '8773'
-  state: Glarus
+addresstype: building
 boundingbox:
-  - '46.9568339'
-  - '46.9968339'
-  - '9.0708325'
-  - '9.1108325'
+  - '46.9769230'
+  - '46.9770176'
+  - '9.1078908'
+  - '9.1080393'
+class: building
+importance: 0.000047814908064347565
+name: ''
+place_rank: 30
+type: yes

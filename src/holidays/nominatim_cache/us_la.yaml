@@ -1,18 +1,28 @@
 ---
-place_id: '159480624'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: relation
-osm_id: '1836431'
-lat: '30.4243909'
-lon: '-89.973038'
-display_name: St. Tammany Parish, Louisiana, United States of America
+place_id: 301903927
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 12582409
+lat: '30.8681100'
+lon: '-92.0068270'
+display_name: Dufour Road, Goudeau, Avoyelles Parish, Louisiana, 71356, United States
 address:
-  country: United States of America
-  country_code: us
-  county: St. Tammany Parish
+  road: Dufour Road
+  hamlet: Goudeau
+  county: Avoyelles Parish
   state: Louisiana
+  ISO3166-2-lvl4: US-LA
+  postcode: '71356'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '30.1389906'
-  - '30.712402'
-  - '-90.2566829'
-  - '-89.4949729'
+  - '30.8575348'
+  - '30.8681100'
+  - '-92.0117962'
+  - '-92.0059715'
+class: highway
+importance: 0.05336833524071104
+name: Dufour Road
+place_rank: 26
+type: residential

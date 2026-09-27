@@ -1,0 +1,29 @@
+---
+place_id: 79878169
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 7172635580
+lat: '43.9425947'
+lon: '12.4576457'
+display_name: 3, Via Fiordalisio, Valdragone di Sotto, Borgo Maggiore, 47893, San Marino
+address:
+  country: San Marino
+  country_code: sm
+  # addresstype: place
+  # ISO3166-2-lvl8: SM-06
+  # hamlet: Valdragone di Sotto
+  # house_number: "3"
+  # postcode: "47893"
+  # road: Via Fiordalisio
+  # village: Borgo Maggiore
+
+boundingbox:
+  - '43.9425447'
+  - '43.9426447'
+  - '12.4575957'
+  - '12.4576957'
+class: place
+importance: 0.00005425726710913279
+name: ''
+place_rank: 30
+type: house

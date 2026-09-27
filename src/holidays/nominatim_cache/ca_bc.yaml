@@ -1,0 +1,26 @@
+---
+place_id: 377817754
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 11486415
+lat: '55.0758123'
+lon: '-124.7951319'
+display_name: Area C (Stuart Lake/Omineca Valley), district régionel de Bulkley-Néchako, British Columbia, Canada
+address:
+  city: Area C (Stuart Lake/Omineca Valley)
+  county: district régionel de Bulkley-Néchako
+  state: British Columbia
+  ISO3166-2-lvl4: CA-BC
+  country: Canada
+  country_code: ca
+addresstype: city
+boundingbox:
+  - '54.1520319'
+  - '56.0000000'
+  - '-126.9526434'
+  - '-123.3925207'
+class: boundary
+importance: 0.18671166781109327
+name: Area C (Stuart Lake/Omineca Valley)
+place_rank: 16
+type: administrative

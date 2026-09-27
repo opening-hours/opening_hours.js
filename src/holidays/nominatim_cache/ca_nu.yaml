@@ -1,0 +1,25 @@
+---
+place_id: 374783960
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 9489819
+lat: '63.5511048'
+lon: '-92.6471525'
+display_name: Kivalliq Region, Nunavut, Canada
+address:
+  county: Kivalliq Region
+  state: Nunavut
+  ISO3166-2-lvl4: CA-NU
+  country: Canada
+  country_code: ca
+addresstype: county
+boundingbox:
+  - '56.9678793'
+  - '67.0000001'
+  - '-105.0082979'
+  - '-80.0207693'
+class: boundary
+importance: 0.45928615003117845
+name: Kivalliq Region
+place_rank: 10
+type: administrative

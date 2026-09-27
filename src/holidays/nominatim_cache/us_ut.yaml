@@ -1,22 +1,25 @@
 ---
-place_id: '124868801'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '257809595'
-lat: '40.5886217'
-lon: '-111.6378685'
-display_name: Alta Lodge Tow, East Perruvian Acre Road, Alta, Salt Lake County, Utah, 84138, United States of America
+place_id: 331156413
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1744367
+lat: '39.3606305'
+lon: '-111.5767825'
+display_name: Sanpete County, Utah, United States
 address:
-  address29: Alta Lodge Tow
-  country: United States of America
-  country_code: us
-  county: Salt Lake County
-  postcode: '84138'
-  road: East Perruvian Acre Road
+  county: Sanpete County
   state: Utah
-  town: Alta
+  ISO3166-2-lvl4: US-UT
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '40.5886217'
-  - '40.589815'
-  - '-111.6378685'
-  - '-111.6373543'
+  - '39.0322640'
+  - '39.8132692'
+  - '-112.0162032'
+  - '-111.2470780'
+class: boundary
+importance: 0.49663093092076543
+name: Sanpete County
+place_rank: 12
+type: administrative

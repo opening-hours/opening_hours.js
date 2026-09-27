@@ -1,20 +1,28 @@
 ---
-place_id: '119832650'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '242268712'
-lat: '-10.1425809'
-lon: '-51.9179115'
-display_name: MT-430, Confresa, Microrregião do Norte Araguaia, Mato Grosso, Região Centro-Oeste, Brasil
+place_id: 12842765
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 8905662975
+lat: '-10.0126366'
+lon: '-51.9983769'
+display_name: Fazenda Bosque do Xingu, Vila Rica, Mato Grosso, Região Centro-Oeste, Brasil
 address:
   country: Brasil
   country_code: br
-  # county: Microrregião do Norte Araguaia
-  # road: MT-430
+  # addresstype: farm
+  # ISO3166-2-lvl4: BR-MT
+  # farm: Fazenda Bosque do Xingu
+  # municipality: Vila Rica
+  # region: Região Centro-Oeste
   # state: Mato Grosso
-  # town: Confresa
+
 boundingbox:
-  - '-10.4276788'
-  - '-9.9747152'
-  - '-52.0892082'
-  - '-51.8810199'
+  - '-10.0226366'
+  - '-10.0026366'
+  - '-52.0083769'
+  - '-51.9883769'
+class: place
+importance: 0.10671666819256884
+name: Fazenda Bosque do Xingu
+place_rank: 22
+type: farm

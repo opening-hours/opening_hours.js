@@ -1,21 +1,30 @@
 ---
-place_id: '179891419'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 273895480
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: relation
-osm_id: '4245702'
+osm_id: 4245702
 lat: '53.1477845'
-lon: '-7.69449803113039'
-display_name: An Chúil Fhionn, An Doirín Buí, Biorra, Contae Uíbh Fhailí, Cúige Laighean, Éire
+lon: '-7.6944980'
+display_name: An Chúil Fhionn, An Doirín Buí, The Municipal District of Birr, Contae Uíbh Fhailí, Cúige Laighean, Éire
 address:
   country: Éire
   country_code: ie
+  # addresstype: locality
+  # ISO3166-2-lvl5: IE-L
+  # ISO3166-2-lvl6: IE-OY
+  # city: The Municipal District of Birr
   # city_district: An Doirín Buí
   # county: Contae Uíbh Fhailí
+  # locality: An Chúil Fhionn
   # state_district: Cúige Laighean
-  # suburb: An Chúil Fhionn
-  # town: Biorra
+
 boundingbox:
   - '53.1343162'
-  - '53.1611214'
-  - '-7.7108017'
+  - '53.1611310'
+  - '-7.7108232'
   - '-7.6855041'
+class: boundary
+importance: 0.13337833447775996
+name: An Chúil Fhionn
+place_rank: 20
+type: administrative

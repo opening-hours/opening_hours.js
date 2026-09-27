@@ -1,21 +1,27 @@
 ---
-place_id: 125755338
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 73088062
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 165337778
-lat: '47.2954872'
-lon: '9.4013444'
-display_name: Triebernstrasse, Vordere Wasserschaffen, Schwende, Appenzell Innerrhoden, 9057, Schweiz
+osm_id: 44785854
+lat: '47.3014462'
+lon: '9.3984472'
+display_name: Gächtenstrasse, Schwende-Rüte, Appenzell Innerrhoden, 9057, Schweiz
 address:
+  road: Gächtenstrasse
+  city: Schwende-Rüte
+  state: Appenzell Innerrhoden
+  ISO3166-2-lvl4: CH-AI
+  postcode: '9057'
   country: Schweiz
   country_code: ch
-  postcode: '9057'
-  road: Triebernstrasse
-  state: Appenzell Innerrhoden
-  suburb: Vordere Wasserschaffen
-  village: Schwende
+addresstype: road
 boundingbox:
-  - '47.2945317'
-  - '47.2958444'
-  - '9.399958'
-  - '9.402223'
+  - '47.2999977'
+  - '47.3027510'
+  - '9.3929868'
+  - '9.4001568'
+class: highway
+importance: 0.05337833447775994
+name: Gächtenstrasse
+place_rank: 26
+type: track

@@ -1,21 +1,30 @@
 ---
-place_id: '72461530'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 146363555
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '32207279'
-lat: '52.8471666'
-lon: '13.250061'
-display_name: Großmutzer Heuweg, Löwenberger Land, Landkreis Oberhavel, Brandenburg, 16775, Deutschland
+osm_id: 32207279
+lat: '52.8454283'
+lon: '13.2498529'
+display_name: Großmutzer Heuweg, Pappelhof, Nassenheide, Löwenberger Land, Oberhavel, Brandenburg, 16775, Deutschland
 address:
+  road: Großmutzer Heuweg
+  hamlet: Pappelhof
+  village: Nassenheide
+  municipality: Löwenberger Land
+  county: Oberhavel
+  state: Brandenburg
+  ISO3166-2-lvl4: DE-BB
+  postcode: '16775'
   country: Deutschland
   country_code: de
-  county: Landkreis Oberhavel
-  postcode: '16775'
-  road: Großmutzer Heuweg
-  state: Brandenburg
-  village: Löwenberger Land
+addresstype: road
 boundingbox:
-  - '52.8454233'
-  - '52.8487398'
-  - '13.249534'
-  - '13.250061'
+  - '52.8454283'
+  - '52.8474733'
+  - '13.2498529'
+  - '13.2500696'
+class: highway
+importance: 0.05338084763866632
+name: Großmutzer Heuweg
+place_rank: 26
+type: track

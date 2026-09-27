@@ -1,22 +1,32 @@
 ---
-place_id: 133575698
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 83384072
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 197658068
-lat: '41.603324341770154'
-lon: '2.189017561747998'
-display_name: Camí Creu de Baduell, Palau-solità i Plegamans, Vallés Occidental, Barcelona, Cataluña, 08184, España
+lat: '41.6033035'
+lon: '2.1890252'
+display_name: Camí Creu de Baduell, Can Falguera i els Turons, Palau-solità i Plegamans, Vallés Occidental, Barcelona, Cataluña, 08184, España
 address:
   country: España
   country_code: es
-  # county: Barcelona
-  # municipality: Vallés Occidental
-  # postcode: 08184
+  # addresstype: road
+  # ISO3166-2-lvl4: ES-CT
+  # ISO3166-2-lvl6: ES-B
+  # county: Vallés Occidental
+  # neighbourhood: Can Falguera i els Turons
+  # postcode: "08184"
   # road: Camí Creu de Baduell
   # state: Cataluña
-  # village: Palau-solità i Plegamans
+  # state_district: Barcelona
+  # town: Palau-solità i Plegamans
+
 boundingbox:
   - '41.5944673'
   - '41.6065014'
   - '2.1879386'
   - '2.1921028'
+class: highway
+importance: 0.053393270008392425
+name: Camí Creu de Baduell
+place_rank: 26
+type: residential

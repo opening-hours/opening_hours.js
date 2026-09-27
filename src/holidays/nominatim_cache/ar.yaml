@@ -1,22 +1,31 @@
 ---
-place_id: 282739669
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: relation
-osm_id: 4554665
-lat: '-34.603753499999996'
-lon: '-58.381434382119664'
-display_name: Microcentro, San Nicolás, Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina
+place_id: 17446617
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 325838312
+lat: '-34.6038241'
+lon: '-58.3815865'
+display_name: Avenida Corrientes, Microcentro, San Nicolás, Buenos Aires, Comuna 1, Ciudad Autónoma de Buenos Aires, C1043AAW, Argentina
 address:
   country: Argentina
   country_code: ar
+  # addresstype: road
   # ISO3166-2-lvl4: AR-C
-  # ISO3166-2-lvl8: AR-C
   # city: Buenos Aires
-  # neighbourhood: Microcentro
+  # postcode: C1043AAW
+  # quarter: Microcentro
+  # road: Avenida Corrientes
   # state: Ciudad Autónoma de Buenos Aires
+  # state_district: Comuna 1
   # suburb: San Nicolás
+
 boundingbox:
-  - '-34.6038253'
-  - '-34.6036797'
-  - '-58.3818804'
-  - '-58.381306'
+  - '-34.6038317'
+  - '-34.6038203'
+  - '-58.3817051'
+  - '-58.3815280'
+class: highway
+importance: 0.053416132600900244
+name: Avenida Corrientes
+place_rank: 26
+type: secondary

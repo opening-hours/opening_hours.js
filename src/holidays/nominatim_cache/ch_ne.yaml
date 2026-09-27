@@ -1,25 +1,30 @@
 ---
-place_id: 98237811
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: way
-osm_id: 47731302
-lat: '47.01190685'
-lon: '6.819935050000001'
-display_name: La Petite Motte, Route du Mont Racine, Les Petites Fies, Les Geneveys-sur-Coffrane, Val-de-Ruz, District du
-  Val-de-Ruz, Neuenburg, 2206, Schweiz
+place_id: 92846279
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11802352490
+lat: '47.0067708'
+lon: '6.8242533'
+display_name: 8.V.».R, Route du Mont-Racine, Les Geneveys-sur-Coffrane, Val-de-Ruz, Région Val-de-Ruz, Neuenburg, 2206, Schweiz
 address:
-  building: La Petite Motte
+  historic: 8.V.».R
+  road: Route du Mont-Racine
+  village: Les Geneveys-sur-Coffrane
   city: Val-de-Ruz
-  city_district: Les Geneveys-sur-Coffrane
+  county: Région Val-de-Ruz
+  state: Neuenburg
+  ISO3166-2-lvl4: CH-NE
+  postcode: '2206'
   country: Schweiz
   country_code: ch
-  county: District du Val-de-Ruz
-  postcode: '2206'
-  road: Route du Mont Racine
-  state: Neuenburg
-  suburb: Les Petites Fies
+addresstype: historic
 boundingbox:
-  - '47.0117958'
-  - '47.0120179'
-  - '6.8197722'
-  - '6.8200979'
+  - '47.0067208'
+  - '47.0068208'
+  - '6.8242033'
+  - '6.8243033'
+class: historic
+importance: 0.000049249256122637024
+name: 8.V.».R
+place_rank: 30
+type: boundary_stone

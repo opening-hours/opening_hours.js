@@ -1,0 +1,28 @@
+---
+place_id: 13999534
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 219337204
+lat: '-5.6780499'
+lon: '-36.4781706'
+display_name: BR-304, Angicos, Rio Grande do Norte, Região Nordeste, Brasil
+address:
+  road: BR-304
+  city_district: Angicos
+  town: Angicos
+  state: Rio Grande do Norte
+  ISO3166-2-lvl4: BR-RN
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-5.6840284'
+  - '-5.6758718'
+  - '-36.5074879'
+  - '-36.4597129'
+class: highway
+importance: 0.053383334859235486
+name: BR-304
+place_rank: 26
+type: trunk

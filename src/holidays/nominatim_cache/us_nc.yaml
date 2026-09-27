@@ -1,25 +1,28 @@
 ---
-place_id: '107570419'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '189846068'
-lat: '35.7804055'
-lon: '-78.639099844006'
-display_name: Union Square, East Edenton Street, Historic Oakwood, Warehouse District, Raleigh, Wake County, North Carolina,
-  27601, United States of America
+place_id: 345188542
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 5785761121
+lat: '35.6725170'
+lon: '-79.0388229'
+display_name: 182, Woodhaven Drive, Chatham County, North Carolina, 27562, United States
 address:
-  city: Raleigh
-  country: United States of America
-  country_code: us
-  county: Wake County
-  neighbourhood: Historic Oakwood
-  park: Union Square
-  postcode: '27601'
-  road: East Edenton Street
+  house_number: '182'
+  road: Woodhaven Drive
+  county: Chatham County
   state: North Carolina
-  suburb: Warehouse District
+  ISO3166-2-lvl4: US-NC
+  postcode: '27562'
+  country: United States
+  country_code: us
+addresstype: place
 boundingbox:
-  - '35.7796269'
-  - '35.7811801'
-  - '-78.6400488'
-  - '-78.6381485'
+  - '35.6724670'
+  - '35.6725670'
+  - '-79.0388729'
+  - '-79.0387729'
+class: place
+importance: 0.00000999999999995449
+name: ''
+place_rank: 30
+type: house

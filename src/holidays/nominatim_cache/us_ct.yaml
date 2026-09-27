@@ -1,22 +1,29 @@
 ---
-place_id: '22052698'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 354902509
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: '2164630561'
-lat: '41.9112481'
-lon: '-72.1601502'
-display_name: Pixi Falls, Nipmuck Trail, Westford, Windham County, Connecticut, 06278, United States of America
+osm_id: 9740456589
+lat: '41.6499951'
+lon: '-72.7347127'
+display_name: 39, Willow Lane, Newington, Capitol Planning Region, Connecticut, 06111, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Windham County
-  footway: Nipmuck Trail
-  hamlet: Westford
-  postcode: 06278
+  house_number: '39'
+  road: Willow Lane
+  town: Newington
+  county: Capitol Planning Region
   state: Connecticut
-  viewpoint: Pixi Falls
+  ISO3166-2-lvl4: US-CT
+  postcode: '06111'
+  country: United States
+  country_code: us
+addresstype: place
 boundingbox:
-  - '41.9111481'
-  - '41.9113481'
-  - '-72.1602502'
-  - '-72.1600502'
+  - '41.6499451'
+  - '41.6500451'
+  - '-72.7347627'
+  - '-72.7346627'
+class: place
+importance: 0.000069572747386847
+name: ''
+place_rank: 30
+type: house

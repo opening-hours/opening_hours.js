@@ -1,24 +1,30 @@
 ---
-place_id: '4981024'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 175139474
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: '587601599'
-lat: '53.4825244'
-lon: '18.7584881'
-display_name: Auto Gaz, Dworcowa, Osiedle Tysiąclecia, Śródmieście Zewnętrzne, Grudziądz, województwo kujawsko-pomorskie,
-  Polska
+osm_id: 12881603719
+lat: '53.4826687'
+lon: '18.7582009'
+display_name: Dworcowa, Osiedle Wyzwolenia, Śródmieście Zewnętrzne, Grudziądz, województwo kujawsko-pomorskie, 86-380, Polska
 address:
   country: Polska
   country_code: pl
+  # addresstype: amenity
+  # ISO3166-2-lvl4: PL-04
   # city: Grudziądz
   # city_district: Śródmieście Zewnętrzne
-  # county: Grudziądz
-  # fuel: Auto Gaz
-  # neighbourhood: Osiedle Tysiąclecia
+  # neighbourhood: Osiedle Wyzwolenia
+  # postcode: 86-380
   # road: Dworcowa
   # state: województwo kujawsko-pomorskie
+
 boundingbox:
-  - '53.4824244'
-  - '53.4826244'
-  - '18.7583881'
-  - '18.7585881'
+  - '53.4826187'
+  - '53.4827187'
+  - '18.7581509'
+  - '18.7582509'
+class: amenity
+importance: 0.00006161669336990948
+name: ''
+place_rank: 30
+type: waste_basket

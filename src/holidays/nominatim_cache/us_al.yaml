@@ -1,22 +1,30 @@
 ---
-place_id: '200981368'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 384296979
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '460432302'
-lat: '32.3670408'
-lon: '-86.2980037714481'
-display_name: Tuscaloosa Park, Genetta Court, Montgomery, Montgomery County, Alabama, 36104, United States of America
+osm_id: 8600873
+lat: '33.2593625'
+lon: '-86.8295459'
+display_name: 1151, Big Cloud Circle, Navajo Hills, Alabaster, Shelby County, Alabama, 35007, United States
 address:
-  city: Montgomery
-  country: United States of America
-  country_code: us
-  county: Montgomery County
-  park: Tuscaloosa Park
-  postcode: '36104'
-  road: Genetta Court
+  house_number: '1151'
+  road: Big Cloud Circle
+  hamlet: Navajo Hills
+  town: Alabaster
+  county: Shelby County
   state: Alabama
+  ISO3166-2-lvl4: US-AL
+  postcode: '35007'
+  country: United States
+  country_code: us
+addresstype: place
 boundingbox:
-  - '32.3666695'
-  - '32.3673896'
-  - '-86.2984317'
-  - '-86.297587'
+  - '33.2593125'
+  - '33.2594125'
+  - '-86.8295959'
+  - '-86.8294959'
+class: place
+importance: 0.00000999999999995449
+name: ''
+place_rank: 30
+type: house

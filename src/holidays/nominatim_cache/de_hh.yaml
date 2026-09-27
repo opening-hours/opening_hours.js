@@ -1,22 +1,29 @@
 ---
-place_id: '69037723'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '25610298'
-lat: '53.5446624'
-lon: '10.0099043'
-display_name: Stadtdeich, Hammerbrook, Hamburg-Mitte, Hamburg, 20097, Deutschland
+place_id: 142837161
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 9907436612
+lat: '53.5503093'
+lon: '10.0011026'
+display_name: 22, Jakobikirchhof, Altstadt, Hamburg-Mitte, Hamburg, 20095, Deutschland
 address:
+  house_number: '22'
+  road: Jakobikirchhof
+  suburb: Altstadt
+  borough: Hamburg-Mitte
   city: Hamburg
-  city_district: Hamburg-Mitte
+  ISO3166-2-lvl4: DE-HH
+  postcode: '20095'
   country: Deutschland
   country_code: de
-  postcode: '20097'
-  road: Stadtdeich
-  state: Hamburg
-  suburb: Hammerbrook
+addresstype: information
 boundingbox:
-  - '53.5439419'
-  - '53.5447175'
-  - '10.0098431'
-  - '10.0104739'
+  - '53.5502593'
+  - '53.5503593'
+  - '10.0010526'
+  - '10.0011526'
+class: information
+importance: 0.00008255359731436664
+name: ''
+place_rank: 30
+type: board

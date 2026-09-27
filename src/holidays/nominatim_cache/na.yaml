@@ -1,0 +1,25 @@
+---
+place_id: 34482795
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 2279585
+lat: '-22.9082553'
+lon: '17.0919800'
+display_name: Khomas Region, Namibia
+address:
+  country: Namibia
+  country_code: na
+  # addresstype: state
+  # ISO3166-2-lvl4: NA-KH
+  # state: Khomas Region
+
+boundingbox:
+  - '-24.0460099'
+  - '-21.7084606'
+  - '15.7233984'
+  - '18.5027495'
+class: boundary
+importance: 0.44714508551195986
+name: Khomas Region
+place_rank: 8
+type: administrative

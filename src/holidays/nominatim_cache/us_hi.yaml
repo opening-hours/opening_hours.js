@@ -1,20 +1,25 @@
 ---
-place_id: '76187181'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '45698610'
-lat: '19.62918'
-lon: '-155.5398599'
-display_name: Hilo Kona Road, Kailua-Kona, Hawaii, United States of America
+place_id: 379505289
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 166562
+lat: '19.6273325'
+lon: '-155.5645610'
+display_name: Hawaiʻi County, Hawaii, United States
 address:
-  city: Kailua-Kona
-  country: United States of America
-  country_code: us
-  county: Hawaii
-  road: Hilo Kona Road
+  county: Hawaiʻi County
   state: Hawaii
+  ISO3166-2-lvl4: US-HI
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '19.621556'
-  - '19.63689'
-  - '-155.5977739'
-  - '-155.4812899'
+  - '18.8654600'
+  - '20.3214530'
+  - '-156.1200010'
+  - '-154.7557920'
+class: boundary
+importance: 0.4825978077388109
+name: Hawaiʻi County
+place_rank: 12
+type: administrative

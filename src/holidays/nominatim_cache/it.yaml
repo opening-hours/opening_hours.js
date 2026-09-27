@@ -1,22 +1,32 @@
 ---
-place_id: '134927267'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 80827420
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '310842035'
-lat: '41.9838098'
-lon: '12.7598934'
-display_name: Via Colle Nocello, Villanova, Guidonia Montecelio, RM, Lazio, 00010, Italia
+osm_id: 1189193954
+lat: '41.9808610'
+lon: '12.7666614'
+display_name: Via Colle Nocello, La Botte, Guidonia Montecelio, Roma, Lazio, 00010, Italia
 address:
   country: Italia
   country_code: it
-  # city: Guidonia Montecelio
-  # county: RM
-  # postcode: 00010
+  # addresstype: road
+  # ISO3166-2-lvl4: IT-62
+  # ISO3166-2-lvl6: IT-RM
+  # county: Roma
+  # hamlet: La Botte
+  # municipality: Guidonia Montecelio
+  # postcode: "00010"
   # road: Via Colle Nocello
   # state: Lazio
-  # suburb: Villanova
+  # village: La Botte
+
 boundingbox:
-  - '41.9794483'
-  - '41.9863473'
-  - '12.7503714'
+  - '41.9799007'
+  - '41.9864140'
+  - '12.7661205'
   - '12.7668517'
+class: highway
+importance: 0.05339853742275116
+name: Via Colle Nocello
+place_rank: 26
+type: residential

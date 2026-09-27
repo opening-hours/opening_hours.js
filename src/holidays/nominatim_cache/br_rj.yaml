@@ -1,0 +1,27 @@
+---
+place_id: 10290225
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 447866899
+lat: '-22.2720369'
+lon: '-42.4213424'
+display_name: Amparo, Nova Friburgo, Rio de Janeiro, Região Sudeste, Brasil
+address:
+  village: Amparo
+  municipality: Nova Friburgo
+  state: Rio de Janeiro
+  ISO3166-2-lvl4: BR-RJ
+  region: Região Sudeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-22.2784044'
+  - '-22.2612171'
+  - '-42.4441874'
+  - '-42.4008098'
+class: highway
+importance: 0.05339141603723198
+name: ''
+place_rank: 26
+type: unclassified

@@ -1,21 +1,30 @@
 ---
-place_id: 91709774
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 292735943
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 24906726
-lat: '41.802204265262084'
-lon: '-4.752778177150476'
-display_name: VP-4000, Cigales, Valladolid, Castilla y León, 47270, España
+osm_id: 742828202
+lat: '41.5500453'
+lon: '-5.1387395'
+display_name: Monolito a los Comuneros, Plaza de España, Villalar de los Comuneros, Valladolid, Castilla y León, 47111, España
 address:
+  tourism: Monolito a los Comuneros
+  road: Plaza de España
+  village: Villalar de los Comuneros
+  state_district: Valladolid
+  ISO3166-2-lvl6: ES-VA
+  state: Castilla y León
+  ISO3166-2-lvl4: ES-CL
+  postcode: '47111'
   country: España
   country_code: es
-  county: Valladolid
-  postcode: '47270'
-  road: VP-4000
-  state: Castilla y León
-  village: Cigales
+addresstype: tourism
 boundingbox:
-  - '41.7616726'
-  - '41.8237842'
-  - '-4.7698416'
-  - '-4.7017642'
+  - '41.5500190'
+  - '41.5500781'
+  - '-5.1387790'
+  - '-5.1386999'
+class: tourism
+importance: 0.09078915819201436
+name: Monolito a los Comuneros
+place_rank: 30
+type: attraction

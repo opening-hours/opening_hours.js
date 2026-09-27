@@ -1,22 +1,28 @@
 ---
-place_id: '122128078'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 19044410
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '229056104'
-lat: '-34.9281081'
-lon: '138.600641'
-display_name: Victoria Square, Adelaide, 5000, City of Adelaide, South Australia, 5000, Australia
+osm_id: 198853073
+lat: '-34.9285241'
+lon: '138.6007040'
+display_name: Victoria Square, Adelaide, South Australia, 5000, Australia
 address:
-  city: '5000'
+  road: Victoria Square
+  suburb: Adelaide
+  city: Adelaide
+  state: South Australia
+  ISO3166-2-lvl4: AU-SA
+  postcode: '5000'
   country: Australia
   country_code: au
-  county: City of Adelaide
-  postcode: '5000'
-  road: Victoria Square
-  state: South Australia
-  suburb: Adelaide
+addresstype: road
 boundingbox:
-  - '-34.9285566'
-  - '-34.9277058'
-  - '138.6003446'
-  - '138.6007057'
+  - '-34.9286311'
+  - '-34.9285203'
+  - '138.5992267'
+  - '138.6007458'
+class: highway
+importance: 0.05340822384985119
+name: Victoria Square
+place_rank: 26
+type: secondary

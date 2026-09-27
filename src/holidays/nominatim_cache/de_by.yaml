@@ -1,23 +1,28 @@
 ---
-place_id: '197928661'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '298457553'
-lat: '48.946586'
-lon: '11.4042882'
-display_name: Geographischer Mittelpunkt Bayerns, Mühlenweg, Kipfenberg, Landkreis Eichstätt, Oberbayern, Bayern, 85110, Deutschland
+place_id: 127168361
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1078298615
+lat: '48.9466571'
+lon: '11.4038482'
+display_name: Kipfenberg, Landkreis Eichstätt, Bayern, 85110, Deutschland
 address:
+  village: Kipfenberg
+  city: Kipfenberg
+  county: Landkreis Eichstätt
+  state: Bayern
+  ISO3166-2-lvl4: DE-BY
+  postcode: '85110'
   country: Deutschland
   country_code: de
-  county: Landkreis Eichstätt
-  memorial: Geographischer Mittelpunkt Bayerns
-  path: Mühlenweg
-  postcode: '85110'
-  state: Bayern
-  state_district: Oberbayern
-  village: Kipfenberg
+addresstype: road
 boundingbox:
-  - '48.946486'
-  - '48.946686'
-  - '11.4041882'
-  - '11.4043882'
+  - '48.9465628'
+  - '48.9466792'
+  - '11.4033481'
+  - '11.4042464'
+class: highway
+importance: 0.05338441672388796
+name: ''
+place_rank: 26
+type: unclassified

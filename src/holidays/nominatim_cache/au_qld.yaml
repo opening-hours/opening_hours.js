@@ -1,23 +1,30 @@
 ---
-place_id: '60789880'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '4049835'
-lat: '-27.4696521'
-lon: '153.0252442'
-display_name: Queen Street Mall, Merthyr, Spring Hill, Brisbane, Brisbane City, Queensland, 4001, Australia
+place_id: 27471499
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 7781404
+lat: '-27.4696588'
+lon: '153.0252343'
+display_name: Queen Street Mall, Golden Triangle, Brisbane City, Brisbane, Queensland, 4000, Australia
 address:
+  road: Queen Street Mall
+  neighbourhood: Golden Triangle
+  suburb: Brisbane City
+  city_district: Brisbane City
   city: Brisbane
+  state: Queensland
+  ISO3166-2-lvl4: AU-QLD
+  postcode: '4000'
   country: Australia
   country_code: au
-  county: Brisbane City
-  neighbourhood: Merthyr
-  pedestrian: Queen Street Mall
-  postcode: '4001'
-  state: Queensland
-  suburb: Spring Hill
+addresstype: road
 boundingbox:
-  - '-27.4709723'
-  - '-27.4683239'
-  - '153.0235398'
-  - '153.0269588'
+  - '-27.4709974'
+  - '-27.4683163'
+  - '153.0235446'
+  - '153.0269264'
+class: highway
+importance: 0.053410274662394105
+name: Queen Street Mall
+place_rank: 26
+type: pedestrian

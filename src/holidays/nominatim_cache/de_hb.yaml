@@ -1,24 +1,31 @@
 ---
-place_id: '89411236'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 142026971
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '111389011'
-lat: '53.0759058'
-lon: '8.80732623676389'
-display_name: Roland, Am Markt, Altstadt, Mitte, Stadtbezirk Bremen-Mitte, Bremen, 28195, Deutschland
+osm_id: 923119179
+lat: '53.1453395'
+lon: '8.6925137'
+display_name: Wilhelm-Maybach-Straße, Bremer Industrie-Park, Industriehäfen, Häfen, Bremen-Mitte, Bremen, 28237, Deutschland
 address:
-  attraction: Roland
+  road: Wilhelm-Maybach-Straße
+  industrial: Bremer Industrie-Park
+  quarter: Industriehäfen
+  suburb: Häfen
+  city_district: Bremen-Mitte
   city: Bremen
-  city_district: Stadtbezirk Bremen-Mitte
+  state: Bremen
+  ISO3166-2-lvl4: DE-HB
+  postcode: '28237'
   country: Deutschland
   country_code: de
-  neighbourhood: Altstadt
-  pedestrian: Am Markt
-  postcode: '28195'
-  state: Bremen
-  suburb: Mitte
+addresstype: road
 boundingbox:
-  - '53.075893'
-  - '53.0759191'
-  - '8.8073051'
-  - '8.8073476'
+  - '53.1450066'
+  - '53.1458905'
+  - '8.6922963'
+  - '8.6928734'
+class: highway
+importance: 0.040075505455100316
+name: Wilhelm-Maybach-Straße
+place_rank: 27
+type: service

@@ -1,0 +1,29 @@
+---
+place_id: 120274
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1291812649
+lat: '-14.2921273'
+lon: '-170.7112241'
+display_name: Matafao Trail, Pago Pago, Maʻopūtasi County, Eastern District, American Samoa, 96799, United States
+address:
+  road: Matafao Trail
+  village: Pago Pago
+  municipality: Maʻopūtasi County
+  county: Eastern District
+  state: American Samoa
+  ISO3166-2-lvl4: US-AS
+  postcode: '96799'
+  country: United States
+  country_code: us
+addresstype: road
+boundingbox:
+  - '-14.2947263'
+  - '-14.2837433'
+  - '-170.7130923'
+  - '-170.7042207'
+class: highway
+importance: 0.040037501335164406
+name: Matafao Trail
+place_rank: 27
+type: path

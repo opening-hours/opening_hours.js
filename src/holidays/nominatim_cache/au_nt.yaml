@@ -1,23 +1,29 @@
 ---
-place_id: '61893183'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 28811351
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '4673060'
-lat: '-12.4637515'
-lon: '130.8444127'
-display_name: Bennett Street, One Mile Dam, Stuart Park, Darwin, City of Darwin, Northern Territory, 0820, Australia
+osm_id: 684289203
+lat: '-12.4630906'
+lon: '130.8460804'
+display_name: McMinn Street, Darwin City, Darwin, Northern Territory, 0800, Australia
 address:
+  road: McMinn Street
+  suburb: Darwin City
+  city_district: Darwin City
   city: Darwin
+  territory: Northern Territory
+  ISO3166-2-lvl4: AU-NT
+  postcode: '0800'
   country: Australia
   country_code: au
-  county: City of Darwin
-  neighbourhood: One Mile Dam
-  postcode: 0820
-  road: Bennett Street
-  state: Northern Territory
-  suburb: Stuart Park
+addresstype: road
 boundingbox:
-  - '-12.4655663'
-  - '-12.4622561'
-  - '130.842484'
-  - '130.8459013'
+  - '-12.4632019'
+  - '-12.4625789'
+  - '130.8456164'
+  - '130.8461678'
+class: highway
+importance: 0.053401322194247314
+name: McMinn Street
+place_rank: 26
+type: residential

@@ -1,20 +1,29 @@
 ---
-place_id: '66256326'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 367139468
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '19039813'
-lat: '41.4843124'
-lon: '-82.6844091'
-display_name: Perimeter Road, Sandusky, Erie County, Ohio, United States of America
+osm_id: 19142680
+lat: '40.2257879'
+lon: '-82.6933782'
+display_name: Croton Road, Johnstown, Hartford Township, Licking County, Ohio, 43013, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Erie County
-  road: Perimeter Road
+  road: Croton Road
+  village: Johnstown
+  municipality: Hartford Township
+  county: Licking County
   state: Ohio
-  town: Sandusky
+  ISO3166-2-lvl4: US-OH
+  postcode: '43013'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '41.482416'
-  - '41.4858906'
-  - '-82.6859203'
-  - '-82.6827925'
+  - '40.1603140'
+  - '40.2319020'
+  - '-82.6936350'
+  - '-82.6906690'
+class: highway
+importance: 0.05337213321126112
+name: Croton Road
+place_rank: 26
+type: secondary

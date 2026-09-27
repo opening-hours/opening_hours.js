@@ -1,0 +1,27 @@
+---
+place_id: 13072478
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 6278288
+lat: '-5.8049026'
+lon: '-54.0442521'
+display_name: Altamira, Pará, Região Norte, Brasil
+address:
+  city_district: Altamira
+  city: Altamira
+  state: Pará
+  ISO3166-2-lvl4: BR-PA
+  region: Região Norte
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '-8.6202098'
+  - '-2.9887169'
+  - '-55.6238710'
+  - '-51.6475378'
+class: boundary
+importance: 0.16005549019607843
+name: Altamira
+place_rank: 18
+type: administrative

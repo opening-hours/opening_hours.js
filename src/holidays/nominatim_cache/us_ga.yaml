@@ -1,20 +1,26 @@
 ---
-place_id: '58855558'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 343223354
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '9260878'
-lat: '31.083523'
-lon: '-81.4209829'
-display_name: Jennings Road, Glynn County, Georgia, 31527, United States of America
+osm_id: 9171661
+lat: '32.3303917'
+lon: '-83.1128912'
+display_name: Lavender Road, Dodge County, Georgia, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Glynn County
-  postcode: '31527'
-  road: Jennings Road
+  road: Lavender Road
+  county: Dodge County
   state: Georgia
+  ISO3166-2-lvl4: US-GA
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '31.083011'
-  - '31.083869'
-  - '-81.4221379'
-  - '-81.4197649'
+  - '32.3272740'
+  - '32.3364890'
+  - '-83.1205530'
+  - '-83.1096200'
+class: highway
+importance: 0.0533433333333333
+name: Lavender Road
+place_rank: 26
+type: residential

@@ -1,0 +1,32 @@
+---
+place_id: 64420095
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 7228541927
+lat: '44.8176257'
+lon: '20.4569432'
+display_name: Adidas, 33, Кнеза Михаила, Београд (Стари град), Београд, Градска општина Стари град, Град Београд, Централна Србија, 11000, Србија
+address:
+  country: Србија
+  country_code: rs
+  # addresstype: shop
+  # ISO3166-2-lvl6: RS-00
+  # city: Београд
+  # county: Град Београд
+  # house_number: "33"
+  # postcode: "11000"
+  # province: Централна Србија
+  # road: Кнеза Михаила
+  # shop: Adidas
+  # suburb: Београд (Стари град)
+
+boundingbox:
+  - '44.8175757'
+  - '44.8176757'
+  - '20.4568932'
+  - '20.4569932'
+class: shop
+importance: 0.00008159685664144377
+name: Adidas
+place_rank: 30
+type: sports

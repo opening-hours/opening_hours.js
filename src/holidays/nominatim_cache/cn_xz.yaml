@@ -1,0 +1,27 @@
+---
+place_id: 242476776
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 12338734
+lat: '29.9038088'
+lon: '91.1729520'
+display_name: 卡孜乡, 林周县, 拉萨市, 西藏自治区, 中国
+address:
+  town: 卡孜乡
+  county: 林周县
+  city: 拉萨市
+  state: 西藏自治区
+  ISO3166-2-lvl4: CN-XZ
+  country: 中国
+  country_code: cn
+addresstype: town
+boundingbox:
+  - '29.7701779'
+  - '29.9800527'
+  - '90.8434218'
+  - '91.2041328'
+class: boundary
+importance: 0.2702882353650111
+name: 卡孜乡
+place_rank: 16
+type: administrative

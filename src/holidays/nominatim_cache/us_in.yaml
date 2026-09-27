@@ -1,22 +1,28 @@
 ---
-place_id: '171578227'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 370185839
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '171578227'
-lat: '40.418118'
-lon: '-86.896985'
-display_name: 39, Columbia Street, Happy Hollow Heights, Tippecanoe County, Indiana, 47901, United States of America
+osm_id: 17558004
+lat: '40.3313212'
+lon: '-86.1747472'
+display_name: West 200 North, Jacksons, Tipton County, Indiana, 46072, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Tippecanoe County
-  hamlet: Happy Hollow Heights
-  house_number: '39'
-  postcode: '47901'
-  road: Columbia Street
+  road: West 200 North
+  hamlet: Jacksons
+  county: Tipton County
   state: Indiana
+  ISO3166-2-lvl4: US-IN
+  postcode: '46072'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '40.418018'
-  - '40.418218'
-  - '-86.897085'
-  - '-86.896885'
+  - '40.3309258'
+  - '40.3333473'
+  - '-86.2028257'
+  - '-86.0132603'
+class: highway
+importance: 0.0533620332646677
+name: West 200 North
+place_rank: 26
+type: residential

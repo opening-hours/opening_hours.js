@@ -1,25 +1,27 @@
 ---
-place_id: '125082031'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 368380109
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '264540336'
-lat: '42.71532985'
-lon: '-84.4995249806439'
-display_name: Building 1572, 30, Middlevale Road, Spartan Village, East Lansing, Ingham County, Michigan, 48823, United States
-  of America
+osm_id: 17821713
+lat: '43.6181679'
+lon: '-84.6830132'
+display_name: Chippewa Trail, Chippewa Township, Isabella County, Michigan, United States
 address:
-  building: Building 1572
-  city: East Lansing
-  country: United States of America
-  country_code: us
-  county: Ingham County
-  house_number: '30'
-  postcode: '48823'
-  residential: Spartan Village
-  road: Middlevale Road
+  road: Chippewa Trail
+  city: Chippewa Township
+  county: Isabella County
   state: Michigan
+  ISO3166-2-lvl4: US-MI
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '42.7151622'
-  - '42.7154709'
-  - '-84.4997235'
-  - '-84.4992914'
+  - '43.6179220'
+  - '43.6193761'
+  - '-84.6847050'
+  - '-84.6787064'
+class: highway
+importance: 0.05338747310597387
+name: Chippewa Trail
+place_rank: 26
+type: residential

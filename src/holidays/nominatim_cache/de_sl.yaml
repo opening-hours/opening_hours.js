@@ -1,22 +1,30 @@
 ---
-place_id: '86770457'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 118623042
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '101614587'
-lat: '49.4173294'
-lon: '6.9783698'
-display_name: Klingelfloßtalbrücke, Eppelborn, Landkreis Neunkirchen, Saarland, 66571, Deutschland
+osm_id: 339437842
+lat: '49.3842210'
+lon: '6.9532554'
+display_name: 6a, Großwaldstraße, Habach, Eppelborn, Landkreis Neunkirchen, Saarland, 66571, Deutschland
 address:
-  city_district: Eppelborn
+  house_number: 6a
+  road: Großwaldstraße
+  city_district: Habach
+  village: Eppelborn
+  county: Landkreis Neunkirchen
+  state: Saarland
+  ISO3166-2-lvl4: DE-SL
+  postcode: '66571'
   country: Deutschland
   country_code: de
-  county: Landkreis Neunkirchen
-  postcode: '66571'
-  road: Klingelfloßtalbrücke
-  state: Saarland
-  village: Eppelborn
+addresstype: building
 boundingbox:
-  - '49.415945'
-  - '49.4187733'
-  - '6.9767841'
-  - '6.9803664'
+  - '49.3841569'
+  - '49.3842850'
+  - '6.9531259'
+  - '6.9533848'
+class: building
+importance: 0.00004686579690237304
+name: ''
+place_rank: 30
+type: apartments

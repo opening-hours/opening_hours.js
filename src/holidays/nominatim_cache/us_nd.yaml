@@ -1,22 +1,26 @@
 ---
-place_id: '183480441'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 330289740
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '183480441'
-lat: '48.145912877551'
-lon: '-103.623120673469'
-display_name: 248, 1st Avenue West, Williston, Williams County, North Dakota, 58801, United States of America
+osm_id: 9779058
+lat: '47.6178822'
+lon: '-100.5407628'
+display_name: 14th Street Northeast, Sheridan County, North Dakota, United States
 address:
-  city: Williston
-  country: United States of America
-  country_code: us
-  county: Williams County
-  house_number: '248'
-  postcode: '58801'
-  road: 1st Avenue West
+  road: 14th Street Northeast
+  county: Sheridan County
   state: North Dakota
+  ISO3166-2-lvl4: US-ND
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '48.145812877551'
-  - '48.146012877551'
-  - '-103.62322067347'
-  - '-103.62302067347'
+  - '47.6157020'
+  - '47.6179260'
+  - '-100.5445080'
+  - '-100.4374860'
+class: highway
+importance: 0.0533433333333333
+name: 14th Street Northeast
+place_rank: 26
+type: unclassified

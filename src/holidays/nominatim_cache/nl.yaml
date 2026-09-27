@@ -1,0 +1,32 @@
+---
+place_id: 157139308
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 2724220022
+lat: '52.3703149'
+lon: '4.8952043'
+display_name: 14, Sint Agnietenstraat, Burgwallen-Oude Zijde, Centrum, Amsterdam, Noord-Holland, Nederland, 1012 EG, Nederland
+address:
+  country: Nederland
+  country_code: nl
+  # addresstype: place
+  # ISO3166-2-lvl4: NL-NH
+  # city: Amsterdam
+  # house_number: "14"
+  # municipality: Amsterdam
+  # postcode: 1012 EG
+  # quarter: Burgwallen-Oude Zijde
+  # road: Sint Agnietenstraat
+  # state: Noord-Holland
+  # suburb: Centrum
+
+boundingbox:
+  - '52.3702649'
+  - '52.3703649'
+  - '4.8951543'
+  - '4.8952543'
+class: place
+importance: 0.00008268177309829888
+name: ''
+place_rank: 30
+type: house

@@ -1,26 +1,29 @@
 ---
-place_id: '68045673'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 356369045
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '24677646'
-lat: '42.35546545'
-lon: '-71.0638843757496'
-display_name: Visitor Information Center at Boston Common, 148, Tremont Street, Chinatown, Beacon Hill, Boston, Suffolk County,
-  Massachusetts, 02111, United States of America
+osm_id: 9290649
+lat: '42.3793180'
+lon: '-72.0307630'
+display_name: Worcester Road, Coldbrook Springs, Oakham, Worcester County, Massachusetts, 01068, United States
 address:
-  city: Boston
-  country: United States of America
-  country_code: us
-  county: Suffolk County
-  house_number: '148'
-  information: Visitor Information Center at Boston Common
-  neighbourhood: Chinatown
-  postcode: '02111'
-  road: Tremont Street
+  road: Worcester Road
+  hamlet: Coldbrook Springs
+  village: Oakham
+  county: Worcester County
   state: Massachusetts
-  suburb: Beacon Hill
+  ISO3166-2-lvl4: US-MA
+  postcode: '01068'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '42.3553774'
-  - '42.3555517'
-  - '-71.0640413'
-  - '-71.0637728'
+  - '42.3666418'
+  - '42.3932166'
+  - '-72.0438673'
+  - '-72.0169411'
+class: highway
+importance: 0.053374913405050704
+name: Worcester Road
+place_rank: 26
+type: primary

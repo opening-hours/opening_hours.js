@@ -1,0 +1,26 @@
+---
+place_id: 286291315
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 12094381
+lat: '46.3244253'
+lon: '-63.1319658'
+display_name: Union Road, Rural Municipality of Union Road, Queens County, Prince Edward Island, Canada
+address:
+  village: Union Road
+  county: Queens County
+  state: Prince Edward Island
+  ISO3166-2-lvl4: CA-PE
+  country: Canada
+  country_code: ca
+addresstype: village
+boundingbox:
+  - '46.3040636'
+  - '46.3728734'
+  - '-63.1589699'
+  - '-63.1083369'
+class: boundary
+importance: 0.18672166857404437
+name: Union Road
+place_rank: 16
+type: administrative

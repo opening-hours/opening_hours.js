@@ -1,19 +1,22 @@
 ---
-place_id: '29137085'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '2686671754'
-lat: '55.5977594'
-lon: '10.3288756'
-display_name: Egeby, Nordfyns Kommune, Region Syddanmark, Danmark
+place_id: 165649486
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 50046
+lat: '55.6702490'
+lon: '10.3333283'
+display_name: Danmark
 address:
   country: Danmark
   country_code: dk
-  # county: Nordfyns Kommune
-  # hamlet: Egeby
-  # state: Region Syddanmark
+  # addresstype: country
 boundingbox:
-  - '55.5577594'
-  - '55.6377594'
-  - '10.2888756'
-  - '10.3688756'
+  - '54.4516667'
+  - '57.9524297'
+  - '7.7153255'
+  - '15.5530641'
+class: boundary
+importance: 0.8655315682554352
+name: Danmark
+place_rank: 4
+type: administrative

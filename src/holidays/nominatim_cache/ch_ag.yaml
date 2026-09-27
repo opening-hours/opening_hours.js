@@ -1,22 +1,28 @@
 ---
-place_id: 139755031
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 72424124
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 223180742
-lat: '47.4117867'
-lon: '8.196422145'
-display_name: Birchweiher, Hasliraiweg, Möriken-Wildegg, Bezirk Lenzburg, Aargau, 5103, Schweiz
+osm_id: 288753046
+lat: '47.4115067'
+lon: '8.1958963'
+display_name: Birchweg, Möriken-Wildegg, Bezirk Lenzburg, Aargau, 5103, Schweiz
 address:
-  city: Möriken-Wildegg
+  road: Birchweg
+  village: Möriken-Wildegg
+  county: Bezirk Lenzburg
+  state: Aargau
+  ISO3166-2-lvl4: CH-AG
+  postcode: '5103'
   country: Schweiz
   country_code: ch
-  postcode: '5103'
-  road: Hasliraiweg
-  state: Aargau
-  town: Bezirk Lenzburg
-  water: Birchweiher
+addresstype: road
 boundingbox:
-  - '47.4116233'
-  - '47.4119355'
-  - '8.1962624'
-  - '8.1966486'
+  - '47.4102812'
+  - '47.4121067'
+  - '8.1948729'
+  - '8.1963941'
+class: highway
+importance: 0.053381122301060464
+name: Birchweg
+place_rank: 26
+type: track

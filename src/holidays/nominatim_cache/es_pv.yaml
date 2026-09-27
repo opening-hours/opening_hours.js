@@ -1,24 +1,31 @@
 ---
-place_id: 154288643
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 291594603
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 284445415
 lat: '42.9943585'
 lon: '-2.5571286'
-display_name: GI-627, Puerto de Salinas de Léniz/Leintz-Gatzaga, Salinas de Léniz, Alto Deva, Guipúzcoa, País Vasco, 20530,
-  España
+display_name: GI-627, Kuatruena, Zarimutz, Escoriaza, Guipúzcoa, País Vasco, 20540, España
 address:
+  road: GI-627
+  neighbourhood: Kuatruena
+  hamlet: Zarimutz
+  village: Escoriaza
+  state_district: Guipúzcoa
+  ISO3166-2-lvl6: ES-SS
+  state: País Vasco
+  ISO3166-2-lvl4: ES-PV
+  postcode: '20540'
   country: España
   country_code: es
-  hamlet: Puerto de Salinas de Léniz/Leintz-Gatzaga
-  municipality: Alto Deva
-  postcode: '20530'
-  province: Guipúzcoa
-  road: GI-627
-  state: País Vasco
-  village: Salinas de Léniz
+addresstype: road
 boundingbox:
-  - '42.9786429'
-  - '43.013399'
-  - '-2.5640803'
+  - '42.9899677'
+  - '43.0133990'
+  - '-2.5622757'
   - '-2.5377521'
+class: highway
+importance: 0.05338831540398257
+name: GI-627
+place_rank: 26
+type: primary

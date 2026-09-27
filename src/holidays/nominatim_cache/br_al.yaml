@@ -1,0 +1,28 @@
+---
+place_id: 14936355
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 750502816
+lat: '-9.6603443'
+lon: '-36.6508855'
+display_name: Arapiraca, Alagoas, Região Nordeste, 57309-005, Brasil
+address:
+  city_district: Arapiraca
+  city: Arapiraca
+  state: Alagoas
+  ISO3166-2-lvl4: BR-AL
+  region: Região Nordeste
+  postcode: 57309-005
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-9.6603443'
+  - '-9.6586687'
+  - '-36.6527558'
+  - '-36.6508855'
+class: highway
+importance: 0.05339038605325395
+name: ''
+place_rank: 26
+type: residential

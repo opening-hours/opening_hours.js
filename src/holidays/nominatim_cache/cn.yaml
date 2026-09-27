@@ -1,0 +1,30 @@
+---
+place_id: 219427020
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 4885506288
+lat: '34.5409004'
+lon: '108.9236838'
+display_name: 国家大地原点, 原点大道东段, 新庄, 泾阳县, 咸阳市, 陕西省, 中国
+address:
+  country: 中国
+  country_code: cn
+  # addresstype: historic
+  # ISO3166-2-lvl4: CN-SN
+  # city: 咸阳市
+  # county: 泾阳县
+  # hamlet: 新庄
+  # historic: 国家大地原点
+  # road: 原点大道东段
+  # state: 陕西省
+
+boundingbox:
+  - '34.5408504'
+  - '34.5409504'
+  - '108.9236338'
+  - '108.9237338'
+class: historic
+importance: 0.0000650438696879075
+name: 国家大地原点
+place_rank: 30
+type: memorial

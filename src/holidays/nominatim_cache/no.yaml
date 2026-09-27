@@ -1,18 +1,25 @@
 ---
-place_id: '173158431'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 161053949
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: relation
-osm_id: '409076'
-lat: '61.03861345'
-lon: '7.80328672208455'
-display_name: Lærdal, Sogn og Fjordane, Norge
+osm_id: 10155543
+lat: '60.9291011'
+lon: '6.1078869'
+display_name: Vestland, Norge
 address:
   country: Norge
-  country_code: 'no'
-  # county: Lærdal
-  # state: Sogn og Fjordane
+  country_code: no
+  # addresstype: county
+  # ISO3166-2-lvl4: NO-46
+  # county: Vestland
+
 boundingbox:
-  - '60.8417074'
-  - '61.2354989'
-  - '6.9988112'
-  - '8.2826614'
+  - '59.4754202'
+  - '62.3823948'
+  - '4.0875274'
+  - '8.3220530'
+class: boundary
+importance: 0.6097941967063149
+name: Vestland
+place_rank: 12
+type: administrative

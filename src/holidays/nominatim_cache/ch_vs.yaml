@@ -1,20 +1,28 @@
 ---
-place_id: 235663489
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: relation
-osm_id: 1685349
-lat: '46.2816939'
-lon: '7.6957835'
-display_name: Oberems, Leuk, Wallis, 3948, Schweiz
+place_id: 92182614
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11147932333
+lat: '46.2290745'
+lon: '7.6641147'
+display_name: Brunnethornweg, Oberems, Leuk, Oberwallis, Wallis, Schweiz
 address:
-  city: Oberems
+  road: Brunnethornweg
+  village: Oberems
+  county: Leuk
+  state_district: Oberwallis
+  state: Wallis
+  ISO3166-2-lvl4: CH-VS
   country: Schweiz
   country_code: ch
-  county: Leuk
-  postcode: '3948'
-  state: Wallis
+addresstype: amenity
 boundingbox:
-  - '46.1107536'
-  - '46.2877887'
-  - '7.6537126'
-  - '7.7137362'
+  - '46.2290245'
+  - '46.2291245'
+  - '7.6640647'
+  - '7.6641647'
+class: amenity
+importance: 0.00004603418020900309
+name: ''
+place_rank: 30
+type: bench

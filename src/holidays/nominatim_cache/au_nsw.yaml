@@ -1,22 +1,29 @@
 ---
-place_id: '148522393'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 23688512
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '353552766'
-lat: '-33.8676663'
-lon: '151.20917105647'
-display_name: Martin Place, Sydney, Council of the City of Sydney, New South Wales, 2000, Australia
+osm_id: 1105686297
+lat: '-33.8690255'
+lon: '151.2092692'
+display_name: King Street, Wynyard, Sydney, New South Wales, 2000, Australia
 address:
+  road: King Street
+  neighbourhood: Wynyard
+  suburb: Sydney
   city: Sydney
+  state: New South Wales
+  ISO3166-2-lvl4: AU-NSW
+  postcode: '2000'
   country: Australia
   country_code: au
-  county: Council of the City of Sydney
-  pedestrian: Martin Place
-  postcode: '2000'
-  state: New South Wales
-  suburb: Sydney
+addresstype: road
 boundingbox:
-  - '-33.8677699'
-  - '-33.8675198'
-  - '151.2084727'
-  - '151.2098691'
+  - '-33.8690813'
+  - '-33.8688968'
+  - '151.2083262'
+  - '151.2096778'
+class: highway
+importance: 0.37244305375643855
+name: King Street
+place_rank: 26
+type: secondary

@@ -1,22 +1,29 @@
 ---
-place_id: 4574073
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 73549250
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
 osm_id: 516200692
-lat: '46.7985102'
-lon: '8.2317957'
-display_name: Mittelpunkt der Schweiz, Egg, Älggi, Sachseln, Obwalden, 6072, Schweiz
+lat: '46.7984983'
+lon: '8.2317843'
+display_name: Mittelpunkt der Schweiz, Südwest Aufstieg Haupt, Sachseln, Obwalden, 6068, Schweiz
 address:
   country: Schweiz
   country_code: ch
-  # attraction: Mittelpunkt der Schweiz
-  # hamlet: Älggi
-  # path: Egg
-  # postcode: 6072
+  # addresstype: tourism
+  # ISO3166-2-lvl4: CH-OW
+  # postcode: "6068"
+  # road: Südwest Aufstieg Haupt
   # state: Obwalden
+  # tourism: Mittelpunkt der Schweiz
   # village: Sachseln
+
 boundingbox:
-  - '46.7984102'
-  - '46.7986102'
-  - '8.2316957'
-  - '8.2318957'
+  - '46.7984483'
+  - '46.7985483'
+  - '8.2317343'
+  - '8.2318343'
+class: tourism
+importance: 0.23822746059912708
+name: Mittelpunkt der Schweiz
+place_rank: 30
+type: attraction

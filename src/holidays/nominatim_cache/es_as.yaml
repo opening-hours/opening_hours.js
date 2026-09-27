@@ -1,22 +1,31 @@
 ---
-place_id: 79373161
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: way
-osm_id: 4801930
-lat: '43.27551236087614'
-lon: '-5.851474822001241'
-display_name: Carretera Gijón/Xixón - Sevilla (Ruta de la plata), La Vega San Pedro, Mieres, Asturias, 33162, España
+place_id: 291881173
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 1242832392
+lat: '43.3099646'
+lon: '-5.9387244'
+display_name: Martín Gallego, El Valle, Puerto, Oviedo, Asturias, 33140, España
 address:
-  city: Mieres
+  locality: Martín Gallego
+  hamlet: El Valle
+  city_district: Puerto
+  city: Oviedo
+  state_district: Asturias
+  ISO3166-2-lvl6: ES-O
+  state: Asturias
+  ISO3166-2-lvl4: ES-AS
+  postcode: '33140'
   country: España
   country_code: es
-  county: Asturias
-  hamlet: La Vega San Pedro
-  postcode: '33162'
-  road: Carretera Gijón/Xixón - Sevilla (Ruta de la plata)
-  state: Asturias
+addresstype: locality
 boundingbox:
-  - '43.2754533'
-  - '43.2759736'
-  - '-5.8522986'
-  - '-5.8513766'
+  - '43.2999646'
+  - '43.3199646'
+  - '-5.9487244'
+  - '-5.9287244'
+class: place
+importance: 0.06673544289311055
+name: Martín Gallego
+place_rank: 25
+type: locality

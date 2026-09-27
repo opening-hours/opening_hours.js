@@ -1,21 +1,26 @@
 ---
-place_id: '63111545'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 340013686
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '16198892'
-lat: '36.844965'
-lon: '-83.3193679'
-display_name: KY 38, Harlan, Harlan County, Kentucky, 40831, United States of America
+osm_id: 16299049
+lat: '37.5726852'
+lon: '-85.1578584'
+display_name: Penick, Marion County, Kentucky, United States
 address:
-  city: Harlan
-  country: United States of America
-  country_code: us
-  county: Harlan County
-  postcode: '40831'
-  road: KY 38
+  hamlet: Penick
+  county: Marion County
   state: Kentucky
+  ISO3166-2-lvl4: US-KY
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '36.844271'
-  - '36.848028'
-  - '-83.3245209'
-  - '-83.3149779'
+  - '37.5658300'
+  - '37.5752060'
+  - '-85.1591390'
+  - '-85.1577280'
+class: highway
+importance: 0.05336833524071104
+name: ''
+place_rank: 26
+type: residential

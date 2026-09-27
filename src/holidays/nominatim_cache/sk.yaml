@@ -1,19 +1,29 @@
 ---
-place_id: '159383529'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: relation
-osm_id: '2265337'
-lat: '48.7277343'
-lon: '19.4526017645988'
-display_name: Ľubietová, okres Banská Bystrica, Banskobystrický kraj, Stredné Slovensko, Slovensko
+place_id: 188266146
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 270037560
+lat: '48.7369944'
+lon: '19.4540340'
+display_name: 751, Ľubietová, okres Banská Bystrica, Banskobystrický kraj, 976 55, Slovensko
 address:
   country: Slovensko
   country_code: sk
-  # city: okres Banská Bystrica
-  # city_district: Ľubietová
+  # addresstype: building
+  # ISO3166-2-lvl4: SK-BC
+  # district: okres Banská Bystrica
+  # house_number: "751"
+  # municipality: Ľubietová
+  # postcode: 976 55
   # state: Banskobystrický kraj
+
 boundingbox:
-  - '48.6827805'
-  - '48.7725606'
-  - '19.3237872'
-  - '19.504476'
+  - '48.7369456'
+  - '48.7370431'
+  - '19.4539733'
+  - '19.4540946'
+class: building
+importance: 0.00005481727321274155
+name: ''
+place_rank: 30
+type: yes

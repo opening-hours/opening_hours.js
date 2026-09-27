@@ -1,22 +1,28 @@
 ---
-place_id: '107184239'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 370380915
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '185310640'
-lat: '41.9750617'
-lon: '-91.6757381247816'
-display_name: Linn County Sheriffs Department, I 380;IA 27, Cedar Rapids, Linn County, Iowa, 52405, United States of America
+osm_id: 16039805
+lat: '41.9216908'
+lon: '-93.3091537'
+display_name: US 65, Collins Township, Story County, Iowa, 50056, United States
 address:
-  city: Cedar Rapids
-  country: United States of America
-  country_code: us
-  county: Linn County
-  police: Linn County Sheriffs Department
-  postcode: '52405'
-  road: I 380;IA 27
+  road: US 65
+  municipality: Collins Township
+  county: Story County
   state: Iowa
+  ISO3166-2-lvl4: US-IA
+  postcode: '50056'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '41.9746194'
-  - '41.975391'
-  - '-91.6759376'
-  - '-91.675391'
+  - '41.9065040'
+  - '41.9354420'
+  - '-93.3092210'
+  - '-93.3090960'
+class: highway
+importance: 0.05335803387502858
+name: US 65
+place_rank: 26
+type: primary

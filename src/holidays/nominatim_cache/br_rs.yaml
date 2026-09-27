@@ -1,0 +1,30 @@
+---
+place_id: 8136830
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 2607200008
+lat: '-29.8424266'
+lon: '-53.7696513'
+display_name: Centro Geográfico do Rio Grande do Sul, Estrada Januário Chagas Franco, Arenal, Passo do Verde, Santa Maria, Rio Grande do Sul, Região Sul, Brasil
+address:
+  historic: Centro Geográfico do Rio Grande do Sul
+  road: Estrada Januário Chagas Franco
+  neighbourhood: Arenal
+  suburb: Passo do Verde
+  city: Santa Maria
+  state: Rio Grande do Sul
+  ISO3166-2-lvl4: BR-RS
+  region: Região Sul
+  country: Brasil
+  country_code: br
+addresstype: historic
+boundingbox:
+  - '-29.8424766'
+  - '-29.8423766'
+  - '-53.7697013'
+  - '-53.7696013'
+class: historic
+importance: 0.00006194934004725745
+name: Centro Geográfico do Rio Grande do Sul
+place_rank: 30
+type: monument

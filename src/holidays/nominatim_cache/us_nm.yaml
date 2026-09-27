@@ -1,19 +1,28 @@
 ---
-place_id: '85918785'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 329249779
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '104970602'
-lat: '34.0684393'
-lon: '-107.6114804'
-display_name: Old Highway 60, Socorro County, New Mexico, United States of America
+osm_id: 14642466
+lat: '34.5833256'
+lon: '-105.9944290'
+display_name: US 60, Encino, Willard, Torrance County, New Mexico, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Socorro County
-  road: Old Highway 60
+  road: US 60
+  hamlet: Encino
+  village: Willard
+  county: Torrance County
   state: New Mexico
+  ISO3166-2-lvl4: US-NM
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '34.0637822'
-  - '34.0730885'
-  - '-107.6270774'
-  - '-107.5969656'
+  - '34.5750457'
+  - '34.6841380'
+  - '-106.0237754'
+  - '-105.4755645'
+class: highway
+importance: 0.05336833524071104
+name: US 60
+place_rank: 26
+type: primary

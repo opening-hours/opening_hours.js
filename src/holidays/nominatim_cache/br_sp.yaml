@@ -1,0 +1,29 @@
+---
+place_id: 11907623
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 815238439
+lat: '-22.0699642'
+lon: '-48.4335631'
+display_name: Obelisco do Centro do Estado, Rodovia Comandante João Ribeiro de Barros, Dourado, São Paulo, Região Sudeste, Brasil
+address:
+  tourism: Obelisco do Centro do Estado
+  road: Rodovia Comandante João Ribeiro de Barros
+  city_district: Dourado
+  village: Dourado
+  state: São Paulo
+  ISO3166-2-lvl4: BR-SP
+  region: Região Sudeste
+  country: Brasil
+  country_code: br
+addresstype: tourism
+boundingbox:
+  - '-22.0699820'
+  - '-22.0699464'
+  - '-48.4335823'
+  - '-48.4335438'
+class: tourism
+importance: 0.11734328469919902
+name: Obelisco do Centro do Estado
+place_rank: 30
+type: attraction

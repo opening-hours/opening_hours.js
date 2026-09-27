@@ -1,22 +1,26 @@
 ---
-place_id: '200981368'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 329891313
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '460432302'
-lat: '32.3670408'
-lon: '-86.2980037714481'
-display_name: Tuscaloosa Park, Genetta Court, Montgomery, Montgomery County, Alabama, 36104, United States of America
+osm_id: 13028722
+lat: '39.7848240'
+lon: '-100.4458771'
+display_name: Decatur County, Kansas, United States
 address:
-  country: United States of America
+  country: United States
   country_code: us
-  # city: Montgomery
-  # county: Montgomery County
-  # park: Tuscaloosa Park
-  # postcode: 36104
-  # road: Genetta Court
-  # state: Alabama
+  # addresstype: road
+  # ISO3166-2-lvl4: US-KS
+  # county: Decatur County
+  # state: Kansas
+
 boundingbox:
-  - '32.3666695'
-  - '32.3673896'
-  - '-86.2984317'
-  - '-86.297587'
+  - '39.7846670'
+  - '39.7849000'
+  - '-100.4610930'
+  - '-100.3480620'
+class: highway
+importance: 0.05336780422674903
+name: ''
+place_rank: 26
+type: residential

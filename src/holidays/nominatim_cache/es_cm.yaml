@@ -1,21 +1,29 @@
 ---
-place_id: 186937813
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 293417672
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 442341537
-lat: '39.41486877016525'
-lon: '-2.625366299827695'
-display_name: N-301, El Provencio, Cuenca, Castilla-La Mancha, 16670, España
+osm_id: 925593267
+lat: '39.4148704'
+lon: '-2.6253686'
+display_name: N-301, Las Pedroñeras, Conca, Castilla-La Mancha, 16660, España
 address:
+  road: N-301
+  village: Las Pedroñeras
+  state_district: Conca
+  ISO3166-2-lvl6: ES-CU
+  state: Castilla-La Mancha
+  ISO3166-2-lvl4: ES-CM
+  postcode: '16660'
   country: España
   country_code: es
-  county: Cuenca
-  postcode: '16670'
-  road: N-301
-  state: Castilla-La Mancha
-  village: El Provencio
+addresstype: road
 boundingbox:
-  - '39.3774723'
-  - '39.4426533'
-  - '-2.667175'
-  - '-2.5694658'
+  - '39.4141018'
+  - '39.4156182'
+  - '-2.6263910'
+  - '-2.6243176'
+class: highway
+importance: 0.05339392156862741
+name: N-301
+place_rank: 26
+type: trunk

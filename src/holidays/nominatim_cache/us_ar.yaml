@@ -1,23 +1,29 @@
 ---
-place_id: '52073511'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '3837336913'
-lat: '34.7466489'
-lon: '-92.2904612'
-display_name: Fallen Fire Fights of Arkansas, Capitol Mall, Little Rock, Pulaski County, Arkansas, 72201, United States of
-  America
+place_id: 391732373
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 12794902
+lat: '35.2048834'
+lon: '-92.4479148'
+display_name: 11, Salter Lane, Wooster, Faulkner County, Arkansas, 72058, United States
 address:
-  city: Little Rock
-  country: United States of America
-  country_code: us
-  county: Pulaski County
-  memorial: Fallen Fire Fights of Arkansas
-  postcode: '72201'
-  road: Capitol Mall
+  house_number: '11'
+  road: Salter Lane
+  village: Wooster
+  county: Faulkner County
   state: Arkansas
+  ISO3166-2-lvl4: US-AR
+  postcode: '72058'
+  country: United States
+  country_code: us
+addresstype: place
 boundingbox:
-  - '34.7465489'
-  - '34.7467489'
-  - '-92.2905612'
-  - '-92.2903612'
+  - '35.2048334'
+  - '35.2049334'
+  - '-92.4479648'
+  - '-92.4478648'
+class: place
+importance: 0.00000999999999995449
+name: ''
+place_rank: 30
+type: house

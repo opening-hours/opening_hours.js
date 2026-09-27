@@ -1,20 +1,27 @@
 ---
-place_id: 286599923
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 299388259
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: relation
-osm_id: 5392189
-lat: '28.2935785'
-lon: '-16.621447121144122'
-display_name: Canarias, La Orotava, Santa Cruz de Tenerife, Canarias, España
+osm_id: 345388
+lat: '28.3898829'
+lon: '-16.5235692'
+display_name: La Orotava, Santa Cruz de Tenerife, Canarias, España
 address:
-  address29: Canarias
-  city: La Orotava
+  town: La Orotava
+  state_district: Santa Cruz de Tenerife
+  ISO3166-2-lvl6: ES-TF
+  state: Canarias
+  ISO3166-2-lvl4: ES-CN
   country: España
   country_code: es
-  county: Santa Cruz de Tenerife
-  state: Canarias
+addresstype: town
 boundingbox:
-  - '27.6377389'
-  - '29.4160647'
-  - '-18.1608733'
-  - '-13.3320145'
+  - '28.1987316'
+  - '28.4242652'
+  - '-16.6838660'
+  - '-16.4635678'
+class: boundary
+importance: 0.4834592678373481
+name: La Orotava
+place_rank: 16
+type: administrative

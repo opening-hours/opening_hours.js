@@ -1,22 +1,28 @@
 ---
-place_id: '156339763'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 304489421
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '435731769'
-lat: '25.77223905'
-lon: '-80.132749245701'
-display_name: 304, Ocean Drive, Miami Beach, Miami-Dade County, Florida, 33139, United States of America
+osm_id: 11282531
+lat: '27.7542108'
+lon: '-81.4624242'
+display_name: Blue Jordan Road, Frostproof, Polk County, Florida, 33843, United States
 address:
-  city: Miami Beach
-  country: United States of America
-  country_code: us
-  county: Miami-Dade County
-  house_number: '304'
-  postcode: '33139'
-  road: Ocean Drive
+  road: Blue Jordan Road
+  village: Frostproof
+  county: Polk County
   state: Florida
+  ISO3166-2-lvl4: US-FL
+  postcode: '33843'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '25.7721541'
-  - '25.7723116'
-  - '-80.1329134'
-  - '-80.1325851'
+  - '27.7473940'
+  - '27.7625387'
+  - '-81.4743950'
+  - '-81.4521487'
+class: highway
+importance: 0.05338401846341646
+name: Blue Jordan Road
+place_rank: 26
+type: tertiary

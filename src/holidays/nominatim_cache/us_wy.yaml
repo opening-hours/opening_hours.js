@@ -1,22 +1,26 @@
 ---
-place_id: '194626925'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 328783398
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '194626925'
-lat: '42.859091'
-lon: '-106.312881'
-display_name: 999, East H Street, Casper, Natrona County, Wyoming, 82601, United States of America
+osm_id: 15724373
+lat: '43.1673887'
+lon: '-107.5629391'
+display_name: Brandau Road, Fremont County, Wyoming, United States
 address:
-  city: Casper
-  country: United States of America
-  country_code: us
-  county: Natrona County
-  house_number: '999'
-  postcode: '82601'
-  road: East H Street
+  road: Brandau Road
+  county: Fremont County
   state: Wyoming
+  ISO3166-2-lvl4: US-WY
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '42.858991'
-  - '42.859191'
-  - '-106.312981'
-  - '-106.312781'
+  - '43.1547412'
+  - '43.1871578'
+  - '-107.5633208'
+  - '-107.5407584'
+class: highway
+importance: 0.0533433333333333
+name: Brandau Road
+place_rank: 26
+type: unclassified

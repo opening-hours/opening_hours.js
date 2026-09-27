@@ -1,0 +1,28 @@
+---
+place_id: 11591271
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 4111087
+lat: '-19.7071726'
+lon: '-54.5425443'
+display_name: Congonha, Bandeirantes, Mato Grosso do Sul, Região Centro-Oeste, 79490-000, Brasil
+address:
+  city_district: Congonha
+  village: Bandeirantes
+  state: Mato Grosso do Sul
+  ISO3166-2-lvl4: BR-MS
+  region: Região Centro-Oeste
+  postcode: 79490-000
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '-19.8820298'
+  - '-19.5320000'
+  - '-54.7623074'
+  - '-54.3498377'
+class: boundary
+importance: 0.16005000152590218
+name: Congonha
+place_rank: 18
+type: administrative

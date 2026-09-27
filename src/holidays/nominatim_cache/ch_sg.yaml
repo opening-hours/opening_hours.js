@@ -1,24 +1,29 @@
 ---
-place_id: 8752662
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 73722691
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: 942932499
-lat: '47.1549041'
-lon: '9.3401115'
-display_name: 'Geologischer Rundweg: Tafel 8, Lüsisstrasse, Lüsis, Walenstadt, Wahlkreis Sarganserland, Sankt Gallen, 8880,
-  Schweiz'
+osm_id: 942932693
+lat: '47.1546404'
+lon: '9.3393481'
+display_name: Höchstweg, Lüsis, Grabs, Wahlkreis Werdenberg, St. Gallen, 8880, Schweiz
 address:
+  road: Höchstweg
+  hamlet: Lüsis
+  village: Grabs
+  county: Wahlkreis Werdenberg
+  state: St. Gallen
+  ISO3166-2-lvl4: CH-SG
+  postcode: '8880'
   country: Schweiz
   country_code: ch
-  county: Wahlkreis Sarganserland
-  hamlet: Lüsis
-  information: 'Geologischer Rundweg: Tafel 8'
-  postcode: '8880'
-  road: Lüsisstrasse
-  state: Sankt Gallen
-  village: Walenstadt
+addresstype: amenity
 boundingbox:
-  - '47.1548041'
-  - '47.1550041'
-  - '9.3400115'
-  - '9.3402115'
+  - '47.1545904'
+  - '47.1546904'
+  - '9.3392981'
+  - '9.3393981'
+class: amenity
+importance: 0.00004944762340729408
+name: ''
+place_rank: 30
+type: bench

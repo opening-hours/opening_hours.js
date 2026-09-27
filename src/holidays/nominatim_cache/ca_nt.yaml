@@ -1,0 +1,25 @@
+---
+place_id: 270591962
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 9477716
+lat: '64.0161691'
+lon: '-111.0383559'
+display_name: North Slave Region, Northwest Territories, Canada
+address:
+  county: North Slave Region
+  state: Northwest Territories
+  ISO3166-2-lvl4: CA-NT
+  country: Canada
+  country_code: ca
+addresstype: county
+boundingbox:
+  - '61.8892821'
+  - '66.8378442'
+  - '-121.2376747'
+  - '-102.0006191'
+class: boundary
+importance: 0.36315663276805743
+name: North Slave Region
+place_rank: 10
+type: administrative

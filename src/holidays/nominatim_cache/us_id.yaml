@@ -1,22 +1,25 @@
 ---
-place_id: '169288272'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '169288272'
-lat: '47.6709979388862'
-lon: '-116.766979866231'
-display_name: 302, South Dollar Street, Coeur d'Alene, Kootenai County, Idaho, 83814, United States of America
+place_id: 328026636
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1742077
+lat: '43.3336455'
+lon: '-113.8808311'
+display_name: Blaine County, Idaho, United States
 address:
-  city: Coeur d'Alene
-  country: United States of America
-  country_code: us
-  county: Kootenai County
-  house_number: '302'
-  postcode: '83814'
-  road: South Dollar Street
+  county: Blaine County
   state: Idaho
+  ISO3166-2-lvl4: US-ID
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '47.670897938886'
-  - '47.671097938886'
-  - '-116.76707986623'
-  - '-116.76687986623'
+  - '42.6158510'
+  - '43.9930020'
+  - '-114.9965690'
+  - '-113.0073180'
+class: boundary
+importance: 0.5040290766446917
+name: Blaine County
+place_rank: 12
+type: administrative

@@ -1,0 +1,27 @@
+---
+place_id: 119379507
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 80293597
+lat: '49.8146965'
+lon: '6.1299779'
+display_name: Kruuchten, Noumer, Kanton Miersch, Lëtzebuerg
+address:
+  country: Lëtzebuerg
+  country_code: lu
+  # addresstype: road
+  # ISO3166-2-lvl6: LU-ME
+  # city: Noumer
+  # county: Kanton Miersch
+  # village: Kruuchten
+
+boundingbox:
+  - '49.8115066'
+  - '49.8164822'
+  - '6.1198454'
+  - '6.1342456'
+class: highway
+importance: 0.053383612573434006
+name: ''
+place_rank: 26
+type: unclassified
