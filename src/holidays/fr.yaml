@@ -37,7 +37,7 @@ PH:
 
 Bas-Rhin:
   _state_code: "67"
-  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Bas-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&county=Bas-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Guadeloupe:
   _state_code: gp
@@ -49,7 +49,7 @@ Guyane:
 
 Haut-Rhin:
   _state_code: "68"
-  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Haut-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&county=Haut-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 La Réunion:
   _state_code: re
@@ -65,7 +65,7 @@ Mayotte:
 
 Moselle:
   _state_code: "57"
-  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Moselle&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=France&county=Moselle&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
 
 Nouvelle-Calédonie:
   _state_code: nc

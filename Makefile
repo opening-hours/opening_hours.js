@@ -87,7 +87,7 @@ src/locale-resolver/layers.json
 check: qa-quick check-fast check-package.json
 
 .PHONY: check-full
-check-full: clean check-all-diff check-package.json lint check-holidays check-holiday-state-codes check-translations
+check-full: clean check-all-diff check-package.json lint check-holidays check-holiday-state-codes check-nominatim-cache check-translations
 
 .PHONY: benchmark
 benchmark: benchmark-opening_hours.min.js
@@ -230,6 +230,10 @@ check-holidays: scripts/PH_SH_exporter.js
 .PHONY: check-holiday-state-codes
 check-holiday-state-codes: scripts/check_holiday_state_codes.mjs
 	$(NODEJS) scripts/check_holiday_state_codes.mjs
+
+.PHONY: check-nominatim-cache
+check-nominatim-cache: scripts/check_nominatim_cache.mjs
+	$(NODEJS) scripts/check_nominatim_cache.mjs
 
 ## }}}
 
