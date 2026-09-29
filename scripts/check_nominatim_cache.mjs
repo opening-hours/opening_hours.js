@@ -11,9 +11,10 @@
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const HOLIDAYS_DIR = path.resolve(new URL('../src/holidays', import.meta.url).pathname);
-const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.js');
+const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
 const CACHE_DIR = path.join(HOLIDAYS_DIR, 'nominatim_cache');
 
 /**
@@ -45,8 +46,7 @@ function expectedCacheFiles(countryCode, countryDefinition) {
     return expected;
 }
 
-const generatedSource = await fs.readFile(GENERATED_FILE, 'utf8');
-const generatedData = await import(`data:text/javascript;base64,${Buffer.from(generatedSource).toString('base64')}`);
+const generatedData = await import(pathToFileURL(GENERATED_FILE).href);
 const cachedFiles = new Set(await fs.readdir(CACHE_DIR));
 const missingFiles = [];
 

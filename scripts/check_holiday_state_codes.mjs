@@ -8,11 +8,11 @@
  * has a non-empty _state_code. This script is part of the test suite.
  */
 
-import fs from 'node:fs/promises';
 import path from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 const HOLIDAYS_DIR = path.resolve(new URL('../src/holidays', import.meta.url).pathname);
-const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.js');
+const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
 
 /**
  * Country-wide PH/SH definitions and metadata are not regions.
@@ -29,8 +29,7 @@ function isHolidayRegion(key, value) {
         && (Array.isArray(value.PH) || Array.isArray(value.SH));
 }
 
-const generatedSource = await fs.readFile(GENERATED_FILE, 'utf8');
-const generatedData = await import(`data:text/javascript;base64,${Buffer.from(generatedSource).toString('base64')}`);
+const generatedData = await import(pathToFileURL(GENERATED_FILE).href);
 const missingRegions = [];
 
 for (const [countryCode, holidayData] of Object.entries(generatedData)) {

@@ -7,7 +7,7 @@ import yaml from '@rollup/plugin-yaml';
 import json from '@rollup/plugin-json';
 
 // YAML plugin only for non-holiday files (e.g., word_error_correction.yaml)
-// Holiday data now comes from generated-openholidays.js
+// Holiday data now comes from generated-openholidays.mjs
 const yamlPlugin = yaml({
     include: ['**/*.yaml', '!**/holidays/*.yaml']
 });

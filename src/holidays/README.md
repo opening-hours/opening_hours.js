@@ -14,7 +14,7 @@ School holiday data is automatically generated from the OpenHolidays API using:
 node scripts/fetch-school-holidays.mjs
 ```
 
-This generates `src/holidays/generated-openholidays.js` which consolidates all holiday definitions.
+This generates `src/holidays/generated-openholidays.mjs` which consolidates all holiday definitions.
 ## Deciding which holidays do apply
 
 Because each country/culture has it‘s own important dates/events, holidays are defined on a country level. The country wide definition can be overwritten as needed by more specific definitions. Because this library works with the OSM ecosystem, those boundaries are based on OSM.
@@ -110,7 +110,7 @@ The dictionary of the country either consists of `PH`, `SH` or the value of `add
 
 Note that the data format versions below 2.2.0 used JSON as data serialization language. The data structure remains the same as 2.1.0 however.
 
-Holiday data is generated into `generated-openholidays.js`, whose country exports are imported directly by the parser.
+Holiday data is generated into `generated-openholidays.mjs`, whose country exports are imported directly by the parser.
 
 ### Holiday definition format: PH
 
@@ -175,7 +175,7 @@ node scripts/fetch-school-holidays.mjs
 This script:
 1. Fetches school holiday data from [OpenHolidays API](https://openholidaysapi.org)
 2. Merges with YAML-based public holidays (PH)
-3. Generates `src/holidays/generated-openholidays.js`
+3. Generates `src/holidays/generated-openholidays.mjs`
 4. Generates one named export per country
 
 **Manual YAML Definition (fallback only):**

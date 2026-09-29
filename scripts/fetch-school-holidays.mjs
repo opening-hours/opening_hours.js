@@ -23,7 +23,7 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.join(__dirname, '..');
 const HOLIDAYS_DIR = path.join(ROOT_DIR, 'src', 'holidays');
 const SUBMODULE_DIR = path.join(ROOT_DIR, 'submodules', 'openholidaysapi.data', 'src');
-const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.js');
+const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
 
 // Statistics
 const stats = {

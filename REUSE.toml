@@ -27,7 +27,7 @@ SPDX-License-Identifier = "CC0-1.0"
 # Generated source files
 [[annotations]]
 path = [
-  "src/holidays/generated-openholidays.js",
+  "src/holidays/generated-openholidays.mjs",
   "src/locales/word_error_correction.yaml",
   "src/locale-resolver/layers.json",
 ]

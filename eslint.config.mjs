@@ -11,7 +11,7 @@ import tseslint from 'typescript-eslint'
 import yml from 'eslint-plugin-yml'
 
 export default defineConfig([
-  globalIgnores(['build/*', 'submodules/*', '**/yohours_model.js', 'src/holidays/generated-openholidays.js', 'src/holidays/nominatim_cache/**']),
+  globalIgnores(['build/*', 'submodules/*', '**/yohours_model.js', 'src/holidays/generated-openholidays.mjs', 'src/holidays/nominatim_cache/**']),
   {
     files: ['**/*.yaml', '**/*.yml'],
     extends: [yml.configs.standard],
