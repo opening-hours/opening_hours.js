@@ -1,22 +1,27 @@
 ---
-place_id: '80182180'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 329881579
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '73851137'
-lat: '43.71474935'
-lon: '-98.0248767861259'
-display_name: Mitchell Corn Palace, East 6th Avenue, Mitchell, Davison County, South Dakota, 57301, United States of America
+osm_id: 9923491
+lat: '44.6531850'
+lon: '-100.3487420'
+display_name: Cemetery Road, Okobojo Township, Sully County, South Dakota, United States
 address:
-  attraction: Mitchell Corn Palace
-  city: Mitchell
-  country: United States of America
-  country_code: us
-  county: Davison County
-  postcode: '57301'
-  road: East 6th Avenue
+  road: Cemetery Road
+  municipality: Okobojo Township
+  county: Sully County
   state: South Dakota
+  ISO3166-2-lvl4: US-SD
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '43.7145656'
-  - '43.7149864'
-  - '-98.0254572'
-  - '-98.0242946'
+  - '44.6489730'
+  - '44.6637400'
+  - '-100.3588340'
+  - '-100.3245150'
+class: highway
+importance: 0.0533433333333333
+name: Cemetery Road
+place_rank: 26
+type: unclassified

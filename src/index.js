@@ -30,7 +30,7 @@
  *     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
  *     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-import * as holiday_definitions from './holidays/generated-openholidays.js';
+import * as holiday_definitions from './holidays/generated-openholidays.mjs';
 import word_error_correction from './locales/word_error_correction.yaml';
 
 import { translate } from './locales/i18n';

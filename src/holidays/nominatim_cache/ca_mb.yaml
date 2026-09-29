@@ -1,0 +1,25 @@
+---
+place_id: 375785347
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 14438705
+lat: '54.8192086'
+lon: '-96.1150302'
+display_name: Unorganized Division No. 22, Manitoba, Canada
+address:
+  county: Unorganized Division No. 22
+  state: Manitoba
+  ISO3166-2-lvl4: CA-MB
+  country: Canada
+  country_code: ca
+addresstype: county
+boundingbox:
+  - '53.2996379'
+  - '56.3388029'
+  - '-99.0534366'
+  - '-91.6006916'
+class: boundary
+importance: 0.24004500114442662
+name: Unorganized Division No. 22
+place_rank: 12
+type: administrative

@@ -8791,7 +8791,7 @@ export const fr = {
   },
   "Bas-Rhin": {
     "_state_code": "67",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Bas-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&county=Bas-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
   },
   "Bourgogne-Franche-Comté": {
     "_state_code": "bf",
@@ -9317,7 +9317,7 @@ export const fr = {
   },
   "Haut-Rhin": {
     "_state_code": "68",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Haut-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&county=Haut-Rhin&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
   },
   "Hauts-de-France": {
     "_state_code": "hf",
@@ -9669,7 +9669,7 @@ export const fr = {
   },
   "Moselle": {
     "_state_code": "57",
-    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&state=Moselle&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
+    "_nominatim_url": "https://nominatim.openstreetmap.org/search?format=json&country=France&county=Moselle&zoom=18&addressdetails=1&limit=1&accept-language=fr,en"
   },
   "Normandie": {
     "_state_code": "no",

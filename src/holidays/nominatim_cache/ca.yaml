@@ -1,0 +1,33 @@
+---
+place_id: 366556551
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 2384638581
+lat: '45.4217375'
+lon: '-75.6977781'
+display_name: Ambassade du Mexique, 45, O'Connor Street, Centre-ville, Somerset, Ottawa, Eastern Ontario, Ontario, K1P 1A4, Canada
+address:
+  country: Canada
+  country_code: ca
+  # addresstype: office
+  # ISO3166-2-lvl4: CA-ON
+  # city: Ottawa
+  # city_district: Somerset
+  # house_number: "45"
+  # office: Ambassade du Mexique
+  # postcode: K1P 1A4
+  # road: O'Connor Street
+  # state: Ontario
+  # state_district: Eastern Ontario
+  # suburb: Centre-ville
+
+boundingbox:
+  - '45.4216875'
+  - '45.4217875'
+  - '-75.6978281'
+  - '-75.6977281'
+class: office
+importance: 0.29322317952748045
+name: Ambassade du Mexique
+place_rank: 30
+type: diplomatic

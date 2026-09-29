@@ -1,23 +1,34 @@
 ---
-place_id: '80084984'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '67327954'
-lat: '47.48146955'
-lon: '19.0639924870181'
-display_name: Nehru part, Közraktár utca, Belső-Ferencváros, IX. kerület, Budapest, Közép-Magyarország, 1093, Magyarország
+place_id: 66544860
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 2787323339
+lat: '47.4820911'
+lon: '19.0643141'
+display_name: Háziorvosi rendelő, 24, Közraktár utca, Belső-Ferencváros, IX. kerület, Budapest, Közép-Magyarország, 1093, Magyarország
 address:
   country: Magyarország
   country_code: hu
+  # addresstype: amenity
+  # ISO3166-2-lvl6: HU-BU
+  # ISO3166-2-lvl8: HU-BU
+  # amenity: Háziorvosi rendelő
+  # borough: IX. kerület
   # city: Budapest
-  # city_district: IX. kerület
-  # park: Nehru part
-  # postcode: 1093
+  # county: Budapest
+  # house_number: "24"
+  # postcode: "1093"
   # region: Közép-Magyarország
   # road: Közraktár utca
   # suburb: Belső-Ferencváros
+
 boundingbox:
-  - '47.4799813'
-  - '47.4829177'
-  - '19.0619122'
-  - '19.0657089'
+  - '47.4820411'
+  - '47.4821411'
+  - '19.0642641'
+  - '19.0643641'
+class: amenity
+importance: 0.00008408560311279495
+name: Háziorvosi rendelő
+place_rank: 30
+type: doctors

@@ -1,22 +1,25 @@
 ---
-place_id: '179036884'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '179036884'
-lat: '48.3865075440761'
-lon: '-115.549835656446'
-display_name: 426, East 9th Street, Libby, Lincoln County, Montana, 59923, United States of America
+place_id: 328940297
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1740625
+lat: '47.2128617'
+lon: '-109.2175566'
+display_name: Fergus County, Montana, United States
 address:
-  city: Libby
-  country: United States of America
-  country_code: us
-  county: Lincoln County
-  house_number: '426'
-  postcode: '59923'
-  road: East 9th Street
+  county: Fergus County
   state: Montana
+  ISO3166-2-lvl4: US-MT
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '48.386407544076'
-  - '48.386607544076'
-  - '-115.54993565645'
-  - '-115.54973565645'
+  - '46.6936111'
+  - '47.8034240'
+  - '-110.2136181'
+  - '-108.3130340'
+class: boundary
+importance: 0.5098637948867721
+name: Fergus County
+place_rank: 12
+type: administrative

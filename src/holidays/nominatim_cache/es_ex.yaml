@@ -1,22 +1,28 @@
 ---
-place_id: 164039407
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 299198801
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 325080788
-lat: '39.176432925851394'
-lon: '-6.152348544422519'
-display_name: CC-117, Arroyomolinos, Sierra de Montánchez, Cáceres, Extremadura, 10170, España
+osm_id: 1363532310
+lat: '39.1764364'
+lon: '-6.1523573'
+display_name: De EX-382 a Almoharín (EX-206) por Arroyomolinos, Arroyomolinos, Cáceres, Extremadura, España
 address:
+  road: De EX-382 a Almoharín (EX-206) por Arroyomolinos
+  village: Arroyomolinos
+  state_district: Cáceres
+  ISO3166-2-lvl6: ES-CC
+  state: Extremadura
+  ISO3166-2-lvl4: ES-EX
   country: España
   country_code: es
-  county: Cáceres
-  municipality: Sierra de Montánchez
-  postcode: '10170'
-  road: CC-117
-  state: Extremadura
-  village: Arroyomolinos
+addresstype: road
 boundingbox:
-  - '39.1674667'
+  - '39.1757005'
   - '39.1888432'
   - '-6.1680286'
-  - '-6.0478764'
+  - '-6.1495812'
+class: highway
+importance: 0.053393509575036205
+name: De EX-382 a Almoharín (EX-206) por Arroyomolinos
+place_rank: 26
+type: tertiary

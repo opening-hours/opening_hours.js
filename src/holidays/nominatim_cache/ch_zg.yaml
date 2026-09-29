@@ -1,22 +1,27 @@
 ---
-place_id: 900605
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: node
-osm_id: 286645716
-lat: '47.145536'
-lon: '8.5539522'
-display_name: Zigermoos, Zugerstrasse, Neuägeri, Unterägeri, Zug, 6314, Schweiz
+place_id: 72608706
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1448398131
+lat: '47.1478605'
+lon: '8.5532418'
+display_name: Stepbachstrasse, Zug, 6319, Schweiz
 address:
+  road: Stepbachstrasse
+  town: Zug
+  state: Zug
+  ISO3166-2-lvl4: CH-ZG
+  postcode: '6319'
   country: Schweiz
   country_code: ch
-  hamlet: Neuägeri
-  information: Zigermoos
-  postcode: '6314'
-  road: Zugerstrasse
-  state: Zug
-  village: Unterägeri
+addresstype: road
 boundingbox:
-  - '47.145436'
-  - '47.145636'
-  - '8.5538522'
-  - '8.5540522'
+  - '47.1475759'
+  - '47.1480997'
+  - '8.5526679'
+  - '8.5534379'
+class: highway
+importance: 0.05337213321126112
+name: Stepbachstrasse
+place_rank: 26
+type: track

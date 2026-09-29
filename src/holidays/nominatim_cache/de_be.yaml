@@ -1,23 +1,30 @@
 ---
-place_id: '204274960'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '1818862993'
-lat: '52.517322'
-lon: '13.388977'
-display_name: Douglas, Unter den Linden, Mitte, Berlin, 10117, Deutschland
+place_id: 145632207
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 330840137
+lat: '52.5173899'
+lon: '13.3951394'
+display_name: Unter den Linden, Friedrichswerder, Dorotheenstadt, Mitte, Berlin, 10117, Deutschland
 address:
-  address29: Douglas
+  road: Unter den Linden
+  neighbourhood: Friedrichswerder
+  quarter: Dorotheenstadt
+  suburb: Mitte
+  borough: Mitte
   city: Berlin
-  city_district: Mitte
+  ISO3166-2-lvl4: DE-BE
+  postcode: '10117'
   country: Deutschland
   country_code: de
-  postcode: '10117'
-  road: Unter den Linden
-  state: Berlin
-  suburb: Mitte
+addresstype: road
 boundingbox:
-  - '52.517222'
-  - '52.517422'
-  - '13.388877'
-  - '13.389077'
+  - '52.5173490'
+  - '52.5174586'
+  - '13.3951279'
+  - '13.3951462'
+class: highway
+importance: 0.5166848938100648
+name: Unter den Linden
+place_rank: 26
+type: residential

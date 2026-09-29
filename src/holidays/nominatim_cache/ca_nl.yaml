@@ -1,0 +1,25 @@
+---
+place_id: 285346643
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 9610205
+lat: '55.9114861'
+lon: '-61.7019148'
+display_name: Labrador, Newfoundland and Labrador, Canada
+address:
+  state_district: Labrador
+  state: Newfoundland and Labrador
+  ISO3166-2-lvl4: CA-NL
+  country: Canada
+  country_code: ca
+addresstype: state_district
+boundingbox:
+  - '51.3459175'
+  - '60.4770255'
+  - '-67.8216853'
+  - '-55.2050993'
+class: boundary
+importance: 0.2666766666666667
+name: Labrador
+place_rank: 10
+type: administrative

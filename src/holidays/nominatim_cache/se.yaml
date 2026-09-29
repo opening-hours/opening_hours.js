@@ -1,19 +1,27 @@
 ---
-place_id: '204401325'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: relation
-osm_id: '6916560'
-lat: '62.97310575'
-lon: '16.688879672278'
-display_name: Fors distrikt, Ragunda kommun, Jämtlands län, Norrland, Sverige
+place_id: 167691278
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 7461611692
+lat: '63.1308699'
+lon: '16.5731446'
+display_name: Li-Gammelbodarna, Ragunda kommun, Jämtlands län, Sverige
 address:
   country: Sverige
   country_code: se
-  # city_district: Fors distrikt
-  # county: Ragunda kommun
-  # state: Jämtlands län
+  # addresstype: isolated_dwelling
+  # ISO3166-2-lvl4: SE-Z
+  # county: Jämtlands län
+  # isolated_dwelling: Li-Gammelbodarna
+  # municipality: Ragunda kommun
+
 boundingbox:
-  - '62.8082014'
-  - '63.1328469'
-  - '16.3948464'
-  - '16.9987048'
+  - '63.1308199'
+  - '63.1309199'
+  - '16.5730946'
+  - '16.5731946'
+class: place
+importance: 0.10672127183947507
+name: Li-Gammelbodarna
+place_rank: 22
+type: isolated_dwelling

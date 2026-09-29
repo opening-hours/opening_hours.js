@@ -1,21 +1,25 @@
 ---
-place_id: '65857572'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 332873411
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '18514619'
-lat: '37.08136'
-lon: '-94.5070289'
-display_name: Iowa Avenue, Joplin, Jasper County, Missouri, 64801, United States of America
+osm_id: 18590618
+lat: '38.7605600'
+lon: '-92.5636340'
+display_name: Moniteau County, Missouri, United States
 address:
-  city: Joplin
-  country: United States of America
-  country_code: us
-  county: Jasper County
-  postcode: '64801'
-  road: Iowa Avenue
+  county: Moniteau County
   state: Missouri
+  ISO3166-2-lvl4: US-MO
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '37.080104'
-  - '37.08136'
-  - '-94.5070779'
-  - '-94.5070289'
+  - '38.7515490'
+  - '38.7641790'
+  - '-92.5639480'
+  - '-92.5634800'
+class: highway
+importance: 0.0533433333333333
+name: ''
+place_rank: 26
+type: residential

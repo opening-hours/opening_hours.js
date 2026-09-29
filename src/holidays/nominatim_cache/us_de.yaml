@@ -1,24 +1,30 @@
 ---
-place_id: '166277308'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 387318786
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '166277308'
-lat: '38.7111000373533'
-lon: '-75.0978915260284'
-display_name: 37414, Oyster House Road, Rehoboth Crossing, Phil Mar Estates, Sussex County, Delaware, 19971, United States
-  of America
+osm_id: 17229795
+lat: '38.6921110'
+lon: '-75.4014020'
+display_name: 100, Linden Avenue, Swain Acres, Georgetown, Sussex County, Delaware, 19947, United States
 address:
-  country: United States of America
-  country_code: us
+  house_number: '100'
+  road: Linden Avenue
+  hamlet: Swain Acres
+  town: Georgetown
   county: Sussex County
-  hamlet: Phil Mar Estates
-  house_number: '37414'
-  neighbourhood: Rehoboth Crossing
-  postcode: '19971'
-  road: Oyster House Road
   state: Delaware
+  ISO3166-2-lvl4: US-DE
+  postcode: '19947'
+  country: United States
+  country_code: us
+addresstype: place
 boundingbox:
-  - '38.711000037353'
-  - '38.711200037353'
-  - '-75.097991526028'
-  - '-75.097791526028'
+  - '38.6920610'
+  - '38.6921610'
+  - '-75.4014520'
+  - '-75.4013520'
+class: place
+importance: 0.00000999999999995449
+name: ''
+place_rank: 30
+type: house

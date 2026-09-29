@@ -1,19 +1,28 @@
 ---
-place_id: '84933244'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 24328098
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '65446627'
-lat: '-42.882269'
-lon: '147.3269758'
-display_name: Cat and Fiddle Arcade, Hobart, Tasmania, Australia
+osm_id: 554465333
+lat: '-42.8816316'
+lon: '147.3267798'
+display_name: Liverpool Street, Hobart, Tasmania, 7000, Australia
 address:
+  road: Liverpool Street
+  suburb: Hobart
   city: Hobart
+  state: Tasmania
+  ISO3166-2-lvl4: AU-TAS
+  postcode: '7000'
   country: Australia
   country_code: au
-  footway: Cat and Fiddle Arcade
-  state: Tasmania
+addresstype: road
 boundingbox:
-  - '-42.8829419'
-  - '-42.8818168'
-  - '147.3266102'
-  - '147.3273479'
+  - '-42.8822594'
+  - '-42.8812919'
+  - '147.3261029'
+  - '147.3271587'
+class: highway
+importance: 0.05340276264591436
+name: Liverpool Street
+place_rank: 26
+type: secondary

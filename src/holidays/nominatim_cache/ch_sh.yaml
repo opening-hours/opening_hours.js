@@ -1,21 +1,30 @@
 ---
-place_id: 131158941
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: way
-osm_id: 187486710
-lat: '47.69713505'
-lon: '8.63450595796282'
-display_name: Stadthaus, Stadthausgasse, Schaffhausen, 8202, Schweiz
+place_id: 71643699
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 1919028506
+lat: '47.7135594'
+lon: '8.5917020'
+display_name: Mittelpunkt des Kantons Schaffhausen, Aaltholztobelstrasse, Hemmental, Schaffhausen, Bezirk Schaffhausen, Schaffhausen, 8231, Schweiz
 address:
+  historic: Mittelpunkt des Kantons Schaffhausen
+  road: Aaltholztobelstrasse
+  village: Hemmental
+  town: Schaffhausen
+  county: Bezirk Schaffhausen
+  state: Schaffhausen
+  ISO3166-2-lvl4: CH-SH
+  postcode: '8231'
   country: Schweiz
   country_code: ch
-  postcode: '8202'
-  road: Stadthausgasse
-  state: Schaffhausen
-  town: Schaffhausen
-  townhall: Stadthaus
+addresstype: historic
 boundingbox:
-  - '47.6969343'
-  - '47.6972769'
-  - '8.6343538'
-  - '8.6348404'
+  - '47.7135094'
+  - '47.7136094'
+  - '8.5916520'
+  - '8.5917520'
+class: historic
+importance: 0.00006351796749823785
+name: Mittelpunkt des Kantons Schaffhausen
+place_rank: 30
+type: memorial

@@ -1,22 +1,30 @@
 ---
-place_id: '227339485'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: way
-osm_id: '587745585'
-lat: '45.812984650000004'
-lon: '15.977982624964788'
-display_name: Manduševac, Trg bana Josipa Jelačića, Mjesni odbor "August Cesarec", Gradska četvrt Gornji grad - Medveščak, Zagreb, Grad Zagreb, 10106, Hrvatska
+place_id: 79529832
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1493356
+lat: '45.8130827'
+lon: '15.9769817'
+display_name: Kaptol, Mjesni odbor "August Cesarec", Gradska četvrt Gornji grad - Medveščak, Zagreb, Grad Zagreb, 10106, Hrvatska
 address:
-#  amenity: Manduševac
-#  road: Trg bana Josipa Jelačića
-#  neighbourhood: Mjesni odbor "August Cesarec"
-#  suburb: Gradska četvrt Gornji grad - Medveščak
-#  city: Zagreb
-#  postcode: 10106
   country: Hrvatska
   country_code: hr
+  # addresstype: road
+  # ISO3166-2-lvl4: HR-21
+  # city: Grad Zagreb
+  # city_district: Zagreb
+  # neighbourhood: Mjesni odbor "August Cesarec"
+  # postcode: "10106"
+  # quarter: Kaptol
+  # suburb: Gradska četvrt Gornji grad - Medveščak
+
 boundingbox:
-  - '45.8129649'
-  - '45.8130084'
-  - '15.9779515'
-  - '15.9780137'
+  - '45.8124898'
+  - '45.8136698'
+  - '15.9757151'
+  - '15.9786622'
+class: highway
+importance: 0.05341281071183333
+name: ''
+place_rank: 26
+type: pedestrian

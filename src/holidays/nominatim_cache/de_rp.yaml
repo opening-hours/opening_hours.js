@@ -1,22 +1,29 @@
 ---
-place_id: '119493204'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '240732892'
-lat: '49.74945385'
-lon: '7.4394715'
-display_name: 21, Talstraße, Bärenbach, Kirn-Land, Landkreis Bad Kreuznach, Rheinland-Pfalz, 55758, Deutschland
+place_id: 117834484
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 1151585836
+lat: '49.9531139'
+lon: '7.3106583'
+display_name: Geographischer Mittelpunkt von Rheinland-Pfalz, Schwarzener Straße, Bärenbach, Kirchberg (Hunsrück), Rhein-Hunsrück-Kreis, Rheinland-Pfalz, Deutschland
 address:
+  tourism: Geographischer Mittelpunkt von Rheinland-Pfalz
+  road: Schwarzener Straße
+  village: Bärenbach
+  municipality: Kirchberg (Hunsrück)
+  county: Rhein-Hunsrück-Kreis
+  state: Rheinland-Pfalz
+  ISO3166-2-lvl4: DE-RP
   country: Deutschland
   country_code: de
-  county: Kirn-Land
-  house_number: '21'
-  postcode: '55758'
-  road: Talstraße
-  state: Rheinland-Pfalz
-  village: Bärenbach
+addresstype: tourism
 boundingbox:
-  - '49.7493737'
-  - '49.749534'
-  - '7.4393464'
-  - '7.4395966'
+  - '49.9530639'
+  - '49.9531639'
+  - '7.3106083'
+  - '7.3107083'
+class: tourism
+importance: 0.00005520332646672797
+name: Geographischer Mittelpunkt von Rheinland-Pfalz
+place_rank: 30
+type: attraction

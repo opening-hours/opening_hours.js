@@ -1,19 +1,28 @@
 ---
-place_id: '78231263'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 374003101
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '56684658'
-lat: '47.8397542'
-lon: '-90.0551622'
-display_name: Superior Hiking Trail, Cook County, Minnesota, United States of America
+osm_id: 18169357
+lat: '45.9912484'
+lon: '-94.6113381'
+display_name: 160th Street, Culdrum Township, Morrison County, Minnesota, 56382, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Cook County
-  footway: Superior Hiking Trail
+  road: 160th Street
+  city: Culdrum Township
+  county: Morrison County
   state: Minnesota
+  ISO3166-2-lvl4: US-MN
+  postcode: '56382'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '47.8194609'
-  - '47.8667421'
-  - '-90.0610767'
-  - '-90.0456654'
+  - '45.9912040'
+  - '45.9913270'
+  - '-94.6188970'
+  - '-94.5980410'
+class: highway
+importance: 0.0533433333333333
+name: 160th Street
+place_rank: 26
+type: residential

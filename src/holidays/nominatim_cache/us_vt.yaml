@@ -1,22 +1,29 @@
 ---
-place_id: '120598380'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '244468089'
-lat: '44.25920675'
-lon: '-72.5796506738965'
-display_name: 53, Memorial Drive, Montpelier, Washington County, Vermont, 05602, United States of America
+place_id: 365407436
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 12743651615
+lat: '44.6002773'
+lon: '-72.4987247'
+display_name: 1950, Jones Lane, Wolcott, Lamoille County, Vermont, 05680, United States
 address:
-  city: Montpelier
-  country: United States of America
-  country_code: us
-  county: Washington County
-  house_number: '53'
-  postcode: '05602'
-  road: Memorial Drive
+  house_number: '1950'
+  road: Jones Lane
+  village: Wolcott
+  county: Lamoille County
   state: Vermont
+  ISO3166-2-lvl4: US-VT
+  postcode: '05680'
+  country: United States
+  country_code: us
+addresstype: place
 boundingbox:
-  - '44.2591659'
-  - '44.2592489'
-  - '-72.579719'
-  - '-72.5795828'
+  - '44.6002273'
+  - '44.6003273'
+  - '-72.4987747'
+  - '-72.4986747'
+class: place
+importance: 0.000045962462806088617
+name: ''
+place_rank: 30
+type: house

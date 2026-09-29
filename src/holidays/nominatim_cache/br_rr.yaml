@@ -1,0 +1,28 @@
+---
+place_id: 300298747
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 7567159
+lat: '2.1747433'
+lon: '-61.6646562'
+display_name: Iracema, Roraima, Região Norte, 69348-000, Brasil
+address:
+  city_district: Iracema
+  town: Iracema
+  state: Roraima
+  ISO3166-2-lvl4: BR-RR
+  region: Região Norte
+  postcode: 69348-000
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '1.5296296'
+  - '2.8206000'
+  - '-63.9600782'
+  - '-60.9382662'
+class: boundary
+importance: 0.16004738765545126
+name: Iracema
+place_rank: 18
+type: administrative

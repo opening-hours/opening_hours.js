@@ -1,25 +1,25 @@
 ---
-place_id: '205612016'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '4668742174'
-lat: '36.1221426'
-lon: '-115.1703423'
-display_name: Fat Tuesday, 3355, South Las Vegas Boulevard, Hughes Center, Paradise, Clark County, Nevada, 89109, United States
-  of America
+place_id: 327681549
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 166466
+lat: '39.9059878'
+lon: '-116.9843374'
+display_name: Lander County, Nevada, United States
 address:
-  bar: Fat Tuesday
-  country: United States of America
-  country_code: us
-  county: Clark County
-  house_number: '3355'
-  locality: Paradise
-  postcode: '89109'
-  road: South Las Vegas Boulevard
+  county: Lander County
   state: Nevada
-  suburb: Hughes Center
+  ISO3166-2-lvl4: US-NV
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '36.1220426'
-  - '36.1222426'
-  - '-115.1704423'
-  - '-115.1702423'
+  - '39.0934250'
+  - '41.0011410'
+  - '-117.8067860'
+  - '-116.5874480'
+class: boundary
+importance: 0.48088253121850977
+name: Lander County
+place_rank: 12
+type: administrative

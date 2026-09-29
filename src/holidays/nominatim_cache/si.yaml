@@ -1,0 +1,33 @@
+---
+place_id: 68682131
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 4332219164
+lat: '46.0567248'
+lon: '14.5058758'
+display_name: Žito, 58, Slovenska cesta, Ledina, Grajski grič, Četrtna skupnost Center, Ljubljana, Upravna Enota Ljubljana, 1000, Slovenija
+address:
+  country: Slovenija
+  country_code: si
+  # addresstype: amenity
+  # ISO3166-2-lvl8: SI-061
+  # amenity: Žito
+  # city: Ljubljana
+  # house_number: "58"
+  # municipality: Ljubljana
+  # neighbourhood: Ledina
+  # postcode: "1000"
+  # quarter: Grajski grič
+  # road: Slovenska cesta
+  # suburb: Četrtna skupnost Center
+
+boundingbox:
+  - '46.0566748'
+  - '46.0567748'
+  - '14.5058258'
+  - '14.5059258'
+class: amenity
+importance: 0.00007541695277328172
+name: Žito
+place_rank: 30
+type: cafe

@@ -1,0 +1,28 @@
+---
+place_id: 2990477
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 6252141
+lat: '-4.0574437'
+lon: '-63.5108572'
+display_name: Coari, Amazonas, Região Norte, 69460-000, Brasil
+address:
+  city_district: Coari
+  town: Coari
+  state: Amazonas
+  ISO3166-2-lvl4: BR-AM
+  region: Região Norte
+  postcode: 69460-000
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '-5.8050153'
+  - '-2.3098644'
+  - '-65.9299187'
+  - '-62.2623742'
+class: boundary
+importance: 0.16005138094148164
+name: Coari
+place_rank: 18
+type: administrative

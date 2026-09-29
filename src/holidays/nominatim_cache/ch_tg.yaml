@@ -1,21 +1,28 @@
 ---
-place_id: 140116312
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 71793771
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 224489224
 lat: '47.5837005'
 lon: '9.1427106'
-display_name: Beckelswilen, Berg (TG), Bezirk Weinfelden, Thurgau, 8572, Schweiz
+display_name: Ottenberg, Weinfelden, Bezirk Weinfelden, Thurgau, 8570, Schweiz
 address:
-  city: Berg (TG)
+  hamlet: Ottenberg
+  town: Weinfelden
+  county: Bezirk Weinfelden
+  state: Thurgau
+  ISO3166-2-lvl4: CH-TG
+  postcode: '8570'
   country: Schweiz
   country_code: ch
-  county: Bezirk Weinfelden
-  hamlet: Beckelswilen
-  postcode: '8572'
-  state: Thurgau
+addresstype: road
 boundingbox:
-  - '47.5819712'
-  - '47.584497'
+  - '47.5826982'
+  - '47.5844970'
   - '9.1311788'
-  - '9.154837'
+  - '9.1463378'
+class: highway
+importance: 0.05337913099870295
+name: ''
+place_rank: 26
+type: unclassified

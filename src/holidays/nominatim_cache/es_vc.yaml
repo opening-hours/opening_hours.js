@@ -1,21 +1,29 @@
 ---
-place_id: 13523183
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: node
-osm_id: 1243421510
-lat: '39.6895787'
-lon: '-0.7606594'
-display_name: Alto de Zalagardos, Casinos, El Campo de Turia, Valencia, Comunidad Valenciana, España
+place_id: 301239658
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1217812465
+lat: '39.6798309'
+lon: '-0.7668449'
+display_name: Camí del Xarco del Moro, Llíria, El Camp de Túria, Valencia, Comunidad Valenciana, España
 address:
+  road: Camí del Xarco del Moro
+  town: Llíria
+  region: El Camp de Túria
+  state_district: Valencia
+  ISO3166-2-lvl6: ES-V
+  state: Comunidad Valenciana
+  ISO3166-2-lvl4: ES-VC
   country: España
   country_code: es
-  county: Valencia
-  locality: Alto de Zalagardos
-  region: El Campo de Turia
-  state: Comunidad Valenciana
-  village: Casinos
+addresstype: road
 boundingbox:
-  - '39.6695787'
-  - '39.7095787'
-  - '-0.7806594'
-  - '-0.7406594'
+  - '39.6797769'
+  - '39.6799124'
+  - '-0.7682547'
+  - '-0.7668449'
+class: highway
+importance: 0.05339107423514149
+name: Camí del Xarco del Moro
+place_rank: 26
+type: track

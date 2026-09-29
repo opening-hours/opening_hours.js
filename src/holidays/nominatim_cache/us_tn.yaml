@@ -1,21 +1,29 @@
 ---
-place_id: '91498913'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 342188261
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '124068656'
-lat: '35.1386836'
-lon: '-90.0240493'
-display_name: I 240, Memphis, Shelby County, Tennessee, 38104, United States of America
+osm_id: 19596123
+lat: '35.7719180'
+lon: '-86.2825632'
+display_name: Gum Puckett Road, Pleasant View, Rutherford County, Middle Tennessee, Tennessee, 37127, United States
 address:
-  city: Memphis
-  country: United States of America
-  country_code: us
-  county: Shelby County
-  postcode: '38104'
-  road: I 240
+  road: Gum Puckett Road
+  hamlet: Pleasant View
+  county: Rutherford County
+  region: Middle Tennessee
   state: Tennessee
+  ISO3166-2-lvl4: US-TN
+  postcode: '37127'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '35.1330743'
-  - '35.1442679'
-  - '-90.0243153'
-  - '-90.022631'
+  - '35.7677660'
+  - '35.7737024'
+  - '-86.2875651'
+  - '-86.2550770'
+class: highway
+importance: 0.05336833524071104
+name: Gum Puckett Road
+place_rank: 26
+type: residential

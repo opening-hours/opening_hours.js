@@ -1,20 +1,29 @@
 ---
-place_id: '66406310'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 371447177
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '21562994'
-lat: '45.8707426'
-lon: '-89.6984064'
-display_name: Cedar Street, Minocqua, Oneida County, Wisconsin, United States of America
+osm_id: 495336573
+lat: '44.4274943'
+lon: '-89.6876504'
+display_name: Plover Road, Meehan, Town of Plover, Portage County, Wisconsin, 54494, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Oneida County
-  road: Cedar Street
+  road: Plover Road
+  hamlet: Meehan
+  city: Town of Plover
+  county: Portage County
   state: Wisconsin
-  village: Minocqua
+  ISO3166-2-lvl4: US-WI
+  postcode: '54494'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '45.8704'
-  - '45.8708238'
-  - '-89.6990159'
-  - '-89.697905'
+  - '44.4273579'
+  - '44.4545242'
+  - '-89.6882210'
+  - '-89.5753286'
+class: highway
+importance: 0.053383334859235486
+name: Plover Road
+place_rank: 26
+type: primary

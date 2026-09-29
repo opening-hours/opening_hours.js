@@ -1,26 +1,31 @@
 ---
-place_id: '85544270'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '96307767'
-lat: '53.77375665'
-lon: '12.5756973795233'
-display_name: Liontec Versicherungen, 7, Marktplatz, Bahnhof, Pampow, Teterow, Landkreis Rostock, Mecklenburg-Vorpommern,
-  17166, Deutschland
+place_id: 147595439
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11394947248
+lat: '53.7732638'
+lon: '12.5756134'
+display_name: Geers, 11, Marktplatz, Teschower Siedlung, Teterow, Landkreis Rostock, Mecklenburg-Vorpommern, 17166, Deutschland
 address:
-  address29: Liontec Versicherungen
+  shop: Geers
+  house_number: '11'
+  road: Marktplatz
+  suburb: Teschower Siedlung
+  town: Teterow
+  county: Landkreis Rostock
+  state: Mecklenburg-Vorpommern
+  ISO3166-2-lvl4: DE-MV
+  postcode: '17166'
   country: Deutschland
   country_code: de
-  county: Landkreis Rostock
-  house_number: '7'
-  neighbourhood: Bahnhof
-  pedestrian: Marktplatz
-  postcode: '17166'
-  state: Mecklenburg-Vorpommern
-  suburb: Pampow
-  town: Teterow
+addresstype: shop
 boundingbox:
-  - '53.7737017'
-  - '53.7738096'
-  - '12.5756119'
-  - '12.5757826'
+  - '53.7732138'
+  - '53.7733138'
+  - '12.5755634'
+  - '12.5756634'
+class: shop
+importance: 0.00005630350194547978
+name: Geers
+place_rank: 30
+type: hearing_aids

@@ -1,20 +1,26 @@
 ---
-place_id: 159746857
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 73297803
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 305848134
+osm_id: 1270426277
 lat: '46.9428078'
 lon: '8.4112497'
-display_name: Gibel, Oberdorf (NW), Nidwalden, 6382, Schweiz
+display_name: Oberdorf (NW), Nidwalden, 6382, Schweiz
 address:
-  city: Oberdorf (NW)
+  village: Oberdorf (NW)
+  state: Nidwalden
+  ISO3166-2-lvl4: CH-NW
+  postcode: '6382'
   country: Schweiz
   country_code: ch
-  postcode: '6382'
-  state: Nidwalden
-  suburb: Gibel
+addresstype: road
 boundingbox:
-  - '46.9330333'
+  - '46.9395527'
   - '46.9436685'
-  - '8.4102051'
-  - '8.4162006'
+  - '8.4102837'
+  - '8.4114372'
+class: highway
+importance: 0.053369061570153316
+name: ''
+place_rank: 26
+type: unclassified

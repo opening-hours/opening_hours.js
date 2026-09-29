@@ -1,0 +1,27 @@
+---
+place_id: 374530636
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 8118162
+lat: '51.9635261'
+lon: '-75.0326514'
+display_name: Eeyou Istchee James Bay, Jamésie, Nord-du-Québec, Quebec, Canada
+address:
+  town: Eeyou Istchee James Bay
+  county: Jamésie
+  state_district: Nord-du-Québec
+  state: Quebec
+  ISO3166-2-lvl4: CA-QC
+  country: Canada
+  country_code: ca
+addresstype: town
+boundingbox:
+  - '48.9265289'
+  - '55.0000290'
+  - '-79.7628726'
+  - '-70.0000000'
+class: boundary
+importance: 0.44357265160904613
+name: Eeyou Istchee James Bay
+place_rank: 14
+type: administrative

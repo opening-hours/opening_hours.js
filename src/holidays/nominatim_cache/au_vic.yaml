@@ -1,23 +1,29 @@
 ---
-place_id: '141655283'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 22493236
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '315229024'
-lat: '-37.8145906'
-lon: '144.9616841'
-display_name: Bourke Street, Melbourne (3000), Melbourne, City of Melbourne, Greater Melbourne, Victoria, 3000, Australia
+osm_id: 235931748
+lat: '-37.8136562'
+lon: '144.9629780'
+display_name: Elizabeth Street, Greek Precinct, Melbourne, Victoria, 3000, Australia
 address:
+  road: Elizabeth Street
+  neighbourhood: Greek Precinct
+  suburb: Melbourne
   city: Melbourne
+  state: Victoria
+  ISO3166-2-lvl4: AU-VIC
+  postcode: '3000'
   country: Australia
   country_code: au
-  county: City of Melbourne
-  postcode: '3000'
-  region: Greater Melbourne
-  road: Bourke Street
-  state: Victoria
-  suburb: Melbourne (3000)
+addresstype: road
 boundingbox:
-  - '-37.8151923'
-  - '-37.8141496'
-  - '144.9596078'
-  - '144.9632052'
+  - '-37.8141713'
+  - '-37.8128990'
+  - '144.9626293'
+  - '144.9632146'
+class: highway
+importance: 0.053413785763332534
+name: Elizabeth Street
+place_rank: 26
+type: tertiary

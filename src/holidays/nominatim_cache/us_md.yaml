@@ -1,21 +1,28 @@
 ---
-place_id: '76762706'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '47701025'
-lat: '38.3152772'
-lon: '-75.6248896'
-display_name: South Fruitland Boulevard, Fruitland, Wicomico County, Maryland, 21826, United States of America
+place_id: 350810344
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 158229625
+lat: '39.5009358'
+lon: '-76.9349800'
+display_name: Eastview Estates, True Estates, Carroll County, Maryland, 21048, United States
 address:
-  city: Fruitland
-  country: United States of America
-  country_code: us
-  county: Wicomico County
-  postcode: '21826'
-  road: South Fruitland Boulevard
+  neighbourhood: Eastview Estates
+  hamlet: True Estates
+  county: Carroll County
   state: Maryland
+  ISO3166-2-lvl4: US-MD
+  postcode: '21048'
+  country: United States
+  country_code: us
+addresstype: neighbourhood
 boundingbox:
-  - '38.306383'
-  - '38.3222886'
-  - '-75.6313919'
-  - '-75.6197739'
+  - '39.4909358'
+  - '39.5109358'
+  - '-76.9449800'
+  - '-76.9249800'
+class: place
+importance: 0.08003500190737771
+name: Eastview Estates
+place_rank: 24
+type: neighbourhood

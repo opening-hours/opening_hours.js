@@ -1,0 +1,32 @@
+---
+place_id: 272293161
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 12090786548
+lat: '54.5952322'
+lon: '-5.9299989'
+display_name: 13, Linenhall Street, Botanic, Ravenhill, Belfast City District, County Antrim, Northern Ireland, BT2 8BG, United Kingdom
+address:
+  house_number: '13'
+  road: Linenhall Street
+  neighbourhood: Botanic
+  suburb: Ravenhill
+  city: Belfast City District
+  ISO3166-2-lvl7: GB-BFS
+  historic: County Antrim
+  state: Northern Ireland
+  ISO3166-2-lvl4: GB-NIR
+  postcode: BT2 8BG
+  country: United Kingdom
+  country_code: gb
+addresstype: place
+boundingbox:
+  - '54.5951822'
+  - '54.5952822'
+  - '-5.9300489'
+  - '-5.9299489'
+class: place
+importance: 0.00007500343327988125
+name: ''
+place_rank: 30
+type: house

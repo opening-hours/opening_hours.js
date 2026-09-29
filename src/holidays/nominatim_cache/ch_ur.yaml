@@ -1,19 +1,29 @@
 ---
-place_id: 235481884
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: relation
-osm_id: 1683078
-lat: '46.7376202'
-lon: '8.6281646'
-display_name: Gurtnellen, Uri, 6482, Schweiz
+place_id: 73281820
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11129275221
+lat: '46.7847555'
+lon: '8.6364530'
+display_name: Sunnig Grat, Arniweg, Arni, Gurtnellen, Uri, 6476, Schweiz
 address:
-  city: Gurtnellen
+  information: Sunnig Grat
+  road: Arniweg
+  hamlet: Arni
+  village: Gurtnellen
+  state: Uri
+  ISO3166-2-lvl4: CH-UR
+  postcode: '6476'
   country: Schweiz
   country_code: ch
-  postcode: '6482'
-  state: Uri
+addresstype: information
 boundingbox:
-  - '46.6712253'
-  - '46.7993039'
-  - '8.5365597'
-  - '8.6935873'
+  - '46.7847055'
+  - '46.7848055'
+  - '8.6364030'
+  - '8.6365030'
+class: information
+importance: 0.000038914320592004536
+name: Sunnig Grat
+place_rank: 30
+type: guidepost

@@ -1,0 +1,31 @@
+---
+place_id: 170327346
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 6975145447
+lat: '53.9043998'
+lon: '27.5613834'
+display_name: A1, 36, Інтэрнацыянальная вуліца, Валокі Полацкія, Цэнтральны раён, Мінск, 220030, Беларусь
+address:
+  country: Беларусь
+  country_code: by
+  # addresstype: shop
+  # ISO3166-2-lvl4: BY-HM
+  # city: Мінск
+  # city_district: Цэнтральны раён
+  # house_number: "36"
+  # neighbourhood: Валокі Полацкія
+  # postcode: "220030"
+  # road: Інтэрнацыянальная вуліца
+  # shop: A1
+
+boundingbox:
+  - '53.9043498'
+  - '53.9044498'
+  - '27.5613334'
+  - '27.5614334'
+class: shop
+importance: 0.00007699473563740013
+name: A1
+place_rank: 30
+type: telecommunication

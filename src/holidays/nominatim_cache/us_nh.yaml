@@ -1,21 +1,28 @@
 ---
-place_id: '65794747'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 362759334
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '18851394'
-lat: '43.560882'
-lon: '-71.9468629'
-display_name: Library Road, Grafton, Grafton County, New Hampshire, 03240, United States of America
+osm_id: 317280937
+lat: '43.4846481'
+lon: '-71.6550438'
+display_name: Lost Wall Trail, Franklin, Merrimack County, New Hampshire, 03235, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Grafton County
-  postcode: '03240'
-  road: Library Road
+  road: Lost Wall Trail
+  town: Franklin
+  county: Merrimack County
   state: New Hampshire
-  town: Grafton
+  ISO3166-2-lvl4: US-NH
+  postcode: '03235'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '43.5590194'
-  - '43.56179'
-  - '-71.9501249'
-  - '-71.9442659'
+  - '43.4832391'
+  - '43.4850101'
+  - '-71.6569428'
+  - '-71.6543571'
+class: highway
+importance: 0.040054327458609894
+name: Lost Wall Trail
+place_rank: 27
+type: path

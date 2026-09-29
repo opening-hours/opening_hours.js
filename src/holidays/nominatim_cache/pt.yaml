@@ -1,0 +1,29 @@
+---
+place_id: 298065940
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 236038763
+lat: '38.7223061'
+lon: '-9.1393005'
+display_name: Pena, Arroios, Lisboa, 1150-227, Portugal
+address:
+  country: Portugal
+  country_code: pt
+  # addresstype: road
+  # ISO3166-2-lvl6: PT-11
+  # city: Lisboa
+  # county: Lisboa
+  # neighbourhood: Pena
+  # postcode: 1150-227
+  # village: Arroios
+
+boundingbox:
+  - '38.7222968'
+  - '38.7223090'
+  - '-9.1394120'
+  - '-9.1392575'
+class: highway
+importance: 0.05341483100633246
+name: ''
+place_rank: 26
+type: tertiary

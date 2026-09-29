@@ -1,20 +1,26 @@
 ---
-place_id: '131102333'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 328771790
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '292950875'
-lat: '39.179721'
-lon: '-106.8236546'
-display_name: West Side, Pitkin County, Colorado, 81611, United States of America
+osm_id: 17124679
+lat: '38.7277831'
+lon: '-105.6077493'
+display_name: County Road 67, Park County, Colorado, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Pitkin County
-  path: West Side
-  postcode: '81611'
+  road: County Road 67
+  county: Park County
   state: Colorado
+  ISO3166-2-lvl4: US-CO
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '39.1790348'
-  - '39.1808899'
-  - '-106.825368'
-  - '-106.8217973'
+  - '38.7277831'
+  - '38.7326788'
+  - '-105.6077493'
+  - '-105.5943793'
+class: highway
+importance: 0.0533433333333333
+name: County Road 67
+place_rank: 26
+type: unclassified

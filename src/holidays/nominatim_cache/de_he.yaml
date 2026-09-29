@@ -1,23 +1,31 @@
 ---
-place_id: '75237257'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '42300106'
-lat: '50.6117272'
-lon: '9.1847154'
-display_name: Ulrichsteiner Straße, Feldatal, Vogelsbergkreis, Regierungsbezirk Gießen, Hessen, 36325, Deutschland, Europa
+place_id: 137271454
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 8080724570
+lat: '50.6080437'
+lon: '9.0284641'
+display_name: Mittelpunkt Hessen, B 276, Flensungen, Mücke, Vogelsbergkreis, Hessen, 35325, Deutschland
 address:
-  continent: Europa
+  tourism: Mittelpunkt Hessen
+  road: B 276
+  neighbourhood: Flensungen
+  village: Mücke
+  municipality: Mücke
+  county: Vogelsbergkreis
+  state: Hessen
+  ISO3166-2-lvl4: DE-HE
+  postcode: '35325'
   country: Deutschland
   country_code: de
-  county: Vogelsbergkreis
-  postcode: '36325'
-  road: Ulrichsteiner Straße
-  state: Hessen
-  state_district: Regierungsbezirk Gießen
-  town: Feldatal
+addresstype: tourism
 boundingbox:
-  - '50.6115874'
-  - '50.6117272'
-  - '9.1838384'
-  - '9.1854795'
+  - '50.6079937'
+  - '50.6080937'
+  - '9.0284141'
+  - '9.0285141'
+class: tourism
+importance: 0.00005000152590214416
+name: Mittelpunkt Hessen
+place_rank: 30
+type: attraction

@@ -1,21 +1,28 @@
 ---
-place_id: 13303663
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 292794344
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: 1242931946
-lat: '43.1327424'
-lon: '-4.2624154'
-display_name: Campucas, Los Tojos, Saja-Nansa, Cantabria, 39517, España
+osm_id: 1242942894
+lat: '43.1607372'
+lon: '-4.0849256'
+display_name: La Horcada, Arenas de Iguña, Cantabria, 39450, España
 address:
-  city: Los Tojos
+  locality: La Horcada
+  village: Arenas de Iguña
+  state: Cantabria
+  ISO3166-2-lvl6: ES-S
+  ISO3166-2-lvl4: ES-CB
+  postcode: '39450'
   country: España
   country_code: es
-  locality: Campucas
-  municipality: Saja-Nansa
-  postcode: '39517'
-  state: Cantabria
+addresstype: locality
 boundingbox:
-  - '43.1127424'
-  - '43.1527424'
-  - '-4.2824154'
-  - '-4.2424154'
+  - '43.1507372'
+  - '43.1707372'
+  - '-4.0949256'
+  - '-4.0749256'
+class: place
+importance: 0.06672138170443274
+name: La Horcada
+place_rank: 25
+type: locality

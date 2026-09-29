@@ -1,0 +1,27 @@
+---
+place_id: 12601635
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 801933126
+lat: '-12.2131684'
+lon: '-55.5721052'
+display_name: Fazenda Celeste, Vera, Mato Grosso, Região Centro-Oeste, Brasil
+address:
+  farmyard: Fazenda Celeste
+  town: Vera
+  state: Mato Grosso
+  ISO3166-2-lvl4: BR-MT
+  region: Região Centro-Oeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-12.2273597'
+  - '-12.2016153'
+  - '-55.5808800'
+  - '-55.5552059'
+class: highway
+importance: 0.05338334706645301
+name: ''
+place_rank: 26
+type: unclassified

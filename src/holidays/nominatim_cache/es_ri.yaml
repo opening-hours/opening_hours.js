@@ -1,23 +1,28 @@
 ---
-place_id: 40643242
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 291676147
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
 osm_id: 3075010787
 lat: '42.3259121'
 lon: '-2.4697575'
-display_name: Fuente El Arca, Senda del Fraile, Islallana, Nalda, La Rioja, 26190, España
+display_name: Fuente El Arca, Cno de Nalda-Trevijano, Nalda, La Rioja, 26190, España
 address:
-  address29: Fuente El Arca
+  amenity: Fuente El Arca
+  road: Cno de Nalda-Trevijano
+  village: Nalda
+  state: La Rioja
+  ISO3166-2-lvl4: ES-RI
+  postcode: '26190'
   country: España
   country_code: es
-  county: La Rioja
-  hamlet: Islallana
-  path: Senda del Fraile
-  postcode: '26190'
-  state: La Rioja
-  village: Nalda
+addresstype: amenity
 boundingbox:
-  - '42.3258121'
-  - '42.3260121'
-  - '-2.4698575'
-  - '-2.4696575'
+  - '42.3258621'
+  - '42.3259621'
+  - '-2.4698075'
+  - '-2.4697075'
+class: amenity
+importance: 0.00005756237125195724
+name: Fuente El Arca
+place_rank: 30
+type: drinking_water

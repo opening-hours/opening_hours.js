@@ -1,0 +1,28 @@
+---
+place_id: 374484301
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 7588872
+lat: '50.2978627'
+lon: '-83.0326717'
+display_name: Unorganized North Cochrane, Cochrane District, Northeastern Ontario, Ontario, G0G 1R0, Canada
+address:
+  city: Unorganized North Cochrane
+  county: Cochrane District
+  state_district: Northeastern Ontario
+  state: Ontario
+  ISO3166-2-lvl4: CA-ON
+  postcode: G0G 1R0
+  country: Canada
+  country_code: ca
+addresstype: city
+boundingbox:
+  - '48.2757342'
+  - '52.2938240'
+  - '-86.5494253'
+  - '-79.5164173'
+class: boundary
+importance: 0.32076214465567665
+name: Unorganized North Cochrane
+place_rank: 16
+type: administrative

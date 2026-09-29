@@ -1,0 +1,33 @@
+---
+place_id: 172648562
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 1664300107
+lat: '54.6868985'
+lon: '25.2797448'
+display_name: Douglas, 16, Gedimino pr., Senamiestis, Senamiesčio seniūnija, Vilnius, Vilniaus miesto savivaldybė, Vilniaus apskritis, 01103, Lietuva
+address:
+  country: Lietuva
+  country_code: lt
+  # addresstype: shop
+  # ISO3166-2-lvl4: LT-VL
+  # ISO3166-2-lvl5: LT-57
+  # city: Vilnius
+  # house_number: "16"
+  # postcode: "01103"
+  # road: Gedimino pr.
+  # shop: Douglas
+  # state: Vilniaus apskritis
+  # state_district: Vilniaus miesto savivaldybė
+  # suburb: Senamiestis
+
+boundingbox:
+  - '54.6868485'
+  - '54.6869485'
+  - '25.2796948'
+  - '25.2797948'
+class: shop
+importance: 0.00007705729762717658
+name: Douglas
+place_rank: 30
+type: perfumery

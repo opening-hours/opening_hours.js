@@ -1,0 +1,28 @@
+---
+place_id: 14723930
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 749804306
+lat: '-10.6743918'
+lon: '-37.3774390'
+display_name: Agrovila, Itabaiana, Sergipe, Região Nordeste, Brasil
+address:
+  hamlet: Agrovila
+  city_district: Itabaiana
+  city: Itabaiana
+  state: Sergipe
+  ISO3166-2-lvl4: BR-SE
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-10.6785040'
+  - '-10.6741536'
+  - '-37.3774409'
+  - '-37.3747453'
+class: highway
+importance: 0.053387915617608875
+name: ''
+place_rank: 26
+type: unclassified

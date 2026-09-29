@@ -1,22 +1,30 @@
 ---
-place_id: '126942958'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 349894660
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '260794611'
-lat: '40.3340718'
-lon: '-75.9294293956808'
-display_name: Parking Garage, Cherry Street, Reading, Berks County, Pennsylvania, 19602, United States of America
+osm_id: 895369536
+lat: '40.9710785'
+lon: '-77.7283081'
+display_name: 1961, Old 220 Road, Mount Eagle, Howard, Centre County, Pennsylvania, 16841, United States
 address:
-  city: Reading
-  country: United States of America
-  country_code: us
-  county: Berks County
-  parking: Parking Garage
-  postcode: '19602'
-  road: Cherry Street
+  house_number: '1961'
+  road: Old 220 Road
+  hamlet: Mount Eagle
+  village: Howard
+  county: Centre County
   state: Pennsylvania
+  ISO3166-2-lvl4: US-PA
+  postcode: '16841'
+  country: United States
+  country_code: us
+addresstype: building
 boundingbox:
-  - '40.3337776'
-  - '40.3343481'
-  - '-75.9298373'
-  - '-75.9290223'
+  - '40.9709943'
+  - '40.9711512'
+  - '-77.7284609'
+  - '-77.7281999'
+class: building
+importance: 0.000039082169832868203
+name: ''
+place_rank: 30
+type: yes

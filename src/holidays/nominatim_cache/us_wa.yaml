@@ -1,19 +1,26 @@
 ---
-place_id: '134791139'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 324960281
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '316579342'
-lat: '46.8606902'
-lon: '-121.7462981'
-display_name: Emmons Glacier Route, Pierce County, Washington, United States of America
+osm_id: 431097252
+lat: '47.2886087'
+lon: '-120.2117767'
+display_name: Kingsbury Road, Chelan County, Washington, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Pierce County
-  path: Emmons Glacier Route
+  road: Kingsbury Road
+  county: Chelan County
   state: Washington
+  ISO3166-2-lvl4: US-WA
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '46.8528966'
-  - '46.8703243'
-  - '-121.7604617'
-  - '-121.7330483'
+  - '47.2870185'
+  - '47.2926979'
+  - '-120.2384801'
+  - '-120.1626219'
+class: highway
+importance: 0.0533433333333333
+name: Kingsbury Road
+place_rank: 26
+type: unclassified

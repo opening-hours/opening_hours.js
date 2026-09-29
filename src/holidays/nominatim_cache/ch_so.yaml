@@ -1,22 +1,30 @@
 ---
-place_id: 93379131
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 92974342
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 27193361
-lat: '47.3176434'
-lon: '7.6704379'
+lat: '47.3175952'
+lon: '7.6703814'
 display_name: Höngerstrasse, Höngen, Laupersdorf, Bezirk Thal, Amtei Thal-Gäu, Solothurn, 4712, Schweiz
 address:
+  road: Höngerstrasse
+  hamlet: Höngen
+  village: Laupersdorf
+  municipality: Bezirk Thal
+  county: Amtei Thal-Gäu
+  state: Solothurn
+  ISO3166-2-lvl4: CH-SO
+  postcode: '4712'
   country: Schweiz
   country_code: ch
-  county: Amtei Thal-Gäu
-  hamlet: Höngen
-  postcode: '4712'
-  road: Höngerstrasse
-  state: Solothurn
-  village: Laupersdorf
+addresstype: road
 boundingbox:
   - '47.3154471'
-  - '47.3177383'
+  - '47.3177499'
   - '7.6612631'
-  - '7.673438'
+  - '7.6734155'
+class: highway
+importance: 0.05337981307698173
+name: Höngerstrasse
+place_rank: 26
+type: residential

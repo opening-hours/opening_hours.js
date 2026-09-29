@@ -1,21 +1,28 @@
 ---
-place_id: 134504211
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 265809083
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 126248008
-lat: '35.39312839354634'
-lon: '139.44287520211142'
-display_name: 石川六丁目, 藤沢市, 神奈川県, 252-0815, 日本
+lat: '35.3931688'
+lon: '139.4428690'
+display_name: 菖蒲沢, 藤沢市, 神奈川県, 252-0815, 日本
 address:
   country: 日本
   country_code: jp
+  # addresstype: road
   # ISO3166-2-lvl4: JP-14
   # city: 藤沢市
-  # neighbourhood: 石川六丁目
   # postcode: 252-0815
   # province: 神奈川県
+  # quarter: 菖蒲沢
+
 boundingbox:
-  - '35.3930371'
+  - '35.3930603'
   - '35.3933266'
-  - '139.4421337'
+  - '139.4421129'
   - '139.4440356'
+class: highway
+importance: 0.05339411383230332
+name: ''
+place_rank: 26
+type: residential

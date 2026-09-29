@@ -92,7 +92,8 @@ async function reverseGeocodeLocation(lat, lon, preferredLanguage) {
         format: 'json',
         lat: String(lat),
         lon: String(lon),
-        zoom: '5',
+        // High zoom so address details includes county/ISO3166-2 fields needed for sub-state holiday rules (e.g. FR departments).
+        zoom: '18',
         addressdetails: '1',
         email: 'ypid23@aol.de',
         'accept-language': preferredLanguage

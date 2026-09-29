@@ -1,19 +1,27 @@
 ---
-place_id: 123038231
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 296092216
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
 osm_id: 154849424
 lat: '37.3389291'
 lon: '-4.5787995'
 display_name: Lucena, Córdoba, Andalucía, España
 address:
+  town: Lucena
+  province: Córdoba
+  ISO3166-2-lvl6: ES-CO
+  state: Andalucía
+  ISO3166-2-lvl4: ES-AN
   country: España
   country_code: es
-  county: Córdoba
-  state: Andalucía
-  town: Lucena
+addresstype: road
 boundingbox:
   - '37.3246489'
   - '37.3433894'
   - '-4.5917469'
   - '-4.5565728'
+class: highway
+importance: 0.05339046845197219
+name: ''
+place_rank: 26
+type: unclassified

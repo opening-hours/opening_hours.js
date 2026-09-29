@@ -1,21 +1,28 @@
 ---
-place_id: '173629478'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: relation
-osm_id: '5318079'
-lat: '-31.949786'
-lon: '115.860798628716'
-display_name: Cultural Centre, Northbridge, Perth, Western Australia, 6005, Australia
+place_id: 33784782
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 8026120
+lat: '-31.9505008'
+lon: '115.8604850'
+display_name: Perth Cultural Centre, Perth, Western Australia, 6000, Australia
 address:
+  neighbourhood: Perth Cultural Centre
+  city_district: Perth
   city: Perth
+  state: Western Australia
+  ISO3166-2-lvl4: AU-WA
+  postcode: '6000'
   country: Australia
   country_code: au
-  pedestrian: Cultural Centre
-  postcode: '6005'
-  state: Western Australia
-  suburb: Northbridge
+addresstype: road
 boundingbox:
-  - '-31.9507687'
-  - '-31.9488559'
-  - '115.8596713'
-  - '115.8620823'
+  - '-31.9507245'
+  - '-31.9488950'
+  - '115.8604822'
+  - '115.8614714'
+class: highway
+importance: 0.053408187228198636
+name: ''
+place_rank: 26
+type: pedestrian

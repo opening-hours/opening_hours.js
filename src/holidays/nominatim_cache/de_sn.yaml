@@ -1,22 +1,29 @@
 ---
-place_id: '105095939'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '180530965'
-lat: '50.9269828'
-lon: '13.4672032'
-display_name: ehem. Schmalspurbahn Klingenberg-Colmnitz–Oberdittmannsdorf, Tharandt, Landkreis Sächsische Schweiz-Osterzgebirge,
-  Sachsen, 01737, Deutschland
+place_id: 132535705
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 5125215728
+lat: '50.9294116'
+lon: '13.4582443'
+display_name: Salzstraße, Tharandt, Sächsische Schweiz-Osterzgebirge, Sachsen, 01737, Deutschland
 address:
+  road: Salzstraße
+  town: Tharandt
+  municipality: Tharandt
+  county: Sächsische Schweiz-Osterzgebirge
+  state: Sachsen
+  ISO3166-2-lvl4: DE-SN
+  postcode: '01737'
   country: Deutschland
   country_code: de
-  county: Tharandt
-  cycleway: ehem. Schmalspurbahn Klingenberg-Colmnitz–Oberdittmannsdorf
-  postcode: '01737'
-  state: Sachsen
-  town: Tharandt
+addresstype: leisure
 boundingbox:
-  - '50.9215397'
-  - '50.9303764'
-  - '13.4558271'
-  - '13.4773934'
+  - '50.9293616'
+  - '50.9294616'
+  - '13.4581943'
+  - '13.4582943'
+class: leisure
+importance: 0.0000552719920652631
+name: ''
+place_rank: 30
+type: picnic_table

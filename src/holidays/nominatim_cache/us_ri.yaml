@@ -1,21 +1,29 @@
 ---
-place_id: '93306406'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 360283852
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '123069111'
-lat: '41.82518'
-lon: '-71.4193269'
-display_name: I 95, Providence, Providence County, Rhode Island, 02903, United States of America
+osm_id: 19397613
+lat: '41.7978710'
+lon: '-71.6050870'
+display_name: Battery Meeting House Fire Lane, North Scituate, Scituate, Providence County, Rhode Island, 02857, United States
 address:
-  city: Providence
-  country: United States of America
-  country_code: us
+  road: Battery Meeting House Fire Lane
+  village: North Scituate
+  town: Scituate
   county: Providence County
-  postcode: 02903
-  road: I 95
   state: Rhode Island
+  ISO3166-2-lvl4: US-RI
+  postcode: '02857'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '41.8248409'
-  - '41.825844'
-  - '-71.4194506'
-  - '-71.4190899'
+  - '41.7898649'
+  - '41.8186280'
+  - '-71.6066210'
+  - '-71.6016010'
+class: highway
+importance: 0.040051275654230556
+name: Battery Meeting House Fire Lane
+place_rank: 27
+type: service

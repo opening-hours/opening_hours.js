@@ -1,0 +1,29 @@
+---
+place_id: 15469300
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 160856940
+lat: '-15.7812505'
+lon: '-47.7953324'
+display_name: Estrada Parque Paranoá, Paranoá Parque, Paranoá, Distrito Federal, Região Centro-Oeste, 71676-100, Brasil
+address:
+  road: Estrada Parque Paranoá
+  suburb: Paranoá Parque
+  town: Paranoá
+  state: Distrito Federal
+  ISO3166-2-lvl4: BR-DF
+  region: Região Centro-Oeste
+  postcode: 71676-100
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-15.7874442'
+  - '-15.7600855'
+  - '-47.8131853'
+  - '-47.7873442'
+class: highway
+importance: 0.053411383993285995
+name: Estrada Parque Paranoá
+place_rank: 26
+type: primary

@@ -1,0 +1,27 @@
+---
+place_id: 13376625
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 332889
+lat: '-5.3679814'
+lon: '-45.6348267'
+display_name: Jenipapo dos Vieiras, Maranhão, Região Nordeste, 65962-000, Brasil
+address:
+  municipality: Jenipapo dos Vieiras
+  state: Maranhão
+  ISO3166-2-lvl4: BR-MA
+  region: Região Nordeste
+  postcode: 65962-000
+  country: Brasil
+  country_code: br
+addresstype: municipality
+boundingbox:
+  - '-5.7762464'
+  - '-5.0551379'
+  - '-45.8098077'
+  - '-45.3325779'
+class: boundary
+importance: 0.48193376621554884
+name: Jenipapo dos Vieiras
+place_rank: 16
+type: administrative

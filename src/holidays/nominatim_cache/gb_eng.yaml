@@ -1,0 +1,31 @@
+---
+place_id: 280045599
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 12877095809
+lat: '51.5073335'
+lon: '-0.1276547'
+display_name: Charles I, King Charles I Island, Westminster, Covent Garden, City of Westminster, Greater London, England, SW1A 2DX, United Kingdom
+address:
+  tourism: Charles I
+  road: King Charles I Island
+  quarter: Westminster
+  suburb: Covent Garden
+  city: City of Westminster
+  ISO3166-2-lvl8: GB-WSM
+  state: England
+  ISO3166-2-lvl4: GB-ENG
+  postcode: SW1A 2DX
+  country: United Kingdom
+  country_code: gb
+addresstype: tourism
+boundingbox:
+  - '51.5072835'
+  - '51.5073835'
+  - '-0.1277047'
+  - '-0.1276047'
+class: tourism
+importance: 0.406866891643569
+name: Charles I
+place_rank: 30
+type: artwork

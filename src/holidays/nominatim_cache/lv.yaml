@@ -1,0 +1,30 @@
+---
+place_id: 168817505
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 11178717371
+lat: '56.9459915'
+lon: '24.1063714'
+display_name: 29, 11. novembra krastmala, Vecrīga, Latgales apkaime, Rīga, LV-1050, Latvija
+address:
+  country: Latvija
+  country_code: lv
+  # addresstype: shop
+  # ISO3166-2-lvl5: LV-RIX
+  # city: Rīga
+  # city_district: Latgales apkaime
+  # house_number: "29"
+  # postcode: LV-1050
+  # road: 11. novembra krastmala
+  # suburb: Vecrīga
+
+boundingbox:
+  - '56.9459415'
+  - '56.9460415'
+  - '24.1063214'
+  - '24.1064214'
+class: shop
+importance: 0.00007666056305786248
+name: ''
+place_rank: 30
+type: vacant

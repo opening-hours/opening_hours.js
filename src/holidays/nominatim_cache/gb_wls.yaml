@@ -1,0 +1,28 @@
+---
+place_id: 276310461
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 662864909
+lat: '52.2956030'
+lon: '-3.7401077'
+display_name: Monk's Trod, Ysbyty Ystwyth, Ceredigion, Wales, United Kingdom
+address:
+  road: Monk's Trod
+  suburb: Ysbyty Ystwyth
+  county: Ceredigion
+  ISO3166-2-lvl6: GB-CGN
+  state: Wales
+  ISO3166-2-lvl4: GB-WLS
+  country: United Kingdom
+  country_code: gb
+addresstype: road
+boundingbox:
+  - '52.2938479'
+  - '52.2993085'
+  - '-3.7444923'
+  - '-3.7262210'
+class: highway
+importance: 0.04003500190737773
+name: Monk's Trod
+place_rank: 27
+type: bridleway

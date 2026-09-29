@@ -1,22 +1,30 @@
 ---
-place_id: 226451266
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 93011713
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 706225680
-lat: '47.3606621'
-lon: '7.1580024'
-display_name: Route du Clos Du Doubs, En Chavatte, Clos du Doubs, Bezirk Pruntrut, Jura, 2885, Schweiz
+osm_id: 758875037
+lat: '47.3570574'
+lon: '7.1598010'
+display_name: Chemin sur le Mont, En Chavatte, St-Ursanne, Clos du Doubs, Bezirk Porrentruy, Jura, 2882, Schweiz
 address:
+  road: Chemin sur le Mont
+  hamlet: En Chavatte
+  village: St-Ursanne
   city: Clos du Doubs
+  county: Bezirk Porrentruy
+  state: Jura
+  ISO3166-2-lvl4: CH-JU
+  postcode: '2882'
   country: Schweiz
   country_code: ch
-  county: Bezirk Pruntrut
-  hamlet: En Chavatte
-  postcode: '2885'
-  road: Route du Clos Du Doubs
-  state: Jura
+addresstype: road
 boundingbox:
-  - '47.3376991'
-  - '47.3658146'
-  - '7.1182371'
-  - '7.1626268'
+  - '47.3569940'
+  - '47.3582549'
+  - '7.1587538'
+  - '7.1653928'
+class: highway
+importance: 0.053380199130235714
+name: Chemin sur le Mont
+place_rank: 26
+type: track

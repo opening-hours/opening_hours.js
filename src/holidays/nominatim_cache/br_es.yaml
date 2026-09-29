@@ -1,0 +1,28 @@
+---
+place_id: 10896242
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 301595314
+lat: '-19.5721854'
+lon: '-40.1718079'
+display_name: Jacupemba, Aracruz, Espírito Santo, Região Sudeste, 29900-996, Brasil
+address:
+  village: Jacupemba
+  town: Aracruz
+  state: Espírito Santo
+  ISO3166-2-lvl4: BR-ES
+  region: Região Sudeste
+  postcode: 29900-996
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-19.5733075'
+  - '-19.5618854'
+  - '-40.1834694'
+  - '-40.1380871'
+class: highway
+importance: 0.053385883115892235
+name: ''
+place_rank: 26
+type: unclassified

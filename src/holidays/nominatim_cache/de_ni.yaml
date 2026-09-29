@@ -1,22 +1,30 @@
 ---
-place_id: '69903380'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '27838957'
-lat: '52.6369699'
-lon: '9.8443545'
-display_name: Neddelförd, Wieckenberg, Wietze, Landkreis Celle, Niedersachsen, 29323, Deutschland
+place_id: 141086390
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 489917473
+lat: '52.8398513'
+lon: '9.0759660'
+display_name: Mittelpunkt Niedersachsens, Wehrenberg, Hoyerhagen, Samtgemeinde Grafschaft Hoya, Landkreis Nienburg/Weser, Niedersachsen, 27318, Deutschland
 address:
+  tourism: Mittelpunkt Niedersachsens
+  road: Wehrenberg
+  village: Hoyerhagen
+  municipality: Samtgemeinde Grafschaft Hoya
+  county: Landkreis Nienburg/Weser
+  state: Niedersachsen
+  ISO3166-2-lvl4: DE-NI
+  postcode: '27318'
   country: Deutschland
   country_code: de
-  county: Landkreis Celle
-  neighbourhood: Wieckenberg
-  postcode: '29323'
-  road: Neddelförd
-  state: Niedersachsen
-  village: Wietze
+addresstype: tourism
 boundingbox:
-  - '52.6368852'
-  - '52.6382872'
-  - '9.842064'
-  - '9.8456283'
+  - '52.8398013'
+  - '52.8399013'
+  - '9.0759160'
+  - '9.0760160'
+class: tourism
+importance: 0.00004961852445253708
+name: Mittelpunkt Niedersachsens
+place_rank: 30
+type: attraction

@@ -1,21 +1,27 @@
 ---
-place_id: '63689957'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '15572790'
-lat: '38.368065'
-lon: '-81.6063089'
-display_name: Barlow Drive, Twomile, Kanawha County, West Virginia, 25311, United States of America
+place_id: 336363943
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 154062876
+lat: '38.4662146'
+lon: '-80.8573230'
+display_name: Widen, Clay County, West Virginia, 25211, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Kanawha County
-  hamlet: Twomile
-  postcode: '25311'
-  road: Barlow Drive
+  hamlet: Widen
+  county: Clay County
   state: West Virginia
+  ISO3166-2-lvl4: US-WV
+  postcode: '25211'
+  country: United States
+  country_code: us
+addresstype: hamlet
 boundingbox:
-  - '38.3587016'
-  - '38.3807117'
-  - '-81.6213396'
-  - '-81.5953362'
+  - '38.4462146'
+  - '38.4862146'
+  - '-80.8773230'
+  - '-80.8373230'
+class: place
+importance: 0.27438272693865795
+name: Widen
+place_rank: 20
+type: hamlet

@@ -1,0 +1,28 @@
+---
+place_id: 12885454
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 8395735
+lat: '-10.8630618'
+lon: '-62.8188379'
+display_name: Tarilândia, Jaru, Rondônia, Região Norte, 76897-890, Brasil
+address:
+  city_district: Tarilândia
+  town: Jaru
+  state: Rondônia
+  ISO3166-2-lvl4: BR-RO
+  region: Região Norte
+  postcode: 76897-890
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '-11.0747410'
+  - '-10.6518647'
+  - '-63.1453948'
+  - '-62.6428493'
+class: boundary
+importance: 0.16005254367895017
+name: Tarilândia
+place_rank: 18
+type: administrative

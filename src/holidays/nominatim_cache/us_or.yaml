@@ -1,19 +1,25 @@
 ---
-place_id: '96589798'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '146985872'
-lat: '45.3810394'
-lon: '-121.6699837'
-display_name: 'Cooper Spur #600B, Hood River County, Oregon, United States of America'
+place_id: 327623871
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1837109
+lat: '44.1460291'
+lon: '-120.3839476'
+display_name: Crook County, Oregon, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Hood River County
-  footway: 'Cooper Spur #600B'
+  county: Crook County
   state: Oregon
+  ISO3166-2-lvl4: US-OR
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '45.374949'
-  - '45.389776'
-  - '-121.6823709'
-  - '-121.6591949'
+  - '43.6974840'
+  - '44.5639540'
+  - '-121.1086390'
+  - '-119.6548870'
+class: boundary
+importance: 0.5012935754844979
+name: Crook County
+place_rank: 12
+type: administrative

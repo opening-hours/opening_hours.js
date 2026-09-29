@@ -1,21 +1,25 @@
 ---
-place_id: '58953370'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '8984498'
-lat: '64.5093904'
-lon: '-165.4064219'
-display_name: North Star Assoc Access Road, Nome, Alaska, 99762, United States of America
+place_id: 159260675
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 7939736
+lat: '63.4174311'
+lon: '-157.6718650'
+display_name: Unorganized Borough, Alaska, United States
 address:
-  city: Nome
-  country: United States of America
-  country_code: us
-  county: Nome
-  postcode: '99762'
-  road: North Star Assoc Access Road
+  county: Unorganized Borough
   state: Alaska
+  ISO3166-2-lvl4: US-AK
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '64.5074306'
-  - '64.5108657'
-  - '-165.4093613'
-  - '-165.4050033'
+  - '51.1750920'
+  - '68.5072970'
+  - '-179.2310860'
+  - '179.8596810'
+class: boundary
+importance: 0.4893780651721567
+name: Unorganized Borough
+place_rank: 12
+type: administrative

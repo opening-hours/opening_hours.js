@@ -1,0 +1,31 @@
+---
+place_id: 53913177
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 10743471348
+lat: '35.8999356'
+lon: '14.5144594'
+display_name: The Barrister Hotel, 57, Triq Kristofru, Diju Balli, Valletta, Reġjun tal-Port, VLT 1117, Malta
+address:
+  country: Malta
+  country_code: mt
+  # addresstype: tourism
+  # ISO3166-2-lvl8: MT-60
+  # city: Valletta
+  # house_number: "57"
+  # municipality: Reġjun tal-Port
+  # neighbourhood: Diju Balli
+  # postcode: VLT 1117
+  # road: Triq Kristofru
+  # tourism: The Barrister Hotel
+
+boundingbox:
+  - '35.8998856'
+  - '35.8999856'
+  - '14.5144094'
+  - '14.5145094'
+class: tourism
+importance: 0.00006847409781028485
+name: The Barrister Hotel
+place_rank: 30
+type: hotel

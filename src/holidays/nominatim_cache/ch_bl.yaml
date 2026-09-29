@@ -1,20 +1,28 @@
 ---
-place_id: 112284940
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 93487002
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 112441520
+osm_id: 337454524
 lat: '47.5091464'
 lon: '7.6587688'
-display_name: Muttenz, Bezirk Arlesheim, Basel-Landschaft, 4132, Schweiz
+display_name: Sulz-Eigentalweg, Muttenz, Bezirk Arlesheim, Basel-Landschaft, 4132, Schweiz
 address:
+  road: Sulz-Eigentalweg
+  town: Muttenz
+  county: Bezirk Arlesheim
+  state: Basel-Landschaft
+  ISO3166-2-lvl4: CH-BL
+  postcode: '4132'
   country: Schweiz
   country_code: ch
-  county: Bezirk Arlesheim
-  postcode: '4132'
-  state: Basel-Landschaft
-  town: Muttenz
+addresstype: road
 boundingbox:
   - '47.5058235'
-  - '47.5097901'
-  - '7.6568934'
+  - '47.5118891'
+  - '7.6537021'
   - '7.6663272'
+class: highway
+importance: 0.05338580224307618
+name: Sulz-Eigentalweg
+place_rank: 26
+type: unclassified

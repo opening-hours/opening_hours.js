@@ -1,22 +1,27 @@
 ---
-place_id: '102384531'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 334735153
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '165919984'
-lat: '30.3984797'
-lon: '-88.8818930732571'
-display_name: 189, Bellman Street, Biloxi, Harrison County, Mississippi, 39501, United States of America
+osm_id: 13552184
+lat: '32.9761769'
+lon: '-89.7353715'
+display_name: County Road 4102, Joseph, Attala County, Mississippi, United States
 address:
-  city: Biloxi
-  country: United States of America
-  country_code: us
-  county: Harrison County
-  house_number: '189'
-  postcode: '39501'
-  road: Bellman Street
+  road: County Road 4102
+  hamlet: Joseph
+  county: Attala County
   state: Mississippi
+  ISO3166-2-lvl4: US-MS
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '30.398439'
-  - '30.3985265'
-  - '-88.881947'
-  - '-88.8818391'
+  - '32.9609730'
+  - '32.9854513'
+  - '-89.8672989'
+  - '-89.7084457'
+class: highway
+importance: 0.0533433333333333
+name: County Road 4102
+place_rank: 26
+type: unclassified

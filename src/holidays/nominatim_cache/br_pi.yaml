@@ -1,0 +1,27 @@
+---
+place_id: 13190102
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 607493160
+lat: '-7.7007892'
+lon: '-42.5109357'
+display_name: PI-248, São José do Peixe, Piauí, Região Nordeste, Brasil
+address:
+  road: PI-248
+  town: São José do Peixe
+  state: Piauí
+  ISO3166-2-lvl4: BR-PI
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-7.7365673'
+  - '-7.6707226'
+  - '-42.5192681'
+  - '-42.5091299'
+class: highway
+importance: 0.05338445487144271
+name: PI-248
+place_rank: 26
+type: tertiary

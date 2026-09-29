@@ -1,22 +1,28 @@
 ---
-place_id: '111755785'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '204630964'
-lat: '51.9198255'
-lon: '11.4828327038105'
-display_name: Gewerbegebiet Brefeld, Tarthun, Bördeaue, Egelner Mulde, Salzlandkreis, Sachsen-Anhalt, 39435, Deutschland
+place_id: 135716134
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 240072996
+lat: '51.9100444'
+lon: '11.6734539'
+display_name: Glöthe, Staßfurt, Salzlandkreis, Sachsen-Anhalt, 39443, Deutschland
 address:
-  city: Bördeaue
-  city_district: Tarthun
+  village: Glöthe
+  town: Staßfurt
+  county: Salzlandkreis
+  state: Sachsen-Anhalt
+  ISO3166-2-lvl4: DE-ST
+  postcode: '39443'
   country: Deutschland
   country_code: de
-  county: Egelner Mulde
-  industrial: Gewerbegebiet Brefeld
-  postcode: '39435'
-  state: Sachsen-Anhalt
+addresstype: village
 boundingbox:
-  - '51.918769'
-  - '51.9214629'
-  - '11.4811636'
-  - '11.486973'
+  - '51.8900444'
+  - '51.9300444'
+  - '11.6534539'
+  - '11.6934539'
+class: place
+importance: 0.14672194628824287
+name: Glöthe
+place_rank: 19
+type: village

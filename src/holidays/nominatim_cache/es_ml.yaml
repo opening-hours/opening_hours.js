@@ -1,20 +1,28 @@
 ---
-place_id: 160072139
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 295612988
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: 301774827
-lat: '35.29128018631682'
-lon: '-2.94074833709987'
+osm_id: 489076646
+lat: '35.2917657'
+lon: '-2.9409726'
 display_name: Avenida de la Democracia, Barrio Héroes de España, Melilla, 52001, España
 address:
+  road: Avenida de la Democracia
+  neighbourhood: Barrio Héroes de España
+  city: Melilla
+  state: Melilla
+  ISO3166-2-lvl4: ES-ML
+  postcode: '52001'
   country: España
   country_code: es
-  neighbourhood: Barrio Héroes de España
-  postcode: '52001'
-  road: Avenida de la Democracia
-  state: Melilla
+addresstype: amenity
 boundingbox:
-  - '35.2912752'
-  - '35.2918499'
-  - '-2.9407674'
-  - '-2.9385746'
+  - '35.2917494'
+  - '35.2917852'
+  - '-2.9409979'
+  - '-2.9409523'
+class: amenity
+importance: 0.00006902494850075558
+name: ''
+place_rank: 30
+type: fountain

@@ -1,25 +1,25 @@
 ---
-place_id: '123326890'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '256624885'
-lat: '41.25918915'
-lon: '-95.9378725469971'
-display_name: First National Bank Tower, 1601, Dodge Street, East Omaha, Omaha, Douglas County, Nebraska, 68102, United States
-  of America
+place_id: 327217755
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1425486
+lat: '41.4022198'
+lon: '-99.7272241'
+display_name: Custer County, Nebraska, United States
 address:
-  building: First National Bank Tower
-  city: Omaha
-  country: United States of America
-  country_code: us
-  county: Douglas County
-  house_number: '1601'
-  postcode: '68102'
-  road: Dodge Street
+  county: Custer County
   state: Nebraska
-  suburb: East Omaha
+  ISO3166-2-lvl4: US-NE
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '41.2587862'
-  - '41.2595745'
-  - '-95.938314'
-  - '-95.9373707'
+  - '41.0462573'
+  - '41.7413220'
+  - '-100.2529450'
+  - '-99.2014620'
+class: boundary
+importance: 0.5289963283381226
+name: Custer County
+place_rank: 12
+type: administrative

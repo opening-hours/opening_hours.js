@@ -1,0 +1,28 @@
+---
+place_id: 301593895
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 5231039
+lat: '1.6067158'
+lon: '-50.7345872'
+display_name: Pracuúba, Amapá, Região Norte, 68918-000, Brasil
+address:
+  city_district: Pracuúba
+  village: Pracuúba
+  state: Amapá
+  ISO3166-2-lvl4: BR-AP
+  region: Região Norte
+  postcode: 68918-000
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '1.3167400'
+  - '1.8967615'
+  - '-51.9906253'
+  - '-50.5279733'
+class: boundary
+importance: 0.16004503013656823
+name: Pracuúba
+place_rank: 18
+type: administrative

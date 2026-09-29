@@ -1,21 +1,27 @@
 ---
-place_id: '60288526'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '11599192'
-lat: '39.9493876'
-lon: '-75.1077565'
-display_name: Centennial Drive, Camden, Camden County, New Jersey, 08101, United States of America
+place_id: 354618792
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 158851303
+lat: '40.0884475'
+lon: '-74.3995939'
+display_name: Woodair Estates, Jackson Township, Ocean County, New Jersey, United States
 address:
-  city: Camden
-  country: United States of America
-  country_code: us
-  county: Camden County
-  postcode: 08101
-  road: Centennial Drive
+  hamlet: Woodair Estates
+  town: Jackson Township
+  county: Ocean County
   state: New Jersey
+  ISO3166-2-lvl4: US-NJ
+  country: United States
+  country_code: us
+addresstype: hamlet
 boundingbox:
-  - '39.949268'
-  - '39.9493876'
-  - '-75.1077565'
-  - '-75.1071713'
+  - '40.0684475'
+  - '40.1084475'
+  - '-74.4195939'
+  - '-74.3795939'
+class: place
+importance: 0.13338125505455098
+name: Woodair Estates
+place_rank: 20
+type: hamlet

@@ -1,0 +1,27 @@
+---
+place_id: 14173143
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1497171347
+lat: '-5.3243963'
+lon: '-39.7156851'
+display_name: Boa Viagem, Ceará, Região Nordeste, Brasil
+address:
+  town: Boa Viagem
+  municipality: Boa Viagem
+  state: Ceará
+  ISO3166-2-lvl4: BR-CE
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-5.3243966'
+  - '-5.2879120'
+  - '-39.7370720'
+  - '-39.7105964'
+class: highway
+importance: 0.053386255436026514
+name: ''
+place_rank: 26
+type: unclassified

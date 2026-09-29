@@ -1,24 +1,31 @@
 ---
-place_id: 57864944
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 105706335
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
 osm_id: 5005881554
 lat: '50.6401673'
 lon: '4.6667014'
-display_name: Centre géographique de la Belgique, Ligne 324-325, Nil-Saint-Vincent-Saint-Martin, Walhain, Nijvel, Waals-Brabant,
-  Wallonië, 1457, België
+display_name: Geografische centrum van België, Ligne 324-325, Nil-Saint-Vincent-Saint-Martin, Walhain, Nijvel, Waals-Brabant, Wallonië, 1457, België
 address:
   country: België
   country_code: be
+  # addresstype: tourism
+  # ISO3166-2-lvl4: BE-WAL
+  # ISO3166-2-lvl6: BE-WBR
   # county: Nijvel
-  # historic: Centre géographique de la Belgique
-  # postcode: 1457
-  # region: Wallonië
+  # postcode: "1457"
   # road: Ligne 324-325
   # state: Waals-Brabant
+  # tourism: Geografische centrum van België
   # village: Nil-Saint-Vincent-Saint-Martin
+
 boundingbox:
   - '50.6401173'
   - '50.6402173'
   - '4.6666514'
   - '4.6667514'
+class: tourism
+importance: 0.00005311131456469089
+name: Geografische centrum van België
+place_rank: 30
+type: attraction

@@ -1,0 +1,27 @@
+---
+place_id: 14395785
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 261789340
+lat: '-7.1227748'
+lon: '-36.7275813'
+display_name: Assunção, Paraíba, Região Nordeste, Brasil
+address:
+  city_district: Assunção
+  village: Assunção
+  state: Paraíba
+  ISO3166-2-lvl4: BR-PB
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-7.1357628'
+  - '-7.1179934'
+  - '-36.7291074'
+  - '-36.7181070'
+class: highway
+importance: 0.05338350423437854
+name: ''
+place_rank: 26
+type: unclassified

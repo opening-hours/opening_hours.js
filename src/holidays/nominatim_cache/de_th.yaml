@@ -1,22 +1,29 @@
 ---
-place_id: '99759091'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 136838293
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '159183566'
-lat: '50.7314474'
-lon: '11.0745871'
-display_name: L 1114, Ilmtal, Ilm-Kreis, Thüringen, 99326, Deutschland, Europa
+osm_id: 690179912
+lat: '50.9074046'
+lon: '11.0260196'
+display_name: A 4, Waltersleben, Erfurt, Thüringen, 99097, Deutschland
 address:
-  continent: Europa
+  road: A 4
+  suburb: Waltersleben
+  village: Waltersleben
+  city: Erfurt
+  state: Thüringen
+  ISO3166-2-lvl4: DE-TH
+  postcode: '99097'
   country: Deutschland
   country_code: de
-  county: Ilm-Kreis
-  postcode: '99326'
-  road: L 1114
-  state: Thüringen
-  village: Ilmtal
+addresstype: road
 boundingbox:
-  - '50.7293736'
-  - '50.7345749'
-  - '11.0687048'
-  - '11.0806635'
+  - '50.9062304'
+  - '50.9077753'
+  - '11.0147406'
+  - '11.0296195'
+class: highway
+importance: 0.05338157396810861
+name: A 4
+place_rank: 26
+type: motorway

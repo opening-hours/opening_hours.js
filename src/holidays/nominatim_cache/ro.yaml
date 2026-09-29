@@ -1,21 +1,28 @@
 ---
-place_id: '14920614'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '1370884312'
-lat: '45.9854581'
-lon: '24.6856746'
-display_name: Centru Țării, DJ105, Dealu Frumos, Sibiu, 557141, România
+place_id: 60525138
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 48464677
+lat: '45.9852678'
+lon: '24.6860247'
+display_name: DJ105, Dealu Frumos, Merghindeal, Sibiu, 557141, România
 address:
   country: România
   country_code: ro
+  # addresstype: road
+  # ISO3166-2-lvl4: RO-SB
   # county: Sibiu
-  # postcode: 557141
+  # postcode: "557141"
   # road: DJ105
-  # viewpoint: Centru Țării
   # village: Dealu Frumos
+
 boundingbox:
-  - '45.9853581'
-  - '45.9855581'
-  - '24.6855746'
-  - '24.6857746'
+  - '45.9848197'
+  - '45.9890232'
+  - '24.6675660'
+  - '24.6862687'
+class: highway
+importance: 0.05338225757228958
+name: DJ105
+place_rank: 26
+type: secondary

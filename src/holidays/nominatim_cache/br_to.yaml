@@ -1,0 +1,26 @@
+---
+place_id: 12828962
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 336788
+lat: '-10.7019786'
+lon: '-48.4110952'
+display_name: Porto Nacional, Tocantins, Região Norte, Brasil
+address:
+  municipality: Porto Nacional
+  state: Tocantins
+  ISO3166-2-lvl4: BR-TO
+  region: Região Norte
+  country: Brasil
+  country_code: br
+addresstype: municipality
+boundingbox:
+  - '-11.0790000'
+  - '-10.0170000'
+  - '-48.8270000'
+  - '-48.1400000'
+class: boundary
+importance: 0.4785964918762969
+name: Porto Nacional
+place_rank: 16
+type: administrative

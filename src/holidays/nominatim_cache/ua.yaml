@@ -1,0 +1,28 @@
+---
+place_id: 190215423
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 9288894
+lat: '50.4506299'
+lon: '30.5225356'
+display_name: Центр, Шевченківський район, Київ, 01028, Україна
+address:
+  country: Україна
+  country_code: ua
+  # addresstype: road
+  # ISO3166-2-lvl4: UA-30
+  # city: Київ
+  # city_district: Шевченківський район
+  # postcode: "01028"
+  # suburb: Центр
+
+boundingbox:
+  - '50.4498962'
+  - '50.4513642'
+  - '30.5220393'
+  - '30.5242696'
+class: highway
+importance: 0.053415920500495886
+name: ''
+place_rank: 26
+type: pedestrian

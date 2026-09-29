@@ -1,21 +1,25 @@
 ---
-place_id: '121628610'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '238575801'
-lat: '30.2657266'
-lon: '-97.7556813'
-display_name: Pfluger Pedestrian Bridge, Austin, Travis County, Texas, 78703, United States of America
+place_id: 315542697
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1836941
+lat: '31.4861082'
+lon: '-98.5527272'
+display_name: Mills County, Texas, United States
 address:
-  city: Austin
-  country: United States of America
-  country_code: us
-  county: Travis County
-  cycleway: Pfluger Pedestrian Bridge
-  postcode: '78703'
+  county: Mills County
   state: Texas
+  ISO3166-2-lvl4: US-TX
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '30.2645742'
-  - '30.266268'
-  - '-97.7563459'
-  - '-97.7552115'
+  - '31.2304522'
+  - '31.7252524'
+  - '-98.9950557'
+  - '-98.2667962'
+class: boundary
+importance: 0.591802792710107
+name: Mills County
+place_rank: 12
+type: administrative

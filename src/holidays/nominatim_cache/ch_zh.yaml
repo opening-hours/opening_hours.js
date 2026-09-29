@@ -1,17 +1,28 @@
 ---
-place_id: '173365411'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: relation
-osm_id: '1690227'
-lat: '47.3723144'
-lon: '8.5423238'
-display_name: Zürich, Schweiz
+place_id: 72120305
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 741911309
+lat: '47.4135877'
+lon: '8.6562019'
+display_name: Effretikonstrasse, Brüttisellen, Wangen-Brüttisellen, Bezirk Uster, Zürich, 8306, Schweiz
 address:
+  road: Effretikonstrasse
+  village: Brüttisellen
+  county: Bezirk Uster
+  state: Zürich
+  ISO3166-2-lvl4: CH-ZH
+  postcode: '8306'
   country: Schweiz
   country_code: ch
-  state: Zürich
+addresstype: road
 boundingbox:
-  - '47.1594376'
-  - '47.6944722'
-  - '8.3576804'
-  - '8.9849407'
+  - '47.4127847'
+  - '47.4146800'
+  - '8.6548437'
+  - '8.6580069'
+class: highway
+importance: 0.05338339436942088
+name: Effretikonstrasse
+place_rank: 26
+type: track

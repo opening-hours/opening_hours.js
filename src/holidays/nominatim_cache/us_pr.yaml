@@ -1,22 +1,28 @@
 ---
-place_id: '151644940'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 306793511
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '403549170'
-lat: '18.4363991'
-lon: '-66.1186141'
-display_name: 25, Calle Coll Y Toste, Pueblo Viejo, Guaynabo, Puerto Rico, 00965, United States of America
+osm_id: 22204840
+lat: '18.2242539'
+lon: '-66.4862979'
+display_name: PR-564, Cacos, Orocovis, Puerto Rico, United States
 address:
-  city: Pueblo Viejo
-  country: United States of America
-  country_code: us
-  county: Guaynabo
-  house_number: '25'
-  postcode: 00965
-  road: Calle Coll Y Toste
+  road: PR-564
+  suburb: Cacos
+  city_district: Cacos
+  county: Orocovis
   state: Puerto Rico
+  ISO3166-2-lvl4: US-PR
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '18.4363456'
-  - '18.4364526'
-  - '-66.1187034'
-  - '-66.1185248'
+  - '18.2110037'
+  - '18.2268688'
+  - '-66.4878819'
+  - '-66.4793682'
+class: highway
+importance: 0.05337333409628439
+name: PR-564
+place_rank: 26
+type: tertiary

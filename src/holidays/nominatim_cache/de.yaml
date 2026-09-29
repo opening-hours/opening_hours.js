@@ -1,22 +1,30 @@
 ---
-place_id: '204698388'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 125513820
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '416578669'
-lat: '49.5438327'
-lon: '9.8155867'
-display_name: K 2847, Lauda-Königshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-Württemberg, 97922, Deutschland
+osm_id: 416578669
+lat: '49.5442202'
+lon: '9.8172382'
+display_name: K 2847, Harthausen, Oberbalbach, Lauda-Königshofen, Main-Tauber-Kreis, Baden-Württemberg, 97922, Deutschland
 address:
   country: Deutschland
   country_code: de
+  # addresstype: road
+  # ISO3166-2-lvl4: DE-BW
   # county: Main-Tauber-Kreis
-  # postcode: 97922
+  # municipality: Lauda-Königshofen
+  # postcode: "97922"
   # road: K 2847
   # state: Baden-Württemberg
-  # state_district: Regierungsbezirk Stuttgart
-  # town: Lauda-Königshofen
+  # village: Harthausen
+
 boundingbox:
-  - '49.5401338'
-  - '49.5523393'
-  - '9.8003394'
-  - '9.8274515'
+  - '49.5438449'
+  - '49.5522734'
+  - '9.8155787'
+  - '9.8274113'
+class: highway
+importance: 0.053374048218509156
+name: K 2847
+place_rank: 26
+type: tertiary

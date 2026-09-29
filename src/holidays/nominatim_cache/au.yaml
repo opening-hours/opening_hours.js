@@ -1,22 +1,30 @@
 ---
-place_id: '123870792'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 23809729
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '232866954'
-lat: '-35.2822616'
-lon: '149.1299734'
+osm_id: 232866954
+lat: '-35.2812947'
+lon: '149.1296303'
 display_name: Vernon Circle, City, Canberra, District of Canberra Central, Australian Capital Territory, 2601, Australia
 address:
   country: Australia
   country_code: au
+  # addresstype: road
+  # ISO3166-2-lvl4: AU-ACT
   # city: Canberra
   # county: District of Canberra Central
-  # postcode: 2601
+  # postcode: "2601"
   # road: Vernon Circle
-  # state: Australian Capital Territory
   # suburb: City
+  # territory: Australian Capital Territory
+
 boundingbox:
-  - '-35.2830334'
-  - '-35.2813017'
-  - '149.1292049'
-  - '149.1299997'
+  - '-35.2824553'
+  - '-35.2812829'
+  - '149.1296177'
+  - '149.1299813'
+class: highway
+importance: 0.244781979759108
+name: Vernon Circle
+place_rank: 26
+type: trunk

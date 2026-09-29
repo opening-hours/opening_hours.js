@@ -1,20 +1,28 @@
 ---
-place_id: 234655193
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
-osm_type: relation
-osm_id: 1683337
-lat: '46.6696479'
-lon: '7.1083702'
-display_name: Hauteville, Greyerzbezirk, Freiburg, 1648, Schweiz
+place_id: 91206202
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 175841341
+lat: '46.6755075'
+lon: '7.1049408'
+display_name: La Motta, Hauteville, Greyerzbezirk, Freiburg, 1647, Schweiz
 address:
-  city: Hauteville
+  road: La Motta
+  village: Hauteville
+  county: Greyerzbezirk
+  state: Freiburg
+  ISO3166-2-lvl4: CH-FR
+  postcode: '1647'
   country: Schweiz
   country_code: ch
-  county: Greyerzbezirk
-  postcode: '1648'
-  state: Freiburg
+addresstype: road
 boundingbox:
-  - '46.6529491'
-  - '46.6868864'
-  - '7.0944712'
-  - '7.1757931'
+  - '46.6714257'
+  - '46.6755075'
+  - '7.1024081'
+  - '7.1049408'
+class: highway
+importance: 0.05337400701915004
+name: La Motta
+place_rank: 26
+type: track

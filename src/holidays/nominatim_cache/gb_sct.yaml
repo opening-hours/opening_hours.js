@@ -1,0 +1,31 @@
+---
+place_id: 274541274
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 2843117277
+lat: '55.9562346'
+lon: '-3.1978267'
+display_name: 30-31, Abercromby Place, Bellevue, New Town, New Town/Broughton, City of Edinburgh, Scotland, EH3 6QE, United Kingdom
+address:
+  house_number: 30-31
+  road: Abercromby Place
+  neighbourhood: Bellevue
+  suburb: New Town
+  city: City of Edinburgh
+  ISO3166-2-lvl6: GB-EDH
+  state: Scotland
+  ISO3166-2-lvl4: GB-SCT
+  postcode: EH3 6QE
+  country: United Kingdom
+  country_code: gb
+addresstype: place
+boundingbox:
+  - '55.9561846'
+  - '55.9562846'
+  - '-3.1978767'
+  - '-3.1977767'
+class: place
+importance: 0.00007767071030742378
+name: ''
+place_rank: 30
+type: house

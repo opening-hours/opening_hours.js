@@ -1,0 +1,28 @@
+---
+place_id: 12705463
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 189045715
+lat: '-15.9323188'
+lon: '-50.1392522'
+display_name: Avenida Sebastião Fleury, Goiás, Região Centro-Oeste, 76600-000, Brasil
+address:
+  road: Avenida Sebastião Fleury
+  town: Goiás
+  state: Goiás
+  ISO3166-2-lvl4: BR-GO
+  region: Região Centro-Oeste
+  postcode: 76600-000
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-15.9324225'
+  - '-15.9322407'
+  - '-50.1393433'
+  - '-50.1391312'
+class: highway
+importance: 0.053391528953994016
+name: Avenida Sebastião Fleury
+place_rank: 26
+type: tertiary

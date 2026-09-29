@@ -1,0 +1,27 @@
+---
+place_id: 3084740
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 6159477
+lat: '-8.8961387'
+lon: '-70.5996175'
+display_name: Feijó, Acre, Região Norte, Brasil
+address:
+  city_district: Feijó
+  town: Feijó
+  state: Acre
+  ISO3166-2-lvl4: BR-AC
+  region: Região Norte
+  country: Brasil
+  country_code: br
+addresstype: city_district
+boundingbox:
+  - '-10.0004472'
+  - '-7.7920000'
+  - '-72.1810269'
+  - '-69.4430352'
+class: boundary
+importance: 0.16004984283207446
+name: Feijó
+place_rank: 18
+type: administrative

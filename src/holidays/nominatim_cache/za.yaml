@@ -1,0 +1,31 @@
+---
+place_id: 34936840
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 296945097
+lat: '-25.7464580'
+lon: '28.1880461'
+display_name: Paul Kruger Statue, Parliament Street, Salvokop, Tshwane Ward 58, Pretoria, City of Tshwane Metropolitan Municipality, Gauteng, 0142, South Africa
+address:
+  country: South Africa
+  country_code: za
+  # addresstype: tourism
+  # ISO3166-2-lvl4: ZA-GP
+  # city: Pretoria
+  # county: City of Tshwane Metropolitan Municipality
+  # postcode: "0142"
+  # road: Parliament Street
+  # state: Gauteng
+  # suburb: Salvokop
+  # tourism: Paul Kruger Statue
+
+boundingbox:
+  - '-25.7465080'
+  - '-25.7464080'
+  - '28.1879961'
+  - '28.1880961'
+class: tourism
+importance: 0.24930035976498935
+name: Paul Kruger Statue
+place_rank: 30
+type: artwork

@@ -1,20 +1,28 @@
 ---
-place_id: '73676593'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 261008243
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '36979005'
-lat: '13.4188011'
-lon: '144.6577079'
-display_name: Marine Corps Drive, Apra Harbor, Guam County, Guam, United States of America
+osm_id: 24198083
+lat: '13.4504108'
+lon: '144.7658107'
+display_name: Nakie Street, Ordot, Chalan Pago-Ordot Municipality, Guam, 96918, United States
 address:
-  country: United States of America
-  country_code: us
-  county: Guam County
-  locality: Apra Harbor
-  road: Marine Corps Drive
+  road: Nakie Street
+  hamlet: Ordot
+  county: Chalan Pago-Ordot Municipality
   state: Guam
+  ISO3166-2-lvl4: US-GU
+  postcode: '96918'
+  country: United States
+  country_code: us
+addresstype: road
 boundingbox:
-  - '13.4172553'
-  - '13.4386012'
-  - '144.6522975'
-  - '144.6755136'
+  - '13.4502093'
+  - '13.4510169'
+  - '144.7657823'
+  - '144.7670546'
+class: highway
+importance: 0.05337598916609442
+name: Nakie Street
+place_rank: 26
+type: residential

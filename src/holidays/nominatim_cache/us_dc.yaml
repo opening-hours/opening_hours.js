@@ -1,20 +1,30 @@
 ---
-place_id: '203341249'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 348107376
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '50428538'
-lat: '38.895236'
-lon: '-77.0365533'
-display_name: E St NW, Washington, District of Columbia, 20006, United States of America
+osm_id: 296063921
+lat: '38.8937378'
+lon: '-76.9880532'
+display_name: 1302, C Street Northeast, Stanton Park, Ward 6, Washington, District of Columbia, 20002, United States
 address:
+  house_number: '1302'
+  road: C Street Northeast
+  neighbourhood: Stanton Park
+  borough: Ward 6
   city: Washington
-  country: United States of America
-  country_code: us
-  postcode: '20006'
-  road: E St NW
   state: District of Columbia
+  ISO3166-2-lvl4: US-DC
+  postcode: '20002'
+  country: United States
+  country_code: us
+addresstype: building
 boundingbox:
-  - '38.895236'
-  - '38.8955003'
-  - '-77.0394723'
-  - '-77.0335985'
+  - '38.8936857'
+  - '38.8938050'
+  - '-76.9880845'
+  - '-76.9880217'
+class: building
+importance: 0.00008492942702368227
+name: ''
+place_rank: 30
+type: house

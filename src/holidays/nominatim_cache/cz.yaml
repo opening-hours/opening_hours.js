@@ -1,24 +1,30 @@
 ---
-place_id: '139997564'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 132377952
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '340086966'
-lat: '50.08748275'
-lon: '14.4213733265222'
-display_name: Pražský poledník, Staroměstské náměstí, Staré Město, Praha, okres Hlavní město Praha, Hlavní město Praha, Praha,
-  110 00, Česko
+osm_id: 340086966
+lat: '50.0874765'
+lon: '14.4213299'
+display_name: Pražský poledník, Staroměstské náměstí, Josefov, obvod Praha 1, Praha, 110 00, Česko
 address:
   country: Česko
   country_code: cz
+  # addresstype: tourism
+  # ISO3166-2-lvl4: CZ-10
   # city: Praha
-  # county: okres Hlavní město Praha
-  # memorial: Pražský poledník
-  # pedestrian: Staroměstské náměstí
+  # district: obvod Praha 1
   # postcode: 110 00
-  # state: Praha
-  # suburb: Staré Město
+  # road: Staroměstské náměstí
+  # suburb: Josefov
+  # tourism: Pražský poledník
+
 boundingbox:
-  - '50.0874129'
-  - '50.0875525'
-  - '14.4213686'
-  - '14.4213781'
+  - '50.0874273'
+  - '50.0875256'
+  - '14.4213255'
+  - '14.4213343'
+class: tourism
+importance: 0.13618373728802152
+name: Pražský poledník
+place_rank: 30
+type: attraction

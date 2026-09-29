@@ -1,21 +1,28 @@
 ---
-place_id: '75292496'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
+place_id: 363527797
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '43376862'
-lat: '44.7904848'
-lon: '-68.7829047111113'
-display_name: Bangor Raceway/OTB, Bangor, Penobscot County, Maine, 04401, United States of America
+osm_id: 886684717
+lat: '45.7088615'
+lon: '-68.8584385'
+display_name: 367, Rock Ridge Road, Ambejejus Lake, Piscataquis County, Maine, United States
 address:
-  city: Bangor
-  country: United States of America
-  country_code: us
-  county: Penobscot County
-  postcode: '04401'
-  raceway: Bangor Raceway/OTB
+  house_number: '367'
+  road: Rock Ridge Road
+  city: Ambejejus Lake
+  county: Piscataquis County
   state: Maine
+  ISO3166-2-lvl4: US-ME
+  country: United States
+  country_code: us
+addresstype: building
 boundingbox:
-  - '44.789226'
-  - '44.7917492'
-  - '-68.7847403'
-  - '-68.7810856'
+  - '45.7087960'
+  - '45.7089270'
+  - '-68.8585260'
+  - '-68.8583510'
+class: building
+importance: 0.000045001144426596745
+name: ''
+place_rank: 30
+type: yes

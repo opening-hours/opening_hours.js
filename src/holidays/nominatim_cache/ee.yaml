@@ -1,0 +1,34 @@
+---
+place_id: 169680908
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 26903432
+lat: '59.4375625'
+lon: '24.7539578'
+display_name: Metro Plaza, 2, Viru väljak, Südalinn, Kesklinna linnaosa, Tallinn, Harju maakond, 10111, Eesti
+address:
+  country: Eesti
+  country_code: ee
+  # addresstype: building
+  # ISO3166-2-lvl6: EE-37
+  # ISO3166-2-lvl7: EE-784
+  # building: Metro Plaza
+  # city: Tallinn
+  # county: Harju maakond
+  # house_number: "2"
+  # municipality: Tallinn
+  # postcode: "10111"
+  # quarter: Südalinn
+  # road: Viru väljak
+  # suburb: Kesklinna linnaosa
+
+boundingbox:
+  - '59.4372629'
+  - '59.4377799'
+  - '24.7535465'
+  - '24.7544146'
+class: building
+importance: 0.00007582894636449253
+name: Metro Plaza
+place_rank: 30
+type: office

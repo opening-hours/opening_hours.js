@@ -1,19 +1,27 @@
 ---
-place_id: 34515937
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 73290831
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: 2835196854
-lat: '46.8555371'
-lon: '8.2157104'
-display_name: Ewil, Obwalden, 6062, Schweiz
+osm_id: 12392559610
+lat: '46.8507082'
+lon: '8.2145686'
+display_name: Grüt, Ewil, Sachseln, Obwalden, 6062, Schweiz
 address:
+  locality: Grüt
+  village: Ewil
+  state: Obwalden
+  ISO3166-2-lvl4: CH-OW
+  postcode: '6062'
   country: Schweiz
   country_code: ch
-  postcode: '6062'
-  state: Obwalden
-  village: Ewil
+addresstype: locality
 boundingbox:
-  - '46.8155371'
-  - '46.8955371'
-  - '8.1757104'
-  - '8.2557104'
+  - '46.8407082'
+  - '46.8607082'
+  - '8.2045686'
+  - '8.2245686'
+class: place
+importance: 0.06671329442282749
+name: Grüt
+place_rank: 25
+type: locality

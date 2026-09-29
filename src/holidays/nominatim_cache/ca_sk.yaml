@@ -1,0 +1,25 @@
+---
+place_id: 375700708
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 14548274
+lat: '56.8124486'
+lon: '-104.0826523'
+display_name: Unorganized Division No. 18, Saskatchewan, Canada
+address:
+  county: Unorganized Division No. 18
+  state: Saskatchewan
+  ISO3166-2-lvl4: CA-SK
+  country: Canada
+  country_code: ca
+addresstype: county
+boundingbox:
+  - '53.6248871'
+  - '60.0000252'
+  - '-110.0063680'
+  - '-101.7706467'
+class: boundary
+importance: 0.24004500114442662
+name: Unorganized Division No. 18
+place_rank: 12
+type: administrative

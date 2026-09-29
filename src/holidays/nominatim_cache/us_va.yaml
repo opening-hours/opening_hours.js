@@ -1,21 +1,25 @@
 ---
-place_id: '77018985'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: way
-osm_id: '48865930'
-lat: '36.944657'
-lon: '-76.2950104'
-display_name: Bellinger Blvd, Merrimack Park, Norfolk, Virginia, 23511, United States of America
+place_id: 346961885
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 2534199
+lat: '37.2293293'
+lon: '-78.4628573'
+display_name: Prince Edward County, Virginia, United States
 address:
-  city: Norfolk
-  country: United States of America
-  country_code: us
-  hamlet: Merrimack Park
-  postcode: '23511'
-  road: Bellinger Blvd
+  county: Prince Edward County
   state: Virginia
+  ISO3166-2-lvl4: US-VA
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '36.9427272'
-  - '36.944717'
-  - '-76.3043622'
-  - '-76.2860759'
+  - '37.0782940'
+  - '37.3980190'
+  - '-78.6925440'
+  - '-78.2312332'
+class: boundary
+importance: 0.5437035808423357
+name: Prince Edward County
+place_rank: 12
+type: administrative

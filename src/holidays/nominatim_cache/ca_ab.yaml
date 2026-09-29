@@ -1,0 +1,24 @@
+---
+place_id: 375991158
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 391186
+lat: '55.0012510'
+lon: '-115.0021360'
+display_name: Alberta, Canada
+address:
+  state: Alberta
+  ISO3166-2-lvl4: CA-AB
+  country: Canada
+  country_code: ca
+addresstype: state
+boundingbox:
+  - '48.9966650'
+  - '60.0004699'
+  - '-120.0013835'
+  - '-110.0047639'
+class: boundary
+importance: 0.7165693323280248
+name: Alberta
+place_rank: 8
+type: administrative

@@ -1,23 +1,25 @@
 ---
-place_id: '2623808'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright
-osm_type: node
-osm_id: '356559537'
-lat: '18.3430118'
-lon: '-64.9354232'
-display_name: Christ Church Methodist Church, Rosen Gade, Charlotte Amalie, St. Thomas Island, United States Virgin Islands,
-  00803, United States of America
+place_id: 307485027
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 285441
+lat: '17.7333425'
+lon: '-64.7317978'
+display_name: Saint Croix District, United States Virgin Islands, United States
 address:
-  country: United States of America
-  country_code: us
-  county: St. Thomas Island
-  place_of_worship: Christ Church Methodist Church
-  postcode: 00803
-  road: Rosen Gade
+  county: Saint Croix District
   state: United States Virgin Islands
-  town: Charlotte Amalie
+  ISO3166-2-lvl4: US-VI
+  country: United States
+  country_code: us
+addresstype: county
 boundingbox:
-  - '18.3429118'
-  - '18.3431118'
-  - '-64.9355232'
-  - '-64.9353232'
+  - '17.6234680'
+  - '17.8449540'
+  - '-64.9567140'
+  - '-64.5126740'
+class: boundary
+importance: 0.24003750133516438
+name: Saint Croix District
+place_rank: 12
+type: administrative

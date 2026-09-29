@@ -1,0 +1,26 @@
+---
+place_id: 283074510
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 9261086
+lat: '45.2060496'
+lon: '-63.1737900'
+display_name: Birch Hill, Municipality of Colchester, Comté de Colchester, Nova Scotia, Canada
+address:
+  village: Birch Hill
+  county: Municipality of Colchester
+  state: Nova Scotia
+  ISO3166-2-lvl4: CA-NS
+  country: Canada
+  country_code: ca
+addresstype: village
+boundingbox:
+  - '45.1853259'
+  - '45.2243431'
+  - '-63.2163175'
+  - '-63.1478275'
+class: boundary
+importance: 0.18671166781109327
+name: Birch Hill
+place_rank: 16
+type: administrative

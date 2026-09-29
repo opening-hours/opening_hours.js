@@ -1,23 +1,31 @@
 ---
-place_id: '161420889'
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 300677313
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: way
-osm_id: '410505549'
-lat: '5.32065635'
-lon: '-4.01595655075758'
-display_name: Siège de la Banque de l'Habitat de Côte d'Ivoire (BHCI), 01 BP 2325 Abidjan 01, Avenue Joseph Anoma, Le Plateau,
-  Abidjan, 00225, Côte d’Ivoire
+osm_id: 410505549
+lat: '5.3206564'
+lon: '-4.0159566'
+display_name: Siège de la Banque de l'Habitat de Côte d'Ivoire (BHCI), Avenue Joseph Anoma, Nanan Yamousso, Zone 2b, Treichville, Abidjan, 01 BP 2325 Abidjan 01, Côte d’Ivoire
 address:
   country: Côte d’Ivoire
   country_code: ci
-  # bank: Siège de la Banque de l'Habitat de Côte d'Ivoire (BHCI)
-  # city: Le Plateau
-  # house_number: 01 BP 2325 Abidjan 01
-  # postcode: 00225
+  # addresstype: amenity
+  # ISO3166-2-lvl4: CI-AB
+  # amenity: Siège de la Banque de l'Habitat de Côte d'Ivoire (BHCI)
+  # city: Abidjan
+  # neighbourhood: Nanan Yamousso
+  # postcode: 01 BP 2325 Abidjan 01
   # road: Avenue Joseph Anoma
   # state: Abidjan
+  # suburb: Zone 2b
+
 boundingbox:
   - '5.3205231'
   - '5.3207896'
   - '-4.0162073'
   - '-4.0157058'
+class: amenity
+importance: 0.00006766536964975994
+name: Siège de la Banque de l'Habitat de Côte d'Ivoire (BHCI)
+place_rank: 30
+type: bank

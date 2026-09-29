@@ -1,21 +1,29 @@
 ---
-place_id: 46922551
-licence: Data © OpenStreetMap contributors, ODbL 1.0. https://osm.org/copyright
+place_id: 72757525
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
 osm_type: node
-osm_id: 3602074251
-lat: '47.0444132'
-lon: '8.7341668'
-display_name: Furggelen, Alpthal, Schwyz, 8849, Schweiz
+osm_id: 12151006302
+lat: '47.0604508'
+lon: '8.7308119'
+display_name: Äusch, Alpthal, Schwyz, 8849, Schweiz
 address:
+  locality: Äusch
+  village: Alpthal
+  city: Alpthal
+  county: Schwyz
+  state: Schwyz
+  ISO3166-2-lvl4: CH-SZ
+  postcode: '8849'
   country: Schweiz
   country_code: ch
-  county: Schwyz
-  locality: Furggelen
-  postcode: '8849'
-  state: Schwyz
-  village: Alpthal
+addresstype: locality
 boundingbox:
-  - '47.0244132'
-  - '47.0644132'
-  - '8.7141668'
-  - '8.7541668'
+  - '47.0504508'
+  - '47.0704508'
+  - '8.7208119'
+  - '8.7408119'
+class: place
+importance: 0.06670200274662394
+name: Äusch
+place_rank: 25
+type: locality

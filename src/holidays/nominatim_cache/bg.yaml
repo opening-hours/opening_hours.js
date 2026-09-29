@@ -1,0 +1,32 @@
+---
+place_id: 58428128
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 609935114
+lat: '42.6976887'
+lon: '23.3218981'
+display_name: бул. Княз Александър Дондуков, Център, София, Средец, Столична, София-град, 1000, България
+address:
+  country: България
+  country_code: bg
+  # addresstype: road
+  # ISO3166-2-lvl4: BG-22
+  # ISO3166-2-lvl8: BG-23
+  # city: София
+  # county: Средец
+  # postcode: "1000"
+  # road: бул. Княз Александър Дондуков
+  # state: София-град
+  # state_district: Столична
+  # suburb: Център
+
+boundingbox:
+  - '42.6976646'
+  - '42.6977000'
+  - '23.3218323'
+  - '23.3220491'
+class: highway
+importance: 0.05340224994277863
+name: бул. Княз Александър Дондуков
+place_rank: 26
+type: primary

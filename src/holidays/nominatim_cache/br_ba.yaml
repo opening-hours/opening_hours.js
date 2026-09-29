@@ -1,0 +1,28 @@
+---
+place_id: 15240184
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 684659419
+lat: '-12.2868242'
+lon: '-41.9265100'
+display_name: Vale do Paraíso, Seabra, Bahia, Região Nordeste, Brasil
+address:
+  hamlet: Vale do Paraíso
+  district: Seabra
+  town: Seabra
+  state: Bahia
+  ISO3166-2-lvl4: BR-BA
+  region: Região Nordeste
+  country: Brasil
+  country_code: br
+addresstype: road
+boundingbox:
+  - '-12.3426518'
+  - '-12.2736472'
+  - '-41.9636147'
+  - '-41.8742403'
+class: highway
+importance: 0.0533917669947356
+name: ''
+place_rank: 26
+type: tertiary
