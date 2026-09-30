@@ -77,6 +77,9 @@ const request = https.get(taginfo_api_url_source, function(response) {
     response.on('end', function() {
         const upstream_dump_creation_time = get_dump_creation_time_from_file('taginfo_sources.json');
 
+        if (upstream_dump_creation_time === undefined)
+            throw new Error('Could not read the upstream taginfo dump creation time.');
+
         if (typeof local_dump_creation_time === 'object')
             console.log('Local taginfo data was generated on: ' + local_dump_creation_time);
 
