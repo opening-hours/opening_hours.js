@@ -10,8 +10,8 @@ const exit_code_new = 0;
 let exit_code_not_new = 1;
 
 /* Parameter handling {{{ */
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 
 const argv = yargs(hideBin(process.argv))
     .usage('Usage: $0')
@@ -37,8 +37,8 @@ if (typeof argv.E === 'number') {
 /* }}} */
 
 /* Required modules {{{ */
-const https = require('node:https');
-const fs   = require('node:fs');
+import https from 'node:https';
+import fs from 'node:fs';
 /* }}} */
 
 /**
