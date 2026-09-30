@@ -66,7 +66,6 @@ const local_dump_creation_time = get_dump_creation_time_from_file('taginfo_sourc
 const taginfo_api_url_source = taginfo_api_base_url + 'site/sources';
 console.log('Loading file ' + taginfo_api_url_source + ' to check if new data is available.');
 const file = fs.createWriteStream('taginfo_sources.json');
-// eslint-disable-next-line no-unused-vars
 const request = https.get(taginfo_api_url_source, function(response) {
     response.pipe(file);
 
@@ -94,5 +93,9 @@ const request = https.get(taginfo_api_url_source, function(response) {
                 process.exit(exit_code_new);
             }
     });
+});
+
+request.on('error', function(err) {
+    throw new Error('Got request error: ' + err.message);
 });
 /* }}} */
