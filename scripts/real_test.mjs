@@ -268,7 +268,7 @@ function opening_hours_test() {
                         if (argv.punchcard && tag_key_name === 'opening_hours') {
                             const check_date = new Date(cur_date.getFullYear(), cur_date.getMonth(), cur_date.getDate(), 0, 1, 0);
                             const iterator = oh.getIterator(check_date);
-                            for (let t_offset = 0; t_offset <= 7 * 24; t_offset++) {
+                            for (let t_offset = 0; t_offset < 7 * 24; t_offset++) {
                                 if (iterator.getState()) {
                                     punchcard_data[check_date.getDay()][check_date.getHours()] += data_item.count;
                                     // if (argv.verbose && check_date.getDay() === 3 && check_date.getHours() === 0) {
