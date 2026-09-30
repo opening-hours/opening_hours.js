@@ -74,7 +74,7 @@ const request = https.get(taginfo_api_url_source, function(response) {
         throw('Got error: ' + err.message);
     });
 
-    response.on('end', function() {
+    file.on('finish', function() {
         const upstream_dump_creation_time = get_dump_creation_time_from_file('taginfo_sources.json');
 
         if (upstream_dump_creation_time === undefined)
