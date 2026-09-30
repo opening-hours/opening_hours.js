@@ -203,7 +203,7 @@ check-o%.js: build/o%.js test/test.js
 
 .PHONY: osm-tag-data-taginfo-check
 osm-tag-data-taginfo-check: scripts/real_test.mjs build/opening_hours.esm.mjs osm-tag-data-get-taginfo
-	$(NODEJS) scripts/check_for_new_taginfo_data.js --exit-code-not-new 0
+	$(NODEJS) scripts/check_for_new_taginfo_data.mjs --exit-code-not-new 0
 	@grep -v '^#' $(OH_RELATED_TAGS) | while read key; do \
 		$(NODEJS) "$<" $(REAL_TEST_OPTIONS) --map-bad-oh-values --ignore-manual-values "export.$$key.json"; \
 	done
@@ -282,7 +282,7 @@ osm-tag-data-update-taginfo: taginfo_sources.json osm-tag-data-taginfo-rm osm-ta
 ## Always refresh
 .PHONY: taginfo_sources.json
 taginfo_sources.json:
-	$(NODEJS) scripts/check_for_new_taginfo_data.js
+	$(NODEJS) scripts/check_for_new_taginfo_data.mjs
 
 .PHONY: osm-tag-data-get-taginfo
 osm-tag-data-get-taginfo: $(OH_RELATED_TAGS)

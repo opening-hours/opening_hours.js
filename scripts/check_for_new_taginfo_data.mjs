@@ -10,8 +10,8 @@ const exit_code_new = 0;
 let exit_code_not_new = 1;
 
 /* Parameter handling {{{ */
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 
 const argv = yargs(hideBin(process.argv))
     .usage('Usage: $0')
@@ -37,8 +37,8 @@ if (typeof argv.E === 'number') {
 /* }}} */
 
 /* Required modules {{{ */
-const https = require('node:https');
-const fs   = require('node:fs');
+import https from 'node:https';
+import fs from 'node:fs';
 /* }}} */
 
 /**
@@ -66,7 +66,6 @@ const local_dump_creation_time = get_dump_creation_time_from_file('taginfo_sourc
 const taginfo_api_url_source = taginfo_api_base_url + 'site/sources';
 console.log('Loading file ' + taginfo_api_url_source + ' to check if new data is available.');
 const file = fs.createWriteStream('taginfo_sources.json');
-// eslint-disable-next-line no-unused-vars
 const request = https.get(taginfo_api_url_source, function(response) {
     response.pipe(file);
 
@@ -74,22 +73,30 @@ const request = https.get(taginfo_api_url_source, function(response) {
         throw('Got error: ' + err.message);
     });
 
-    response.on('end', function() {
+    file.on('finish', function() {
         const upstream_dump_creation_time = get_dump_creation_time_from_file('taginfo_sources.json');
 
+        if (upstream_dump_creation_time === undefined)
+            throw new Error('Could not read the upstream taginfo dump creation time.');
+
         if (typeof local_dump_creation_time === 'object')
-            console.log('Local taginfo data was generated on: ' + local_dump_creation_time);
+            console.log('Local taginfo data: ' + local_dump_creation_time.toISOString());
+
+        console.log('Downloaded taginfo data: ' + upstream_dump_creation_time.toISOString());
 
         if (typeof local_dump_creation_time === 'object'
                 && local_dump_creation_time.getTime() === upstream_dump_creation_time.getTime()) {
 
-                console.log('Not newer then local data.');
-                process.exit(exit_code_not_new);
+                console.log('Downloaded taginfo data matches local data. No new data available.');
+                process.exitCode = exit_code_not_new;
             } else {
-                console.log('New data available …');
-                console.log('Taginfo data was generated on: ' + upstream_dump_creation_time.toISOString());
-                process.exit(exit_code_new);
+                console.log('Downloaded newer taginfo data successfully. New data available.');
+                process.exitCode = exit_code_new;
             }
     });
+});
+
+request.on('error', function(err) {
+    throw new Error('Got request error: ' + err.message);
 });
 /* }}} */
