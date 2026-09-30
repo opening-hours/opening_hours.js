@@ -86,11 +86,11 @@ const request = https.get(taginfo_api_url_source, function(response) {
                 && local_dump_creation_time.getTime() === upstream_dump_creation_time.getTime()) {
 
                 console.log('Not newer than local data.');
-                process.exit(exit_code_not_new);
+                process.exitCode = exit_code_not_new;
             } else {
                 console.log('New data available …');
                 console.log('Taginfo data was generated on: ' + upstream_dump_creation_time.toISOString());
-                process.exit(exit_code_new);
+                process.exitCode = exit_code_new;
             }
     });
 });
