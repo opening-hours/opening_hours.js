@@ -72,3 +72,11 @@ test('getIterator stops when the current state has no next boundary', () => {
     assert.equal(iterator.getState(), true);
     assert.equal(iterator.advance(), false);
 });
+
+test('supports monthday ranges with an open end', () => {
+    const oh = new opening_hours('Mo-Fr 08:00-12:00; 2027 Feb 15+ unknown');
+
+    assert.equal(oh.getStateString(new Date(2027, 1, 14, 10)), 'close');
+    assert.equal(oh.getStateString(new Date(2027, 1, 15, 10)), 'unknown');
+    assert.deepEqual(oh.getWarnings(), []);
+});

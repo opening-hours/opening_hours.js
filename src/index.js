@@ -4167,23 +4167,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
 
             let at_sec_event_or_month;
-            if ((has_month[0] || has_event[0] || has_constrained_weekday[0]) && matchTokens(tokens, at_range_sep, '-')) {
-                has_year[1] = matchTokens(tokens, at_range_sep+1, 'year');
-                at_sec_event_or_month = at_range_sep+1+has_year[1];
-                has_month[1] = matchTokens(tokens, at_sec_event_or_month, 'month', 'number');
-                if (!has_month[1]) {
-                    has_event[1] = matchTokens(tokens, at_sec_event_or_month, 'event');
-                    if (has_event[1]) {
-                        has_calc[1] = getMoveDays(tokens, at_sec_event_or_month+1, 366, 'max differ name event like easter');
-                    } else if (matchTokens(tokens, at_sec_event_or_month, 'month', 'weekday', '[')) {
-                        has_constrained_weekday[1] = getConstrainedWeekday(tokens, at_sec_event_or_month+3);
-                        has_calc[1] = getMoveDays(tokens, has_constrained_weekday[1][1], 6, 'max differ name constrained weekdays');
+            const has_open_end = matchTokens(tokens, at_range_sep, '+');
+            if ((has_month[0] || has_event[0] || has_constrained_weekday[0])
+                    && (has_open_end || matchTokens(tokens, at_range_sep, '-'))) {
+                if (has_open_end)
+                    at_sec_event_or_month = at_range_sep;
+                else {
+                    has_year[1] = matchTokens(tokens, at_range_sep+1, 'year');
+                    at_sec_event_or_month = at_range_sep+1+has_year[1];
+                    has_month[1] = matchTokens(tokens, at_sec_event_or_month, 'month', 'number');
+                    if (!has_month[1]) {
+                        has_event[1] = matchTokens(tokens, at_sec_event_or_month, 'event');
+                        if (has_event[1]) {
+                            has_calc[1] = getMoveDays(tokens, at_sec_event_or_month+1, 366, 'max differ name event like easter');
+                        } else if (matchTokens(tokens, at_sec_event_or_month, 'month', 'weekday', '[')) {
+                            has_constrained_weekday[1] = getConstrainedWeekday(tokens, at_sec_event_or_month+3);
+                            has_calc[1] = getMoveDays(tokens, has_constrained_weekday[1][1], 6, 'max differ name constrained weekdays');
+                        }
                     }
                 }
             }
 
             // monthday range like Jan 26-Feb 26 {{{
-            if (has_year[0] === has_year[1] && (has_month[1] || has_event[1] || has_constrained_weekday[1])) {
+            if (has_open_end || (has_year[0] === has_year[1] && (has_month[1] || has_event[1] || has_constrained_weekday[1]))) {
 
                 if (has_month[0])
                     checkIfDateIsValid(tokens[at+has_year[0]][0], tokens[at+has_year[0]+1][0], nrule, at+has_year[0]+1);
@@ -4214,6 +4220,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     } else {
                         from_date = new Date((has_year[0] ? tokens[at][0] : date.getFullYear()),
                             tokens[at+has_year[0]][0], tokens[at+has_year[0]+1][0]);
+                    }
+
+                    if (has_open_end) {
+                        if (date.getTime() < from_date.getTime())
+                            return [false, from_date];
+                        return [true];
                     }
 
                     let to_date;
@@ -4276,7 +4288,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 // An explicit-year range that has already ended is permanently inactive.
                 const [, next_change] = selector(new Date());
                 const is_past_explicit_range = has_year[0] && typeof next_change === 'undefined';
-                if (is_past_explicit_range) {
+                if (!has_open_end && is_past_explicit_range) {
                     parsing_warnings.push([
                         nrule,
                         has_year[1] ? at_sec_event_or_month - 1 : at,
@@ -4290,10 +4302,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 else
                     rule.monthday.push(selector);
 
-                at = (has_constrained_weekday[1]
+                at = has_open_end
+                    ? at_range_sep + 1
+                    : (has_constrained_weekday[1]
                         ? has_constrained_weekday[1][1]
                         : at_sec_event_or_month + (has_event[1] ? 1 : 2))
-                    + (typeof has_calc[1] === 'object' ? has_calc[1][1] : 0);
+                    + (has_open_end ? 0 : (typeof has_calc[1] === 'object' ? has_calc[1][1] : 0));
 
                 /* }}} */
                 // Monthday range like Jan 26-31 {{{
