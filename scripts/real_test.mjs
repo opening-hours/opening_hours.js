@@ -34,10 +34,10 @@
  */
 
 /* Required modules {{{ */
-const opening_hours = require('../build/opening_hours.js');
-const fs            = require('node:fs');
-const { styleText } = require('node:util');
-const assert        = require('node:assert');
+import opening_hours from '../build/opening_hours.esm.mjs';
+import fs from 'node:fs';
+import { styleText } from 'node:util';
+import assert from 'node:assert';
 /* }}} */
 
 const test_framework = new opening_hours_test();
@@ -53,6 +53,7 @@ const test_framework = new opening_hours_test();
 // Text style helpers using built-in util.styleText (Node >= 20.12)
 const c = {
     warning: s => styleText(['yellow', 'bold'], s),
+    tag: s => styleText(['blue', 'bold'], s),
 };
 
 /* Also used by opening_hours_map/opening_hours_map.html */
@@ -110,10 +111,10 @@ test_framework.config = {
 /* }}} */
 
 /* Parameter handling {{{ */
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 
-const argv = yargs(hideBin(process.argv))
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 export*.json [export*.json]')
     .describe('h', 'Display the usage')
     .describe('v', 'Verbose output')
@@ -124,18 +125,19 @@ const argv = yargs(hideBin(process.argv))
         + ' The default is to not ignore any which will result in those values not being parsed as correct values.')
     .describe('m', 'Map values which would get ignored by the --ignore-bad-oh-values option to there meaning in the opening_hours syntax.'
         + ' For example, map "yes" to "sunset-sunrise open "specified as yes"".')
-    .boolean(['v', 'd', 'I', 'i', 'm'])
+    .boolean(['v', 'd', 'I', 'i', 'm', 'p'])
     .alias('h', 'help')
     .alias('v', 'verbose')
     .alias('d', 'debug')
     .alias('I', 'ignore-manual-values')
     .alias('i', 'ignore-bad-oh-values')
     .alias('p', 'punchcard')
-    .alias('m', 'map-bad-oh-values')
-    .argv;
+    .alias('m', 'map-bad-oh-values');
+
+const argv = cli.argv;
 
 if (argv.help || argv._.length === 0) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 /* }}} */
@@ -179,13 +181,11 @@ function opening_hours_test() {
                 }
             }
 
-            console.log('Parsing ' + tag_key_name.blue.bold
+            console.log('Parsing ' + c.tag(tag_key_name)
                 + (ignored_values.length === 0 ? '' : ' (ignoring: ' + ignored_values.join(', ') + ')') + ' …');
 
             let success_differ       = 0; // increment only by one despite that the value might appears more than one time
             let success              = 0; // increment by number of appearances
-            let total_differ         = 0; // number of different values
-            let total                = 0; // total number of values (if one value appears more than one, it counts more than one)
             let warnings             = 0; // number of values which throw warnings
             let warnings_differ      = 0; // number of values which throw warnings (only one warning is counted for each value if more appear)
             let not_pretty           = 0; // number of values which are not the same as the value returned by oh.prettifyValue()
@@ -194,12 +194,11 @@ function opening_hours_test() {
 
             let logfile_out_string = '';
 
-            for (let i = 0; i < data.data.length; i++) {
-                if (ignored_values.indexOf(data.data[i].value) === -1) {
-                    total_differ++;
-                    total += data.data[i].count;
-                }
-            }
+            const values_to_test = data.data.filter(
+                data_item => !ignored_values.includes(data_item.value)
+            ); // values which are not ignored
+            const total_differ = values_to_test.length; // number of different values
+            const total = values_to_test.reduce((sum, data_item) => sum + data_item.count, 0); // total number of values
 
             const time_at_test_begin = new Date();
 
@@ -225,31 +224,31 @@ function opening_hours_test() {
 
             let parsed_values = 0; // total number of values which are "parsed" (if one value appears more than one, it counts more than one)
             for (let i = 0; i < total_differ; i++) {
-                const oh_value = data.data[i].value;
-                if (ignored_values.indexOf(oh_value) === -1) {
-                    let oh_crashed,
-                        oh_warnings = [],
-                        oh_value_prettified,
-                        oh;
-                    if (argv.debug) {
-                        console.info(oh_value);
-                    }
-                    try {
-                        oh = new opening_hours(
-                            oh_value,
-                            nominatimTestJSON,
-                            {
-                                'tag_key': tag_key_name,
-                                'map_value': argv['map-bad-oh-values'],
-                            }
-                        );
-                        oh_warnings = oh.getWarnings();
-                        oh_value_prettified = oh.prettifyValue();
+                const data_item = values_to_test[i];
+                const oh_value = data_item.value;
+                let oh_crashed,
+                    oh_warnings = [],
+                    oh_value_prettified,
+                    oh;
+                if (argv.debug) {
+                    console.info(oh_value);
+                }
+                try {
+                    oh = new opening_hours(
+                        oh_value,
+                        nominatimTestJSON,
+                        {
+                            'tag_key': tag_key_name,
+                            'map_value': argv['map-bad-oh-values'],
+                        }
+                    );
+                    oh_warnings = oh.getWarnings();
+                    oh_value_prettified = oh.prettifyValue();
 
-                        oh_crashed = false;
-                    } catch {
-                        oh_crashed = true;
-                    }
+                    oh_crashed = false;
+                } catch {
+                    oh_crashed = true;
+                }
 
                     if (typeof oh_warnings !== 'object') {
                         oh_warnings = 1; // oh_crashed by oh.getWarnings()
@@ -260,18 +259,18 @@ function opening_hours_test() {
                     logfile_out_string += (Number(!oh_crashed)) + ' ' + oh_value + '\n';
                     if (!oh_crashed) {
                         success_differ++;
-                        success += data.data[i].count;
+                        success += data_item.count;
                         warnings_differ += Number(!!oh_warnings);
-                        warnings += data.data[i].count * Number(!!oh_warnings);
+                        warnings += data_item.count * Number(!!oh_warnings);
                         not_pretty_differ += Number(oh_value_prettified !== oh_value);
-                        not_pretty += data.data[i].count * Number(oh_value_prettified !== oh_value);
+                        not_pretty += data_item.count * Number(oh_value_prettified !== oh_value);
                         // console.log('passed', oh_value);
                         if (argv.punchcard && tag_key_name === 'opening_hours') {
                             const check_date = new Date(cur_date.getFullYear(), cur_date.getMonth(), cur_date.getDate(), 0, 1, 0);
                             const iterator = oh.getIterator(check_date);
-                            for (let t_offset = 0; t_offset <= 7 * 24; t_offset++) {
+                            for (let t_offset = 0; t_offset < 7 * 24; t_offset++) {
                                 if (iterator.getState()) {
-                                    punchcard_data[check_date.getDay()][check_date.getHours()] += data.data[i].count;
+                                    punchcard_data[check_date.getDay()][check_date.getHours()] += data_item.count;
                                     // if (argv.verbose && check_date.getDay() === 3 && check_date.getHours() === 0) {
                                         // punchcard_debug.push([data.data[i].count, oh_value]);
                                     // }
@@ -285,16 +284,15 @@ function opening_hours_test() {
                             }
                         }
 
-                    } else if (data.data[i].count > importance_threshold) {
-                        important_and_failed.push([oh_value, data.data[i].count]);
+                    } else if (data_item.count > importance_threshold) {
+                        important_and_failed.push([oh_value, data_item.count]);
                     }
-                    parsed_values += data.data[i].count;
+                    parsed_values += data_item.count;
 
                     if (i !== 0 && i % how_often_print_stats === 0) {
                         log_to_user(false, total, i, i, parsed_values,
                             success, success_differ, warnings, warnings_differ, not_pretty, not_pretty_differ,
                             time_at_test_begin);
-                    }
                 }
             }
             if (total_differ >= how_often_print_stats) {

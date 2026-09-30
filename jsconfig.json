@@ -20,7 +20,7 @@
   "exclude": [
     "build/**",
     "scripts/PH_SH_exporter.js",
-    "scripts/real_test.js",
+    "scripts/real_test.mjs",
     "submodules/**"
   ]
 }
