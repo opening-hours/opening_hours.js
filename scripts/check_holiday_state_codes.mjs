@@ -8,17 +8,13 @@
  * has a non-empty _state_code. This script is part of the test suite.
  */
 
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
-
-const HOLIDAYS_DIR = path.resolve(new URL('../src/holidays', import.meta.url).pathname);
-const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
+const GENERATED_FILE = new URL('../src/holidays/generated-openholidays.mjs', import.meta.url);
 
 /**
  * Country-wide PH/SH definitions and metadata are not regions.
  * A region is a named mapping with its own PH or SH list.
  * @param {string} key - Country or region key to inspect.
- * @param {object} value - Holiday definition associated with the key.
+ * @param {{PH?: unknown[], SH?: unknown[]}} value - Holiday definition associated with the key.
  * @returns {boolean} Whether the value represents a holiday region.
  */
 function isHolidayRegion(key, value) {
@@ -29,7 +25,7 @@ function isHolidayRegion(key, value) {
         && (Array.isArray(value.PH) || Array.isArray(value.SH));
 }
 
-const generatedData = await import(pathToFileURL(GENERATED_FILE).href);
+const generatedData = await import(GENERATED_FILE.href);
 const missingRegions = [];
 
 for (const [countryCode, holidayData] of Object.entries(generatedData)) {
