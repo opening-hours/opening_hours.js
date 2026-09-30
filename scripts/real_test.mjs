@@ -34,10 +34,10 @@
  */
 
 /* Required modules {{{ */
-const opening_hours = require('../build/opening_hours.js');
-const fs            = require('node:fs');
-const { styleText } = require('node:util');
-const assert        = require('node:assert');
+import opening_hours from '../build/opening_hours.esm.mjs';
+import fs from 'node:fs';
+import { styleText } from 'node:util';
+import assert from 'node:assert';
 /* }}} */
 
 const test_framework = new opening_hours_test();
@@ -111,10 +111,10 @@ test_framework.config = {
 /* }}} */
 
 /* Parameter handling {{{ */
-const yargs = require('yargs/yargs');
-const { hideBin } = require('yargs/helpers');
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 
-const argv = yargs(hideBin(process.argv))
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 export*.json [export*.json]')
     .describe('h', 'Display the usage')
     .describe('v', 'Verbose output')
@@ -132,11 +132,12 @@ const argv = yargs(hideBin(process.argv))
     .alias('I', 'ignore-manual-values')
     .alias('i', 'ignore-bad-oh-values')
     .alias('p', 'punchcard')
-    .alias('m', 'map-bad-oh-values')
-    .argv;
+    .alias('m', 'map-bad-oh-values');
+
+const argv = cli.argv;
 
 if (argv.help || argv._.length === 0) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 /* }}} */

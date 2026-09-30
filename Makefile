@@ -35,7 +35,7 @@ OVERPASS_QUERY_USE_REGEX ?= 0
 # 7:54.68: make WGET_OPTIONS='' export♡ISO3166-2♡DE-SL♡2015-04-09T00:00:00.json -B OVERPASS_QUERY_USE_REGEX=1
 # 0:35.04: make WGET_OPTIONS='' export♡ISO3166-2♡DE-SL♡2015-04-09T00:00:00.json -B OVERPASS_QUERY_USE_REGEX=0
 # The query without regular expressions also returns more results …
-# Use the log feature of real_test.js for this.
+# Use the log feature of real_test.mjs for this.
 
 REMOVE_DATA_AFTER_STATS_GEN ?= 1
 # REMOVE_DATA_AFTER_STATS_GEN ?= 0
@@ -202,7 +202,7 @@ check-o%.js: build/o%.js test/test.js
 
 
 .PHONY: osm-tag-data-taginfo-check
-osm-tag-data-taginfo-check: scripts/real_test.js build/opening_hours.js osm-tag-data-get-taginfo
+osm-tag-data-taginfo-check: scripts/real_test.mjs build/opening_hours.esm.mjs osm-tag-data-get-taginfo
 	$(NODEJS) scripts/check_for_new_taginfo_data.js --exit-code-not-new 0
 	@grep -v '^#' $(OH_RELATED_TAGS) | while read key; do \
 		$(NODEJS) "$<" $(REAL_TEST_OPTIONS) --map-bad-oh-values --ignore-manual-values "export.$$key.json"; \
@@ -326,7 +326,7 @@ export♡name♡Leutershausen.json:
 
 ## Generate OverpassQL and execute it.
 .PRECIOUS: export♡%.json
-export♡%.json: scripts/real_test.js $(OH_RELATED_TAGS)
+export♡%.json: scripts/real_test.mjs $(OH_RELATED_TAGS)
 	@timestamp="$(shell echo "$@" | sed 's/♡/\x0/g;s/\.json$$//;' | cut -d '' -f 4)"; \
 		boundary_key="$(shell echo "$@" | sed 's/♡/\x0/g;s/\.json$$//;' | cut -d '' -f 2)"; \
 		boundary_value="$(shell echo "$@" | sed 's/♡/\x0/g;s/\.json$$//;' | cut -d '' -f 3)"; \
@@ -440,7 +440,7 @@ osm-tag-data-gen-stats-cron-overpass:
 	$(MAKE) $(MAKE_OPTIONS) osm-tag-data-rm
 	-git push
 
-## See real_test.js
+## See real_test.mjs
 .PHONY: osm-tag-data-gen-stats
 osm-tag-data-gen-stats: real_test.opening_hours.stats.csv osm-tag-data-update-check
 
