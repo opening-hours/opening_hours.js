@@ -53,6 +53,7 @@ const test_framework = new opening_hours_test();
 // Text style helpers using built-in util.styleText (Node >= 20.12)
 const c = {
     warning: s => styleText(['yellow', 'bold'], s),
+    tag: s => styleText(['blue', 'bold'], s),
 };
 
 /* Also used by opening_hours_map/opening_hours_map.html */
@@ -179,7 +180,7 @@ function opening_hours_test() {
                 }
             }
 
-            console.log('Parsing ' + tag_key_name.blue.bold
+            console.log('Parsing ' + c.tag(tag_key_name)
                 + (ignored_values.length === 0 ? '' : ' (ignoring: ' + ignored_values.join(', ') + ')') + ' …');
 
             let success_differ       = 0; // increment only by one despite that the value might appears more than one time
