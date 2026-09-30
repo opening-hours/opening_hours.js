@@ -10,12 +10,9 @@
  */
 
 import fs from 'node:fs/promises';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
 
-const HOLIDAYS_DIR = path.resolve(new URL('../src/holidays', import.meta.url).pathname);
-const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
-const CACHE_DIR = path.join(HOLIDAYS_DIR, 'nominatim_cache');
+const GENERATED_FILE = new URL('../src/holidays/generated-openholidays.mjs', import.meta.url);
+const CACHE_DIR = new URL('../src/holidays/nominatim_cache/', import.meta.url);
 
 /**
  * @param {string} countryCode - Country code the definition belongs to.
@@ -46,7 +43,7 @@ function expectedCacheFiles(countryCode, countryDefinition) {
     return expected;
 }
 
-const generatedData = await import(pathToFileURL(GENERATED_FILE).href);
+const generatedData = await import(GENERATED_FILE.href);
 const cachedFiles = new Set(await fs.readdir(CACHE_DIR));
 const missingFiles = [];
 
