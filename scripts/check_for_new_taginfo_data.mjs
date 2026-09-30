@@ -80,16 +80,17 @@ const request = https.get(taginfo_api_url_source, function(response) {
             throw new Error('Could not read the upstream taginfo dump creation time.');
 
         if (typeof local_dump_creation_time === 'object')
-            console.log('Local taginfo data was generated on: ' + local_dump_creation_time);
+            console.log('Local taginfo data: ' + local_dump_creation_time.toISOString());
+
+        console.log('Downloaded taginfo data: ' + upstream_dump_creation_time.toISOString());
 
         if (typeof local_dump_creation_time === 'object'
                 && local_dump_creation_time.getTime() === upstream_dump_creation_time.getTime()) {
 
-                console.log('Not newer than local data.');
+                console.log('Downloaded taginfo data matches local data. No new data available.');
                 process.exitCode = exit_code_not_new;
             } else {
-                console.log('New data available …');
-                console.log('Taginfo data was generated on: ' + upstream_dump_creation_time.toISOString());
+                console.log('Downloaded newer taginfo data successfully. New data available.');
                 process.exitCode = exit_code_new;
             }
     });
