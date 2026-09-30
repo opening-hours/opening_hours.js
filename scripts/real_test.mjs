@@ -125,7 +125,7 @@ const cli = yargs(hideBin(process.argv))
         + ' The default is to not ignore any which will result in those values not being parsed as correct values.')
     .describe('m', 'Map values which would get ignored by the --ignore-bad-oh-values option to there meaning in the opening_hours syntax.'
         + ' For example, map "yes" to "sunset-sunrise open "specified as yes"".')
-    .boolean(['v', 'd', 'I', 'i', 'm'])
+    .boolean(['v', 'd', 'I', 'i', 'm', 'p'])
     .alias('h', 'help')
     .alias('v', 'verbose')
     .alias('d', 'debug')
