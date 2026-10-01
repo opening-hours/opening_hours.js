@@ -28,8 +28,15 @@ const baseUrl = 'https://taginfo.openstreetmap.org/api/4/key/values';
 const resultsPerPage = 999; // API maximum
 
 /**
+ * @typedef {object} TaginfoResponse
+ * @property {unknown[]} [data] Values returned for the requested page.
+ * @property {string} [data_until] Timestamp of the source data.
+ * @property {number} [total] Total number of matching values.
+ */
+
+/**
  * @param {number} page Page number to fetch.
- * @returns {Promise<object>} Parsed Taginfo response.
+ * @returns {Promise<TaginfoResponse>} Parsed Taginfo response.
  */
 async function fetchPage(page) {
     const url = `${baseUrl}?key=${encodeURIComponent(key)}&page=${page}&rp=${resultsPerPage}`;
@@ -44,6 +51,7 @@ async function fetchPage(page) {
 async function downloadAll() {
     console.error(`Downloading taginfo data for key: ${key} (max ${maxValuesToFetch} values)`);
 
+    /** @type {unknown[]} */
     let allData = [];
     let page = 1;
 
