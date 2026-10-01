@@ -13,7 +13,6 @@
  * limits the result to the most common values to keep test runtime reasonable.
  */
 
-import https from 'node:https';
 import fs from 'node:fs';
 
 const args = process.argv.slice(2);
@@ -32,30 +31,14 @@ const resultsPerPage = 999; // API maximum
  * @param {number} page Page number to fetch.
  * @returns {Promise<object>} Parsed Taginfo response.
  */
-function fetchPage(page) {
-    return new Promise((resolve, reject) => {
-        const url = `${baseUrl}?key=${encodeURIComponent(key)}&page=${page}&rp=${resultsPerPage}`;
+async function fetchPage(page) {
+    const url = `${baseUrl}?key=${encodeURIComponent(key)}&page=${page}&rp=${resultsPerPage}`;
+    const res = await fetch(url);
 
-        https.get(url, (res) => {
-            let data = '';
-
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-
-            res.on('end', () => {
-                if (res.statusCode === 200) {
-                    try {
-                        resolve(JSON.parse(data));
-                    } catch (e) {
-                        reject(new Error(`Failed to parse JSON: ${e.message}`));
-                    }
-                } else {
-                    reject(new Error(`HTTP ${res.statusCode}: ${data}`));
-                }
-            });
-        }).on('error', reject);
-    });
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    }
+    return res.json();
 }
 
 async function downloadAll() {
