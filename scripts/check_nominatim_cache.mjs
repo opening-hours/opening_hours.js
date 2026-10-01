@@ -10,16 +10,23 @@
  */
 
 import fs from 'node:fs/promises';
-import path from 'node:path';
-import { pathToFileURL } from 'node:url';
 
-const HOLIDAYS_DIR = path.resolve(new URL('../src/holidays', import.meta.url).pathname);
-const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
-const CACHE_DIR = path.join(HOLIDAYS_DIR, 'nominatim_cache');
+const GENERATED_FILE = new URL('../src/holidays/generated-openholidays.mjs', import.meta.url);
+const CACHE_DIR = new URL('../src/holidays/nominatim_cache/', import.meta.url);
+
+/**
+ * @param {unknown} value - Value to inspect.
+ * @returns {value is Record<string, unknown>} Whether the value is a record.
+ */
+function isRecord(value) {
+    return typeof value === 'object'
+        && value !== null
+        && !Array.isArray(value);
+}
 
 /**
  * @param {string} countryCode - Country code the definition belongs to.
- * @param {object} countryDefinition - Generated holiday data for the country.
+ * @param {Record<string, unknown>} countryDefinition - Generated holiday data for the country.
  * @returns {string[]} Expected cache filenames for this country.
  */
 function expectedCacheFiles(countryCode, countryDefinition) {
@@ -30,7 +37,7 @@ function expectedCacheFiles(countryCode, countryDefinition) {
     }
 
     for (const [regionName, regionDefinition] of Object.entries(countryDefinition)) {
-        if (typeof regionDefinition !== 'object' || regionDefinition === null || Array.isArray(regionDefinition)) {
+        if (!isRecord(regionDefinition)) {
             continue;
         }
         if (typeof regionDefinition._nominatim_url !== 'string') {
@@ -46,7 +53,7 @@ function expectedCacheFiles(countryCode, countryDefinition) {
     return expected;
 }
 
-const generatedData = await import(pathToFileURL(GENERATED_FILE).href);
+const generatedData = await import(GENERATED_FILE.href);
 const cachedFiles = new Set(await fs.readdir(CACHE_DIR));
 const missingFiles = [];
 
