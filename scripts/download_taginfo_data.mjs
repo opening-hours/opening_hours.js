@@ -8,12 +8,11 @@
  * Usage: node download_taginfo_data.mjs <output-file> <key> [max-values]
  * Example: node download_taginfo_data.mjs export.opening_hours.json opening_hours 5000
  *
- * For keys with many values, taginfo returns HTTP 412 without pagination.
- * This script fetches data with pagination and limits to most common values
- * to keep test runtime reasonable.
+ * Taginfo rejects requests for keys with many values unless paging parameters
+ * are given (HTTP 412), so this script always fetches with pagination and
+ * limits the result to the most common values to keep test runtime reasonable.
  */
 
-import https from 'node:https';
 import fs from 'node:fs';
 
 const args = process.argv.slice(2);
@@ -26,80 +25,47 @@ const [outputFile, key, maxValues] = args;
 const parsedMax = parseInt(maxValues, 10);
 const maxValuesToFetch = !isNaN(parsedMax) && parsedMax > 0 ? parsedMax : Infinity;
 const baseUrl = 'https://taginfo.openstreetmap.org/api/4/key/values';
-const resultsPerPage = 999; // API limit when using filter=all
+const resultsPerPage = 999; // API maximum
+
+/**
+ * @typedef {object} TaginfoResponse
+ * @property {unknown[]} [data] Values returned for the requested page.
+ * @property {string} [data_until] Timestamp of the source data.
+ * @property {number} [total] Total number of matching values.
+ */
 
 /**
  * @param {number} page Page number to fetch.
- * @param {boolean} [useFilter] Whether to request all values.
- * @returns {Promise<object>} Parsed Taginfo response.
+ * @returns {Promise<TaginfoResponse>} Parsed Taginfo response.
  */
-function fetchPage(page, useFilter = false) {
-    return new Promise((resolve, reject) => {
-        let url = `${baseUrl}?key=${encodeURIComponent(key)}&page=${page}&rp=${resultsPerPage}`;
-        if (useFilter) {
-            url += '&filter=all';
-        }
+async function fetchPage(page) {
+    const url = `${baseUrl}?key=${encodeURIComponent(key)}&page=${page}&rp=${resultsPerPage}`;
+    const res = await fetch(url);
 
-        https.get(url, (res) => {
-            let data = '';
-
-            res.on('data', (chunk) => {
-                data += chunk;
-            });
-
-            res.on('end', () => {
-                if (res.statusCode === 200) {
-                    try {
-                        resolve(JSON.parse(data));
-                    } catch (e) {
-                        reject(new Error(`Failed to parse JSON: ${e.message}`));
-                    }
-                } else if (res.statusCode === 412) {
-                    // Precondition Failed - need to use filter=all
-                    resolve({ needsPaging: true });
-                } else {
-                    reject(new Error(`HTTP ${res.statusCode}: ${data}`));
-                }
-            });
-        }).on('error', reject);
-    });
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 200)}`);
+    }
+    return res.json();
 }
 
 async function downloadAll() {
     console.error(`Downloading taginfo data for key: ${key} (max ${maxValuesToFetch} values)`);
 
-    // Try first without filter to see if we need pagination
-    const firstResponse = await fetchPage(1, false);
-    const needsFilter = firstResponse.needsPaging;
-
-    if (needsFilter) {
-        console.error('Response indicates paging is required, fetching with filter=all...');
-    }
-
-    // Fetch pages with filter if needed
+    /** @type {unknown[]} */
     let allData = [];
     let page = 1;
-    let total = 0;
-    let dataUntil = '';
 
-    while (allData.length < maxValuesToFetch) {
-        const response = await fetchPage(page, needsFilter);
+    let response = await fetchPage(page);
+    const dataUntil = response.data_until || new Date().toISOString();
+    const total = response.total || 0;
 
-        if (!response.data || response.data.length === 0) {
-            break;
-        }
-
-        if (page === 1) {
-            dataUntil = response.data_until || new Date().toISOString();
-            total = response.total || 0;
-        }
-
-        allData = allData.concat(response.data);
+    while (response.data?.length) {
+        allData.push(...response.data);
 
         console.error(`Page ${page}: Downloaded ${response.data.length} values (${allData.length}/${Math.min(maxValuesToFetch, total)} requested, ${total} total exist)`);
 
-        if (response.data.length < resultsPerPage) {
-            // Last page
+        if (response.data.length < resultsPerPage || allData.length >= maxValuesToFetch) {
+            // Last page or enough values
             break;
         }
 
@@ -107,6 +73,7 @@ async function downloadAll() {
 
         // Rate limiting - be nice to taginfo
         await new Promise(resolve => setTimeout(resolve, 200));
+        response = await fetchPage(page);
     }
 
     // Trim to max if we fetched more
