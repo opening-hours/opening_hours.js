@@ -125,12 +125,12 @@ async function reverseGeocodeLocation(lat, lon, preferredLanguage) {
  * @returns {void}
  */
 export function toggle(control){
-    const elem = document.getElementById(control);
+    const element = document.getElementById(control);
 
-    if (elem.style.display === 'none') {
-        elem.style.display = 'block';
+    if (element.style.display === 'none') {
+        element.style.display = 'block';
     } else {
-        elem.style.display = 'none';
+        element.style.display = 'none';
     }
 }
 /* }}} */

@@ -520,13 +520,13 @@ function opening_hours_test() {
             if (info.export_format === 'overpass') {
                 let no_data_returned = true;
                 for (let elements_number = 0; elements_number < data.elements.length; elements_number++) {
-                    const elem = data.elements[elements_number];
-                    if (typeof(elem.tags) === 'undefined') {
-                        elem.tags = [];
+                    const element = data.elements[elements_number];
+                    if (typeof(element.tags) === 'undefined') {
+                        element.tags = [];
                     }
-                    Object.keys(elem.tags).forEach(function (key) {
+                    Object.keys(element.tags).forEach(function (key) {
                         if (related_tags.indexOf(key) !== -1) {
-                            const val = elem.tags[key];
+                            const val = element.tags[key];
                             if (typeof(taginfo_format[key]) === 'undefined') {
                                 taginfo_format[key] = { data: [] };
                             }
