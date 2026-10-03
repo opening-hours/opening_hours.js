@@ -4,8 +4,12 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs')(hideBin(process.argv))
+import net from 'node:net';
+import readline from 'node:readline';
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
+
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 [optional parameters] [server_listening_ports]')
     .describe('h', 'Display the usage')
     // .describe('v', 'Verbose output')
@@ -19,21 +23,20 @@ const yargs = require('yargs')(hideBin(process.argv))
     .alias('l', 'locale')
     .alias('L', 'prettify-locale')
     .alias('V', 'value')
-    .default('f', '../build/opening_hours.js')
+    .default('f', '../build/opening_hours.esm.mjs')
     .default('l', 'en')
     .default('L', 'en')
     .help(false);
 
-const argv = yargs.parse();
+const argv = cli.parse();
 
 if (argv.help) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 
-const opening_hours = require('./' + argv['library-file']);
-const readline      = require('node:readline');
-const net           = require('node:net');
+const libraryUrl = new URL(argv['library-file'], import.meta.url);
+const { default: opening_hours } = await import(libraryUrl.href);
 
 // used for sunrise, sunset and PH,SH
 // https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487429714954&lon=9.81602098644987&zoom=18&addressdetails=1
