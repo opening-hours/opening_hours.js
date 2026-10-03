@@ -55,6 +55,7 @@
   "scripts": {
     "build": "make build",
     "test-quick": "make check",
+    "test:spell": "cspell .",
     "test:unit": "node --test test/unit/*.test.mjs",
     "test": "npm run test:unit && make check-full",
     "lint": "eslint",
@@ -88,6 +89,7 @@
     "cldr-localenames-full": "^48.2.0",
     "commit-and-tag-version": "^13.1.2",
     "commitizen": "^4.3.2",
+    "cspell": "^10.3.4",
     "cz-conventional-changelog": "^3.3.0",
     "doctoc": "^2.5.0",
     "eslint": "^10.8.1",
