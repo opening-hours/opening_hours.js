@@ -46,6 +46,7 @@ if (argv.help) {
 }
 /* }}} */
 
+/** @type {string[]} */
 const keys = [];
 fs.readFileSync(argv['key-file'], 'utf8').split('\n').forEach(function (osm_tag_key) {
     if (osm_tag_key.match(new RegExp('^[^#]'))) {
@@ -62,6 +63,7 @@ if (typeof argv['template-file'] === 'string') {
     }
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
+        /** @type {{ key: string, description?: string }} */
         const key_entry = {
             'key': key,
         };
