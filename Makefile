@@ -117,8 +117,8 @@ list-dependency-versions: package.json
 	npm list | egrep '^.─'
 ## }}}
 
-taginfo.json: scripts/related_tags.txt scripts/gen_taginfo_json.js taginfo_template.json
-	scripts/gen_taginfo_json.js --key-file "$<" --template-file ./taginfo_template.json > "$@"
+taginfo.json: scripts/related_tags.txt scripts/gen_taginfo_json.mjs taginfo_template.json
+	node scripts/gen_taginfo_json.mjs --key-file "$<" --template-file ./taginfo_template.json > "$@"
 
 ## docs {{{
 README.html: README.md

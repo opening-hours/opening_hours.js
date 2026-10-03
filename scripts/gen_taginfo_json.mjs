@@ -22,30 +22,37 @@
  * }}} */
 
 /* Required modules {{{ */
-const fs = require('node:fs');
+import fs from 'node:fs';
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 /* }}} */
 
 /* Parameter handling {{{ */
-const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs')(hideBin(process.argv))
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 -')
     .describe('h', 'Display the usage')
     .describe('k', 'File containing the list of supported keys')
-    .demandOption('k')
     .describe('i', 'Template taginfo.json which is used to merge with the list of keys')
     .alias('h', 'help')
     .alias('k', 'key-file')
     .alias('i', 'template-file')
     .help(false);
 
-const argv = yargs.parse();
+const argv = cli.parse();
 
 if (argv.help) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
+}
+
+if (typeof argv['key-file'] !== 'string') {
+    cli.showHelp();
+    console.error('Missing required argument: k');
+    process.exit(1);
 }
 /* }}} */
 
+/** @type {string[]} */
 const keys = [];
 fs.readFileSync(argv['key-file'], 'utf8').split('\n').forEach(function (osm_tag_key) {
     if (osm_tag_key.match(new RegExp('^[^#]'))) {
@@ -62,6 +69,7 @@ if (typeof argv['template-file'] === 'string') {
     }
     for (let i = 0; i < keys.length; i++) {
         const key = keys[i];
+        /** @type {{ key: string, description?: string }} */
         const key_entry = {
             'key': key,
         };
