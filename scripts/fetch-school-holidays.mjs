@@ -39,13 +39,6 @@ const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
  * @typedef {SubmoduleCountryData | YamlOnlyCountryData} CountryBuildData
  */
 
-// Statistics
-/** @type {{ countries: string[], redundant: string[] }} */
-const stats = {
-  countries: [],
-  redundant: []
-};
-
 /**
  * Parse CSV file (semicolon-separated)
  * Handles quoted fields containing semicolons and commas
@@ -221,34 +214,6 @@ function hasHolidayData(data, holidayType) {
   const holidayData = /** @type {Record<string, unknown>} */ (data);
   const holidays = holidayData[holidayType];
   return Array.isArray(holidays) && holidays.length > 0;
-}
-
-/**
- * Check if a YAML file has school holidays data
- * @param {string} country - Country code to check for school holidays.
- * @returns {Promise<boolean>} Whether school holiday data exists.
- */
-async function yamlHasSchoolHolidays(country) {
-  try {
-    const yamlData = await loadCompleteYaml(country);
-
-    // Case 1: SH on root level
-    if (hasHolidayData(yamlData, 'SH')) {
-      return true;
-    }
-
-    // Case 2: SH nested in regions/states
-    for (const [key, value] of Object.entries(yamlData)) {
-      if (key.startsWith('_') || key === 'PH') continue;
-      if (hasHolidayData(value, 'SH')) {
-        return true;
-      }
-    }
-
-    return false;
-  } catch {
-    return false;
-  }
 }
 
 /**
@@ -597,8 +562,16 @@ async function discoverYamlCountries() {
  * @returns {Promise<Record<string, CountryBuildData>>} Generated holiday data grouped by country.
  */
 async function buildSchoolHolidays() {
+  const counts = {
+    phAndSH: 0,
+    shOnly: 0,
+    phOnly: 0
+  };
+
+  console.log();
   console.log('═'.repeat(60));
-  console.log('School Holidays Build (from Git Submodule)');
+  console.log('Holiday Data Build\n');
+  console.log('Combining school holidays from openholidaysapi.data with\npublic holidays from YAML.');
   console.log('═'.repeat(60));
   console.log();
 
@@ -606,26 +579,26 @@ async function buildSchoolHolidays() {
   try {
     await fs.access(SUBMODULE_DIR);
   } catch {
-    console.error('❌ Submodule not found!');
+    console.error('✗ OpenHolidays submodule not found.');
     console.error('   Run: git submodule update --init --recursive\n');
     throw new Error('Submodule openholidaysapi.data not initialized');
   }
 
   // Discover all countries (submodule + YAML)
-  console.log('🔍 Discovering countries...\n');
+  console.log('Discovering countries...\n');
   const submoduleCountries = await discoverCountriesInSubmodule();
   const yamlCountries = await discoverYamlCountries();
+  const submoduleCountrySet = new Set(submoduleCountries);
+  const sharedCountryCount = yamlCountries.filter(country => submoduleCountrySet.has(country)).length;
   const allCountries = new Set([...submoduleCountries, ...yamlCountries]);
-  console.log(`📊 Found ${allCountries.size} countries total\n`);
-
-  // Process each country
+  console.log(`Found ${allCountries.size} unique countries: ${submoduleCountries.length} with SH in openholidaysapi.data, ${yamlCountries.length} in YAML, ${sharedCountryCount} in both.\n`);
   console.log('Processing countries...\n');
+
   /** @type {Record<string, CountryBuildData>} */
   const results = {};
 
   for (const country of Array.from(allCountries).sort()) {
     const csvData = await loadSchoolHolidaysFromSubmodule(country);
-    const hasYamlSH = await yamlHasSchoolHolidays(country);
     const yamlData = await loadCompleteYaml(country);
 
     // Check for PH at country level OR in subdivisions
@@ -643,25 +616,21 @@ async function buildSchoolHolidays() {
 
     if (csvData) {
       // Has school holidays from submodule
-      let status = '✅ ';
-      const sources = [];
+      const status = hasPH ? '✓' : '○';
+      const description = hasPH ? 'PH and SH' : 'SH only';
 
-      if (hasYamlSH) {
-        status = '⚠️  ';
-        stats.redundant.push(country);
-      }
-
-      sources.push('openholidaysapi.data (SH)');
       if (hasPH) {
-        sources.push('YAML (PH)');
+        counts.phAndSH++;
+      } else {
+        counts.shOnly++;
       }
 
-      console.log(`${status}${country.toUpperCase()}: ${sources.join(' + ')}`);
-      stats.countries.push(country);
+      console.log(`${status} ${country.toUpperCase()}: ${description}`);
       results[country] = { source: 'submodule', csvData };
     } else if (hasPH) {
       // Only has PH from YAML, no SH
-      console.log(`📄 ${country.toUpperCase()}: YAML (PH only, no SH)`);
+      console.log(`· ${country.toUpperCase()}: PH only`);
+      counts.phOnly++;
       results[country] = { source: 'yaml-only', csvData: null };
     }
   }
@@ -672,7 +641,6 @@ async function buildSchoolHolidays() {
   const submodule = await getSubmoduleInfo();
   const referenceYear = new Date(submodule.commitUnixTimestamp * 1000).getUTCFullYear();
   const yearRange = [referenceYear - 15, referenceYear + 15];
-  console.log(`📅 Year range: ${yearRange[0]}–${yearRange[1]}`);
   const jsContent = await generateJavaScriptFile(results, yearRange, submodule);
   await fs.writeFile(GENERATED_FILE, jsContent, 'utf8');
 
@@ -685,20 +653,17 @@ async function buildSchoolHolidays() {
   console.log('Summary');
   console.log('═'.repeat(60));
   console.log();
-  console.log(`✅ Countries with school holidays: ${stats.countries.length}`);
+  console.log(`Year range: ${yearRange[0]}-${yearRange[1]}`);
+  console.log();
+  console.log(`✓  ${'PH and SH'.padEnd(10)}  ${counts.phAndSH}`);
+  console.log(`○  ${'SH only'.padEnd(10)}  ${counts.shOnly}`);
+  console.log(`·  ${'PH only'.padEnd(10)}  ${counts.phOnly}`);
   console.log();
 
-  if (stats.redundant.length > 0) {
-    console.log('⚠️  Redundant (cleanup recommended):');
-    for (const country of stats.redundant) {
-      console.log(`   - ${country.toUpperCase()}: Remove SH from src/holidays/${country}.yaml`);
-    }
-    console.log();
-  }
-
-  console.log(`📦 Generated: ${GENERATED_FILE} (${jsSizeKB} KB)`);
-
+  console.log(`Generated: ${path.relative(ROOT_DIR, GENERATED_FILE)} (${jsSizeKB} KB)`);
+  console.log();
   console.log('═'.repeat(60));
+  console.log();
 
   return results;
 }
