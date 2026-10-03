@@ -30,7 +30,7 @@ We use a branching model inspired by Gitflow:
 When the `main` branch is deemed ready for a new release:
 
 1.  A maintainer prepares the release in a `release/` branch based on `main`.
-2.  The maintainer updates school holiday data: `node scripts/fetch-school-holidays.mjs` and commits any changes.
+2.  The maintainer regenerates holiday definitions: `node scripts/generate-holiday-definitions.mjs` and commits any changes.
 3.  The maintainer runs `make release-prepare` locally.
 4.  The maintainer decides if a release candidate should be released, if rc `npx commit-and-tag-version --prerelease=rc` should be run locally, if not `make release-local` should be run. In case a maintainer does not have a separate OpenSSH/OpenPGP key for releases, they can use their regular signing key. The maintainer pushes the signed git tag to their repo fork.
 5.  This pull request will be reviewed and then merged into `main`

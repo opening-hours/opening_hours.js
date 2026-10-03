@@ -4,13 +4,13 @@
  *
  * SPDX-License-Identifier: LGPL-3.0-only
  *
- * Generate School Holidays from OpenHolidays API Data (Git Submodule)
+ * Generate country holiday definitions from OpenHolidays data and YAML.
  *
  * Strategy:
- * 1. Read school holiday data from local Git submodule (openholidaysapi.data)
- * 2. Parse CSV files for each country/subdivision (current year ±15)
- * 3. Merge with YAML data (PH, metadata) → Complete JavaScript file
- * 4. Generate subdivision entries using full names (with short-code fallback if missing)
+ * 1. Read school holiday CSV data from the local openholidaysapi.data submodule
+ * 2. Parse data for each country/subdivision (current year ±15)
+ * 3. Merge with existing YAML holiday definitions (PH, metadata)
+ * 4. Generate complete country definitions
  */
 
 import fs from 'fs/promises';
@@ -412,7 +412,7 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
   const lines = [
     '/**',
     ' * Auto-generated school holidays from OpenHolidays API Data (Git Submodule)',
-    ' * DO NOT EDIT MANUALLY - Run: node scripts/fetch-school-holidays.mjs',
+    ' * DO NOT EDIT MANUALLY - Run: node scripts/generate-holiday-definitions.mjs',
     ` * Submodule: ${submodule.hash} (${commitDate})`,
     ' */',
     ''
