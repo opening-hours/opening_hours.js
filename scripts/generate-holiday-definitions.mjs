@@ -8,7 +8,7 @@
  *
  * Strategy:
  * 1. Read school holiday CSV data from the local openholidaysapi.data submodule
- * 2. Parse data for each country/subdivision (current year ±15)
+ * 2. Parse data for each country/subdivision (submodule commit year -5 to +15)
  * 3. Merge with existing YAML holiday definitions (PH, metadata)
  * 4. Generate complete country definitions
  */
@@ -635,12 +635,12 @@ async function buildSchoolHolidays() {
     }
   }
 
-  // Generate JavaScript file (limit to submodule commit year ±15)
+  // Generate JavaScript file (submodule commit year -5 to +15)
   // Using submodule timestamp ensures reproducible builds
   // @see https://reproducible-builds.org/docs/timestamps/
   const submodule = await getSubmoduleInfo();
   const referenceYear = new Date(submodule.commitUnixTimestamp * 1000).getUTCFullYear();
-  const yearRange = [referenceYear - 15, referenceYear + 15];
+  const yearRange = [referenceYear - 5, referenceYear + 15];
   const jsContent = await generateJavaScriptFile(results, yearRange, submodule);
   await fs.writeFile(GENERATED_FILE, jsContent, 'utf8');
 
