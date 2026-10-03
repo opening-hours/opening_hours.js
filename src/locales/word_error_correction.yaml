@@ -17,7 +17,7 @@ assuming ok for ko:
   w: We
   f: Fr
 please use English written ok for ko:
-  "(?:an )?feiertag(?:s|en?)?": PH
+  (?:an )?feiertag(?:s|en?)?: PH
 please use off for ko:
   ruhetage?: off
   geschlossen: off
@@ -41,22 +41,22 @@ omit ko:
   zwischen: ""
   ist: ""
   durchgehend: ""
-  "öffnungszeit(?:en)?:?": ""
+  öffnungszeit(?:en)?:?: ""
 omit tag key:
-  "opening_hours\\s*=": ""
+  opening_hours\s*=: ""
 omit wrong keyword open end:
   from: ""
   ab: ""
   von: ""
 assuming open end for ko:
-  "(?:bis|till?|-|–)? ?(?:open ?end|late)": "+"
+  (?:bis|till?|-|–)? ?(?:open ?end|late): +
 please use ok for uncertainty:
   "~": "-"
   ～: "-"
 please use fallback rule:
   otherwise: "||"
 please use ok for missing data:
-  "\\?": ""
+  \?: ""
 please use ok for ko:
   →: "-"
   ‐: "-"
@@ -79,7 +79,7 @@ please use ok for ko:
   and: ","
   "&": ","
   ：: ":"
-  "'": "\""
+  "'": '"'
   always: 24/7
   always open: 24/7
   always closed: closed
@@ -96,25 +96,25 @@ please use ok for ko:
   7 days a week: Mo-Su
   7 days/week: Mo-Su
   24 hours 7 days a week: 24/7
-  24 hours: "00:00-24:00"
-  midday: "12:00"
-  midnight: "00:00"
-  "(?:public )?holidays?": PH
-  "(?:one )?day after public holiday": "PH +1 day"
-  "(?:one )?day before public holiday": PH -1 day
+  24 hours: 00:00-24:00
+  midday: 12:00
+  midnight: 00:00
+  (?:public )?holidays?: PH
+  (?:one )?day after public holiday: PH +1 day
+  (?:one )?day before public holiday: PH -1 day
   school ?holidays?: SH
-  weekends?: "Sa,Su"
+  weekends?: Sa,Su
   daylight: sunrise-sunset
-  "on(?:_| )?appointments?": "\"on appointment\""
-  "by(?:_| )?appointments?": "\"by appointment\""
-  "nach(?: |_)vereinbarung": "\"Nach Vereinbarung\""
-  "nach(?: |_)absprache": "\"Nach Absprache\""
-  "sur(?: |_)rendez(?: |_|-)?vous": "\"Sur rendez-vous\""
-  "sur(?: |_)rdv": "\"Sur rendez-vous\""
+  on(?:_| )?appointments?: '"on appointment"'
+  by(?:_| )?appointments?: '"by appointment"'
+  "nach(?: |_)vereinbarung": '"Nach Vereinbarung"'
+  "nach(?: |_)absprache": '"Nach Absprache"'
+  "sur(?: |_)rendez(?: |_|-)?vous": '"Sur rendez-vous"'
+  "sur(?: |_)rdv": '"Sur rendez-vous"'
   bis: "-"
   täglich: Mo-Su
-  "(?:schul)?ferien": SH
-  "(?:an|nur)? ?sonn-?(?: und |/)feiertag(?:s|en?)?": "PH,Su"
+  (?:schul)?ferien: SH
+  "(?:an|nur)? ?sonn-?(?: und |/)feiertag(?:s|en?)?": PH,Su
   und: ","
   u: ","
   auch: ","
@@ -165,7 +165,7 @@ please use English abbreviation ok for ko:
   montags?: Mo
   ndz: Su
   piatek: Fr
-  "ponedel'nik": Mo
+  ponedel'nik: Mo
   poniedzialek: Mo
   pyatnitsa: Fr
   sabato?: Sa
@@ -186,7 +186,7 @@ please use English abbreviation ok for ko:
   tuesdays?: Tu
   ven?: Fr
   venerdì?: Fr
-  "voskresen'ye": Su
+  voskresen'ye: Su
   vri?: Fr
   vtornik: Tu
   wednesdays?: We
@@ -205,32 +205,32 @@ please use 24 hours time for ko:
   a.m.: am
   ам: am
 please use restriction comment time for ko:
-  damen: "open \"Damen\""
-  herren: "open \"Herren\""
+  damen: open "Damen"
+  herren: open "Herren"
 please use ok for typographically correct:
   –: "-"
-  „: "\""
-  “: "\""
-  ”: "\""
-  «: "\""
-  »: "\""
-  ‚: "\""
-  ‘: "\""
-  ’: "\""
-  「: "\""
-  」: "\""
-  『: "\""
-  』: "\""
+  „: '"'
+  “: '"'
+  ”: '"'
+  «: '"'
+  »: '"'
+  ‚: '"'
+  ‘: '"'
+  ’: '"'
+  「: '"'
+  」: '"'
+  『: '"'
+  』: '"'
 Ambiguous words:
-  listopad: "Word \"listopad\" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name."
-  meurzh: "Word \"meurzh\" is ambiguous: Mar (Breton) or Tu (Breton). Please specify language context or use English month name."
-  nhlangula: "Word \"nhlangula\" is ambiguous: Jun (North Ndebele) or Oct (Tsonga). Please specify language context or use English month name."
-  nyakanga: "Word \"nyakanga\" is ambiguous: Sep (Rundi) or Jul (Kinyarwanda). Please specify language context or use English month name."
-  sabato: "Word \"sabato\" is ambiguous: Sa (Esperanto) or Sa (Italian) or Su (Makhuwa-Meetto). Please specify language context or use English weekday name."
-  གཟའ་ཉི་མ་: "Word \"གཟའ་ཉི་མ་\" is ambiguous: Su (Tibetan) or Sa (Dzongkha). Please specify language context or use English weekday name."
-  གཟའ་པ་སངས་: "Word \"གཟའ་པ་སངས་\" is ambiguous: Fr (Tibetan) or Th (Dzongkha). Please specify language context or use English weekday name."
-  གཟའ་ཕུར་བུ་: "Word \"གཟའ་ཕུར་བུ་\" is ambiguous: Th (Tibetan) or We (Dzongkha). Please specify language context or use English weekday name."
-  གཟའ་མིག་དམར་: "Word \"གཟའ་མིག་དམར་\" is ambiguous: Tu (Tibetan) or Mo (Dzongkha). Please specify language context or use English weekday name."
-  གཟའ་ཟླ་བ་: "Word \"གཟའ་ཟླ་བ་\" is ambiguous: Mo (Tibetan) or Su (Dzongkha). Please specify language context or use English weekday name."
-  གཟའ་ལྷག་པ་: "Word \"གཟའ་ལྷག་པ་\" is ambiguous: We (Tibetan) or Tu (Dzongkha). Please specify language context or use English weekday name."
-  གཟའ་སྤེན་པ་: "Word \"གཟའ་སྤེན་པ་\" is ambiguous: Sa (Tibetan) or Fr (Dzongkha). Please specify language context or use English weekday name."
+  listopad: 'Word "listopad" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name.'
+  meurzh: 'Word "meurzh" is ambiguous: Mar (Breton) or Tu (Breton). Please specify language context or use English month name.'
+  nhlangula: 'Word "nhlangula" is ambiguous: Jun (North Ndebele) or Oct (Tsonga). Please specify language context or use English month name.'
+  nyakanga: 'Word "nyakanga" is ambiguous: Sep (Rundi) or Jul (Kinyarwanda). Please specify language context or use English month name.'
+  sabato: 'Word "sabato" is ambiguous: Sa (Esperanto) or Sa (Italian) or Su (Makhuwa-Meetto). Please specify language context or use English weekday name.'
+  གཟའ་ཉི་མ་: 'Word "གཟའ་ཉི་མ་" is ambiguous: Su (Tibetan) or Sa (Dzongkha). Please specify language context or use English weekday name.'
+  གཟའ་པ་སངས་: 'Word "གཟའ་པ་སངས་" is ambiguous: Fr (Tibetan) or Th (Dzongkha). Please specify language context or use English weekday name.'
+  གཟའ་ཕུར་བུ་: 'Word "གཟའ་ཕུར་བུ་" is ambiguous: Th (Tibetan) or We (Dzongkha). Please specify language context or use English weekday name.'
+  གཟའ་མིག་དམར་: 'Word "གཟའ་མིག་དམར་" is ambiguous: Tu (Tibetan) or Mo (Dzongkha). Please specify language context or use English weekday name.'
+  གཟའ་ཟླ་བ་: 'Word "གཟའ་ཟླ་བ་" is ambiguous: Mo (Tibetan) or Su (Dzongkha). Please specify language context or use English weekday name.'
+  གཟའ་ལྷག་པ་: 'Word "གཟའ་ལྷག་པ་" is ambiguous: We (Tibetan) or Tu (Dzongkha). Please specify language context or use English weekday name.'
+  གཟའ་སྤེན་པ་: 'Word "གཟའ་སྤེན་པ་" is ambiguous: Sa (Tibetan) or Fr (Dzongkha). Please specify language context or use English weekday name.'

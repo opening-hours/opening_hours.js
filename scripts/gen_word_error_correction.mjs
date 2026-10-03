@@ -286,7 +286,7 @@ finalData[ambiguousWordsCategory] = sortObject(finalData[ambiguousWordsCategory]
 // 6. Write final YAML structure
 console.log('\n► Writing output file...');
 const yamlOutput = yaml.stringify(finalData, {
-    defaultStringType: 'QUOTE_DOUBLE',
+    defaultStringType: 'PLAIN',
     lineWidth: 0
 });
 
