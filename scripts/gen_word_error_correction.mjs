@@ -225,16 +225,15 @@ function addWordConflict(word, locale, meaning, type, form) {
     wordConflicts[word].push({ locale, meaning, type, form });
 }
 
-// Load and extract each locale's terms once; reused by both phases below.
-const localeTerms = supportedLocales
-    .flatMap(locale => {
-        const gregorian = loadGregorianData(locale);
-        return gregorian ? [{ locale, terms: collectTerms(gregorian) }] : [];
-    });
-
 // 4. Detect ambiguous words by analyzing conflicts across languages
 console.log('\n► Detecting ambiguous words...');
-for (const { locale, terms } of localeTerms) {
+for (const locale of supportedLocales) {
+    const gregorian = loadGregorianData(locale);
+    if (!gregorian) {
+        continue;
+    }
+
+    const terms = collectTerms(gregorian);
     for (const { raw, meaning, type, form } of terms) {
         const term = normalizeTerm(raw);
         if (term && term !== meaning.toLowerCase()) {
