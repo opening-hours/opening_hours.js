@@ -32,7 +32,6 @@ const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 -')
     .describe('h', 'Display the usage')
     .describe('k', 'File containing the list of supported keys')
-    .demandOption('k')
     .describe('i', 'Template taginfo.json which is used to merge with the list of keys')
     .alias('h', 'help')
     .alias('k', 'key-file')
@@ -44,6 +43,12 @@ const argv = cli.parse();
 if (argv.help) {
     cli.showHelp();
     process.exit(0);
+}
+
+if (typeof argv['key-file'] !== 'string') {
+    cli.showHelp();
+    console.error('Missing required argument: k');
+    process.exit(1);
 }
 /* }}} */
 
