@@ -22,12 +22,13 @@
  * }}} */
 
 /* Required modules {{{ */
-const fs = require('node:fs');
+import fs from 'node:fs';
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
 /* }}} */
 
 /* Parameter handling {{{ */
-const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs')(hideBin(process.argv))
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 -')
     .describe('h', 'Display the usage')
     .describe('k', 'File containing the list of supported keys')
@@ -38,10 +39,10 @@ const yargs = require('yargs')(hideBin(process.argv))
     .alias('i', 'template-file')
     .help(false);
 
-const argv = yargs.parse();
+const argv = cli.parse();
 
 if (argv.help) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 /* }}} */
