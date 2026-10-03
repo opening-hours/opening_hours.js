@@ -56,18 +56,45 @@ const monthAbbreviations = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Au
 const weekdayKeys = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 const weekdayAbbreviations = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
+/** @typedef {Record<string, string | undefined>} LocalizedTerms */
+/** @typedef {{ wide?: LocalizedTerms, abbreviated?: LocalizedTerms }} LocalizedTermForms */
+/** @typedef {{ format?: LocalizedTermForms, 'stand-alone'?: LocalizedTermForms }} CalendarNameData */
+/** @typedef {{ months?: CalendarNameData, days?: { format?: LocalizedTermForms } }} GregorianData */
+/** @typedef {{ locale: string, meaning: string, type: string, form: string }} WordConflictOccurrence */
+/** @typedef {{ warning: string, occurrences: WordConflictOccurrence[] }} AmbiguousWord */
+
+/**
+ * Read and parse a JSON file.
+ * @param {string} filePath - Path to the JSON file.
+ * @returns {ReturnType<typeof JSON.parse>} Parsed JSON value.
+ */
 function readJson(filePath) {
     return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }
 
+/**
+ * Normalize a value for case-insensitive matching.
+ * @param {unknown} term - Value to normalize.
+ * @returns {string} Normalized term.
+ */
 function normalizeTerm(term) {
     return String(term || '').trim().toLowerCase();
 }
 
+/**
+ * Sort an object's keys alphabetically.
+ * @param {object} obj - Object whose keys to sort.
+ * @returns {string[]} Sorted keys.
+ */
 function sortedKeys(obj) {
     return Object.keys(obj).sort((a, b) => a.localeCompare(b, 'en'));
 }
 
+/**
+ * Sort a string map alphabetically by key.
+ * @param {Record<string, string>} obj - Map to sort.
+ * @returns {Record<string, string>} Sorted map.
+ */
 function sortObject(obj) {
     return Object.fromEntries(sortedKeys(obj).map(key => [key, obj[key]]));
 }
@@ -84,21 +111,35 @@ function listCldrLocales() {
         .sort((a, b) => a.localeCompare(b, 'en'));
 }
 
+/**
+ * Load Gregorian calendar data for a locale.
+ * @param {string} locale - CLDR locale identifier.
+ * @returns {GregorianData | undefined} Parsed Gregorian calendar data, if present.
+ */
 function loadGregorianData(locale) {
     const filePath = path.join(cldrDatesMainPath, locale, 'ca-gregorian.json');
     const data = readJson(filePath);
     return data?.main?.[locale]?.dates?.calendars?.gregorian;
 }
 
+/**
+ * Resolve a locale code to its display name.
+ * @param {string} locale - Locale identifier.
+ * @param {Record<string, string>} languageNames - CLDR language display names.
+ * @returns {string} Display name or the locale identifier as fallback.
+ */
 function languageName(locale, languageNames) {
     return languageNames[locale]
         || languageNames[locale.split('-')[0]]
         || locale;
 }
 
-// Collect all localized weekday/month terms for a locale as a flat list.
-// Months include both 'format' and 'stand-alone' forms (e.g. Czech "listopadu"
-// vs "listopad"); weekdays use the 'format' forms only.
+/**
+ * Collect localized weekday and month terms for a locale.
+ * Months include both 'format' and 'stand-alone' forms; weekdays use 'format'.
+ * @param {GregorianData} gregorian - CLDR Gregorian calendar data.
+ * @returns {{ raw: string | undefined, meaning: string, type: string, form: string }[]} Localized terms.
+ */
 function collectTerms(gregorian) {
     const months = gregorian?.months || {};
     const days = gregorian?.days || {};
@@ -129,6 +170,7 @@ function collectTerms(gregorian) {
 
 // 1. Load manual corrections
 console.log('► Loading manual corrections...');
+/** @type {Record<string, Record<string, string>>} */
 let manualCorrections = {};
 if (fs.existsSync(manualYamlPath)) {
     manualCorrections = yaml.parse(fs.readFileSync(manualYamlPath, 'utf8')) || {};
@@ -165,8 +207,17 @@ if (!finalData[autoCategory]) {
     finalData[autoCategory] = {};
 }
 
+/** @type {Record<string, WordConflictOccurrence[]>} */
 const wordConflicts = {};
 
+/**
+ * Record a word's occurrence in a locale.
+ * @param {string} word - Normalized word.
+ * @param {string} locale - Locale where the word occurs.
+ * @param {string} meaning - English month or weekday abbreviation.
+ * @param {string} type - Whether the meaning is a month or weekday.
+ * @param {string} form - Long or short localized form.
+ */
 function addWordConflict(word, locale, meaning, type, form) {
     if (!wordConflicts[word]) {
         wordConflicts[word] = [];
@@ -176,9 +227,10 @@ function addWordConflict(word, locale, meaning, type, form) {
 
 // Load and extract each locale's terms once; reused by both phases below.
 const localeTerms = supportedLocales
-    .map(locale => ({ locale, gregorian: loadGregorianData(locale) }))
-    .filter(entry => entry.gregorian)
-    .map(({ locale, gregorian }) => ({ locale, terms: collectTerms(gregorian) }));
+    .flatMap(locale => {
+        const gregorian = loadGregorianData(locale);
+        return gregorian ? [{ locale, terms: collectTerms(gregorian) }] : [];
+    });
 
 // 4. Detect ambiguous words by analyzing conflicts across languages
 console.log('\n► Detecting ambiguous words...');
@@ -191,6 +243,7 @@ for (const { locale, terms } of localeTerms) {
     }
 }
 
+/** @type {Record<string, AmbiguousWord>} */
 const ambiguousWords = {};
 for (const word of sortedKeys(wordConflicts)) {
     const occurrences = wordConflicts[word];
