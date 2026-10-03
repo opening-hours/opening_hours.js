@@ -2304,7 +2304,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             (typeof lat === 'string' && !has_open_end && !is_point_in_time &&
                         timevar_string[0])) {
                         rule.time.push(function(initial_from, initial_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
-                            const ourminutes = date.getHours() * 60 + date.getMinutes();
+                            const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
                             // Variable times can change their order from day to day.
                             const resolved_from = timevar_string[0]
@@ -2320,13 +2320,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             }
 
                             if (typeof point_in_time_period === 'number') {
-                                if (ourminutes < resolved_from) {
+                                if (dateMinutes < resolved_from) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
-                                } else if (ourminutes <= resolved_to) {
-                                    for (let cur_min = resolved_from; ourminutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                        if (cur_min === ourminutes) {
-                                            return [true, dateAtDayMinutes(date, ourminutes + 1)];
-                                        } else if (ourminutes < cur_min) {
+                                } else if (dateMinutes <= resolved_to) {
+                                    for (let cur_min = resolved_from; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
+                                        if (cur_min === dateMinutes) {
+                                            return [true, dateAtDayMinutes(date, dateMinutes + 1)];
+                                        } else if (dateMinutes < cur_min) {
                                             return [false, dateAtDayMinutes(date, cur_min)];
                                         }
                                     }
@@ -2334,13 +2334,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                 return [false, dateAtDayMinutes(date, minutes_in_day)];
                             } else {
                                 if (resolved_to > minutes_in_day) {
-                                    if (ourminutes < resolved_from)
+                                    if (dateMinutes < resolved_from)
                                         return [false, dateAtDayMinutes(date, resolved_from)];
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end, extended_open_end];
                                 }
-                                if (ourminutes < resolved_from)
+                                if (dateMinutes < resolved_from)
                                     return [false, dateAtDayMinutes(date, resolved_from)];
-                                if (ourminutes < resolved_to)
+                                if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end, extended_open_end];
                                 if (timevar_string[0]) {
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
@@ -2356,7 +2356,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             }
                             rule_infos[nrule]['time_wraps_over_midnight'] = true;
                             rule.wraptime.push(function(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, point_in_time_period, extended_open_end) { return function(date) {
-                                const ourminutes = date.getHours() * 60 + date.getMinutes();
+                                const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
                                 if (timevar_string[0]) {
                                     minutes_from = getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0]);
@@ -2372,17 +2372,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                 }
 
                                 if (typeof point_in_time_period === 'number') {
-                                    if (ourminutes <= minutes_to) {
-                                        for (let cur_min = 0; ourminutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                            if (cur_min === ourminutes) {
-                                                return [true, dateAtDayMinutes(date, ourminutes + 1)];
-                                            } else if (ourminutes < cur_min) {
+                                    if (dateMinutes <= minutes_to) {
+                                        for (let cur_min = 0; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
+                                            if (cur_min === dateMinutes) {
+                                                return [true, dateAtDayMinutes(date, dateMinutes + 1)];
+                                            } else if (dateMinutes < cur_min) {
                                                 return [false, dateAtDayMinutes(date, cur_min)];
                                             }
                                         }
                                     }
                                 } else {
-                                    if (ourminutes < minutes_to)
+                                    if (dateMinutes < minutes_to)
                                         return [true, dateAtDayMinutes(date, minutes_to), has_open_end, extended_open_end];
                                 }
                                 return [false, undefined];
@@ -2390,7 +2390,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         }
                     } else {
                         rule.time.push(function(initial_from, initial_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period) { return function(date) {
-                            const ourminutes = date.getHours() * 60 + date.getMinutes();
+                            const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
                             const resolved_from = timevar_string[0]
                                 ? getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0])
@@ -2403,22 +2403,22 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             }
 
                             if (typeof point_in_time_period === 'number') {
-                                if (ourminutes < resolved_from) {
+                                if (dateMinutes < resolved_from) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
-                                } else if (ourminutes <= resolved_to) {
-                                    for (let cur_min = resolved_from; ourminutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                        if (cur_min === ourminutes) {
-                                            return [true, dateAtDayMinutes(date, ourminutes + 1)];
-                                        } else if (ourminutes < cur_min) {
+                                } else if (dateMinutes <= resolved_to) {
+                                    for (let cur_min = resolved_from; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
+                                        if (cur_min === dateMinutes) {
+                                            return [true, dateAtDayMinutes(date, dateMinutes + 1)];
+                                        } else if (dateMinutes < cur_min) {
                                             return [false, dateAtDayMinutes(date, cur_min)];
                                         }
                                     }
                                 }
                                 return [false, dateAtDayMinutes(date, minutes_in_day)];
                             } else {
-                                if (ourminutes < resolved_from)
+                                if (dateMinutes < resolved_from)
                                     return [false, dateAtDayMinutes(date, resolved_from)];
-                                else if (ourminutes < resolved_to)
+                                else if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end];
                                 else if (timevar_string[0]) {
                                     // The next opening is the variable time on
@@ -2454,9 +2454,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                 if (minutes_to > minutes_in_day) {
                     rule.time.push(function(minutes_from, minutes_to) { return function(date) {
-                        const ourminutes = date.getHours() * 60 + date.getMinutes();
+                        const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                        if (ourminutes < minutes_from)
+                        if (dateMinutes < minutes_from)
                             return [false, dateAtDayMinutes(date, minutes_from)];
                         else
                             return [true, dateAtDayMinutes(date, minutes_to)];
@@ -2468,9 +2468,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         }
                         rule_infos[nrule]['time_wraps_over_midnight'] = true;
                         rule.wraptime.push(function(minutes_to) { return function(date) {
-                            const ourminutes = date.getHours() * 60 + date.getMinutes();
+                            const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                            if (ourminutes < minutes_to) {
+                            if (dateMinutes < minutes_to) {
                                 return [true, dateAtDayMinutes(date, minutes_to)];
                             } else {
                                 return [false, undefined];
@@ -2479,11 +2479,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                 } else {
                     rule.time.push(function(minutes_from, minutes_to) { return function(date) {
-                        const ourminutes = date.getHours() * 60 + date.getMinutes();
+                        const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                        if (ourminutes < minutes_from)
+                        if (dateMinutes < minutes_from)
                             return [false, dateAtDayMinutes(date, minutes_from)];
-                        else if (ourminutes < minutes_to)
+                        else if (dateMinutes < minutes_to)
                             return [true, dateAtDayMinutes(date, minutes_to), has_open_end];
                         else
                             return [false, dateAtDayMinutes(date, minutes_from + minutes_in_day)];
@@ -2633,7 +2633,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 week_stable = false;
 
                 // Create selector for each list element.
-                for (let nnumber = 0; nnumber < numbers.length; nnumber++) {
+                for (let numberIndex = 0; numberIndex < numbers.length; numberIndex++) {
 
                     rule.weekday.push(function(weekday, number, add_days) { return function(date) {
                         const date_num = getValueForDate(date, false); // Year not needed to distinguish.
@@ -2716,7 +2716,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                         // we're after target day, set check date to next month
                         return [false, start_of_next_month];
-                    }}(tokens[at][0], numbers[nnumber], add_days[0]));
+                    }}(tokens[at][0], numbers[numberIndex], add_days[0]));
                 }
 
                 at = endat + 1 + add_days[1];
@@ -2754,9 +2754,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // WRONG: This only works if there is no other selector in this selector group ...
                 } else {
                     rule.weekday.push(function(weekday_from, weekday_to, inside) { return function(date) {
-                        const ourweekday = date.getDay();
+                        const dateWeekday = date.getDay();
 
-                        if (ourweekday < weekday_from || ourweekday > weekday_to) {
+                        if (dateWeekday < weekday_from || dateWeekday > weekday_to) {
                             return [!inside, dateAtNextWeekday(date, weekday_from)];
                         } else {
                             return [inside, dateAtNextWeekday(date, weekday_to + 1)];
@@ -3832,27 +3832,27 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 /* }}} */
 
                 rule.year.push(function(tokens, at, year_from, is_range, has_period, period) { return function(date) {
-                    const ouryear = date.getFullYear();
+                    const dateYear = date.getFullYear();
                     const year_to = is_range ? parseInt(tokens[at+2][0]) : year_from;
 
-                    if (ouryear < year_from ){
+                    if (dateYear < year_from ){
                         return [false, new Date(year_from, 0, 1)];
                     } else if (has_period) {
-                        if (year_from <= ouryear) {
-                            if (is_range && ouryear > year_to)
+                        if (year_from <= dateYear) {
+                            if (is_range && dateYear > year_to)
                                 return [false];
                             if (period > 0) {
-                                if ((ouryear - year_from) % period === 0) {
-                                    return [true, new Date(ouryear + 1, 0, 1)];
+                                if ((dateYear - year_from) % period === 0) {
+                                    return [true, new Date(dateYear + 1, 0, 1)];
                                 } else {
-                                    return [false, new Date(ouryear + period - 1, 0, 1)];
+                                    return [false, new Date(dateYear + period - 1, 0, 1)];
                                 }
                             }
                         }
                     } else if (is_range) {
-                        if (ouryear <= year_to)
+                        if (dateYear <= year_to)
                             return [true, new Date(year_to + 1, 0, 1)];
-                    } else if (ouryear === year_from) {
+                    } else if (dateYear === year_from) {
                         return [true];
                     }
 
@@ -3927,32 +3927,32 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 } else {
 
                     rule.week.push(function(week_from, week_to, period) { return function(date) {
-                        const ourweek = getWeekNumber(date);
+                        const dateWeek = getWeekNumber(date);
 
                         // console.log("week_from: %s, week_to: %s", week_from, week_to);
-                        // console.log("ourweek: %s, date: %s", ourweek, date);
+                        // console.log("dateWeek: %s, date: %s", dateWeek, date);
 
                         // before range
-                        if (ourweek < week_from) {
+                        if (dateWeek < week_from) {
                             // console.log("Before: " + getNextDateOfISOWeek(week_from, date));
                             return [false, getNextDateOfISOWeek(week_from, date)];
                         }
 
                         // we're after range, set check date to next year
-                        if (ourweek > week_to) {
+                        if (dateWeek > week_to) {
                             // console.log("After");
                             return [false, getNextDateOfISOWeek(week_from, date)];
                         }
 
                         // we're in range
                         if (period) {
-                            const in_period = (ourweek - week_from) % period === 0;
+                            const in_period = (dateWeek - week_from) % period === 0;
                             if (in_period) {
-                                return [true, getNextDateOfISOWeek(ourweek + 1, date)];
+                                return [true, getNextDateOfISOWeek(dateWeek + 1, date)];
                             } else {
                                 // Calculate how many weeks we need to skip to land on the next period-aligned week
-                                const weeks_until_next_match = period - ((ourweek - week_from) % period);
-                                const next_matching_week = ourweek + weeks_until_next_match;
+                                const weeks_until_next_match = period - ((dateWeek - week_from) % period);
+                                const next_matching_week = dateWeek + weeks_until_next_match;
                                 if (next_matching_week <= week_to) {
                                     return [false, getNextDateOfISOWeek(next_matching_week, date)];
                                 } else {
@@ -4095,14 +4095,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
 
                 const selector = function(month_from, month_to, inside) { return function(date) {
-                    const ourmonth = date.getMonth();
+                    const dateMonth = date.getMonth();
 
                     if (month_to < month_from) {
                         /* Handle full range. */
                         return [!inside];
                     }
 
-                    if (ourmonth < month_from || ourmonth > month_to) {
+                    if (dateMonth < month_from || dateMonth > month_to) {
                         return [!inside, dateAtNextMonth(date, month_from)];
                     } else {
                         return [inside, dateAtNextMonth(date, month_to + 1)];
@@ -4976,7 +4976,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         const it = this.getIterator(from);
         let prevdate    = (it.getState() || it.getUnknown()) ? from : undefined;
-        let prevstate   = it.getState();
+        let prevOpen   = it.getState();
         let prevunknown = it.getUnknown();
 
         while (it.advance(to)) {
@@ -4986,12 +4986,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // last state was also open or unknown
                     if (prevunknown) //
                         unknown += it.getDate().getTime() - prevdate.getTime();
-                    else if (prevstate)
+                    else if (prevOpen)
                         open    += it.getDate().getTime() - prevdate.getTime();
                 }
 
                 prevdate    = it.getDate();
-                prevstate   = it.getState();
+                prevOpen   = it.getState();
                 prevunknown = it.getUnknown();
                 // console.log('if', prevdate, open / (1000 * 60 * 60), unknown / (1000 * 60 * 60));
             } else {
@@ -5036,8 +5036,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
      */
     this.getIterator = function(date = new Date()) {
         const iterator = {};
-        let state = getStatePair(rules, date);
-        let prevstate = state;
+        let statePair = getStatePair(rules, date);
+        let prevStatePair = statePair;
 
         /**
          * getDate {{{
@@ -5057,8 +5057,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 throw t('date parameter needed');
 
             date = new_date;
-            state = getStatePair(rules, date);
-            prevstate = state;
+            statePair = getStatePair(rules, date);
+            prevStatePair = statePair;
         };
         /* }}} */
 
@@ -5067,7 +5067,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * @returns {boolean} Whether the facility is open.
          */
         iterator.getState = function() {
-            return state[0];
+            return statePair[0];
         };
         /* }}} */
 
@@ -5076,7 +5076,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * @returns {boolean} Whether the state is unknown.
          */
         iterator.getUnknown = function() {
-            return state[2];
+            return statePair[2];
         };
         /* }}} */
 
@@ -5086,7 +5086,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * @returns {string} State string.
          */
         iterator.getStateString = function(past) {
-            return (state[0] ? 'open' : (state[2] ? 'unknown' : (past ? 'closed' : 'close')));
+            return (statePair[0] ? 'open' : (statePair[2] ? 'unknown' : (past ? 'closed' : 'close')));
         };
         /* }}} */
 
@@ -5095,7 +5095,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * @returns {string|undefined} Current comment.
          */
         iterator.getComment = function() {
-            return state[3];
+            return statePair[3];
         };
         /* }}} */
 
@@ -5104,10 +5104,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * @returns {object|undefined} Matching rule.
          */
         iterator.getMatchingRule = function() {
-            if (typeof state[4] === 'undefined')
+            if (typeof statePair[4] === 'undefined')
                 return undefined;
 
-            return rules[state[4]].build_from_token_rule[2];
+            return rules[statePair[4]].build_from_token_rule[2];
         };
         /* }}} */
 
@@ -5124,28 +5124,28 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
 
             do {
-                if (typeof state[1] === 'undefined') {
+                if (typeof statePair[1] === 'undefined') {
                     return false; /* open range, we won't be able to advance */
                 }
 
-                if (state[1].getTime() <= date.getTime()) {
+                if (statePair[1].getTime() <= date.getTime()) {
                     /* We're going backwards or staying at the same time.
                      * This most likely indicates an error in a selector code.
                      */
                     throw 'Fatal: infinite loop in nextChange';
                 }
 
-                if (state[1].getTime() >= datelimit.getTime()) {
+                if (statePair[1].getTime() >= datelimit.getTime()) {
                     /* Don't advance beyond limits. */
                     return false;
                 }
 
                 // do advance
-                date = state[1];
-                prevstate = state;
-                state = getStatePair(rules, date);
-                // console.log(state);
-            } while (state[0] === prevstate[0] && state[2] === prevstate[2] && state[3] === prevstate[3]);
+                date = statePair[1];
+                prevStatePair = statePair;
+                statePair = getStatePair(rules, date);
+                // console.log(statePair);
+            } while (statePair[0] === prevStatePair[0] && statePair[2] === prevStatePair[2] && statePair[3] === prevStatePair[3]);
             return true;
         };
         /* }}} */

@@ -202,17 +202,17 @@ let to = new Date("01 Feb 2012");
         "."
     );
 
-  let duration_hours = oh.getOpenDuration(from, to).map(function (x) {
+  let durationHours = oh.getOpenDuration(from, to).map(function (x) {
     return x / 1000 / 60 / 60;
   });
-  if (duration_hours[0])
+  if (durationHours[0])
     console.log(
-      "For the given range, we are open for " + duration_hours[0] + " hours"
+      "For the given range, we are open for " + durationHours[0] + " hours"
     );
-  if (duration_hours[1])
+  if (durationHours[1])
     console.log(
       "For the given range, we are maybe open for " +
-        duration_hours[1] +
+        durationHours[1] +
         " hours"
     );
 }
@@ -243,19 +243,19 @@ function getReadableState(startString, endString, oh, past) {
   let state = oh.getState(); // we use current date
   let unknown = oh.getUnknown();
   let comment = oh.getComment();
-  let nextchange = oh.getNextChange();
+  let nextChange = oh.getNextChange();
 
   console.log(getReadableState("We're", "", oh, true));
 
-  if (typeof nextchange === "undefined")
+  if (typeof nextChange === "undefined")
     console.log("And we will never " + (state ? "close" : "open"));
   else
     console.log(
       "And we will " +
-        (oh.getUnknown(nextchange) ? "maybe " : "") +
+        (oh.getUnknown(nextChange) ? "maybe " : "") +
         (state ? "close" : "open") +
         " on " +
-        nextchange
+        nextChange
     );
 }
 

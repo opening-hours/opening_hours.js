@@ -80,13 +80,13 @@ export function normalizePrettifyConf(userConf, defaultConf) {
  * Decide whether a prettified group may be reordered safely.
  * @param {boolean} doneWithSelectorReordering - global one-way switch
  * @param {Set<number>} rulesWithoutSelectorReordering - rule indices that must keep input order
- * @param {number} nrule - current rule index
+ * @param {number} ruleIndex - current rule index
  * @param {Array<PrettifyToken>} group - prettified_group_value array
  * @returns {boolean} Whether the group can be safely reordered.
  */
-export function shouldSortPrettifiedGroup(doneWithSelectorReordering, rulesWithoutSelectorReordering, nrule, group) {
+export function shouldSortPrettifiedGroup(doneWithSelectorReordering, rulesWithoutSelectorReordering, ruleIndex, group) {
     return !doneWithSelectorReordering
-        && !rulesWithoutSelectorReordering.has(nrule)
+        && !rulesWithoutSelectorReordering.has(ruleIndex)
         && !hasCommentSelector(group);
 }
 
