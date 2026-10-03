@@ -39,6 +39,11 @@ const net           = require('node:net');
 // https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487429714954&lon=9.81602098644987&zoom=18&addressdetails=1
 const nominatimTestJSON = {'place_id':'44651229','licence':'Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright','osm_type':'way','osm_id':'36248375','lat':'49.5400039','lon':'9.7937133','display_name':'K 2847, Lauda-K\u00f6nigshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-W\u00fcrttemberg, Germany, European Union','address':{'road':'K 2847','city':'Lauda-K\u00f6nigshofen','county':'Main-Tauber-Kreis','state_district':'Regierungsbezirk Stuttgart','state':'Baden-W\u00fcrttemberg','country':'Germany','country_code':'de','continent':'European Union'}};
 
+/**
+ * Evaluate an opening_hours value.
+ * @param {string} value - Opening hours expression to evaluate.
+ * @returns {Record<string, unknown>} Evaluation result.
+ */
 function opening_hours_object(value) {
     let oh;
     let crashed;
@@ -61,6 +66,7 @@ function opening_hours_object(value) {
         }
     }
 
+    /** @type {Record<string, unknown>} */
     const result = { 'needed_nominatim_json': needed_nominatim_json };
     if (crashed) {
         result.error      = true;
@@ -87,6 +93,7 @@ function opening_hours_object(value) {
     return result;
 }
 
+/** @type {import('node:net').Server[]} */
 const servers = [];
 for (let i = 0; i < argv._.length; i++) {
     console.log('Starting to listen on "%s"', argv._[i]);
