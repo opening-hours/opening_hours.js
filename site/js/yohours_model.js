@@ -3,17 +3,17 @@
  * SPDX-License-Identifier: AGPL-3.0-or-later
  *
  * This file is part of YoHours.
- * 
+ *
  * YoHours is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Affero General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
- * 
+ *
  * YoHours is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU Affero General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU Affero General Public License
  * along with YoHours.  If not, see <https://www.gnu.org/licenses/>.
  */
@@ -97,13 +97,13 @@ var Interval = function(dayStart, dayEnd, minStart, minEnd) {
 //ATTRIBUTES
 	/** The start day in the week, see DAYS **/
 	this._dayStart = dayStart;
-	
+
 	/** The end day in the week, see DAYS **/
 	this._dayEnd = dayEnd;
-	
+
 	/** The interval start, in minutes since midnight (local hour) **/
 	this._start = minStart;
-	
+
 	/** The interval end, in minutes since midnight (local hour) **/
 	this._end = minEnd;
 
@@ -122,21 +122,21 @@ var Interval = function(dayStart, dayEnd, minStart, minEnd) {
 	Interval.prototype.getStartDay = function() {
 		return this._dayStart;
 	};
-	
+
 	/**
 	 * @return The end day in the week, see DAYS constants
 	 */
 	Interval.prototype.getEndDay = function() {
 		return this._dayEnd;
 	};
-	
+
 	/**
 	 * @return The interval start, in minutes since midnight
 	 */
 	Interval.prototype.getFrom = function() {
 		return this._start;
 	};
-	
+
 	/**
 	 * @return The interval end, in minutes since midnight
 	 */
@@ -154,7 +154,7 @@ var WideInterval = function() {
 //ATTRIBUTES
 	/** The start of the interval **/
 	this._start = null;
-	
+
 	/** The end of the interval **/
 	this._end = null;
 
@@ -175,7 +175,7 @@ var WideInterval = function() {
 		this._type = "day";
 		return this;
 	};
-	
+
 	/**
 	 * @return a week-based interval
 	 */
@@ -188,7 +188,7 @@ var WideInterval = function() {
 		this._type = "week";
 		return this;
 	};
-	
+
 	/**
 	 * @return a month-based interval
 	 */
@@ -201,7 +201,7 @@ var WideInterval = function() {
 		this._type = "month";
 		return this;
 	};
-	
+
 	/**
 	 * @return a holiday-based interval
 	 */
@@ -214,7 +214,7 @@ var WideInterval = function() {
 		this._type = "holiday";
 		return this;
 	};
-	
+
 	/**
 	 * @return a holiday-based interval
 	 */
@@ -232,21 +232,21 @@ var WideInterval = function() {
 	WideInterval.prototype.getType = function() {
 		return this._type;
 	};
-	
+
 	/**
 	 * @return The start moment
 	 */
 	WideInterval.prototype.getStart = function() {
 		return this._start;
 	};
-	
+
 	/**
 	 * @return The end moment
 	 */
 	WideInterval.prototype.getEnd = function() {
 		return this._end;
 	};
-	
+
 	/**
 	 * @return True if the given object concerns the same interval as this one
 	 */
@@ -255,7 +255,7 @@ var WideInterval = function() {
 		if(this === o) { return true; }
 		if(o._type == "always") { return this._type == "always"; }
 		var result = false;
-		
+
 		switch(this._type) {
 			case "always":
 				result = o._start == null;
@@ -286,7 +286,7 @@ var WideInterval = function() {
 				break;
 
 			case "month":
-				result = 
+				result =
 					(
 						o._type == "day"
 						&& this._start.month == o._start.month
@@ -314,16 +314,16 @@ var WideInterval = function() {
 				break;
 			default:
 		}
-		
+
 		return result;
 	};
-	
+
 	/**
 	 * @return The human readable time
 	 */
 	WideInterval.prototype.getTimeForHumans = function() {
 		var result;
-		
+
 		switch(this._type) {
 			case "day":
 				if(this._end != null) {
@@ -375,16 +375,16 @@ var WideInterval = function() {
 			default:
 				result = "invalid time";
 		}
-		
+
 		return result;
 	};
-	
+
 	/**
 	 * @return The time selector for OSM opening_hours
 	 */
 	WideInterval.prototype.getTimeSelector = function() {
 		var result;
-		
+
 		switch(this._type) {
 			case "day":
 				result = OSM_MONTHS[this._start.month-1]+" "+((this._start.day < 10) ? "0" : "")+this._start.day;
@@ -421,10 +421,10 @@ var WideInterval = function() {
 			default:
 				result = "";
 		}
-		
+
 		return result;
 	};
-	
+
 	/**
 	 * Does this interval corresponds to a full month ?
 	 */
@@ -439,21 +439,21 @@ var WideInterval = function() {
 			return false;
 		}
 	};
-	
+
 	/**
 	 * Does this interval starts the first day of a month
 	 */
 	WideInterval.prototype.startsMonth = function() {
 		return this._type == "month" || this._type == "always" || (this._type == "day" && this._start.day == 1);
 	};
-	
+
 	/**
 	 * Does this interval ends the last day of a month
 	 */
 	WideInterval.prototype.endsMonth = function() {
 		return this._type == "month" || this._type == "always" || (this._type == "day" && this._end != null && this._end.day == MONTH_END_DAY[this._end.month-1]);
 	};
-	
+
 	/**
 	 * Does this interval strictly contains the given one (ie the second is a refinement of the first, and not strictly equal)
 	 * @param o The other wide interval
@@ -461,7 +461,7 @@ var WideInterval = function() {
 	 */
 	WideInterval.prototype.contains = function(o) {
 		var result = false;
-		
+
 		/*
 		 * Check if it is contained in this one
 		 */
@@ -564,7 +564,7 @@ var WideInterval = function() {
 				}
 			}
 		}
-		
+
 		return result;
 	};
 
@@ -577,7 +577,7 @@ var Day = function() {
 //ATTRIBUTES
 	/** The intervals defining this week **/
 	this._intervals = [];
-	
+
 	/** The next interval ID **/
 	this._nextInterval = 0;
 };
@@ -593,13 +593,13 @@ var Day = function() {
 		for (var minute = 0; minute <= MINUTES_MAX; minute++) {
 			minuteArray[minute] = false;
 		}
-		
+
 		//Set to true values where an interval is defined
 		for(var id=0, l=this._intervals.length; id < l; id++) {
 			if(this._intervals[id] != undefined) {
 				var startMinute = null;
 				var endMinute = null;
-				
+
 				if(
 					this._intervals[id].getStartDay() == this._intervals[id].getEndDay()
 					|| (this._intervals[id].getEndDay() == DAYS_MAX && this._intervals[id].getTo() == MINUTES_MAX)
@@ -608,7 +608,7 @@ var Day = function() {
 					startMinute = this._intervals[id].getFrom();
 					endMinute = this._intervals[id].getTo();
 				}
-				
+
 				//Set to true the minutes for this day
 				if(startMinute != null && endMinute != null){
 					for(var minute = startMinute; minute <= endMinute; minute++) {
@@ -621,23 +621,23 @@ var Day = function() {
 				}
 			}
 		}
-		
+
 		return minuteArray;
 	};
-	
+
 	/**
 	 * @param clean Clean intervals ? (default: false)
 	 * @return The intervals in this week
 	 */
 	Day.prototype.getIntervals = function(clean) {
 		clean = clean || false;
-		
+
 		if(clean) {
 			//Create continuous intervals over days
 			var minuteArray = this.getAsMinutesArray();
 			var intervals = [];
 			var minStart = -1, minEnd;
-			
+
 			for(var min=0, lm=minuteArray.length; min < lm; min++) {
 				//First minute
 				if(min == 0) {
@@ -675,7 +675,7 @@ var Day = function() {
 					}
 				}
 			}
-			
+
 			return intervals;
 		}
 		else {
@@ -692,10 +692,10 @@ var Day = function() {
 	Day.prototype.addInterval = function(interval) {
 		this._intervals[this._nextInterval] = interval;
 		this._nextInterval++;
-		
+
 		return this._nextInterval-1;
 	};
-	
+
 	/**
 	 * Edits the given interval
 	 * @param id The interval ID
@@ -704,7 +704,7 @@ var Day = function() {
 	Day.prototype.editInterval = function(id, interval) {
 		this._intervals[id] = interval;
 	};
-	
+
 	/**
 	 * Remove the given interval
 	 * @param id the interval ID
@@ -712,7 +712,7 @@ var Day = function() {
 	Day.prototype.removeInterval = function(id) {
 		this._intervals[id] = undefined;
 	};
-	
+
 	/**
 	 * Redefines this date range intervals with a copy of the given ones
 	 */
@@ -723,10 +723,10 @@ var Day = function() {
 				this._intervals.push(structuredClone(intervals[i]));
 			}
 		}
-		
+
 		this._intervals = this.getIntervals(true);
 	};
-	
+
 	/**
 	 * Removes all defined intervals
 	 */
@@ -768,7 +768,7 @@ var Week = function() {
 				minuteArray[day][minute] = false;
 			}
 		}
-		
+
 		//Set to true values where an interval is defined
 		for(var id=0, l=this._intervals.length; id < l; id++) {
 			if(this._intervals[id] != undefined) {
@@ -786,23 +786,23 @@ var Week = function() {
 				}
 			}
 		}
-		
+
 		return minuteArray;
 	};
-	
+
 	/**
 	 * @param clean Clean intervals ? (default: false)
 	 * @return The intervals in this week
 	 */
 	Week.prototype.getIntervals = function(clean) {
 		clean = clean || false;
-		
+
 		if(clean) {
 			//Create continuous intervals over days
 			var minuteArray = this.getAsMinutesArray();
 			var intervals = [];
 			var dayStart = -1, minStart = -1, minEnd;
-			
+
 			for(var day=0, l=minuteArray.length; day < l; day++) {
 				for(var min=0, lm=minuteArray[day].length; min < lm; min++) {
 					//First minute of monday
@@ -854,14 +854,14 @@ var Week = function() {
 					}
 				}
 			}
-			
+
 			return intervals;
 		}
 		else {
 			return this._intervals;
 		}
 	};
-	
+
 	/**
 	 * Returns the intervals which are different from those defined in the given week
 	 * @param w The general week
@@ -871,12 +871,12 @@ var Week = function() {
 		//Get minutes arrays
 		var myMinArray = this.getAsMinutesArray();
 		var wMinArray = w.getAsMinutesArray();
-		
+
 		//Create diff array
 		var intervals = { open: [], closed: [] };
 		var dayStart = -1, minStart = -1, minEnd;
 		var diffDay, m, intervalsLength;
-		
+
 		for(var d=0; d <= DAYS_MAX; d++) {
 			diffDay = false;
 			m = 0;
@@ -937,7 +937,7 @@ var Week = function() {
 				//Check for diff
 				else {
 					diffDay = myMinArray[d][m] ? !wMinArray[d][m] : wMinArray[d][m];
-					
+
 					//If there is a difference, start to copy full day
 					if(diffDay) {
 						m = 0;
@@ -948,7 +948,7 @@ var Week = function() {
 					}
 				}
 			}
-			
+
 			//Close intervals if day is identical
 			if(!diffDay && dayStart > -1) {
 				intervals.open.push(new Interval(
@@ -960,7 +960,7 @@ var Week = function() {
 				dayStart = -1;
 				minStart = -1;
 			}
-			
+
 			//Create closed intervals if closed all day
 			if(diffDay && dayStart == -1 && intervalsLength == intervals.open.length) {
 				//Merge with previous interval if possible
@@ -977,7 +977,7 @@ var Week = function() {
 				}
 			}
 		}
-		
+
 		return intervals;
 	};
 
@@ -991,7 +991,7 @@ var Week = function() {
 		this._intervals[this._intervals.length] = interval;
 		return this._intervals.length-1;
 	};
-	
+
 	/**
 	 * Edits the given interval
 	 * @param id The interval ID
@@ -1000,7 +1000,7 @@ var Week = function() {
 	Week.prototype.editInterval = function(id, interval) {
 		this._intervals[id] = interval;
 	};
-	
+
 	/**
 	 * Remove the given interval
 	 * @param id the interval ID
@@ -1008,7 +1008,7 @@ var Week = function() {
 	Week.prototype.removeInterval = function(id) {
 		this._intervals[id] = undefined;
 	};
-	
+
 	/**
 	 * Removes all intervals during a given day
 	 */
@@ -1020,7 +1020,7 @@ var Week = function() {
 				//If interval over given day
 				if(interval.getStartDay() <= day && interval.getEndDay() >= day) {
 					dayDiff = interval.getEndDay() - interval.getStartDay();
-					
+
 					//Avoid deletion if over night interval
 					if(dayDiff > 1 || dayDiff == 0 || interval.getStartDay() == day || interval.getFrom() <= interval.getTo()) {
 						//Create new interval if several day
@@ -1032,7 +1032,7 @@ var Week = function() {
 								this.addInterval(new Interval(day+1, interval.getEndDay(), 0, interval.getTo()));
 							}
 						}
-						
+
 						//Delete
 						this.removeInterval(i);
 					}
@@ -1040,7 +1040,7 @@ var Week = function() {
 			}
 		}
 	};
-	
+
 	/**
 	 * Redefines this date range intervals with a copy of the given ones
 	 */
@@ -1071,7 +1071,7 @@ var DateRange = function(w) {
 //ATTRIBUTES
 	/** The wide interval of this date range **/
 	this._wideInterval = null;
-	
+
 	/** The typical week or day associated **/
 	this._typical = undefined;
 
@@ -1086,21 +1086,21 @@ var DateRange = function(w) {
 	DateRange.prototype.definesTypicalDay = function() {
 		return this._typical instanceof Day;
 	};
-	
+
 	/**
 	 * Is this interval defining a typical week ?
 	 */
 	DateRange.prototype.definesTypicalWeek = function() {
 		return this._typical instanceof Week;
 	};
-	
+
 	/**
 	 * @return The typical day or week
 	 */
 	DateRange.prototype.getTypical = function() {
 		return this._typical;
 	};
-	
+
 	/**
 	 * @return The wide interval this date range concerns
 	 */
@@ -1158,7 +1158,7 @@ var DateRange = function(w) {
 	DateRange.prototype.hasSameTypical = function(dr) {
 		return this.definesTypicalDay() == dr.definesTypicalDay() && this._typical.sameAs(dr.getTypical());
 	};
-	
+
 	/**
 	 * Does this date range contains the given date range (ie the second is a refinement of the first)
 	 * @param start The start of the date range
@@ -1180,7 +1180,7 @@ var OhTime = function(start, end) {
 //ATTRIBUTES
 	/** The start minute **/
 	this._start = (start >= 0) ? start : null;
-	
+
 	/** The end minute **/
 	this._end = (end >= 0 && end != start) ? end : null;
 };
@@ -1197,14 +1197,14 @@ var OhTime = function(start, end) {
 			return this._timeString(this._start) + ((this._end == null) ? "" : "-" + this._timeString(this._end));
 		}
 	};
-	
+
 	/**
 	 * @return The start minutes
 	 */
 	OhTime.prototype.getStart = function() {
 		return this._start;
 	};
-	
+
 	/**
 	 * @return The end minutes
 	 */
@@ -1218,7 +1218,7 @@ var OhTime = function(start, end) {
 	OhTime.prototype.equals = function(t) {
 		return this._start == t.getStart() && this._end == t.getEnd();
 	};
-	
+
 //OTHER METHODS
 	/**
 	 * @return The hour in HH:MM format
@@ -1242,13 +1242,13 @@ var OhDate = function(w, wt, wd) {
 //ATTRIBUTES
 	/** Kind of wide date (month, week, day, holiday, always) **/
 	this._wideType = wt;
-	
+
 	/** Wide date **/
 	this._wide = w;
-	
+
 	/** Weekdays + PH **/
 	this._weekdays = wd.sort();
-	
+
 	/** Overwritten days (to allow create simpler rules) **/
 	this._wdOver = [];
 
@@ -1272,21 +1272,21 @@ var OhDate = function(w, wt, wd) {
 	OhDate.prototype.getWideValue = function() {
 		return this._wide;
 	};
-	
+
 	/**
 	 * @return The weekdays array
 	 */
 	OhDate.prototype.getWd = function() {
 		return this._weekdays;
 	};
-	
+
 	/**
-	 * @return The overwrittent weekdays array
+	 * @return The overwritten weekdays array
 	 */
 	OhDate.prototype.getWdOver = function() {
 		return this._wdOver;
 	};
-	
+
 	/**
 	 * @param a The other weekdays array
 	 * @return True if same weekdays as other object
@@ -1294,20 +1294,20 @@ var OhDate = function(w, wt, wd) {
 	OhDate.prototype.sameWd = function(a) {
 		return a.equals(this._weekdays);
 	};
-	
+
 	/**
 	 * @return The weekdays in opening_hours syntax
 	 */
 	OhDate.prototype.getWeekdays = function() {
 		var result = "";
 		var wd = this._weekdays.concat(this._wdOver).sort();
-		
+
 		//PH as weekday
 		if(wd.length > 0 && wd[0] == PH_WEEKDAY) {
 			result = "PH";
 			wd.shift();
 		}
-		
+
 		//Check if we should create a continuous interval for week-end
 		if(wd.length > 0 && wd.contains(6) && wd.contains(0) && (wd.contains(5) || wd.contains(1))) {
 			//Find when the week-end starts
@@ -1322,12 +1322,12 @@ var OhDate = function(w, wt, wd) {
 					stopLooking = true;
 				}
 			}
-			
+
 			//Find when it stops
 			i=1;
 			stopLooking = false;
 			var endWE = 0;
-			
+
 			while(!stopLooking && i < wd.length) {
 				if(wd[i-1] == wd[i] - 1) {
 					endWE = wd[i];
@@ -1337,14 +1337,14 @@ var OhDate = function(w, wt, wd) {
 					stopLooking = true;
 				}
 			}
-			
+
 			//If long enough, add it as first weekday interval
 			var length = 7 - startWE + endWE + 1;
 
 			if(length >= 3 && startWE > endWE) {
 				if(result.length > 0) { result += ","; }
 				result += OSM_DAYS[startWE]+"-"+OSM_DAYS[endWE];
-				
+
 				//Remove processed days
 				var j=0;
 				while(j < wd.length) {
@@ -1357,12 +1357,12 @@ var OhDate = function(w, wt, wd) {
 				}
 			}
 		}
-		
+
 		//Process only if not empty weekday list
 		if(wd.length > 1 || (wd.length == 1 && wd[0] != -1)) {
 			result += (result.length > 0) ? ","+OSM_DAYS[wd[0]] : OSM_DAYS[wd[0]];
 			var firstInRow = wd[0];
-			
+
 			for(var i=1; i < wd.length; i++) {
 				//When days aren't following
 				if(wd[i-1] != wd[i] - 1) {
@@ -1376,7 +1376,7 @@ var OhDate = function(w, wt, wd) {
 							result += "-"+OSM_DAYS[wd[i-1]];
 						}
 					}
-					
+
 					//Add the current day
 					result += ","+OSM_DAYS[wd[i]];
 					firstInRow = wd[i];
@@ -1391,12 +1391,12 @@ var OhDate = function(w, wt, wd) {
 				}
 			}
 		}
-		
+
 		if(result == "Mo-Su") { result = ""; }
-		
+
 		return result;
 	};
-	
+
 	/**
 	 * Is the given object of the same kind as this one
 	 * @return True if same weekdays and same wide type
@@ -1404,7 +1404,7 @@ var OhDate = function(w, wt, wd) {
 	OhDate.prototype.sameKindAs = function(d) {
 		return this._wideType == d.getWideType() && d.sameWd(this._weekdays);
 	};
-	
+
 	/**
 	 * @return True if this object is equal to the given one
 	 */
@@ -1422,14 +1422,14 @@ var OhDate = function(w, wt, wd) {
 			this._weekdays = this._weekdays.sort();
 		}
 	};
-	
+
 	/**
 	 * Adds public holiday as a weekday of this date
 	 */
 	OhDate.prototype.addPhWeekday = function() {
 		this.addWeekday(PH_WEEKDAY);
 	};
-	
+
 	/**
 	 * Adds an overwritten weekday, which can be included in this date and that will be overwritten in a following rule
 	 */
@@ -1449,7 +1449,7 @@ var OhRule = function() {
 //ATTRIBUTES
 	/** The date selectors **/
 	this._date = [];
-	
+
 	/** The time selectors **/
 	this._time = [];
 };
@@ -1461,20 +1461,20 @@ var OhRule = function() {
 	OhRule.prototype.getDate = function() {
 		return this._date;
 	};
-	
+
 	/**
 	 * @return The time selectors, as an array
 	 */
 	OhRule.prototype.getTime = function() {
 		return this._time;
 	};
-	
+
 	/**
 	 * @return The opening_hours value
 	 */
 	OhRule.prototype.get = function() {
 		var result = "";
-		
+
 		//Create date part
 		if(this._date.length > 1 || this._date[0].getWideValue() != "") {
 			//Add wide selectors
@@ -1485,7 +1485,7 @@ var OhRule = function() {
 				result += this._date[i].getWideValue();
 			}
 		}
-		
+
 		//Add weekdays
 		if(this._date.length > 0) {
 			var wd = this._date[0].getWeekdays();
@@ -1493,7 +1493,7 @@ var OhRule = function() {
 				result += " "+wd;
 			}
 		}
-		
+
 		//Create time part
 		if(this._time.length > 0) {
 			result += " ";
@@ -1507,12 +1507,12 @@ var OhRule = function() {
 		else {
 			result += " off";
 		}
-		
+
 		if(result.trim() == "00:00-24:00") { result = "24/7"; }
-		
+
 		return result.trim();
 	};
-	
+
 	/**
 	 * @return True if the given rule has the same time as this one
 	 */
@@ -1529,14 +1529,14 @@ var OhRule = function() {
 			return true;
 		}
 	};
-	
+
 	/**
 	 * Is this rule concerning off time ?
 	 */
 	OhRule.prototype.isOff = function() {
 		return this._time.length == 0 || (this._time.length == 1 && this._time[0].getStart() == null);
 	};
-	
+
 	/**
 	 * Does the rule have any overwritten weekday ?
 	 */
@@ -1553,7 +1553,7 @@ var OhRule = function() {
 			this._date[i].addWeekday(wd);
 		}
 	};
-	
+
 	/**
 	 * Adds public holidays as weekday to all dates
 	 */
@@ -1562,7 +1562,7 @@ var OhRule = function() {
 			this._date[i].addPhWeekday();
 		}
 	};
-	
+
 	/**
 	 * Adds an overwritten weekday to all the dates
 	 */
@@ -1571,7 +1571,7 @@ var OhRule = function() {
 			this._date[i].addOverwrittenWeekday(wd);
 		}
 	};
-	
+
 	/**
 	 * @param d A new date selector
 	 */
@@ -1580,7 +1580,7 @@ var OhRule = function() {
 		if(d == null || d == undefined || !d instanceof OhDate) {
 			throw Error("Invalid parameter");
 		}
-		
+
 		//Check if date can be added
 		if(this._date.length == 0 || (this._date[0].getWideType() != "always" && this._date[0].sameKindAs(d))) {
 			this._date.push(d);
@@ -1591,7 +1591,7 @@ var OhRule = function() {
 			}
 		}
 	};
-	
+
 	/**
 	 * @param t A new time selector
 	 */
@@ -1620,11 +1620,11 @@ var OpeningHoursBuilder = function() {};
 	OpeningHoursBuilder.prototype.build = function(dateRanges) {
 		var rules = [];
 		var dateRange, ohrules, ohrule, ohruleAdded, ruleId, rangeGeneral, rangeGeneralFor;
-		
+
 		//Read each date range
 		for(var rangeId=0, l=dateRanges.length; rangeId < l; rangeId++) {
 			dateRange = dateRanges[rangeId];
-			
+
 			if(dateRange != undefined) {
 				//Check if the defined typical week/day is not strictly equal to a previous wider rule
 				rangeGeneral = null;
@@ -1648,7 +1648,7 @@ var OpeningHoursBuilder = function() {};
 					}
 					rangeGenId--;
 				}
-				
+
 				if(rangeId == 0 || rangeGeneral == null) {
 					//Get rules for this date range
 					if(dateRange.definesTypicalWeek()) {
@@ -1662,13 +1662,13 @@ var OpeningHoursBuilder = function() {};
 					else {
 						ohrules = this._buildDay(dateRange);
 					}
-					
+
 					//Process each rule
 					for(var ohruleId=0, orl=ohrules.length; ohruleId < orl; ohruleId++) {
 						ohrule = ohrules[ohruleId];
 						ohruleAdded = false;
 						ruleId = 0;
-						
+
 						//Try to add them to previously defined ones
 						while(!ohruleAdded && ruleId < rules.length) {
 							//Identical one
@@ -1708,12 +1708,12 @@ var OpeningHoursBuilder = function() {};
 								ruleId++;
 							}
 						}
-						
+
 						//If not, add as new rule
 						if(!ohruleAdded) {
 							rules.push(ohrule);
 						}
-						
+
 						//If some overwritten weekdays are still in last rule
 						if(ohruleId == orl - 1 && ohrule.hasOverwrittenWeekday()) {
 							var ohruleOWD = new OhRule();
@@ -1734,22 +1734,22 @@ var OpeningHoursBuilder = function() {};
 				}
 			}
 		}
-		
+
 		//Create result string
 		var result = "";
 		for(var ruleId=0, l=rules.length; ruleId < l; ruleId++) {
 			if(ruleId > 0) { result += "; "; }
 			result += rules[ruleId].get();
 		}
-		
+
 		return result;
 	};
 
-	
+
 /***********************
  * Top level functions *
  ***********************/
-	
+
 	/**
 	 * Creates rules for a given typical day
 	 * @param dateRange The date range defining a typical day
@@ -1758,24 +1758,24 @@ var OpeningHoursBuilder = function() {};
 	OpeningHoursBuilder.prototype._buildDay = function(dateRange) {
 		var intervals = dateRange.getTypical().getIntervals(true);
 		var interval;
-		
+
 		//Create rule
 		var rule = new OhRule();
 		var date = new OhDate(dateRange.getInterval().getTimeSelector(), dateRange.getInterval().getType(), [ -1 ]);
 		rule.addDate(date);
-		
+
 		//Read time
 		for(var i=0, l=intervals.length; i < l; i++) {
 			interval = intervals[i];
-			
+
 			if(interval != undefined) {
 				rule.addTime(new OhTime(interval.getFrom(), interval.getTo()));
 			}
 		}
-		
+
 		return [ rule ];
 	};
-	
+
 	/**
 	 * Create rules for a date range defining a typical week
 	 * Algorithm inspired by OpeningHoursEdit plugin for JOSM
@@ -1786,7 +1786,7 @@ var OpeningHoursBuilder = function() {};
 		var result = [];
 		var intervals = dateRange.getTypical().getIntervals(true);
 		var interval, rule, date;
-		
+
 		/*
 		 * Create time intervals per day
 		 */
@@ -1794,10 +1794,10 @@ var OpeningHoursBuilder = function() {};
 		var monday0 = timeIntervals[0];
 		var sunday24 = timeIntervals[1];
 		var days = timeIntervals[2];
-		
+
 		//Create continuous night for monday-sunday
 		days = this._nightMonSun(days, monday0, sunday24);
-		
+
 		/*
 		 * Group rules with same time
 		 */
@@ -1808,12 +1808,12 @@ var OpeningHoursBuilder = function() {};
 		// -8<x<0 means nothing done with this day yet, but it intersects a
 		// range of days with same opening_hours
 		var daysStatus = [];
-		
+
 		//Init status
 		for(var i=0; i < OSM_DAYS.length; i++) {
 			daysStatus[i] = 0;
 		}
-		
+
 		//Read status
 		for(var i=0; i < days.length; i++) {
 			if(days[i].isOff() && daysStatus[i] == 0) {
@@ -1821,7 +1821,7 @@ var OpeningHoursBuilder = function() {};
 			}
 			else if(days[i].isOff() && daysStatus[i] < 0 && daysStatus[i] > -8) {
 				daysStatus[i] = -8;
-				
+
 				//Try to merge with another off day
 				var merged = false, mdOff = 0;
 				while(!merged && mdOff < i) {
@@ -1833,7 +1833,7 @@ var OpeningHoursBuilder = function() {};
 						mdOff++;
 					}
 				}
-				
+
 				//If not merged, add it
 				if(!merged) {
 					result.push(days[i]);
@@ -1842,7 +1842,7 @@ var OpeningHoursBuilder = function() {};
 				daysStatus[i] = i + 1;
 				var lastSameDay = i;
 				var sameDayCount = 1;
-				
+
 				for(let j = i + 1; j < days.length; j++) {
 					if (days[i].sameTime(days[j])) {
 						daysStatus[j] = i + 1;
@@ -1871,12 +1871,12 @@ var OpeningHoursBuilder = function() {};
 				}
 			}
 		}
-		
+
 		result = this._mergeDays(result);
-		
+
 		return result;
 	};
-	
+
 	/**
 	 * Reads a week to create an opening_hours string for weeks which are overwriting a previous one
 	 * @param dateRange The date range defining a typical day
@@ -1885,7 +1885,7 @@ var OpeningHoursBuilder = function() {};
 	 */
 	OpeningHoursBuilder.prototype._buildWeekDiff = function(dateRange, generalDateRange) {
 		var intervals = dateRange.getTypical().getIntervalsDiff(generalDateRange.getTypical());
-		
+
 		/*
 		 * Create time intervals per day
 		 */
@@ -1894,19 +1894,19 @@ var OpeningHoursBuilder = function() {};
 		var monday0 = timeIntervals[0];
 		var sunday24 = timeIntervals[1];
 		var days = timeIntervals[2];
-		
+
 		//Closed
 		for(var i=0, l=intervals.closed.length; i < l; i++) {
 			interval = intervals.closed[i];
-			
+
 			for(var j=interval.getStartDay(); j <= interval.getEndDay(); j++) {
 				days[j].addTime(new OhTime());
 			}
 		}
-		
+
 		//Create continuous night for monday-sunday
 		days = this._nightMonSun(days, monday0, sunday24);
-		
+
 		/*
 		 * Group rules with same time
 		 */
@@ -1917,19 +1917,19 @@ var OpeningHoursBuilder = function() {};
 		// -8<x<0 means nothing done with this day yet, but it intersects a
 		// range of days with same opening_hours
 		var daysStatus = [];
-		
+
 		//Init status
 		for(var i=0; i < OSM_DAYS.length; i++) {
 			daysStatus[i] = 0;
 		}
-		
+
 		//Read rules
 		var result = [];
 		for(var i=0; i < days.length; i++) {
 			//Off day which must be shown
 			if(days[i].isOff() && days[i].getTime().length == 1) {
 				daysStatus[i] = -8;
-				
+
 				//Try to merge with another off day
 				var merged = false, mdOff = 0;
 				while(!merged && mdOff < i) {
@@ -1941,7 +1941,7 @@ var OpeningHoursBuilder = function() {};
 						mdOff++;
 					}
 				}
-				
+
 				//If not merged, add it
 				if(!merged) {
 					result.push(days[i]);
@@ -1956,9 +1956,9 @@ var OpeningHoursBuilder = function() {};
 				daysStatus[i] = i+1;
 				var sameDayCount = 1;
 				var lastSameDay = i;
-				
+
 				result.push(days[i]);
-				
+
 				for(let j = i + 1; j < days.length; j++) {
 					if (days[i].sameTime(days[j])) {
 						daysStatus[j] = i + 1;
@@ -1989,9 +1989,9 @@ var OpeningHoursBuilder = function() {};
 				}
 			}
 		}
-		
+
 		result = this._mergeDays(result);
-		
+
 		return result;
 	};
 
@@ -1999,13 +1999,13 @@ var OpeningHoursBuilder = function() {};
 /****************************************
  * Utility functions for top-level ones *
  ****************************************/
-	
+
 	/**
 	 * Merge days with same opening time
 	 */
 	OpeningHoursBuilder.prototype._mergeDays = function(rules) {
 		if(rules.length == 0) { return rules; }
-		
+
 		var result = [];
 		var dateMerged;
 
@@ -2024,15 +2024,15 @@ var OpeningHoursBuilder = function() {};
 				}
 				dm++;
 			}
-			
+
 			if(!dateMerged) {
 				result.push(rules[d]);
 			}
 		}
-		
+
 		return result;
 	};
-	
+
 	/**
 	 * Creates time intervals for each day
 	 * @return [ monday0, sunday24, days ]
@@ -2042,16 +2042,16 @@ var OpeningHoursBuilder = function() {};
 		var sunday24 = -1;
 		var days = [];
 		var interval;
-		
+
 		//Create rule for each day of the week
 		for(var i=0; i < 7; i++) {
 			days.push(new OhRule());
 			days[i].addDate(new OhDate(timeSelector, type, [ i ]));
 		}
-		
+
 		for(var i=0, l=intervals.length; i < l; i++) {
 			interval = intervals[i];
-			
+
 			if(interval != undefined) {
 				//Handle sunday 24:00 with monday 00:00
 				if(interval.getStartDay() == DAYS_MAX && interval.getEndDay() == DAYS_MAX && interval.getTo() == MINUTES_MAX) {
@@ -2060,7 +2060,7 @@ var OpeningHoursBuilder = function() {};
 				if(interval.getStartDay() == 0 && interval.getEndDay() == 0 && interval.getFrom() == 0) {
 					monday0 = interval.getTo();
 				}
-				
+
 				try {
 					//Interval in a single day
 					if(interval.getStartDay() == interval.getEndDay()) {
@@ -2112,10 +2112,10 @@ var OpeningHoursBuilder = function() {};
 				}
 			}
 		}
-		
+
 		return [ monday0, sunday24, days ];
 	};
-	
+
 	/**
 	 * Changes days array to make sunday - monday night continuous if needed
 	 */
@@ -2123,16 +2123,16 @@ var OpeningHoursBuilder = function() {};
 		if(monday0 >= 0 && sunday24 >= 0 && monday0 < sunday24) {
 			days[0].getTime().sort(this._sortOhTime);
 			days[6].getTime().sort(this._sortOhTime);
-			
+
 			//Change sunday interval
 			days[6].getTime()[days[6].getTime().length-1] = new OhTime(sunday24, monday0);
-			
+
 			//Remove monday interval
 			days[0].getTime().shift();
 		}
 		return days;
 	};
-	
+
 	/**
 	 * Sort OhTime objects by start hour
 	 */
@@ -2167,38 +2167,38 @@ var OpeningHoursParser = function() {
 	 */
 	OpeningHoursParser.prototype.parse = function(oh) {
 		var result = [];
-		
+
 		//Separate each block
 		var blocks = oh.split(';');
-		
+
 		/*
 		 * Blocks parsing
 		 * Each block can be divided in three parts: wide range selector, small range selector, rule modifier.
 		 * The last two are simpler to parse, so we start to read rule modifier, then small range selector.
 		 * All the lasting tokens are part of wide range selector.
 		 */
-		
+
 		var block, tokens, currentToken, ruleModifier, timeSelector, weekdaySelector, wideRangeSelector;
 		var singleTime, from, to, times;
 		var singleWeekday, wdStart, wdEnd, wdFrom, wdTo, holidays, weekdays;
 		var monthSelector, weekSelector, weeks, singleWeek, weekFrom, weekTo, singleMonth, months, monthFrom, monthTo;
 		var dateRanges, dateRange, drObj, foundDateRange, resDrId;
-		
+
 		//Read each block
 		for(var i=0, li=blocks.length; i < li; i++) {
 			block = blocks[i].trim();
-			
+
 			if(block.length == 0) { continue; } //Don't parse empty blocks
-			
+
 			tokens = this._tokenize(block);
 			currentToken = tokens.length - 1;
 			ruleModifier = null;
 			timeSelector = null;
 			weekdaySelector = null;
 			wideRangeSelector = null;
-			
+
 			//console.log(tokens);
-			
+
 			/*
 			 * Rule modifier (open, closed, off)
 			 */
@@ -2207,18 +2207,18 @@ var OpeningHoursParser = function() {
 				ruleModifier = tokens[currentToken].toLowerCase();
 				currentToken--;
 			}
-			
+
 			/*
 			 * Small range selectors
 			 */
 			from = null;
 			to = null;
 			times = []; //Time intervals in minutes
-			
+
 			//Time selector
 			if(currentToken >= 0 && this._isTime(tokens[currentToken])) {
 				timeSelector = tokens[currentToken];
-				
+
 				if(timeSelector == "24/7") {
 					times.push({from: 0, to: 24*60});
 				}
@@ -2238,26 +2238,26 @@ var OpeningHoursParser = function() {
 						times.push({from: from, to: to});
 					}
 				}
-				
+
 				currentToken--;
 			}
-			
+
 			holidays = [];
 			weekdays = [];
-			
+
 			//Weekday selector
 			if(timeSelector == "24/7") {
 				weekdays.push({from: 0, to: 6});
 			}
 			else if(currentToken >= 0 && this._isWeekday(tokens[currentToken])) {
 				weekdaySelector = tokens[currentToken];
-				
+
 				//Divide each weekday
 				weekdaySelector = weekdaySelector.split(',');
-				
+
 				for(var wds=0, wdsl = weekdaySelector.length; wds < wdsl; wds++) {
 					singleWeekday = weekdaySelector[wds];
-					
+
 					//Holiday
 					if(this.RGX_HOLIDAY.test(singleWeekday)) {
 						holidays.push(singleWeekday);
@@ -2278,45 +2278,45 @@ var OpeningHoursParser = function() {
 						throw new Error("Invalid weekday interval: "+singleWeekday);
 					}
 				}
-				
+
 				currentToken--;
 			}
-			
+
 			/*
 			 * Wide range selector
 			 */
 			weeks = [];
 			months = [];
-			
+
 			if(currentToken >= 0) {
 				wideRangeSelector = tokens[0];
 				for(var ct=1; ct <= currentToken; ct++) {
 					wideRangeSelector += " "+tokens[ct];
 				}
-				
+
 				if(wideRangeSelector.length > 0) {
 					wideRangeSelector = wideRangeSelector.replace(/\:$/g, '').split('week'); //0 = Month or SH, 1 = weeks
-					
+
 					//Month or SH
 					monthSelector = wideRangeSelector[0].trim();
 					if(monthSelector.length == 0) { monthSelector = null; }
-					
+
 					//Weeks
 					if(wideRangeSelector.length > 1) {
 						weekSelector = wideRangeSelector[1].trim();
 						if(weekSelector.length == 0) { weekSelector = null; }
 					}
 					else { weekSelector = null; }
-					
+
 					if(monthSelector != null && weekSelector != null) {
 						throw new Error("Unsupported simultaneous month and week selector");
 					}
 					else if(monthSelector != null) {
 						monthSelector = monthSelector.split(',');
-						
+
 						for(var ms=0, msl = monthSelector.length; ms < msl; ms++) {
 							singleMonth = monthSelector[ms];
-							
+
 							//School holidays
 							if(singleMonth == "SH") {
 								months.push({holiday: "SH"});
@@ -2328,7 +2328,7 @@ var OpeningHoursParser = function() {
 								if(monthFrom < 1) {
 									throw new Error("Invalid month: "+singleMonth[0]);
 								}
-								
+
 								if(singleMonth.length > 1) {
 									monthTo = OSM_MONTHS.indexOf(singleMonth[1])+1;
 									if(monthTo < 1) {
@@ -2343,17 +2343,17 @@ var OpeningHoursParser = function() {
 							//Monthday intervals
 							else if(this.RGX_MONTHDAY.test(singleMonth)) {
 								singleMonth = singleMonth.replace(/\:/g, '').split('-');
-								
+
 								//Read monthday start
 								monthFrom = singleMonth[0].split(' ');
 								monthFrom = { day: parseInt(monthFrom[1],10), month: OSM_MONTHS.indexOf(monthFrom[0])+1 };
 								if(monthFrom.month < 1) {
 									throw new Error("Invalid month: "+monthFrom[0]);
 								}
-								
+
 								if(singleMonth.length > 1) {
 									monthTo = singleMonth[1].split(' ');
-									
+
 									//Same month as start
 									if(monthTo.length == 1) {
 										monthTo = { day: parseInt(monthTo[0],10), month: monthFrom.month };
@@ -2380,7 +2380,7 @@ var OpeningHoursParser = function() {
 					else if(weekSelector != null) {
 						//Divide each week interval
 						weekSelector = weekSelector.split(',');
-						
+
 						for(var ws=0, wsl = weekSelector.length; ws < wsl; ws++) {
 							singleWeek = weekSelector[ws].split('-');
 							weekFrom = parseInt(singleWeek[0],10);
@@ -2398,29 +2398,29 @@ var OpeningHoursParser = function() {
 					}
 				}
 			}
-			
+
 			//If no read token, throw error
 			if(currentToken == tokens.length - 1) {
 				throw Error("Unreadable string");
 			}
-			
+
  			// console.log("months",months);
  			// console.log("weeks",weeks);
  			// console.log("holidays",holidays);
  			// console.log("weekdays",weekdays);
  			// console.log("times",times);
  			// console.log("rule",ruleModifier);
-			
+
 			/*
 			 * Create date ranges
 			 */
 			dateRanges = [];
-			
+
 			//Month range
 			if(months.length > 0) {
 				for(var mId=0, ml = months.length; mId < ml; mId++) {
 					singleMonth = months[mId];
-					
+
 					if(singleMonth.holiday != undefined) {
 						dateRanges.push(new WideInterval().holiday(singleMonth.holiday));
 					}
@@ -2469,7 +2469,7 @@ var OpeningHoursParser = function() {
 			else {
 				dateRanges.push(new WideInterval().always());
 			}
-			
+
 			//Case of no weekday defined = all week
 			if(weekdays.length == 0) {
 				if(holidays.length == 0 || (holidays.length == 1 && holidays[0] == "SH")) {
@@ -2479,12 +2479,12 @@ var OpeningHoursParser = function() {
 					weekdays.push({from: 0, to: 0 });
 				}
 			}
-			
+
 			//Case of no time defined = all day
 			if(times.length == 0) {
 				times.push({from: 0, to: 24*60});
 			}
-			
+
 			/*
 			 * Create date range objects
 			 */
@@ -2502,13 +2502,13 @@ var OpeningHoursParser = function() {
 						resDrId++;
 					}
 				}
-				
+
 				if(foundDateRange) {
 					drObj = result[resDrId];
 				}
 				else {
 					drObj = new DateRange(dateRanges[drId]);
-					
+
 					//Find general date range that may be refined by this one
 					var general = -1;
 					for(resDrId=0; resDrId < result.length; resDrId++) {
@@ -2516,15 +2516,15 @@ var OpeningHoursParser = function() {
 							general = resDrId;
 						}
 					}
-					
+
 					//Copy general date range intervals
 					if(general >= 0 && drObj.definesTypicalWeek()) {
 						drObj.getTypical().copyIntervals(result[general].getTypical().getIntervals());
 					}
-					
+
 					result.push(drObj);
 				}
-				
+
 				/*
 				 * Add time intervals
 				 */
@@ -2559,7 +2559,7 @@ var OpeningHoursParser = function() {
 							}
 						}
 					}
-					
+
 					//For each time interval
 					for(var tId=0, tl=times.length; tId < tl; tId++) {
 						if(ruleModifier == "closed" || ruleModifier == "off") {
@@ -2572,7 +2572,7 @@ var OpeningHoursParser = function() {
 				}
 			}
 		}
-		
+
 		return result;
 	};
 
@@ -2597,7 +2597,7 @@ var OpeningHoursParser = function() {
 			}
 		}
 	};
-	
+
 	/**
 	 * Remove intervals from given typical day/week for a given weekday
 	 * @param typical The typical day or week
@@ -2630,7 +2630,7 @@ var OpeningHoursParser = function() {
 			}
 		}
 	};
-	
+
 	/**
 	 * Adds intervals from given typical day/week
 	 * @param typical The typical day or week
@@ -2646,7 +2646,7 @@ var OpeningHoursParser = function() {
 				weekdays.to = (times.from <= times.to) ? 0 : 1;
 			}
 		}
-		
+
 		if(weekdays.from <= weekdays.to) {
 			for(var wd=weekdays.from; wd <= weekdays.to; wd++) {
 				this._addIntervalWd(typical, times, wd);
@@ -2661,7 +2661,7 @@ var OpeningHoursParser = function() {
 			}
 		}
 	};
-	
+
 	/**
 	 * Adds intervals from given typical day/week for a given weekday
 	 * @param typical The typical day or week
@@ -2694,7 +2694,7 @@ var OpeningHoursParser = function() {
 			}
 		}
 	};
-	
+
 	/**
 	 * Converts a time string "12:45" into minutes integer
 	 * @param time The time string
@@ -2704,28 +2704,28 @@ var OpeningHoursParser = function() {
 		var values = time.split(':');
 		return parseInt(values[0],10) * 60 + parseInt(values[1],10);
 	};
-	
+
 	/**
 	 * Is the given token a weekday selector ?
 	 */
 	OpeningHoursParser.prototype._isWeekday = function(token) {
 		return this.RGX_WEEKDAY.test(token);
 	};
-	
+
 	/**
 	 * Is the given token a time selector ?
 	 */
 	OpeningHoursParser.prototype._isTime = function(token) {
 		return this.RGX_TIME.test(token);
 	};
-	
+
 	/**
 	 * Is the given token a rule modifier ?
 	 */
 	OpeningHoursParser.prototype._isRuleModifier = function(token) {
 		return this.RGX_RULE_MODIFIER.test(token);
 	};
-	
+
 	/**
 	 * Create tokens for a given block
 	 */
@@ -2738,7 +2738,7 @@ var OpeningHoursParser = function() {
 		}
 		return result;
 	};
-	
+
 	OpeningHoursParser.prototype._printIntervals = function(from, intervals) {
 		console.log("From: "+from);
 		if(intervals.length > 0) {
@@ -2776,7 +2776,7 @@ var YoHoursChecker = function() {
 	 */
 	YoHoursChecker.prototype.canRead = function(oh) {
 		var result = false;
-		
+
 		try {
 			var parsed = this._parser.parse(oh);
 			if(parsed != null) {
@@ -2784,7 +2784,7 @@ var YoHoursChecker = function() {
 			}
 		}
 		catch(e) {;}
-		
+
 		return result;
 	};
 

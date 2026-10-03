@@ -547,7 +547,7 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
   - **WARN:** 24/7 is handled as a synonym for `00:00-24:00`, so it can be misused like `Mo-Fr 24/7` and still interpreted (but it is not really correct, you should avoid it or replace it with "open". A warning will be given if you use it anyway for that purpose)
 
-    *The use of 24/7 in such way is never needed, you should use `24/7` only when it applies to the entire week.* In cases where a facility is really open 24 hours 7 days a week thats where this value is for.
+    *The use of 24/7 in such way is never needed, you should use `24/7` only when it applies to the entire week.* In cases where a facility is really open 24 hours 7 days a week that's what this value is for.
 
 - **WARN:** Supports omitting time range (`Mo-Fr; Tu off`)
 
@@ -712,7 +712,7 @@ This project has become so complex that development without extensive testing wo
 
 A node.js based test framework is bundled. You can run it with `node test/test.js` or with `make check-full`. Note that the number of lines of the test framework almost match up with the number of lines of the actual implementation :)
 
-Included in the `test` directory are the log outputs of the previous testing runs. By comparing to these logs and assuming that the checkedd-in logs are always passing, it allows the developer to validate if the number of passed tests have changed since the last feature implementation.
+Included in the `test` directory are the log outputs of the previous testing runs. By comparing to these logs and assuming that the checked-in logs are always passing, it allows the developer to validate if the number of passed tests have changed since the last feature implementation.
 
 The current results of this test are also tracked in the repository and can be viewed [here](test/test.en.log). Note that this file uses [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code) which can be interpreted by cat in the terminal. `make check` compares the test output with the output from the last commit and shows you a diff.
 
@@ -826,7 +826,7 @@ List of features which can make writing easier:
   Jan 31,Mar 01 -1 day,Mar 31,Apr 30,May 31,Jun 30,Jul 31,Aug 31,Sep 30,Oct 31,Nov 30,Dec 31 open
   ```
 
-  Better syntax needed? This example is valid even if the evaluation tool does not agree. It simily does not yet implement this.
+  Better syntax needed? This example is valid even if the evaluation tool does not agree. It simply does not implement this yet.
 
   Ref and source: <https://forum.openstreetmap.org/viewtopic.php?pid=663026#p663026>
 
@@ -846,7 +846,7 @@ Refer to the [Changelog](https://github.com/opening-hours/opening_hours.js/blob/
 
 ## Credits
 
-- [Netzwolf](https://www.netzwolf.info/) (He developed the first and very feature complete JS implementation for opening_hours (time_domain.js, [mirror](https://openingh.ypid.de/netzwolf_mirror/)). His implementation did not create selector code to go through time as this library does (which is a more advanced design). time_domain.js has been withdrawn in favor of opening_hours.js but a few parts where reused (mainly the error tolerance and the online evaluation for the [evaluation tool][ohlib.evaluation-tool]). It was also very useful as prove and motivation that all those complex things used in the [opening_hours syntax][oh:specification] are possible to evaluate with software :) )
+- [Netzwolf](https://www.netzwolf.info/) (He developed the first and very feature complete JS implementation for opening_hours (time_domain.js, [mirror](https://openingh.ypid.de/netzwolf_mirror/)). His implementation did not create selector code to go through time as this library does (which is a more advanced design). time_domain.js has been withdrawn in favour of opening_hours.js but a few parts where reused (mainly the error tolerance and the online evaluation for the [evaluation tool][ohlib.evaluation-tool]). It was also very useful as prove and motivation that all those complex things used in the [opening_hours syntax][oh:specification] are possible to evaluate with software :) )
 - Also thanks to FOSSGIS for hosting a public instance of this service. See the [wiki][fossgis-project].
 - The [favicon.svg](/img/favicon.svg) is based on the file ic_action_add_alarm.png from the [Android Design Icons](https://developer.android.com/downloads/design/Android_Design_Icons_20131106.zip) which is licensed under [Creative Commons Attribution 2.5](https://creativecommons.org/licenses/by/2.5/). It represents a clock next to the most common opening_hours value (by far) which is `24/7` and a check mark.
 

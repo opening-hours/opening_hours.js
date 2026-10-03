@@ -4811,7 +4811,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
-     * Get a nicely formated value {{{
+     * Get a nicely formatted value {{{
      * @param {object} argument_hash - Formatting options.
      * @returns {string} Formatted value.
      */
