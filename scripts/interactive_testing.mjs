@@ -98,9 +98,9 @@ function opening_hours_object(value) {
 
 /** @type {import('node:net').Server[]} */
 const servers = [];
-for (let i = 0; i < argv._.length; i++) {
-    console.log('Starting to listen on "%s"', argv._[i]);
-    servers[i] = net.createServer(function(socket) {
+for (const serverListeningPort of argv._) {
+    console.log('Starting to listen on "%s"', serverListeningPort);
+    servers.push(net.createServer(function(socket) {
         console.log('connected');
 
         socket.on('data', function (data) {
@@ -109,7 +109,7 @@ for (let i = 0; i < argv._.length; i++) {
             const result = opening_hours_object(value);
             socket.write(JSON.stringify(result, null, '\t'));
         });
-    }).listen(argv._[i]);
+    }).listen(serverListeningPort));
 }
 
 if (typeof argv.value === 'string') {
