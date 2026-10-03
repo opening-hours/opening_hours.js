@@ -9,9 +9,9 @@ This library supports both **Public Holidays (PH)** and **School Holidays (SH)**
 - **School Holidays**: 33 countries (all via [OpenHolidays API](https://openholidaysapi.org))
 - **Public Holidays**: 37 countries (defined in YAML files)
 
-School holiday data is automatically generated from the OpenHolidays API using:
+School holiday data is generated from the local OpenHolidays data submodule and merged with YAML holiday definitions using:
 ```bash
-node scripts/fetch-school-holidays.mjs
+node scripts/generate-holiday-definitions.mjs
 ```
 
 This generates `src/holidays/generated-openholidays.mjs` which consolidates all holiday definitions.
@@ -158,7 +158,7 @@ Order matters, "first come first serve"/"first rule wins" is used to determine t
 ### School Holidays (SH)
 
 **Data Sources:**
-- **OpenHolidays API** (33 countries): Automatically fetched, from 2020 onwards
+- **OpenHolidays API data** (33 countries): Read from the local submodule, from 2020 onwards
 - **YAML Fallback**: Available as fallback strategy (see `xa.yaml` for example structure)
 
 > **Note:** The `xa.yaml` file is a generic example country demonstrating the YAML format for school holidays.
@@ -167,13 +167,13 @@ Order matters, "first come first serve"/"first rule wins" is used to determine t
 
 **Updating School Holidays:**
 
-Run the fetch script to update from OpenHolidays API:
+Run the generator to rebuild from the local data sources:
 ```bash
-node scripts/fetch-school-holidays.mjs
+node scripts/generate-holiday-definitions.mjs
 ```
 
 This script:
-1. Fetches school holiday data from [OpenHolidays API](https://openholidaysapi.org)
+1. Reads school holiday data from the local [OpenHolidays API data repository](https://github.com/openpotato/openholidaysapi.data)
 2. Merges with YAML-based public holidays (PH)
 3. Generates `src/holidays/generated-openholidays.mjs`
 4. Generates one named export per country
@@ -206,12 +206,12 @@ Note: Year keys are strings for compatibility reasons. See `xa.yaml` for a compl
 **Important Notes:**
 - All school holidays are sourced from OpenHolidays API (from 2020 onwards)
 - YAML-based school holidays should only be used as fallback (see `xa.yaml` for example)
-- The generated file should not be edited manually - run `node scripts/fetch-school-holidays.mjs` instead
+- The generated file should not be edited manually - run `node scripts/generate-holiday-definitions.mjs` instead
 - If some school holidays are the same for all states, you can define them on country level
 
 ### Hints
 
-* **To update school holidays from OpenHolidays API**: Run `node scripts/fetch-school-holidays.mjs`
+* **To regenerate holiday definitions**: Run `node scripts/generate-holiday-definitions.mjs`
 * Note that you should include the definitions in order (see [#126](https://github.com/opening-hours/opening_hours.js/issues/126#issuecomment-156853794) for details).
 * Please also add the source for this information (in form of an URL) as comment. Like shown in the examples above. Usually Wikipedia in the local language is a great source.
 * You can use `make check-holidays` to check all regions of all countries.

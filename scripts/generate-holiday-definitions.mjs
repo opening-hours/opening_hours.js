@@ -4,13 +4,13 @@
  *
  * SPDX-License-Identifier: LGPL-3.0-only
  *
- * Generate School Holidays from OpenHolidays API Data (Git Submodule)
+ * Generate country holiday definitions from OpenHolidays data and YAML.
  *
  * Strategy:
- * 1. Read school holiday data from local Git submodule (openholidaysapi.data)
- * 2. Parse CSV files for each country/subdivision (current year ±15)
- * 3. Merge with YAML data (PH, metadata) → Complete JavaScript file
- * 4. Generate subdivision entries using full names (with short-code fallback if missing)
+ * 1. Read school holiday CSV data from the local openholidaysapi.data submodule
+ * 2. Parse data for each country/subdivision (submodule commit year -5 to +15)
+ * 3. Merge with existing YAML holiday definitions (PH, metadata)
+ * 4. Generate complete country definitions
  */
 
 import fs from 'fs/promises';
@@ -25,23 +25,35 @@ const HOLIDAYS_DIR = path.join(ROOT_DIR, 'src', 'holidays');
 const SUBMODULE_DIR = path.join(ROOT_DIR, 'submodules', 'openholidaysapi.data', 'src');
 const GENERATED_FILE = path.join(HOLIDAYS_DIR, 'generated-openholidays.mjs');
 
-// Statistics
-const stats = {
-  countries: [],
-  redundant: []
-};
+/**
+ * Types used to parse and convert school holiday data.
+ * @typedef {Record<string, string>} CsvRow
+ * @typedef {Record<string, string | number[]> & { name: string }} HolidayData
+ * @typedef {Record<string, HolidayData>} HolidaysByName
+ * @typedef {Record<string, HolidaysByName>} HolidaysBySubdivision
+ * @typedef {{ SH: HolidayData[] }} SubdivisionSchoolHolidays
+ * @typedef {Record<string, SubdivisionSchoolHolidays>} SchoolHolidaysBySubdivision
+ * @typedef {Record<string, number>} HolidayOrder
+ * @typedef {{ source: 'submodule', csvData: CsvRow[] }} SubmoduleCountryData
+ * @typedef {{ source: 'yaml-only', csvData: null }} YamlOnlyCountryData
+ * @typedef {SubmoduleCountryData | YamlOnlyCountryData} CountryBuildData
+ */
 
 /**
  * Parse CSV file (semicolon-separated)
  * Handles quoted fields containing semicolons and commas
  * @param {string} content - Semicolon-separated CSV content.
- * @returns {object[]} Parsed CSV rows.
+ * @returns {CsvRow[]} Parsed CSV rows.
  */
 function parseCSV(content) {
   const lines = content.trim().split('\n');
   if (lines.length === 0) return [];
 
-  // Helper function to split CSV line respecting quotes
+  /**
+   * Split a CSV line into fields, respecting quotes
+   * @param {string} line - Single CSV line.
+   * @returns {string[]} Trimmed field values.
+   */
   function splitCSVLine(line) {
     const result = [];
     let current = '';
@@ -71,14 +83,18 @@ function parseCSV(content) {
     return result;
   }
 
-  const headers = splitCSVLine(lines[0]);
+  const [headerLine, ...dataLines] = lines;
+  const headers = splitCSVLine(headerLine);
+
+  /** @type {CsvRow[]} */
   const rows = [];
 
-  for (const line of lines.slice(1)) {
+  for (const line of dataLines) {
     const values = splitCSVLine(line);
+    /** @type {CsvRow} */
     const row = {};
-    for (const [i, header] of headers.entries()) {
-      row[header] = values[i] || '';
+    for (let column = 0; column < headers.length; column++) {
+      row[headers[column]] = values[column] || '';
     }
     rows.push(row);
   }
@@ -90,7 +106,7 @@ function parseCSV(content) {
  * Load subdivision names from subdivisions.csv
  * Returns: { "BW": "Baden-Württemberg", ... }
  * @param {string} country - Country code to load subdivision names for.
- * @returns {Promise<object>} Subdivision codes mapped to localized names.
+ * @returns {Promise<Record<string, string>>} Subdivision codes mapped to localized names.
  */
 async function loadSubdivisionNames(country) {
   try {
@@ -98,6 +114,7 @@ async function loadSubdivisionNames(country) {
     const content = await fs.readFile(csvPath, 'utf8');
     const rows = parseCSV(content);
 
+    /** @type {Record<string, string>} */
     const names = {};
     for (const row of rows) {
       const shortName = row.ShortName;
@@ -105,8 +122,8 @@ async function loadSubdivisionNames(country) {
       // The first language in the list is the local language (OpenHolidays convention)
       const nameField = row.Name || '';
       const nameParts = nameField.split(',');
-
       let fullName = '';
+
       for (const part of nameParts) {
         const match = part.match(/^[A-Z]{2}\s+(.+)$/);
         if (match) {
@@ -156,7 +173,7 @@ async function discoverCountriesInSubmodule() {
       }
     }
   } catch (error) {
-    console.error(`Error reading submodule: ${error.message}`);
+    console.error('Error reading submodule:', error);
   }
 
   return Array.from(countries).sort();
@@ -165,50 +182,44 @@ async function discoverCountriesInSubmodule() {
 /**
  * Load complete YAML data (PH, SH, meta) for merging
  * @param {string} country - Country code to load holiday data for.
- * @returns {Promise<object>} Parsed country holiday data.
+ * @returns {Promise<import('../src/holidays/holiday-definitions.d.ts').CountryHolidayDefinitions>} Parsed country holiday data.
  */
 async function loadCompleteYaml(country) {
   try {
     const yamlPath = path.join(HOLIDAYS_DIR, `${country}.yaml`);
     const content = await fs.readFile(yamlPath, 'utf8');
-    return yaml.load(content) || {};
+    const data = yaml.load(content);
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      return {};
+    }
+
+    // js-yaml can parse a timestamp scalar as a Date object.
+    const isPlainObject = Object.getPrototypeOf(data) === Object.prototype;
+    if (!isPlainObject) return {};
+
+    return data;
   } catch {
     return {};
   }
 }
 
 /**
- * Check if a YAML file has school holidays data
- * @param {string} country - Country code to check for school holidays.
- * @returns {Promise<boolean>} Whether school holiday data exists.
+ * Check if parsed YAML data contains a non-empty holiday list.
+ * @param {unknown} data - Parsed YAML value.
+ * @param {string} holidayType - Holiday key to check, such as PH or SH.
+ * @returns {boolean} Whether the value contains holidays for that key.
  */
-async function yamlHasSchoolHolidays(country) {
-  try {
-    const yamlData = await loadCompleteYaml(country);
-
-    // Case 1: SH on root level
-    if (yamlData.SH && Array.isArray(yamlData.SH) && yamlData.SH.length > 0) {
-      return true;
-    }
-
-    // Case 2: SH nested in regions/states
-    for (const [key, value] of Object.entries(yamlData)) {
-      if (key.startsWith('_') || key === 'PH') continue;
-      if (value && typeof value === 'object' && value.SH && Array.isArray(value.SH) && value.SH.length > 0) {
-        return true;
-      }
-    }
-
-    return false;
-  } catch {
-    return false;
-  }
+function hasHolidayData(data, holidayType) {
+  if (!data || typeof data !== 'object' || !(holidayType in data)) return false;
+  const holidayData = /** @type {Record<string, unknown>} */ (data);
+  const holidays = holidayData[holidayType];
+  return Array.isArray(holidays) && holidays.length > 0;
 }
 
 /**
  * Load school holidays from CSV files in submodule
  * @param {string} country - Country code to load school holidays for.
- * @returns {Promise<object[]|null>} Parsed holiday rows, or null if unavailable.
+ * @returns {Promise<CsvRow[]|null>} Parsed holiday rows, or null if unavailable.
  */
 async function loadSchoolHolidaysFromSubmodule(country) {
   const holidaysDir = path.join(SUBMODULE_DIR, country, 'holidays');
@@ -222,6 +233,7 @@ async function loadSchoolHolidaysFromSubmodule(country) {
     }
 
     // Load all school holiday files
+    /** @type {CsvRow[]} */
     const allHolidays = [];
     for (const file of schoolHolidayFiles) {
       const filePath = path.join(holidaysDir, file);
@@ -239,13 +251,14 @@ async function loadSchoolHolidaysFromSubmodule(country) {
 
 /**
  * Convert CSV data to opening_hours.js format
- * @param {object[]} csvData - Parsed school holiday rows.
+ * @param {CsvRow[]} csvData - Parsed school holiday rows.
  * @param {string} country - Country code the rows belong to.
  * @param {number[]} yearRange - Inclusive range of years to include.
- * @returns {object} School holidays grouped by subdivision.
+ * @returns {SchoolHolidaysBySubdivision} School holidays grouped by subdivision.
  */
 function convertCSVToInternalFormat(csvData, country, yearRange) {
   // Group by subdivision -> holiday name -> years
+  /** @type {HolidaysBySubdivision} */
   const bySubdivision = {};
 
   for (const row of csvData) {
@@ -319,9 +332,11 @@ function convertCSVToInternalFormat(csvData, country, yearRange) {
   }
 
   // Convert to final format: { subdivision: { SH: [holiday_objects] } }
+  /** @type {SchoolHolidaysBySubdivision} */
   const result = {};
 
   // Holiday order (by approximate occurrence in year)
+  /** @type {HolidayOrder} */
   const holidayOrder = {
     'Winterferien': 1,
     'Halbjahresferien': 2,
@@ -361,7 +376,7 @@ function convertCSVToInternalFormat(csvData, country, yearRange) {
 
 /**
  * Get submodule commit info for reproducible builds
- * @returns {Promise<object>} Submodule hash and commit timestamp.
+ * @returns {Promise<{ hash: string, commitUnixTimestamp: number }>} Submodule hash and commit timestamp.
  */
 async function getSubmoduleInfo() {
   const { execSync } = await import('child_process');
@@ -386,9 +401,9 @@ async function getSubmoduleInfo() {
 
 /**
  * Generate JavaScript file with holiday definitions
- * @param {object} countriesData - Generated holiday data grouped by country.
+ * @param {Record<string, CountryBuildData>} countriesData - Generated holiday data grouped by country.
  * @param {number[]} yearRange - Inclusive range of years included in the output.
- * @param {object} submodule - Metadata for the source data submodule.
+ * @param {Awaited<ReturnType<typeof getSubmoduleInfo>>} submodule - Metadata for the source data submodule.
  * @returns {Promise<string>} Generated JavaScript source.
  */
 async function generateJavaScriptFile(countriesData, yearRange, submodule) {
@@ -397,20 +412,20 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
   const lines = [
     '/**',
     ' * Auto-generated school holidays from OpenHolidays API Data (Git Submodule)',
-    ' * DO NOT EDIT MANUALLY - Run: node scripts/fetch-school-holidays.mjs',
+    ' * DO NOT EDIT MANUALLY - Run: node scripts/generate-holiday-definitions.mjs',
     ` * Submodule: ${submodule.hash} (${commitDate})`,
     ' */',
     ''
   ];
 
-  for (const [country, { source, csvData }] of Object.entries(countriesData)) {
+  for (const [country, countryData] of Object.entries(countriesData)) {
     // Load YAML data for PH and metadata
     const yamlData = await loadCompleteYaml(country);
     const merged = { ...yamlData };
 
-    if (source === 'submodule') {
+    if (countryData.source === 'submodule') {
       // Convert CSV data to internal format
-      const convertedSH = convertCSVToInternalFormat(csvData, country, yearRange);
+      const convertedSH = convertCSVToInternalFormat(countryData.csvData, country, yearRange);
 
       // Load subdivision names for this country
       const subdivisionNames = await loadSubdivisionNames(country);
@@ -421,30 +436,26 @@ async function generateJavaScriptFile(countriesData, yearRange, submodule) {
           // Country-wide SH
           merged.SH = subdivisionData.SH;
         } else {
-          // Subdivision-specific SH - Use ONLY the full name, not the short code
-          // to avoid conflicts (e.g., "SH" for Schleswig-Holstein conflicts with "SH" for School Holidays)
+          // Prefer full names to avoid conflicts with keys like "SH" for School Holidays.
+          // Fall back to the short code only when no full name is available.
+          const fullName = subdivisionNames[subdivision] || subdivision;
+          const existingData = merged[fullName];
 
-          if (subdivisionNames[subdivision]) {
-            const fullName = subdivisionNames[subdivision];
-            if (!merged[fullName]) {
-              merged[fullName] = {};
-            }
-            merged[fullName]._state_code ??= subdivision.toLowerCase();
-            merged[fullName].SH = subdivisionData.SH;
+          if (existingData && typeof existingData === 'object' && !Array.isArray(existingData)) {
+            existingData._state_code ??= subdivision.toLowerCase();
+            existingData.SH = subdivisionData.SH;
           } else {
-            // Fallback: if no full name available, use the short code
-            // (but this shouldn't happen for properly configured data)
-            if (!merged[subdivision]) {
-              merged[subdivision] = {};
-            }
-            merged[subdivision]._state_code ??= subdivision.toLowerCase();
-            merged[subdivision].SH = subdivisionData.SH;
+            merged[fullName] = {
+              _state_code: subdivision.toLowerCase(),
+              SH: subdivisionData.SH
+            };
           }
         }
       }
     }
 
     // Sort keys: PH first, SH second, metadata (_*), then subdivisions alphabetically
+    /** @type {import('../src/holidays/holiday-definitions.d.ts').CountryHolidayDefinitions} */
     const sortedMerged = {};
     const keys = Object.keys(merged).sort((a, b) => {
       if (a === 'PH') return -1;
@@ -548,11 +559,19 @@ async function discoverYamlCountries() {
 
 /**
  * Build school holidays for all countries
- * @returns {Promise<object>} Generated holiday data grouped by country.
+ * @returns {Promise<Record<string, CountryBuildData>>} Generated holiday data grouped by country.
  */
 async function buildSchoolHolidays() {
+  const counts = {
+    phAndSH: 0,
+    shOnly: 0,
+    phOnly: 0
+  };
+
+  console.log();
   console.log('═'.repeat(60));
-  console.log('School Holidays Build (from Git Submodule)');
+  console.log('Holiday Data Build\n');
+  console.log('Combining school holidays from openholidaysapi.data with\npublic holidays from YAML.');
   console.log('═'.repeat(60));
   console.log();
 
@@ -560,34 +579,35 @@ async function buildSchoolHolidays() {
   try {
     await fs.access(SUBMODULE_DIR);
   } catch {
-    console.error('❌ Submodule not found!');
+    console.error('✗ OpenHolidays submodule not found.');
     console.error('   Run: git submodule update --init --recursive\n');
     throw new Error('Submodule openholidaysapi.data not initialized');
   }
 
   // Discover all countries (submodule + YAML)
-  console.log('🔍 Discovering countries...\n');
+  console.log('Discovering countries...\n');
   const submoduleCountries = await discoverCountriesInSubmodule();
   const yamlCountries = await discoverYamlCountries();
+  const submoduleCountrySet = new Set(submoduleCountries);
+  const sharedCountryCount = yamlCountries.filter(country => submoduleCountrySet.has(country)).length;
   const allCountries = new Set([...submoduleCountries, ...yamlCountries]);
-  console.log(`📊 Found ${allCountries.size} countries total\n`);
-
-  // Process each country
+  console.log(`Found ${allCountries.size} unique countries: ${submoduleCountries.length} with SH in openholidaysapi.data, ${yamlCountries.length} in YAML, ${sharedCountryCount} in both.\n`);
   console.log('Processing countries...\n');
+
+  /** @type {Record<string, CountryBuildData>} */
   const results = {};
 
   for (const country of Array.from(allCountries).sort()) {
     const csvData = await loadSchoolHolidaysFromSubmodule(country);
-    const hasYamlSH = await yamlHasSchoolHolidays(country);
     const yamlData = await loadCompleteYaml(country);
 
     // Check for PH at country level OR in subdivisions
-    let hasPH = yamlData.PH && Array.isArray(yamlData.PH) && yamlData.PH.length > 0;
+    let hasPH = hasHolidayData(yamlData, 'PH');
 
     if (!hasPH) {
       // Check if any subdivision has PH
       for (const [key, value] of Object.entries(yamlData)) {
-        if (!key.startsWith('_') && typeof value === 'object' && value.PH && Array.isArray(value.PH) && value.PH.length > 0) {
+        if (!key.startsWith('_') && hasHolidayData(value, 'PH')) {
           hasPH = true;
           break;
         }
@@ -596,36 +616,31 @@ async function buildSchoolHolidays() {
 
     if (csvData) {
       // Has school holidays from submodule
-      let status = '✅ ';
-      const sources = [];
+      const status = hasPH ? '✓' : '○';
+      const description = hasPH ? 'PH and SH' : 'SH only';
 
-      if (hasYamlSH) {
-        status = '⚠️  ';
-        stats.redundant.push(country);
-      }
-
-      sources.push('openholidaysapi.data (SH)');
       if (hasPH) {
-        sources.push('YAML (PH)');
+        counts.phAndSH++;
+      } else {
+        counts.shOnly++;
       }
 
-      console.log(`${status}${country.toUpperCase()}: ${sources.join(' + ')}`);
-      stats.countries.push(country);
+      console.log(`${status} ${country.toUpperCase()}: ${description}`);
       results[country] = { source: 'submodule', csvData };
     } else if (hasPH) {
       // Only has PH from YAML, no SH
-      console.log(`📄 ${country.toUpperCase()}: YAML (PH only, no SH)`);
+      console.log(`· ${country.toUpperCase()}: PH only`);
+      counts.phOnly++;
       results[country] = { source: 'yaml-only', csvData: null };
     }
   }
 
-  // Generate JavaScript file (limit to submodule commit year ±15)
+  // Generate JavaScript file (submodule commit year -5 to +15)
   // Using submodule timestamp ensures reproducible builds
   // @see https://reproducible-builds.org/docs/timestamps/
   const submodule = await getSubmoduleInfo();
   const referenceYear = new Date(submodule.commitUnixTimestamp * 1000).getUTCFullYear();
-  const yearRange = [referenceYear - 15, referenceYear + 15];
-  console.log(`📅 Year range: ${yearRange[0]}–${yearRange[1]}`);
+  const yearRange = [referenceYear - 5, referenceYear + 15];
   const jsContent = await generateJavaScriptFile(results, yearRange, submodule);
   await fs.writeFile(GENERATED_FILE, jsContent, 'utf8');
 
@@ -638,20 +653,17 @@ async function buildSchoolHolidays() {
   console.log('Summary');
   console.log('═'.repeat(60));
   console.log();
-  console.log(`✅ Countries with school holidays: ${stats.countries.length}`);
+  console.log(`Year range: ${yearRange[0]}-${yearRange[1]}`);
+  console.log();
+  console.log(`✓  ${'PH and SH'.padEnd(10)}  ${counts.phAndSH}`);
+  console.log(`○  ${'SH only'.padEnd(10)}  ${counts.shOnly}`);
+  console.log(`·  ${'PH only'.padEnd(10)}  ${counts.phOnly}`);
   console.log();
 
-  if (stats.redundant.length > 0) {
-    console.log('⚠️  Redundant (cleanup recommended):');
-    for (const country of stats.redundant) {
-      console.log(`   - ${country.toUpperCase()}: Remove SH from src/holidays/${country}.yaml`);
-    }
-    console.log();
-  }
-
-  console.log(`📦 Generated: ${GENERATED_FILE} (${jsSizeKB} KB)`);
-
+  console.log(`Generated: ${path.relative(ROOT_DIR, GENERATED_FILE)} (${jsSizeKB} KB)`);
+  console.log();
   console.log('═'.repeat(60));
+  console.log();
 
   return results;
 }

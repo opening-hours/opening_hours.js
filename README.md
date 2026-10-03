@@ -632,10 +632,10 @@ Almost everything from opening_hours definition is supported, as well as some ex
 
 - Support for school holidays (`SH 10:00-14:00`).
 
-  School holidays are automatically sourced from the [OpenHolidays API](https://openholidaysapi.org) for 33 countries (from 2020 onwards). Update data by running:
+  School holidays are generated from the local OpenHolidays data submodule for 33 countries (from 2020 onwards). Regenerate the data by running:
 
   ```bash
-  node scripts/fetch-school-holidays.mjs
+  node scripts/generate-holiday-definitions.mjs
   ```
 
   For details see [src/holidays/README.md](src/holidays/README.md).
