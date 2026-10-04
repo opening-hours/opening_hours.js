@@ -6,9 +6,9 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-const fs = require('node:fs');
-const readline = require('node:readline');
-const { styleText } = require('node:util');
+import fs from 'node:fs';
+import readline from 'node:readline';
+import { styleText } from 'node:util';
 
 const page_width = 20;
 
