@@ -161,7 +161,7 @@ class OpeningHoursRegexSearch: # {{{
                             oh_ok = False
 
                         if oh_ok:
-                            oh_loc_needed = ', loc needed' if oh_result._neededNominatiomJson() else ''
+                            oh_loc_needed = ', loc needed' if oh_result._neededNominatiomJson() else ''  # cspell:disable-line
                             oh_warnings   = ', warnings'   if oh_result.getWarnings() else ''
                             passed_failed = {
                                     'open'    : colored('Passed', 'green'),

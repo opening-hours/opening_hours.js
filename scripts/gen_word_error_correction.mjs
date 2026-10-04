@@ -29,7 +29,7 @@
  *
  * Weekday/month names are resolved by the locale resolver at runtime,
  * so this generator no longer emits them as flat corrections.
- * CLDR is still analyzed here to detect genuinely ambiguous words.
+ * CLDR is still analysed here to detect genuinely ambiguous words.
  */
 
 import fs from 'node:fs';
@@ -225,7 +225,7 @@ function addWordConflict(word, locale, meaning, type, form) {
     wordConflicts[word].push({ locale, meaning, type, form });
 }
 
-// 4. Detect ambiguous words by analyzing conflicts across languages
+// 4. Detect ambiguous words by analysing conflicts across languages
 console.log('\n► Detecting ambiguous words...');
 for (const locale of supportedLocales) {
     const gregorian = loadGregorianData(locale);

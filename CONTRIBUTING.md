@@ -178,7 +178,7 @@ The documentation looks like this:
 function getConstrainedWeekday(tokens, at) {}
 ```
 
-The opening brackets `{{{` (and the corresponding closing onces) are used to fold the source code. See [Vim folds].
+The opening brackets `{{{` (and the corresponding closing ones) are used to fold the source code. See [Vim folds].
 
 ---
 
