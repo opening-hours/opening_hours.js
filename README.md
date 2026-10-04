@@ -741,7 +741,7 @@ To improve the speed of fixing errors, a [feature](https://github.com/opening-ho
 
 ### Test it yourself (the geeky way)
 
-You want to try some opening_hours yourself? Just run `make run-interactive_testing` or `node ./scripts/interactive_testing.js` which will open an primitive interpreter. Just write your opening_hours value and hit enter and you will see if it can be processed (with current state) or not (with error message). The answer is JSON encoded.
+You want to try some opening_hours yourself? Just run `make run-interactive_testing` or `node ./scripts/interactive_testing.mjs` which will open an primitive interpreter. Just write your opening_hours value and hit enter and you will see if it can be processed (with current state) or not (with error message). The answer is JSON encoded.
 
 Testing is much easier by now. Have a look at the [evaluation tool][ohlib.evaluation-tool]. The reason why this peace of code was written is to have an interface which can be accessed from other programming languages. It is used by the python module [pyopening_hours].
 

@@ -4,8 +4,12 @@
 //
 // SPDX-License-Identifier: LGPL-3.0-only
 
-const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs')(hideBin(process.argv))
+import net from 'node:net';
+import readline from 'node:readline';
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
+
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 [optional parameters] [server_listening_ports]')
     .describe('h', 'Display the usage')
     // .describe('v', 'Verbose output')
@@ -19,26 +23,30 @@ const yargs = require('yargs')(hideBin(process.argv))
     .alias('l', 'locale')
     .alias('L', 'prettify-locale')
     .alias('V', 'value')
-    .default('f', '../build/opening_hours.js')
+    .default('f', '../build/opening_hours.esm.mjs')
     .default('l', 'en')
     .default('L', 'en')
     .help(false);
 
-const argv = yargs.parse();
+const argv = cli.parse();
 
 if (argv.help) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 
-const opening_hours = require('./' + argv['library-file']);
-const readline      = require('node:readline');
-const net           = require('node:net');
+const libraryUrl = new URL(argv['library-file'], import.meta.url);
+const { default: opening_hours } = await import(libraryUrl.href);
 
 // used for sunrise, sunset and PH,SH
 // https://nominatim.openstreetmap.org/reverse?format=json&lat=49.5487429714954&lon=9.81602098644987&zoom=18&addressdetails=1
 const nominatimTestJSON = {'place_id':'44651229','licence':'Data \u00a9 OpenStreetMap contributors, ODbL 1.0. https://www.openstreetmap.org/copyright','osm_type':'way','osm_id':'36248375','lat':'49.5400039','lon':'9.7937133','display_name':'K 2847, Lauda-K\u00f6nigshofen, Main-Tauber-Kreis, Regierungsbezirk Stuttgart, Baden-W\u00fcrttemberg, Germany, European Union','address':{'road':'K 2847','city':'Lauda-K\u00f6nigshofen','county':'Main-Tauber-Kreis','state_district':'Regierungsbezirk Stuttgart','state':'Baden-W\u00fcrttemberg','country':'Germany','country_code':'de','continent':'European Union'}};
 
+/**
+ * Evaluate an opening_hours value.
+ * @param {string} value - Opening hours expression to evaluate.
+ * @returns {Record<string, unknown>} Evaluation result.
+ */
 function opening_hours_object(value) {
     let oh;
     let crashed;
@@ -61,6 +69,7 @@ function opening_hours_object(value) {
         }
     }
 
+    /** @type {Record<string, unknown>} */
     const result = { 'needed_nominatim_json': needed_nominatim_json };
     if (crashed) {
         result.error      = true;
@@ -87,10 +96,11 @@ function opening_hours_object(value) {
     return result;
 }
 
+/** @type {import('node:net').Server[]} */
 const servers = [];
-for (let i = 0; i < argv._.length; i++) {
-    console.log('Starting to listen on "%s"', argv._[i]);
-    servers[i] = net.createServer(function(socket) {
+for (const serverListeningPort of argv._) {
+    console.log('Starting to listen on "%s"', serverListeningPort);
+    servers.push(net.createServer(function(socket) {
         console.log('connected');
 
         socket.on('data', function (data) {
@@ -99,7 +109,7 @@ for (let i = 0; i < argv._.length; i++) {
             const result = opening_hours_object(value);
             socket.write(JSON.stringify(result, null, '\t'));
         });
-    }).listen(argv._[i]);
+    }).listen(serverListeningPort));
 }
 
 if (typeof argv.value === 'string') {
