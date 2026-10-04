@@ -8,6 +8,7 @@
 
 const fs = require('node:fs');
 const readline = require('node:readline');
+const { styleText } = require('node:util');
 
 const page_width = 20;
 
@@ -64,7 +65,7 @@ fs.readFile(json_file, 'utf8', function (err, json) {
                     total_in_use += matched[i][1];
                 }
 
-                console.log('Matched '.green + matched.length + ' different value' + (matched.length === 1 ? '' : 's')
+                console.log(styleText('green', 'Matched ') + matched.length + ' different value' + (matched.length === 1 ? '' : 's')
                     + (matched.length !== 1 ? ', total in use ' + total_in_use : '') + '.');
                 if (matched.length < page_width) {
                     print_values(matched);
@@ -90,7 +91,7 @@ function print_values(matched) {
     for (let i = 0; i < matched.length; i++) {
         const count = matched[i][1];
         const res   = matched[i][2];
-        console.log('Matched (count: '+ count +'): ' + res[1] + res[2].blue + res[3]);
+        console.log('Matched (count: '+ count +'): ' + res[1] + styleText('blue', res[2]) + res[3]);
     }
 }
 
