@@ -41,6 +41,7 @@ fs.readFile(json_file, 'utf8', function (err, json) {
             process.exit(0);
         }
 
+        /** @type {RegExp | false} */
         let user_re = false;
         try {
             user_re = new RegExp('^(.*?)(' + line + ')(.*)$', 'i');
@@ -49,6 +50,7 @@ fs.readFile(json_file, 'utf8', function (err, json) {
         }
 
         if (user_re !== false) {
+            /** @type {[string, number, string[]][]} */
             let matched = [];
             for (let i = 0; i < parsedJson.data.length; i++) {
                 const res = parsedJson.data[i].value.match(user_re);
@@ -87,6 +89,10 @@ fs.readFile(json_file, 'utf8', function (err, json) {
     });
 });
 
+/**
+ * Print the matched tag values.
+ * @param {[string, number, string[]][]} matched - Values, usage counts, and regex matches.
+ */
 function print_values(matched) {
     for (let i = 0; i < matched.length; i++) {
         const count = matched[i][1];
@@ -95,9 +101,14 @@ function print_values(matched) {
     }
 }
 
-// helper functions
-function Comparator(a,b){
-    if (a[1] > b[1]) return -1;
-    if (a[1] < b[1]) return 1;
+/**
+ * Sort matches by usage count in descending order.
+ * @param {[string, number, string[]]} left - First match to compare.
+ * @param {[string, number, string[]]} right - Second match to compare.
+ * @returns {number} Sort order for the two matches.
+ */
+function Comparator(left, right) {
+    if (left[1] > right[1]) return -1;
+    if (left[1] < right[1]) return 1;
     return 0;
 }
