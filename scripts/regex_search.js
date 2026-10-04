@@ -19,6 +19,11 @@ if (typeof json_file === 'undefined') {
     console.info(styleText('blue', `No JSON file specified; using default: ${json_file}`));
 }
 
+if (!fs.existsSync(json_file)) {
+    console.error(styleText('red', `JSON file not found: ${json_file}`));
+    process.exit(1);
+}
+
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
