@@ -15,10 +15,8 @@ const page_width = 20;
 const args = process.argv.splice(2);
 let json_file = args[0];
 if (typeof json_file === 'undefined') {
-    // json_file = 'export.opening_hours.json';
     json_file = 'export.opening_hours:kitchen.json';
-    // console.log('Please specify the exported JSON file form taginfo as parameter.');
-    // return;
+    console.info(styleText('blue', `No JSON file specified; using default: ${json_file}`));
 }
 
 const rl = readline.createInterface({
