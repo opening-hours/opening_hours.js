@@ -10,17 +10,17 @@ import fs from 'node:fs';
 import readline from 'node:readline';
 import { styleText } from 'node:util';
 
-const page_width = 20;
+const pageWidth = 20;
 
 const args = process.argv.splice(2);
-let json_file = args[0];
-if (typeof json_file === 'undefined') {
-    json_file = 'export.opening_hours:kitchen.json';
-    console.info(styleText('blue', `No JSON file specified; using default: ${json_file}`));
+let jsonFile = args[0];
+if (typeof jsonFile === 'undefined') {
+    jsonFile = 'export.opening_hours:kitchen.json';
+    console.info(styleText('blue', `No JSON file specified; using default: ${jsonFile}`));
 }
 
-if (!fs.existsSync(json_file)) {
-    console.error(styleText('red', `JSON file not found: ${json_file}`));
+if (!fs.existsSync(jsonFile)) {
+    console.error(styleText('red', `JSON file not found: ${jsonFile}`));
     process.exit(1);
 }
 
@@ -29,55 +29,55 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-fs.readFile(json_file, 'utf8', function (err, json) {
-    if (err) {
-        console.log('Error: ' + err);
+fs.readFile(jsonFile, 'utf8', function (error, jsonText) {
+    if (error) {
+        console.log('Error: ' + error);
         return;
     }
-    const parsedJson = JSON.parse(json);
+    const tagInfoExport = JSON.parse(jsonText);
 
     rl.setPrompt('regex search> ');
     rl.prompt();
 
-    rl.on('line', function(line) {
-        if (line.match(/^\s*$/)) {
+    rl.on('line', function(regexInput) {
+        if (regexInput.match(/^\s*$/)) {
             process.exit(0);
         }
 
         /** @type {RegExp | false} */
-        let user_re = false;
+        let userRegex = false;
         try {
-            user_re = new RegExp('^(.*?)(' + line + ')(.*)$', 'i');
-        } catch (err) {
-            console.log('Your regular expression did not compile: ' + err);
+            userRegex = new RegExp('^(.*?)(' + regexInput + ')(.*)$', 'i');
+        } catch (error) {
+            console.log('Your regular expression did not compile: ' + error);
         }
 
-        if (user_re !== false) {
+        if (userRegex !== false) {
             /** @type {[string, number, string[]][]} */
-            let matched = [];
-            for (let i = 0; i < parsedJson.data.length; i++) {
-                const res = parsedJson.data[i].value.match(user_re);
-                if (res)
-                    matched.push([parsedJson.data[i].value, parsedJson.data[i].count, res]);
+            let matches = [];
+            for (let index = 0; index < tagInfoExport.data.length; index++) {
+                const matchResult = tagInfoExport.data[index].value.match(userRegex);
+                if (matchResult)
+                    matches.push([tagInfoExport.data[index].value, tagInfoExport.data[index].count, matchResult]);
             }
 
-            if (matched.length === 0) {
-                console.log('Did not match any value with regular expression: ' + line)
+            if (matches.length === 0) {
+                console.log('Did not match any value with regular expression: ' + regexInput)
             } else {
-                matched = matched.sort(Comparator);
-                let total_in_use = 0;
-                for (let i = 0; i < matched.length; i++) {
-                    total_in_use += matched[i][1];
+                matches = matches.sort(compareByUsageCount);
+                let totalInUse = 0;
+                for (let index = 0; index < matches.length; index++) {
+                    totalInUse += matches[index][1];
                 }
 
-                console.log(styleText('green', 'Matched ') + matched.length + ' different value' + (matched.length === 1 ? '' : 's')
-                    + (matched.length !== 1 ? ', total in use ' + total_in_use : '') + '.');
-                if (matched.length < page_width) {
-                    print_values(matched);
+                console.log(styleText('green', 'Matched ') + matches.length + ' different value' + (matches.length === 1 ? '' : 's')
+                    + (matches.length !== 1 ? ', total in use ' + totalInUse : '') + '.');
+                if (matches.length < pageWidth) {
+                    printMatches(matches);
                 } else {
                     rl.question('Print values? ', function(answer) {
                         if (answer.match(/^y/i))
-                            print_values(matched);
+                            printMatches(matches);
                         else
                             rl.prompt();
                     });
@@ -94,13 +94,13 @@ fs.readFile(json_file, 'utf8', function (err, json) {
 
 /**
  * Print the matched tag values.
- * @param {[string, number, string[]][]} matched - Values, usage counts, and regex matches.
+ * @param {[string, number, string[]][]} matches - Values, usage counts, and regex matches.
  */
-function print_values(matched) {
-    for (let i = 0; i < matched.length; i++) {
-        const count = matched[i][1];
-        const res   = matched[i][2];
-        console.log('Matched (count: '+ count +'): ' + res[1] + styleText('blue', res[2]) + res[3]);
+function printMatches(matches) {
+    for (let index = 0; index < matches.length; index++) {
+        const count = matches[index][1];
+        const matchResult = matches[index][2];
+        console.log('Matched (count: '+ count +'): ' + matchResult[1] + styleText('blue', matchResult[2]) + matchResult[3]);
     }
 }
 
@@ -110,7 +110,7 @@ function print_values(matched) {
  * @param {[string, number, string[]]} right - Second match to compare.
  * @returns {number} Sort order for the two matches.
  */
-function Comparator(left, right) {
+function compareByUsageCount(left, right) {
     if (left[1] > right[1]) return -1;
     if (left[1] < right[1]) return 1;
     return 0;
