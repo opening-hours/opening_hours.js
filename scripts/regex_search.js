@@ -56,7 +56,7 @@ fs.readFile(json_file, 'utf8', function (err, json) {
                     matched.push([parsedJson.data[i].value, parsedJson.data[i].count, res]);
             }
 
-            if (matched === 0) {
+            if (matched.length === 0) {
                 console.log('Did not match any value with regular expression: ' + line)
             } else {
                 matched = matched.sort(Comparator);
