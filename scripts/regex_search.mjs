@@ -84,9 +84,10 @@ fs.readFile(jsonFile, 'utf8', function (error, jsonText) {
                     rl.question('Print values? ', function(answer) {
                         if (answer.match(/^y/i))
                             printMatches(matches);
-                        else
-                            rl.prompt();
+                        console.log();
+                        rl.prompt();
                     });
+                    return;
                 }
             }
         }
