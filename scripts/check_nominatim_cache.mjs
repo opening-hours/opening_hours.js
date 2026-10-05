@@ -68,7 +68,7 @@ for (const [countryCode, countryDefinition] of Object.entries(generatedData)) {
 if (missingFiles.length > 0) {
     console.error('Missing Nominatim cache fixtures:');
     console.error(missingFiles.join('\n'));
-    console.error('\nRun from src/holidays: node populate_nominatim_cache.js --input-file <country>.yaml');
+    console.error('\nRun from src/holidays: node populate_nominatim_cache.mjs --input-file <country>.yaml');
     process.exitCode = 1;
 } else {
     console.log('All _nominatim_url entries have a matching cache fixture.');
