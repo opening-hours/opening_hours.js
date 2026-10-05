@@ -710,7 +710,7 @@ This project has become so complex that development without extensive testing wo
 
 ### Regression testing
 
-A node.js based test framework is bundled. You can run it with `node test/test.js` or with `make check-full`. Note that the number of lines of the test framework almost match up with the number of lines of the actual implementation :)
+A node.js based test framework is bundled. You can run it with `node test/test.mjs` or with `make check-full`. Note that the number of lines of the test framework almost match up with the number of lines of the actual implementation :)
 
 Included in the `test` directory are the log outputs of the previous testing runs. By comparing to these logs and assuming that the checked-in logs are always passing, it allows the developer to validate if the number of passed tests have changed since the last feature implementation.
 

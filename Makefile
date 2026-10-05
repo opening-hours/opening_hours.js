@@ -186,10 +186,10 @@ check-all-lang-diff:
 check-opening_hours.js:
 check-opening_hours.min.js:
 
-check-diff-%: build/% test/test.js
+check-diff-%: build/% test/test.mjs
 	@rm -rf "test/test.$(CHECK_LANG).log"
 	@echo "Testing to reproduce test/test.$(CHECK_LANG).log using $<."
-	@FORCE_COLOR=true $(NODEJS) test/test.js --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
+	@FORCE_COLOR=true $(NODEJS) test/test.mjs --library-file "$<" --locale $(CHECK_LANG) 1> test/test.$(CHECK_LANG).log 2>&1 || true; \
 	if git diff --quiet --exit-code HEAD -- "test/test.$(CHECK_LANG).log"; then \
 		echo "Test results for $< ($(CHECK_LANG)) are exactly the same as on development system. So far, so good ;)"; \
 	else \
@@ -197,8 +197,8 @@ check-diff-%: build/% test/test.js
 	fi
 	@sh -c 'git --no-pager diff --exit-code -- "test/test.$(CHECK_LANG).log"'
 
-check-o%.js: build/o%.js test/test.js
-	$(NODEJS) test/test.js --library-file "$<"
+check-o%.js: build/o%.js test/test.mjs
+	$(NODEJS) test/test.mjs --library-file "$<"
 
 
 .PHONY: osm-tag-data-taginfo-check

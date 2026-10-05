@@ -198,6 +198,6 @@ Thank you for contributing!
 [ohlib.github]: https://github.com/opening-hours/opening_hours.js
 [ohlib.makefile]: Makefile
 [ohlib.opening_hours.js]: src/index.js
-[ohlib.test.js]: test/test.js
+[ohlib.test.js]: test/test.mjs
 [ohlib.testing]: README.md#testing
 [site/index.html]: site/index.html

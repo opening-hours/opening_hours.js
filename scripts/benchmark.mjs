@@ -46,7 +46,7 @@ const tests = 3;
 let iterations = 2000;
 
 // Pinned to this value:
-// Does differ from the optimal value. See test.js: value_perfectly_valid
+// Does differ from the optimal value. See test.mjs: value_perfectly_valid
 const test_value = 'Mo,Tu,Th,Fr 12:00-18:00; Sa 12:00-17:00; Th[3] off; Th[-1] off';
 
 console.log('Construction:');
