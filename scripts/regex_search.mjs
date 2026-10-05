@@ -37,8 +37,8 @@ const rl = readline.createInterface({
 
 fs.readFile(jsonFile, 'utf8', function (error, jsonText) {
     if (error) {
-        console.log('Error: ' + error);
-        return;
+        console.error(styleText('red', `Error: ${error.message}`));
+        process.exit(1);
     }
     const tagInfoExport = JSON.parse(jsonText);
 
