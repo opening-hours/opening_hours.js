@@ -224,8 +224,8 @@ check-package.json: package.json
 	./node_modules/.bin/package-json-validator-cli --warnings --recommendations --filename "$<"
 
 .PHONY: check-holidays
-check-holidays: scripts/PH_SH_exporter.js
-	"$<" --from 2021 --to 2021 /tmp/out --public-holidays --verbose --all-locations
+check-holidays: scripts/PH_SH_exporter.mjs
+	$(NODEJS) "$<" --from 2021 --to 2021 /tmp/out --public-holidays --verbose --all-locations
 
 .PHONY: check-holiday-state-codes
 check-holiday-state-codes: scripts/check_holiday_state_codes.mjs
