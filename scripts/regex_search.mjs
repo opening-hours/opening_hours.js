@@ -10,6 +10,12 @@ import fs from 'node:fs';
 import readline from 'node:readline';
 import { styleText } from 'node:util';
 
+/**
+ * @typedef {object} Match
+ * @property {number} count - Usage count of the value.
+ * @property {string[]} matchResult - Regex groups: before, match, after.
+ */
+
 const pageWidth = 20;
 
 const args = process.argv.splice(2);
@@ -53,12 +59,12 @@ fs.readFile(jsonFile, 'utf8', function (error, jsonText) {
         }
 
         if (userRegex !== false) {
-            /** @type {[string, number, string[]][]} */
+            /** @type {Match[]} */
             let matches = [];
-            for (let index = 0; index < tagInfoExport.data.length; index++) {
-                const matchResult = tagInfoExport.data[index].value.match(userRegex);
+            for (const entry of tagInfoExport.data) {
+                const matchResult = entry.value.match(userRegex);
                 if (matchResult)
-                    matches.push([tagInfoExport.data[index].value, tagInfoExport.data[index].count, matchResult]);
+                    matches.push({ count: entry.count, matchResult });
             }
 
             if (matches.length === 0) {
@@ -66,8 +72,8 @@ fs.readFile(jsonFile, 'utf8', function (error, jsonText) {
             } else {
                 matches = matches.sort(compareByUsageCount);
                 let totalInUse = 0;
-                for (let index = 0; index < matches.length; index++) {
-                    totalInUse += matches[index][1];
+                for (const match of matches) {
+                    totalInUse += match.count;
                 }
 
                 console.log(styleText('green', 'Matched ') + matches.length + ' different value' + (matches.length === 1 ? '' : 's')
@@ -94,24 +100,20 @@ fs.readFile(jsonFile, 'utf8', function (error, jsonText) {
 
 /**
  * Print the matched tag values.
- * @param {[string, number, string[]][]} matches - Values, usage counts, and regex matches.
+ * @param {Match[]} matches - Matches to print.
  */
 function printMatches(matches) {
-    for (let index = 0; index < matches.length; index++) {
-        const count = matches[index][1];
-        const matchResult = matches[index][2];
+    for (const { count, matchResult } of matches) {
         console.log('Matched (count: '+ count +'): ' + matchResult[1] + styleText('blue', matchResult[2]) + matchResult[3]);
     }
 }
 
 /**
  * Sort matches by usage count in descending order.
- * @param {[string, number, string[]]} left - First match to compare.
- * @param {[string, number, string[]]} right - Second match to compare.
+ * @param {Match} left - First match to compare.
+ * @param {Match} right - Second match to compare.
  * @returns {number} Sort order for the two matches.
  */
 function compareByUsageCount(left, right) {
-    if (left[1] > right[1]) return -1;
-    if (left[1] < right[1]) return 1;
-    return 0;
+    return right.count - left.count;
 }
