@@ -9,14 +9,14 @@ import resources from './translations.yaml';
  * Replace `{{varName}}` (or `{{-varName}}`) placeholders in a translation string.
  * The `-` prefix is a legacy i18next no-HTML-escape marker; it has no effect here.
  * @param {string} str  - Translation string containing `{{…}}` placeholders.
- * @param {object} vars - Map of placeholder names to replacement values.
+ * @param {Record<string, unknown>} vars - Map of placeholder names to replacement values.
  * @returns {string} The interpolated translation string.
  */
 function interpolate(str, vars) {
     return str.replace(/{{-?([^{}]*)}}/g, function(match, varName) {
         const name = varName.trim();
         if (name in vars) {
-            return vars[name];
+            return String(vars[name]);
         }
         return match;
     });
@@ -49,49 +49,26 @@ function baseLanguage(locale) {
 function localeChain(locale) {
     const base = baseLanguage(locale);
     // Deduplicate entries like ['de', 'de', 'en'] or ['en', 'en'].
-    return [...new Set([locale, base, 'en'].filter(Boolean))];
-}
-
-/**
- * Walk the resource tree for the first locale in the fallback chain that has
- * a translation for the given key.
- *
- * Tree shape: resources[locale][section][…key segments]
- * @param {string|null|undefined} locale  - BCP 47 locale tag.
- * @param {string}                section - 'texts' or 'pretty'.
- * @param {string}                key     - Translation key (dot-separated for nesting).
- * @returns {string|object|undefined} Matched value, or `undefined` if not found anywhere in the chain.
- */
-function lookup(locale, section, key) {
-    const keyPath = key.split('.');
-    for (const loc of localeChain(locale)) {
-        let value = resources[loc]?.[section];
-        for (const segment of keyPath) value = value?.[segment];
-        // Return as soon as we find a value defined by the resource tree.
-        if (value !== undefined) return value;
-    }
-    return undefined;
+    const locales = locale ? [locale, base, 'en'] : [base, 'en'];
+    return [...new Set(locales)];
 }
 
 /**
  * Translate a key into the requested locale, falling back through the locale
  * chain to English. Returns the key itself when no translation is found.
- * @param {string|null|undefined} locale  - BCP 47 locale tag (e.g. 'de', 'de-DE').
- * @param {string}                section - 'texts' (error/warning messages) or
- *                                          'pretty' (prettified output tokens).
- * @param {string}                key     - Translation key (dot-separated for nesting).
- * @param {object}               [vars]   - Variables to interpolate via `{{varName}}`.
+ * @param {string|null|undefined} locale   - BCP 47 locale tag (e.g. 'de', 'de-DE').
+ * @param {string}                section  - 'texts' (error/warning messages) or
+ *                                           'pretty' (prettified output tokens).
+ * @param {string}                key      - Translation key.
+ * @param {Record<string, unknown>} [vars] - Variables to interpolate via `{{varName}}`.
  * @returns {string} The translated string, or the key when no translation exists.
  */
 export function translate(locale, section, key, vars) {
-    const result = lookup(locale, section, key);
-
-    if (typeof result === 'string') {
-        if (vars) {
-            return interpolate(result, vars);
+    for (const loc of localeChain(locale)) {
+        const result = resources[loc]?.[section]?.[key];
+        if (typeof result === 'string') {
+            return vars ? interpolate(result, vars) : result;
         }
-        return result;
     }
-
     return key;
 }

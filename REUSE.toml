@@ -21,6 +21,7 @@ path = [
   "types/index.d.ts",
   "types/js-yaml.d.ts",
   "types/yargs.d.ts",
+  "types/yaml.d.ts",
 ]
 SPDX-FileCopyrightText = "opening_hours.js contributors"
 SPDX-License-Identifier = "CC0-1.0"
