@@ -12,12 +12,10 @@
  * `--input-file` to process one country definition at a time.
  */
 
-'use strict';
-
-const fs = require('node:fs');
-const path = require('node:path');
-const https = require('node:https');
-const YAML = require('yaml');
+import fs from 'node:fs';
+import path from 'node:path';
+import https from 'node:https';
+import YAML from 'yaml';
 
 /** @typedef {Record<string, unknown>} JsonObject */
 /** @typedef {{delay: number, inputFile: string|null, overwrite: boolean, verbose: boolean}} Options */

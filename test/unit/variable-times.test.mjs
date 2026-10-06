@@ -11,7 +11,7 @@ import {
 } from '../../src/variable-times.mjs';
 
 // Fixed process time zone so these tests are deterministic regardless of
-// where they are run, matching the convention used by test/test.js.
+// where they are run, matching the convention used by test/test.mjs.
 process.env.TZ = 'Europe/Berlin';
 
 const singapore = { lat: 1.340, lon: 103.821 };

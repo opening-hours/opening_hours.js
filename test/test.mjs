@@ -33,12 +33,19 @@
  *     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
+import { styleText } from 'node:util';
+import timekeeper from 'timekeeper';
+import YAML from 'yaml';
+import fs, { globSync } from 'node:fs';
+
 // preamble {{{
 
 /* Parameter handling {{{ */
 const argv = (() => {
     const args = process.argv.slice(2);
-    const result = { 'library-file': './opening_hours.js', locale: 'en', help: false };
+    const result = { 'library-file': 'build/opening_hours.esm.mjs', locale: 'en', help: false };
     for (let i = 0; i < args.length; i++) {
         const key = args[i].replace(/^--?/, '');
         const val = args[i + 1] && !args[i + 1].startsWith('-') ? args[++i] : true;
@@ -50,22 +57,15 @@ const argv = (() => {
 })();
 
 if (argv.help) {
-    console.log('Usage: test.js [optional parameters]');
+    console.log('Usage: test.mjs [optional parameters]');
     console.log('  -f, --library-file  File path to the opening_hours.js library file to run the tests against.');
     console.log('  -l, --locale        Locale for error/warning messages and prettified values.');
     process.exit(0);
 }
 /* }}} */
 
-/* Required modules {{{ */
-const {resolve} = require('path')
-const opening_hours = require(resolve(argv['library-file']));
-const { styleText } = require('node:util');
-const timekeeper    = require('timekeeper');
-const glob          = require('glob');
-const YAML          = require('yaml');
-const fs            = require('fs');
-/* }}} */
+// Dynamic because the library file to test is chosen on the command line.
+const { default: opening_hours } = await import(pathToFileURL(resolve(argv['library-file'])).href);
 
 // Text style helpers using built-in util.styleText (Node >= 20.12)
 const c = {
@@ -99,7 +99,7 @@ const EXPECTED_OPEN_END_MESSAGE = argv.locale === 'de'
 // Nominatim data {{{
 
 const nominatim_by_loc = {};
-for (const nominatim_file of glob.sync('src/holidays/nominatim_cache/*.yaml')) {
+for (const nominatim_file of globSync('src/holidays/nominatim_cache/*.yaml')) {
     const country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
     nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, 'utf8'));
 }

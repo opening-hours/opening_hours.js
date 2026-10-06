@@ -22,15 +22,16 @@
  * }}} */
 
 /* Required modules {{{ */
-const opening_hours = require('../build/opening_hours.js');
-const fs            = require('node:fs');
-const glob          = require('glob');
-const YAML          = require('yaml');
+import openingHours from '../build/opening_hours.esm.mjs';
+import fs, { globSync } from 'node:fs';
+import YAML from 'yaml';
 /* }}} */
 
 /* Parameter handling {{{ */
-const { hideBin } = require('yargs/helpers');
-const yargs = require('yargs')(hideBin(process.argv))
+import yargs from 'yargs/yargs';
+import { hideBin } from 'yargs/helpers';
+
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 export_list.conf')
     .describe('h', 'Display the usage')
     .describe('v', 'Verbose output')
@@ -61,10 +62,10 @@ const yargs = require('yargs')(hideBin(process.argv))
     .alias('o', 'omit-date-hyphens')
     .help(false);
 
-const argv = yargs.parse();
+const argv = cli.parse();
 
 if (argv.help || argv._.length === 0) {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 
@@ -78,7 +79,7 @@ if (!(argv['public-holidays'] || argv['school-holidays'] || argv['all-locations'
     process.exit(1);
 }
 const nominatim_by_loc = {};
-for (const nominatim_file of glob.sync('src/holidays/nominatim_cache/*.yaml')) {
+for (const nominatim_file of globSync('src/holidays/nominatim_cache/*.yaml')) {
     const country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
     nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, 'utf8'));
 }
@@ -114,7 +115,7 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
 
     let oh;
     try {
-        oh = new opening_hours(oh_value, nominatim_data);
+        oh = new openingHours(oh_value, nominatim_data);
     } catch (err) {
         let error_message = 'Error creating new opening_hours(\'' + oh_value + '\', ' + JSON.stringify(nominatim_data) + '): ';
         error_message += 'Error: ' + err + '. Please file an issue at https://github.com/opening-hours/opening_hours.js/issues';

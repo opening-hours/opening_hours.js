@@ -74,7 +74,7 @@ check the [Nominatim cache fixtures][ohlib.docs.nominatim-cache].
 Please consider adding a test (with a time range of one year for example) to see if everything works as expected and to ensure that it will stay that way.
 See under [testing][ohlib.testing].
 
-In case your holiday definition does only change the `holiday_definitions` variable (and not core code) it is also ok to test the definition using the `scripts/PH_SH_exporter.js` script. In that case writing a test is not required but still appreciated. Example: `./scripts/PH_SH_exporter.js --verbose --from=2016 --to=2016 --public-holidays --country dk --state dk /tmp/dk_holidays.txt`
+In case your holiday definition does only change the `holiday_definitions` variable (and not core code) it is also ok to test the definition using the `scripts/PH_SH_exporter.mjs` script. In that case writing a test is not required but still appreciated. Example: `node ./scripts/PH_SH_exporter.mjs --verbose --from=2026 --to=2026 --public-holidays --country dk --state dk /tmp/dk_holidays.txt`
 
 ## Core Code Contributions
 
@@ -198,6 +198,6 @@ Thank you for contributing!
 [ohlib.github]: https://github.com/opening-hours/opening_hours.js
 [ohlib.makefile]: Makefile
 [ohlib.opening_hours.js]: src/index.js
-[ohlib.test.js]: test/test.js
+[ohlib.test.js]: test/test.mjs
 [ohlib.testing]: README.md#testing
 [site/index.html]: site/index.html
