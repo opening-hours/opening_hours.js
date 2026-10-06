@@ -39,54 +39,101 @@
 
 import { normalizeToken } from './normalize.mjs';
 
+/** @typedef {'weekday'|'month'} TokenType */
+/** @typedef {'silent'|'info'|'warning'|'error'} Confidence */
+/** @typedef {{ type: TokenType, meaning: string, lang: string }} Candidate */
+/** @typedef {{ canonical: Record<TokenType, Record<string, string>>, universal: Record<TokenType, Record<string, string>>, crossLocale: Record<string, Candidate[]> }} Layers */
+/** @typedef {{ raw: string, token: string, type: TokenType }} TokenBase */
+/** @typedef {TokenBase & { kind: 'canonical', meaning: string, lang: null, layer: 0, confidence: 'silent', candidates: null, message: null }} CanonicalToken */
+/** @typedef {TokenBase & { kind: 'universal', meaning: string, lang: null, layer: 2, confidence: 'info', candidates: null, message: null }} UniversalToken */
+/** @typedef {TokenBase & { kind: 'foreign', meaning: string|null, lang: string|null, layer: 3|null, confidence: 'info'|'warning'|'error', candidates: Candidate[], message: string|null, alternatives?: { meaning: string, langs: string[] }[] }} ForeignToken */
+/** @typedef {TokenBase & { kind: 'unknown', meaning: null, lang: null, layer: null, confidence: 'error', candidates: null, message: string }} UnknownToken */
+/** @typedef {CanonicalToken|UniversalToken|ForeignToken|UnknownToken} ResolvedToken */
+
+/** @type {Record<Confidence, number>} */
 const SEVERITY = { silent: 0, info: 1, warning: 2, error: 3 };
+/** @type {Confidence[]} */
 const SEVERITY_NAME = ['silent', 'info', 'warning', 'error'];
 
+/** @type {Record<TokenType, string>} */
 const CANONICAL_HINT = {
     weekday: 'Mo, Tu, We, Th, Fr, Sa, Su',
     month: 'Jan, Feb, Mar, … Dec',
 };
 
+/**
+ * Pass A: classify one lexeme by layer.
+ * @param {string} raw - Lexeme as written.
+ * @param {TokenType} type - Expected grammatical type.
+ * @param {Layers} layers - Generated layer data.
+ * @returns {ResolvedToken} Classified token.
+ */
 function classify(raw, type, layers) {
     const token = normalizeToken(raw);
-    const result = {
-        raw, token, type, meaning: null, lang: null, layer: null,
-        kind: 'unknown', confidence: 'error', candidates: null, message: null,
-    };
+    const base = { raw, token, type };
 
     if (token in layers.canonical[type]) {
-        return Object.assign(result, {
-            meaning: layers.canonical[type][token], layer: 0, kind: 'canonical', confidence: 'silent',
-        });
+        return {
+            ...base,
+            meaning: layers.canonical[type][token], lang: null, layer: 0,
+            kind: 'canonical', confidence: 'silent', candidates: null, message: null,
+        };
     }
 
     if (token in layers.universal[type]) {
-        return Object.assign(result, {
-            meaning: layers.universal[type][token], layer: 2, kind: 'universal', confidence: 'info',
-        });
+        return {
+            ...base,
+            meaning: layers.universal[type][token], lang: null, layer: 2,
+            kind: 'universal', confidence: 'info', candidates: null, message: null,
+        };
     }
 
     // Layer 3: only candidates matching the grammatically expected type.
     const candidates = (layers.crossLocale[token] || []).filter(candidate => candidate.type === type);
     if (candidates.length) {
-        return Object.assign(result, { kind: 'foreign', candidates });
+        return {
+            ...base,
+            meaning: null, lang: null, layer: null,
+            kind: 'foreign', confidence: 'error', candidates, message: null,
+        };
     }
 
-    result.message = `Unknown ${type} token "${raw}".`;
-    return result;
+    return {
+        ...base,
+        meaning: null, lang: null, layer: null,
+        kind: 'unknown', confidence: 'error', candidates: null,
+        message: `Unknown ${type} token "${raw}".`,
+    };
 }
 
+/**
+ * @param {Candidate[]} candidates - Candidates of one token.
+ * @returns {string|null} The single shared meaning, or null if ambiguous.
+ */
 function uniqueMeaning(candidates) {
     const meanings = new Set(candidates.map(candidate => candidate.meaning));
     return meanings.size === 1 ? [...meanings][0] : null;
 }
 
+/**
+ * @param {Candidate[]} candidates - Candidates of one token.
+ * @returns {string} Human-readable list of meanings and languages.
+ */
 function candidateSummary(candidates) {
     return candidates
         .map(candidate => `${candidate.meaning} (${candidate.lang})`)
         .join(', ');
 }
 
+/**
+ * Pass B: resolve one foreign token using the locale, region and neighbours.
+ * @param {ForeignToken} token - Token classified as foreign; updated in place.
+ * @param {ForeignToken[]} allForeign - All foreign tokens of the range.
+ * @param {string} localeLang - Base language of the active locale.
+ * @param {Set<string>|undefined} regionLangs - Plausible languages of the POI's country.
+ * @param {boolean} hasAnchor - Whether the range contains canonical or universal tokens.
+ * @returns {ForeignToken} The same token.
+ */
 function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
     const candidates = token.candidates;
 
@@ -145,7 +192,11 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
     if (!hasAnchor) {
         const meaning = uniqueMeaning(candidates);
         if (meaning) {
-            const lang = candidates.find(candidate => candidate.meaning === meaning).lang;
+            const candidate = candidates.find(candidate => candidate.meaning === meaning);
+            if (!candidate) {
+                throw new Error(`No candidate found for unique meaning "${meaning}".`);
+            }
+            const lang = candidate.lang;
             return Object.assign(token, {
                 meaning, lang, layer: 3, confidence: 'warning',
                 message: `Interpreted "${token.raw}" as ${meaning} (${lang}); non-English value without a set locale or location.`,
@@ -167,8 +218,8 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
 /**
  * Resolve a sequence of raw lexemes of a single grammatical type.
  * @param {string[]} rawTokens - e.g. ['Mo', 'Tr'] for `Mo-Tr`, ['Jan', 'Mär'] for `Jan-Mär`.
- * @param {{ locale: string, type: 'weekday'|'month', layers: object, regionLangs?: Set<string> }} options - Locale and resolver data.
- * @returns {{ ok: boolean, confidence: string, tokens: object[] }} Resolved tokens and overall confidence.
+ * @param {{ locale: string, type: TokenType, layers: Layers, regionLangs?: Set<string> }} options - Locale and resolver data.
+ * @returns {{ ok: boolean, confidence: Confidence, tokens: ResolvedToken[] }} Resolved tokens and overall confidence.
  */
 export function resolveRange(rawTokens, { locale, type, layers, regionLangs }) {
     const localeLang = String(locale || '').split('-')[0].toLowerCase();
@@ -187,13 +238,12 @@ export function resolveRange(rawTokens, { locale, type, layers, regionLangs }) {
         // For an accepted but cross-locale ambiguous token, record the alternative
         // meanings (and the languages that use them) so the caller can warn that the
         // same lexeme means something else elsewhere.
-        if (token.meaning && token.confidence !== 'error' && Array.isArray(token.candidates)) {
+        if (token.kind === 'foreign' && token.meaning && token.confidence !== 'error') {
+            /** @type {Map<string, Set<string>>} */
             const byMeaning = new Map();
             for (const candidate of token.candidates) {
-                if (!byMeaning.has(candidate.meaning)) {
-                    byMeaning.set(candidate.meaning, new Set());
-                }
-                byMeaning.get(candidate.meaning).add(candidate.lang);
+                const langs = byMeaning.get(candidate.meaning) ?? new Set();
+                byMeaning.set(candidate.meaning, langs.add(candidate.lang));
             }
             if (byMeaning.size > 1) {
                 token.alternatives = [...byMeaning.entries()]
