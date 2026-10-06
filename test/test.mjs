@@ -37,9 +37,8 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { styleText } from 'node:util';
 import timekeeper from 'timekeeper';
-import { globSync } from 'glob';
 import YAML from 'yaml';
-import fs from 'node:fs';
+import fs, { globSync } from 'node:fs';
 
 // preamble {{{
 

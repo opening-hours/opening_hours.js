@@ -23,8 +23,7 @@
 
 /* Required modules {{{ */
 import openingHours from '../build/opening_hours.esm.mjs';
-import fs from 'node:fs';
-import { globSync } from 'glob';
+import fs, { globSync } from 'node:fs';
 import YAML from 'yaml';
 /* }}} */
 
