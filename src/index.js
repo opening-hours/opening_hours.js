@@ -45,6 +45,7 @@ import resolver_layers from './locale-resolver/layers.json';
 /** @type {import('./holidays/holiday-definitions.d.ts').HolidayDefinitions} */
 const holidayDefinitions = holiday_definitions;
 /** @typedef {import('./holidays/holiday-definitions.d.ts').HolidayItem} HolidayItem */
+/** @typedef {import('opening_hours').nominatim_object} NominatimObject */
 
 /**
  * Resolve a state name from ISO3166-2 fields in a Nominatim address.
@@ -123,7 +124,7 @@ function getStateFromAddress(address, countryCode) {
 /**
  * Creates an opening hours parser for an OSM opening-hours value.
  * @param {string} value The opening-hours value to parse.
- * @param {object|null} [nominatim_object] Location and address data used for holidays and solar times.
+ * @param {NominatimObject|null} [nominatim_object] Location and address data used for holidays and solar times.
  * @param {number|object} [optional_conf_parm] Parser mode or parser configuration.
  */
 export default function(value, nominatim_object, optional_conf_parm) {

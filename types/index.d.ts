@@ -113,11 +113,13 @@ declare module 'opening_hours' {
   }
 
   export interface nominatim_object {
-    lat: number
-    lon: number
-    address: {
-      country_code: string
-      state: string
+    lat?: string
+    lon?: string
+    address?: {
+      country_code?: string
+      state?: string
+      county?: string
+      [key: string]: unknown
     }
   }
 

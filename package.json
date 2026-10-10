@@ -9,9 +9,9 @@
   "sideEffects": false,
   "exports": {
     ".": {
+      "types": "./types/index.d.ts",
       "import": "./build/opening_hours.esm.mjs",
-      "require": "./build/opening_hours.js",
-      "types": "./types/index.d.ts"
+      "require": "./build/opening_hours.js"
     },
     "./package.json": "./package.json"
   },
