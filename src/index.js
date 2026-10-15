@@ -42,6 +42,10 @@ import { regionLanguages } from './locale-resolver/region-languages.mjs';
 import { normalizeToken } from './locale-resolver/normalize.mjs';
 import resolver_layers from './locale-resolver/layers.json';
 
+/** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
+/** @typedef {import('./parser-token-types.d.ts').ParserTokenRule} ParserTokenRule */
+/** @typedef {import('./parser-token-types.d.ts').NumberParserToken | import('./parser-token-types.d.ts').NumericRangeParserToken} NumericParserTokenValue */
+
 /** @type {import('./holidays/holiday-definitions.d.ts').HolidayDefinitions} */
 const holidayDefinitions = holiday_definitions;
 /** @typedef {import('./holidays/holiday-definitions.d.ts').HolidayItem} HolidayItem */
@@ -376,10 +380,39 @@ export default function(value, nominatim_object, optional_conf_parm) {
         throw t('nothing');
     }
 
-    /** @typedef {[number|string, string, number] & { single_digit_lexeme?: boolean, meridian?: string }} ParserToken */
-    /** @typedef {[Array<ParserToken>, boolean, number?]} ParserTokenRule */
     /** @typedef {[number, number]} TokenOffset */
     /** @typedef {[TokenOffset|undefined, TokenOffset|undefined]} OptionalRangeValues */
+
+    /**
+     * Check whether a parser token carries a numeric value.
+     * @param {unknown} token Token to inspect.
+     * @returns {token is NumericParserTokenValue} Whether the token value is numeric.
+     */
+    const isNumericParserToken = (token) => Array.isArray(token)
+        && typeof token[0] === 'number'
+        && (token[1] === 'number' || token[1] === 'year' || token[1] === 'month' || token[1] === 'weekday');
+    /**
+     * Narrow a token after matchTokens validated its numeric kind and value.
+     * @param {ParserToken} token Parser token matched as numeric.
+     * @returns {NumericParserTokenValue} The numeric token.
+     */
+    const asNumericParserToken = (token) => {
+        if (isNumericParserToken(token)) {
+            return token;
+        }
+        throw formatLibraryBugMessage();
+    };
+    /**
+     * Return one numeric parser token at a parser boundary.
+     * @param {ParserToken[]} tokenList Parser tokens.
+     * @param {number} at Token position.
+     * @returns {NumericParserTokenValue|undefined} Numeric token.
+     */
+    const getMatchingNumericParserToken = (tokenList, at) => {
+        const token = tokenList[at];
+        return token && isNumericParserToken(token) ? token : undefined;
+    };
+
     const parsing_warnings = []; // Elements are arrays [nrule, at, type, message, tokens_to_use?] fed into formatWarnErrorMessage().
     let done_with_warnings = false; // The functions which returns warnings can be called multiple times.
     let done_with_selector_reordering = false;
@@ -1770,10 +1803,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
         if (!matchTokens(tokens, at, 'month', 'number', '-', 'month', 'number'))
             return false;
 
-        const from_month = tokens[at][0];
-        const from_day = tokens[at + 1][0];
-        const to_month = tokens[at + 3][0];
-        const to_day = tokens[at + 4][0];
+        const from_month = asNumericParserToken(tokens[at])[0];
+        const from_day = asNumericParserToken(tokens[at + 1])[0];
+        const to_month = asNumericParserToken(tokens[at + 3])[0];
+        const to_day = asNumericParserToken(tokens[at + 4])[0];
 
         if (!(from_month === 0 && from_day === 1 && to_month === 11 && to_day === 31))
             return false;
@@ -1966,15 +1999,28 @@ export default function(value, nominatim_object, optional_conf_parm) {
         for (; at < tokens.length; at++) {
             if (matchTokens(tokens, at, 'number', '-', 'number')) {
                 // Number range
-                func(tokens[at][0], tokens[at+2][0], at);
+                const from_token = getMatchingNumericParserToken(tokens, at);
+                const to_token = getMatchingNumericParserToken(tokens, at+2);
+                if (!from_token || !to_token) {
+                    throw formatLibraryBugMessage();
+                }
+                func(from_token[0], to_token[0], at);
                 at += 3;
             } else if (matchTokens(tokens, at, '-', 'number')) {
                 // Negative number
-                func(-tokens[at+1][0], -tokens[at+1][0], at);
+                const number_token = getMatchingNumericParserToken(tokens, at+1);
+                if (!number_token) {
+                    throw formatLibraryBugMessage();
+                }
+                func(-number_token[0], -number_token[0], at);
                 at += 2;
             } else if (matchTokens(tokens, at, 'number')) {
                 // Single number
-                func(tokens[at][0], tokens[at][0], at);
+                const number_token = getMatchingNumericParserToken(tokens, at);
+                if (!number_token) {
+                    throw formatLibraryBugMessage();
+                }
+                func(number_token[0], number_token[0], at);
                 at++;
             } else {
                 throw formatWarnErrorMessage(nrule, at + matchTokens(tokens, at, '-'),
@@ -2107,10 +2153,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
         /** @type {(token: ParserToken, hour: number) => boolean} */
         const is_ambiguous_hour = (token, hour) =>
             token.single_digit_lexeme === true && token.meridian === undefined && hour < 12;
-        const start_hour = tokens[start_at][0];
-        const end_hour = tokens[end_at][0];
+        const start_token = getMatchingNumericParserToken(tokens, start_at);
+        const end_token = getMatchingNumericParserToken(tokens, end_at);
+        if (!end_token) {
+            throw formatLibraryBugMessage();
+        }
+        const end_hour = end_token[0];
         const end_hour_is_ambiguous = is_ambiguous_hour(tokens[end_at], end_hour);
-        const start_hour_is_ambiguous = is_ambiguous_hour(tokens[start_at], start_hour);
+        const start_hour_is_ambiguous = start_token !== undefined
+            && is_ambiguous_hour(tokens[start_at], start_token[0]);
         const end_has_implicit_pm = tokens[end_at].meridian === 'pm';
         const should_warn_start = start_hour_is_ambiguous &&
             (end_hour_is_ambiguous || end_has_implicit_pm);
@@ -2121,7 +2172,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         const ambiguous_hours = [];
         if (should_warn_start) {
-            ambiguous_hours.push([start_at, start_hour]);
+            ambiguous_hours.push([start_at, start_token[0]]);
         }
         if (end_hour_is_ambiguous) {
             ambiguous_hours.push([end_at, end_hour]);
@@ -2250,7 +2301,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         point_in_time_period = getMinutesByHoursMinutes(tokens, nrule, at + 1);
                         at += 4;
                     } else { // /minutes
-                        point_in_time_period = tokens[at + 1][0];
+                        point_in_time_period = asNumericParserToken(tokens[at + 1])[0];
                         at += 2;
                         if (matchTokens(tokens, at, 'timesep'))
                             throw formatWarnErrorMessage(nrule, at,
@@ -2436,13 +2487,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
 
             } else if (matchTokens(tokens, at, 'number', '-', 'number')) { // "Mo 09-18" (Please don’t use this) -> "Mo 09:00-18:00".
-                minutes_from = tokens[at][0]   * 60;
-                minutes_to   = tokens[at+2][0] * 60;
+                const from_hour = asNumericParserToken(tokens[at])[0];
+                const to_hour = asNumericParserToken(tokens[at+2])[0];
+                minutes_from = from_hour * 60;
+                minutes_to   = to_hour * 60;
                 warnAmbiguousSingleDigitHours(tokens, at, at + 2, nrule);
                 if (!done_with_warnings) {
                     parsing_warnings.push([nrule, at + 2, 'without_minutes', t('without minutes', {
-                        'syntax': (tokens[at][0]   < 10 ? '0' : '') + tokens[at][0]   + ':00-'
-                                + (tokens[at+2][0] < 10 ? '0' : '') + tokens[at+2][0] + ':00'
+                        'syntax': (from_hour < 10 ? '0' : '') + from_hour + ':00-'
+                                + (to_hour < 10 ? '0' : '') + to_hour + ':00'
                     })]);
                 }
 
@@ -2527,10 +2580,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @returns {number} Time in minutes.
      */
     function getMinutesByHoursMinutes(tokens, nrule, at) {
-        if (tokens[at+2][0] > 59)
+        const hour = asNumericParserToken(tokens[at])[0];
+        const minute = asNumericParserToken(tokens[at+2])[0];
+        if (minute > 59)
             throw formatWarnErrorMessage(nrule, at+2,
                     'Minutes are greater than 59.');
-        return tokens[at][0] * 60 + tokens[at+2][0];
+        return hour * 60 + minute;
     }
     /* }}} */
 
@@ -2557,7 +2612,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
             } else if (matchTokens(tokens, at+3, 'number') && matchTokens(tokens, at+4, ')')) {
                 // User likely meant hours without minutes, e.g. (sunset-1) instead of (sunset-01:00)
-                const hours = ('0' + tokens[at+3][0]).slice(-2);
+                const hours = ('0' + asNumericParserToken(tokens[at+3])[0]).slice(-2);
                 const suggestion = '(' + tokens[at+1][0] + tokens[at+2][0] + hours + ':00)';
                 throw formatWarnErrorMessage(nrule, at+3,
                     t('time offset hours only', { suggestion: suggestion }));
@@ -2717,7 +2772,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                         // we're after target day, set check date to next month
                         return [false, start_of_next_month];
-                    }}(tokens[at][0], numbers[numberIndex], add_days[0]));
+                    }}(asNumericParserToken(tokens[at])[0], numbers[numberIndex], add_days[0]));
                 }
 
                 at = endat + 1 + add_days[1];
@@ -2725,8 +2780,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 // Single weekday (Mo) or weekday range (Mo-Fr)
                 const is_range = matchTokens(tokens, at+1, '-', 'weekday');
 
-                let weekday_from = tokens[at][0];
-                let weekday_to = is_range ? tokens[at+2][0] : weekday_from;
+                let weekday_from = asNumericParserToken(tokens[at])[0];
+                let weekday_to = is_range ? asNumericParserToken(tokens[at+2])[0] : weekday_from;
 
                 let inside = true;
 
@@ -2800,10 +2855,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
         add_days[0] = matchTokens(tokens, at, '+') || (matchTokens(tokens, at, '-') ? -1 : 0);
         if (add_days[0] !== 0 && matchTokens(tokens, at+1, 'number', 'calcday')) {
             // continues with '+ 5 days' or something like that
-            if (tokens[at+1][0] > max_differ)
+            const days_token = getMatchingNumericParserToken(tokens, at+1);
+            if (!days_token) {
+                throw formatLibraryBugMessage();
+            }
+            if (days_token[0] > max_differ)
                 throw formatWarnErrorMessage(nrule, at+2,
                     t('max differ', {'maxdiffer': max_differ, 'name': t(name_key)}));
-            add_days[0] *= tokens[at+1][0];
+            add_days[0] *= days_token[0];
             if (add_days[0] === 0 && !done_with_warnings)
                 parsing_warnings.push([ nrule, at+2, 'adding_0', t('adding 0') ]);
             add_days[1] = 3;
@@ -3800,13 +3859,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (matchTokens(tokens, at+1, '-', 'year', '/', 'number')) {
                     is_range   = true;
                     has_period = true;
-                    period = parseInt(tokens[at+4][0]);
+                    period = asNumericParserToken(tokens[at+4])[0];
                     checkPeriod(at+4, period, 'year');
                 } else {
                     is_range   = matchTokens(tokens, at+1, '-', 'year');
                     has_period = matchTokens(tokens, at+1, '/', 'number');
                     if (has_period) {
-                        period = parseInt(tokens[at+2][0]);
+                        period = asNumericParserToken(tokens[at+2])[0];
                         checkPeriod(at+2, period, 'year', 'no_end_year');
                     } else if (matchTokens(tokens, at+1, '+')) {
                         period = 1;
@@ -3814,28 +3873,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                 }
 
-                const year_from = parseInt(tokens[at][0]);
+                const year_from = asNumericParserToken(tokens[at])[0];
+                const year_to = is_range ? asNumericParserToken(tokens[at+2])[0] : year_from;
                 // error checking {{{
-                    if (is_range && tokens[at+2][0] <= year_from) {
+                    if (is_range) {
+                        if (year_to <= year_from) {
                         // handle reversed range
-                        if (tokens[at+2][0] === year_from) {
-                            throw formatWarnErrorMessage(nrule, at, t('year range one year', {'year': year_from }));
-                        } else {
-                            throw formatWarnErrorMessage(nrule, at, t('year range reverse'));
+                            if (year_to === year_from) {
+                                throw formatWarnErrorMessage(nrule, at, t('year range one year', {'year': year_from }));
+                            } else {
+                                throw formatWarnErrorMessage(nrule, at, t('year range reverse'));
+                            }
                         }
                     }
                     if (!is_range && year_from < new Date().getFullYear()) {
                         parsing_warnings.push([ nrule, at, 'year_past', t('year past') ]);
                     }
-                    if (is_range && tokens[at+2][0] < new Date().getFullYear()) {
+                    if (is_range && year_to < new Date().getFullYear()) {
                         parsing_warnings.push([ nrule, at+2, 'year_past', t('year past') ]);
                     }
                 /* }}} */
 
                 rule.year.push(function(tokens, at, year_from, is_range, has_period, period) { return function(date) {
                     const dateYear = date.getFullYear();
-                    const year_to = is_range ? parseInt(tokens[at+2][0]) : year_from;
-
                     if (dateYear < year_from ){
                         return [false, new Date(year_from, 0, 1)];
                     } else if (has_period) {
@@ -3891,8 +3951,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (matchTokens(tokens, at, 'number')) {
                 const is_range = matchTokens(tokens, at+1, '-', 'number');
                 let period = 0;
-                const week_from = tokens[at][0];
-                const week_to   = is_range ? tokens[at+2][0] : week_from;
+                const week_from = asNumericParserToken(tokens[at])[0];
+                const week_to   = is_range ? asNumericParserToken(tokens[at+2])[0] : week_from;
                 if (week_from > week_to) {
                     throw formatWarnErrorMessage(nrule, at+2, t('week range reverse'));
                 }
@@ -3905,7 +3965,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (is_range) {
                     period = matchTokens(tokens, at+3, '/', 'number');
                     if (period) {
-                        period = tokens[at+4][0];
+                        period = asNumericParserToken(tokens[at+4])[0];
                         tokens[at+4][4] = 'positive_number';
                         if (period < 2) {
                             throw formatWarnErrorMessage(nrule, at+4, t('week period less than 2', {
@@ -4075,8 +4135,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 // Single month (Jan) or month range (Feb-Mar)
                 const is_range = matchTokens(tokens, at+1, '-', 'month');
 
-                let month_from = tokens[at][0];
-                let month_to = is_range ? tokens[at+2][0] : month_from;
+                let month_from = asNumericParserToken(tokens[at])[0];
+                let month_to = is_range ? asNumericParserToken(tokens[at+2])[0] : month_from;
 
                 if (is_range && week_stable) {
                     if (month_from !== (month_to + 1) % 12)
@@ -4203,16 +4263,18 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (is_valid_monthday_range) {
 
                 if (has_month[0])
-                    checkIfDateIsValid(tokens[at+has_year[0]][0], tokens[at+has_year[0]+1][0], nrule, at+has_year[0]+1);
+                    checkIfDateIsValid(asNumericParserToken(tokens[at+has_year[0]])[0], asNumericParserToken(tokens[at+has_year[0]+1])[0], nrule, at+has_year[0]+1);
                 if (has_month[1])
-                    checkIfDateIsValid(tokens[at_sec_event_or_month][0], tokens[at_sec_event_or_month+1][0], nrule, at_sec_event_or_month+1);
+                    checkIfDateIsValid(asNumericParserToken(tokens[at_sec_event_or_month])[0], asNumericParserToken(tokens[at_sec_event_or_month+1])[0], nrule, at_sec_event_or_month+1);
 
                 const selector = function(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday) { return function(date) {
                     const start_of_next_year = new Date(date.getFullYear() + 1, 0, 1);
 
                     let movableDays, from_date;
                     if (has_event[0]) {
-                        movableDays = getMovableEventsForYear(has_year[0] ? parseInt(tokens[at][0]) : date.getFullYear());
+                        movableDays = getMovableEventsForYear(has_year[0]
+                            ? asNumericParserToken(tokens[at])[0]
+                            : date.getFullYear());
                         from_date = movableDays[tokens[at+has_year[0]][0]];
 
                         if (typeof has_calc[0] === 'object' && has_calc[0][1]) {
@@ -4223,14 +4285,19 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     t('movable not in year', {'name': tokens[at+has_year[0]][0], 'days': has_calc[0][0]}));
                         }
                     } else if (has_constrained_weekday[0]) {
-                        from_date = getDateForConstrainedWeekday((has_year[0] ? tokens[at][0] : date.getFullYear()), // year
-                            tokens[at+has_year[0]][0], // month
-                            tokens[at+has_year[0]+1][0], // weekday
+                        from_date = getDateForConstrainedWeekday((has_year[0]
+                            ? asNumericParserToken(tokens[at])[0]
+                            : date.getFullYear()), // year
+                            asNumericParserToken(tokens[at+has_year[0]])[0], // month
+                            asNumericParserToken(tokens[at+has_year[0]+1])[0], // weekday
                             has_constrained_weekday[0],
                             has_calc[0]);
                     } else {
-                        from_date = new Date((has_year[0] ? tokens[at][0] : date.getFullYear()),
-                            tokens[at+has_year[0]][0], tokens[at+has_year[0]+1][0]);
+                        from_date = new Date((has_year[0]
+                            ? asNumericParserToken(tokens[at])[0]
+                            : date.getFullYear()),
+                            asNumericParserToken(tokens[at+has_year[0]])[0],
+                            asNumericParserToken(tokens[at+has_year[0]+1])[0]);
                     }
 
                     if (has_open_end) {
@@ -4242,7 +4309,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     let to_date;
                     if (has_event[1]) {
                         movableDays = getMovableEventsForYear(has_year[1]
-                                    ? parseInt(tokens[at_sec_event_or_month-1][0])
+                                    ? asNumericParserToken(tokens[at_sec_event_or_month-1])[0]
                                     : date.getFullYear());
                         to_date = movableDays[tokens[at_sec_event_or_month][0]];
 
@@ -4256,10 +4323,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         }
                     } else if (has_constrained_weekday[1]) {
                         const to_year = has_year[1]
-                            ? tokens[at_sec_event_or_month-1][0]
+                            ? asNumericParserToken(tokens[at_sec_event_or_month-1])[0]
                             : date.getFullYear();
-                        const to_month = tokens[at_sec_event_or_month][0];
-                        const to_weekday = tokens[at_sec_event_or_month+1][0];
+                        const to_month = asNumericParserToken(tokens[at_sec_event_or_month])[0];
+                        const to_weekday = asNumericParserToken(tokens[at_sec_event_or_month+1])[0];
 
                         to_date = getDateForConstrainedWeekday(
                             to_year,
@@ -4270,8 +4337,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         );
                         to_date.setDate(to_date.getDate() + 1);
                     } else {
-                        to_date = new Date((has_year[1] ? tokens[at_sec_event_or_month-1][0] : date.getFullYear()),
-                            tokens[at_sec_event_or_month][0], tokens[at_sec_event_or_month+1][0] + 1);
+                        to_date = new Date((has_year[1]
+                            ? asNumericParserToken(tokens[at_sec_event_or_month-1])[0]
+                            : date.getFullYear()),
+                            asNumericParserToken(tokens[at_sec_event_or_month])[0],
+                            asNumericParserToken(tokens[at_sec_event_or_month+1])[0] + 1);
                     }
 
                     let inside = true;
@@ -4328,20 +4398,33 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                 const has_explicit_year = has_year[0];
                 const year_offset = Number(has_explicit_year);
-                const year = Number(tokens[at][0]); // Could be month if has no year. Tested later.
-                const month = Number(tokens[at+year_offset][0]);
+                const year_token = tokens[at];
+                const month_token = tokens[at+year_offset];
+                if (!isNumericParserToken(year_token) || !isNumericParserToken(month_token)) {
+                    throw formatLibraryBugMessage();
+                }
+                const year = year_token[0]; // Could be month if has no year. Tested later.
+                const month = month_token[0];
 
                 let first_round = true;
                 let is_range;
 
                 do {
-                    const range_from = Number(tokens[at+1 + year_offset][0]);
+                    const range_from_token = tokens[at+1 + year_offset];
+                    if (!isNumericParserToken(range_from_token)) {
+                        throw formatLibraryBugMessage();
+                    }
+                    const range_from = range_from_token[0];
                     is_range = matchTokens(tokens, at+2+year_offset, '-', 'number');
                     let period = undefined;
                     const at_range_to = at+year_offset+(is_range ? 3 : 1); // position of the range_to token
-                    const range_to = Number(tokens[at_range_to][0]) + 1;
+                    const range_to_token = tokens[at_range_to];
+                    if (!isNumericParserToken(range_to_token)) {
+                        throw formatLibraryBugMessage();
+                    }
+                    const range_to = range_to_token[0] + 1;
                     if (is_range && matchTokens(tokens, at+year_offset+4, '/', 'number')) {
-                        period = tokens[at+year_offset+5][0];
+                        period = asNumericParserToken(tokens[at+year_offset+5])[0];
                         tokens[at+year_offset+5][4] = 'positive_number';
                         checkPeriod(at+year_offset+5, period, 'day');
                     }

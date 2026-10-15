@@ -51,10 +51,12 @@ test('normalizePrettifyConf applies defaults without mutating input', () => {
 
 test('matchTokens requires an exact ordered token sequence', () => {
     const tokens = [[1, 'number'], [':', 'timesep']];
+    const malformedNumericToken = [['one', 'number']];
 
     assert.equal(matchTokens(tokens, 0, 'number', 'timesep'), true);
     assert.equal(matchTokens(tokens, 0, 'timesep'), false);
     assert.equal(matchTokens(tokens, 1, 'timesep', 'number'), false);
+    assert.equal(matchTokens(malformedNumericToken, 0, 'number'), false);
 });
 
 test('getRuleSeparator preserves additional-rule and semicolon separators', () => {

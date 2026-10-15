@@ -151,8 +151,8 @@ function translatePrettyToken(value, token_type, conf, canonicalWeekdays, canoni
 /**
  * Check whether token types match at a given position.
  *
- * Matches are strict and ordered: each provided token name must equal
- * the token type at `tokens[at + i][1]`.
+ * Matches are strict and ordered. Numeric token types must also carry a
+ * numeric value, preserving the parser token invariant at the match boundary.
  * @param {ParserTokens} tokens - Parser token list
  * @param {number} at - Start index for matching
  * @param {...string} tokenNames - Expected token type names in order
@@ -164,7 +164,14 @@ export function matchTokens(tokens, at, ...tokenNames) {
     }
 
     for (let i = 0; i < tokenNames.length; i++) {
-        if (tokens[at + i][1] !== tokenNames[i]) {
+        const token = tokens[at + i];
+        const tokenName = tokenNames[i];
+        if (token[1] !== tokenName) {
+            return false;
+        }
+        if ((tokenName === 'number' || tokenName === 'year'
+            || tokenName === 'month' || tokenName === 'weekday')
+            && typeof token[0] !== 'number') {
             return false;
         }
     }
