@@ -10,7 +10,8 @@
 /** @typedef {Record<string, any>} PrettifyConf */
 // eslint-disable-next-line jsdoc/reject-any-type
 /** @typedef {Array<any>} PrettifyToken */
-/** @typedef {Array<PrettifyToken>} PrettifyTokens */
+/** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
+/** @typedef {Array<ParserToken>} ParserTokens */
 
 /**
  * Canonical order in which selectors should appear inside a rule group.
@@ -150,9 +151,9 @@ function translatePrettyToken(value, token_type, conf, canonicalWeekdays, canoni
 /**
  * Check whether token types match at a given position.
  *
- * Matches are strict and ordered: each provided token name must equal
- * the token type at `tokens[at + i][1]`.
- * @param {PrettifyTokens} tokens - Token list in parser/prettify format
+ * Matches are strict and ordered. Numeric token types must also carry a
+ * numeric value, preserving the parser token invariant at the match boundary.
+ * @param {ParserTokens} tokens - Parser token list
  * @param {number} at - Start index for matching
  * @param {...string} tokenNames - Expected token type names in order
  * @returns {boolean} Whether all requested token types match.
@@ -163,7 +164,14 @@ export function matchTokens(tokens, at, ...tokenNames) {
     }
 
     for (let i = 0; i < tokenNames.length; i++) {
-        if (tokens[at + i][1] !== tokenNames[i]) {
+        const token = tokens[at + i];
+        const tokenName = tokenNames[i];
+        if (token[1] !== tokenName) {
+            return false;
+        }
+        if ((tokenName === 'number' || tokenName === 'year'
+            || tokenName === 'month' || tokenName === 'weekday')
+            && typeof token[0] !== 'number') {
             return false;
         }
     }
@@ -173,7 +181,7 @@ export function matchTokens(tokens, at, ...tokenNames) {
 
 /**
  * Check whether a malformed leading time separator must be preserved.
- * @param {PrettifyTokens} tokens - Token list in parser/prettify format
+ * @param {ParserTokens} tokens - Parser token list
  * @param {number} selector_start - First token index of the selector
  * @param {string} selector_type - Selector type
  * @returns {boolean} Whether the malformed prefix should be preserved.
@@ -190,7 +198,7 @@ function shouldPreserveLeadingMalformedTimePrefix(tokens, selector_start, select
 /**
  * Format one token while prettifying a selector.
  * @param {string} prettifiedValue - Current output string
- * @param {PrettifyTokens} tokens - Token list
+ * @param {ParserTokens} tokens - Parser token list
  * @param {number} at - Current token index
  * @param {number} selector_start - First token index of the selector
  * @param {number} selector_end - Last token index of the selector
@@ -217,45 +225,53 @@ export function formatPrettifySelectorToken(
     let advance = 0;
     const token_value = tokens[at][0];
     const token_type = tokens[at][1];
+    const previous_token_value = at >= 2 ? tokens[at - 2][0] : undefined;
+    const next_token_value = at + 1 < tokens.length ? tokens[at + 1][0] : undefined;
+    const range_end_token_value = at + 2 < tokens.length ? tokens[at + 2][0] : undefined;
 
     if (at === selector_start && shouldPreserveLeadingMalformedTimePrefix(tokens, selector_start, selector_type)) {
         value += ':';
     }
 
-    if (matchTokens(tokens, at, 'weekday')) {
+    if (matchTokens(tokens, at, 'weekday') && typeof token_value === 'number') {
         if (!conf.leave_weekday_sep_one_day_betw
             && at - selector_start > 1 && (matchTokens(tokens, at - 1, ',') || matchTokens(tokens, at - 1, '-'))
             && matchTokens(tokens, at - 2, 'weekday')
-            && tokens[at][0] === (tokens[at - 2][0] + 1) % 7) {
+            && typeof previous_token_value === 'number'
+            && token_value === (previous_token_value + 1) % 7) {
             value = value.substring(0, value.length - 1) + conf.sep_one_day_between;
         }
         value += translatePrettyToken(token_value, 'weekday', conf, canonicalWeekdays, canonicalMonths, translateFn);
     } else if (at - selector_start > 0 // e.g. '09:0' -> '09:00'
             && selector_type === 'time'
             && matchTokens(tokens, at - 1, 'timesep')
-            && matchTokens(tokens, at, 'number')) {
-        value += (tokens[at][0] < 10 ? '0' : '') + tokens[at][0].toString();
+            && matchTokens(tokens, at, 'number')
+            && typeof token_value === 'number') {
+        value += (token_value < 10 ? '0' : '') + token_value.toString();
     } else if (selector_type === 'time' // e.g. '9:00' -> ' 09:00'
             && conf.zero_pad_hour
             && at !== tokens.length
             && matchTokens(tokens, at, 'number')
-            && matchTokens(tokens, at + 1, 'timesep')) {
+            && matchTokens(tokens, at + 1, 'timesep')
+            && typeof token_value === 'number') {
         value += (
-                tokens[at][0] < 10 ?
-                    (tokens[at][0] === 0 && conf.one_zero_if_hour_zero ?
+                token_value < 10 ?
+                    (token_value === 0 && conf.one_zero_if_hour_zero ?
                      '' : '0') :
-                    '') + tokens[at][0].toString();
+                    '') + token_value.toString();
     } else if (selector_type === 'time' // e.g. '9-18' -> '09:00-18:00'
             && at + 2 <= selector_end
             && matchTokens(tokens, at, 'number')
             && matchTokens(tokens, at + 1, '-')
             && matchTokens(tokens, at + 2, 'number')
-            && tokens[at][0] !== tokens[at + 2][0]) {
-        value += (tokens[at][0] < 10 ?
-                (tokens[at][0] === 0 && conf.one_zero_if_hour_zero ? '' : '0')
-                : '') + tokens[at][0].toString();
+            && typeof token_value === 'number'
+            && typeof range_end_token_value === 'number'
+            && token_value !== range_end_token_value) {
+        value += (token_value < 10 ?
+                (token_value === 0 && conf.one_zero_if_hour_zero ? '' : '0')
+                : '') + token_value.toString();
         value += ':00-'
-            + (tokens[at + 2][0] < 10 ? '0' : '') + tokens[at + 2][0].toString()
+            + (range_end_token_value < 10 ? '0' : '') + range_end_token_value.toString()
             + ':00';
         advance = 2;
     } else if (matchTokens(tokens, at, 'comment')) {
@@ -264,11 +280,12 @@ export function formatPrettifySelectorToken(
         value += translatePrettyToken(conf.leave_off_closed ? token_value : conf.keyword_for_off_closed,
             'state', conf, canonicalWeekdays, canonicalMonths, translateFn);
     } else if (at - selector_start > 0 && matchTokens(tokens, at, 'number')
-            && (selector_type === 'month' || selector_type === 'week')) {
+            && (selector_type === 'month' || selector_type === 'week')
+            && typeof token_value === 'number') {
         value +=
             (matchTokens(tokens, at - 1, 'month') || matchTokens(tokens, at - 1, 'week') ? ' ' : '')
-            + (conf.zero_pad_month_and_week_numbers && tokens[at][4] !== 'positive_number' && tokens[at][0] < 10 ? '0' : '')
-            + tokens[at][0];
+            + (conf.zero_pad_month_and_week_numbers && tokens[at][4] !== 'positive_number' && token_value < 10 ? '0' : '')
+            + token_value;
     } else if (at - selector_start > 0 && matchTokens(tokens, at, 'month')
             && matchTokens(tokens, at - 1, 'year')) {
         value += ' ' + translatePrettyToken(token_value, 'month', conf, canonicalWeekdays, canonicalMonths, translateFn);
@@ -276,8 +293,9 @@ export function formatPrettifySelectorToken(
             && matchTokens(tokens, at - 1, 'year')) {
         value += ' ' + tokens[at][0];
     } else if (matchTokens(tokens, at, 'month')) {
-        if (conf.day_before_month && at + 1 <= selector_end && matchTokens(tokens, at + 1, 'number')) {
-            value += tokens[at + 1][0] + conf.day_month_sep
+        if (conf.day_before_month && at + 1 <= selector_end && matchTokens(tokens, at + 1, 'number')
+            && typeof next_token_value === 'number') {
+            value += next_token_value + conf.day_month_sep
                 + translatePrettyToken(token_value, 'month', conf, canonicalWeekdays, canonicalMonths, translateFn);
             advance = 1;
         } else {
@@ -288,8 +306,9 @@ export function formatPrettifySelectorToken(
         }
     } else if (at + 2 <= selector_end
             && (matchTokens(tokens, at, '-') || matchTokens(tokens, at, '+'))
-            && matchTokens(tokens, at + 1, 'number', 'calcday')) {
-        value += ' ' + tokens[at][0] + tokens[at + 1][0] + ' day' + (Math.abs(tokens[at + 1][0]) === 1 ? '' : 's');
+            && matchTokens(tokens, at + 1, 'number', 'calcday')
+            && typeof next_token_value === 'number') {
+        value += ' ' + token_value + next_token_value + ' day' + (Math.abs(next_token_value) === 1 ? '' : 's');
         advance = 2;
     } else if (at === selector_end
             && selector_type === 'weekday'
