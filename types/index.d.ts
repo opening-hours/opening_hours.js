@@ -46,6 +46,16 @@ declare module 'opening_hours' {
     isHoliday: boolean
   }
 
+  export interface opening_hours_equality_difference {
+    matching_rule: number | undefined
+    matching_rule_other: number | undefined
+    deviation_for_time: Record<string, ('getState' | 'getUnknown' | 'getComment')[]>
+  }
+
+  export type opening_hours_equality_result =
+    | [true]
+    | [false, opening_hours_equality_difference]
+
   export class opening_hours {
     constructor(
       value: string,
@@ -77,13 +87,14 @@ declare module 'opening_hours' {
     ): [Date, Date, boolean, string | undefined][]
     getStatePair(
       date?: Date
-    ): [boolean, Date, boolean, string | undefined, number | undefined]
+    ): [boolean, Date | undefined, boolean, string | undefined, number | undefined]
     getWarnings(): string[]
     getStructuredWarnings(): opening_hours_warning[]
     isEqualTo(
       second_oh_object: opening_hours,
-      start_date?: Date
-    ): boolean
+      start_date?: Date,
+      end_date?: Date
+    ): opening_hours_equality_result
     isWeekStable(): boolean
     prettifyValue(argument_hash?: Partial<argument_hash>): string
     getIterator(date?: Date): opening_hours_iterator

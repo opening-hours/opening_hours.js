@@ -52,6 +52,11 @@ const holidayDefinitions = holiday_definitions;
 /** @typedef {import('opening_hours').nominatim_object} NominatimObject */
 
 /**
+ * @typedef {{matching_rule: number|undefined, matching_rule_other: number|undefined,
+ *     deviation_for_time: Record<string, ('getState'|'getUnknown'|'getComment')[]>}} OpeningHoursEqualityDifference
+ */
+
+/**
  * Resolve a state name from ISO3166-2 fields in a Nominatim address.
  * @param {Record<string, unknown>} address Nominatim address object.
  * @param {Record<string, string>} stateByCode Lowercase state code to name map.
@@ -4942,64 +4947,74 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
-     * Check if this opening_hours object has the same meaning as the given opening_hours object. {{{
-     * @param {{isWeekStable: () => boolean, getIterator: (date?: Date) => OpeningHoursIterator}} second_oh_object - Other opening_hours object to compare with.
-     * @param {Date} start_date - Date from which to compare.
-     * @returns {Array<boolean|object>} Equality result and optional differences.
+     * Compare state, uncertainty, and comments over a finite time range. {{{
+     * Return the first difference found, if any.
+     * @param {{isWeekStable: () => boolean, getStatePair: (date: Date) => OpeningHoursStatePair, getMatchingRule: (date: Date) => number|undefined}} second_oh_object - Other opening_hours object to compare with.
+     * @param {Date} [start_date] - Start of the comparison range; defaults to now.
+     * @param {Date} [end_date] - Exclusive end of the comparison range. Defaults to 10 days for week-stable schedules, otherwise 1830 days.
+     * @returns {[true]|[false, OpeningHoursEqualityDifference]} Whether the schedules match in the comparison range, with the first difference when they do not.
+     * @throws {TypeError} If either date is not a valid Date.
+     * @throws {RangeError} If end_date is not after start_date or the default end date overflows.
      */
-    this.isEqualTo = function(second_oh_object, start_date) {
-        if (typeof start_date === 'undefined') {
-            start_date = new Date();
+    this.isEqualTo = function(second_oh_object, start_date = new Date(), end_date) {
+        if (!(start_date instanceof Date) || Number.isNaN(start_date.getTime())) {
+            throw new TypeError('start_date must be a valid Date');
         }
-        let datelimit;
-
-        if (this.isWeekStable() && second_oh_object.isWeekStable()) {
-            datelimit = new Date(start_date.getTime() + msec_in_day * 10);
-        // } else if (this.isWeekStable() !== second_oh_object.isWeekStable()) {
-        //     return [ false,
-        //         {
-        //             'reason': 'isWeekStable do not match',
-        //         }
-        //     ];
-        } else {
-            datelimit = new Date(start_date.getTime() + msec_in_day * 366 * 5);
+        if (typeof end_date !== 'undefined'
+                && (!(end_date instanceof Date) || Number.isNaN(end_date.getTime()))) {
+            throw new TypeError('end_date must be a valid Date');
+        }
+        if (typeof end_date !== 'undefined' && end_date.getTime() <= start_date.getTime()) {
+            throw new RangeError('end_date must be after start_date');
         }
 
-        const first_it = this.getIterator(start_date);
-        const second_it = second_oh_object.getIterator(start_date);
+        // Equality is established only within this finite comparison horizon.
+        const use_short_comparison_horizon = this.isWeekStable() && second_oh_object.isWeekStable();
+        const comparison_horizon_days = use_short_comparison_horizon ? 10 : 366 * 5;
+        const comparison_limit = end_date
+            ?? new Date(start_date.getTime() + msec_in_day * comparison_horizon_days);
+        if (Number.isNaN(comparison_limit.getTime())) {
+            throw new RangeError('default comparison range exceeds the supported Date range');
+        }
 
-        while (first_it.advance(datelimit)) {
-            second_it.advance(datelimit);
-
+        const comparison_limit_timestamp = comparison_limit.getTime();
+        let comparison_date = start_date;
+        while (comparison_date.getTime() < comparison_limit_timestamp) {
+            // Evaluate both schedules at the same instant; their next boundaries can differ.
+            const [first_open, first_next_change, first_unknown, first_comment] = this.getStatePair(comparison_date);
+            const [second_open, second_next_change, second_unknown, second_comment] = second_oh_object.getStatePair(comparison_date);
+            /** @type {('getState'|'getUnknown'|'getComment')[]} */
             const not_equal = [];
-
-            if (first_it.getDate().getTime() !== second_it.getDate().getTime()) {
-                not_equal.push('getDate');
-            }
-
-            if (first_it.getState() !== second_it.getState()) {
+            if (first_open !== second_open) {
                 not_equal.push('getState');
             }
-
-            if (first_it.getUnknown() !== second_it.getUnknown()) {
+            if (first_unknown !== second_unknown) {
                 not_equal.push('getUnknown');
             }
-
-            if (first_it.getComment() !== second_it.getComment()) {
+            if (first_comment !== second_comment) {
                 not_equal.push('getComment');
             }
 
             if (not_equal.length) {
-                const deviation_for_time = {};
-                deviation_for_time[first_it.getDate().getTime()] = not_equal;
                 return [ false,
                     {
-                        'matching_rule': first_it.getMatchingRule(),
-                        'matching_rule_other': second_it.getMatchingRule(),
-                        'deviation_for_time': deviation_for_time,
+                        'matching_rule': this.getMatchingRule(comparison_date),
+                        'matching_rule_other': second_oh_object.getMatchingRule(comparison_date),
+                        'deviation_for_time': { [comparison_date.getTime()]: not_equal },
                     }
                 ];
             }
+
+            // Use both raw boundaries; iterators skip boundaries with no visible change.
+            const next_comparison_timestamp = Math.min(
+                first_next_change?.getTime() ?? comparison_limit_timestamp,
+                second_next_change?.getTime() ?? comparison_limit_timestamp,
+                comparison_limit_timestamp
+            );
+            if (!(next_comparison_timestamp > comparison_date.getTime())) {
+                throw 'Fatal: infinite loop in nextChange';
+            }
+            comparison_date = new Date(next_comparison_timestamp);
         }
 
         return [ true ];
@@ -5111,7 +5126,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @property {() => boolean} getUnknown - Whether the state is unknown.
      * @property {(past: boolean) => string} getStateString - State as 'open'/'unknown'/'closed'.
      * @property {() => string|undefined} getComment - Current comment.
-     * @property {() => object|undefined} getMatchingRule - Matching rule.
+     * @property {() => number|undefined} getMatchingRule - Matching rule.
      * @property {(datelimit: Date) => boolean} advance - Advance to the next change.
      */
     /**
@@ -5185,7 +5200,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         /**
          * Get the rule which matched thus deterrents the current state {{{
-         * @returns {object|undefined} Matching rule.
+         * @returns {number|undefined} Matching rule.
          */
         iterator.getMatchingRule = function() {
             if (typeof statePair[4] === 'undefined')

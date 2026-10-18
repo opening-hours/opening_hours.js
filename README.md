@@ -374,17 +374,23 @@ function getReadableState(startString, endString, oh, past) {
 
 - `let is_equal_to = oh.isEqualTo(new opening_hours('We 12:00-16:00'), start_date);`
 
-  Check if this opening_hours object has the same meaning as the given
-  opening_hours object (evaluates to the same state for every given time).
+  Compare this opening_hours object with another over a time range.
 
-  The optional parameter `start_date` (Date object) specifies the start date at which the comparison will begin.
+  The optional `start_date` specifies where comparison begins. The optional
+  `end_date` is an exclusive limit. Without `end_date`, week-stable schedules
+  are compared for 10 days and other schedules for 1830 days (about five years).
+  A successful result only confirms equality over that comparison range.
+  States, uncertainty, and comments are compared; matching rule numbers may differ.
+  Invalid dates cause a `TypeError`; an end date at or before the start date,
+  or an overflowing default end date, causes a `RangeError`.
 
   `is_equal_to` is a list:
 
   1. Boolean which is true if both opening_hours objects have the same
      meaning, otherwise false.
 
-  2. Object hash containing more information when the given objects differ in meaning. Example:
+  2. Object hash describing the first difference. Rule numbers can be `undefined`
+    when no rule matches. Example:
 
      ```js
      {
