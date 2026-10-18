@@ -146,14 +146,6 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
 }
 
 /* Helper functions {{{ */
-// https://stackoverflow.com/a/2998822
-function pad(num, size) {
-    let s = String(num);
-    while (s.length < size) {
-        s = '0' + s;
-    }
-    return s;
-}
 
 function getISODate(date, day_offset, omit_date_hyphens) { /* Is a valid ISO 8601 date, but not so nice. */
     /* Returns date as 20151231 */
@@ -162,7 +154,11 @@ function getISODate(date, day_offset, omit_date_hyphens) { /* Is a valid ISO 860
     }
 
     date.setDate(date.getDate() + day_offset);
-    const date_parts = [date.getFullYear(), pad(date.getMonth() + 1, 2), pad(date.getDate(), 2)];
+    const date_parts = [
+        date.getFullYear(),
+        String(date.getMonth() + 1).padStart(2, '0'),
+        String(date.getDate()).padStart(2, '0'),
+    ];
     if (omit_date_hyphens) {
         return date_parts.join('')
     } else {
