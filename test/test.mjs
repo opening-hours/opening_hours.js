@@ -6120,11 +6120,10 @@ test.addEqualTo('Test isEqualTo function', [
         'Mo',
     ], 'Su', [ false,
         {
-            'matching_rule': 0,
             'matching_rule_other': 0,
             'deviation_for_time': {
-                '1445205600000': [
-                    'getDate',
+                '1445119200000': [
+                    'getState',
                 ],
             },
         }
@@ -6134,9 +6133,10 @@ test.addEqualTo('Test isEqualTo function', [
         'Mo 10:00-20:00; We-Fr 10:00-20:01',
     ], 'Mo-Fr 10:00-20:00; Tu off', [ false,
         {
+            'matching_rule': 1,
             'deviation_for_time': {
-                '1445450460000': [
-                    'getDate',
+                '1445450400000': [
+                    'getState',
                 ],
             },
         }
@@ -6146,9 +6146,10 @@ test.addEqualTo('Test isEqualTo function', [
         'Mo 10:00-20:00; We-Fr 10:00-19:59',
     ], 'Mo-Fr 10:00-20:00; Tu off', [ false,
         {
+            'matching_rule_other': 0,
             'deviation_for_time': {
                 '1445450340000': [
-                    'getDate',
+                    'getState',
                 ],
             },
         }
@@ -6161,7 +6162,7 @@ test.addEqualTo('Test isEqualTo function', [
             'matching_rule': 1,
             'matching_rule_other': 0,
             'deviation_for_time': {
-                '1445637600000': [
+                '1445098829000': [
                     'getState',
                     'getUnknown',
                     'getComment',
