@@ -181,29 +181,21 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
 
 /* Helper functions {{{ */
 /**
- * Format a date as an ISO date string.
- * @param {Date} date - Date to format; adjusted by `day_offset` in place.
+ * Format a date as an ISO 8601 date string in local time.
+ * @param {Date} date - Date to format.
  * @param {number} day_offset - Days to add before formatting.
- * @param {boolean} omit_date_hyphens - Whether to omit separators.
+ * @param {boolean} omit_date_hyphens - Whether to omit separators (20151231 instead of 2015-12-31).
  * @returns {string} ISO date string.
  */
-function getISODate(date, day_offset, omit_date_hyphens) { /* Is a valid ISO 8601 date, but not so nice. */
-    /* Returns date as 20151231 */
-    if (typeof day_offset !== 'number') {
-        day_offset = 0;
-    }
-
-    date.setDate(date.getDate() + day_offset);
+function getISODate(date, day_offset, omit_date_hyphens) {
+    const shifted_date = new Date(date);
+    shifted_date.setDate(shifted_date.getDate() + day_offset);
     const date_parts = [
-        date.getFullYear(),
-        String(date.getMonth() + 1).padStart(2, '0'),
-        String(date.getDate()).padStart(2, '0'),
+        shifted_date.getFullYear(),
+        String(shifted_date.getMonth() + 1).padStart(2, '0'),
+        String(shifted_date.getDate()).padStart(2, '0'),
     ];
-    if (omit_date_hyphens) {
-        return date_parts.join('')
-    } else {
-        return date_parts.join('-')
-    }
+    return date_parts.join(omit_date_hyphens ? '' : '-');
 }
 
 /* }}} */
