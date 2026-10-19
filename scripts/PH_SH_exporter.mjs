@@ -24,7 +24,7 @@
 /* Required modules {{{ */
 import openingHours from 'opening_hours';
 import fs, { globSync } from 'node:fs';
-import { basename } from 'node:path';
+import { basename, join, parse } from 'node:path';
 import YAML from 'yaml';
 /* }}} */
 
@@ -70,7 +70,7 @@ const cli = yargs(hideBin(process.argv))
     .option('all-locations', {
         alias: 'a',
         type: 'boolean',
-        description: 'Iterate over all locations.',
+        description: 'Export each location to a separate file.',
     })
     .option('omit-date-hyphens', {
         alias: 'o',
@@ -116,8 +116,10 @@ const filepath = String(argv._[0]);
 const oh_value = argv['public-holidays'] ? 'PH' : 'SH';
 
 if (argv['all-locations']) {
+    const output_path = parse(filepath);
     for (const nominatim_file_lookup_string in nominatim_by_loc) {
-        write_config_file(filepath, oh_value, nominatim_file_lookup_string, new Date(argv.from, 0, 1), new Date(argv.to + 1, 0, 1));
+        const location_filepath = join(output_path.dir, `${output_path.name}_${nominatim_file_lookup_string}${output_path.ext}`);
+        write_config_file(location_filepath, oh_value, nominatim_file_lookup_string, new Date(argv.from, 0, 1), new Date(argv.to + 1, 0, 1));
     }
 } else {
     let nominatim_file_lookup_string;
