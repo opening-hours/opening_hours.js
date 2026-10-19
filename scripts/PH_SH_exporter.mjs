@@ -134,15 +134,16 @@ if (argv['all-locations']) {
 /**
  * Export holiday intervals for one location to a file.
  * @param {string} filepath - Output file path.
- * @param {'PH'|'SH'} oh_value - Holiday selector to export.
- * @param {string} nominatim_file_lookup_string - Country or country/state cache key.
- * @param {Date} from_date - Start of the export period.
- * @param {Date} to_date - End of the export period.
+ * @param {'PH' | 'SH'} oh_value - Holiday selector to export.
+ * @param {string} nominatim_file_lookup_string - Location cache key.
+ * @param {Date} from_date - First date included in the export.
+ * @param {Date} to_date - Date after the end of the export range.
+ * @returns {void}
  */
 function write_config_file(filepath, oh_value, nominatim_file_lookup_string, from_date, to_date) {
     const nominatim_data = nominatim_by_loc[nominatim_file_lookup_string] || nominatim_by_loc[argv.country];
 
-    if (!nominatim_data) {
+    if (typeof nominatim_data !== 'object' || nominatim_data === null) {
         console.error(nominatim_file_lookup_string + ' is currently not supported.');
         process.exit(1);
     }
