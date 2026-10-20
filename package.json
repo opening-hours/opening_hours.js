@@ -85,6 +85,7 @@
     "@rollup/plugin-yaml": "^5.0.0",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/node": "^26.2.0",
+    "@types/yargs": "^17.0.35",
     "cldr-dates-full": "^48.2.0",
     "cldr-localenames-full": "^48.2.0",
     "commit-and-tag-version": "^13.1.2",

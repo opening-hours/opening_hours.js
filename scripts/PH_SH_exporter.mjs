@@ -22,8 +22,9 @@
  * }}} */
 
 /* Required modules {{{ */
-import openingHours from '../build/opening_hours.esm.mjs';
+import openingHours from 'opening_hours';
 import fs, { globSync } from 'node:fs';
+import { basename, join, parse } from 'node:path';
 import YAML from 'yaml';
 /* }}} */
 
@@ -33,40 +34,61 @@ import { hideBin } from 'yargs/helpers';
 
 const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 export_list.conf')
-    .describe('h', 'Display the usage')
-    .describe('v', 'Verbose output')
-    .describe('f', 'From year (including)')
-    .demandOption('f')
-    .describe('t', 'Until year (including)')
-    .demandOption('t')
-    .describe('p', 'Export public holidays. Can not be used together with --school-holidays.')
-    // .default('p', true)
-    .describe('s', 'Export school holidays. Can not be used together with --public-holidays.')
-    .describe('c', 'Country (for which the holidays apply). Defaults to Germany.')
-    .describe('a', 'Iterate over all locations.')
-    .describe('o', 'Omit hyphen in ISO 8061 dates.')
-    .default('o', false)
-    .default('c', 'de')
-    .describe('r', 'Region (for which the holidays apply). If not given, the country wide definition is used.')
-    .boolean(['p', 's', 'a'])
-    .alias('h', 'help')
-    .alias('v', 'verbose')
-    .alias('f', 'from')
-    .alias('t', 'to')
-    .alias('p', ['public-holidays', 'ph'])
-    .alias('s', ['school-holidays', 'sh'])
-    .alias('c', 'country')
-    .alias('r', 'state')
-    .alias('a', 'all-locations')
-    .string(['c', 'r', ])
-    .alias('o', 'omit-date-hyphens')
+    .option('help', { alias: 'h', type: 'boolean', description: 'Display the usage' })
+    .option('verbose', { alias: 'v', type: 'boolean', description: 'Verbose output' })
+    .option('from', {
+        alias: 'f',
+        type: 'number',
+        description: 'From year (including)',
+    })
+    .option('to', {
+        alias: 't',
+        type: 'number',
+        description: 'Until year (including)',
+    })
+    .option('public-holidays', {
+        alias: ['p', 'ph'],
+        type: 'boolean',
+        description: 'Export public holidays. Can not be used together with --school-holidays.',
+    })
+    .option('school-holidays', {
+        alias: ['s', 'sh'],
+        type: 'boolean',
+        description: 'Export school holidays. Can not be used together with --public-holidays.',
+    })
+    .option('country', {
+        alias: 'c',
+        type: 'string',
+        default: 'de',
+        description: 'Country (for which the holidays apply). Defaults to Germany.',
+    })
+    .option('state', {
+        alias: 'r',
+        type: 'string',
+        description: 'State/region (as provided by Nominatim) to which the holidays apply. If omitted, the country-wide definition is used.',
+    })
+    .option('all-locations', {
+        alias: 'a',
+        type: 'boolean',
+        description: 'Export each location to a separate file.',
+    })
+    .option('omit-date-hyphens', {
+        alias: 'o',
+        type: 'boolean',
+        default: false,
+        description: 'Omit hyphen in ISO 8061 dates.',
+    })
     .help(false);
 
-const argv = cli.parse();
+const argv = cli.parseSync();
 
 if (argv.help || argv._.length === 0) {
     cli.showHelp();
     process.exit(0);
+}
+if (argv.from === undefined || argv.to === undefined) {
+    console.error('Missing required arguments: from, to');
+    process.exit(1);
 }
 
 /* Error handling {{{ */
@@ -78,22 +100,26 @@ if (!(argv['public-holidays'] || argv['school-holidays'] || argv['all-locations'
     console.error('Either --school-holidays or --public-holidays has to be specified.');
     process.exit(1);
 }
+/** @type {Record<string, import('opening_hours').nominatim_object>} */
 const nominatim_by_loc = {};
 for (const nominatim_file of globSync('src/holidays/nominatim_cache/*.yaml')) {
-    const country_state = nominatim_file.match(/^.*\/([^/]*)\.yaml$/)[1];
-    nominatim_by_loc[country_state] = YAML.parse(fs.readFileSync(nominatim_file, 'utf8'));
+    const country_state = basename(nominatim_file, '.yaml');
+    const nominatim_data = YAML.parse(fs.readFileSync(nominatim_file, 'utf8'));
+    nominatim_by_loc[country_state] = nominatim_data;
 }
 
 /* }}} */
 /* }}} */
 
-const filepath = argv._[0];
+const filepath = String(argv._[0]);
 
 const oh_value = argv['public-holidays'] ? 'PH' : 'SH';
 
 if (argv['all-locations']) {
+    const output_path = parse(filepath);
     for (const nominatim_file_lookup_string in nominatim_by_loc) {
-        write_config_file(filepath, oh_value, nominatim_file_lookup_string, new Date(argv.from, 0, 1), new Date(argv.to + 1, 0, 1));
+        const location_filepath = join(output_path.dir, `${output_path.name}_${nominatim_file_lookup_string}${output_path.ext}`);
+        write_config_file(location_filepath, oh_value, nominatim_file_lookup_string, new Date(argv.from, 0, 1), new Date(argv.to + 1, 0, 1));
     }
 } else {
     let nominatim_file_lookup_string;
@@ -105,14 +131,24 @@ if (argv['all-locations']) {
     write_config_file(filepath, oh_value, nominatim_file_lookup_string, new Date(argv.from, 0, 1), new Date(argv.to + 1, 0, 1));
 }
 
+/**
+ * Export holiday intervals for one location to a file.
+ * @param {string} filepath - Output file path.
+ * @param {'PH' | 'SH'} oh_value - Holiday selector to export.
+ * @param {string} nominatim_file_lookup_string - Location cache key.
+ * @param {Date} from_date - First date included in the export.
+ * @param {Date} to_date - Date after the end of the export range.
+ * @returns {void}
+ */
 function write_config_file(filepath, oh_value, nominatim_file_lookup_string, from_date, to_date) {
     const nominatim_data = nominatim_by_loc[nominatim_file_lookup_string] || nominatim_by_loc[argv.country];
 
-    if (typeof nominatim_data !== 'object') {
+    if (typeof nominatim_data !== 'object' || nominatim_data === null) {
         console.error(nominatim_file_lookup_string + ' is currently not supported.');
         process.exit(1);
     }
 
+    /** @type {import('opening_hours').opening_hours} */
     let oh;
     try {
         oh = new openingHours(oh_value, nominatim_data);
@@ -125,7 +161,8 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
 
     const intervals = oh.getOpenIntervals(from_date, to_date);
 
-    let output_lines = [];
+    /** @type {string[]} */
+    const output_lines = [];
     for (let i = 0; i < intervals.length; i++) {
         const holiday_entry = intervals[i];
         const output_line = [
@@ -135,39 +172,33 @@ function write_config_file(filepath, oh_value, nominatim_file_lookup_string, fro
             output_line[0] += '--' + getISODate(holiday_entry[1], -1, argv['omit-date-hyphens']);
         }
 
-        output_line.push(holiday_entry[3]);
+        output_line.push(holiday_entry[3] ?? '');
         output_lines.push(output_line.join(' '));
     }
-    output_lines = output_lines.join('\n');
+    const output = output_lines.join('\n');
     if (argv.verbose) {
-        console.log(`${nominatim_file_lookup_string}:\n${output_lines}`);
+        console.log(`${nominatim_file_lookup_string}:\n${output}`);
     }
-    fs.writeFileSync(filepath, output_lines);
+    fs.writeFileSync(filepath, output);
 }
 
 /* Helper functions {{{ */
-// https://stackoverflow.com/a/2998822
-function pad(num, size) {
-    let s = String(num);
-    while (s.length < size) {
-        s = '0' + s;
-    }
-    return s;
-}
-
-function getISODate(date, day_offset, omit_date_hyphens) { /* Is a valid ISO 8601 date, but not so nice. */
-    /* Returns date as 20151231 */
-    if (typeof day_offset !== 'number') {
-        day_offset = 0;
-    }
-
-    date.setDate(date.getDate() + day_offset);
-    const date_parts = [date.getFullYear(), pad(date.getMonth() + 1, 2), pad(date.getDate(), 2)];
-    if (omit_date_hyphens) {
-        return date_parts.join('')
-    } else {
-        return date_parts.join('-')
-    }
+/**
+ * Format a date as an ISO 8601 date string in local time.
+ * @param {Date} date - Date to format.
+ * @param {number} day_offset - Days to add before formatting.
+ * @param {boolean} omit_date_hyphens - Whether to omit separators (20151231 instead of 2015-12-31).
+ * @returns {string} ISO date string.
+ */
+function getISODate(date, day_offset, omit_date_hyphens) {
+    const shifted_date = new Date(date);
+    shifted_date.setDate(shifted_date.getDate() + day_offset);
+    const date_parts = [
+        shifted_date.getFullYear(),
+        String(shifted_date.getMonth() + 1).padStart(2, '0'),
+        String(shifted_date.getDate()).padStart(2, '0'),
+    ];
+    return date_parts.join(omit_date_hyphens ? '' : '-');
 }
 
 /* }}} */
