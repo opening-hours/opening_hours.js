@@ -30,20 +30,14 @@ import { hideBin } from 'yargs/helpers';
 /* Parameter handling {{{ */
 const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 -')
-    .describe('h', 'Display the usage')
+    .option('key-file', { alias: 'k', type: 'string' })
+    .option('template-file', { alias: 'i', type: 'string' })
     .describe('k', 'File containing the list of supported keys')
     .describe('i', 'Template taginfo.json which is used to merge with the list of keys')
-    .alias('h', 'help')
-    .alias('k', 'key-file')
-    .alias('i', 'template-file')
-    .help(false);
+    .help('help', 'Display the usage')
+    .alias('help', 'h');
 
-const argv = cli.parse();
-
-if (argv.help) {
-    cli.showHelp();
-    process.exit(0);
-}
+const argv = cli.parseSync();
 
 if (typeof argv['key-file'] !== 'string') {
     cli.showHelp();

@@ -34,7 +34,6 @@ import { hideBin } from 'yargs/helpers';
 
 const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 export_list.conf')
-    .option('help', { alias: 'h', type: 'boolean', description: 'Display the usage' })
     .option('verbose', { alias: 'v', type: 'boolean', description: 'Verbose output' })
     .option('from', {
         alias: 'f',
@@ -78,11 +77,12 @@ const cli = yargs(hideBin(process.argv))
         default: false,
         description: 'Omit hyphen in ISO 8061 dates.',
     })
-    .help(false);
+    .help('help', 'Display the usage')
+    .alias('help', 'h');
 
 const argv = cli.parseSync();
 
-if (argv.help || argv._.length === 0) {
+if (argv._.length === 0) {
     cli.showHelp();
     process.exit(0);
 }

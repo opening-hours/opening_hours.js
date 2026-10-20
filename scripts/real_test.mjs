@@ -116,7 +116,12 @@ import { hideBin } from 'yargs/helpers';
 
 const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 export*.json [export*.json]')
-    .describe('h', 'Display the usage')
+    .option('verbose', { alias: 'v', type: 'boolean' })
+    .option('debug', { alias: 'd', type: 'boolean' })
+    .option('punchcard', { alias: 'p', type: 'boolean' })
+    .option('ignore-manual-values', { alias: 'I', type: 'boolean' })
+    .option('ignore-bad-oh-values', { alias: 'i', type: 'boolean' })
+    .option('map-bad-oh-values', { alias: 'm', type: 'boolean' })
     .describe('v', 'Verbose output')
     .describe('d', 'Debug output')
     .describe('p', 'Generate a CSV file containing a overview of the following week showing how many facilities will be open for each hour of the week.')
@@ -125,18 +130,12 @@ const cli = yargs(hideBin(process.argv))
         + ' The default is to not ignore any which will result in those values not being parsed as correct values.')
     .describe('m', 'Map values which would get ignored by the --ignore-bad-oh-values option to there meaning in the opening_hours syntax.'
         + ' For example, map "yes" to "sunset-sunrise open "specified as yes"".')
-    .boolean(['v', 'd', 'I', 'i', 'm', 'p'])
-    .alias('h', 'help')
-    .alias('v', 'verbose')
-    .alias('d', 'debug')
-    .alias('I', 'ignore-manual-values')
-    .alias('i', 'ignore-bad-oh-values')
-    .alias('p', 'punchcard')
-    .alias('m', 'map-bad-oh-values');
+    .help('help', 'Display the usage')
+    .alias('help', 'h');
 
-const argv = cli.argv;
+const argv = cli.parseSync();
 
-if (argv.help || argv._.length === 0) {
+if (argv._.length === 0) {
     cli.showHelp();
     process.exit(0);
 }
@@ -144,7 +143,7 @@ if (argv.help || argv._.length === 0) {
 
 // test_framework.tag_key_name('opening_hours');
 for (let i = 0; i < argv._.length; i++) {
-    const filename = argv._[i];
+    const filename = String(argv._[i]);
     test_framework.json_file(filename);
 }
 
