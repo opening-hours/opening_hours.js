@@ -65,7 +65,7 @@ const cli = yargs(hideBin(process.argv))
     .option('state', {
         alias: 'r',
         type: 'string',
-        description: 'Region (for which the holidays apply). If not given, the country wide definition is used.',
+        description: 'State/region (as provided by Nominatim) to which the holidays apply. If omitted, the country-wide definition is used.',
     })
     .option('all-locations', {
         alias: 'a',
