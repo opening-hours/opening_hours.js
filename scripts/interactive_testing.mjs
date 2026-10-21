@@ -11,29 +11,20 @@ import { hideBin } from 'yargs/helpers';
 
 const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0 [optional parameters] [server_listening_ports]')
-    .describe('h', 'Display the usage')
+    .option('library-file', { alias: 'f', type: 'string', default: '../build/opening_hours.esm.mjs' })
+    .option('locale', { alias: 'l', type: 'string', default: 'en' })
+    .option('prettify-locale', { alias: 'L', type: 'string', default: 'en' })
+    .option('value', { alias: 'V', type: 'string' })
     // .describe('v', 'Verbose output')
     .describe('f', 'File path to the opening_hours.js library file to run the tests against.')
     .describe('l', 'Locale for error/warning messages and prettified values.')
     .describe('L', 'Locale used for prettifyValue')
     .describe('V', 'opening_hours value. If present, interactive mode will be skipped.')
-    .alias('h', 'help')
     // .alias('v', 'verbose')
-    .alias('f', 'library-file')
-    .alias('l', 'locale')
-    .alias('L', 'prettify-locale')
-    .alias('V', 'value')
-    .default('f', '../build/opening_hours.esm.mjs')
-    .default('l', 'en')
-    .default('L', 'en')
-    .help(false);
+    .help('help', 'Display the usage')
+    .alias('help', 'h');
 
-const argv = cli.parse();
-
-if (argv.help) {
-    cli.showHelp();
-    process.exit(0);
-}
+const argv = cli.parseSync();
 
 const libraryUrl = new URL(argv['library-file'], import.meta.url);
 const { default: opening_hours } = await import(libraryUrl.href);

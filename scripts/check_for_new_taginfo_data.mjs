@@ -13,23 +13,19 @@ let exit_code_not_new = 1;
 import yargs from 'yargs/yargs';
 import { hideBin } from 'yargs/helpers';
 
-const argv = yargs(hideBin(process.argv))
+const cli = yargs(hideBin(process.argv))
     .usage('Usage: $0')
-    .describe('h', 'Display the usage')
+    .option('E', { alias: 'exit-code-not-new', type: 'number' })
     .describe('E', 'Specify the exit code in case there is no new data. The default value is ' + exit_code_not_new + '.')
-    .alias('h', 'help')
-    .alias('E', 'exit-code-not-new')
-    .argv;
+    .help('help', 'Display the usage')
+    .alias('help', 'h');
 
-if (argv.help) {
-    yargs.showHelp();
-    process.exit(0);
-}
+const argv = cli.parseSync();
 
 if (typeof argv.E === 'number') {
     exit_code_not_new = argv.E;
 } else if (typeof argv.E !== 'undefined') {
-    yargs.showHelp();
+    cli.showHelp();
     process.exit(0);
 }
 /* }}} */
