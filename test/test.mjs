@@ -5911,6 +5911,10 @@ test.addShouldFail('Wrong constructor call should throw an error: "string"', [
         value_perfectly_valid[0],
     ], nominatim_default, 'not only test', 'test for failure');
 
+test.addShouldFail('Wrong constructor call should throw an error: conf: null', [
+        value_perfectly_valid[0],
+    ], nominatim_default, 'not only test', null);
+
 test.addShouldFail('Wrong constructor call should throw an error: warnings_severity: [ 4 ]', [
         value_perfectly_valid[0],
     ], nominatim_default, 'not only test', { 'warnings_severity': [ 4 ] });
@@ -6979,8 +6983,8 @@ function opening_hours_test() {
                 'mode': oh_mode,
                 'locale': argv.locale,
             };
-        } else if (oh_mode === 'test for failure') {
-            // Do nothing.
+        } else if (oh_mode === 'test for failure' || oh_mode === null) {
+            // Do nothing. Keep the value as-is to test the parser's own handling of it.
         } else if (typeof oh_mode !== 'object') {
             oh_mode = {
                 'locale': argv.locale,

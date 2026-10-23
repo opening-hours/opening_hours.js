@@ -41,6 +41,7 @@ import { resolveRange } from './locale-resolver/resolver.mjs';
 import { regionLanguages } from './locale-resolver/region-languages.mjs';
 import { normalizeToken } from './locale-resolver/normalize.mjs';
 import resolver_layers from './locale-resolver/layers.json';
+import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-defaults.mjs';
 
 /** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
 /** @typedef {import('./parser-token-types.d.ts').ParserTokenRule} ParserTokenRule */
@@ -134,7 +135,7 @@ function getStateFromAddress(address, countryCode) {
  * Creates an opening hours parser for an OSM opening-hours value.
  * @param {string} value The opening-hours value to parse.
  * @param {NominatimObject|null} [nominatim_object] Location and address data used for holidays and solar times.
- * @param {number|object} [optional_conf_parm] Parser mode or parser configuration.
+ * @param {number|Record<string, unknown>} [optional_conf_parm] Parser mode or parser configuration.
  */
 export default function(value, nominatim_object, optional_conf_parm) {
     // Short constants {{{
@@ -220,31 +221,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'date_format': 'short'           // Use short or long date format (for day and month names)
     };
 
-    const osm_tag_defaults = {
-        'opening_hours'       :  { 'mode' :  0, 'warn_for_PH_missing' :  true, },
-        'collection_times'    :  { 'mode' :  2, },
-        /* oh_mode 2: "including the hyphen because there are post boxes which are
-         * emptied several (undefined) times or one (undefined) time in a certain time
-         * frame. This shall be covered also.".
-         * Ref: https://wiki.openstreetmap.org/wiki/Key:collection_times */
-        'opening_hours:.+'    :  { 'mode' :  0, },
-        '.+:opening_hours'    :  { 'mode' :  0, },
-        '.+:opening_hours:.+' :  { 'mode' :  0, },
-        '.+:conditional'      :  { 'mode' :  0, },
-        'smoking_hours'       :  { 'mode' :  0, },
-        'service_times'       :  { 'mode' :  2, },
-        'happy_hours'         :  { 'mode' :  0, },
-        'lit'                 :  { 'mode' :  0,
-            map: {
-                'yes'      : 'sunset-sunrise open "specified as yes: At night (unknown time schedule or daylight detection)"',
-                'automatic': 'unknown "specified as automatic: When someone enters the way the lights are turned on."',
-                'no'       : 'off "specified as no: There are no lights installed."',
-                'interval' : 'unknown "specified as interval"',
-                'limited'  : 'unknown "specified as limited"',
-            }
-        },
-    };
-
     const minutes_in_day = 60 * 24;
     const msec_in_day    = 1000 * 60 * minutes_in_day;
     // let msec_in_week   = msec_in_day * 7;
@@ -256,11 +232,18 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /* Translation function {{{ */
     // Parser messages use the `texts` translations. Pretty output translates separately.
-    const parser_locale = optional_conf_parm && typeof optional_conf_parm['locale'] === 'string'
-        ? optional_conf_parm['locale']
-        : 'en';
+    const optional_config = typeof optional_conf_parm === 'object' && optional_conf_parm !== null
+        ? optional_conf_parm
+        : undefined;
+    const locale_value = optional_config?.['locale'];
+    if (locale_value !== undefined && typeof locale_value !== 'string') {
+        // `t()` needs a resolved locale first, so this one error is reported directly.
+        throw translate('en', 'texts', 'conf param unknown type', { 'key': 'locale', 'given': typeof(locale_value), 'expected': 'string' });
+    }
+    const parser_locale = typeof locale_value === 'string' ? locale_value : 'en';
 
     // Parser errors and warnings only need message translations.
+    /** @type {(key: string, variables?: Record<string, unknown>) => string} */
     const t = (key, variables) => translate(parser_locale, 'texts', key, variables);
     /* }}} */
 
@@ -319,57 +302,43 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * This number is expected to be >= 4. This is not explicitly checked.
      */
 
+    /** @type {number|undefined} */
     let oh_mode;
     let oh_map_value = false;
-    let oh_key, oh_regex_key;
+    /** @type {string|undefined} */
+    let oh_key;
+    // Disables the 'additional_rule_separator not used ...' warning; documented in README.md.
+    let additional_rule_separator_enabled = true;
 
     if (typeof optional_conf_parm === 'number') {
         oh_mode = optional_conf_parm;
-    } else if (typeof optional_conf_parm === 'object') {
-        if (checkOptionalConfParm('mode', 'number')) {
-            oh_mode = optional_conf_parm['mode'];
+    } else if (optional_config !== undefined) {
+        oh_mode = getOptionalConfNumber('mode');
+        warnings_severity = getOptionalConfNumber('warnings_severity') ?? warnings_severity;
+        if ([ 0, 1, 2, 3, 4, 5, 6, 7 ].indexOf(warnings_severity) === -1) {
+            throw t('warnings severity', { 'severity': warnings_severity, 'allowed': '[ 0, 1, 2, 3, 4, 5, 6, 7 ]' });
         }
-        if (checkOptionalConfParm('warnings_severity', 'number')) {
-            warnings_severity = optional_conf_parm['warnings_severity'];
-            if ([ 0, 1, 2, 3, 4, 5, 6, 7 ].indexOf(warnings_severity) === -1) {
-                throw t('warnings severity', { 'severity': warnings_severity, 'allowed': '[ 0, 1, 2, 3, 4, 5, 6, 7 ]' });
-            }
-        }
-        if (checkOptionalConfParm('tag_key', 'string')) {
-            oh_key = optional_conf_parm['tag_key'];
-        }
-        if (checkOptionalConfParm('map_value', 'boolean')) {
-            oh_map_value = optional_conf_parm.map_value;
-        }
+        oh_key = getOptionalConfString('tag_key');
+        oh_map_value = getOptionalConfBoolean('map_value') ?? false;
+        additional_rule_separator_enabled = getOptionalConfBoolean('additional_rule_separator') ?? true;
     } else if (typeof optional_conf_parm !== 'undefined') {
         throw t('optional conf parm type', { 'given': typeof(optional_conf_parm) });
     }
 
+    /** @type {import('./osm-tag-defaults.mjs').OsmTagDefault|undefined} */
+    let tag_default;
     if (typeof oh_key === 'string') {
-        oh_regex_key = getRegexKeyForKeyFromOsmDefaults(oh_key)
-
-        if (oh_map_value
-            && typeof osm_tag_defaults[oh_regex_key] === 'object'
-            && typeof osm_tag_defaults[oh_regex_key]['map'] === 'object'
-            && typeof osm_tag_defaults[oh_regex_key]['map'][value] === 'string'
-            ) {
-
-            value = osm_tag_defaults[oh_regex_key]['map'][value];
+        tag_default = resolveOsmTagDefault(oh_key);
+        const mapped_value = tag_default?.map?.[value];
+        if (oh_map_value && typeof mapped_value === 'string') {
+            value = mapped_value;
         }
     } else if (oh_map_value) {
         throw t('conf param tag key missing');
     }
 
     if (typeof oh_mode === 'undefined') {
-        if (typeof oh_key === 'string' && osm_tag_defaults[oh_regex_key] !== undefined) {
-            if (typeof osm_tag_defaults[oh_regex_key]['mode'] === 'number') {
-                oh_mode = osm_tag_defaults[oh_regex_key]['mode'];
-            } else {
-                oh_mode = 0;
-            }
-        } else {
-            oh_mode = 0;
-        }
+        oh_mode = tag_default?.mode ?? 0;
     } else if ([ 0, 1, 2 ].indexOf(oh_mode) === -1) {
         throw t('conf param mode invalid', { 'given': oh_mode, 'allowed': '[ 0, 1, 2 ]' });
     }
@@ -573,44 +542,44 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /* Helper functions {{{ */
     /**
-     * Get the regex key for an OpenStreetMap tag key. {{{
-     * @param {string} key Tag key, e.g. `opening_hours:kitchen`.
-     * @returns {string|undefined} Matching key from `osm_tag_defaults`.
+     * Read and validate an optional numeric constructor parameter. {{{
+     * @param {'mode'|'warnings_severity'} key Key of `optional_conf_parm`.
+     * @returns {number|undefined} The value, if provided.
      */
-    function getRegexKeyForKeyFromOsmDefaults(key) {
-        let regex_key;
-        let exact_match = false;
-
-        Object.keys(osm_tag_defaults).forEach(function (osm_key) {
-            if (exact_match === true) {
-                return;
-            }
-            if (key === osm_key) { // Exact match.
-                regex_key = osm_key;
-                // We can't just return here as some old browsers
-                // don't interpret it as a final return (like a loop break)
-                exact_match = true;
-            } else if (new RegExp(osm_key).test(key)) {
-                regex_key = osm_key;
-            }
-        });
-        return regex_key;
+    function getOptionalConfNumber(key) {
+        const value = optional_config?.[key];
+        if (value === undefined || typeof value === 'number') {
+            return value;
+        }
+        throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': 'number' });
     }
     /* }}} */
 
     /**
-     * Check the type of an optional constructor parameter. {{{
-     * @param {string} key Key of `optional_conf_parm`.
-     * @param {string} expected_type Expected result of `typeof`.
-     * @returns {boolean} Whether the value has the expected type.
+     * Read and validate an optional string constructor parameter. {{{
+     * @param {'tag_key'} key Key of `optional_conf_parm`.
+     * @returns {string|undefined} The value, if provided.
      */
-    function checkOptionalConfParm(key, expected_type) {
-        if (typeof optional_conf_parm[key] === expected_type) {
-            return true;
-        } else if (typeof optional_conf_parm[key] !== 'undefined') {
-            throw t('conf param unknown type', { 'key': key, 'given': typeof(optional_conf_parm[key]), 'expected': expected_type });
+    function getOptionalConfString(key) {
+        const value = optional_config?.[key];
+        if (value === undefined || typeof value === 'string') {
+            return value;
         }
-        return false;
+        throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': 'string' });
+    }
+    /* }}} */
+
+    /**
+     * Read and validate an optional boolean constructor parameter. {{{
+     * @param {'map_value'|'additional_rule_separator'} key Key of `optional_conf_parm`.
+     * @returns {boolean|undefined} The value, if provided.
+     */
+    function getOptionalConfBoolean(key) {
+        const value = optional_config?.[key];
+        if (value === undefined || typeof value === 'boolean') {
+            return value;
+        }
+        throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': 'boolean' });
     }
     /* }}} */
     /* }}} */
@@ -1416,7 +1385,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                     // console.log(rule_infos);
                     // console.log(next_rule_selects_next_day);
-                    const additional_rule_separator_enabled = (optional_conf_parm||{}).additional_rule_separator !== false;
                     if (rules_too_complex_count < 2 && next_rule_selects_next_day && additional_rule_separator_enabled) {
                         parsing_warnings.push([nrule+1, new_tokens[nrule+1][0].length - 1,
                             'additional_rule_separator_not_used_after_time_wrapping_midnight',
@@ -1470,19 +1438,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 && (
                         (
                             typeof oh_key === 'string'
-                            && oh_regex_key
-                            && osm_tag_defaults[oh_regex_key]['warn_for_PH_missing']
+                            && tag_default?.warn_for_PH_missing
                         )
                         || (typeof oh_key !== 'string')
                    )
                 ) {
 
-                const keys_with_warn_for_PH_missing = [];
-                Object.keys(osm_tag_defaults).forEach(function (key) {
-                    if (osm_tag_defaults[key]['warn_for_PH_missing']) {
-                        keys_with_warn_for_PH_missing.push(key);
-                    }
-                });
+                const keys_with_warn_for_PH_missing = getKeysWithWarnForPHMissing();
                 parsing_warnings.push([ -1, 0,
                     'public_holiday',
                     t('public holiday', { 'part2': (typeof oh_key !== 'string'
