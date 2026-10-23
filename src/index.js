@@ -41,6 +41,7 @@ import { resolveRange } from './locale-resolver/resolver.mjs';
 import { regionLanguages } from './locale-resolver/region-languages.mjs';
 import { normalizeToken } from './locale-resolver/normalize.mjs';
 import resolver_layers from './locale-resolver/layers.json';
+import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-defaults.mjs';
 
 /** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
 /** @typedef {import('./parser-token-types.d.ts').ParserTokenRule} ParserTokenRule */
@@ -220,32 +221,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'date_format': 'short'           // Use short or long date format (for day and month names)
     };
 
-    /** @type {Record<string, { mode: number, warn_for_PH_missing?: boolean, map?: Record<string, string> }>} */
-    const osm_tag_defaults = {
-        'opening_hours'       :  { 'mode' :  0, 'warn_for_PH_missing' :  true, },
-        'collection_times'    :  { 'mode' :  2, },
-        /* oh_mode 2: "including the hyphen because there are post boxes which are
-         * emptied several (undefined) times or one (undefined) time in a certain time
-         * frame. This shall be covered also.".
-         * Ref: https://wiki.openstreetmap.org/wiki/Key:collection_times */
-        'opening_hours:.+'    :  { 'mode' :  0, },
-        '.+:opening_hours'    :  { 'mode' :  0, },
-        '.+:opening_hours:.+' :  { 'mode' :  0, },
-        '.+:conditional'      :  { 'mode' :  0, },
-        'smoking_hours'       :  { 'mode' :  0, },
-        'service_times'       :  { 'mode' :  2, },
-        'happy_hours'         :  { 'mode' :  0, },
-        'lit'                 :  { 'mode' :  0,
-            map: {
-                'yes'      : 'sunset-sunrise open "specified as yes: At night (unknown time schedule or daylight detection)"',
-                'automatic': 'unknown "specified as automatic: When someone enters the way the lights are turned on."',
-                'no'       : 'off "specified as no: There are no lights installed."',
-                'interval' : 'unknown "specified as interval"',
-                'limited'  : 'unknown "specified as limited"',
-            }
-        },
-    };
-
     const minutes_in_day = 60 * 24;
     const msec_in_day    = 1000 * 60 * minutes_in_day;
     // let msec_in_week   = msec_in_day * 7;
@@ -350,11 +325,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
         throw t('optional conf parm type', { 'given': typeof(optional_conf_parm) });
     }
 
-    /** @type {{ mode: number, warn_for_PH_missing?: boolean, map?: Record<string, string> }|undefined} */
+    /** @type {import('./osm-tag-defaults.mjs').OsmTagDefault|undefined} */
     let tag_default;
     if (typeof oh_key === 'string') {
-        const regex_key = getRegexKeyForKeyFromOsmDefaults(oh_key);
-        tag_default = regex_key === undefined ? undefined : osm_tag_defaults[regex_key];
+        tag_default = resolveOsmTagDefault(oh_key);
         const mapped_value = tag_default?.map?.[value];
         if (oh_map_value && typeof mapped_value === 'string') {
             value = mapped_value;
@@ -364,11 +338,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
 
     if (typeof oh_mode === 'undefined') {
-        if (typeof oh_key === 'string' && tag_default !== undefined) {
-            oh_mode = typeof tag_default.mode === 'number' ? tag_default.mode : 0;
-        } else {
-            oh_mode = 0;
-        }
+        oh_mode = tag_default?.mode ?? 0;
     } else if ([ 0, 1, 2 ].indexOf(oh_mode) === -1) {
         throw t('conf param mode invalid', { 'given': oh_mode, 'allowed': '[ 0, 1, 2 ]' });
     }
@@ -571,32 +541,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /* Helper functions {{{ */
-    /**
-     * Get the regex key for an OpenStreetMap tag key. {{{
-     * @param {string} key Tag key, e.g. `opening_hours:kitchen`.
-     * @returns {string|undefined} Matching key from `osm_tag_defaults`.
-     */
-    function getRegexKeyForKeyFromOsmDefaults(key) {
-        let regex_key;
-        let exact_match = false;
-
-        Object.keys(osm_tag_defaults).forEach(function (osm_key) {
-            if (exact_match === true) {
-                return;
-            }
-            if (key === osm_key) { // Exact match.
-                regex_key = osm_key;
-                // We can't just return here as some old browsers
-                // don't interpret it as a final return (like a loop break)
-                exact_match = true;
-            } else if (new RegExp(osm_key).test(key)) {
-                regex_key = osm_key;
-            }
-        });
-        return regex_key;
-    }
-    /* }}} */
-
     /**
      * Read and validate an optional numeric constructor parameter. {{{
      * @param {'mode'|'warnings_severity'} key Key of `optional_conf_parm`.
@@ -1500,12 +1444,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                    )
                 ) {
 
-                const keys_with_warn_for_PH_missing = [];
-                Object.keys(osm_tag_defaults).forEach(function (key) {
-                    if (osm_tag_defaults[key]['warn_for_PH_missing']) {
-                        keys_with_warn_for_PH_missing.push(key);
-                    }
-                });
+                const keys_with_warn_for_PH_missing = getKeysWithWarnForPHMissing();
                 parsing_warnings.push([ -1, 0,
                     'public_holiday',
                     t('public holiday', { 'part2': (typeof oh_key !== 'string'
