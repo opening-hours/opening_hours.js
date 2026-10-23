@@ -524,7 +524,7 @@ function opening_hours_test() {
                         element.tags = [];
                     }
                     Object.keys(element.tags).forEach(function (key) {
-                        if (related_tags.indexOf(key) !== -1) {
+                        if (related_tags.includes(key)) {
                             const val = element.tags[key];
                             if (typeof(taginfo_format[key]) === 'undefined') {
                                 taginfo_format[key] = { data: [] };
