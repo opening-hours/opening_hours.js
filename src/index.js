@@ -315,7 +315,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     } else if (optional_config !== undefined) {
         oh_mode = getOptionalConfNumber('mode');
         warnings_severity = getOptionalConfNumber('warnings_severity') ?? warnings_severity;
-        if ([ 0, 1, 2, 3, 4, 5, 6, 7 ].indexOf(warnings_severity) === -1) {
+        if (![ 0, 1, 2, 3, 4, 5, 6, 7 ].includes(warnings_severity)) {
             throw t('warnings severity', { 'severity': warnings_severity, 'allowed': '[ 0, 1, 2, 3, 4, 5, 6, 7 ]' });
         }
         oh_key = getOptionalConfString('tag_key');
@@ -339,7 +339,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     if (typeof oh_mode === 'undefined') {
         oh_mode = tag_default?.mode ?? 0;
-    } else if ([ 0, 1, 2 ].indexOf(oh_mode) === -1) {
+    } else if (![ 0, 1, 2 ].includes(oh_mode)) {
         throw t('conf param mode invalid', { 'given': oh_mode, 'allowed': '[ 0, 1, 2 ]' });
     }
 
@@ -1329,10 +1329,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 for (let i = 0; i < used_selectors_types_array[nrule].length - 1; i++) {
                     const selector_type = used_selectors_types_array[nrule][i];
                     const next_selector_type = used_selectors_types_array[nrule][i+1];
-                    if (   (   wide_range_selector_order.indexOf(selector_type)       !== -1
-                            && wide_range_selector_order.indexOf(next_selector_type)  !== -1
-                        ) || ( small_range_selector_order.indexOf(selector_type)      !== -1
-                            && small_range_selector_order.indexOf(next_selector_type) !== -1)
+                    if (   (   wide_range_selector_order.includes(selector_type)
+                            && wide_range_selector_order.includes(next_selector_type)
+                        ) || ( small_range_selector_order.includes(selector_type)
+                            && small_range_selector_order.includes(next_selector_type))
                         ) {
 
                         if (rule_tokens[used_selectors[nrule][selector_type][0]][0] === ':') {
@@ -1375,7 +1375,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             const week_day = rule_infos[nrule]['week_days'][i];
                                 // console.log(rule_infos[nrule+1]['week_days']);
                                 // console.log(week_day);
-                            if (rule_infos[nrule+1]['week_days'].indexOf(week_day === 6 ? 0 : week_day+1) !== -1) {
+                            if (rule_infos[nrule+1]['week_days'].includes(week_day === 6 ? 0 : week_day+1)) {
                                 next_rule_selects_next_day = true;
                                 break;
                             }
@@ -3245,7 +3245,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 });
                 matching_holiday.push.apply(matching_holiday, country_holidays);
                 matching_holiday.push.apply(matching_holiday, state_holidays.filter(function is_not_a_country_holiday(state_holiday) {
-                    return country_holiday_names.indexOf(state_holiday.name) === -1;
+                    return !country_holiday_names.includes(state_holiday.name);
                 }));
                 matching_holiday.sort(function(h1, h2) {
                     const h1_year = Object.keys(h1).find(function(k) {return k !== 'name';}) ?? '';
@@ -3656,7 +3656,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const wd = date.getDay();
         for (let i = 0; i < clauses.length; i++) {
             const c = clauses[i];
-            if (c.from_wds.indexOf(wd) === -1) continue;
+            if (!c.from_wds.includes(wd)) continue;
 
             // Distance to the target weekday, always in the range [1, 7].
             // The modulo alone could yield 0 when wd === target_wd, but the
