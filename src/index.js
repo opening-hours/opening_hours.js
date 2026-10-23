@@ -260,8 +260,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
     const optional_config = typeof optional_conf_parm === 'object' && optional_conf_parm !== null
         ? optional_conf_parm
         : undefined;
-    const parser_locale_value = optional_config?.['locale'];
-    const parser_locale = typeof parser_locale_value === 'string' ? parser_locale_value : 'en';
+    const locale_value = optional_config?.['locale'];
+    if (locale_value !== undefined && typeof locale_value !== 'string') {
+        // `t()` needs a resolved locale first, so this one error is reported directly.
+        throw translate('en', 'texts', 'conf param unknown type', { 'key': 'locale', 'given': typeof(locale_value), 'expected': 'string' });
+    }
+    const parser_locale = typeof locale_value === 'string' ? locale_value : 'en';
 
     // Parser errors and warnings only need message translations.
     /** @type {(key: string, variables?: Record<string, unknown>) => string} */
@@ -328,40 +332,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
     let oh_map_value = false;
     /** @type {string|undefined} */
     let oh_key;
-    /** @type {string|undefined} */
-    let oh_regex_key;
+    // Disables the 'additional_rule_separator not used ...' warning; documented in README.md.
+    let additional_rule_separator_enabled = true;
 
     if (typeof optional_conf_parm === 'number') {
         oh_mode = optional_conf_parm;
-    } else if (typeof optional_conf_parm === 'object' && optional_conf_parm !== null) {
-        const configured_mode = getOptionalConfParm('mode', 'number');
-        if (typeof configured_mode === 'number') {
-            oh_mode = configured_mode;
+    } else if (optional_config !== undefined) {
+        oh_mode = getOptionalConfNumber('mode');
+        warnings_severity = getOptionalConfNumber('warnings_severity') ?? warnings_severity;
+        if ([ 0, 1, 2, 3, 4, 5, 6, 7 ].indexOf(warnings_severity) === -1) {
+            throw t('warnings severity', { 'severity': warnings_severity, 'allowed': '[ 0, 1, 2, 3, 4, 5, 6, 7 ]' });
         }
-        const configured_warnings_severity = getOptionalConfParm('warnings_severity', 'number');
-        if (typeof configured_warnings_severity === 'number') {
-            warnings_severity = configured_warnings_severity;
-            if ([ 0, 1, 2, 3, 4, 5, 6, 7 ].indexOf(warnings_severity) === -1) {
-                throw t('warnings severity', { 'severity': warnings_severity, 'allowed': '[ 0, 1, 2, 3, 4, 5, 6, 7 ]' });
-            }
-        }
-        const configured_tag_key = getOptionalConfParm('tag_key', 'string');
-        if (typeof configured_tag_key === 'string') {
-            oh_key = configured_tag_key;
-        }
-        const configured_map_value = getOptionalConfParm('map_value', 'boolean');
-        if (typeof configured_map_value === 'boolean') {
-            oh_map_value = configured_map_value;
-        }
+        oh_key = getOptionalConfString('tag_key');
+        oh_map_value = getOptionalConfBoolean('map_value') ?? false;
+        additional_rule_separator_enabled = getOptionalConfBoolean('additional_rule_separator') ?? true;
     } else if (typeof optional_conf_parm !== 'undefined') {
         throw t('optional conf parm type', { 'given': typeof(optional_conf_parm) });
     }
 
+    /** @type {{ mode: number, warn_for_PH_missing?: boolean, map?: Record<string, string> }|undefined} */
+    let tag_default;
     if (typeof oh_key === 'string') {
-        oh_regex_key = getRegexKeyForKeyFromOsmDefaults(oh_key)
-    }
-    const tag_default = oh_regex_key === undefined ? undefined : osm_tag_defaults[oh_regex_key];
-    if (typeof oh_key === 'string') {
+        const regex_key = getRegexKeyForKeyFromOsmDefaults(oh_key);
+        tag_default = regex_key === undefined ? undefined : osm_tag_defaults[regex_key];
         const mapped_value = tag_default?.map?.[value];
         if (oh_map_value && typeof mapped_value === 'string') {
             value = mapped_value;
@@ -605,26 +598,44 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
-     * Read and validate an optional constructor parameter. {{{
-     * @param {'mode'|'warnings_severity'|'tag_key'|'map_value'} key Key of `optional_conf_parm`.
-     * @param {'number'|'string'|'boolean'} expected_type Expected result of `typeof`.
-     * @returns {number|string|boolean|undefined} The valid value, if provided.
+     * Read and validate an optional numeric constructor parameter. {{{
+     * @param {'mode'|'warnings_severity'} key Key of `optional_conf_parm`.
+     * @returns {number|undefined} The value, if provided.
      */
-    function getOptionalConfParm(key, expected_type) {
+    function getOptionalConfNumber(key) {
         const value = optional_config?.[key];
-        if (expected_type === 'number' && typeof value === 'number') {
+        if (value === undefined || typeof value === 'number') {
             return value;
         }
-        if (expected_type === 'string' && typeof value === 'string') {
+        throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': 'number' });
+    }
+    /* }}} */
+
+    /**
+     * Read and validate an optional string constructor parameter. {{{
+     * @param {'tag_key'} key Key of `optional_conf_parm`.
+     * @returns {string|undefined} The value, if provided.
+     */
+    function getOptionalConfString(key) {
+        const value = optional_config?.[key];
+        if (value === undefined || typeof value === 'string') {
             return value;
         }
-        if (expected_type === 'boolean' && typeof value === 'boolean') {
+        throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': 'string' });
+    }
+    /* }}} */
+
+    /**
+     * Read and validate an optional boolean constructor parameter. {{{
+     * @param {'map_value'|'additional_rule_separator'} key Key of `optional_conf_parm`.
+     * @returns {boolean|undefined} The value, if provided.
+     */
+    function getOptionalConfBoolean(key) {
+        const value = optional_config?.[key];
+        if (value === undefined || typeof value === 'boolean') {
             return value;
         }
-        if (value !== undefined) {
-            throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': expected_type });
-        }
-        return undefined;
+        throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': 'boolean' });
     }
     /* }}} */
     /* }}} */
@@ -1430,7 +1441,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                     // console.log(rule_infos);
                     // console.log(next_rule_selects_next_day);
-                    const additional_rule_separator_enabled = optional_config?.['additional_rule_separator'] !== false;
                     if (rules_too_complex_count < 2 && next_rule_selects_next_day && additional_rule_separator_enabled) {
                         parsing_warnings.push([nrule+1, new_tokens[nrule+1][0].length - 1,
                             'additional_rule_separator_not_used_after_time_wrapping_midnight',
@@ -1484,8 +1494,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 && (
                         (
                             typeof oh_key === 'string'
-                            && oh_regex_key
-                            && osm_tag_defaults[oh_regex_key]['warn_for_PH_missing']
+                            && tag_default?.warn_for_PH_missing
                         )
                         || (typeof oh_key !== 'string')
                    )
