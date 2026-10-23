@@ -134,7 +134,7 @@ function getStateFromAddress(address, countryCode) {
  * Creates an opening hours parser for an OSM opening-hours value.
  * @param {string} value The opening-hours value to parse.
  * @param {NominatimObject|null} [nominatim_object] Location and address data used for holidays and solar times.
- * @param {number|object} [optional_conf_parm] Parser mode or parser configuration.
+ * @param {number|Record<string, unknown>} [optional_conf_parm] Parser mode or parser configuration.
  */
 export default function(value, nominatim_object, optional_conf_parm) {
     // Short constants {{{
@@ -220,6 +220,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'date_format': 'short'           // Use short or long date format (for day and month names)
     };
 
+    /** @type {Record<string, { mode: number, warn_for_PH_missing?: boolean, map?: Record<string, string> }>} */
     const osm_tag_defaults = {
         'opening_hours'       :  { 'mode' :  0, 'warn_for_PH_missing' :  true, },
         'collection_times'    :  { 'mode' :  2, },
@@ -256,11 +257,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /* Translation function {{{ */
     // Parser messages use the `texts` translations. Pretty output translates separately.
-    const parser_locale = optional_conf_parm && typeof optional_conf_parm['locale'] === 'string'
-        ? optional_conf_parm['locale']
-        : 'en';
+    const optional_config = typeof optional_conf_parm === 'object' && optional_conf_parm !== null
+        ? optional_conf_parm
+        : undefined;
+    const parser_locale_value = optional_config?.['locale'];
+    const parser_locale = typeof parser_locale_value === 'string' ? parser_locale_value : 'en';
 
     // Parser errors and warnings only need message translations.
+    /** @type {(key: string, variables?: Record<string, unknown>) => string} */
     const t = (key, variables) => translate(parser_locale, 'texts', key, variables);
     /* }}} */
 
@@ -319,27 +323,35 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * This number is expected to be >= 4. This is not explicitly checked.
      */
 
+    /** @type {number|undefined} */
     let oh_mode;
     let oh_map_value = false;
-    let oh_key, oh_regex_key;
+    /** @type {string|undefined} */
+    let oh_key;
+    /** @type {string|undefined} */
+    let oh_regex_key;
 
     if (typeof optional_conf_parm === 'number') {
         oh_mode = optional_conf_parm;
-    } else if (typeof optional_conf_parm === 'object') {
-        if (checkOptionalConfParm('mode', 'number')) {
-            oh_mode = optional_conf_parm['mode'];
+    } else if (typeof optional_conf_parm === 'object' && optional_conf_parm !== null) {
+        const configured_mode = getOptionalConfParm('mode', 'number');
+        if (typeof configured_mode === 'number') {
+            oh_mode = configured_mode;
         }
-        if (checkOptionalConfParm('warnings_severity', 'number')) {
-            warnings_severity = optional_conf_parm['warnings_severity'];
+        const configured_warnings_severity = getOptionalConfParm('warnings_severity', 'number');
+        if (typeof configured_warnings_severity === 'number') {
+            warnings_severity = configured_warnings_severity;
             if ([ 0, 1, 2, 3, 4, 5, 6, 7 ].indexOf(warnings_severity) === -1) {
                 throw t('warnings severity', { 'severity': warnings_severity, 'allowed': '[ 0, 1, 2, 3, 4, 5, 6, 7 ]' });
             }
         }
-        if (checkOptionalConfParm('tag_key', 'string')) {
-            oh_key = optional_conf_parm['tag_key'];
+        const configured_tag_key = getOptionalConfParm('tag_key', 'string');
+        if (typeof configured_tag_key === 'string') {
+            oh_key = configured_tag_key;
         }
-        if (checkOptionalConfParm('map_value', 'boolean')) {
-            oh_map_value = optional_conf_parm.map_value;
+        const configured_map_value = getOptionalConfParm('map_value', 'boolean');
+        if (typeof configured_map_value === 'boolean') {
+            oh_map_value = configured_map_value;
         }
     } else if (typeof optional_conf_parm !== 'undefined') {
         throw t('optional conf parm type', { 'given': typeof(optional_conf_parm) });
@@ -347,26 +359,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     if (typeof oh_key === 'string') {
         oh_regex_key = getRegexKeyForKeyFromOsmDefaults(oh_key)
-
-        if (oh_map_value
-            && typeof osm_tag_defaults[oh_regex_key] === 'object'
-            && typeof osm_tag_defaults[oh_regex_key]['map'] === 'object'
-            && typeof osm_tag_defaults[oh_regex_key]['map'][value] === 'string'
-            ) {
-
-            value = osm_tag_defaults[oh_regex_key]['map'][value];
+    }
+    const tag_default = oh_regex_key === undefined ? undefined : osm_tag_defaults[oh_regex_key];
+    if (typeof oh_key === 'string') {
+        const mapped_value = tag_default?.map?.[value];
+        if (oh_map_value && typeof mapped_value === 'string') {
+            value = mapped_value;
         }
     } else if (oh_map_value) {
         throw t('conf param tag key missing');
     }
 
     if (typeof oh_mode === 'undefined') {
-        if (typeof oh_key === 'string' && osm_tag_defaults[oh_regex_key] !== undefined) {
-            if (typeof osm_tag_defaults[oh_regex_key]['mode'] === 'number') {
-                oh_mode = osm_tag_defaults[oh_regex_key]['mode'];
-            } else {
-                oh_mode = 0;
-            }
+        if (typeof oh_key === 'string' && tag_default !== undefined) {
+            oh_mode = typeof tag_default.mode === 'number' ? tag_default.mode : 0;
         } else {
             oh_mode = 0;
         }
@@ -599,18 +605,26 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
-     * Check the type of an optional constructor parameter. {{{
-     * @param {string} key Key of `optional_conf_parm`.
-     * @param {string} expected_type Expected result of `typeof`.
-     * @returns {boolean} Whether the value has the expected type.
+     * Read and validate an optional constructor parameter. {{{
+     * @param {'mode'|'warnings_severity'|'tag_key'|'map_value'} key Key of `optional_conf_parm`.
+     * @param {'number'|'string'|'boolean'} expected_type Expected result of `typeof`.
+     * @returns {number|string|boolean|undefined} The valid value, if provided.
      */
-    function checkOptionalConfParm(key, expected_type) {
-        if (typeof optional_conf_parm[key] === expected_type) {
-            return true;
-        } else if (typeof optional_conf_parm[key] !== 'undefined') {
-            throw t('conf param unknown type', { 'key': key, 'given': typeof(optional_conf_parm[key]), 'expected': expected_type });
+    function getOptionalConfParm(key, expected_type) {
+        const value = optional_config?.[key];
+        if (expected_type === 'number' && typeof value === 'number') {
+            return value;
         }
-        return false;
+        if (expected_type === 'string' && typeof value === 'string') {
+            return value;
+        }
+        if (expected_type === 'boolean' && typeof value === 'boolean') {
+            return value;
+        }
+        if (value !== undefined) {
+            throw t('conf param unknown type', { 'key': key, 'given': typeof(value), 'expected': expected_type });
+        }
+        return undefined;
     }
     /* }}} */
     /* }}} */
@@ -1416,7 +1430,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                     // console.log(rule_infos);
                     // console.log(next_rule_selects_next_day);
-                    const additional_rule_separator_enabled = (optional_conf_parm||{}).additional_rule_separator !== false;
+                    const additional_rule_separator_enabled = optional_config?.['additional_rule_separator'] !== false;
                     if (rules_too_complex_count < 2 && next_rule_selects_next_day && additional_rule_separator_enabled) {
                         parsing_warnings.push([nrule+1, new_tokens[nrule+1][0].length - 1,
                             'additional_rule_separator_not_used_after_time_wrapping_midnight',
