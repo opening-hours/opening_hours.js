@@ -2819,7 +2819,7 @@ test.addTest('Variable days: New Zealand public holidays.', [
     [ '2025-02-06 00:00', '2025-02-07 00:00', false, 'Waitangi Day' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
     [ '2025-04-21 00:00', '2025-04-22 00:00', false, 'Easter Monday' ],
-    [ '2025-04-25 00:00', '2025-04-26 00:00', false, 'Anzac Day' ],
+    [ '2025-04-25 00:00', '2025-04-26 00:00', false, 'ANZAC Day' ],
     [ '2025-06-02 00:00', '2025-06-03 00:00', false, 'King\'s Birthday' ],
     [ '2025-10-27 00:00', '2025-10-28 00:00', false, 'Labour Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],

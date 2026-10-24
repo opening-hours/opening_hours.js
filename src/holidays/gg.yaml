@@ -5,7 +5,7 @@
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/GG.yaml
 
 PH:
-  - {name: "New Year's Day", fixed_date: [1, 1], substitute_rule: "if saturday,sunday then next monday"}
+  - {name: New Year's Day, fixed_date: [1, 1], substitute_rule: "if saturday,sunday then next monday"}
   - {name: Good Friday, variable_date: easter, offset: -2}
   - {name: Easter Monday, variable_date: easter, offset: 1}
   - {name: Early May bank holiday, variable_date: firstMayMonday}
