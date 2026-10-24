@@ -187,6 +187,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
     const phrase_correction_entries = correction_entries.filter(({ pattern }) =>
         pattern.includes(' ') || pattern.includes('\\s')
     );
+    /**
+     * Find the first matching phrase correction at the start of the input.
+     * @param {string} input Text to check for a phrase correction.
+     * @returns {RegExpMatchArray | undefined} The matching phrase or undefined.
+     */
     const findPhraseCorrection = (input) => {
         for (const correction of phrase_correction_entries) {
             const match = input.match(new RegExp(
