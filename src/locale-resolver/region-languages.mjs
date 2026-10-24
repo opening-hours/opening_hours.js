@@ -13,11 +13,12 @@
  * up and caches.
  */
 
+/** @type {Map<string, Set<string>>} */
 const cache = new Map();
 
 /**
  * @param {string|undefined} countryCode - e.g. "de", "LT" (case-insensitive).
- * @param {{ regionLangs?: Record<string, string[]> }} layers - generated layer data; uses `layers.regionLangs`.
+ * @param {Pick<import('./types.d.ts').Layers, 'regionLangs'>} layers - Generated layer data; uses `layers.regionLangs`.
  * @returns {Set<string>} language codes plausible at that location (may be empty).
  */
 export function regionLanguages(countryCode, layers) {
@@ -25,8 +26,9 @@ export function regionLanguages(countryCode, layers) {
         return new Set();
     }
     const cc = countryCode.toLowerCase();
-    if (cache.has(cc)) {
-        return cache.get(cc);
+    const cached = cache.get(cc);
+    if (cached !== undefined) {
+        return cached;
     }
 
     const generated = (layers && layers.regionLangs && layers.regionLangs[cc]) || [];

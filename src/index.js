@@ -40,15 +40,20 @@ import { VARIABLE_TIME_DEFAULTS, getVariableTimeMinutes } from './variable-times
 import { resolveRange } from './locale-resolver/resolver.mjs';
 import { regionLanguages } from './locale-resolver/region-languages.mjs';
 import { normalizeToken } from './locale-resolver/normalize.mjs';
-import resolver_layers from './locale-resolver/layers.json';
+import resolver_layers_data from './locale-resolver/layers.json';
 import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-defaults.mjs';
 
 /** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
 /** @typedef {import('./parser-token-types.d.ts').ParserTokenRule} ParserTokenRule */
 /** @typedef {import('./parser-token-types.d.ts').NumberParserToken | import('./parser-token-types.d.ts').NumericRangeParserToken} NumericParserTokenValue */
+/** @typedef {import('./locale-resolver/types.d.ts').TokenType} RangeTokenType */
+/** @typedef {import('./locale-resolver/types.d.ts').Layers} ResolverLayers */
+/** @typedef {[number|string, number, string, string, ParserTokenRule[]?]} ParsingWarning */
 
 /** @type {import('./holidays/holiday-definitions.d.ts').HolidayDefinitions} */
 const holidayDefinitions = holiday_definitions;
+/** @type {ResolverLayers} */
+const resolver_layers = /** @type {ResolverLayers} */ (/** @type {unknown} */ (resolver_layers_data));
 /** @typedef {import('./holidays/holiday-definitions.d.ts').HolidayItem} HolidayItem */
 /** @typedef {import('opening_hours').nominatim_object} NominatimObject */
 
@@ -187,6 +192,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
     const phrase_correction_entries = correction_entries.filter(({ pattern }) =>
         pattern.includes(' ') || pattern.includes('\\s')
     );
+    /**
+     * Find the first matching phrase correction at the start of the input.
+     * @param {string} input Text to check for a phrase correction.
+     * @returns {RegExpMatchArray | undefined} The matching phrase or undefined.
+     */
     const findPhraseCorrection = (input) => {
         for (const correction of phrase_correction_entries) {
             const match = input.match(new RegExp(
@@ -387,6 +397,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return token && isNumericParserToken(token) ? token : undefined;
     };
 
+    /** @type {ParsingWarning[]} */
     const parsing_warnings = []; // Elements are arrays [nrule, at, type, message, tokens_to_use?] fed into formatWarnErrorMessage().
     let done_with_warnings = false; // The functions which returns warnings can be called multiple times.
     let done_with_selector_reordering = false;
@@ -715,8 +726,16 @@ export default function(value, nominatim_object, optional_conf_parm) {
         // per rule gives cross-token coherence (e.g. понедельник-пятница) that a
         // greedy single-token pass cannot, and the POI country adds the geo tier.
         const resolver_region_langs = regionLanguages(location_cc, resolver_layers);
+        /** @type {Record<RangeTokenType, string[]>} */
         const range_meaning_index = { weekday: weekdays, month: months };
+        /** @type {Record<RangeTokenType, { raw: string, token_index: number, warning_index: number|null }[]>} */
         let curr_rule_range_raw = { weekday: [], month: [] };
+        /**
+         * @param {string} raw - Raw range lexeme.
+         * @param {string} range_type - Parser token type.
+         * @param {number} token_index - Position in the current rule.
+         * @param {number|null} [warning_index] - Associated correction warning.
+         */
         const recordRangeTerm = (raw, range_type, token_index, warning_index) => {
             if (range_type === 'weekday' || range_type === 'month') {
                 curr_rule_range_raw[range_type].push({
@@ -727,7 +746,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
         };
         const finalizeRuleRanges = () => {
-            for (const range_type of ['weekday', 'month']) {
+            /** @type {RangeTokenType[]} */
+            const range_types = ['weekday', 'month'];
+            for (const range_type of range_types) {
                 const entries = curr_rule_range_raw[range_type];
                 if (entries.length === 0) {
                     continue;
@@ -741,46 +762,47 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 res.tokens.forEach((resolved, index) => {
                     // Reject foreign/ambiguous tokens the resolver actively rejects,
                     // but defer 'unknown' ones to the manual correction table.
-                    if (resolved.confidence === 'error' && resolved.kind !== 'unknown') {
+                    if (resolved.kind === 'foreign' && resolved.confidence === 'error') {
                         const token = curr_rule_tokens[entries[index].token_index];
                         const at = token ? token[2] : -1;
-                        throw formatWarnErrorMessage(-1, at, resolved.message);
+                        throw formatWarnErrorMessage(-1, at, resolved.message ?? formatLibraryBugMessage());
+                    }
+                    if (resolved.kind === 'unknown' || resolved.meaning === null) {
+                        return;
                     }
                     // Correct the token to the context-resolved meaning, overriding a
                     // locale-blind flat-map guess (e.g. `ne`→Su becomes Th at a Sesotho
                     // location). The resolver — not the greedy map — is authoritative.
-                    if (resolved.meaning && resolved.kind !== 'unknown') {
-                        const meaning_index = range_meaning_index[range_type].indexOf(resolved.meaning);
-                        const token = curr_rule_tokens[entries[index].token_index];
-                        if (meaning_index >= 0 && token && token[1] === range_type) {
-                            const overridden = token[0] !== meaning_index;
-                            if (overridden) {
-                                token[0] = meaning_index;
+                    const meaning_index = range_meaning_index[range_type].indexOf(resolved.meaning);
+                    const token = curr_rule_tokens[entries[index].token_index];
+                    if (meaning_index >= 0 && token && token[1] === range_type) {
+                        const overridden = token[0] !== meaning_index;
+                        if (overridden) {
+                            token[0] = meaning_index;
+                        }
+                        // Rewrite the correction warning when the resolver overrode the
+                        // meaning, or append an auto-generated note when the lexeme is
+                        // cross-locale ambiguous (e.g. `so` = Su here, Sa elsewhere).
+                        const alternatives = resolved.kind === 'foreign' ? resolved.alternatives ?? [] : [];
+                        const has_note = alternatives.length > 0;
+                        if (overridden || has_note) {
+                            const raw_lexeme = entries[index].raw;
+                            let message = t('please use English abbreviation ok for ko',
+                                { ko: raw_lexeme, ok: resolved.meaning });
+                            if (has_note) {
+                                const alternative_note = alternatives
+                                    .map(alt => alt.meaning + ' (' + alt.langs.join(', ') + ')')
+                                    .join('; ');
+                                message += ' ' + t('ambiguous elsewhere', { ko: raw_lexeme, alternatives: alternative_note });
                             }
-                            // Rewrite the correction warning when the resolver overrode the
-                            // meaning, or append an auto-generated note when the lexeme is
-                            // cross-locale ambiguous (e.g. `so` = Su here, Sa elsewhere).
-                            const has_note = Array.isArray(resolved.alternatives) && resolved.alternatives.length > 0;
-                            if (overridden || has_note) {
-                                const raw_lexeme = entries[index].raw;
-                                let message = t('please use English abbreviation ok for ko',
-                                    { ko: raw_lexeme, ok: resolved.meaning });
-                                if (has_note) {
-                                    const alternatives = resolved.alternatives
-                                        .map(alt => alt.meaning + ' (' + alt.langs.join(', ') + ')')
-                                        .join('; ');
-                                    message += ' ' + t('ambiguous elsewhere', { ko: raw_lexeme, alternatives });
-                                }
-                                // Rewrite exactly the warning this token produced (tracked
-                                // by index), so a repeated lexeme in the same rule cannot
-                                // patch the wrong occurrence.
-                                const warn_idx = entries[index].warning_index;
-                                if (warn_idx !== null && warn_idx >= 0 && warn_idx < parsing_warnings.length) {
-                                    const warning = parsing_warnings[warn_idx];
-                                    if (warning[2] === 'word_error_correction'
-                                        && typeof warning[3] === 'string') {
-                                        warning[3] = message;
-                                    }
+                            // Rewrite exactly the warning this token produced (tracked
+                            // by index), so a repeated lexeme in the same rule cannot
+                            // patch the wrong occurrence.
+                            const warn_idx = entries[index].warning_index;
+                            if (warn_idx !== null && warn_idx >= 0 && warn_idx < parsing_warnings.length) {
+                                const warning = parsing_warnings[warn_idx];
+                                if (warning[2] === 'word_error_correction') {
+                                    warning[3] = message;
                                 }
                             }
                         }
