@@ -6,3 +6,6 @@
 [submodule "submodules/openholidaysapi.data"]
 	path = submodules/openholidaysapi.data
 	url = https://github.com/openpotato/openholidaysapi.data.git
+[submodule "submodules/date-holidays"]
+	path = submodules/date-holidays
+	url = https://github.com/commenthol/date-holidays.git
