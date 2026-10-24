@@ -2,8 +2,8 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
-# @attrib https://en.wikipedia.org/wiki/Public_holidays_in_Spain
 # @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/ES.yaml
+# @attrib https://en.wikipedia.org/wiki/Public_holidays_in_Spain
 
 _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.60333&lon=2.18920&zoom=18&addressdetails=1&limit=1&accept-language=es,ca,eu,gl,oc,ast"
 
@@ -28,6 +28,7 @@ PH:
   - {name: Día de la Comunidad de Madrid, fixed_date: [5, 2], shift_rule: if sunday then next monday, only_states: [Comunidad de Madrid]}
   - {name: Día de las Letras Gallegas, fixed_date: [5, 17], only_states: [Galicia]}
   - {name: Día de Castilla-La Mancha, fixed_date: [5, 31], only_states: [Castilla-La Mancha]}
+  - {name: Lunes de Pentecostés, variable_date: easter, offset: 50, only_states: [Cataluña]}
   - {name: Corpus Christi, variable_date: easter, offset: 60, only_states: [Castilla-La Mancha]}
   - {name: Día de La Rioja, fixed_date: [6, 9], only_states: [La Rioja]}
   - {name: San Juan, fixed_date: [6, 24], only_states: [Cataluña, Comunitat Valenciana]}
@@ -40,7 +41,7 @@ PH:
   - {name: Día de Extremadura, fixed_date: [9, 8], substitute_rule: if sunday then next monday, only_states: [Extremadura]}
   - {name: Dia de Cataluña, fixed_date: [9, 11], only_states: [Cataluña]}
   - {name: La Bien Aparecida, fixed_date: [9, 15], substitute_rule: if sunday then next monday, only_states: [Cantabria]}
-  - {name: Nuestra Señora de la Merced, fixed_date: [9, 24], only_states: [Cataluña]}
+  - {name: Nuestra Señora de la Merced, fixed_date: [9, 24], shift_rule: if sunday then next monday, only_states: [Cataluña]}
   - {name: San Esteban, fixed_date: [12, 26], only_states: [Cataluña]}
 
 Andalucía:

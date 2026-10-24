@@ -2,11 +2,13 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/CA.yaml
+# @attrib https://en.wikipedia.org/wiki/Public_holidays_in_Canada
+
 _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=45.4215&lon=-75.6972&zoom=18&addressdetails=1&accept-language=en,fr"
 
-# https://en.wikipedia.org/wiki/Public_holidays_in_Canada
 PH:
-  - {name: "New Year's Day", fixed_date: [1, 1]}
+  - {name: New Year's Day, fixed_date: [1, 1]}
   - {name: Good Friday, variable_date: easter, offset: -2}
   - {name: Canada Day, variable_date: canadaDay}
   - {name: Labour Day, variable_date: firstSeptemberMonday}
@@ -16,7 +18,7 @@ Alberta:
   _state_code: ab
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Alberta&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Family Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Victoria Day, variable_date: victoriaDay}
@@ -30,7 +32,7 @@ British Columbia:
   _state_code: bc
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=British+Columbia&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Family Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Victoria Day, variable_date: victoriaDay}
@@ -45,7 +47,7 @@ Manitoba:
   _state_code: mb
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Manitoba&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Louis Riel Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Victoria Day, variable_date: victoriaDay}
@@ -58,7 +60,7 @@ New Brunswick:
   _state_code: nb
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=New+Brunswick&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Family Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Canada Day, variable_date: canadaDay}
@@ -71,7 +73,7 @@ Newfoundland and Labrador:
   _state_code: nl
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Newfoundland+and+Labrador&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, fixed_date: [7, 1]}
     - {name: Labour Day, variable_date: firstSeptemberMonday}
@@ -82,7 +84,7 @@ Northwest Territories:
   _state_code: nt
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Northwest+Territories&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Easter Monday, variable_date: easter, offset: 1}
     - {name: Victoria Day, variable_date: victoriaDay}
@@ -99,7 +101,7 @@ Nova Scotia:
   _state_code: ns
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Nova+Scotia&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Heritage Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Canada Day, variable_date: canadaDay}
@@ -111,7 +113,7 @@ Nunavut:
   _state_code: nu
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Nunavut&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Victoria Day, variable_date: victoriaDay}
     - {name: Canada Day, variable_date: canadaDay}
@@ -126,7 +128,7 @@ Ontario:
   _state_code: on
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Ontario&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Family Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Easter Monday, variable_date: easter, offset: 1}
@@ -141,7 +143,7 @@ Prince Edward Island:
   _state_code: pe
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Prince+Edward+Island&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Islander Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Canada Day, variable_date: canadaDay}
@@ -168,7 +170,7 @@ Saskatchewan:
   _state_code: sk
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Saskatchewan&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Family Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Victoria Day, variable_date: victoriaDay}
@@ -183,7 +185,7 @@ Yukon:
   _state_code: yt
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Canada&state=Yukon&zoom=18&addressdetails=1&limit=1&accept-language=en,fr"
   PH:
-    - {name: "New Year's Day", fixed_date: [1, 1]}
+    - {name: New Year's Day, fixed_date: [1, 1]}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Easter Monday, variable_date: easter, offset: 1}
     - {name: Victoria Day, variable_date: victoriaDay}
