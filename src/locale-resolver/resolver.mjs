@@ -39,16 +39,12 @@
 
 import { normalizeToken } from './normalize.mjs';
 
-/** @typedef {'weekday'|'month'} TokenType */
-/** @typedef {'silent'|'info'|'warning'|'error'} Confidence */
-/** @typedef {{ type: TokenType, meaning: string, lang: string }} Candidate */
-/** @typedef {{ canonical: Record<TokenType, Record<string, string>>, universal: Record<TokenType, Record<string, string>>, crossLocale: Record<string, Candidate[]> }} Layers */
-/** @typedef {{ raw: string, token: string, type: TokenType }} TokenBase */
-/** @typedef {TokenBase & { kind: 'canonical', meaning: string, lang: null, layer: 0, confidence: 'silent', candidates: null, message: null }} CanonicalToken */
-/** @typedef {TokenBase & { kind: 'universal', meaning: string, lang: null, layer: 2, confidence: 'info', candidates: null, message: null }} UniversalToken */
-/** @typedef {TokenBase & { kind: 'foreign', meaning: string|null, lang: string|null, layer: 3|null, confidence: 'info'|'warning'|'error', candidates: Candidate[], message: string|null, alternatives?: { meaning: string, langs: string[] }[] }} ForeignToken */
-/** @typedef {TokenBase & { kind: 'unknown', meaning: null, lang: null, layer: null, confidence: 'error', candidates: null, message: string }} UnknownToken */
-/** @typedef {CanonicalToken|UniversalToken|ForeignToken|UnknownToken} ResolvedToken */
+/** @typedef {import('./types.d.ts').TokenType} TokenType */
+/** @typedef {import('./types.d.ts').Confidence} Confidence */
+/** @typedef {import('./types.d.ts').Candidate} Candidate */
+/** @typedef {import('./types.d.ts').ForeignToken} ForeignToken */
+/** @typedef {import('./types.d.ts').Layers} Layers */
+/** @typedef {import('./types.d.ts').ResolvedToken} ResolvedToken */
 
 /** @type {Record<Confidence, number>} */
 const SEVERITY = { silent: 0, info: 1, warning: 2, error: 3 };
@@ -218,8 +214,8 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
 /**
  * Resolve a sequence of raw lexemes of a single grammatical type.
  * @param {string[]} rawTokens - e.g. ['Mo', 'Tr'] for `Mo-Tr`, ['Jan', 'Mär'] for `Jan-Mär`.
- * @param {{ locale: string, type: TokenType, layers: Layers, regionLangs?: Set<string> }} options - Locale and resolver data.
- * @returns {{ ok: boolean, confidence: Confidence, tokens: ResolvedToken[] }} Resolved tokens and overall confidence.
+ * @param {import('./types.d.ts').ResolveRangeOptions} options - Locale and resolver data.
+ * @returns {import('./types.d.ts').ResolveRangeResult} Resolved tokens and overall confidence.
  */
 export function resolveRange(rawTokens, { locale, type, layers, regionLangs }) {
     const localeLang = String(locale || '').split('-')[0].toLowerCase();
