@@ -54,6 +54,7 @@ import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-def
 const holidayDefinitions = holiday_definitions;
 /** @type {ResolverLayers} */
 const resolver_layers = /** @type {ResolverLayers} */ (/** @type {unknown} */ (resolver_layers_data));
+
 /** @typedef {import('./holidays/holiday-definitions.d.ts').HolidayItem} HolidayItem */
 /** @typedef {import('opening_hours').nominatim_object} NominatimObject */
 
@@ -61,6 +62,27 @@ const resolver_layers = /** @type {ResolverLayers} */ (/** @type {unknown} */ (r
  * @typedef {{matching_rule: number|undefined, matching_rule_other: number|undefined,
  *     deviation_for_time: Record<string, ('getState'|'getUnknown'|'getComment')[]>}} OpeningHoursEqualityDifference
  */
+
+const TOKENIZER_WORD_REGEX = /^([^\s\d\p{P}\p{S}\p{C}]{2,})(?=\s|$|[\s\d\p{P}\p{S}\p{C}])((?:[.]| before| after)?)/iu;
+const NUMERIC_DAY_OFFSET_PATTERN = String.raw`\d+\s*days?(?!\s*(?:a|\/)\s*week)\b`;
+const ERROR_TOLERANCE_ALTERNATIVES = [
+    String.raw`&|_|→|‐|‑|‒|–|−|—|ー|=|·`,
+    String.raw`öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：`,
+    String.raw`always (?:open|closed)|24x7|24 hours 7 days a week|24 hours`,
+    String.raw`7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day`,
+    String.raw`(?:bis|till?|-|–)? ?(?:open ?end|late)`,
+    String.raw`(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?`,
+    String.raw`days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?`,
+    String.raw`(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?`,
+    String.raw`(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)`,
+    String.raw`p\.m\.|a\.m\.`,
+    String.raw`(?:[^\s\d\p{P}\p{S}\p{C}]|_)+(?=\s|$|[\s\d\p{Po}\p{Ps}\p{Pe}\p{Pd}\p{Pf}\p{Pi}\p{S}\p{C}])`,
+    String.raw`à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec`,
+].join('|');
+const ERROR_TOLERANCE_REGEX = new RegExp(
+    String.raw`^(?!${NUMERIC_DAY_OFFSET_PATTERN})(${ERROR_TOLERANCE_ALTERNATIVES})(\.?)`,
+    'iu'
+);
 
 /**
  * Resolve a state name from ISO3166-2 fields in a Nominatim address.
@@ -713,10 +735,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @returns {Array<ParserTokenRule>} Tokenized list. See the internal documentation in `docs/`.
      */
     function tokenize(value) {
-        // Negative list approach: Match anything that's NOT punctuation, digits, or special chars
-        // This automatically supports all Unicode letter categories without explicit enumeration
-        const WORD_REGEX = /^([^\s\d\p{P}\p{S}\p{C}]{2,})(?=\s|$|[\s\d\p{P}\p{S}\p{C}])((?:[.]| before| after)?)/iu;
-
         const all_tokens     = [];
         /** @type {Array<ParserToken>} */
         let curr_rule_tokens = [];
@@ -858,25 +876,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
         };
 
         let last_rule_fallback_terminated = false;
-        const NUMERIC_DAY_OFFSET_PATTERN = String.raw`\d+\s*days?(?!\s*(?:a|\/)\s*week)\b`;
-        const ERROR_TOLERANCE_ALTERNATIVES = [
-            String.raw`&|_|→|‐|‑|‒|–|−|—|ー|=|·`,
-            String.raw`öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：`,
-            String.raw`always (?:open|closed)|24x7|24 hours 7 days a week|24 hours`,
-            String.raw`7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day`,
-            String.raw`(?:bis|till?|-|–)? ?(?:open ?end|late)`,
-            String.raw`(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?`,
-            String.raw`days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?`,
-            String.raw`(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?`,
-            String.raw`(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)`,
-            String.raw`p\.m\.|a\.m\.`,
-            String.raw`(?:[^\s\d\p{P}\p{S}\p{C}]|_)+(?=\s|$|[\s\d\p{Po}\p{Ps}\p{Pe}\p{Pd}\p{Pf}\p{Pi}\p{S}\p{C}])`,
-            String.raw`à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec`,
-        ].join('|');
-        const ERROR_TOLERANCE_REGEX = new RegExp(
-            String.raw`^(?!${NUMERIC_DAY_OFFSET_PATTERN})(${ERROR_TOLERANCE_ALTERNATIVES})(\.?)`,
-            'iu'
-        );
         while (value !== '') {
             /* Ordered after likelihood of input for performance reasons.
              * Also, error tolerance is supposed to happen at the end.
@@ -885,7 +884,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
             // Check correction phrases before the regular word and error-tolerance patterns.
             const phrase_match = findPhraseCorrection(value);
-            let tmp = phrase_match || value.match(WORD_REGEX);
+            let tmp = phrase_match || value.match(TOKENIZER_WORD_REGEX);
             let token_from_map = undefined;
             if (!phrase_match && tmp && tmp[2] === '') {
                 token_from_map = string_to_token_map[tmp[1].toLowerCase()];
