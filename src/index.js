@@ -893,20 +893,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (typeof token_from_map === 'object') {
                 curr_rule_tokens.push(token_from_map.concat([value.length]));
                 recordRangeTerm(tmp[1], token_from_map[1], curr_rule_tokens.length - 1);
-                value = value.substr(tmp[1].length);
+                value = value.slice(tmp[1].length);
             } else if ((tmp = value.match(/^\s+/))) {
                 // whitespace is ignored
-                value = value.substr(tmp[0].length);
+                value = value.slice(tmp[0].length);
             } else if ((tmp = value.match(/^24\/7/))) {
                 // Reserved keyword.
                 curr_rule_tokens.push([tmp[0], tmp[0], value.length ]);
-                value = value.substr(tmp[0].length);
+                value = value.slice(tmp[0].length);
             } else if (/^;/.test(value)) {
                 // semicolon terminates rule.
                 // Next token belong to a new rule.
                 finalizeRuleRanges();
                 all_tokens.push([ curr_rule_tokens, last_rule_fallback_terminated, value.length ]);
-                value = value.substr(1);
+                value = value.slice(1);
 
                 curr_rule_tokens = [];
                 last_rule_fallback_terminated = false;
@@ -916,11 +916,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     parsing_warnings.push([ -1, value.length - 1, 'hour_min_separator', t('hour min separator')]);
                 }
                 curr_rule_tokens.push([ ':', 'timesep', value.length ]);
-                value = value.substr(1);
+                value = value.slice(1);
             } else if ((tmp = value.match(/^(?:PH|SH)/i))) {
                 // special day name (holidays)
                 curr_rule_tokens.push([tmp[0].toUpperCase(), 'holiday', value.length ]);
-                value = value.substr(2);
+                value = value.slice(2);
             } else if ((tmp = value.match(/^[°\u2070-\u209F\u00B2\u00B3\u00B9]{1,2}/))) {
                 const unicode_code_point_to_digit = {
                     176: 0,
@@ -954,7 +954,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     parsing_warnings.push([ -1, value.length - tmp[0].length,
                             'please_use_ok_for_ko', t('please use ok for ko', {'ko': tmp[0], 'ok': ok})]);
                 }
-                value = ok + value.substr(tmp[0].length);
+                value = ok + value.slice(tmp[0].length);
             } else if ((tmp = phrase_match || value.match(ERROR_TOLERANCE_REGEX))) {
                 /* Handle all remaining words and specific other characters with error tolerance.
                  *
@@ -980,7 +980,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (typeof correct_val === 'object') {
                     curr_rule_tokens.push([ correct_val[0], correct_val[1], value.length ]);
                     recordRangeTerm(lower_word, correct_val[1], curr_rule_tokens.length - 1);
-                    value = value.substr(tmp[0].length);
+                    value = value.slice(tmp[0].length);
                 } else if (typeof correct_val === 'string') {
                     if (correct_val === 'am' || correct_val === 'pm') {
                         let hours_token_at = curr_rule_tokens.length - 1;
@@ -1023,7 +1023,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         recordRangeTerm(lower_word, correct_tokens[0][0][1], curr_rule_tokens.length - 1, correction_warning_index);
                     }
 
-                    value = value.substr(tmp[0].length);
+                    value = value.slice(tmp[0].length);
                     // value = correct_val + value.substr(tmp[0].length);
                     // Does not work because it would generate the wrong length for formatWarnErrorMessage.
                 } else {
@@ -1053,7 +1053,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             ]);
                         }
                         recordRangeTerm(lower_word, recognized.type, curr_rule_tokens.length - 1, recognition_warning_index);
-                        value = value.substr(tmp[0].length);
+                        value = value.slice(tmp[0].length);
                     } else if (ambiguous_season_words.has(lower_word)) {
                         throw formatWarnErrorMessage(
                             -1,
@@ -1063,7 +1063,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     } else {
                         // No correction available. Insert as single character token and let the parser handle the error.
                         curr_rule_tokens.push([value[0].toLowerCase(), value[0].toLowerCase(), value.length - 1 ]);
-                        value = value.substr(1);
+                        value = value.slice(1);
                     }
                 }
                 if (typeof tmp[2] === 'string' && tmp[2] !== '' && !done_with_warnings) {
@@ -1086,7 +1086,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     curr_rule_tokens.push(number_token);
                 }
 
-                value = value.substr(tmp[1].length + (typeof tmp[2] === 'string' ? tmp[2].length : 0));
+                value = value.slice(tmp[1].length + (typeof tmp[2] === 'string' ? tmp[2].length : 0));
                 if (typeof tmp[2] === 'string' && tmp[2] !== '' && !done_with_warnings) {
                     parsing_warnings.push([ -1, value.length, 'omit_ko', t('omit ko', {'ko': tmp[2]})]);
                 }
@@ -1102,14 +1102,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 curr_rule_tokens = [];
                 // curr_rule_tokens = [ [ '||', 'rule separator', value.length  ] ];
                 // FIXME: Use this. Unknown bug needs to be solved in the process.
-                value = value.substr(2);
+                value = value.slice(2);
 
                 last_rule_fallback_terminated = true;
             } else if ((tmp = value.match(/^"([^"]+)"/))) {
                 // Comment following the specification.
                 // Any character is allowed inside the comment except " itself.
                 curr_rule_tokens.push([tmp[1], 'comment', value.length ]);
-                value = value.substr(tmp[0].length);
+                value = value.slice(tmp[0].length);
             } else if ((tmp = value.match(/^(["'„“‚‘’«「『])([^"'“”‘’»」』;|]*)(["'”“‘’»」』])/))) {
                 // Comments with error tolerance.
                 // The comments still have to be somewhat correct meaning
@@ -1132,15 +1132,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                 }
                 curr_rule_tokens.push([tmp[2], 'comment', value.length ]);
-                value = value.substr(tmp[0].length);
+                value = value.slice(tmp[0].length);
             } else if (/^(?:␣|\s)/.test(value)) {
                 // Using "␣" as space is not expected to be a normal
                 // mistake. Just ignore it to make using taginfo easier.
-                value = value.substr(1);
+                value = value.slice(1);
             } else {
                 // other single-character tokens
                 curr_rule_tokens.push([value[0].toLowerCase(), value[0].toLowerCase(), value.length ]);
-                value = value.substr(1);
+                value = value.slice(1);
             }
         }
 
