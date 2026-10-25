@@ -79,3 +79,39 @@ test('tokenizer converts superscript and subscript digits', () => {
         assert.equal(hours.prettifyValue(), 'Mo 09:00-17:00');
     }
 });
+
+test('tokenizer keeps warnings stable across repeated queries and parser instances', () => {
+    for (const value of ['Mon', 'every day', '10.00-12.00', 'Mo ₉-₁₇']) {
+        const hours = new opening_hours(value, null);
+        const pretty = hours.prettifyValue();
+        const warnings = hours.getStructuredWarnings();
+        const formatted = hours.getWarnings();
+
+        assert.equal(hours.prettifyValue(), pretty);
+        assert.deepEqual(hours.getStructuredWarnings(), warnings);
+        assert.deepEqual(hours.getWarnings(), formatted);
+
+        const other = new opening_hours('Tu 10:00-12:00', null);
+        assert.equal(other.prettifyValue(), 'Tu 10:00-12:00');
+        assert.deepEqual(other.getStructuredWarnings(), []);
+
+        const repeated = new opening_hours(value, null);
+        assert.equal(repeated.prettifyValue(), pretty);
+        assert.deepEqual(repeated.getStructuredWarnings(), warnings);
+        assert.deepEqual(hours.getStructuredWarnings(), warnings);
+    }
+});
+
+test('tokenizer preserves formatted-string rejection of ambiguous seasons', () => {
+    const message = 'Season words are ambiguous. Please use explicit date ranges instead, '
+        + 'e.g. Jun-Aug, Dec-Feb, or Jun 21-Sep 22.';
+    for (const season of ['spring', 'sommer', 'inverno']) {
+        for (const prefix of ['', 'Mo 09:00-17:00; ']) {
+            const value = prefix + season;
+            assert.throws(
+                () => new opening_hours(value, null),
+                error => error === `${value} <--- (${message})`
+            );
+        }
+    }
+});

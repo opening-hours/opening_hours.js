@@ -79,7 +79,7 @@ build/opening_hours.js \
 build/opening_hours.min.js \
 build/opening_hours.esm.mjs \
 build/opening_hours+deps.js \
-build/opening_hours+deps.min.js: src/index.js src/locales/word_error_correction.yaml \
+build/opening_hours+deps.min.js: src/index.js src/tokenizer.mjs src/locales/word_error_correction.yaml \
 src/locale-resolver/layers.json
 	node_modules/.bin/rollup -c
 
