@@ -141,6 +141,22 @@ function recognizeRangeToken(word, resolverLayers, weekdays, months) {
 }
 
 /**
+ * Check whether a token is an unknown single-letter word fragment.
+ * @param {ParserToken|undefined} token Token to inspect.
+ * @returns {boolean} Whether the token represents one unknown letter.
+ */
+function isUnknownSingleLetterToken(token) {
+    if (typeof token === 'undefined') {
+        return false;
+    }
+
+    const [token_value, token_type] = token;
+    return typeof token_value === 'string'
+        && token_value === token_type
+        && /^\p{L}$/u.test(token_value);
+}
+
+/**
  * Resolve a state name from ISO3166-2 fields in a Nominatim address.
  * @param {Record<string, unknown>} address Nominatim address object.
  * @param {Record<string, string>} stateByCode Lowercase state code to name map.
@@ -884,22 +900,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 });
             }
             curr_rule_range_raw = { weekday: [], month: [] };
-        };
-
-        /**
-         * Check whether a token is an unknown single-letter word fragment.
-         * @param {ParserToken|unknown} token Token to inspect.
-         * @returns {boolean} Whether the token represents one unknown letter.
-         */
-        const isUnknownSingleLetterToken = (token) => {
-            if (!Array.isArray(token)) {
-                return false;
-            }
-
-            const [token_value, token_type] = token;
-            return typeof token_value === 'string'
-                && token_value === token_type
-                && /^\p{L}$/u.test(token_value);
         };
 
         let last_rule_fallback_terminated = false;
