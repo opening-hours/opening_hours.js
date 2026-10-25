@@ -111,6 +111,36 @@ function normalizeUnicodeNumber(value) {
 }
 
 /**
+ * Find a provisional weekday or month meaning for a cross-locale word.
+ * @param {string} word Word to resolve.
+ * @param {ResolverLayers} resolverLayers Locale resolver layers.
+ * @param {string[]} weekdays Canonical weekday abbreviations.
+ * @param {string[]} months Canonical month abbreviations.
+ * @returns {{index: number, type: 'weekday'|'month'}|null} Provisional range token.
+ */
+function recognizeRangeToken(word, resolverLayers, weekdays, months) {
+    const candidates = resolverLayers.crossLocale[normalizeToken(word)];
+    if (!candidates) {
+        return null;
+    }
+    const weekday = candidates.find(candidate => candidate.type === 'weekday');
+    const month = candidates.find(candidate => candidate.type === 'month');
+    // The same lexeme can be a weekday in one language and a month in
+    // another. Without grammatical context we cannot commit to a type
+    // here, so defer to the normal error handling instead of guessing.
+    if (weekday && month) {
+        return null;
+    }
+    if (weekday) {
+        return { index: weekdays.indexOf(weekday.meaning), type: 'weekday' };
+    }
+    if (month) {
+        return { index: months.indexOf(month.meaning), type: 'month' };
+    }
+    return null;
+}
+
+/**
  * Resolve a state name from ISO3166-2 fields in a Nominatim address.
  * @param {Record<string, unknown>} address Nominatim address object.
  * @param {Record<string, string>} stateByCode Lowercase state code to name map.
@@ -857,35 +887,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
         };
 
         /**
-         * Recognise a word the flat map does not know but the cross-locale index
-         * does (e.g. an ambiguous foreign weekday like `ne`). Returns a provisional
-         * `{ index, type }`; finalizeRuleRanges resolves the real meaning by context.
-         * @param {string} word Word to resolve.
-         * @returns {{index: number, type: 'weekday'|'month'}|null} Provisional range token.
-         */
-        const recognizeRangeToken = (word) => {
-            const candidates = resolver_layers.crossLocale[normalizeToken(word)];
-            if (!candidates) {
-                return null;
-            }
-            const weekday = candidates.find(candidate => candidate.type === 'weekday');
-            const month = candidates.find(candidate => candidate.type === 'month');
-            // The same lexeme can be a weekday in one language and a month in
-            // another. Without grammatical context we cannot commit to a type
-            // here, so defer to the normal error handling instead of guessing.
-            if (weekday && month) {
-                return null;
-            }
-            if (weekday) {
-                return { index: weekdays.indexOf(weekday.meaning), type: 'weekday' };
-            }
-            if (month) {
-                return { index: months.indexOf(month.meaning), type: 'month' };
-            }
-            return null;
-        };
-
-        /**
          * Check whether a token is an unknown single-letter word fragment.
          * @param {ParserToken|unknown} token Token to inspect.
          * @returns {boolean} Whether the token represents one unknown letter.
@@ -1041,7 +1042,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     /** @type {{index: number, type: 'weekday'|'month'}|null} */
                     const recognized = isUnknownSingleLetterToken(previous_token)
                         ? null
-                        : recognizeRangeToken(lower_word);
+                        : recognizeRangeToken(lower_word, resolver_layers, weekdays, months);
                     if (recognized && recognized.index >= 0) {
                         // Not in the flat map, but the cross-locale index recognises it
                         // as a weekday/month name. Push provisionally; finalizeRuleRanges
