@@ -21,6 +21,21 @@ test('tokenizer preserves corrected-word output and warning positions', () => {
     ]);
 });
 
+test('tokenizer preserves phrase-correction output and warning positions', () => {
+    const value = 'every day';
+    const hours = new opening_hours(value, null);
+
+    assert.equal(hours.prettifyValue(), 'Mo-Su');
+    assert.deepEqual(hours.getStructuredWarnings().map(({ type, value, position }) => ({
+        type,
+        value,
+        position,
+    })), [
+        { type: 'word_error_correction', value, position: 9 },
+        { type: 'vague', value, position: 9 },
+    ]);
+});
+
 test('tokenizer preserves separator corrections and their positions', () => {
     const value = '10.00-12.00';
     const hours = new opening_hours(value, null);

@@ -110,6 +110,37 @@ function normalizeUnicodeNumber(value) {
     }).join('');
 }
 
+// Flatten all replacement rules into one longest-pattern-first lookup list,
+// so a specific phrase wins over a shorter pattern matching its prefix.
+const correction_entries = Object.entries(word_error_correction)
+    .filter(([comment]) => comment !== 'Ambiguous words')
+    .flatMap(([comment, corrections]) => Object.entries(corrections)
+        .map(([pattern, replacement]) => ({ comment, pattern, replacement })))
+    .sort((left, right) => right.pattern.length - left.pattern.length);
+// Multi-word rules only; single-word rules must not override valid tokens
+// such as the month abbreviation "Mar" and are left to returnCorrectWordOrToken.
+const phrase_correction_entries = correction_entries.filter(({ pattern }) =>
+    pattern.includes(' ') || pattern.includes('\\s')
+);
+/**
+ * Find the first matching phrase correction at the start of the input.
+ * @param {string} input Text to check for a phrase correction.
+ * @returns {RegExpMatchArray | undefined} The matching phrase or undefined.
+ */
+function findPhraseCorrection(input) {
+    for (const correction of phrase_correction_entries) {
+        const match = input.match(new RegExp(
+            '^(' + correction.pattern + ')(\\.?)' +
+            '(?=$|[^\\p{L}\\p{N}_])',
+            'iu'
+        ));
+        if (match) {
+            return match;
+        }
+    }
+    return undefined;
+}
+
 /**
  * Find a provisional weekday or month meaning for a cross-locale word.
  * @param {string} word Word to resolve.
@@ -274,36 +305,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
         'off': [ 'off', 'state' ],
         'unknown': [ 'unknown', 'state' ],
     }
-    // Flatten all replacement rules into one longest-pattern-first lookup list,
-    // so a specific phrase wins over a shorter pattern matching its prefix.
-    const correction_entries = Object.entries(word_error_correction)
-        .filter(([comment]) => comment !== 'Ambiguous words')
-        .flatMap(([comment, corrections]) => Object.entries(corrections)
-            .map(([pattern, replacement]) => ({ comment, pattern, replacement })))
-        .sort((left, right) => right.pattern.length - left.pattern.length);
-    // Multi-word rules only; single-word rules must not override valid tokens
-    // such as the month abbreviation "Mar" and are left to returnCorrectWordOrToken.
-    const phrase_correction_entries = correction_entries.filter(({ pattern }) =>
-        pattern.includes(' ') || pattern.includes('\\s')
-    );
-    /**
-     * Find the first matching phrase correction at the start of the input.
-     * @param {string} input Text to check for a phrase correction.
-     * @returns {RegExpMatchArray | undefined} The matching phrase or undefined.
-     */
-    const findPhraseCorrection = (input) => {
-        for (const correction of phrase_correction_entries) {
-            const match = input.match(new RegExp(
-                '^(' + correction.pattern + ')(\\.?)' +
-                '(?=$|[^\\p{L}\\p{N}_])',
-                'iu'
-            ));
-            if (match) {
-                    return match;
-            }
-        }
-        return undefined;
-    };
     const ambiguous_season_words = new Set([
         'spring', 'summer', 'autumn', 'winter', // en
         'frühling', 'fruehling', 'frühjahr', 'sommer', 'herbst', // de
