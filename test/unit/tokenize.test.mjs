@@ -36,6 +36,27 @@ test('tokenizer preserves phrase-correction output and warning positions', () =>
     ]);
 });
 
+test('tokenizer resolves foreign weekday ranges and rejects locale mismatches', () => {
+    const value = 'понедельник-пятница 09:00-17:00';
+    const hours = new opening_hours(value, {});
+
+    assert.equal(hours.prettifyValue(), 'Mo-Fr 09:00-17:00');
+    assert.deepEqual(hours.getStructuredWarnings().map(({ type, value, position }) => ({
+        type,
+        value,
+        position,
+    })), [
+        { type: 'word_error_correction', value, position: 11 },
+        { type: 'word_error_correction', value, position: 19 },
+    ]);
+
+    assert.throws(
+        () => new opening_hours('Mo-Tr 17:00-20:00', {}),
+        error => typeof error === 'string'
+            && error.includes('Token "tr" is not valid for locale "en"')
+    );
+});
+
 test('tokenizer preserves separator corrections and their positions', () => {
     const value = '10.00-12.00';
     const hours = new opening_hours(value, null);
