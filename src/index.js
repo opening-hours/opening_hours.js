@@ -83,6 +83,32 @@ const ERROR_TOLERANCE_REGEX = new RegExp(
     String.raw`^(?!${NUMERIC_DAY_OFFSET_PATTERN})(${ERROR_TOLERANCE_ALTERNATIVES})(\.?)`,
     'iu'
 );
+/** @type {Record<number, number>} */
+const UNICODE_CODE_POINT_TO_DIGIT = {
+    176: 0,
+    0x2070: 0,
+    185: 1,
+    178: 2,
+    179: 3,
+};
+
+/**
+ * Convert superscript, subscript, and degree-sign digits to regular digits.
+ * @param {string} value Unicode digit sequence.
+ * @returns {string} Converted digits.
+ */
+function normalizeUnicodeNumber(value) {
+    return value.split('').map((character) => {
+        const code_point = character.charCodeAt(0);
+        if (typeof UNICODE_CODE_POINT_TO_DIGIT[code_point] === 'number') {
+            return UNICODE_CODE_POINT_TO_DIGIT[code_point];
+        } else if (0x2074 <= code_point && code_point <= 0x2079) {
+            return code_point - 0x2070;
+        } else if (0x2080 <= code_point && code_point <= 0x2089) {
+            return code_point - 0x2080;
+        }
+    }).join('');
+}
 
 /**
  * Resolve a state name from ISO3166-2 fields in a Nominatim address.
@@ -921,23 +947,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 curr_rule_tokens.push([tmp[0].toUpperCase(), 'holiday', value.length ]);
                 value = value.slice(2);
             } else if ((tmp = value.match(/^[°\u2070-\u209F\u00B2\u00B3\u00B9]{1,2}/))) {
-                const unicode_code_point_to_digit = {
-                    176: 0,
-                    0x2070: 0,
-                    185: 1,
-                    178: 2,
-                    179: 3,
-                }
-                const regular_number = tmp[0].split('').map(function (ch) {
-                    const code_point = ch.charCodeAt(0);
-                    if (typeof unicode_code_point_to_digit[code_point] === 'number') {
-                        return unicode_code_point_to_digit[code_point];
-                    } else if (0x2074 <= code_point && code_point <= 0x2079) {
-                        return code_point - 0x2070;
-                    } else if (0x2080 <= code_point && code_point <= 0x2089) {
-                        return code_point - 0x2080;
-                    }
-                }).join('');
+                const regular_number = normalizeUnicodeNumber(tmp[0]);
                 let ok = '';
                 if (curr_rule_tokens.length > 0 && matchTokens(curr_rule_tokens, curr_rule_tokens.length-1, 'number')) {
                     ok += ':';

@@ -35,3 +35,11 @@ test('tokenizer preserves separator corrections and their positions', () => {
         { type: 'hour_min_separator', value, position: 9 },
     ]);
 });
+
+test('tokenizer converts superscript and subscript digits', () => {
+    for (const value of ['Mo ⁰⁹:⁰⁰-¹⁷:⁰⁰', 'Mo ₉-₁₇']) {
+        const hours = new opening_hours(value, null);
+
+        assert.equal(hours.prettifyValue(), 'Mo 09:00-17:00');
+    }
+});
