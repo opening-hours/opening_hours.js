@@ -36,6 +36,17 @@ test('tokenizer preserves phrase-correction output and warning positions', () =>
     ]);
 });
 
+test('tokenizer accepts am/pm abbreviations with or without a trailing dot', () => {
+    for (const value of ['7 a.m. - 10 p.m.', '7 a.m - 10 p.m', '7 a.m - 10 p.m.', '7A.M-10P.M']) {
+        const hours = new opening_hours(value, null);
+
+        assert.equal(hours.prettifyValue(), '07:00-22:00');
+    }
+    for (const value of ['ATM 24/7', '09 apm a 20 pm']) {
+        assert.throws(() => new opening_hours(value, null), value);
+    }
+});
+
 test('tokenizer resolves foreign weekday ranges and rejects locale mismatches', () => {
     const value = 'понедельник-пятница 09:00-17:00';
     const hours = new opening_hours(value, {});

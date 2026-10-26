@@ -199,10 +199,10 @@ please use ok for similar looking ko:
   оff: off
 please use 24 hours time for ko:
   pm: pm
-  p.m.: pm
+  p\.m\.?: pm
   рм: pm
   am: am
-  a.m.: am
+  a\.m\.?: am
   ам: am
 please use restriction comment time for ko:
   damen: open "Damen"
