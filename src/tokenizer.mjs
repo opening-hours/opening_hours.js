@@ -84,7 +84,7 @@ const ERROR_TOLERANCE_ALTERNATIVES = [
     String.raw`days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?`,
     String.raw`(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?`,
     String.raw`(?:an )?feiertag(?:s|en?)?|(?:nach|on|by) (?:appointments?|vereinbarung|absprache)`,
-    String.raw`p\.m\.|a\.m\.`,
+    String.raw`p\.m\.?|a\.m\.?`,
     String.raw`(?:[^\s\d\p{P}\p{S}\p{C}]|_)+(?=\s|$|[\s\d\p{Po}\p{Ps}\p{Pe}\p{Pd}\p{Pf}\p{Pi}\p{S}\p{C}])`,
     String.raw`à|á|mo|tu|we|th|fr|sa|su|jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec`,
 ].join('|');
