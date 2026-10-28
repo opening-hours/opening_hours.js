@@ -56,7 +56,7 @@
     "build": "make build",
     "test-quick": "make check",
     "test:spell": "cspell .",
-    "test:unit": "node --test test/unit/*.test.mjs",
+    "test:unit": "npm run build && node --test test/unit/*.test.mjs",
     "test": "npm run test:unit && make check-full",
     "lint": "eslint",
     "typecheck": "tsc --project jsconfig.json",

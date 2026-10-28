@@ -117,4 +117,4 @@ jobs:
       - name: Mark build artifact as current
         run: touch build/*
       - name: Run full test suite
-        run: make check-full
+        run: npm test
