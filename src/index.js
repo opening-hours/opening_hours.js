@@ -283,7 +283,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
     if (typeof value !== 'string') {
         throw t('no string');
     }
-    if (/^(?:\s*;?)+$/.test(value)) {
+    const containsOnlyWhitespaceOrSemicolons = /^[\s;]*$/.test(value);
+    if (containsOnlyWhitespaceOrSemicolons) {
         throw t('nothing');
     }
 

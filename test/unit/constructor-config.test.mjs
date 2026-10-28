@@ -3,8 +3,33 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { spawnSync } from 'node:child_process';
 
 const { default: opening_hours } = await import('../../build/opening_hours.esm.mjs');
+
+test('constructor rejects empty values containing only whitespace and semicolons', () => {
+    for (const value of ['', ' ', '\t\n', ';', ' ; ;\n;\t']) {
+        assert.throws(() => new opening_hours(value));
+    }
+});
+
+test('constructor handles long whitespace prefixes without backtracking (#301)', () => {
+    const libraryUrl = new URL('../../build/opening_hours.esm.mjs', import.meta.url).href;
+    const script = `
+        import opening_hours from ${JSON.stringify(libraryUrl)};
+
+        const value = ' '.repeat(100000) + '24/7';
+        const oh = new opening_hours(value);
+        if (!oh.getState()) process.exitCode = 1;
+    `;
+    const result = spawnSync(process.execPath, ['--input-type=module', '--eval', script], {
+        encoding: 'utf8',
+        timeout: 500,
+    });
+
+    assert.ifError(result.error);
+    assert.equal(result.status, 0, result.stderr);
+});
 
 test('constructor rejects a wrong-type locale', () => {
     assert.throws(
