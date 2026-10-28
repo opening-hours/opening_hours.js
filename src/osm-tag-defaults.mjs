@@ -11,14 +11,14 @@ const OSM_TAG_DEFAULTS = {
      * emptied several (undefined) times or one (undefined) time in a certain time
      * frame. This shall be covered also.".
      * Ref: https://wiki.openstreetmap.org/wiki/Key:collection_times */
-    'opening_hours:.+'    :  { 'mode' :  0, },
-    '.+:opening_hours'    :  { 'mode' :  0, },
-    '.+:opening_hours:.+' :  { 'mode' :  0, },
-    '.+:conditional'      :  { 'mode' :  0, },
-    'smoking_hours'       :  { 'mode' :  0, },
-    'service_times'       :  { 'mode' :  2, },
-    'happy_hours'         :  { 'mode' :  0, },
-    'lit'                 :  { 'mode' :  0,
+    'opening_hours:.+'     : { 'mode' :  0, },
+    '^.+:opening_hours'    : { 'mode' :  0, },
+    '^.+:opening_hours:.+' : { 'mode' :  0, },
+    '^.+:conditional'      : { 'mode' :  0, },
+    'smoking_hours'        : { 'mode' :  0, },
+    'service_times'        : { 'mode' :  2, },
+    'happy_hours'          : { 'mode' :  0, },
+    'lit'                  : { 'mode' :  0,
         map: {
             'yes'      : 'sunset-sunrise open "specified as yes: At night (unknown time schedule or daylight detection)"',
             'automatic': 'unknown "specified as automatic: When someone enters the way the lights are turned on."',

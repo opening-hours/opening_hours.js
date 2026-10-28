@@ -31,6 +31,16 @@ test('constructor handles long whitespace prefixes without backtracking (#301)',
     assert.equal(result.status, 0, result.stderr);
 });
 
+test('tag_key patterns still select the default mode', async () => {
+    const { resolveOsmTagDefault } = await import('../../src/osm-tag-defaults.mjs');
+
+    for (const key of ['opening_hours:kitchen', 'kitchen:opening_hours', 'a:opening_hours:b', 'x:conditional']) {
+        assert.equal(resolveOsmTagDefault(key)?.mode, 0, key);
+    }
+    assert.equal(resolveOsmTagDefault('collection_times')?.mode, 2);
+    assert.equal(resolveOsmTagDefault('unrelated'), undefined);
+});
+
 test('constructor rejects a wrong-type locale', () => {
     assert.throws(
         () => new opening_hours('Mo-Fr 08:00-16:00', null, { 'locale': 5 }),
