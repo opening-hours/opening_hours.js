@@ -3,8 +3,38 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import yaml from 'yaml';
 
 import opening_hours from '../../build/opening_hours.esm.mjs';
+
+test('correction data escapes literals and preserves regex rules in runtime categories', () => {
+    const manual = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction_manual.yaml', import.meta.url), 'utf8'));
+    const runtime = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction.yaml', import.meta.url), 'utf8'));
+
+    assert.deepEqual(Object.keys(manual).filter(section => section !== 'ambiguous'), ['literal', 'regex']);
+    for (const [category, entries] of Object.entries(manual.literal)) {
+        for (const [literal, replacement] of Object.entries(entries)) {
+            const pattern = literal.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            assert.equal(runtime[category][pattern], replacement);
+            const matcher = new RegExp('^' + pattern + '$', 'iu');
+            assert.ok(matcher.test(literal));
+            if (literal.includes('.')) {
+                assert.equal(matcher.test(literal.replaceAll('.', 'x')), false);
+            }
+        }
+    }
+    for (const [category, entries] of Object.entries(manual.regex)) {
+        for (const [pattern, replacement] of Object.entries(entries)) {
+            assert.equal(runtime[category][pattern], replacement);
+            assert.doesNotThrow(() => new RegExp('^' + pattern + '$', 'iu'));
+        }
+    }
+    assert.equal(runtime['please use 24 hours time for ko']['a\\.m'], 'am');
+    assert.equal(runtime['please use 24 hours time for ko']['a\\.m\\.'], 'am');
+    assert.equal(runtime['please use 24 hours time for ko']['p\\.m'], 'pm');
+    assert.equal(runtime['please use 24 hours time for ko']['p\\.m\\.'], 'pm');
+});
 
 test('tokenizer preserves corrected-word output and warning positions', () => {
     const value = 'Mon';
@@ -36,6 +66,16 @@ test('tokenizer preserves phrase-correction output and warning positions', () =>
     ]);
 });
 
+test('tokenizer preserves complete literal phrase corrections', () => {
+    const value = '24 hours 7 days a week';
+    const hours = new opening_hours(value, null);
+
+    assert.equal(hours.prettifyValue(), '24/7');
+    assert.deepEqual(hours.getStructuredWarnings()
+        .filter(({ type }) => type === 'word_error_correction')
+        .map(({ position }) => position), [value.length]);
+});
+
 test('tokenizer accepts am/pm abbreviations with or without a trailing dot', () => {
     for (const value of ['7 a.m. - 10 p.m.', '7 a.m - 10 p.m', '7 a.m - 10 p.m.', '7A.M-10P.M']) {
         const hours = new opening_hours(value, null);
@@ -59,6 +99,17 @@ test('tokenizer corrects complete open-end phrases', () => {
 test('tokenizer rejects open-end words with suffixes', () => {
     for (const value of ['16:00-later', '16:00-latest', '16:00-open ending']) {
         assert.throws(() => new opening_hours(value, null), value);
+    }
+});
+
+test('tokenizer does not apply short corrections inside longer words', () => {
+    for (const value of [
+        'midnight-24:00',
+        'May-Sep: 00:00-24:00',
+        'lundi,vendredi 10:00-18:00',
+        '2025 May 01-23 00:00-24:00',
+    ]) {
+        assert.doesNotThrow(() => new opening_hours(value, null), value);
     }
 });
 

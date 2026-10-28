@@ -55,6 +55,18 @@ The word error correction system is automatically generated using the `scripts/g
 
 Manual corrections can be added to `src/locales/word_error_correction_manual.yaml` for cases that require human curation or language-specific corrections that cannot be automatically generated. The build system automatically combines both automatic and manual corrections into the final `word_error_correction.yaml` file used by the library.
 
+Group manual corrections by warning message under `literal` or `regex`. Use `literal` for specific spellings, including punctuation and multi-word expressions; the generator escapes regex metacharacters automatically. Use `regex` for rules with optional parts or flexible whitespace. Both sections are converted to the existing runtime categories and matched case-insensitively; the split does not change tokenization.
+
+```yaml
+literal:
+	please use 24 hours time for ko:
+		a.m: am
+		a.m.: am
+regex:
+	omit tag key:
+		'opening_hours\s*=': ""
+```
+
 To regenerate the word error corrections:
 ```bash
 make src/locales/word_error_correction.yaml
