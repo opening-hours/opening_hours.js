@@ -47,6 +47,21 @@ test('tokenizer accepts am/pm abbreviations with or without a trailing dot', () 
     }
 });
 
+test('tokenizer corrects complete open-end phrases', () => {
+    for (const value of ['16:00-late', '16:00-open end', '16:00 till late']) {
+        const hours = new opening_hours(value, null);
+
+        assert.equal(hours.prettifyValue(), '16:00+');
+        assert.ok(hours.getStructuredWarnings().some(({ type }) => type === 'word_error_correction'));
+    }
+});
+
+test('tokenizer rejects open-end words with suffixes', () => {
+    for (const value of ['16:00-later', '16:00-latest', '16:00-open ending']) {
+        assert.throws(() => new opening_hours(value, null), value);
+    }
+});
+
 test('tokenizer resolves foreign weekday ranges and rejects locale mismatches', () => {
     const value = 'понедельник-пятница 09:00-17:00';
     const hours = new opening_hours(value, {});

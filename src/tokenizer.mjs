@@ -79,7 +79,7 @@ const ERROR_TOLERANCE_ALTERNATIVES = [
     String.raw`öffnungszeit(?:en)?:?|opening_hours\s*=|\?|~|～|：`,
     String.raw`always (?:open|closed)|24x7|24 hours 7 days a week|24 hours`,
     String.raw`7 ?days(?:(?: a |\/)week)?|7j?\/7|all days?|every day`,
-    String.raw`(?:bis|till?|-|–)? ?(?:open ?end|late)`,
+    String.raw`(?:bis|till?|-|–)? ?(?:open ?end|late)(?![\p{L}\p{N}_])`,
     String.raw`(?:(?:one )?day (?:before|after) )?(?:school|public) holidays?`,
     String.raw`days(?=\s|$|[^\p{L}_])|до|рм|ам|jours fériés|on work days?|sonntags?`,
     String.raw`(?:nur |an )?sonn-?(?:(?: und |\/)feiertag(?:s|en?)?)?`,
