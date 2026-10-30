@@ -105,29 +105,30 @@ function sortObject(obj) {
 }
 
 /**
- * Convert literal and regex corrections to the existing runtime categories.
+ * Preserve literal and regex sections for runtime correction lookup.
  * @param {ManualCorrections} corrections Manual correction sections.
- * @returns {CorrectionCategories} Runtime correction data.
+ * @returns {ManualCorrections} Runtime correction data.
  */
 function createRuntimeData(corrections) {
-    /** @type {CorrectionCategories} */
-    const runtimeData = {};
+    /** @type {ManualCorrections} */
+    const runtimeData = { literal: {}, regex: {}, ambiguous: sortObject(corrections.ambiguous || {}) };
     for (const section of correctionSections) {
+        const seenRules = new Set();
         for (const [category, entries] of Object.entries(corrections[section])) {
-            runtimeData[category] ??= {};
+            runtimeData[section][category] = {};
             for (const [source, replacement] of Object.entries(entries)) {
-                const pattern = section === 'literal'
-                    ? source.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-                    : source;
-                new RegExp('^' + pattern + '$', 'iu');
-                if (Object.hasOwn(runtimeData[category], pattern)) {
-                    throw new Error(`Duplicate correction in ${category}: ${source}`);
+                if (section === 'regex') {
+                    new RegExp('^(?:' + source + ')$', 'iu');
                 }
-                runtimeData[category][pattern] = replacement;
+                const key = section === 'literal' ? source.toLowerCase() : source;
+                if (seenRules.has(key)) {
+                    throw new Error(`Duplicate ${section} correction in ${category}: ${source}`);
+                }
+                seenRules.add(key);
+                runtimeData[section][category][source] = replacement;
             }
         }
     }
-    runtimeData['Ambiguous words'] = sortObject(corrections.ambiguous || {});
     return runtimeData;
 }
 
@@ -335,7 +336,7 @@ console.log('\n=======================================');
 console.log('Final Statistics');
 console.log('=======================================');
 console.log(`Output file: ${path.relative(basePath, outputPath)}`);
-console.log(`Categories: ${Object.keys(runtimeData).length}`);
+console.log(`Categories: ${new Set(correctionSections.flatMap(section => Object.keys(runtimeData[section]))).size}`);
 console.log('\nCategory breakdown:');
 
 let totalEntries = 0;
