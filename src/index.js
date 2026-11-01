@@ -1248,7 +1248,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Top-level parser {{{
      * @param {Array<ParserToken>} tokens List of tokens.
      * @param {number} at Position where to start.
-     * @param {object} rule Reference to rule object.
+     * @param {ParsedRule} rule Reference to rule object.
      * @param {number} nrule Rule number starting with 0.
      * @returns {number|Array<number>} Position, or an additional-rule position.
      */
@@ -1614,7 +1614,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Parse time ranges such as `10:00-12:00,14:00-16:00`. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where to start.
-     * @param {object} rule Rule object to which the parsed selector is added.
+     * @param {ParsedRule} rule Rule object to which the parsed selector is added.
      * @param {boolean|number} [extended_open_end] Optional marker for a
      *     combined time range with an open end. The value `1` indicates that
      *     the range continues into the next day.
@@ -2058,7 +2058,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Weekday range parser (Mo,We-Fr,Sa[1-2,-1],PH). {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where the weekday selector could begin.
-     * @param {object} rule Rule object to which the parsed selector is added.
+     * @param {ParsedRule} rule Rule object to which the parsed selector is added.
      * @param {boolean} [in_holiday_selector] Whether this call is already part
      *     of a holiday selector. Optional.
      * @param {number} nrule Rule number, starting with zero.
@@ -2334,7 +2334,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * - "SH" → school holiday periods
      * @param {Array<ParserToken>} tokens List of token objects.
      * @param {number} at Position where to start.
-     * @param {object} rule Reference to the rule object.
+     * @param {ParsedRule} rule Reference to the rule object.
      * @param {boolean} push_to_weekday Whether to add the selector to the
      *     weekday array, so it can work together with weekday selectors.
      * @param {boolean} [in_holiday_selector] Whether this call is already part
