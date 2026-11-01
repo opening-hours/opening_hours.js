@@ -408,9 +408,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 build_from_token_rule: [ nrule, continue_at, new_tokens.length ],
             };
 
-            continue_at = parseGroup(tokens[nrule][0], continue_at, rule, nrule);
-            if (typeof continue_at === 'object') {
-                continue_at = continue_at[0];
+            const continue_at_result = parseGroup(tokens[nrule][0], continue_at, rule, nrule);
+            if (typeof continue_at_result === 'object') {
+                continue_at = continue_at_result[0];
             } else {
                 continue_at = 0;
             }
