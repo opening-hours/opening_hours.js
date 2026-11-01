@@ -16,7 +16,7 @@ const word_error_correction = /** @type {import('./word-error-correction.mjs').W
 export const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 export const weekdays = ['Su','Mo','Tu','We','Th','Fr','Sa'];
 
-/** @type {Record<string, [number|string, string]>} */
+/** @type {Record<string, ParserTokenPrefix>} */
 const string_to_token_map = {
     'su': [ 0, 'weekday' ],
     'mo': [ 1, 'weekday' ],
@@ -58,6 +58,7 @@ const ambiguous_season_words = new Set([
 
 /** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
 /** @typedef {import('./parser-token-types.d.ts').ParserTokenRule} ParserTokenRule */
+/** @typedef {import('./parser-token-types.d.ts').ParserTokenPrefix} ParserTokenPrefix */
 /** @typedef {import('./locale-resolver/types.d.ts').TokenType} RangeTokenType */
 /** @typedef {import('./locale-resolver/types.d.ts').Layers} ResolverLayers */
 const resolver_layers = /** @type {ResolverLayers} */ (/** @type {unknown} */ (resolver_layers_data));
@@ -321,7 +322,7 @@ export function tokenize(value, context) {
             if (!phrase_match && tmp && tmp[2] === '') {
                 token_from_map = string_to_token_map[tmp[1].toLowerCase()];
             }
-            if (tmp && typeof token_from_map === 'object') {
+            if (tmp && token_from_map) {
                 curr_rule_tokens.push(createParserToken(token_from_map[0], token_from_map[1], value.length));
                 recordRangeTerm(tmp[1], token_from_map[1], curr_rule_tokens.length - 1);
                 value = value.slice(tmp[1].length);
@@ -571,9 +572,8 @@ export function tokenize(value, context) {
      */
     function returnCorrectWordOrToken(word, value_length, matched_correction) {
         let correctWordOrToken;
-        /** @type {[number|string, string]|undefined} */
         const token_from_map = string_to_token_map[word];
-        if (typeof token_from_map === 'object') {
+        if (token_from_map) {
             return token_from_map;
         }
 

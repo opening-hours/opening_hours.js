@@ -21,4 +21,10 @@ export type TextParserToken = [string, string, number] & {
 };
 
 export type ParserToken = NumberParserToken | NumericRangeParserToken | TextParserToken;
+
+/** A token-map value before its source offset is added. */
+export type ParserTokenPrefix =
+    | [number, 'month' | 'weekday']
+    | [string, 'calcday' | 'timevar' | 'event' | 'week' | 'state'];
+
 export type ParserTokenRule = [ParserToken[], boolean, number?];
