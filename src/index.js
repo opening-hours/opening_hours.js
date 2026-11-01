@@ -341,8 +341,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
     let prettified_value = '';
     let week_stable = true;
 
-    let rule, nrule;
-    /** @type {Array<{[key: string]: object}>} */
+    /** @typedef {(date: Date) => Array<unknown>} RuleSelector */
+    /** @typedef {RuleSelector[]} RuleSelectorList */
+    /** @typedef {{time: RuleSelectorList, date: RuleSelectorList[], meaning: boolean, unknown: boolean, comment: string|undefined, build_from_token_rule: [number, number, number], fallback?: boolean, additional?: boolean, wrapped?: boolean}} OpeningHoursRule */
+    /** @typedef {OpeningHoursRule & Record<'wraptime'|'weekday'|'holiday'|'week'|'month'|'monthday'|'year', RuleSelectorList> & {fallback: boolean, additional: boolean}} ParsedRule */
+    /** @type {ParsedRule} */
+    let rule;
+    /** @type {number} */
+    let nrule;
+    /** @type {OpeningHoursRule[]} */
     const rules = [];
     const rule_infos = {};
     /* Not reliable because tokens !== new_tokens */
@@ -398,10 +405,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 meaning: true,
                 unknown: false,
                 comment: undefined,
-                build_from_token_rule: undefined,
+                build_from_token_rule: [ nrule, continue_at, new_tokens.length ],
             };
 
-            rule.build_from_token_rule = [ nrule, continue_at, new_tokens.length ];
             continue_at = parseGroup(tokens[nrule][0], continue_at, rule, nrule);
             if (typeof continue_at === 'object') {
                 continue_at = continue_at[0];
@@ -437,6 +443,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
             next_rule_is_additional = continue_at === 0 ? false : true;
 
+            /** @type {Array<'year'|'holiday'|'month'|'monthday'|'week'|'weekday'>} */
             const optimal_selector_order = ['year', 'holiday', 'month', 'monthday', 'week', 'weekday'];
             optimal_selector_order.forEach(function (element) {
                 if (rule[element].length > 0) {
@@ -454,6 +461,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (rule.wraptime.length > 0) {
                 const wrapselectors = {
                     time: rule.wraptime,
+                    /** @type {Array<Array<(date: Date) => Array<unknown>>>} */
                     date: [],
 
                     meaning: rule.meaning,
