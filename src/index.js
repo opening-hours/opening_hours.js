@@ -3996,7 +3996,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Main selector traversal function (return state array for date). {{{
      * Checks which rule applies for the given date, including its state and
      * comment.
-     * @param {object[]} rules Parsed rules to inspect.
+     * @param {OpeningHoursRule[]} rules Parsed rules to inspect.
      * @param {Date} date Date to inspect.
      * @returns {OpeningHoursStatePair}
      *     Array:
