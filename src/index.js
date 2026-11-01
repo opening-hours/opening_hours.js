@@ -341,8 +341,16 @@ export default function(value, nominatim_object, optional_conf_parm) {
     let prettified_value = '';
     let week_stable = true;
 
-    let rule, nrule;
-    /** @type {Array<{[key: string]: object}>} */
+    /** @typedef {[matches: boolean, nextChange?: Date, holidayNameOrOpenEnd?: string|boolean, extendedOpenEnd?: boolean|number]} RuleSelectorResult */
+    /** @typedef {(date: Date) => RuleSelectorResult} RuleSelector */
+    /** @typedef {RuleSelector[]} RuleSelectorList */
+    /** @typedef {{time: RuleSelectorList, date: RuleSelectorList[], meaning: boolean, unknown: boolean, comment: string|undefined, build_from_token_rule: [number, number, number], fallback?: boolean, additional?: boolean, wrapped?: boolean}} OpeningHoursRule */
+    /** @typedef {OpeningHoursRule & Record<'wraptime'|'weekday'|'holiday'|'week'|'month'|'monthday'|'year', RuleSelectorList> & {fallback: boolean, additional: boolean}} ParsedRule */
+    /** @type {ParsedRule} */
+    let rule;
+    /** @type {number} */
+    let nrule;
+    /** @type {OpeningHoursRule[]} */
     const rules = [];
     const rule_infos = {};
     /* Not reliable because tokens !== new_tokens */
@@ -398,13 +406,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 meaning: true,
                 unknown: false,
                 comment: undefined,
-                build_from_token_rule: undefined,
+                build_from_token_rule: [ nrule, continue_at, new_tokens.length ],
             };
 
-            rule.build_from_token_rule = [ nrule, continue_at, new_tokens.length ];
-            continue_at = parseGroup(tokens[nrule][0], continue_at, rule, nrule);
-            if (typeof continue_at === 'object') {
-                continue_at = continue_at[0];
+            const continue_at_result = parseGroup(tokens[nrule][0], continue_at, rule, nrule);
+            if (typeof continue_at_result === 'object') {
+                continue_at = continue_at_result[0];
             } else {
                 continue_at = 0;
             }
@@ -437,6 +444,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
             next_rule_is_additional = continue_at === 0 ? false : true;
 
+            /** @type {Array<'year'|'holiday'|'month'|'monthday'|'week'|'weekday'>} */
             const optimal_selector_order = ['year', 'holiday', 'month', 'monthday', 'week', 'weekday'];
             optimal_selector_order.forEach(function (element) {
                 if (rule[element].length > 0) {
@@ -454,6 +462,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (rule.wraptime.length > 0) {
                 const wrapselectors = {
                     time: rule.wraptime,
+                    /** @type {RuleSelectorList[]} */
                     date: [],
 
                     meaning: rule.meaning,
@@ -1191,9 +1200,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /**
      * Generate a selector wrapper with a time offset. {{{
-     * @param {(date: Date) => Array<unknown>} func Generated selector code function.
+     * @param {RuleSelector} func Generated selector code function.
      * @param {number} shift Time to shift in milliseconds.
-     * @returns {(date: Date) => Array<unknown>} Selector function with the shifted date.
+     * @returns {RuleSelector} Selector function with the shifted date.
      */
     function generateDateShifter(func, shift) {
         return function(date) {
@@ -1240,7 +1249,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Top-level parser {{{
      * @param {Array<ParserToken>} tokens List of tokens.
      * @param {number} at Position where to start.
-     * @param {object} rule Reference to rule object.
+     * @param {ParsedRule} rule Reference to rule object.
      * @param {number} nrule Rule number starting with 0.
      * @returns {number|Array<number>} Position, or an additional-rule position.
      */
@@ -1606,7 +1615,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Parse time ranges such as `10:00-12:00,14:00-16:00`. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where to start.
-     * @param {object} rule Rule object to which the parsed selector is added.
+     * @param {ParsedRule} rule Rule object to which the parsed selector is added.
      * @param {boolean|number} [extended_open_end] Optional marker for a
      *     combined time range with an open end. The value `1` indicates that
      *     the range continues into the next day.
@@ -2050,7 +2059,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Weekday range parser (Mo,We-Fr,Sa[1-2,-1],PH). {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where the weekday selector could begin.
-     * @param {object} rule Rule object to which the parsed selector is added.
+     * @param {ParsedRule} rule Rule object to which the parsed selector is added.
      * @param {boolean} [in_holiday_selector] Whether this call is already part
      *     of a holiday selector. Optional.
      * @param {number} nrule Rule number, starting with zero.
@@ -2294,7 +2303,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Parse a single holiday token (PH or SH) and add its selector to the rule. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position of the holiday token.
-     * @param {Array<(date: Date) => Array<unknown>>} target_array Array to
+     * @param {RuleSelectorList} target_array Array to
      *     which the selector is added (`rule.weekday` or `rule.holiday`).
      * @returns {number} New token position after this holiday token.
      */
@@ -2326,7 +2335,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * - "SH" → school holiday periods
      * @param {Array<ParserToken>} tokens List of token objects.
      * @param {number} at Position where to start.
-     * @param {object} rule Reference to the rule object.
+     * @param {ParsedRule} rule Reference to the rule object.
      * @param {boolean} push_to_weekday Whether to add the selector to the
      *     weekday array, so it can work together with weekday selectors.
      * @param {boolean} [in_holiday_selector] Whether this call is already part
@@ -2480,7 +2489,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /**
      * Create a selector function for checking school holiday dates. {{{
      * @param {object[]} applying_holidays School holiday definitions to inspect.
-     * @returns {(date: Date) => Array<unknown>} Selector function returning
+     * @returns {RuleSelector} Selector function returning
      *     whether the date is within a school holiday and the next relevant
      *     date, with the holiday name when applicable.
      */
@@ -2562,7 +2571,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @param {object[]} applying_holidays Public holiday definitions to inspect.
      * @param {[number, number]} add_days Tuple containing the day offset and
      *     number of tokens consumed by `getMoveDays()`.
-     * @returns {(date: Date) => Array<unknown>} Selector function returning
+     * @returns {RuleSelector} Selector function returning
      *     whether the date matches a public holiday and the next relevant date,
      *     with the holiday name when applicable.
      */
@@ -3571,6 +3580,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     inside = false;
                 }
 
+                /** @type {RuleSelector} */
                 const selector = function(month_from, month_to, inside) { return function(date) {
                     const dateMonth = date.getMonth();
 
@@ -3683,6 +3693,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (has_month[1])
                     checkIfDateIsValid(asNumericParserToken(tokens[at_sec_event_or_month])[0], asNumericParserToken(tokens[at_sec_event_or_month+1])[0], nrule, at_sec_event_or_month+1);
 
+                /** @type {RuleSelector} */
                 const selector = function(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday) { return function(date) {
                     const start_of_next_year = new Date(date.getFullYear() + 1, 0, 1);
 
@@ -3881,6 +3892,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                     /* }}} */
 
+                    /** @type {RuleSelector} */
                     const selector = function(year, has_explicit_year, month, range_from, range_to, period) { return function(date) {
                         const start_of_next_year = new Date(date.getFullYear() + 1, 0, 1);
 
@@ -3928,11 +3940,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 // Only event like easter {{{
             } else if (has_event[0]) {
 
+                /** @type {RuleSelector} */
                 const selector = function(tokens, at, nrule, has_year, add_days) { return function(date) {
 
                     // console.log('enter selector with date: ' + date);
                     const year_offset = Number(has_year);
-                    const movableDays = getMovableEventsForYear((has_year ? tokens[at][0] : date.getFullYear()));
+                    const movableDays = getMovableEventsForYear((has_year ? asNumericParserToken(tokens[at])[0] : date.getFullYear()));
                     const event_date = movableDays[tokens[at+year_offset][0]];
                     if (!event_date)
                         throw t('movable no formula', {'name': tokens[at+year_offset][0]});
@@ -3988,7 +4001,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Main selector traversal function (return state array for date). {{{
      * Checks which rule applies for the given date, including its state and
      * comment.
-     * @param {object[]} rules Parsed rules to inspect.
+     * @param {OpeningHoursRule[]} rules Parsed rules to inspect.
      * @param {Date} date Date to inspect.
      * @returns {OpeningHoursStatePair}
      *     Array:
@@ -4002,6 +4015,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         let resultstate = false;
         let changedate;
         let unknown = false;
+        /** @type {string|[string, number]|undefined} */
         let comment;
         let match_rule;
 
@@ -4188,7 +4202,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             }
         }
 
-        if (typeof rules[match_rule] === 'object' && typeof rules[match_rule].comment === 'string') {
+        if (match_rule !== undefined && typeof rules[match_rule] === 'object' && typeof rules[match_rule].comment === 'string') {
             /* Only use comment if one is explicitly specified. */
             comment = rules[match_rule].comment;
         } else if (typeof comment === 'object') {
