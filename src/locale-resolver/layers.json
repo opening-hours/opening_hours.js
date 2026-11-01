@@ -1,14 +1,14 @@
 {
   "meta": {
-    "generated": "2026-09-10",
-    "cldrDatesFull": "48.2.0",
-    "localeCount": 766,
+    "generated": "2026-11-01",
+    "cldrDatesFull": "49.0.0",
+    "localeCount": 657,
     "types": [
       "weekday",
       "month"
     ],
-    "crossLocaleTokens": 3068,
-    "crossLocaleCandidates": 3967,
+    "crossLocaleTokens": 2882,
+    "crossLocaleCandidates": 3668,
     "regionCount": 250
   },
   "canonical": {
@@ -76,275 +76,9 @@
         "type": "month"
       }
     ],
-    "·𐑑𐑵": [
-      {
-        "lang": "en",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "·𐑑𐑵𐑟𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "·𐑓𐑧": [
-      {
-        "lang": "en",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "·𐑓𐑧𐑚𐑘𐑵𐑢𐑺𐑰": [
-      {
-        "lang": "en",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "·𐑓𐑮": [
-      {
-        "lang": "en",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "·𐑓𐑮𐑲𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "·𐑔𐑻": [
-      {
-        "lang": "en",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "·𐑔𐑻𐑟𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "·𐑕𐑧": [
-      {
-        "lang": "en",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "·𐑕𐑧𐑐𐑑𐑧𐑥𐑚𐑸": [
-      {
-        "lang": "en",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "·𐑕𐑨": [
-      {
-        "lang": "en",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "·𐑕𐑨𐑛𐑻𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "·𐑕𐑭": [
-      {
-        "lang": "en",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "·𐑕𐑭𐑙𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "·𐑛𐑭": [
-      {
-        "lang": "en",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "·𐑛𐑭𐑕𐑧𐑥𐑚𐑸": [
-      {
-        "lang": "en",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "·𐑡𐑨": [
-      {
-        "lang": "en",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "·𐑡𐑨𐑙𐑘𐑭𐑢𐑺𐑰": [
-      {
-        "lang": "en",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "·𐑡𐑫": [
-      {
-        "lang": "en",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "·𐑡𐑫𐑤𐑲": [
-      {
-        "lang": "en",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "·𐑡𐑵": [
-      {
-        "lang": "en",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "·𐑡𐑵𐑯": [
-      {
-        "lang": "en",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "·𐑢𐑧": [
-      {
-        "lang": "en",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "·𐑢𐑧𐑙𐑟𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "·𐑥𐑭": [
-      {
-        "lang": "en",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "·𐑥𐑭𐑙𐑛𐑱": [
-      {
-        "lang": "en",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "·𐑥𐑱": [
-      {
-        "lang": "en",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
-    "·𐑥𐑸": [
-      {
-        "lang": "en",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "·𐑥𐑸𐑗": [
-      {
-        "lang": "en",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "·𐑪𐑜": [
-      {
-        "lang": "en",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "·𐑪𐑜𐑭𐑕𐑑": [
-      {
-        "lang": "en",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "·𐑯𐑴": [
-      {
-        "lang": "en",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "·𐑯𐑴𐑝𐑧𐑥𐑚𐑸": [
-      {
-        "lang": "en",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "·𐑱𐑐": [
-      {
-        "lang": "en",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "·𐑱𐑐𐑮𐑭𐑤": [
-      {
-        "lang": "en",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "·𐑷𐑒": [
-      {
-        "lang": "en",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "·𐑷𐑒𐑑𐑴𐑚𐑸": [
-      {
-        "lang": "en",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
     "༡": [
       {
         "lang": "dz",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "1 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
         "meaning": "Jan",
         "type": "month"
       }
@@ -359,13 +93,6 @@
     "༡༠": [
       {
         "lang": "dz",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "10 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
         "meaning": "Oct",
         "type": "month"
       }
@@ -408,21 +135,7 @@
         "type": "month"
       }
     ],
-    "11 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
     "11-р сар": [
-      {
-        "lang": "mn",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "11᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
       {
         "lang": "mn",
         "meaning": "Nov",
@@ -453,21 +166,7 @@
         "type": "month"
       }
     ],
-    "12 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
     "12-р сар": [
-      {
-        "lang": "mn",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "12᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
       {
         "lang": "mn",
         "meaning": "Dec",
@@ -536,13 +235,6 @@
         "type": "month"
       }
     ],
-    "2 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
     "2-р сар": [
       {
         "lang": "mn",
@@ -602,13 +294,6 @@
         "type": "weekday"
       }
     ],
-    "3᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
     "3월": [
       {
         "lang": "ko",
@@ -636,13 +321,6 @@
     "༤": [
       {
         "lang": "dz",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "4 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
         "meaning": "Apr",
         "type": "month"
       }
@@ -692,13 +370,6 @@
         "type": "month"
       }
     ],
-    "5 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
     "5-р сар": [
       {
         "lang": "mn",
@@ -744,13 +415,6 @@
         "type": "month"
       }
     ],
-    "6 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
     "6-р сар": [
       {
         "lang": "mn",
@@ -785,13 +449,6 @@
     "༧": [
       {
         "lang": "dz",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "7 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
         "meaning": "Jul",
         "type": "month"
       }
@@ -834,21 +491,7 @@
         "type": "month"
       }
     ],
-    "8 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
     "8-р сар": [
-      {
-        "lang": "mn",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "8᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
       {
         "lang": "mn",
         "meaning": "Aug",
@@ -882,20 +525,6 @@
     "༩": [
       {
         "lang": "dz",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "9 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "9 ᠊ᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
         "meaning": "Sep",
         "type": "month"
       }
@@ -1440,21 +1069,9 @@
         "lang": "fr",
         "meaning": "Aug",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Aug",
-        "type": "month"
       }
     ],
     "āpe": [
-      {
-        "lang": "mi",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "āpereira": [
       {
         "lang": "mi",
         "meaning": "Apr",
@@ -1478,11 +1095,6 @@
     "aprel": [
       {
         "lang": "az",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "pap",
         "meaning": "Apr",
         "type": "month"
       },
@@ -1591,60 +1203,11 @@
         "type": "month"
       }
     ],
-    "araapy": [
-      {
-        "lang": "gn",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "arakõi": [
-      {
-        "lang": "gn",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
     "aralık": [
       {
         "lang": "tr",
         "meaning": "Dec",
         "type": "month"
-      }
-    ],
-    "arapo": [
-      {
-        "lang": "gn",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "arapokõi": [
-      {
-        "lang": "gn",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "arapoteĩ": [
-      {
-        "lang": "gn",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "ararundy": [
-      {
-        "lang": "gn",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "arateĩ": [
-      {
-        "lang": "gn",
-        "meaning": "Su",
-        "type": "weekday"
       }
     ],
     "arbaco": [
@@ -1875,21 +1438,11 @@
         "lang": "fr",
         "meaning": "Apr",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Apr",
-        "type": "month"
       }
     ],
     "avril": [
       {
         "lang": "fr",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Apr",
         "type": "month"
       }
@@ -2957,11 +2510,6 @@
         "lang": "fr",
         "meaning": "Dec",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Dec",
-        "type": "month"
       }
     ],
     "decembar": [
@@ -3000,11 +2548,6 @@
     "décembre": [
       {
         "lang": "fr",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Dec",
         "type": "month"
       }
@@ -3149,11 +2692,6 @@
         "lang": "sw",
         "meaning": "Dec",
         "type": "month"
-      },
-      {
-        "lang": "tpi",
-        "meaning": "Dec",
-        "type": "month"
       }
     ],
     "desember": [
@@ -3184,13 +2722,6 @@
       },
       {
         "lang": "no",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "desèmber": [
-      {
-        "lang": "pap",
         "meaning": "Dec",
         "type": "month"
       }
@@ -3304,11 +2835,6 @@
         "type": "weekday"
       },
       {
-        "lang": "ht",
-        "meaning": "Su",
-        "type": "weekday"
-      },
-      {
         "lang": "nl",
         "meaning": "Tu",
         "type": "weekday"
@@ -3411,21 +2937,11 @@
         "lang": "fr",
         "meaning": "Su",
         "type": "weekday"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Su",
-        "type": "weekday"
       }
     ],
     "dimanche": [
       {
         "lang": "fr",
-        "meaning": "Su",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Su",
         "type": "weekday"
       }
@@ -3527,55 +3043,6 @@
     "dj": [
       {
         "lang": "ca",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "djabièrnè": [
-      {
-        "lang": "pap",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "djadumingu": [
-      {
-        "lang": "pap",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "djaluna": [
-      {
-        "lang": "pap",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "djamars": [
-      {
-        "lang": "pap",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "djarason": [
-      {
-        "lang": "pap",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "djasabra": [
-      {
-        "lang": "pap",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "djaweps": [
-      {
-        "lang": "pap",
         "meaning": "Th",
         "type": "weekday"
       }
@@ -3963,13 +3430,6 @@
         "type": "weekday"
       }
     ],
-    "epril": [
-      {
-        "lang": "tpi",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
     "erb": [
       {
         "lang": "mt",
@@ -4226,13 +3686,6 @@
         "type": "month"
       }
     ],
-    "febrüari": [
-      {
-        "lang": "pap",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
     "februarie": [
       {
         "lang": "ro",
@@ -4243,13 +3696,6 @@
     "februāris": [
       {
         "lang": "lv",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "februeri": [
-      {
-        "lang": "tpi",
         "meaning": "Feb",
         "type": "month"
       }
@@ -4318,11 +3764,6 @@
         "lang": "fr",
         "meaning": "Feb",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Feb",
-        "type": "month"
       }
     ],
     "fevral": [
@@ -4340,11 +3781,6 @@
     "février": [
       {
         "lang": "fr",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Feb",
         "type": "month"
       }
@@ -4410,13 +3846,6 @@
         "type": "month"
       }
     ],
-    "fonde": [
-      {
-        "lang": "tpi",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
     "föndo": [
       {
         "lang": "sg",
@@ -4445,13 +3874,6 @@
         "type": "month"
       }
     ],
-    "fraide": [
-      {
-        "lang": "tpi",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
     "frar": [
       {
         "lang": "mt",
@@ -4472,11 +3894,6 @@
       },
       {
         "lang": "nb",
-        "meaning": "Fr",
-        "type": "weekday"
-      },
-      {
-        "lang": "nn",
         "meaning": "Fr",
         "type": "weekday"
       },
@@ -5598,21 +5015,9 @@
         "type": "month"
       }
     ],
-    "janueri": [
-      {
-        "lang": "tpi",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
     "janv": [
       {
         "lang": "fr",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Jan",
         "type": "month"
       },
@@ -5634,105 +5039,11 @@
         "lang": "fr",
         "meaning": "Jan",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "jasyapy": [
-      {
-        "lang": "gn",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "jasykõi": [
-      {
-        "lang": "gn",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "jasypa": [
-      {
-        "lang": "gn",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "jasypakõi": [
-      {
-        "lang": "gn",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "jasypateĩ": [
-      {
-        "lang": "gn",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "jasypo": [
-      {
-        "lang": "gn",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
-    "jasypoapy": [
-      {
-        "lang": "gn",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "jasypokõi": [
-      {
-        "lang": "gn",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "jasyporundy": [
-      {
-        "lang": "gn",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "jasypoteĩ": [
-      {
-        "lang": "gn",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "jasyrundy": [
-      {
-        "lang": "gn",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "jasyteĩ": [
-      {
-        "lang": "gn",
-        "meaning": "Jan",
-        "type": "month"
       }
     ],
     "je": [
       {
         "lang": "fr",
-        "meaning": "Th",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Th",
         "type": "weekday"
       }
@@ -5861,21 +5172,11 @@
         "lang": "fr",
         "meaning": "Th",
         "type": "weekday"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Th",
-        "type": "weekday"
       }
     ],
     "jeudi": [
       {
         "lang": "fr",
-        "meaning": "Th",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Th",
         "type": "weekday"
       }
@@ -6010,11 +5311,6 @@
         "lang": "fr",
         "meaning": "Jul",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Jul",
-        "type": "month"
       }
     ],
     "juill": [
@@ -6029,21 +5325,11 @@
         "lang": "fr",
         "meaning": "Jul",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Jul",
-        "type": "month"
       }
     ],
     "juin": [
       {
         "lang": "fr",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Jun",
         "type": "month"
       }
@@ -6087,11 +5373,6 @@
       },
       {
         "lang": "sw",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "tpi",
         "meaning": "Jul",
         "type": "month"
       }
@@ -7126,11 +6407,6 @@
         "lang": "is",
         "meaning": "Sa",
         "type": "weekday"
-      },
-      {
-        "lang": "nn",
-        "meaning": "Sa",
-        "type": "weekday"
       }
     ],
     "lauantai": [
@@ -7483,11 +6759,6 @@
         "type": "weekday"
       },
       {
-        "lang": "ht",
-        "meaning": "Mo",
-        "type": "weekday"
-      },
-      {
         "lang": "ro",
         "meaning": "Mo",
         "type": "weekday"
@@ -7557,11 +6828,6 @@
         "type": "weekday"
       },
       {
-        "lang": "ht",
-        "meaning": "Mo",
-        "type": "weekday"
-      },
-      {
         "lang": "it",
         "meaning": "Mo",
         "type": "weekday"
@@ -7594,11 +6860,6 @@
     "lundi": [
       {
         "lang": "fr",
-        "meaning": "Mo",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Mo",
         "type": "weekday"
       }
@@ -7721,450 +6982,6 @@
         "type": "month"
       }
     ],
-    "m01": [
-      {
-        "lang": "az",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Jan",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "m02": [
-      {
-        "lang": "az",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Feb",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "m03": [
-      {
-        "lang": "az",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "m04": [
-      {
-        "lang": "az",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Apr",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "m05": [
-      {
-        "lang": "az",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
-    "m06": [
-      {
-        "lang": "az",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Jun",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "m07": [
-      {
-        "lang": "az",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Jul",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "m08": [
-      {
-        "lang": "az",
-        "meaning": "Aug",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Aug",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Aug",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Aug",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Aug",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Aug",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "m09": [
-      {
-        "lang": "az",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "m10": [
-      {
-        "lang": "az",
-        "meaning": "Oct",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Oct",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Oct",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Oct",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Oct",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Oct",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "m11": [
-      {
-        "lang": "az",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "m12": [
-      {
-        "lang": "az",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "dv",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "mn",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "ms",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "ny",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "ss",
-        "meaning": "Dec",
-        "type": "month"
-      },
-      {
-        "lang": "zh",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
     "ma": [
       {
         "lang": "da",
@@ -8188,11 +7005,6 @@
       },
       {
         "lang": "hi",
-        "meaning": "Tu",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Tu",
         "type": "weekday"
       },
@@ -8453,11 +7265,6 @@
         "type": "month"
       },
       {
-        "lang": "ht",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
         "lang": "nb",
         "meaning": "May",
         "type": "month"
@@ -8629,11 +7436,6 @@
     ],
     "mån": [
       {
-        "lang": "nn",
-        "meaning": "Mo",
-        "type": "weekday"
-      },
-      {
         "lang": "sv",
         "meaning": "Mo",
         "type": "weekday"
@@ -8671,13 +7473,6 @@
       },
       {
         "lang": "sv",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "mande": [
-      {
-        "lang": "tpi",
         "meaning": "Mo",
         "type": "weekday"
       }
@@ -8730,11 +7525,6 @@
       },
       {
         "lang": "fr",
-        "meaning": "Tu",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Tu",
         "type": "weekday"
       },
@@ -8821,11 +7611,6 @@
         "lang": "fr",
         "meaning": "Tu",
         "type": "weekday"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Tu",
-        "type": "weekday"
       }
     ],
     "marec": [
@@ -8883,11 +7668,6 @@
       },
       {
         "lang": "fr",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Mar",
         "type": "month"
       },
@@ -8961,11 +7741,6 @@
       },
       {
         "lang": "bs",
-        "meaning": "Mar",
-        "type": "month"
-      },
-      {
-        "lang": "pap",
         "meaning": "Mar",
         "type": "month"
       },
@@ -9100,13 +7875,6 @@
     "marzu": [
       {
         "lang": "mt",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "mas": [
-      {
-        "lang": "tpi",
         "meaning": "Mar",
         "type": "month"
       }
@@ -9246,16 +8014,6 @@
         "lang": "fr",
         "meaning": "We",
         "type": "weekday"
-      },
-      {
-        "lang": "ht",
-        "meaning": "We",
-        "type": "weekday"
-      },
-      {
-        "lang": "tpi",
-        "meaning": "May",
-        "type": "month"
       }
     ],
     "mé": [
@@ -9348,11 +8106,6 @@
         "type": "month"
       },
       {
-        "lang": "pap",
-        "meaning": "May",
-        "type": "month"
-      },
-      {
         "lang": "sw",
         "meaning": "May",
         "type": "month"
@@ -9407,11 +8160,6 @@
         "type": "weekday"
       },
       {
-        "lang": "ht",
-        "meaning": "We",
-        "type": "weekday"
-      },
-      {
         "lang": "it",
         "meaning": "We",
         "type": "weekday"
@@ -9434,11 +8182,6 @@
     "mercredi": [
       {
         "lang": "fr",
-        "meaning": "We",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "We",
         "type": "weekday"
       }
@@ -9763,7 +8506,7 @@
         "type": "month"
       }
     ],
-    "motsheganang": [
+    "motsheganong": [
       {
         "lang": "tn",
         "meaning": "May",
@@ -10299,11 +9042,6 @@
         "lang": "sw",
         "meaning": "Nov",
         "type": "month"
-      },
-      {
-        "lang": "tpi",
-        "meaning": "Nov",
-        "type": "month"
       }
     ],
     "novembar": [
@@ -10332,13 +9070,6 @@
         "type": "month"
       }
     ],
-    "novèmber": [
-      {
-        "lang": "pap",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
     "nóvember": [
       {
         "lang": "is",
@@ -10361,11 +9092,6 @@
       },
       {
         "lang": "fr",
-        "meaning": "Nov",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Nov",
         "type": "month"
       },
@@ -10597,11 +9323,6 @@
         "lang": "fr",
         "meaning": "Oct",
         "type": "month"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Oct",
-        "type": "month"
       }
     ],
     "octombrie": [
@@ -10625,13 +9346,6 @@
       {
         "lang": "qu",
         "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "ogas": [
-      {
-        "lang": "tpi",
-        "meaning": "Aug",
         "type": "month"
       }
     ],
@@ -10885,11 +9599,6 @@
         "lang": "sw",
         "meaning": "Oct",
         "type": "month"
-      },
-      {
-        "lang": "tpi",
-        "meaning": "Oct",
-        "type": "month"
       }
     ],
     "oktobar": [
@@ -10997,13 +9706,6 @@
         "type": "month"
       }
     ],
-    "òktober": [
-      {
-        "lang": "pap",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
     "oktobra": [
       {
         "lang": "mg",
@@ -11105,11 +9807,6 @@
       },
       {
         "lang": "nb",
-        "meaning": "We",
-        "type": "weekday"
-      },
-      {
-        "lang": "nn",
         "meaning": "We",
         "type": "weekday"
       },
@@ -11363,13 +10060,6 @@
       {
         "lang": "mt",
         "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "ougùstùs": [
-      {
-        "lang": "pap",
-        "meaning": "Aug",
         "type": "month"
       }
     ],
@@ -12497,11 +11187,6 @@
         "type": "weekday"
       },
       {
-        "lang": "ht",
-        "meaning": "Sa",
-        "type": "weekday"
-      },
-      {
         "lang": "lb",
         "meaning": "Sa",
         "type": "weekday"
@@ -12529,11 +11214,6 @@
     "samedi": [
       {
         "lang": "fr",
-        "meaning": "Sa",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Sa",
         "type": "weekday"
       }
@@ -12587,13 +11267,6 @@
         "type": "month"
       }
     ],
-    "sande": [
-      {
-        "lang": "tpi",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
     "sānuali": [
       {
         "lang": "to",
@@ -12626,13 +11299,6 @@
       {
         "lang": "to",
         "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "sarere": [
-      {
-        "lang": "tpi",
-        "meaning": "Sa",
         "type": "weekday"
       }
     ],
@@ -12888,13 +11554,6 @@
         "type": "month"
       }
     ],
-    "sepitema": [
-      {
-        "lang": "to",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
     "sēpitema": [
       {
         "lang": "to",
@@ -12919,11 +11578,6 @@
     "septemba": [
       {
         "lang": "sw",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "tpi",
         "meaning": "Sep",
         "type": "month"
       }
@@ -12954,13 +11608,6 @@
         "type": "month"
       }
     ],
-    "sèptèmber": [
-      {
-        "lang": "pap",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
     "septembra": [
       {
         "lang": "sk",
@@ -12971,11 +11618,6 @@
     "septembre": [
       {
         "lang": "fr",
-        "meaning": "Sep",
-        "type": "month"
-      },
-      {
-        "lang": "ht",
         "meaning": "Sep",
         "type": "month"
       }
@@ -13532,11 +12174,6 @@
       },
       {
         "lang": "nb",
-        "meaning": "Su",
-        "type": "weekday"
-      },
-      {
-        "lang": "nn",
         "meaning": "Su",
         "type": "weekday"
       },
@@ -14735,11 +13372,6 @@
         "type": "weekday"
       },
       {
-        "lang": "nn",
-        "meaning": "Th",
-        "type": "weekday"
-      },
-      {
         "lang": "no",
         "meaning": "Th",
         "type": "weekday"
@@ -14892,13 +13524,6 @@
         "type": "weekday"
       }
     ],
-    "trinde": [
-      {
-        "lang": "tpi",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
     "tsh": [
       {
         "lang": "st",
@@ -14946,13 +13571,6 @@
         "type": "weekday"
       }
     ],
-    "tunde": [
-      {
-        "lang": "tpi",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
     "tūr": [
       {
         "lang": "mi",
@@ -14991,13 +13609,6 @@
     "tý": [
       {
         "lang": "fo",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "tys": [
-      {
-        "lang": "nn",
         "meaning": "Tu",
         "type": "weekday"
       }
@@ -15220,11 +13831,6 @@
         "lang": "fr",
         "meaning": "Fr",
         "type": "weekday"
-      },
-      {
-        "lang": "ht",
-        "meaning": "Fr",
-        "type": "weekday"
       }
     ],
     "veebr": [
@@ -15269,11 +13875,6 @@
         "type": "weekday"
       },
       {
-        "lang": "ht",
-        "meaning": "Fr",
-        "type": "weekday"
-      },
-      {
         "lang": "it",
         "meaning": "Fr",
         "type": "weekday"
@@ -15282,11 +13883,6 @@
     "vendredi": [
       {
         "lang": "fr",
-        "meaning": "Fr",
-        "type": "weekday"
-      },
-      {
-        "lang": "ht",
         "meaning": "Fr",
         "type": "weekday"
       }
@@ -15491,13 +14087,6 @@
         "type": "month"
       }
     ],
-    "yanüari": [
-      {
-        "lang": "pap",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
     "yanvar": [
       {
         "lang": "az",
@@ -15573,13 +14162,6 @@
         "type": "month"
       }
     ],
-    "yüli": [
-      {
-        "lang": "pap",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
     "yulyuz": [
       {
         "lang": "tzm",
@@ -15590,13 +14172,6 @@
     "yun": [
       {
         "lang": "tzm",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "yüni": [
-      {
-        "lang": "pap",
         "meaning": "Jun",
         "type": "month"
       }
@@ -20836,7 +19411,19 @@
     ],
     "پ": [
       {
+        "lang": "ps",
+        "meaning": "Th",
+        "type": "weekday"
+      },
+      {
         "lang": "uz",
+        "meaning": "Th",
+        "type": "weekday"
+      }
+    ],
+    "پنج شنبه": [
+      {
+        "lang": "ps",
         "meaning": "Th",
         "type": "weekday"
       }
@@ -20849,13 +19436,6 @@
       },
       {
         "lang": "uz",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "پينځنۍ": [
-      {
-        "lang": "ps",
         "meaning": "Th",
         "type": "weekday"
       }
@@ -20912,6 +19492,11 @@
     "ج": [
       {
         "lang": "fa",
+        "meaning": "Fr",
+        "type": "weekday"
+      },
+      {
+        "lang": "ps",
         "meaning": "Fr",
         "type": "weekday"
       },
@@ -21125,6 +19710,11 @@
     ],
     "چ": [
       {
+        "lang": "ps",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
         "lang": "uz",
         "meaning": "We",
         "type": "weekday"
@@ -21133,6 +19723,11 @@
     "چهارشنبه": [
       {
         "lang": "fa",
+        "meaning": "We",
+        "type": "weekday"
+      },
+      {
+        "lang": "ps",
         "meaning": "We",
         "type": "weekday"
       },
@@ -21156,14 +19751,12 @@
         "type": "weekday"
       }
     ],
-    "څلرنۍ": [
+    "د": [
       {
         "lang": "ps",
-        "meaning": "We",
+        "meaning": "Mo",
         "type": "weekday"
-      }
-    ],
-    "د": [
+      },
       {
         "lang": "uz",
         "meaning": "Mo",
@@ -21182,13 +19775,6 @@
         "lang": "ar",
         "meaning": "Dec",
         "type": "month"
-      }
-    ],
-    "درېنۍ": [
-      {
-        "lang": "ps",
-        "meaning": "Tu",
-        "type": "weekday"
       }
     ],
     "دسامبر": [
@@ -21239,14 +19825,12 @@
         "type": "weekday"
       },
       {
-        "lang": "uz",
+        "lang": "ps",
         "meaning": "Mo",
         "type": "weekday"
-      }
-    ],
-    "دونۍ": [
+      },
       {
-        "lang": "ps",
+        "lang": "uz",
         "meaning": "Mo",
         "type": "weekday"
       }
@@ -21286,13 +19870,6 @@
         "type": "month"
       }
     ],
-    "ژانویهٔ": [
-      {
-        "lang": "fa",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
     "ژوئن": [
       {
         "lang": "fa",
@@ -21307,14 +19884,12 @@
         "type": "month"
       }
     ],
-    "ژوئیهٔ": [
-      {
-        "lang": "fa",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
     "س": [
+      {
+        "lang": "ps",
+        "meaning": "Tu",
+        "type": "weekday"
+      },
       {
         "lang": "uz",
         "meaning": "Tu",
@@ -21401,6 +19976,13 @@
         "type": "weekday"
       }
     ],
+    "سه شنبه": [
+      {
+        "lang": "ps",
+        "meaning": "Tu",
+        "type": "weekday"
+      }
+    ],
     "سه‌شنبه": [
       {
         "lang": "fa",
@@ -21462,6 +20044,11 @@
         "type": "weekday"
       },
       {
+        "lang": "ps",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
         "lang": "uz",
         "meaning": "Sa",
         "type": "weekday"
@@ -21491,6 +20078,11 @@
     "شنبه": [
       {
         "lang": "fa",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
+      {
+        "lang": "ps",
         "meaning": "Sa",
         "type": "weekday"
       },
@@ -21555,13 +20147,6 @@
       }
     ],
     "فوریه": [
-      {
-        "lang": "fa",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "فوریهٔ": [
       {
         "lang": "fa",
         "meaning": "Feb",
@@ -21714,13 +20299,6 @@
         "type": "month"
       }
     ],
-    "مهٔ": [
-      {
-        "lang": "fa",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
     "می": [
       {
         "lang": "fa",
@@ -21839,14 +20417,12 @@
         "type": "month"
       }
     ],
-    "يونۍ": [
+    "ی": [
       {
         "lang": "ps",
         "meaning": "Su",
         "type": "weekday"
-      }
-    ],
-    "ی": [
+      },
       {
         "lang": "uz",
         "meaning": "Su",
@@ -21856,6 +20432,11 @@
     "یکشنبه": [
       {
         "lang": "fa",
+        "meaning": "Su",
+        "type": "weekday"
+      },
+      {
+        "lang": "ps",
         "meaning": "Su",
         "type": "weekday"
       },
@@ -25048,202 +23629,6 @@
         "type": "month"
       }
     ],
-    "ᠠᠷᠪᠠᠨ ᠨᠢᠭᠡᠳᠥᠭᠡᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "ᠠᠷᠪᠠᠨ ᠬᠣᠶᠠᠳᠣᠭᠠᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "ᠠᠷᠪᠠᠳᠣᠭᠠᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "ᠨᠠᠢᠮᠠᠳᠥᠭᠠᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "ᠨᠢ": [
-      {
-        "lang": "mn",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "ᠨᠢᠭᠡᠳᠥᠭᠡᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "ᠨᠢᠮ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "ᠪᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "ᠪᠠᠰᠠᠩ": [
-      {
-        "lang": "mn",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "ᠪᠢᠮ": [
-      {
-        "lang": "mn",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "ᠪᠢᠮᠪᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "ᠫᠥᠷ": [
-      {
-        "lang": "mn",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "ᠫᠦᠷ": [
-      {
-        "lang": "mn",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "ᠫᠦᠷᠪᠦ": [
-      {
-        "lang": "mn",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "ᠬᠣᠶᠠᠳᠣᠭᠠᠷ ᠰᠠᠷ ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "ᠭᠣᠷᠪᠡᠳᠣᠭᠠᠷ ᠰᠠᠷ ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "ᠮᠢᠠᠠᠮᠠᠷ": [
-      {
-        "lang": "mn",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "ᠮᠢᠭ": [
-      {
-        "lang": "mn",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "ᠲᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "ᠲᠠᠪᠣᠳᠣᠭᠠᠷ ᠰᠠᠷ ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
-    "ᠲᠣᠯᠣᠭᠠᠳᠣᠭᠠᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "ᠳᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "ᠳᠠᠸᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "ᠳᠥᠷᠪᠡᠳᠥᠭᠡᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "ᠵᠢᠷᠭᠣᠭᠠᠳᠣᠭᠠᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "ᠶᠢᠰᠥᠳᠥᠭᠡᠷ ᠰᠠᠷ᠎ᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "ᡀᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "ᡀᠠᠭᠪᠠ": [
-      {
-        "lang": "mn",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
     "금": [
       {
         "lang": "ko",
@@ -25340,258 +23725,6 @@
         "lang": "ko",
         "meaning": "Tu",
         "type": "weekday"
-      }
-    ],
-    "𐐩𐐹𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "𐐩𐐹𐑉𐐮𐑊": [
-      {
-        "lang": "en",
-        "meaning": "Apr",
-        "type": "month"
-      }
-    ],
-    "𐐪𐑀": [
-      {
-        "lang": "en",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "𐐪𐑀𐐲𐑅𐐻": [
-      {
-        "lang": "en",
-        "meaning": "Aug",
-        "type": "month"
-      }
-    ],
-    "𐐱𐐿𐐻": [
-      {
-        "lang": "en",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "𐐱𐐿𐐻𐐬𐐺𐐲𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Oct",
-        "type": "month"
-      }
-    ],
-    "𐐶𐐯𐑌": [
-      {
-        "lang": "en",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "𐐶𐐯𐑌𐑆𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "We",
-        "type": "weekday"
-      }
-    ],
-    "𐐻𐐭𐑆": [
-      {
-        "lang": "en",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "𐐻𐐭𐑆𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "Tu",
-        "type": "weekday"
-      }
-    ],
-    "𐐼𐐨𐑅": [
-      {
-        "lang": "en",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "𐐼𐐨𐑅𐐯𐑋𐐺𐐲𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Dec",
-        "type": "month"
-      }
-    ],
-    "𐐾𐐭𐑊": [
-      {
-        "lang": "en",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "𐐾𐐭𐑊𐐴": [
-      {
-        "lang": "en",
-        "meaning": "Jul",
-        "type": "month"
-      }
-    ],
-    "𐐾𐐭𐑌": [
-      {
-        "lang": "en",
-        "meaning": "Jun",
-        "type": "month"
-      }
-    ],
-    "𐐾𐐰𐑌": [
-      {
-        "lang": "en",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "𐐾𐐰𐑌𐐷𐐭𐐯𐑉𐐨": [
-      {
-        "lang": "en",
-        "meaning": "Jan",
-        "type": "month"
-      }
-    ],
-    "𐑁𐐯𐐺": [
-      {
-        "lang": "en",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "𐑁𐐯𐐺𐑉𐐭𐐯𐑉𐐨": [
-      {
-        "lang": "en",
-        "meaning": "Feb",
-        "type": "month"
-      }
-    ],
-    "𐑁𐑉𐐴": [
-      {
-        "lang": "en",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "𐑁𐑉𐐴𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "Fr",
-        "type": "weekday"
-      }
-    ],
-    "𐑃𐐲𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "𐑃𐐲𐑉𐑆𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "Th",
-        "type": "weekday"
-      }
-    ],
-    "𐑅𐐯𐐹": [
-      {
-        "lang": "en",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "𐑅𐐯𐐹𐐻𐐯𐑋𐐺𐐲𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Sep",
-        "type": "month"
-      }
-    ],
-    "𐑅𐐰𐐻": [
-      {
-        "lang": "en",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "𐑅𐐰𐐻𐐲𐑉𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "Sa",
-        "type": "weekday"
-      }
-    ],
-    "𐑅𐐲𐑌": [
-      {
-        "lang": "en",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "𐑅𐐲𐑌𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "Su",
-        "type": "weekday"
-      }
-    ],
-    "𐑋𐐩": [
-      {
-        "lang": "en",
-        "meaning": "May",
-        "type": "month"
-      }
-    ],
-    "𐑋𐐪𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "𐑋𐐪𐑉𐐽": [
-      {
-        "lang": "en",
-        "meaning": "Mar",
-        "type": "month"
-      }
-    ],
-    "𐑋𐐲𐑌": [
-      {
-        "lang": "en",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "𐑋𐐲𐑌𐐼𐐩": [
-      {
-        "lang": "en",
-        "meaning": "Mo",
-        "type": "weekday"
-      }
-    ],
-    "𐑌𐐬𐑂": [
-      {
-        "lang": "en",
-        "meaning": "Nov",
-        "type": "month"
-      }
-    ],
-    "𐑌𐐬𐑂𐐯𐑋𐐺𐐲𐑉": [
-      {
-        "lang": "en",
-        "meaning": "Nov",
-        "type": "month"
       }
     ],
     "一": [

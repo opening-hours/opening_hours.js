@@ -1458,7 +1458,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mo – Fr: 9 – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
 	*Mo – Fr: 9 – 12 Uhr <--- (Please omit "uhr".)
 	*Mo – Fr: 9 – 12 Uhr und <--- (Please use notation "," for "und".)
-	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Please use the English abbreviation "Tu" for "di". Note that "di" can also mean Su (fr, ht) in other languages.)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Please use the English abbreviation "Tu" for "di". Note that "di" can also mean Su (fr) in other languages.)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Please use the English abbreviation "Th" for "do". Note that "do" can also mean Su (es, ga) in other languages.)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – <--- (Please use notation "-" for "–". Although using "–" is typographical correct, it is not defined in the opening_hours syntax. Correct typography should be done on application level …)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr <--- (Please omit "uhr".)
@@ -1474,7 +1474,7 @@ With [34m[1mwarnings[22m[39m:
 "Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo: geschlossen <--- (Please use "off" for "geschlossen". Example: "Mo-Fr 08:00-12:00; Tu off".)
-	*Mo: geschlossen, Di <--- (Please use the English abbreviation "Tu" for "di". Note that "di" can also mean Su (fr, ht) in other languages.)
+	*Mo: geschlossen, Di <--- (Please use the English abbreviation "Tu" for "di". Note that "di" can also mean Su (fr) in other languages.)
 	*Mo: geschlossen, Di: 14-18Uhr <--- (Please omit "uhr".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi <--- (Please use the English abbreviation "We" for "mi".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr <--- (Please omit "uhr".)

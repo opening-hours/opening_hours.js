@@ -1458,7 +1458,7 @@ With [34m[1mwarnings[22m[39m:
 	*Mo – Fr: 9 – <--- (Bitte verwende "-" für "–". Auch wenn "–" typografisch korrekt ist, ist dies in der opening_hours Syntax nicht definiert. Korrekte Typographie sollte auf Anwendungsebene sichergestellt werden …)
 	*Mo – Fr: 9 – 12 Uhr <--- (Bitte verzichte auf "uhr".)
 	*Mo – Fr: 9 – 12 Uhr und <--- (Bitte verwende "," anstelle von "und".)
-	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di". Beachte, dass "di" anderswo auch Su (fr, ht) bedeuten kann.)
+	*Mo – Fr: 9 – 12 Uhr und Mo, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di". Beachte, dass "di" anderswo auch Su (fr) bedeuten kann.)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do <--- (Bitte benutze die englische Abkürzung "Th" für "do". Beachte, dass "do" anderswo auch Su (es, ga) bedeuten kann.)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – <--- (Bitte verwende "-" für "–". Auch wenn "–" typografisch korrekt ist, ist dies in der opening_hours Syntax nicht definiert. Korrekte Typographie sollte auf Anwendungsebene sichergestellt werden …)
 	*Mo – Fr: 9 – 12 Uhr und Mo, Di, Do: 15 – 18 Uhr <--- (Bitte verzichte auf "uhr".)
@@ -1474,7 +1474,7 @@ With [34m[1mwarnings[22m[39m:
 "Real world example: Was not processed right." for "Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo: geschlossen <--- (Bitte benutze "off" für "geschlossen". Beispiel: "Mo-Fr 08:00-12:00; Tu off".)
-	*Mo: geschlossen, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di". Beachte, dass "di" anderswo auch Su (fr, ht) bedeuten kann.)
+	*Mo: geschlossen, Di <--- (Bitte benutze die englische Abkürzung "Tu" für "di". Beachte, dass "di" anderswo auch Su (fr) bedeuten kann.)
 	*Mo: geschlossen, Di: 14-18Uhr <--- (Bitte verzichte auf "uhr".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi <--- (Bitte benutze die englische Abkürzung "We" für "mi".)
 	*Mo: geschlossen, Di: 14-18Uhr, Mi-Sa: 10-18Uhr <--- (Bitte verzichte auf "uhr".)
