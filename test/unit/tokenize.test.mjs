@@ -3,8 +3,66 @@
 
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import yaml from 'yaml';
 
 import opening_hours from '../../build/opening_hours.esm.mjs';
+import { createCorrectionLookup } from '../../src/word-error-correction.mjs';
+
+test('correction lookup prefers literals over overlapping regex rules', () => {
+    const lookup = createCorrectionLookup({
+        literal: { literal_warning: { weekend: 'Sa,Su', 'a.m.': 'am' } },
+        regex: { regex_warning: { '(?:weekend|workday)': 'Mo-Fr', 'workdays?': 'off' } },
+        ambiguous: {},
+    });
+
+    assert.equal(lookup.findWord('WEEKEND')?.comment, 'literal_warning');
+    assert.equal(lookup.findWord('workday')?.replacement, 'Mo-Fr');
+    assert.equal(lookup.findWord('A.M.')?.replacement, 'am');
+    assert.equal(lookup.findWord('axmy'), undefined);
+});
+
+test('phrase corrections prefer the longest consumed expression and literal ties', () => {
+    const lookup = createCorrectionLookup({
+        literal: { literal_warning: { 'every day off': 'off', 'all day': '24/7', 'every day': 'Mo-Su' } },
+        regex: { regex_warning: { '(?:(?:every day))': 'Mo-Fr', 'all day long': 'open', 'weekends?': 'Sa,Su' } },
+        ambiguous: {},
+    });
+
+    assert.equal(lookup.findPhrase('every day off 09:00-17:00')?.match[1], 'every day off');
+    assert.equal(lookup.findPhrase('all day long')?.correction.replacement, 'open');
+    assert.equal(lookup.findPhrase('every day')?.correction.comment, 'literal_warning');
+    assert.equal(lookup.findPhrase('every daytime'), undefined);
+    assert.equal(lookup.findPhrase('weekend'), undefined);
+    assert.equal(lookup.findWord('weekend')?.replacement, 'Sa,Su');
+});
+
+test('correction data preserves literal spellings and regex rules at runtime', () => {
+    const manual = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction_manual.yaml', import.meta.url), 'utf8'));
+    const runtime = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction.yaml', import.meta.url), 'utf8'));
+
+    assert.deepEqual(Object.keys(manual).filter(section => section !== 'ambiguous'), ['literal', 'regex']);
+    for (const section of ['literal', 'regex']) {
+        assert.deepEqual(runtime[section], manual[section]);
+    }
+    const lookup = createCorrectionLookup(runtime);
+    for (const [category, entries] of Object.entries(runtime.literal)) {
+        for (const [literal, replacement] of Object.entries(entries)) {
+            assert.equal(lookup.findWord(literal)?.replacement, replacement);
+            assert.equal(lookup.findWord(literal)?.comment, category);
+        }
+    }
+    for (const entries of Object.values(runtime.regex)) {
+        for (const pattern of Object.keys(entries)) {
+            assert.doesNotThrow(() => new RegExp('^' + pattern + '$', 'iu'));
+        }
+    }
+    assert.equal(lookup.findWord('a.m')?.replacement, 'am');
+    assert.equal(lookup.findWord('a.m.')?.replacement, 'am');
+    assert.equal(lookup.findWord('p.m')?.replacement, 'pm');
+    assert.equal(lookup.findWord('p.m.')?.replacement, 'pm');
+    assert.equal(lookup.findWord('axmy'), undefined);
+});
 
 test('tokenizer preserves corrected-word output and warning positions', () => {
     const value = 'Mon';
@@ -36,6 +94,16 @@ test('tokenizer preserves phrase-correction output and warning positions', () =>
     ]);
 });
 
+test('tokenizer preserves complete literal phrase corrections', () => {
+    const value = '24 hours 7 days a week';
+    const hours = new opening_hours(value, null);
+
+    assert.equal(hours.prettifyValue(), '24/7');
+    assert.deepEqual(hours.getStructuredWarnings()
+        .filter(({ type }) => type === 'word_error_correction')
+        .map(({ position }) => position), [value.length]);
+});
+
 test('tokenizer accepts am/pm abbreviations with or without a trailing dot', () => {
     for (const value of ['7 a.m. - 10 p.m.', '7 a.m - 10 p.m', '7 a.m - 10 p.m.', '7A.M-10P.M']) {
         const hours = new opening_hours(value, null);
@@ -60,6 +128,27 @@ test('tokenizer rejects open-end words with suffixes', () => {
     for (const value of ['16:00-later', '16:00-latest', '16:00-open ending']) {
         assert.throws(() => new opening_hours(value, null), value);
     }
+});
+
+test('tokenizer does not apply short corrections inside longer words', () => {
+    for (const value of [
+        'midnight-24:00',
+        'May-Sep: 00:00-24:00',
+        'lundi,vendredi 10:00-18:00',
+        '2025 May 01-23 00:00-24:00',
+    ]) {
+        assert.doesNotThrow(() => new opening_hours(value, null), value);
+    }
+});
+
+test('tokenizer protects canonical tokens from matching correction rules', () => {
+    const runtime = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction.yaml', import.meta.url), 'utf8'));
+    assert.equal(createCorrectionLookup(runtime).findWord('mar')?.replacement, 'Tu');
+
+    const value = 'Mar 01 09:00-17:00';
+    const hours = new opening_hours(value, null);
+    assert.equal(hours.prettifyValue(), value);
+    assert.deepEqual(hours.getStructuredWarnings().filter(({ type }) => type === 'word_error_correction'), []);
 });
 
 test('tokenizer resolves foreign weekday ranges and rejects locale mismatches', () => {

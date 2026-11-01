@@ -80,7 +80,7 @@ build/opening_hours.min.js \
 build/opening_hours.esm.mjs \
 build/opening_hours+deps.js \
 build/opening_hours+deps.min.js: src/index.js src/tokenizer.mjs src/osm-tag-defaults.mjs \
-src/prettify-helpers.mjs src/variable-times.mjs src/holidays/generated-openholidays.mjs \
+src/word-error-correction.mjs src/prettify-helpers.mjs src/variable-times.mjs src/holidays/generated-openholidays.mjs \
 src/locales/i18n.js src/locales/translations.yaml src/locales/word_error_correction.yaml \
 src/locale-resolver/normalize.mjs src/locale-resolver/region-languages.mjs src/locale-resolver/resolver.mjs \
 src/locale-resolver/layers.json

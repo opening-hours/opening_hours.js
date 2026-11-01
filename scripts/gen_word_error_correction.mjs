@@ -62,6 +62,11 @@ const weekdayAbbreviations = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 /** @typedef {{ months?: CalendarNameData, days?: { format?: LocalizedTermForms } }} GregorianData */
 /** @typedef {{ locale: string, meaning: string, type: string, form: string }} WordConflictOccurrence */
 /** @typedef {{ warning: string, occurrences: WordConflictOccurrence[] }} AmbiguousWord */
+/** @typedef {Record<string, Record<string, string>>} CorrectionCategories */
+/** @typedef {{ literal: CorrectionCategories, regex: CorrectionCategories, ambiguous: Record<string, string> }} ManualCorrections */
+
+/** @type {('literal'|'regex')[]} */
+const correctionSections = ['literal', 'regex'];
 
 /**
  * Read and parse a JSON file.
@@ -97,6 +102,34 @@ function sortedKeys(obj) {
  */
 function sortObject(obj) {
     return Object.fromEntries(sortedKeys(obj).map(key => [key, obj[key]]));
+}
+
+/**
+ * Preserve literal and regex sections for runtime correction lookup.
+ * @param {ManualCorrections} corrections Manual correction sections.
+ * @returns {ManualCorrections} Runtime correction data.
+ */
+function createRuntimeData(corrections) {
+    /** @type {ManualCorrections} */
+    const runtimeData = { literal: {}, regex: {}, ambiguous: sortObject(corrections.ambiguous || {}) };
+    for (const section of correctionSections) {
+        const seenRules = new Set();
+        for (const [category, entries] of Object.entries(corrections[section])) {
+            runtimeData[section][category] = {};
+            for (const [source, replacement] of Object.entries(entries)) {
+                if (section === 'regex') {
+                    new RegExp('^(?:' + source + ')$', 'iu');
+                }
+                const key = section === 'literal' ? source.toLowerCase() : source;
+                if (seenRules.has(key)) {
+                    throw new Error(`Duplicate ${section} correction in ${category}: ${source}`);
+                }
+                seenRules.add(key);
+                runtimeData[section][category][source] = replacement;
+            }
+        }
+    }
+    return runtimeData;
 }
 
 function listCldrLocales() {
@@ -170,12 +203,16 @@ function collectTerms(gregorian) {
 
 // 1. Load manual corrections
 console.log('► Loading manual corrections...');
-/** @type {Record<string, Record<string, string>>} */
-let manualCorrections = {};
+/** @type {ManualCorrections} */
+let manualCorrections = { literal: {}, regex: {}, ambiguous: {} };
 if (fs.existsSync(manualYamlPath)) {
-    manualCorrections = yaml.parse(fs.readFileSync(manualYamlPath, 'utf8')) || {};
-    const totalManual = Object.values(manualCorrections)
-        .reduce((sum, category) => sum + Object.keys(category).length, 0);
+    manualCorrections = /** @type {ManualCorrections} */ (yaml.parse(fs.readFileSync(manualYamlPath, 'utf8')));
+    if (!correctionSections.every(section => manualCorrections[section])) {
+        throw new Error('Manual corrections must define literal and regex sections.');
+    }
+    manualCorrections.ambiguous ??= {};
+    const totalManual = correctionSections.reduce((sum, section) => sum + Object.values(manualCorrections[section])
+        .reduce((sectionSum, category) => sectionSum + Object.keys(category).length, 0), 0);
     console.log(`  ✓ Loaded ${totalManual} manual entries from: ${path.relative(basePath, manualYamlPath)}`);
 } else {
     console.log(`  ✗ Manual corrections file not found: ${manualYamlPath}`);
@@ -195,16 +232,9 @@ console.log(`  → Will analyze ${supportedLocales.length} locales for conflicts
 const languageNames = readJson(cldrLocalenamesPath)?.main?.en?.localeDisplayNames?.languages || {};
 
 // 3. Preserve structure - copy manual corrections as base
-const finalData = { ...manualCorrections };
-
-const ambiguousWordsCategory = 'Ambiguous words';
-if (!finalData[ambiguousWordsCategory]) {
-    finalData[ambiguousWordsCategory] = {};
-}
-
 const autoCategory = 'please use English abbreviation ok for ko';
-if (!finalData[autoCategory]) {
-    finalData[autoCategory] = {};
+if (!manualCorrections.literal[autoCategory]) {
+    manualCorrections.literal[autoCategory] = {};
 }
 
 /** @type {Record<string, WordConflictOccurrence[]>} */
@@ -270,7 +300,7 @@ for (const word of sortedKeys(wordConflicts)) {
 for (const word of sortedKeys(ambiguousWords)) {
     const hasShortForm = ambiguousWords[word].occurrences.some(occ => occ.form === 'short');
     if (!hasShortForm) {
-        finalData[ambiguousWordsCategory][word] = ambiguousWords[word].warning;
+        manualCorrections.ambiguous[word] = ambiguousWords[word].warning;
     }
 }
 console.log(`  → Ambiguous words tracked: ${Object.keys(ambiguousWords).length}`);
@@ -279,12 +309,13 @@ console.log(`  → Ambiguous words tracked: ${Object.keys(ambiguousWords).length
 // They are resolved by the locale resolver at runtime, while this generator
 // keeps manual corrections and ambiguity warnings only.
 
-finalData[autoCategory] = sortObject(finalData[autoCategory]);
-finalData[ambiguousWordsCategory] = sortObject(finalData[ambiguousWordsCategory]);
+manualCorrections.literal[autoCategory] = sortObject(manualCorrections.literal[autoCategory]);
+manualCorrections.ambiguous = sortObject(manualCorrections.ambiguous);
+const runtimeData = createRuntimeData(manualCorrections);
 
 // 6. Write final YAML structure
 console.log('\n► Writing output file...');
-const yamlOutput = yaml.stringify(finalData, {
+const yamlOutput = yaml.stringify(runtimeData, {
     defaultStringType: 'PLAIN',
     lineWidth: 0
 });
@@ -305,16 +336,21 @@ console.log('\n=======================================');
 console.log('Final Statistics');
 console.log('=======================================');
 console.log(`Output file: ${path.relative(basePath, outputPath)}`);
-console.log(`Categories: ${Object.keys(finalData).length}`);
+console.log(`Categories: ${new Set(correctionSections.flatMap(section => Object.keys(runtimeData[section]))).size}`);
 console.log('\nCategory breakdown:');
 
 let totalEntries = 0;
-for (const category of Object.keys(finalData)) {
-    const count = Object.keys(finalData[category]).length;
-    totalEntries += count;
-    console.log(`  ▪ ${category}: ${count} entries`);
+for (const section of correctionSections) {
+    for (const category of Object.keys(manualCorrections[section])) {
+        const count = Object.keys(manualCorrections[section][category]).length;
+        totalEntries += count;
+        console.log(`  ▪ ${section}/${category}: ${count} entries`);
+    }
 }
+const ambiguousCount = Object.keys(manualCorrections.ambiguous).length;
+totalEntries += ambiguousCount;
+console.log(`  ▪ ambiguous: ${ambiguousCount} entries`);
 
 console.log(`\n→ Total corrections: ${totalEntries}`);
-console.log(`→ Ambiguous words: ${Object.keys(finalData[ambiguousWordsCategory] || {}).length} (warnings only)`);
+console.log(`→ Ambiguous words: ${Object.keys(manualCorrections.ambiguous).length} (warnings only)`);
 console.log('\n✓ Word error correction generation completed successfully!');

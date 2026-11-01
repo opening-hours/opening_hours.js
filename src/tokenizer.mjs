@@ -2,13 +2,14 @@
 // SPDX-License-Identifier: LGPL-3.0-only
 
 import word_error_correction_data from './locales/word_error_correction.yaml';
+import { createCorrectionLookup } from './word-error-correction.mjs';
 import { matchTokens } from './prettify-helpers.mjs';
 import { resolveRange } from './locale-resolver/resolver.mjs';
 import { regionLanguages } from './locale-resolver/region-languages.mjs';
 import { normalizeToken } from './locale-resolver/normalize.mjs';
 import resolver_layers_data from './locale-resolver/layers.json' with { type: 'json' };
 
-const word_error_correction = /** @type {Record<string, Record<string, string>>} */ (
+const word_error_correction = /** @type {import('./word-error-correction.mjs').WordErrorCorrectionData} */ (
     /** @type {unknown} */ (word_error_correction_data)
 );
 
@@ -119,36 +120,7 @@ function normalizeUnicodeNumber(value) {
     }).join('');
 }
 
-// Flatten all replacement rules into one longest-pattern-first lookup list,
-// so a specific phrase wins over a shorter pattern matching its prefix.
-const correction_entries = Object.entries(word_error_correction)
-    .filter(([comment]) => comment !== 'Ambiguous words')
-    .flatMap(([comment, corrections]) => Object.entries(corrections)
-        .map(([pattern, replacement]) => ({ comment, pattern, replacement })))
-    .sort((left, right) => right.pattern.length - left.pattern.length);
-// Multi-word rules only; single-word rules must not override valid tokens
-// such as the month abbreviation "Mar" and are left to returnCorrectWordOrToken.
-const phrase_correction_entries = correction_entries.filter(({ pattern }) =>
-    pattern.includes(' ') || pattern.includes('\\s')
-);
-/**
- * Find the first matching phrase correction at the start of the input.
- * @param {string} input Text to check for a phrase correction.
- * @returns {string[]|undefined} The matching phrase or undefined.
- */
-function findPhraseCorrection(input) {
-    for (const correction of phrase_correction_entries) {
-        const match = input.match(new RegExp(
-            '^(' + correction.pattern + ')(\\.?)' +
-            '(?=$|[^\\p{L}\\p{N}_])',
-            'iu'
-        ));
-        if (match) {
-            return match;
-        }
-    }
-    return undefined;
-}
+const correction_lookup = createCorrectionLookup(word_error_correction);
 
 /**
  * Find a provisional weekday or month meaning for a cross-locale word.
@@ -342,7 +314,8 @@ export function tokenize(value, context) {
             // console.log("Parsing value: " + value);
 
             // Check correction phrases before the regular word and error-tolerance patterns.
-            const phrase_match = findPhraseCorrection(value);
+            const phrase_correction = correction_lookup.findPhrase(value);
+            const phrase_match = phrase_correction?.match;
             let tmp = phrase_match || value.match(TOKENIZER_WORD_REGEX);
             let token_from_map = undefined;
             if (!phrase_match && tmp && tmp[2] === '') {
@@ -407,9 +380,7 @@ export function tokenize(value, context) {
                  */
                 const lower_word = tmp[1].toLowerCase();
                 const warn_count_before = parsing_warnings.length;
-                // returnCorrectWordOrToken looks up the same correction_entries,
-                // so a pre-matched phrase resolves here just like a single word.
-                let correct_val = returnCorrectWordOrToken(lower_word, value.length);
+                let correct_val = returnCorrectWordOrToken(lower_word, value.length, phrase_correction?.correction);
                 // A word_error_correction warning, if any, is the last one pushed by
                 // returnCorrectWordOrToken; remember its index so the resolver can
                 // rewrite exactly this warning later (not a same-word duplicate).
@@ -593,11 +564,12 @@ export function tokenize(value, context) {
      * Go through word_error_correction hash and get correct value back.
      * @param {string} word Wrong word or character.
      * @param {number} value_length Current value_length (used for warnings).
+     * @param {import('./word-error-correction.mjs').Correction} [matched_correction] Selected phrase correction.
      * @returns {string|[number|string, string]|undefined} (valid) opening_hours sub string; object
      *     with [ internal_value, token_name ] if value is correct; or undefined
      *     if word could not be found (and thus is not corrected).
      */
-    function returnCorrectWordOrToken(word, value_length) {
+    function returnCorrectWordOrToken(word, value_length, matched_correction) {
         let correctWordOrToken;
         /** @type {[number|string, string]|undefined} */
         const token_from_map = string_to_token_map[word];
@@ -607,7 +579,7 @@ export function tokenize(value, context) {
 
         // Check for ambiguous words first - show warning and provide default correction
         /** @type {Record<string, string>} */
-        const ambiguous_word_corrections = word_error_correction['Ambiguous words'];
+        const ambiguous_word_corrections = word_error_correction.ambiguous;
         if (ambiguous_word_corrections && ambiguous_word_corrections[word]) {
             const warningMessage = ambiguous_word_corrections[word];
             parsing_warnings.push([
@@ -627,9 +599,7 @@ export function tokenize(value, context) {
             return undefined;
         }
 
-        const correction = correction_entries.find(entry =>
-            new RegExp('^' + entry.pattern + '$', 'iu').test(word)
-        );
+        const correction = matched_correction || correction_lookup.findWord(word);
         if (correction) {
             const warningMessage = t(correction.comment, {'ko': word, 'ok': correction.replacement});
 
