@@ -2,8 +2,8 @@
 # Generated word_error_correction.yaml
 # Sources:
 #   - Manual corrections: src/locales/word_error_correction_manual.yaml
-#   - CLDR dates: cldr-dates-full@48.2.0
-#   - CLDR language names: cldr-localenames-full@48.2.0
+#   - CLDR dates: cldr-dates-full@49.0.0
+#   - CLDR language names: cldr-localenames-full@49.0.0
 # Note: Ambiguous words are handled in separate section with warnings
 
 literal:
@@ -233,7 +233,6 @@ regex:
 ambiguous:
   listopad: 'Word "listopad" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name.'
   meurzh: 'Word "meurzh" is ambiguous: Mar (Breton) or Tu (Breton). Please specify language context or use English month name.'
-  nhlangula: 'Word "nhlangula" is ambiguous: Jun (North Ndebele) or Oct (Tsonga). Please specify language context or use English month name.'
   nyakanga: 'Word "nyakanga" is ambiguous: Sep (Rundi) or Jul (Kinyarwanda). Please specify language context or use English month name.'
   sabato: 'Word "sabato" is ambiguous: Sa (Esperanto) or Sa (Italian) or Su (Makhuwa-Meetto). Please specify language context or use English weekday name.'
   གཟའ་ཉི་མ་: 'Word "གཟའ་ཉི་མ་" is ambiguous: Su (Tibetan) or Sa (Dzongkha). Please specify language context or use English weekday name.'

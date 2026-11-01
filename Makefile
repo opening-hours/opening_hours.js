@@ -75,6 +75,10 @@ list:
 .PHONY: build
 build: build/opening_hours+deps.min.js
 
+.PHONY: generate-locale-resolver-layers
+generate-locale-resolver-layers:
+	$(NODEJS) scripts/gen_locale_resolver_layers.mjs
+
 build/opening_hours.js \
 build/opening_hours.min.js \
 build/opening_hours.esm.mjs \
@@ -83,7 +87,7 @@ build/opening_hours+deps.min.js: src/index.js src/tokenizer.mjs src/osm-tag-defa
 src/word-error-correction.mjs src/prettify-helpers.mjs src/variable-times.mjs src/holidays/generated-openholidays.mjs \
 src/locales/i18n.js src/locales/translations.yaml src/locales/word_error_correction.yaml \
 src/locale-resolver/normalize.mjs src/locale-resolver/region-languages.mjs src/locale-resolver/resolver.mjs \
-src/locale-resolver/layers.json
+src/locale-resolver/layers.json generate-locale-resolver-layers
 	node_modules/.bin/rollup -c
 
 .PHONY: check
