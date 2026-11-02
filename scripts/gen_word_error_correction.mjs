@@ -105,18 +105,15 @@ function sortObject(obj) {
 }
 
 /**
- * Preserve literal and regex sections for runtime correction lookup.
+ * Validate regex syntax and reject duplicate correction rules.
  * @param {ManualCorrections} corrections Manual correction sections.
- * @returns {ManualCorrections} Runtime correction data.
+ * @returns {void}
  */
-function createRuntimeData(corrections) {
-    /** @type {ManualCorrections} */
-    const runtimeData = { literal: {}, regex: {}, ambiguous: sortObject(corrections.ambiguous || {}) };
+function validateCorrections(corrections) {
     for (const section of correctionSections) {
         const seenRules = new Set();
         for (const [category, entries] of Object.entries(corrections[section])) {
-            runtimeData[section][category] = {};
-            for (const [source, replacement] of Object.entries(entries)) {
+            for (const source of Object.keys(entries)) {
                 if (section === 'regex') {
                     new RegExp('^(?:' + source + ')$', 'iu');
                 }
@@ -125,11 +122,9 @@ function createRuntimeData(corrections) {
                     throw new Error(`Duplicate ${section} correction in ${category}: ${source}`);
                 }
                 seenRules.add(key);
-                runtimeData[section][category][source] = replacement;
             }
         }
     }
-    return runtimeData;
 }
 
 function listCldrLocales() {
@@ -311,11 +306,11 @@ console.log(`  → Ambiguous words tracked: ${Object.keys(ambiguousWords).length
 
 manualCorrections.literal[autoCategory] = sortObject(manualCorrections.literal[autoCategory]);
 manualCorrections.ambiguous = sortObject(manualCorrections.ambiguous);
-const runtimeData = createRuntimeData(manualCorrections);
+validateCorrections(manualCorrections);
 
 // 6. Write final YAML structure
 console.log('\n► Writing output file...');
-const yamlOutput = yaml.stringify(runtimeData, {
+const yamlOutput = yaml.stringify(manualCorrections, {
     defaultStringType: 'PLAIN',
     lineWidth: 0
 });
@@ -336,7 +331,7 @@ console.log('\n=======================================');
 console.log('Final Statistics');
 console.log('=======================================');
 console.log(`Output file: ${path.relative(basePath, outputPath)}`);
-console.log(`Categories: ${new Set(correctionSections.flatMap(section => Object.keys(runtimeData[section]))).size}`);
+console.log(`Categories: ${new Set(correctionSections.flatMap(section => Object.keys(manualCorrections[section]))).size}`);
 console.log('\nCategory breakdown:');
 
 let totalEntries = 0;
