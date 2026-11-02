@@ -79,6 +79,41 @@ test('tokenizer preserves corrected-word output and warning positions', () => {
     ]);
 });
 
+test('expanded weekday and month rules retain every spelling', () => {
+    const runtime = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction.yaml', import.meta.url), 'utf8'));
+    const lookup = createCorrectionLookup(runtime);
+
+    for (const [variants, expected] of [
+        [['sunday', 'sundays', 'sonntag', 'sonntags', 'domenic', 'domenica', 'domenich', 'domeniche', 'zo', 'zon'], 'Su'],
+        [['monday', 'mondays', 'montag', 'montags', 'lu', 'lun', 'luned', 'lunedì'], 'Mo'],
+        [[
+            'tue', 'tues', 'tuesday', 'tuesdays', 'di', 'die', 'dienstag', 'dienstags',
+            'ma', 'mar', 'marted', 'martedì',
+        ], 'Tu'],
+        [[
+            'wed', 'weds', 'wednesday', 'wednesdays', 'mi', 'mit', 'mittwoch', 'mittwochs',
+            'wo', 'woe', 'me', 'mer', 'mercoled', 'mercoledì',
+        ], 'We'],
+        [[
+            'thur', 'thurs', 'thursday', 'thursdays', 'do', 'don', 'donnerstag', 'donnerstags',
+            'je', 'jeu', 'gioved', 'giovedì',
+        ], 'Th'],
+        [['friday', 'fridays', 'freitag', 'freitags', 've', 'ven', 'vr', 'vri', 'venerd', 'venerdì'], 'Fr'],
+        [['saturday', 'saturdays', 'samstag', 'samstags', 'za', 'zat', 'sabat', 'sabato'], 'Sa'],
+        [['mär', 'märz'], 'Mar'],
+        [['jun', 'june', 'giugn', 'giugno'], 'Jun'],
+        [['jul', 'july', 'lugli', 'luglio'], 'Jul'],
+    ]) {
+        for (const variant of variants) {
+            assert.deepEqual(lookup.findWord(variant), {
+                pattern: variant,
+                replacement: expected,
+                comment: 'please use English abbreviation ok for ko',
+            }, variant);
+        }
+    }
+});
+
 test('tokenizer preserves phrase-correction output and warning positions', () => {
     const value = 'every day';
     const hours = new opening_hours(value, null);
@@ -92,6 +127,44 @@ test('tokenizer preserves phrase-correction output and warning positions', () =>
         { type: 'word_error_correction', value, position: 9 },
         { type: 'vague', value, position: 9 },
     ]);
+});
+
+test('expanded word rules retain every spelling', () => {
+    const runtime = yaml.parse(readFileSync(new URL('../../src/locales/word_error_correction.yaml', import.meta.url), 'utf8'));
+    const lookup = createCorrectionLookup(runtime);
+
+    for (const [variants, expected] of [
+        [['ruhetag', 'ruhetage'], 'off'],
+        [['weekday', 'weekdays'], 'Mo-Fr'],
+        [['werktag', 'werktags'], 'Mo-Sa'],
+        [['weekend', 'weekends'], 'Sa,Su'],
+        [['holiday', 'holidays'], 'PH'],
+        [['schoolholiday', 'schoolholidays', 'ferien', 'schulferien'], 'SH'],
+        [['öffnungszeit', 'öffnungszeit:', 'öffnungszeiten', 'öffnungszeiten:', '?'], ''],
+        [['til', 'till'], '-'],
+        [['nach_vereinbarung'], '"Nach Vereinbarung"'],
+        [['nach_absprache'], '"Nach Absprache"'],
+        [['sur_rdv'], '"Sur rendez-vous"'],
+    ]) {
+        for (const variant of variants) {
+            const correction = lookup.findWord(variant);
+            assert.equal(correction?.pattern, variant, variant);
+            assert.equal(correction?.replacement, expected, variant);
+        }
+    }
+});
+
+test('tokenizer handles expanded corrections with dates, punctuation and separators', () => {
+    for (const [value, expected] of [
+        ['marted 09:00-17:00', 'Tu 09:00-17:00'],
+        ['giugn 01 09:00-17:00', 'Jun 01 09:00-17:00'],
+        ['öffnungszeiten: 09:00-17:00', '09:00-17:00'],
+        ['09:00 till 17:00', '09:00-17:00'],
+        ['nach_absprache', '"Nach Absprache"'],
+    ]) {
+        const hours = new opening_hours(value, null);
+        assert.equal(hours.prettifyValue(), expected, value);
+    }
 });
 
 test('tokenizer preserves complete literal phrase corrections', () => {
