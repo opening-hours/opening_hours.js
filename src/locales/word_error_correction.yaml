@@ -21,9 +21,15 @@ literal:
     geschlossen: off
     geschl: off
     except: off
+    ruhetag: off
+    ruhetage: off
   please use ok for workday:
     wd: Mo-Fr
     vardagar: Mo-Fr
+    weekday: Mo-Fr
+    weekdays: Mo-Fr
+    werktag: Mo-Sa
+    werktags: Mo-Sa
   omit hour keyword:
     h: ""
   omit ko:
@@ -36,6 +42,10 @@ literal:
     zwischen: ""
     ist: ""
     durchgehend: ""
+    öffnungszeit: ""
+    "öffnungszeit:": ""
+    öffnungszeiten: ""
+    "öffnungszeiten:": ""
   omit wrong keyword open end:
     from: ""
     ab: ""
@@ -45,6 +55,8 @@ literal:
     ～: "-"
   please use fallback rule:
     otherwise: "||"
+  please use ok for missing data:
+    "?": ""
   please use ok for ko:
     →: "-"
     ‐: "-"
@@ -62,6 +74,8 @@ literal:
     às: "-"
     ate: "-"
     until: "-"
+    til: "-"
+    till: "-"
     through: "-"
     and: ","
     "&": ","
@@ -102,30 +116,125 @@ literal:
     24 hours 7 days a week: 24/7
     24 hours: 00:00-24:00
     jours fériés: PH
+    holiday: PH
+    holidays: PH
+    schoolholiday: SH
+    schoolholidays: SH
+    weekend: Sa,Su
+    weekends: Sa,Su
+    nach_vereinbarung: '"Nach Vereinbarung"'
+    nach_absprache: '"Nach Absprache"'
+    sur_rdv: '"Sur rendez-vous"'
+    ferien: SH
+    schulferien: SH
   please use English abbreviation ok for ko:
     aoû: Aug
     chetverk: Th
     cz: Th
+    di: Tu
+    die: Tu
+    dienstag: Tu
+    dienstags: Tu
     din: Tu
+    do: Th
+    domenic: Su
+    domenica: Su
+    domenich: Su
+    domeniche: Su
+    don: Th
+    donnerstag: Th
+    donnerstags: Th
+    freitag: Fr
+    freitags: Fr
     fri: Fr
+    friday: Fr
+    fridays: Fr
+    gioved: Th
+    giovedì: Th
+    giugn: Jun
+    giugno: Jun
+    je: Th
+    jeu: Th
+    jul: Jul
+    july: Jul
+    jun: Jun
+    june: Jun
     kami: Tu
     lördagar: Sa
+    lu: Mo
+    lugli: Jul
+    luglio: Jul
+    lun: Mo
+    luned: Mo
+    lunedì: Mo
+    ma: Tu
     maerz: Mar
+    mar: Tu
+    mär: Mar
+    marted: Tu
+    martedì: Tu
+    märz: Mar
+    me: We
+    mer: We
+    mercoled: We
+    mercoledì: We
+    mi: We
+    mit: We
+    mittwoch: We
+    mittwochs: We
     mon: Mo
+    monday: Mo
+    mondays: Mo
+    montag: Mo
+    montags: Mo
     ndz: Su
     piatek: Fr
     ponedel'nik: Mo
     poniedzialek: Mo
     pyatnitsa: Fr
+    sabat: Sa
+    sabato: Sa
+    samstag: Sa
+    samstags: Sa
     sat: Sa
+    saturday: Sa
+    saturdays: Sa
     söndagar: Su
     sonn-: Su
+    sonntag: Su
+    sonntags: Su
     sr: We
     sroda: We
     subbota: Sa
     sun: Su
+    sunday: Su
+    sundays: Su
+    thur: Th
+    thurs: Th
+    thursday: Th
+    thursdays: Th
+    tue: Tu
+    tues: Tu
+    tuesday: Tu
+    tuesdays: Tu
+    ve: Fr
+    ven: Fr
+    venerd: Fr
+    venerdì: Fr
     voskresen'ye: Su
+    vr: Fr
+    vri: Fr
     vtornik: Tu
+    wed: We
+    wednesday: We
+    wednesdays: We
+    weds: We
+    wo: We
+    woe: We
+    za: Sa
+    zat: Sa
+    zo: Su
+    zon: Su
     zontag: Su
   please use ok for similar looking ko:
     оff: off
@@ -158,78 +267,24 @@ literal:
 regex:
   please use English written ok for ko:
     (?:an )?feiertag(?:s|en?)?: PH
-  please use off for ko:
-    ruhetage?: off
   please use ok for workday:
     on work days?: Mo-Fr
-    weekdays?: Mo-Fr
-    werktags?: Mo-Sa
-  omit ko:
-    öffnungszeit(?:en)?:?: ""
   omit tag key:
     opening_hours\s*=: ""
   assuming open end for ko:
     (?:bis|till?|-|–)? ?(?:open ?end|late): +
-  please use ok for missing data:
-    \?: ""
   please use ok for ko:
-    till?: "-"
     (?:public )?holidays?: PH
     (?:one )?day after public holiday: PH +1 day
     (?:one )?day before public holiday: PH -1 day
     school ?holidays?: SH
-    weekends?: Sa,Su
     on(?:_| )?appointments?: '"on appointment"'
     by(?:_| )?appointments?: '"by appointment"'
     "nach(?: |_)vereinbarung": '"Nach Vereinbarung"'
     "nach(?: |_)absprache": '"Nach Absprache"'
     "sur(?: |_)rendez(?: |_|-)?vous": '"Sur rendez-vous"'
     "sur(?: |_)rdv": '"Sur rendez-vous"'
-    (?:schul)?ferien: SH
     "(?:an|nur)? ?sonn-?(?: und |/)feiertag(?:s|en?)?": PH,Su
-  please use English abbreviation ok for ko:
-    sundays?: Su
-    mondays?: Mo
-    tues?: Tu
-    tuesdays?: Tu
-    weds?: We
-    wednesdays?: We
-    thurs?: Th
-    thursdays?: Th
-    fridays?: Fr
-    saturdays?: Sa
-    sonntags?: Su
-    montags?: Mo
-    die?: Tu
-    dienstags?: Tu
-    mit?: We
-    mittwochs?: We
-    don?: Th
-    donnerstags?: Th
-    freitags?: Fr
-    samstags?: Sa
-    lun?: Mo
-    jeu?: Th
-    ven?: Fr
-    zon?: Su
-    woe?: We
-    vri?: Fr
-    zat?: Sa
-    domenica?: Su
-    domeniche?: Su
-    lunedì?: Mo
-    mar?: Tu
-    martedì?: Tu
-    mer?: We
-    mercoledì?: We
-    giovedì?: Th
-    venerdì?: Fr
-    sabato?: Sa
-    june?: Jun
-    july?: Jul
-    märz?: Mar
-    giugno?: Jun
-    luglio?: Jul
 ambiguous:
   listopad: 'Word "listopad" is ambiguous: Nov (Czech) or Oct (Croatian) or Nov (Polish). Please specify language context or use English month name.'
   meurzh: 'Word "meurzh" is ambiguous: Mar (Breton) or Tu (Breton). Please specify language context or use English month name.'

@@ -21,10 +21,17 @@ literal:
     geschlossen: off
     geschl: off
     except: off
+    ruhetag: off
+    ruhetage: off
   please use ok for workday:
     # Used around 260 times but the problem is, that work day might be different in other countries.
     wd: Mo-Fr
     vardagar: Mo-Fr
+    weekday: Mo-Fr
+    weekdays: Mo-Fr
+    # https://www.gesetze-im-internet.de/burlg/__3.html
+    werktag: Mo-Sa
+    werktags: Mo-Sa
   omit hour keyword:
     h: ""
   omit ko:
@@ -37,6 +44,10 @@ literal:
     zwischen: ""
     ist: ""
     durchgehend: ""
+    öffnungszeit: ""
+    "öffnungszeit:": ""
+    öffnungszeiten: ""
+    "öffnungszeiten:": ""
   omit wrong keyword open end:
     from: ""
     ab: ""
@@ -46,6 +57,8 @@ literal:
     ～: "-"
   please use fallback rule:
     otherwise: "||"
+  please use ok for missing data:
+    "?": ""
   please use ok for ko:
     →: "-"
     ‐: "-"
@@ -63,6 +76,8 @@ literal:
     às: "-"
     ate: "-"
     until: "-"
+    til: "-"
+    till: "-"
     through: "-"
     and: ","
     "&": ","
@@ -106,17 +121,84 @@ literal:
     24 hours 7 days a week: 24/7
     24 hours: "00:00-24:00"
     jours fériés: PH
+    holiday: PH
+    holidays: PH
+    schoolholiday: SH
+    schoolholidays: SH
+    weekend: "Sa,Su"
+    weekends: "Sa,Su"
+    nach_vereinbarung: '"Nach Vereinbarung"'
+    nach_absprache: '"Nach Absprache"'
+    sur_rdv: '"Sur rendez-vous"'
+    ferien: SH
+    schulferien: SH
   # Weekday source: https://www.omniglot.com/language/time/days.htm
   please use English abbreviation ok for ko:
     sun: Su
     mon: Mo
     fri: Fr
     sat: Sa
+    sunday: Su
+    sundays: Su
+    monday: Mo
+    mondays: Mo
+    # Source used for this abbreviation: https://westerhambeauty.co.uk/contact
+    tue: Tu
+    tues: Tu
+    tuesday: Tu
+    tuesdays: Tu
+    wed: We
+    weds: We
+    wednesday: We
+    wednesdays: We
+    thur: Th
+    thurs: Th
+    thursday: Th
+    thursdays: Th
+    friday: Fr
+    fridays: Fr
+    saturday: Sa
+    saturdays: Sa
     # German
     sonn-: Su
+    sonntag: Su
+    sonntags: Su
+    montag: Mo
+    montags: Mo
+    di: Tu
+    die: Tu
+    dienstag: Tu
+    dienstags: Tu
+    mi: We
+    mit: We
+    mittwoch: We
+    mittwochs: We
+    do: Th
+    don: Th
+    donnerstag: Th
+    donnerstags: Th
+    freitag: Fr
+    freitags: Fr
+    samstag: Sa
+    samstags: Sa
+    # French
+    lu: Mo
+    lun: Mo
+    je: Th
+    jeu: Th
+    ve: Fr
+    ven: Fr
     # Dutch
     zontag: Su
     din: Tu
+    zo: Su
+    zon: Su
+    wo: We
+    woe: We
+    vr: Fr
+    vri: Fr
+    za: Sa
+    zat: Sa
     # Indonesian
     kami: Tu
     # Swedish
@@ -136,9 +218,42 @@ literal:
     chetverk: Th
     pyatnitsa: Fr
     subbota: Sa
+    # Italian weekdays
+    domenic: Su
+    domenica: Su
+    domenich: Su
+    domeniche: Su
+    luned: Mo
+    lunedì: Mo
+    # Source used for this abbreviation: https://westerhambeauty.co.uk/contact
+    ma: Tu
+    mar: Tu
+    marted: Tu
+    martedì: Tu
+    me: We
+    mer: We
+    mercoled: We
+    mercoledì: We
+    gioved: Th
+    giovedì: Th
+    venerd: Fr
+    venerdì: Fr
+    sabat: Sa
+    sabato: Sa
     # Month names
+    jun: Jun
+    june: Jun
+    jul: Jul
+    july: Jul
     # German
     maerz: Mar
+    mär: Mar
+    märz: Mar
+    # Italian
+    giugn: Jun
+    giugno: Jun
+    lugli: Jul
+    luglio: Jul
     # French
     aoû: Aug
   please use ok for similar looking ko:
@@ -173,85 +288,21 @@ literal:
 regex:
   please use English written ok for ko:
     "(?:an )?feiertag(?:s|en?)?": PH
-  please use off for ko:
-    ruhetage?: off
   please use ok for workday:
     on work days?: Mo-Fr
-    weekdays?: Mo-Fr
-    # https://www.gesetze-im-internet.de/burlg/__3.html
-    werktags?: Mo-Sa
-  omit ko:
-    "öffnungszeit(?:en)?:?": ""
   omit tag key:
     'opening_hours\s*=': ""
   assuming open end for ko:
     "(?:bis|till?|-|–)? ?(?:open ?end|late)": +
-  please use ok for missing data:
-    '\?': ""
   please use ok for ko:
-    till?: "-"
     "(?:public )?holidays?": PH
     "(?:one )?day after public holiday": "PH +1 day"
     "(?:one )?day before public holiday": PH -1 day
     school ?holidays?: SH
-    weekends?: "Sa,Su"
     "on(?:_| )?appointments?": '"on appointment"'
     "by(?:_| )?appointments?": '"by appointment"'
     "nach(?: |_)vereinbarung": '"Nach Vereinbarung"'
     "nach(?: |_)absprache": '"Nach Absprache"'
     "sur(?: |_)rendez(?: |_|-)?vous": '"Sur rendez-vous"'
     "sur(?: |_)rdv": '"Sur rendez-vous"'
-    "(?:schul)?ferien": SH
     "(?:an|nur)? ?sonn-?(?: und |/)feiertag(?:s|en?)?": "PH,Su"
-  please use English abbreviation ok for ko:
-    sundays?: Su
-    mondays?: Mo
-    # Source used for this abbreviation: https://westerhambeauty.co.uk/contact
-    tues?: Tu
-    tuesdays?: Tu
-    weds?: We
-    wednesdays?: We
-    thurs?: Th
-    thursdays?: Th
-    fridays?: Fr
-    saturdays?: Sa
-    # German
-    sonntags?: Su
-    montags?: Mo
-    die?: Tu
-    dienstags?: Tu
-    mit?: We
-    mittwochs?: We
-    don?: Th
-    donnerstags?: Th
-    freitags?: Fr
-    samstags?: Sa
-    # French
-    lun?: Mo
-    jeu?: Th
-    ven?: Fr
-    # Dutch
-    zon?: Su
-    woe?: We
-    vri?: Fr
-    zat?: Sa
-    # Italian weekdays
-    domenica?: Su
-    domeniche?: Su
-    lunedì?: Mo
-    # Source used for this abbreviation: https://westerhambeauty.co.uk/contact
-    mar?: Tu
-    martedì?: Tu
-    mer?: We
-    mercoledì?: We
-    giovedì?: Th
-    venerdì?: Fr
-    sabato?: Sa
-    # Month names
-    june?: Jun
-    july?: Jul
-    # German
-    märz?: Mar
-    # Italian
-    giugno?: Jun
-    luglio?: Jul
