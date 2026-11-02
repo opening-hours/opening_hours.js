@@ -61,7 +61,6 @@ const weekdayAbbreviations = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 /** @typedef {{ format?: LocalizedTermForms, 'stand-alone'?: LocalizedTermForms }} CalendarNameData */
 /** @typedef {{ months?: CalendarNameData, days?: { format?: LocalizedTermForms } }} GregorianData */
 /** @typedef {{ locale: string, meaning: string, type: string, form: string }} WordConflictOccurrence */
-/** @typedef {{ warning: string, occurrences: WordConflictOccurrence[] }} AmbiguousWord */
 /** @typedef {Record<string, Record<string, string>>} CorrectionCategories */
 /** @typedef {{ literal: CorrectionCategories, regex: CorrectionCategories, ambiguous: Record<string, string> }} ManualCorrections */
 
@@ -235,21 +234,6 @@ if (!manualCorrections.literal[autoCategory]) {
 /** @type {Record<string, WordConflictOccurrence[]>} */
 const wordConflicts = {};
 
-/**
- * Record a word's occurrence in a locale.
- * @param {string} word - Normalized word.
- * @param {string} locale - Locale where the word occurs.
- * @param {string} meaning - English month or weekday abbreviation.
- * @param {string} type - Whether the meaning is a month or weekday.
- * @param {string} form - Long or short localized form.
- */
-function addWordConflict(word, locale, meaning, type, form) {
-    if (!wordConflicts[word]) {
-        wordConflicts[word] = [];
-    }
-    wordConflicts[word].push({ locale, meaning, type, form });
-}
-
 // 4. Detect ambiguous words by analysing conflicts across languages
 console.log('\n► Detecting ambiguous words...');
 for (const locale of supportedLocales) {
@@ -262,43 +246,30 @@ for (const locale of supportedLocales) {
     for (const { raw, meaning, type, form } of terms) {
         const term = normalizeTerm(raw);
         if (term && term !== meaning.toLowerCase()) {
-            addWordConflict(term, locale, meaning, type, form);
+            if (!wordConflicts[term]) {
+                wordConflicts[term] = [];
+            }
+            wordConflicts[term].push({ locale, meaning, type, form });
         }
     }
 }
 
-/** @type {Record<string, AmbiguousWord>} */
-const ambiguousWords = {};
+let conflictCount = 0;
 for (const word of sortedKeys(wordConflicts)) {
     const occurrences = wordConflicts[word];
-    const uniqueMeanings = [...new Set(occurrences.map(occ => occ.meaning))];
-
-    if (uniqueMeanings.length > 1) {
-        const conflictInfo = [];
-        const seen = new Set();
-        for (const occ of occurrences) {
-            const label = `${occ.meaning} (${languageName(occ.locale, languageNames)})`;
-            if (seen.has(label)) {
-                continue;
-            }
-            seen.add(label);
-            conflictInfo.push(label);
-        }
-
-        ambiguousWords[word] = {
-            warning: `Word "${word}" is ambiguous: ${conflictInfo.join(' or ')}. Please specify language context or use English ${occurrences[0].type} name.`,
-            occurrences
-        };
+    if (new Set(occurrences.map(({ meaning }) => meaning)).size < 2) {
+        continue;
     }
-}
-
-for (const word of sortedKeys(ambiguousWords)) {
-    const hasShortForm = ambiguousWords[word].occurrences.some(occ => occ.form === 'short');
-    if (!hasShortForm) {
-        manualCorrections.ambiguous[word] = ambiguousWords[word].warning;
+    conflictCount++;
+    if (occurrences.some(({ form }) => form === 'short')) {
+        continue;
     }
+    const labels = [...new Set(occurrences.map(({ meaning, locale }) =>
+        `${meaning} (${languageName(locale, languageNames)})`
+    ))];
+    manualCorrections.ambiguous[word] = `Word "${word}" is ambiguous: ${labels.join(' or ')}. Please specify language context or use English ${occurrences[0].type} name.`;
 }
-console.log(`  → Ambiguous words tracked: ${Object.keys(ambiguousWords).length}`);
+console.log(`  → Ambiguous words tracked: ${conflictCount}`);
 
 // 5. Weekday/month names are no longer auto-generated as flat corrections.
 // They are resolved by the locale resolver at runtime, while this generator
