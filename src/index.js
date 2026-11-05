@@ -352,6 +352,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
     let nrule;
     /** @type {OpeningHoursRule[]} */
     const rules = [];
+    /** @typedef {{time_wraps_over_midnight?: boolean, week_days?: number[]}} RuleInfo */
+    /** @type {Record<number, RuleInfo>} */
     const rule_infos = {};
     /* Not reliable because tokens !== new_tokens */
     // for (var nrule = 0; nrule < tokens.length; nrule++) {
@@ -648,7 +650,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /**
      * Return warnings as list {{{
-     * @param {object} [it] Optional iterator object, if available.
+     * @param {{advance: () => boolean}|undefined} [it] Optional iterator object, if available.
      * @param {boolean} [structured] If true, return structured warning objects; defaults to false.
      *     ({ type, message, value, position }) instead of formatted message strings.
      * @returns {Array<string|{type: string, message: string, value: string, position: number|null}>} Warnings as list. By default one formatted message string per element.
@@ -690,7 +692,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (rule_tokens.length === 0) continue;
                 // Rule does contain nothing useful e.g. second rule of '10:00-12:00;' (empty) which needs to be handled.
 
-                let selector_start_end_type = [ 0, 0, undefined ];
+                /** @type {[number, number, string]} */
+                let selector_start_end_type = [ 0, 0, '' ];
                 // console.log(rule_tokens);
 
                 used_selectors[nrule] = {};
@@ -776,11 +779,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
                 /* }}} */
                 /* Check if empty comment was given {{{ */
-                if (typeof used_selectors[nrule].comment === 'object'
-                    && rule_tokens[used_selectors[nrule].comment[0]][0].length === 0
+                const commentPosition = used_selectors[nrule].comment?.[0];
+                if (typeof commentPosition === 'number'
+                    && rule_tokens[commentPosition]?.[0] === ''
                 ) {
-
-                    parsing_warnings.push([nrule, used_selectors[nrule].comment[0], 'empty_comment', t('empty comment'), new_tokens]);
+                    parsing_warnings.push([nrule, commentPosition, 'empty_comment', t('empty comment'), new_tokens]);
                 }
                 /* }}} */
                 /* Check for valid use of <separator_for_readability> {{{ */
@@ -822,18 +825,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     });
                     const rules_too_complex_count = rules_too_complex.filter(function (el){ return el; }).length;
                     let next_rule_selects_next_day = false;
-                    if (
-                            typeof rule_infos[nrule] === 'object'
-                            && typeof rule_infos[nrule] === 'object'
-                            && typeof rule_infos[nrule]['week_days'] === 'object'
-                            && typeof rule_infos[nrule+1] === 'object'
-                            && typeof rule_infos[nrule+1]['week_days'] === 'object'
-                            ) {
-                        for (let i = 0; i < rule_infos[nrule]['week_days'].length; i++) {
-                            const week_day = rule_infos[nrule]['week_days'][i];
-                                // console.log(rule_infos[nrule+1]['week_days']);
-                                // console.log(week_day);
-                            if (rule_infos[nrule+1]['week_days'].includes(week_day === 6 ? 0 : week_day+1)) {
+                    const currentWeekDays = rule_infos[nrule]?.week_days;
+                    const nextWeekDays = rule_infos[nrule+1]?.week_days;
+                    if (currentWeekDays && nextWeekDays) {
+                        for (const week_day of currentWeekDays) {
+                            // console.log(rule_infos[nrule+1]['week_days']);
+                            // console.log(week_day);
+                            if (nextWeekDays.includes(week_day === 6 ? 0 : week_day+1)) {
                                 next_rule_selects_next_day = true;
                                 break;
                             }
@@ -957,7 +955,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Check if token is the begin of a selector and why. {{{
      * @param {Array<ParserToken>} tokens List of token objects.
      * @param {number} at Position where to start.
-     * @returns {number|boolean} `false` if the current token is not the begin of
+     * @returns {1|3|false} `false` if the current token is not the begin of
      *     a selector; otherwise, the position in the token array from where the
      *     decision was made that the token is the start of a selector.
      */
@@ -988,14 +986,18 @@ export default function(value, nominatim_object, optional_conf_parm) {
      */
     function getSelectorRange(tokens, at) {
         let selector_start = at,
-            selector_end,
-            pos_in_token_array;
+            selector_end;
+        /** @type {1|3|false|undefined} */
+        let pos_in_token_array;
 
         for (; selector_start >= 0; selector_start--) {
             pos_in_token_array = tokenIsTheBeginOfSelector(tokens, selector_start);
             if (pos_in_token_array) {
                 break;
             }
+        }
+        if (pos_in_token_array !== 1 && pos_in_token_array !== 3) {
+            throw formatLibraryBugMessage();
         }
         selector_end = selector_start;
 
