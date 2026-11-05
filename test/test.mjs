@@ -6099,7 +6099,7 @@ test.addNextChangeTest(
     '2024-07-14 00:01',
     // Skip PH comment end; still open until Jul-Aug range ends.
     '2024-09-01 00:00',
-    nominatim_by_loc.fr_occ,
+    nominatim_by_loc.fr,
 );
 
 test.addNextChangeTest(
