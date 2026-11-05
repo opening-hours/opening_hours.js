@@ -1,0 +1,28 @@
+---
+place_id: 196982371
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 94092169
+lat: '52.8913206'
+lon: '33.4154344'
+display_name: А-240, Речицкое сельское поселение, Почепский район, Брянская область, Центральный федеральный округ, Россия
+address:
+  road: А-240
+  municipality: Речицкое сельское поселение
+  county: Почепский район
+  state: Брянская область
+  ISO3166-2-lvl4: RU-BRY
+  region: Центральный федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: trunk
+boundingbox:
+  - '52.8852449'
+  - '52.8919961'
+  - '33.3877763'
+  - '33.4262212'
+class: highway
+importance: 0.053391182574196956
+name: А-240
+place_rank: 26
+type: trunk

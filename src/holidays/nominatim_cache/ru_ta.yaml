@@ -1,0 +1,27 @@
+---
+place_id: 202009650
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 7886393
+lat: '55.5092182'
+lon: '50.5645879'
+display_name: Биектауское сельское поселение, Рыбно-Слободский район, Татарстан, Приволжский федеральный округ, Россия
+address:
+  municipality: Биектауское сельское поселение
+  county: Рыбно-Слободский район
+  state: Татарстан
+  ISO3166-2-lvl4: RU-TA
+  region: Приволжский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '55.3806075'
+  - '55.6355384'
+  - '50.4611491'
+  - '50.8288917'
+class: boundary
+importance: 0.22898814784265079
+name: Биектауское сельское поселение
+place_rank: 14
+type: administrative

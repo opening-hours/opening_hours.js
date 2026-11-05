@@ -11,13 +11,13 @@ _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.
 PH:
   - {name: Capodanno, fixed_date: [1, 1]}
   - {name: Epifania, fixed_date: [1, 6]}
-  - {name: Pasqua, variable_date: easter}
-  - {name: Lunedì di Pasqua, variable_date: easter, offset: 1}
+  - {name: Domenica di Pasqua, variable_date: easter}
+  - {name: Lunedì dell’Angelo, variable_date: easter, offset: 1}
   - {name: Liberazione dal nazifascismo (1945), fixed_date: [4, 25]}
   - {name: Festa del lavoro, fixed_date: [5, 1]}
   - {name: Festa della Repubblica, fixed_date: [6, 2]}
   - {name: Assunzione di Maria, fixed_date: [8, 15]}
-  - {name: "Festa nazionale di San Francesco d'Assisi", fixed_date: [10, 4]}
+  - {name: Festa nazionale di San Francesco d'Assisi, fixed_date: [10, 4]}
   - {name: Ognissanti, fixed_date: [11, 1]}
   - {name: Immacolata Concezione, fixed_date: [12, 8]}
   - {name: Natale di Gesù, fixed_date: [12, 25]}

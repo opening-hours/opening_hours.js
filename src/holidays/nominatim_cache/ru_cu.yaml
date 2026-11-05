@@ -1,0 +1,27 @@
+---
+place_id: 193969488
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 148450968
+lat: '55.4306086'
+lon: '47.0847761'
+display_name: Кольцовка, Вурнарский муниципальный округ, Чувашия, Приволжский федеральный округ, Россия
+address:
+  village: Кольцовка
+  county: Вурнарский муниципальный округ
+  state: Чувашия
+  ISO3166-2-lvl4: RU-CU
+  region: Приволжский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: tertiary
+boundingbox:
+  - '55.4294602'
+  - '55.4306649'
+  - '47.0529872'
+  - '47.0893601'
+class: highway
+importance: 0.053364883649958006
+name: ''
+place_rank: 26
+type: tertiary

@@ -1,0 +1,26 @@
+---
+place_id: 207543226
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1059402
+lat: '42.8476269'
+lon: '44.1171778'
+display_name: Алагирский район, Северная Осетия — Алания, Северо-Кавказский федеральный округ, Россия
+address:
+  county: Алагирский район
+  state: Северная Осетия — Алания
+  ISO3166-2-lvl4: RU-SE
+  region: Северо-Кавказский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: county
+boundingbox:
+  - '42.5471109'
+  - '43.1487737'
+  - '43.7142904'
+  - '44.5087344'
+class: boundary
+importance: 0.2400350019073777
+name: Алагирский район
+place_rank: 12
+type: administrative

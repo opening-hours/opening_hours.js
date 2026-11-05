@@ -1,0 +1,28 @@
+---
+place_id: 193016108
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 5332447
+lat: '53.1083374'
+lon: '44.7424567'
+display_name: Саловский сельсовет, Пензенский район, Пензенская область, Приволжский федеральный округ, 440516, Россия
+address:
+  municipality: Саловский сельсовет
+  county: Пензенский район
+  state: Пензенская область
+  ISO3166-2-lvl4: RU-PNZ
+  region: Приволжский федеральный округ
+  postcode: '440516'
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '53.0105340'
+  - '53.2397321'
+  - '44.6384621'
+  - '44.9004096'
+class: boundary
+importance: 0.23094323434513592
+name: Саловский сельсовет
+place_rank: 14
+type: administrative

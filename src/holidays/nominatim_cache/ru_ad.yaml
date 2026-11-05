@@ -1,0 +1,31 @@
+---
+place_id: 204182475
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 406574547
+lat: '44.6955188'
+lon: '40.1479660'
+display_name: 88, Красная улица, Гражданский, Красноульское сельское поселение, Майкопский район, Адыгея, Южный федеральный округ, 385762, Россия
+address:
+  house_number: '88'
+  road: Красная улица
+  village: Гражданский
+  municipality: Красноульское сельское поселение
+  county: Майкопский район
+  state: Адыгея
+  ISO3166-2-lvl4: RU-AD
+  region: Южный федеральный округ
+  postcode: '385762'
+  country: Россия
+  country_code: ru
+addresstype: building
+boundingbox:
+  - '44.6954768'
+  - '44.6955607'
+  - '40.1478908'
+  - '40.1480413'
+class: building
+importance: 0.000060759136339315135
+name: ''
+place_rank: 30
+type: house

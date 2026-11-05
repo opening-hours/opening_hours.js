@@ -1,0 +1,29 @@
+---
+place_id: 208018186
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 531214106
+lat: '43.1688818'
+lon: '44.9802896'
+display_name: улица Джабагиева, сельское поселение Алхасты, Сунженский район, Ингушетия, Северо-Кавказский федеральный округ, 386147, Россия
+address:
+  road: улица Джабагиева
+  municipality: сельское поселение Алхасты
+  county: Сунженский район
+  state: Ингушетия
+  ISO3166-2-lvl4: RU-IN
+  region: Северо-Кавказский федеральный округ
+  postcode: '386147'
+  country: Россия
+  country_code: ru
+addresstype: secondary
+boundingbox:
+  - '43.1676874'
+  - '43.2047963'
+  - '44.9159738'
+  - '44.9869817'
+class: highway
+importance: 0.053383334859235486
+name: улица Джабагиева
+place_rank: 26
+type: secondary

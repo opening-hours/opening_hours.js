@@ -1,0 +1,27 @@
+---
+place_id: 199526773
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 3830076
+lat: '63.7128555'
+lon: '54.1053234'
+display_name: городское поселение Сосногорск, район Сосногорск, Республика Коми, Северо-Западный федеральный округ, Россия
+address:
+  municipality: городское поселение Сосногорск
+  county: район Сосногорск
+  state: Республика Коми
+  ISO3166-2-lvl4: RU-KO
+  region: Северо-Западный федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '62.9615474'
+  - '64.4668893'
+  - '53.3744326'
+  - '56.1674431'
+class: boundary
+importance: 0.19938740066310082
+name: городское поселение Сосногорск
+place_rank: 14
+type: administrative

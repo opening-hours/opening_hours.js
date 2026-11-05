@@ -2,21 +2,21 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/LU.yaml
+# @attrib https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
+# @attrib https://luxembourg.public.lu/en/living/quality-of-life/jours-feries-legaux.html
+
 _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=Luxembourg&zoom=18&addressdetails=1&limit=1&accept-language=lb,fr,de,en"
 
-# Source: https://en.wikipedia.org/wiki/Public_holidays_in_Luxembourg
-# Source: https://luxembourg.public.lu/en/living/quality-of-life/jours-feries-legaux.html
 PH:
   - {name: Neijoerschdag - Neujahr - Nouvel An, fixed_date: [1, 1]}
   - {name: Ouschterméindeg - Ostermontag - Lundi de Pâques, variable_date: easter, offset: 1}
-  - {name: Dag vun der Aarbecht - Tag der Arbeit - Premier Mai, fixed_date: [5, 1]}
-  - {name: "Europadag - Europatag - Journée de l'Europe", fixed_date: [5, 1]}
+  - {name: Éischte Mee - Tag der Arbeit - 1er mai, fixed_date: [5, 1]}
+  - {name: Europadag - Europatag - Journée de l’Europe, fixed_date: [5, 9]}
   - {name: Christi Himmelfaart - Christi Himmelfahrt - Ascension, variable_date: easter, offset: 39}
   - {name: Péngschtméindeg - Pfingstmontag - Lundi de Pentecôte, variable_date: easter, offset: 50}
   - {name: Nationalfeierdag - Nationalfeiertag - Fête nationale, fixed_date: [6, 23]}
-  - {name: Mariä Himmelfaart - Maria Himmelfahrt - Assomption, fixed_date: [8, 15]}
-  - {name: Allerhellgen - Weihnachten - Allerheiligen - Toussaint, fixed_date: [11, 1]}
-  - {name: Chrëschtdag - Noël, fixed_date: [12, 25]}
-  - {name: Stiefesdag - Zweiter Weihnachtsfeiertag - St. Etienne, fixed_date: [12, 26]}
-
-# Source: https://guichet.public.lu/en/citoyens/outils/calendrier-scolaire.html
+  - {name: Léiffrawëschdag - Mariä Himmelfahrt - Assomption, fixed_date: [8, 15]}
+  - {name: Allerhellegen - Allerheiligen - Toussaint, fixed_date: [11, 1]}
+  - {name: Chrëschtdag - Weihnachten - Noël, fixed_date: [12, 25]}
+  - {name: Stiefesdag - 2. Weihnachtstag - Lendemain de Noël, fixed_date: [12, 26]}

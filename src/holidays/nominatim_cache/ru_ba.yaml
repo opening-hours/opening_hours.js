@@ -1,0 +1,27 @@
+---
+place_id: 200565387
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 8000990
+lat: '54.5086462'
+lon: '56.0590484'
+display_name: Кабаковский сельсовет, Кармаскалинский район, Башкортостан, Приволжский федеральный округ, Россия
+address:
+  municipality: Кабаковский сельсовет
+  county: Кармаскалинский район
+  state: Башкортостан
+  ISO3166-2-lvl4: RU-BA
+  region: Приволжский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '54.4209775'
+  - '54.5952887'
+  - '55.9504321'
+  - '56.2244224'
+class: boundary
+importance: 0.33711216279521466
+name: Кабаковский сельсовет
+place_rank: 14
+type: administrative

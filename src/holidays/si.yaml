@@ -14,9 +14,9 @@ PH:
   - {name: velikonočna nedelja, variable_date: easter}
   - {name: velikonočni ponedeljek, variable_date: easter, offset: 1}
   - {name: dan upora proti okupatorju, fixed_date: [4, 27]}
-  - {name: praznik dela 1, fixed_date: [5, 1]}
-  - {name: praznik dela 2, fixed_date: [5, 2]}
-  - {name: binkoštna nedelja - binkošti, variable_date: easter, offset: 49}
+  - {name: praznik dela, fixed_date: [5, 1]}
+  - {name: praznik dela, fixed_date: [5, 2]}
+  - {name: binkošti, variable_date: easter, offset: 49}
   - {name: dan državnosti, fixed_date: [6, 25]}
   - {name: Marijino vnebovzetje, fixed_date: [8, 15]}
   - {name: dan reformacije, fixed_date: [10, 31]}

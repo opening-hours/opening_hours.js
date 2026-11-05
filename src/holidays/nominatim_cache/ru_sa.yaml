@@ -1,0 +1,28 @@
+---
+place_id: 272509149
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 2380989
+lat: '67.0032390'
+lon: '129.1823993'
+display_name: Верхне-Бытантайский наслег, Эвено-Бытантайский национальный улус, Республика Саха (Якутия), Дальневосточный федеральный округ, 678585, Россия
+address:
+  municipality: Верхне-Бытантайский наслег
+  county: Эвено-Бытантайский национальный улус
+  state: Республика Саха (Якутия)
+  ISO3166-2-lvl4: RU-SA
+  region: Дальневосточный федеральный округ
+  postcode: '678585'
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '66.4724870'
+  - '67.5340044'
+  - '127.1539163'
+  - '131.2216472'
+class: boundary
+importance: 0.10540294855860563
+name: Верхне-Бытантайский наслег
+place_rank: 14
+type: administrative

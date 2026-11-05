@@ -8,427 +8,574 @@
 _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=55.7780&lon=49.1303&zoom=18&addressdetails=1&accept-language=ru,en"
 
 PH:
-  - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-  - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-  - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-  - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-  - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-  - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
+  - {name: Новый год, fixed_date: [1, 1]}
+  - {name: Новогодние каникулы, fixed_date: [1, 2]}
+  - {name: Новогодние каникулы, fixed_date: [1, 3]}
+  - {name: Новогодние каникулы, fixed_date: [1, 4]}
+  - {name: Новогодние каникулы, fixed_date: [1, 5]}
+  - {name: Новогодние каникулы, fixed_date: [1, 6]}
   - {name: Рождество Христово, fixed_date: [1, 7]}
-  - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
+  - {name: Новогодние каникулы, fixed_date: [1, 8]}
   - {name: День защитника Отечества, fixed_date: [2, 23]}
   - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+  - {name: День весны и труда, fixed_date: [5, 1]}
   - {name: День Победы, fixed_date: [5, 9]}
-  - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-  - {name: День народного единства, fixed_date: [11, 4]}
   - {name: День России, fixed_date: [6, 12]}
-Татарстан:
-  _state_code: tatarstan
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=55.7780&lon=49.1303&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: День Республики Татарстан, fixed_date: [8, 30]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-    - {name: День Конституции Республики Татарстан, fixed_date: [11, 6]}
-Башкортостан:
-  _state_code: bashkortostan
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=54.1264&lon=56.5797&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-    - {name: День Республики Башкирии, fixed_date: [10, 11]}
-    - {name: День Конституции Башкортостана, fixed_date: [12, 24]}
-Чувашия:
-  _state_code: chuvashia
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=55.4871&lon=47.1659&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День Чувашской республики, fixed_date: [6, 24]}
-Республика Саха (Якутия):
-  _state_code: sakha
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=62.1010&lon=129.7176&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    - {name: День Республики Саха, fixed_date: [4, 27]}
-    # local
-    - {name: Ысыах, fixed_date: [6, 23]}
-    - {name: День государственности Республики Саха, fixed_date: [9, 27]}
-Калмыкия:
-  _state_code: kalmykia
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=46.524&lon=44.731&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Цаган Сар, fixed_date: [1, 14]}
-    - {name: День принятия Степного Уложения (Конституции) Республики Калмыкия, fixed_date: [4, 5]}
-    - {name: День рождения Будды Шакьямун, fixed_date: [6, 6]}
-    - {name: Зул, fixed_date: [12, 15]}
-    - {name: День памяти жертв депортации калмыцкого народа, fixed_date: [12, 28]}
-Республика Бурятия:
-  _state_code: buryatia
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=52.014&lon=109.366&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Сагаалган, fixed_date: [1, 14]}
-Республика Карелия:
-  _state_code: karelia
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=63.832&lon=33.626&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День Республики Карелия, fixed_date: [6, 8]}
-    - {name: День освобождения Карелии от фашистских захватчиков, fixed_date: [9, 30]}
-Приволжский федеральный округ:
-  _state_code: udmurtia
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=56.8642&lon=53.2054&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День Государственности Удмуртской Республики, fixed_date: [5, 31]}
+  - {name: День народного единства, fixed_date: [11, 4]}
+
 Адыгея:
-  _state_code: adygea
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=44.60627&lon=40.10432&zoom=18&addressdetails=1&accept-language=ru,us"
+  _state_code: ad
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%90%D0%B4%D1%8B%D0%B3%D0%B5%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
   PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
     - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
     - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День поминовения усопших (Радоница), variable_date: orthodox easter, offset: 9}
+    - {name: День весны и труда, fixed_date: [5, 1]}
     - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
     - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
     - {name: День образования Республики Адыгея, fixed_date: [10, 5]}
-Дагестан:
-  _state_code: dagestan
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.118&lon=46.959&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
     - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День Конституции Республики Дагестан, fixed_date: [7, 26]}
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: День единства народов Дагестана, fixed_date: [9, 15]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-Ингушетия:
-  _state_code: ingushetia
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=43.1171&lon=44.8626&zoom=18&addressdetails=1&accept-language=ru,en"
+
+Башкортостан:
+  _state_code: ba
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%91%D0%B0%D1%88%D0%BA%D0%BE%D1%80%D1%82%D0%BE%D1%81%D1%82%D0%B0%D0%BD&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
   PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
     - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
     - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
     - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
     - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День образования Республики Ингушетия, fixed_date: [6, 4]}
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-Карачаево-Черкесия:
-  _state_code: karachay_cherkess
-  _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=43.7916&lon=41.7268&zoom=18&addressdetails=1&accept-language=ru,en
+    - {name: День Республики Башкортостан, fixed_date: [10, 11]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Белгородская область:
+  _state_code: bel
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%91%D0%B5%D0%BB%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
   PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
     - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
     - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
     - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
     - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День возрождения карачаевского народа, fixed_date: [5, 3]}
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-Чечня:
-  _state_code: chechnya
-  _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=43.451&lon=45.700&zoom=18&addressdetails=1&accept-language=ru,en
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
+    - {name: День Прохоровского поля - Третьего ратного поля России, fixed_date: [7, 12]}
     - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День мира в Чеченской Республике, fixed_date: [4, 16]}
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-Кабардино-Балкария:
-  _state_code: kabardino_balkaria
-  _nominatim_url: https://nominatim.openstreetmap.org/reverse?format=json&lat=43.497&lon=43.423&zoom=18&addressdetails=1&accept-language=ru,en
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: День возрождения балкарского народа, fixed_date: [3, 28]}
-    - {name: Черкесский день траура, fixed_date: [5, 21]}
-    - {name: Ураза-байрам, fixed_date: [7, 28]}
-    - {name: День государственности Кабардино-Балкарской Республики, fixed_date: [9, 1]}
-    - {name: Курбан-байрам, fixed_date: [10, 4]}
-Республика Алтай:
-  _state_code: altai
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=50.900&lon=86.899&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Чага-Байрам, fixed_date: [1, 14]}
-Республика Тыва:
-  _state_code: tuva
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=51.781&lon=94.033&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Народный праздник Шагаа, fixed_date: [1, 14]}
-    - {name: День Республики Тыва, fixed_date: [8, 15]}
-Саратовская область:
-  _state_code: saratov
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=51.335&lon=46.668&zoom=18&addressdetails=1&accept-language=ru,en"
-  PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
-    - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
-    - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
-    - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
-    - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Радоница, fixed_date: [4, 29]}
+
 Брянская область:
-  _state_code: bryansk
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=52.952&lon=33.283&zoom=18&addressdetails=1&accept-language=ru,en"
+  _state_code: bry
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%91%D1%80%D1%8F%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
   PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
     - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
     - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: Радоница - день особого поминовения усопших, fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
     - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
     - {name: День России, fixed_date: [6, 12]}
-    # local
-    - {name: Радоница, fixed_date: [4, 29]}
-    - {name: День освобождения города Брянска, fixed_date: [9, 17]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Дагестан:
+  _state_code: da
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%94%D0%B0%D0%B3%D0%B5%D1%81%D1%82%D0%B0%D0%BD&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: Светлое Христово Воскресение (Пасха), variable_date: orthodox easter, offset: 1}
+    - {name: День особого поминовения усопших - Радоница, variable_date: orthodox easter, offset: 9}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День Конституции Республики Дагестан, fixed_date: [7, 26]}
+    - {name: День единства народов Дагестана, fixed_date: [9, 15]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Забайкальский край:
+  _state_code: zab
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%97%D0%B0%D0%B1%D0%B0%D0%B9%D0%BA%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9+%D0%BA%D1%80%D0%B0%D0%B9&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Праздник Белого месяца "Сагаалган", fixed_date: [2, 18], year: 2026}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Ингушетия:
+  _state_code: in
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%98%D0%BD%D0%B3%D1%83%D1%88%D0%B5%D1%82%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Иркутская область:
+  _state_code: irk
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%98%D1%80%D0%BA%D1%83%D1%82%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: Единый День памяти, fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Кабардино-Балкария:
+  _state_code: kb
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9A%D0%B0%D0%B1%D0%B0%D1%80%D0%B4%D0%B8%D0%BD%D0%BE-%D0%91%D0%B0%D0%BB%D0%BA%D0%B0%D1%80%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День возрождения балкарского народа, fixed_date: [3, 28]}
+    - {name: Радоница - день особого поминовения усопших, variable_date: orthodox easter, offset: 9}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День памяти адыгов (черкесов) - жертв Русско-Кавказской войны, fixed_date: [5, 21]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День государственности Кабардино-Балкарской Республики, fixed_date: [9, 1]}
+    - {name: День адыгов (черкесов), fixed_date: [9, 20]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Калмыкия:
+  _state_code: kl
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9A%D0%B0%D0%BB%D0%BC%D1%8B%D0%BA%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Цаган Сар, fixed_date: [2, 18], year: 2026}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День рождения Будды Шакьямуни, fixed_date: [5, 31], year: 2026}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День Республики Калмыкия, fixed_date: [7, 5]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+    - {name: День памяти жертв депортации калмыцкого народа, fixed_date: [12, 28]}
+
+Карачаево-Черкесия:
+  _state_code: kc
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9A%D0%B0%D1%80%D0%B0%D1%87%D0%B0%D0%B5%D0%B2%D0%BE-%D0%A7%D0%B5%D1%80%D0%BA%D0%B5%D1%81%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День памяти усопших - Радоница, variable_date: orthodox easter, offset: 9}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День возрождения карачаевского народа, fixed_date: [5, 3]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Краснодарский край:
+  _state_code: kda
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B4%D0%B0%D1%80%D1%81%D0%BA%D0%B8%D0%B9+%D0%BA%D1%80%D0%B0%D0%B9&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День поминовения усопших (Радоница), fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Мордовия:
+  _state_code: mo
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9C%D0%BE%D1%80%D0%B4%D0%BE%D0%B2%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День 25-летия канонизации святого праведного воина Феодора Ушакова, fixed_date: [8, 5], year: 2026}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Омская область:
+  _state_code: oms
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9E%D0%BC%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: Радоница - день особого поминовения усопших, fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Пензенская область:
+  _state_code: pnz
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%9F%D0%B5%D0%BD%D0%B7%D0%B5%D0%BD%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: Единый день поминовения усопших, fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Республика Алтай:
+  _state_code: al
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0+%D0%90%D0%BB%D1%82%D0%B0%D0%B9&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День образования Республики Алтай, fixed_date: [7, 3]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Республика Бурятия:
+  _state_code: bu
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0+%D0%91%D1%83%D1%80%D1%8F%D1%82%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Праздник Белого месяца «Сагаалган», fixed_date: [2, 18], year: 2026}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Республика Карелия:
+  _state_code: kr
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0+%D0%9A%D0%B0%D1%80%D0%B5%D0%BB%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День Республики Карелии, fixed_date: [6, 8]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
 Республика Коми:
-  _state_code: komi
-  _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=64.191&lon=55.826&zoom=18&addressdetails=1&accept-language=ru,en"
+  _state_code: ko
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0+%D0%9A%D0%BE%D0%BC%D0%B8&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
   PH:
-    - {name: 1. Новогодние каникулы, fixed_date: [1, 1]}
-    - {name: 2. Новогодние каникулы, fixed_date: [1, 2]}
-    - {name: 3. Новогодние каникулы, fixed_date: [1, 3]}
-    - {name: 4. Новогодние каникулы, fixed_date: [1, 4]}
-    - {name: 5. Новогодние каникулы, fixed_date: [1, 5]}
-    - {name: 6. Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
     - {name: Рождество Христово, fixed_date: [1, 7]}
-    - {name: 8. Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
     - {name: День защитника Отечества, fixed_date: [2, 23]}
-    - {name: Международный женский день, fixed_date: [3, 8]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
     - {name: День Победы, fixed_date: [5, 9]}
-    - {name: Праздник Весны и Труда, fixed_date: [5, 1]}
-    - {name: День народного единства, fixed_date: [11, 4]}
     - {name: День России, fixed_date: [6, 12]}
-    # local
     - {name: День Республики Коми, fixed_date: [8, 22]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Республика Саха (Якутия):
+  _state_code: sa
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0+%D0%A1%D0%B0%D1%85%D0%B0+%28%D0%AF%D0%BA%D1%83%D1%82%D0%B8%D1%8F%29&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День Республики Саха (Якутия), fixed_date: [4, 27]}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День национального праздника Ысыах, fixed_date: [6, 21]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Республика Тыва:
+  _state_code: ty
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A0%D0%B5%D1%81%D0%BF%D1%83%D0%B1%D0%BB%D0%B8%D0%BA%D0%B0+%D0%A2%D1%8B%D0%B2%D0%B0&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: Шагаа, fixed_date: [2, 18], year: 2026}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Конституции Республики Тыва, fixed_date: [5, 8], year: 2026}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: Наадым, fixed_date: [7, 24], year: 2026}
+    - {name: День Республики Тыва, fixed_date: [8, 15]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Саратовская область:
+  _state_code: sar
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A1%D0%B0%D1%80%D0%B0%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: Радоница - день особого поминовения усопших, fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Северная Осетия — Алания:
+  _state_code: se
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A1%D0%B5%D0%B2%D0%B5%D1%80%D0%BD%D0%B0%D1%8F+%D0%9E%D1%81%D0%B5%D1%82%D0%B8%D1%8F+%E2%80%94+%D0%90%D0%BB%D0%B0%D0%BD%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+    - {name: Первый понедельник праздника Уастырджи (Джеоргуыба), fixed_date: [11, 23], year: 2026}
+
+Ставропольский край:
+  _state_code: sta
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A1%D1%82%D0%B0%D0%B2%D1%80%D0%BE%D0%BF%D0%BE%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9+%D0%BA%D1%80%D0%B0%D0%B9&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День поминовения усопших (Радоница), fixed_date: [4, 21], year: 2026}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Татарстан:
+  _state_code: ta
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A2%D0%B0%D1%82%D0%B0%D1%80%D1%81%D1%82%D0%B0%D0%BD&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День Республики Татарстан, fixed_date: [8, 30]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+    - {name: День Конституции Республики Татарстан, fixed_date: [11, 6]}
+
+Чечня:
+  _state_code: ce
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A7%D0%B5%D1%87%D0%BD%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День Конституции Чеченской Республики, fixed_date: [3, 23]}
+    - {name: День мира в Чеченской Республике, fixed_date: [4, 16]}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День народного единства, fixed_date: [11, 4]}
+
+Чувашия:
+  _state_code: cu
+  _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&state=%D0%A7%D1%83%D0%B2%D0%B0%D1%88%D0%B8%D1%8F&zoom=18&addressdetails=1&limit=1&accept-language=ru,en"
+  PH:
+    - {name: Новый год, fixed_date: [1, 1]}
+    - {name: Новогодние каникулы, fixed_date: [1, 2]}
+    - {name: Новогодние каникулы, fixed_date: [1, 3]}
+    - {name: Новогодние каникулы, fixed_date: [1, 4]}
+    - {name: Новогодние каникулы, fixed_date: [1, 5]}
+    - {name: Новогодние каникулы, fixed_date: [1, 6]}
+    - {name: Рождество Христово, fixed_date: [1, 7]}
+    - {name: Новогодние каникулы, fixed_date: [1, 8]}
+    - {name: День защитника Отечества, fixed_date: [2, 23]}
+    - {name: Международный женский день, fixed_date: [3, 8], substitute_rule: if sunday then next monday}
+    - {name: День весны и труда, fixed_date: [5, 1]}
+    - {name: День Победы, fixed_date: [5, 9]}
+    - {name: День России, fixed_date: [6, 12]}
+    - {name: День Чувашской Республики, fixed_date: [6, 24]}
+    - {name: День народного единства, fixed_date: [11, 4]}

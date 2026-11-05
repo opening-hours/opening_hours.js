@@ -1,0 +1,27 @@
+---
+place_id: 209369921
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 8253212
+lat: '43.7166755'
+lon: '41.6726925'
+display_name: Хасаут-Греческое сельское поселение, Зеленчукский район, Карачаево-Черкесия, Северо-Кавказский федеральный округ, Россия
+address:
+  village: Хасаут-Греческое сельское поселение
+  county: Зеленчукский район
+  state: Карачаево-Черкесия
+  ISO3166-2-lvl4: RU-KC
+  region: Северо-Кавказский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: village
+boundingbox:
+  - '43.2806008'
+  - '43.7706654'
+  - '41.4089994'
+  - '41.7644225'
+class: boundary
+importance: 0.22274623325780465
+name: Хасаут-Греческое сельское поселение
+place_rank: 14
+type: administrative

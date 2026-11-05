@@ -12,6 +12,7 @@ PH:
   - {name: Año Nuevo, fixed_date: [1, 1]}
   - {name: Carnaval, variable_date: easter, offset: -48}
   - {name: Carnaval, variable_date: easter, offset: -47}
+  - {name: Día no laborable con fines turísticos, fixed_date: [3, 23], year: 2026}
   - {name: Día Nacional de la Memoria por la Verdad y la Justicia, fixed_date: [3, 24]}
   - {name: Viernes Santo, variable_date: easter, offset: -2}
   - {name: Día del Veterano y de los Caídos en la Guerra de Malvinas, fixed_date: [4, 2]}

@@ -1,0 +1,27 @@
+---
+place_id: 193977255
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 3679860
+lat: '54.4829488'
+lon: '44.4285877'
+display_name: Новофёдоровское сельское поселение, Старошайговский район, Мордовия, Приволжский федеральный округ, Россия
+address:
+  municipality: Новофёдоровское сельское поселение
+  county: Старошайговский район
+  state: Мордовия
+  ISO3166-2-lvl4: RU-MO
+  region: Приволжский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '54.3603864'
+  - '54.6062104'
+  - '44.1931801'
+  - '44.7093474'
+class: boundary
+importance: 0.29754280206928735
+name: Новофёдоровское сельское поселение
+place_rank: 14
+type: administrative

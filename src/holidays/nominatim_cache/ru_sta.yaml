@@ -1,0 +1,26 @@
+---
+place_id: 202548549
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1030124
+lat: '44.7315581'
+lon: '43.4756436'
+display_name: Новоселицкий муниципальный округ, Ставропольский край, Северо-Кавказский федеральный округ, Россия
+address:
+  county: Новоселицкий муниципальный округ
+  state: Ставропольский край
+  ISO3166-2-lvl4: RU-STA
+  region: Северо-Кавказский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: county
+boundingbox:
+  - '44.5103272'
+  - '44.9633190'
+  - '43.0780323'
+  - '43.8752381'
+class: boundary
+importance: 0.24003609597924772
+name: Новоселицкий муниципальный округ
+place_rank: 12
+type: administrative
