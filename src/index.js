@@ -1328,7 +1328,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                 rule_modifier_specified = true;
                 at++;
-                if (typeof tokens[at] === 'object' && tokens[at][0] === ',') // additional rule
+                if (matchTokens(tokens, at, ',')) // additional rule
                     nextRuleAt = at + 1;
 
             } else if (matchTokens(tokens, at, 'comment')) {
@@ -1342,7 +1342,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                 rule_modifier_specified = true;
                 at++;
-                if (typeof tokens[at] === 'object' && tokens[at][0] === ',') { // additional rule
+                if (matchTokens(tokens, at, ',')) { // additional rule
                     nextRuleAt = at + 1;
                 }
             } else if ((at === 0 || at === tokens.length - 1) && matchTokens(tokens, at, 'rule separator')) {
