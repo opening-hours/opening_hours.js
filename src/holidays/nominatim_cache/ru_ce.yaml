@@ -1,0 +1,30 @@
+---
+place_id: 207579976
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 1476483868
+lat: '43.3653128'
+lon: '45.6872899'
+display_name: совхоз Родина, Ахматовский район, Грозный, городской округ Грозный, Чеченская Республика, Северо-Кавказский федеральный округ, 364014, Россия
+address:
+  suburb: совхоз Родина
+  city_district: Ахматовский район
+  city: Грозный
+  county: городской округ Грозный
+  state: Чеченская Республика
+  ISO3166-2-lvl4: RU-CE
+  region: Северо-Кавказский федеральный округ
+  postcode: '364014'
+  country: Россия
+  country_code: ru
+addresstype: suburb
+boundingbox:
+  - '43.3453128'
+  - '43.3853128'
+  - '45.6672899'
+  - '45.7072899'
+class: place
+importance: 0.14673372625314712
+name: совхоз Родина
+place_rank: 19
+type: suburb

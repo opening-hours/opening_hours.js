@@ -1,0 +1,27 @@
+---
+place_id: 193972735
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 4839762
+lat: '51.6109511'
+lon: '46.8592020'
+display_name: Осиновское сельское поселение, Марксовский район, Саратовская область, Приволжский федеральный округ, Россия
+address:
+  municipality: Осиновское сельское поселение
+  county: Марксовский район
+  state: Саратовская область
+  ISO3166-2-lvl4: RU-SAR
+  region: Приволжский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '51.4875968'
+  - '51.7330123'
+  - '46.7245507'
+  - '47.0325961'
+class: boundary
+importance: 0.18554865524912875
+name: Осиновское сельское поселение
+place_rank: 14
+type: administrative

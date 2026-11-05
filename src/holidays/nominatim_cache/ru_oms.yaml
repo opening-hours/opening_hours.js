@@ -1,0 +1,27 @@
+---
+place_id: 214511457
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1314119
+lat: '55.7369605'
+lon: '73.5074430'
+display_name: Саргатский район, Омская область, Сибирский федеральный округ, 646400, Россия
+address:
+  county: Саргатский район
+  state: Омская область
+  ISO3166-2-lvl4: RU-OMS
+  region: Сибирский федеральный округ
+  postcode: '646400'
+  country: Россия
+  country_code: ru
+addresstype: county
+boundingbox:
+  - '55.3447990'
+  - '56.1290558'
+  - '72.7635977'
+  - '74.0824965'
+class: boundary
+importance: 0.24005000152590217
+name: Саргатский район
+place_rank: 12
+type: administrative

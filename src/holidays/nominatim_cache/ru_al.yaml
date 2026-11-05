@@ -1,0 +1,28 @@
+---
+place_id: 217319393
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 5698138
+lat: '50.6017021'
+lon: '86.3667933'
+display_name: Купчегенское сельское поселение, Онгудайский район, Республика Алтай, Сибирский федеральный округ, 649445, Россия
+address:
+  municipality: Купчегенское сельское поселение
+  county: Онгудайский район
+  state: Республика Алтай
+  ISO3166-2-lvl4: RU-AL
+  region: Сибирский федеральный округ
+  postcode: '649445'
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '50.3306554'
+  - '50.8709140'
+  - '85.9527060'
+  - '87.2442377'
+class: boundary
+importance: 0.1773516541617975
+name: Купчегенское сельское поселение
+place_rank: 14
+type: administrative

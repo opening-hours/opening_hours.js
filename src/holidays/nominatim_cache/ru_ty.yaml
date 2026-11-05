@@ -1,0 +1,26 @@
+---
+place_id: 218619781
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 190752
+lat: '51.1641379'
+lon: '93.5976736'
+display_name: Чеди-Хольский кожуун, Тыва, Сибирский федеральный округ, Россия
+address:
+  county: Чеди-Хольский кожуун
+  state: Тыва
+  ISO3166-2-lvl4: RU-TY
+  region: Сибирский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: county
+boundingbox:
+  - '50.8422157'
+  - '51.4840943'
+  - '93.0158097'
+  - '94.2894203'
+class: boundary
+importance: 0.24000999999999997
+name: Чеди-Хольский кожуун
+place_rank: 12
+type: administrative

@@ -1,0 +1,28 @@
+---
+place_id: 195798572
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1020617
+lat: '62.5718690'
+lon: '33.6684756'
+display_name: Гирвасское сельское поселение, Кондопожский район, Карелия, Северо-Западный федеральный округ, 186214, Россия
+address:
+  municipality: Гирвасское сельское поселение
+  county: Кондопожский район
+  state: Карелия
+  ISO3166-2-lvl4: RU-KR
+  region: Северо-Западный федеральный округ
+  postcode: '186214'
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '62.3237009'
+  - '62.8186268'
+  - '33.0296989'
+  - '34.1848257'
+class: boundary
+importance: 0.2562004762132184
+name: Гирвасское сельское поселение
+place_rank: 14
+type: administrative

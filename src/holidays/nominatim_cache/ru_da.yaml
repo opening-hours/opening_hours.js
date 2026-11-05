@@ -1,0 +1,27 @@
+---
+place_id: 208141330
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 8061209
+lat: '42.9489285'
+lon: '47.0548472'
+display_name: Ишкартынский сельсовет, Буйнакский район, Дагестан, Северо-Кавказский федеральный округ, Россия
+address:
+  municipality: Ишкартынский сельсовет
+  county: Буйнакский район
+  state: Дагестан
+  ISO3166-2-lvl4: RU-DA
+  region: Северо-Кавказский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '42.6984038'
+  - '43.0004691'
+  - '46.8664168'
+  - '47.1085724'
+class: boundary
+importance: 0.21080589711721126
+name: Ишкартынский сельсовет
+place_rank: 14
+type: administrative

@@ -1,0 +1,28 @@
+---
+place_id: 203924344
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 5475727
+lat: '47.0096637'
+lon: '45.5027120'
+display_name: Сарпинское сельское поселение, Кетченеровский район, Калмыкия, Южный федеральный округ, 359113, Россия
+address:
+  municipality: Сарпинское сельское поселение
+  county: Кетченеровский район
+  state: Калмыкия
+  ISO3166-2-lvl4: RU-KL
+  region: Южный федеральный округ
+  postcode: '359113'
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '46.8361526'
+  - '47.2064309'
+  - '45.1474181'
+  - '45.8031927'
+class: boundary
+importance: 0.18157831638402872
+name: Сарпинское сельское поселение
+place_rank: 14
+type: administrative

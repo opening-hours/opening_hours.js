@@ -1,0 +1,31 @@
+---
+place_id: 206560167
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: way
+osm_id: 1493874606
+lat: '45.7686613'
+lon: '39.0263643'
+display_name: 74, Совхозная улица, Красная Поляна, Брюховецкое сельское поселение, Брюховецкий район, Краснодарский край, Южный федеральный округ, 352765, Россия
+address:
+  house_number: '74'
+  road: Совхозная улица
+  village: Красная Поляна
+  municipality: Брюховецкое сельское поселение
+  county: Брюховецкий район
+  state: Краснодарский край
+  ISO3166-2-lvl4: RU-KDA
+  region: Южный федеральный округ
+  postcode: '352765'
+  country: Россия
+  country_code: ru
+addresstype: building
+boundingbox:
+  - '45.7685970'
+  - '45.7687065'
+  - '39.0262718'
+  - '39.0264569'
+class: building
+importance: 0.00003303654535739707
+name: ''
+place_rank: 30
+type: yes

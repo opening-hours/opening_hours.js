@@ -1,0 +1,27 @@
+---
+place_id: 218267849
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 7029457
+lat: '52.7081442'
+lon: '109.4198955'
+display_name: Ойбонтовское сельское поселение, Хоринский район, Бурятия, Дальневосточный федеральный округ, Россия
+address:
+  municipality: Ойбонтовское сельское поселение
+  county: Хоринский район
+  state: Бурятия
+  ISO3166-2-lvl4: RU-BU
+  region: Дальневосточный федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: municipality
+boundingbox:
+  - '52.4867157'
+  - '52.9295908'
+  - '109.0668494'
+  - '109.6906174'
+class: boundary
+importance: 0.1679799034751623
+name: Ойбонтовское сельское поселение
+place_rank: 14
+type: administrative

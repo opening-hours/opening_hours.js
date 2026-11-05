@@ -8,6 +8,8 @@ _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=47.
 
 PH:
   - {name: Anul nou, fixed_date: [1, 1]}
+  - {name: Craciun pe Rit Vechi, fixed_date: [1, 7]}
+  - {name: Craciun pe Rit Vechi, fixed_date: [1, 8]}
   - {name: Ziua Internationala a Femeii, fixed_date: [3, 8]}
   - {name: Paștele, variable_date: orthodox easter}
   - {name: A doua zi de Paști, variable_date: orthodox easter, offset: 1}

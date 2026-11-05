@@ -664,7 +664,7 @@ With [34m[1mwarnings[22m[39m:
 "Variable days: Russian public holidays. Republic of Karelia" for "PH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
-"Variable days: Russian public holidays. Republic of Udmurtia" for "PH": [32m[1mPASSED[22m[39m
+"Variable days: Russian public holidays. Belgorod Oblast" for "PH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (This rule is not very explicit because there is no time selector being used. A time selector is the part specifying hours when the object is opened, for example "10:00-19:00". Please add a time selector to this rule or use a comment to make it more explicit.)
 "Variable days: Russian public holidays. Republic of Adygea" for "PH": [32m[1mPASSED[22m[39m

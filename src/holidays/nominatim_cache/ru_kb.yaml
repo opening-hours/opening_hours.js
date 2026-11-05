@@ -1,0 +1,26 @@
+---
+place_id: 207132679
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: relation
+osm_id: 1059419
+lat: '43.3665805'
+lon: '43.2150562'
+display_name: Чегемский район, Кабардино-Балкария, Северо-Кавказский федеральный округ, Россия
+address:
+  county: Чегемский район
+  state: Кабардино-Балкария
+  ISO3166-2-lvl4: RU-KB
+  region: Северо-Кавказский федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: county
+boundingbox:
+  - '43.0880049'
+  - '43.6464131'
+  - '42.8602669'
+  - '43.8099575'
+class: boundary
+importance: 0.24005000152590217
+name: Чегемский район
+place_rank: 12
+type: administrative

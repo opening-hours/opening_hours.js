@@ -1,0 +1,27 @@
+---
+place_id: 192554771
+licence: Data © OpenStreetMap contributors, ODbL 1.0. http://osm.org/copyright
+osm_type: node
+osm_id: 3222863597
+lat: '50.7159962'
+lon: '37.5691055'
+display_name: Новосёловка, Новооскольский муниципальный округ, Белгородская область, Центральный федеральный округ, Россия
+address:
+  hamlet: Новосёловка
+  county: Новооскольский муниципальный округ
+  state: Белгородская область
+  ISO3166-2-lvl4: RU-BEL
+  region: Центральный федеральный округ
+  country: Россия
+  country_code: ru
+addresstype: hamlet
+boundingbox:
+  - '50.6959962'
+  - '50.7359962'
+  - '37.5491055'
+  - '37.5891055'
+class: place
+importance: 0.13336833524071104
+name: Новосёловка
+place_rank: 20
+type: hamlet

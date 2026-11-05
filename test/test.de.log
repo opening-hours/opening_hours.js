@@ -664,7 +664,7 @@ With [34m[1mwarnings[22m[39m:
 "Variable days: Russian public holidays. Republic of Karelia" for "PH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
-"Variable days: Russian public holidays. Republic of Udmurtia" for "PH": [32m[1mPASSED[22m[39m
+"Variable days: Russian public holidays. Belgorod Oblast" for "PH": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*PH <--- (Diese Regel ist nicht sehr aussagekräftig, da kein Zeit Selektor angegeben wurde. Ein Zeit Selektor ist die Komponente die angibt, zu welcher Tageszeit ein Objekt geöffnet hat, zum Beispiel "10:00-19:00". Bitte füge eine Zeitangabe oder einen Kommentar hinzu, um dies zu verbessern.)
 "Variable days: Russian public holidays. Republic of Adygea" for "PH": [32m[1mPASSED[22m[39m
