@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: LGPL-3.0-only
  *
  * Check that every _nominatim_url entry in the generated holiday data has a
- * matching fixture file in src/holidays/nominatim_cache. This script is part
- * of the test suite.
+ * matching fixture file and that no unused cache files remain. This script
+ * is part of the test suite.
  */
 
 import fs from 'node:fs/promises';
@@ -55,21 +55,48 @@ function expectedCacheFiles(countryCode, countryDefinition) {
 
 const generatedData = await import(GENERATED_FILE.href);
 const cachedFiles = new Set(await fs.readdir(CACHE_DIR));
+const expectedFiles = new Set();
 const missingFiles = [];
 
 for (const [countryCode, countryDefinition] of Object.entries(generatedData)) {
     for (const expectedFile of expectedCacheFiles(countryCode, countryDefinition)) {
+        expectedFiles.add(expectedFile);
         if (!cachedFiles.has(expectedFile)) {
             missingFiles.push(expectedFile);
         }
     }
 }
 
-if (missingFiles.length > 0) {
-    console.error('Missing Nominatim cache fixtures:');
-    console.error(missingFiles.join('\n'));
-    console.error('\nRun from src/holidays: node populate_nominatim_cache.mjs --input-file <country>.yaml');
+const testFile = new URL('../test/test.mjs', import.meta.url);
+const testContents = await fs.readFile(testFile, 'utf8');
+const testReferencedFiles = new Set(
+    [...testContents.matchAll(/\bnominatim_by_loc\.([A-Za-z0-9_]+)/g)]
+        .map(([, name]) => `${name}.yaml`),
+);
+const testOnlyFiles = [...cachedFiles]
+    .filter((file) => file.endsWith('.yaml') && !expectedFiles.has(file) && testReferencedFiles.has(file))
+    .sort();
+const orphanFiles = [...cachedFiles]
+    .filter((file) => file.endsWith('.yaml') && !expectedFiles.has(file) && !testReferencedFiles.has(file))
+    .sort();
+
+if (missingFiles.length > 0 || orphanFiles.length > 0) {
+    if (missingFiles.length > 0) {
+        console.error('Missing Nominatim cache fixtures:');
+        console.error(missingFiles.join('\n'));
+        console.error('\nRun from src/holidays: node populate_nominatim_cache.mjs --input-file <country>.yaml');
+    }
+    if (orphanFiles.length > 0) {
+        console.error('Orphaned Nominatim cache fixtures:');
+        console.error(orphanFiles.join('\n'));
+        console.error('\nRemove these unused files from src/holidays/nominatim_cache.');
+    }
     process.exitCode = 1;
 } else {
-    console.log('All _nominatim_url entries have a matching cache fixture.');
+    console.log('Nominatim cache fixtures match configured URLs and test references.');
+}
+
+if (testOnlyFiles.length > 0) {
+    console.warn('Test-only Nominatim cache fixtures:');
+    console.warn(testOnlyFiles.join('\n'));
 }
