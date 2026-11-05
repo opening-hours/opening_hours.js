@@ -1363,22 +1363,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return nextRuleAt;
     }
 
-    /* Not used
-    function get_last_token_pos_in_token_group(tokens, at, last_at) {
-        for (at++; at < last_at; at++) {
-            if (typeof tokens[at] === 'object') {
-                if (typeof tokens[at][3] === 'string'
-                        || tokens[at][1] === 'comment'
-                        || tokens[at][1] === 'state'){
-
-                        return at - 1;
-                }
-            }
-        }
-        return last_at;
-    }
-    */
-
     /* }}} */
 
     // helper functions for sub parser {{{
