@@ -1347,7 +1347,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
             } else if ((at === 0 || at === tokens.length - 1) && matchTokens(tokens, at, 'rule separator')) {
                 at++;
                 // console.log("value: " + nrule);
-                // throw formatLibraryBugMessage('Not implemented yet.');
             } else {
                 const warnings = getWarnings();
                 throw formatWarnErrorMessage(nrule, at, t('unexpected token', {token: tokens[at][1] })) + (warnings ? (' ' + warnings.join('; ')) : '');
