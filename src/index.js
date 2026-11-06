@@ -1285,7 +1285,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 at = parseMonthRange(tokens, at);
                 // week_stable = false; // Decided based on the actual value/tokens.
             } else if (matchTokens(tokens, at, 'week')) {
-                tokens[at][3] = 'week';
                 at = parseWeekRange(tokens, at);
 
             } else if (at !== 0 && at !== tokens.length - 1 && tokens[at][0] === ':'
@@ -3349,6 +3348,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      *     selector.
      */
     function parseWeekRange(tokens, at) {
+        tokens[at][3] = 'week';
         for (; at < tokens.length; at++) {
             if (matchTokens(tokens, at, 'week')) {
                 at++;
