@@ -1262,8 +1262,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 at = parseWeekdayRange(tokens, at, currentRule, undefined, ruleIndex);
             } else if (matchTokens(tokens, at, '24/7')) {
                 currentRule.time.push(function() { return [true]; });
-                // Not needed. If there is no selector it automatically matches everything.
-                // WRONG: This only works if there is no other selector in this selector group ...
+                // Omitting this only works if the group has no other time selector; otherwise 24/7 would be ignored.
                 at++;
             } else if (matchTokens(tokens, at, 'holiday')) {
                 at = parseHoliday(tokens, at, currentRule, matchTokens(tokens, at+1, ','));
