@@ -1246,11 +1246,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Top-level parser {{{
      * @param {Array<ParserToken>} tokens List of tokens.
      * @param {number} at Position where to start.
-     * @param {ParsedRule} rule Reference to rule object.
-     * @param {number} nrule Rule number starting with 0.
+     * @param {ParsedRule} currentRule Reference to rule object.
+     * @param {number} ruleIndex Rule number starting with 0.
      * @returns {number} Start position of the next additional rule, or 0 if there is none.
      */
-    function parseGroup(tokens, at, rule, nrule) {
+    function parseGroup(tokens, at, currentRule, ruleIndex) {
         let rule_modifier_specified = false;
         let nextRuleAt = 0;
         let timeRangeEnd = -1;
@@ -1259,14 +1259,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
         while (at < tokens.length) {
             // console.log('Parsing at position', at +':', tokens[at]);
             if (matchTokens(tokens, at, 'weekday')) {
-                at = parseWeekdayRange(tokens, at, rule, undefined, nrule);
+                at = parseWeekdayRange(tokens, at, currentRule, undefined, ruleIndex);
             } else if (matchTokens(tokens, at, '24/7')) {
-                rule.time.push(function() { return [true]; });
+                currentRule.time.push(function() { return [true]; });
                 // Not needed. If there is no selector it automatically matches everything.
                 // WRONG: This only works if there is no other selector in this selector group ...
                 at++;
             } else if (matchTokens(tokens, at, 'holiday')) {
-                at = parseHoliday(tokens, at, rule, matchTokens(tokens, at+1, ','));
+                at = parseHoliday(tokens, at, currentRule, matchTokens(tokens, at+1, ','));
                 week_stable = false;
             } else if (matchTokens(tokens, at, 'month', 'number')
                     || matchTokens(tokens, at, 'month', 'weekday')
@@ -1275,7 +1275,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     || matchTokens(tokens, at, 'event')) {
                 const is_full_year_monthday_range = isPlainFullYearMonthdayRange(tokens, at);
 
-                at = parseMonthdayRange(tokens, at, nrule);
+                at = parseMonthdayRange(tokens, at, ruleIndex);
                 if (!is_full_year_monthday_range)
                     week_stable = false;
             } else if (matchTokens(tokens, at, 'year')) {
@@ -1297,7 +1297,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                  */
 
                 if (!done_with_warnings && matchTokens(tokens, at-1, 'holiday')) {
-                    parsing_warnings.push([nrule, at, 'no_colon_after', t('no colon after', { 'token': tokens[at-1][1] })]);
+                    parsing_warnings.push([ruleIndex, at, 'no_colon_after', t('no colon after', { 'token': tokens[at-1][1] })]);
                 }
 
                 at++;
@@ -1306,7 +1306,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     || matchTokens(tokens, at, '(', 'timevar')
                     || matchTokens(tokens, at, 'number', '-')) {
 
-                const timeRangeResult = parseTimeRange(tokens, at, rule, false, nrule);
+                const timeRangeResult = parseTimeRange(tokens, at, currentRule, false, ruleIndex);
                 if (Array.isArray(timeRangeResult)) { // additional rule
                     nextRuleAt = timeRangeResult[0];
                 } else {
@@ -1317,12 +1317,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
             } else if (matchTokens(tokens, at, 'state')) {
 
                 if (tokens[at][0] === 'open') {
-                    rule.meaning = true;
+                    currentRule.meaning = true;
                 } else if (tokens[at][0] === 'closed' || tokens[at][0] === 'off') {
-                    rule.meaning = false;
+                    currentRule.meaning = false;
                 } else {
-                    rule.meaning = false;
-                    rule.unknown = true;
+                    currentRule.meaning = false;
+                    currentRule.unknown = true;
                 }
 
                 rule_modifier_specified = true;
@@ -1331,12 +1331,12 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     nextRuleAt = at + 1;
 
             } else if (matchTokens(tokens, at, 'comment')) {
-                rule.comment = /** @type {string} */ (tokens[at][0]);
+                currentRule.comment = /** @type {string} */ (tokens[at][0]);
                 if (!rule_modifier_specified) {
                     // Then it is unknown. Either with unknown explicitly
                     // specified or just a comment.
-                    rule.meaning = false;
-                    rule.unknown = true;
+                    currentRule.meaning = false;
+                    currentRule.unknown = true;
                 }
 
                 rule_modifier_specified = true;
@@ -1346,10 +1346,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
             } else if ((at === 0 || at === tokens.length - 1) && matchTokens(tokens, at, 'rule separator')) {
                 at++;
-                // console.log("value: " + nrule);
+                // console.log("value: " + ruleIndex);
             } else {
                 const warnings = getWarnings();
-                throw formatWarnErrorMessage(nrule, at, t('unexpected token', {token: tokens[at][1] })) + (warnings ? (' ' + warnings.join('; ')) : '');
+                throw formatWarnErrorMessage(ruleIndex, at, t('unexpected token', {token: tokens[at][1] })) + (warnings ? (' ' + warnings.join('; ')) : '');
             }
 
             if (nextRuleAt !== 0) {
