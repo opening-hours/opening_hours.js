@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: ODbL-1.0
 ---
 
+# @attrib https://github.com/commenthol/date-holidays/blob/master/data/countries/DK.yaml
+
 _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=55.670249&lon=10.3333283&zoom=18&addressdetails=1&accept-language=da,en"
 
 PH: # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
@@ -14,8 +16,6 @@ PH: # https://en.wikipedia.org/wiki/Public_holidays_in_Denmark
   - {name: Pinsedag, variable_date: easter, offset: 49}
   - {name: Anden Pinsedag, variable_date: easter, offset: 50}
   - {name: Grundlovsdag, fixed_date: [6, 5]}
-  # constitution day, Not a church holiday, most treated almost but not quite as such
   - {name: Juleaftensdag, fixed_date: [12, 24]}
-  # Not an official church holiday, but by law, stores are closed
   - {name: Juledag, fixed_date: [12, 25]}
   - {name: Anden Juledag, fixed_date: [12, 26]}

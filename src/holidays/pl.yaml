@@ -15,7 +15,7 @@ PH:
   - {name: Święto Narodowe Trzeciego Maja, fixed_date: [5, 3]}
   - {name: pierwszy dzień Zielonych Świątek, variable_date: easter, offset: 49}
   - {name: dzień Bożego Ciała, variable_date: easter, offset: 60}
-  - {name: Wniebowzięcie Najświętszej Marii Panny, fixed_date: [8, 15]}
+  - {name: Wniebowzięcie Najświętszej Maryi Panny, fixed_date: [8, 15]}
   - {name: Wszystkich Świętych, fixed_date: [11, 1]}
   - {name: Narodowe Święto Niepodległości, fixed_date: [11, 11]}
   - {name: Wigilia Bożego Narodzenia, fixed_date: [12, 24]}
