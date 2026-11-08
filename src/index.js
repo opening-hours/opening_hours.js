@@ -788,7 +788,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             && small_range_selector_order.includes(next_selector_type))
                         ) {
 
-                        if (rule_tokens[used_selectors[nrule][selector_type][0]][0] === ':') {
+                        if (matchTokens(rule_tokens, used_selectors[nrule][selector_type][0], 'timesep')) {
                             parsing_warnings.push([nrule, used_selectors[nrule][selector_type][0],
                                 'separator_for_readability',
                                 t('separator_for_readability'),
@@ -997,7 +997,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             // Selector consists of a single token.
 
             // Include tailing colon.
-            if (selector_end + 1 < tokens.length && tokens[selector_end + 1][0] === ':')
+            if (matchTokens(tokens, selector_end + 1, 'timesep'))
                 selector_end++;
 
             return [ selector_start, selector_end, tokens[selector_start][pos_in_token_array] ];
@@ -1286,13 +1286,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
             } else if (matchTokens(tokens, at, 'week')) {
                 at = parseWeekRange(tokens, at);
 
-            } else if (at !== 0 && at !== tokens.length - 1 && tokens[at][0] === ':'
-                && at !== timeRangeEnd) {
-                /* Ignore colon if they appear somewhere else than as time separator.
-                 * Except the start or end of the value.
-                 * This provides compatibility with the syntax proposed by Netzwolf:
+            } else if (matchTokens(tokens, at, 'timesep')
+                    && at > 0
+                    && at < tokens.length - 1
+                    && at !== timeRangeEnd) {
+                /* Tolerate a colon as a readability separator. getWarnings() checks
+                 * whether the surrounding selectors allow it (see specification):
                  * https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification#separator_for_readability
-                 * Check for valid use of <separator_for_readability> is implemented in function getWarnings().
+                 * Match the token type so a quoted ":" remains a comment.
                  */
 
                 if (!done_with_warnings && matchTokens(tokens, at-1, 'holiday')) {
