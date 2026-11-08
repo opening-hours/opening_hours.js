@@ -7,3 +7,5 @@ weekday:
     # CLDR provides "pon." for Polish Monday. "pn" is also an established
     # Polish calendar abbreviation, but conflicts with Lithuanian "pn" = Friday.
     pn: Mo
+    # "sb" abbreviates sobota (Saturday) and conflicts with Turkmen "sb" = Tuesday.
+    sb: Sa

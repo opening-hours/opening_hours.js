@@ -55,6 +55,14 @@ The word error correction system is automatically generated using the `scripts/g
 
 Manual corrections can be added to `src/locales/word_error_correction_manual.yaml` for cases that require human curation or language-specific corrections that cannot be automatically generated. The build system automatically combines both automatic and manual corrections into the final `word_error_correction.yaml` file used by the library.
 
+Weekday and month tokens with multiple possible meanings require an explicit
+`locale`, a unique interpretation among the languages of the supplied country,
+or neighbouring tokens (e.g. `pn-sb`) whose shared languages agree on the meaning.
+Unambiguous foreign tokens remain tolerated with warnings in purely foreign or
+language-coherent expressions, even outside their region. The placeholder location
+selected by a `null` Nominatim argument is not used as a language hint; it still
+supplies holiday and solar defaults.
+
 Group manual corrections by warning message under `literal` or `regex`. Use `literal` for specific spellings, including punctuation and multi-word expressions. Use `regex` for rules with optional parts or flexible whitespace. Both sections are preserved at runtime. For individual words, literals take precedence over regex rules; regex rules are compiled once and checked in data order. Phrase corrections use the longest matched expression, preferring a literal on ties. Matching is case-insensitive, and valid standard tokens still take precedence over word corrections.
 
 ```yaml

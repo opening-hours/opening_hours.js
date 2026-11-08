@@ -245,6 +245,49 @@ test('tokenizer resolves foreign weekday ranges and rejects locale mismatches', 
     );
 });
 
+test('tokenizer tolerates unambiguous foreign tokens outside their region', () => {
+    for (const location of [null, {}, { address: { country_code: 'de' } }]) {
+        for (const [value, expected] of [
+            ['lundi,vendredi 10:00-18:00', 'Mo,Fr 10:00-18:00'],
+            ['sobota 09:00-13:00', 'Sa 09:00-13:00'],
+            ['tr 09:00-13:00', 'We 09:00-13:00'],
+        ]) {
+            const hours = new opening_hours(value, location);
+            assert.equal(hours.prettifyValue(), expected);
+            assert.ok(hours.getStructuredWarnings().some(({ type }) => type === 'word_error_correction'));
+        }
+    }
+});
+
+test('tokenizer requires locale, region or coherent neighbours to disambiguate foreign weekdays', () => {
+    for (const location of [null, {}, { address: { country_code: 'de' } }]) {
+        assert.throws(() => new opening_hours('sb 09:00-13:00', location),
+            error => typeof error === 'string' && error.includes('ambiguous across languages'));
+
+        const hours = new opening_hours('pn-sb 09:00-13:00', location);
+        assert.equal(hours.prettifyValue(), 'Mo-Sa 09:00-13:00');
+        assert.ok(hours.getStructuredWarnings().some(({ type }) => type === 'word_error_correction'));
+    }
+    const location = { address: { country_code: 'pl' } };
+    assert.equal(new opening_hours('sb 09:00-13:00', location).prettifyValue(), 'Sa 09:00-13:00');
+    assert.equal(new opening_hours('sb 09:00-13:00', location, { locale: 'tk' }).prettifyValue(), 'Tu 09:00-13:00');
+});
+
+test('tokenizer does not use the null placeholder as a language hint', () => {
+    assert.throws(() => new opening_hours('Mo-montag 09:00-13:00', null));
+    const hours = new opening_hours('Mo-montag 09:00-13:00', { address: { country_code: 'de' } });
+    assert.equal(hours.prettifyValue(), 'Mo-Mo 09:00-13:00');
+});
+
+test('tokenizer applies semantic disambiguation to foreign months', () => {
+    const location = { address: { country_code: 'de' } };
+    assert.equal(new opening_hours('janvier 09:00-13:00', location).prettifyValue(), 'Jan 09:00-13:00');
+    assert.throws(() => new opening_hours('listopad 09:00-13:00', location),
+        error => typeof error === 'string' && error.includes('ambiguous across languages'));
+    assert.equal(new opening_hours('listopad 09:00-13:00', location, { locale: 'pl' }).prettifyValue(), 'Nov 09:00-13:00');
+    assert.equal(new opening_hours('listopad 09:00-13:00', { address: { country_code: 'hr' } }).prettifyValue(), 'Oct 09:00-13:00');
+});
+
 test('tokenizer preserves separator corrections and their positions', () => {
     const value = '10.00-12.00';
     const hours = new opening_hours(value, null);
