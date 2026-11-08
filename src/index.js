@@ -1251,7 +1251,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @returns {number} Start position of the next additional rule, or 0 if there is none.
      */
     function parseGroup(tokens, at, currentRule, ruleIndex) {
-        let rule_modifier_specified = false;
+        let ruleModifierSpecified = false;
         let nextRuleAt = 0;
         let timeRangeEnd = -1;
 
@@ -1272,10 +1272,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     || matchTokens(tokens, at, 'year', 'month', 'number')
                     || matchTokens(tokens, at, 'year', 'event')
                     || matchTokens(tokens, at, 'event')) {
-                const is_full_year_monthday_range = isPlainFullYearMonthdayRange(tokens, at);
+                const isFullYearMonthdayRange = isPlainFullYearMonthdayRange(tokens, at);
 
                 at = parseMonthdayRange(tokens, at, ruleIndex);
-                if (!is_full_year_monthday_range)
+                if (!isFullYearMonthdayRange)
                     week_stable = false;
             } else if (matchTokens(tokens, at, 'year')) {
                 at = parseYearRange(tokens, at);
@@ -1324,21 +1324,21 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     currentRule.unknown = true;
                 }
 
-                rule_modifier_specified = true;
+                ruleModifierSpecified = true;
                 at++;
                 if (matchTokens(tokens, at, ',')) // additional rule
                     nextRuleAt = at + 1;
 
             } else if (matchTokens(tokens, at, 'comment')) {
                 currentRule.comment = /** @type {string} */ (tokens[at][0]);
-                if (!rule_modifier_specified) {
+                if (!ruleModifierSpecified) {
                     // Then it is unknown. Either with unknown explicitly
                     // specified or just a comment.
                     currentRule.meaning = false;
                     currentRule.unknown = true;
                 }
 
-                rule_modifier_specified = true;
+                ruleModifierSpecified = true;
                 at++;
                 if (matchTokens(tokens, at, ',')) { // additional rule
                     nextRuleAt = at + 1;
