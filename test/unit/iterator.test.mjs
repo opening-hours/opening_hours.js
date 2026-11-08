@@ -42,6 +42,36 @@ test('getIterator exposes comments and matching rules for the current state', ()
     assert.equal(iterator.getMatchingRule(), undefined);
 });
 
+test('a colon comment is not treated as a time separator', () => {
+    const oh = new opening_hours('Mo ":" 09:00-17:00');
+    const iterator = oh.getIterator(localDate(10));
+
+    assert.equal(iterator.getState(), false);
+    assert.equal(iterator.getUnknown(), true);
+    assert.equal(iterator.getComment(), ':');
+    assert.deepEqual(oh.getStructuredWarnings(), []);
+});
+
+test('a comma comment is not treated as an additional rule', () => {
+    const iterator = new opening_hours('Mo open "," 09:00-17:00').getIterator(localDate(10));
+
+    assert.equal(iterator.getState(), true);
+    assert.equal(iterator.getUnknown(), false);
+    assert.equal(iterator.getComment(), ',');
+    assert.equal(iterator.getMatchingRule(), 0);
+});
+
+test('readability colons are tolerated only away from rule boundaries and time range ends', () => {
+    const iterator = new opening_hours('Mo: 09:00-17:00').getIterator(localDate(10));
+
+    assert.equal(iterator.getState(), true);
+    assert.equal(iterator.getUnknown(), false);
+
+    for (const value of [': Mo 09:00-17:00', 'Mo:', 'Mo 09:00-17:00: open']) {
+        assert.throws(() => new opening_hours(value), /Unexpected token/);
+    }
+});
+
 test('getIterator does not advance at or beyond the date limit', () => {
     const iterator = new opening_hours('Mo 09:00-17:00').getIterator(localDate(8));
 
