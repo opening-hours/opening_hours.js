@@ -17,7 +17,7 @@
  *   Layer 2 universal    → info     (unambiguous English aliases)
  *   Layer 3 cross-locale → info     if it matches the active locale
  *                        → warning  if it matches a language of the POI's country (geo tier-2)
- *                        → warning  if unambiguous AND coherent with neighbour tokens
+ *                        → warning  if neighbour tokens share languages that agree on its meaning
  *                        → warning  if the value is purely foreign (no English anchor) and unambiguous
  *                        → error    if it mixes canonical English syntax with a foreign token, or is ambiguous
  *
@@ -142,10 +142,15 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
         }
     }
 
+    // A regional language can disambiguate a token; no regional match alone
+    // does not reject it, since the value may be consistently written elsewhere.
+    const regionMatches = regionLangs && regionLangs.size
+        ? candidates.filter(candidate => regionLangs.has(candidate.lang))
+        : [];
+
     // 1b. Geo tier-2: matches an official language of the POI's country → accept
     // with a warning (it may mean something else in another language).
-    if (regionLangs && regionLangs.size) {
-        const regionMatches = candidates.filter(candidate => regionLangs.has(candidate.lang));
+    if (regionMatches.length) {
         const meaning = uniqueMeaning(regionMatches);
         if (meaning) {
             const lang = regionMatches[0].lang;
@@ -156,7 +161,8 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
         }
     }
 
-    // 2. Mutual corroboration: a sibling foreign token supports the same language.
+    // 2. Mutual corroboration: sibling foreign tokens share languages with this
+    //    token, and all of those languages agree on its meaning.
     const neighbourLangs = new Set();
     for (const other of allForeign) {
         if (other === token) {
@@ -169,22 +175,17 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
     const sharedLangs = [...new Set(candidates.map(candidate => candidate.lang))]
         .filter(lang => neighbourLangs.has(lang))
         .sort((a, b) => a.localeCompare(b, 'en'));
-    if (sharedLangs.length) {
+    const sharedMeaning = uniqueMeaning(candidates.filter(candidate => sharedLangs.includes(candidate.lang)));
+    if (sharedMeaning) {
         const lang = sharedLangs[0];
-        const meaning = uniqueMeaning(candidates.filter(candidate => candidate.lang === lang));
-        if (meaning) {
-            return Object.assign(token, {
-                meaning, lang, layer: 3, confidence: 'warning',
-                message: `Interpreted "${token.raw}" as ${meaning} (${lang}); coherent with neighbouring tokens.`,
-            });
-        }
+        return Object.assign(token, {
+            meaning: sharedMeaning, lang, layer: 3, confidence: 'warning',
+            message: `Interpreted "${token.raw}" as ${sharedMeaning} (${lang}); coherent with neighbouring tokens.`,
+        });
     }
 
-    // 4. Pure-foreign value: no canonical/English anchor in the group. The user is
-    //    writing consistently in a non-English language, not mixing a typo into
-    //    English syntax (which is the `Mo-Tr` / #588 signature). Tolerate an
-    //    unambiguous foreign token with a warning; only genuinely ambiguous ones
-    //    (e.g. `listopad` = Nov/Oct) still need a locale/location.
+    // 4. Without a locale or regional match, a value with no canonical/English
+    //    anchor may be consistently written in a non-English language.
     if (!hasAnchor) {
         const meaning = uniqueMeaning(candidates);
         if (meaning) {
@@ -195,7 +196,7 @@ function resolveForeign(token, allForeign, localeLang, regionLangs, hasAnchor) {
             const lang = candidate.lang;
             return Object.assign(token, {
                 meaning, lang, layer: 3, confidence: 'warning',
-                message: `Interpreted "${token.raw}" as ${meaning} (${lang}); non-English value without a set locale or location.`,
+                message: `Interpreted "${token.raw}" as ${meaning} (${lang}); no locale or regional language confirmed this interpretation.`,
             });
         }
     }

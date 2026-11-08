@@ -221,6 +221,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
             + ', expected object.';
     }
 
+    // The German fallback location is for calculations, not language inference.
+    const resolver_location_cc = nominatim_object === null ? undefined : location_cc;
+
     /* }}} */
 
     /* mode, locale, warnings_severity, tag_key, map_value {{{
@@ -330,7 +333,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     // because reordering time/state would change the meaning (#596).
     const rules_without_selector_reordering = new Set();
     const tokens = tokenize(value, {
-        location_cc,
+        location_cc: resolver_location_cc,
         parser_locale,
         t,
         parsing_warnings,

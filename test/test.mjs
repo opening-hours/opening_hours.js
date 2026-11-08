@@ -4028,7 +4028,7 @@ test.addTest('Warnings corrected to additional rule (real world example)', [
         [ '2014-09-04 09:00', '2014-09-04 12:00' ],
         [ '2014-09-04 15:00', '2014-09-04 18:00' ],
         [ '2014-09-05 09:00', '2014-09-05 12:00' ],
-    ], 1000 * 60 * 60 * (5 * 3 + 3 * 3), 0, true, {}, 'not last test');
+    ], 1000 * 60 * 60 * (5 * 3 + 3 * 3), 0, true, { address: { country_code: 'de' } }, 'not last test');
 
 test.addTest('Real world example: Was not processed right.', [
         'Mo off, Tu 14:00-18:00, We-Sa 10:00-18:00', // Reference value for prettify. Not perfect but still …
@@ -4042,7 +4042,7 @@ test.addTest('Real world example: Was not processed right.', [
         [ '2014-01-09 10:00', '2014-01-09 18:00' ],
         [ '2014-01-10 10:00', '2014-01-10 18:00' ],
         [ '2014-01-11 10:00', '2014-01-11 18:00' ],
-    ], 1000 * 60 * 60 * (4 + 4 * 8), 0, true, {}, 'not last test');
+    ], 1000 * 60 * 60 * (4 + 4 * 8), 0, true, { address: { country_code: 'de' } }, 'not last test');
 
 test.addTest('Real world example: Was not processed right (month range/monthday range)', [
         'Aug,Dec 25-easter'
@@ -5183,11 +5183,15 @@ test.addTest('Error tolerance: languages with Unicode characters (Georgian, Thai
 
 test.addShouldFail('Error tolerance: ambiguous cross-locale word rejected without locale/location (listopad)', [
         'listopad 12:00-18:00',
-    ], nominatim_default, 'not last test');
+    ], {}, 'not last test');
 
 test.addShouldFail('#588: locale-mismatched weekday token rejected (Mo-Tr)', [
         'Mo-Tr 17:00-20:00',
     ], nominatim_default, 'not last test');
+
+test.addShouldFail('Foreign weekday conflicting with known region is rejected', [
+        'sb 09:00-13:00',
+    ], { address: { country_code: 'de' } }, 'not last test');
 
 test.addTest('Error tolerance: month names in different languages (long form)', [
         'Jan 10:00-18:00', // reference value for prettify
@@ -5573,6 +5577,35 @@ test.addTest('Lithuanian pn means Friday',
         [ '2012-10-05 10:00', '2012-10-05 12:00' ],
     ], 1000 * 60 * 60 * 2, 0, true,
     { address: { country_code: 'lt' } }, 'not only test', { 'tag_key': 'opening_hours' });
+
+test.addTest('Polish sb means Saturday', [
+        'Mo-Fr 08:00-16:00; Sa 09:00-13:00',
+        'pn-pt 08:00-16:00; sb 09:00-13:00',
+    ], '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-01 08:00', '2012-10-01 16:00' ],
+        [ '2012-10-02 08:00', '2012-10-02 16:00' ],
+        [ '2012-10-03 08:00', '2012-10-03 16:00' ],
+        [ '2012-10-04 08:00', '2012-10-04 16:00' ],
+        [ '2012-10-05 08:00', '2012-10-05 16:00' ],
+        [ '2012-10-06 09:00', '2012-10-06 13:00' ],
+    ], 1000 * 60 * 60 * 44, 0, true,
+    { address: { country_code: 'pl' } }, 'not last test');
+
+test.addTest('Unambiguous foreign weekday tolerated without regional context', [
+        'Sa 09:00-13:00',
+        'sobota 09:00-13:00',
+    ], '2012-10-01 0:00', '2012-10-08 0:00', [
+        [ '2012-10-06 09:00', '2012-10-06 13:00' ],
+    ], 1000 * 60 * 60 * 4, 0, true, {}, 'not only test');
+
+test.addTest('Explicit locale overrides regional weekday mismatch', [
+        'Tu 09:00-13:00',
+        'sb 09:00-13:00',
+    ],
+    '2012-10-01 0:00', '2012-10-03 0:00', [
+        [ '2012-10-02 09:00', '2012-10-02 13:00' ],
+    ], 1000 * 60 * 60 * 4, 0, true,
+    { address: { country_code: 'pl' } }, 'not only test', { locale: 'tk' });
 
 test.addStructuredWarnings('Structured warning: no warnings yields empty list',
         'Mo 10:00-12:00',

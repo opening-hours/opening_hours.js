@@ -1845,6 +1845,20 @@ With [34m[1mwarnings[22m[39m:
 With [34m[1mwarnings[22m[39m:
 	*pn <--- (Bitte benutze die englische Abkürzung "Fr" für "pn". Beachte, dass "pn" anderswo auch Mo (pl) bedeuten kann.)
 	*pn. <--- (Bitte verzichte auf ".".)
+"Polish sb means Saturday" for "Mo-Fr 08:00-16:00; Sa 09:00-13:00": [32m[1mPASSED[22m[39m
+"Polish sb means Saturday" for "pn-pt 08:00-16:00; sb 09:00-13:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*pn <--- (Bitte benutze die englische Abkürzung "Mo" für "pn". Beachte, dass "pn" anderswo auch Fr (lt) bedeuten kann.)
+	*pn-pt <--- (Bitte benutze die englische Abkürzung "Fr" für "pt". Beachte, dass "pt" anderswo auch Mo (tr) bedeuten kann.)
+	*pn-pt 08:00-16:00; sb <--- (Bitte benutze die englische Abkürzung "Sa" für "sb". Beachte, dass "sb" anderswo auch Tu (tk) bedeuten kann.)
+"Unambiguous foreign weekday tolerated without regional context" for "Sa 09:00-13:00": [32m[1mPASSED[22m[39m
+"Unambiguous foreign weekday tolerated without regional context" for "sobota 09:00-13:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*sobota <--- (Bitte benutze die englische Abkürzung "Sa" für "sobota".)
+"Explicit locale overrides regional weekday mismatch" for "Tu 09:00-13:00": [32m[1mPASSED[22m[39m
+"Explicit locale overrides regional weekday mismatch" for "sb 09:00-13:00": [32m[1mPASSED[22m[39m
+With [34m[1mwarnings[22m[39m:
+	*sb <--- (Please use the English abbreviation "Tu" for "sb". Note that "sb" can also mean Sa (pl) in other languages.)
 "Reordered selectors without comments still emit switched warnings" for "Mo-Fr 10:00-20:00 open; open We 10:00-16:00": [32m[1mPASSED[22m[39m
 With [34m[1mwarnings[22m[39m:
 	*Mo-Fr 10:00-20:00 open; We <--- (Der Selektor "weekday" wurde für eine bessere Lesbarkeit und der Vollständigkeit halber mit "state" getauscht.)
@@ -2188,6 +2202,9 @@ Mo-Fr 17:00-12:00; Sa-Su 24:00 <--- (Zeitspanne beginnt außerhalb des aktuellen
 
 "#588: locale-mismatched weekday token rejected (Mo-Tr)" for "Mo-Tr 17:00-20:00": [32m[1mPASSED[22m[39m
 Mo- <--- (Token "tr" is not valid for locale "de"; it only matches We (lt), We (lv). Use a canonical abbreviation (Mo, Tu, We, Th, Fr, Sa, Su) or set the intended locale.)
+
+"Foreign weekday conflicting with known region is rejected" for "sb 09:00-13:00": [32m[1mPASSED[22m[39m
+ <--- (Token "sb" is ambiguous across languages (Sa (pl), Tu (tk)). Use a canonical abbreviation (Mo, Tu, We, Th, Fr, Sa, Su) or set the intended locale.)
 
 "Incorrect syntax which should throw an error" for "sdasdlasdj a3reaw": [32m[1mPASSED[22m[39m
 sd <--- (Unerwartetes Zeichen: "s" Das bedeutet, dass die Syntax an dieser Stelle nicht erkannt werden konnte.) sdasdlasdj a <--- (Bitte verwende "-" anstelle von "a".); sdasdlasdj a3reaw <--- ("w" wird als "We" interpretiert.)
@@ -2779,7 +2796,7 @@ Der optional_conf_parm["tag_key"] fehlt, ist aber notwendig wegen optional_conf_
 "getNextChange skips comment-only boundary at end of off "renovation" overlay (#523)" for "Mo-Sa 08:00-21:00; Su "some 08:00-16:00"; PH off; 2025 Jul 27 - 2025 Sep 24 off "renovacija"": [32m[1mPASSED[22m[39m
 "getNextChange skips PH comment inside contiguous open range (#489)" for "Jul-Aug Mo-Su,PH 00:00-24:00": [32m[1mPASSED[22m[39m
 "getNextChange returns undefined when state never changes" for "24/7": [32m[1mPASSED[22m[39m
-1085/1085 tests passed. 0 did not pass.
+1092/1092 tests passed. 0 did not pass.
 40 tests where (partly) ignored, sorted by commonness:
 * 26: prettifyValue (most of the cases this is used to test if values with selectors in wrong order or wrong symbols (error tolerance) are evaluated correctly)
 * 11: not implemented yet

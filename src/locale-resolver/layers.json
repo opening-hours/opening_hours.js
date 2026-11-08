@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated": "2026-11-01",
+    "generated": "2026-11-08",
     "cldrDatesFull": "49.0.0",
     "localeCount": 657,
     "types": [
@@ -8,7 +8,7 @@
       "month"
     ],
     "crossLocaleTokens": 2882,
-    "crossLocaleCandidates": 3668,
+    "crossLocaleCandidates": 3669,
     "regionCount": 250
   },
   "canonical": {
@@ -11345,6 +11345,11 @@
       }
     ],
     "sb": [
+      {
+        "lang": "pl",
+        "meaning": "Sa",
+        "type": "weekday"
+      },
       {
         "lang": "tk",
         "meaning": "Tu",
