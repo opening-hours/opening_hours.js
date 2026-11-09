@@ -8,13 +8,13 @@
 _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=-41.2922255&lon=174.7763033&zoom=16&addressdetails=1&accept-language=en"
 
 PH:
-  - {name: New Year's Day, fixed_date: [1, 1], substitute_rule: if saturday then next monday if sunday then next tuesday}
-  - {name: Day after New Year's Day, fixed_date: [1, 2], substitute_rule: if saturday then next monday if sunday then next tuesday}
+  - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if saturday then next monday if sunday then next tuesday}
+  - {name: Day after New Year’s Day, fixed_date: [1, 2], substitute_rule: if saturday then next monday if sunday then next tuesday}
   - {name: Waitangi Day, fixed_date: [2, 6], substitute_rule: "if saturday,sunday then next monday"}
   - {name: Good Friday, variable_date: easter, offset: -2}
   - {name: Easter Monday, variable_date: easter, offset: 1}
   - {name: ANZAC Day, fixed_date: [4, 25], substitute_rule: "if saturday,sunday then next monday"}
-  - {name: King's Birthday, variable_date: firstJuneMonday}
+  - {name: King’s Birthday, variable_date: firstJuneMonday}
   - {name: Matariki, fixed_date: [6, 25], year: 2027}
   - {name: Matariki, fixed_date: [7, 6], year: 2029}
   - {name: Matariki, fixed_date: [7, 10], year: 2026}

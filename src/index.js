@@ -3199,7 +3199,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * the holiday data being arranged such that a substitute never lands on
          * another holiday (e.g. ZA omits the rule on Christmas Day because
          * Day of Goodwill already covers the following Monday).
-         * Example: New Year's Day on Sunday → Jan 1 stays + extra day on Monday.
+         * Example: New Year’s Day on Sunday → Jan 1 stays + extra day on Monday.
          */
         const substitutes = [];
         resolved.forEach(function (holiday_entry) {
