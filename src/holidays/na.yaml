@@ -17,6 +17,6 @@ PH:
   - {name: Africa Day, fixed_date: [5, 25], substitute_rule: if sunday then next monday, substitute_name: Public Holiday}
   - {name: Ascension Day, variable_date: easter, offset: 39}
   - {name: Heroes Day, fixed_date: [8, 26], substitute_rule: if sunday then next monday, substitute_name: Public Holiday}
-  - {name: Human Rights Day, fixed_date: [12, 10], substitute_rule: if sunday then next monday, substitute_name: Public Holiday}
+  - {name: Day of the Namibian Women and International Human Rights Day, fixed_date: [12, 10], substitute_rule: if sunday then next monday, substitute_name: Public Holiday}
   - {name: Christmas Day, fixed_date: [12, 25]}
   - {name: Family Day, fixed_date: [12, 26], substitute_rule: if sunday then next monday, substitute_name: Public Holiday}

@@ -24,9 +24,11 @@ Alabama:
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=Alabama&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Robert E. Lee/Martin Luther King Birthday, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: George Washington/Thomas Jefferson Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Confederate Memorial Day, variable_date: firstAprilMonday, offset: 21}
     - {name: Memorial Day, variable_date: lastMayMonday}
+    - {name: Jefferson Davis’ birthday, variable_date: firstJuneMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
@@ -34,8 +36,6 @@ Alabama:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Confederate Memorial Day, variable_date: firstAprilMonday, offset: 21}
-    - {name: Jefferson Davis’ birthday, variable_date: firstJuneMonday}
 
 Alaska:
   _state_code: ak
@@ -43,17 +43,18 @@ Alaska:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Seward’s Day, variable_date: lastMarchMonday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Alaska Day, fixed_date: [10, 18]}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Seward’s Day, variable_date: lastMarchMonday}
-    - {name: Alaska Day, fixed_date: [10, 18]}
 
 American Samoa:
   _state_code: as
@@ -62,23 +63,23 @@ American Samoa:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: American Samoa Flag Day, fixed_date: [4, 17], substitute_rule: if sunday then next monday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Labor Day, variable_date: firstSeptemberMonday}
+    - {name: Labour Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: American Samoa Flag Day, fixed_date: [4, 17], substitute_rule: if sunday then next monday}
 
 Arizona:
   _state_code: az
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=Arizona&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Dr. Martin Luther King Jr./ Civil Rights Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Lincoln/Washington Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -93,8 +94,8 @@ Arkansas:
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=Arkansas&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Dr. Martin Luther King Jr./Robert E. Lee’s Birthdays, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: George Washington’s Birthday/Daisy Gatson Bates Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -102,8 +103,8 @@ Arkansas:
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Christmas Eve, fixed_date: [12, 24]}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 California:
   _state_code: ca
@@ -111,16 +112,15 @@ California:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: César Chávez Day, fixed_date: [3, 31], substitute_rule: if sunday then next monday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: César Chávez Day, fixed_date: [3, 31], substitute_rule: if sunday then next monday}
 
 Colorado:
   _state_code: co
@@ -128,16 +128,16 @@ Colorado:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Washington-Lincoln Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
+    - {name: Frances Xavier Cabrini Day, variable_date: firstOctoberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Frances Xavier Cabrini Day, variable_date: firstOctoberMonday}
 
 Connecticut:
   _state_code: ct
@@ -145,7 +145,9 @@ Connecticut:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -154,8 +156,6 @@ Connecticut:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
-    - {name: Good Friday, variable_date: easter, offset: -2}
 
 Delaware:
   _state_code: de
@@ -163,16 +163,14 @@ Delaware:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Good Friday, variable_date: easter, offset: -2}
 
 District of Columbia:
   _state_code: dc
@@ -181,15 +179,16 @@ District of Columbia:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Emancipation Day, fixed_date: [4, 16]}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Emancipation Day, fixed_date: [4, 16]}
 
 Florida:
   _state_code: fl
@@ -197,17 +196,15 @@ Florida:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
+    - {name: Commemoration of America’s 250th Birthday, fixed_date: [2, 16], year: 2026}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
-    - {name: Commemoration of America’s 250th Birthday, fixed_date: [2, 16], year: 2026}
 
 Georgia:
   _state_code: ga
@@ -215,7 +212,7 @@ Georgia:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: State Holiday, variable_date: lastAprilMonday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -223,9 +220,8 @@ Georgia:
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: State Holiday, variable_date: lastAprilMonday}
     - {name: Washington’s Birthday, fixed_date: [12, 24], substitute_rule: if wednesday then next friday}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 Guam:
   _state_code: gu
@@ -233,19 +229,18 @@ Guam:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Guam History and Chamorro Heritage Day, variable_date: firstMarchMonday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Liberation Day, fixed_date: [7, 21], shift_rule: if sunday then next monday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: All Souls’ Day, fixed_date: [11, 2]}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Guam History and Chamorro Heritage Day, variable_date: firstMarchMonday}
-    - {name: Liberation Day, fixed_date: [7, 21], shift_rule: if sunday then next monday}
-    - {name: All Souls’ Day, fixed_date: [11, 2]}
     - {name: Our Lady of Camarin Day, fixed_date: [12, 8], shift_rule: if sunday then next monday}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 Hawaii:
   _state_code: hi
@@ -253,27 +248,26 @@ Hawaii:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Prince Jonah Kuhio Kalanianaole Day, fixed_date: [3, 26], substitute_rule: if saturday then previous friday if sunday then next monday}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
+    - {name: Kamehameha Day, fixed_date: [6, 11], substitute_rule: if saturday then previous friday if sunday then next monday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Statehood Day, variable_date: firstAugustFriday, offset: 14}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Prince Jonah Kuhio Kalanianaole Day, fixed_date: [3, 26], substitute_rule: if saturday then previous friday if sunday then next monday}
-    - {name: Good Friday, variable_date: easter, offset: -2}
-    - {name: Kamehameha Day, fixed_date: [6, 11], substitute_rule: if saturday then previous friday if sunday then next monday}
-    - {name: Statehood Day, variable_date: firstAugustFriday, offset: 14}
 
 Idaho:
   _state_code: id
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=Idaho&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: "Martin Luther King, Jr./ Idaho Human Rights Day", variable_date: firstJanuaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -289,7 +283,10 @@ Illinois:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Casimir Pulaski Day, variable_date: firstMarchMonday}
+    - {name: Malcolm X Day, fixed_date: [5, 19]}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -298,9 +295,6 @@ Illinois:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
-    - {name: Casimir Pulaski Day, variable_date: firstMarchMonday}
-    - {name: Malcolm X Day, fixed_date: [5, 19]}
 
 Indiana:
   _state_code: in
@@ -309,6 +303,7 @@ Indiana:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -317,7 +312,6 @@ Indiana:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Good Friday, variable_date: easter, offset: -2}
 
 Iowa:
   _state_code: ia
@@ -325,16 +319,17 @@ Iowa:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
 
 Kansas:
   _state_code: ks
@@ -342,7 +337,6 @@ Kansas:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -358,7 +352,6 @@ Kentucky:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -366,8 +359,8 @@ Kentucky:
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Christmas Eve, fixed_date: [12, 24]}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: New Year’s Eve, fixed_date: [12, 31]}
 
 Louisiana:
@@ -377,6 +370,8 @@ Louisiana:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Mardi Gras, variable_date: easter, offset: -47}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -385,8 +380,6 @@ Louisiana:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Mardi Gras, variable_date: easter, offset: -47}
-    - {name: Good Friday, variable_date: easter, offset: -2}
 
 Maine:
   _state_code: me
@@ -394,16 +387,17 @@ Maine:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Washington’s Birthday/President’s Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Patriots’ Day, variable_date: firstAprilMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Patriots’ Day, variable_date: firstAprilMonday, offset: 14}
 
 Maryland:
   _state_code: md
@@ -411,7 +405,7 @@ Maryland:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -428,7 +422,10 @@ Massachusetts:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Evacuation Day, fixed_date: [3, 17]}
+    - {name: Patriots’ Day, variable_date: firstAprilMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
+    - {name: Bunker Hill Day, fixed_date: [6, 17]}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
@@ -436,9 +433,6 @@ Massachusetts:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Evacuation Day, fixed_date: [3, 17]}
-    - {name: Patriots’ Day, variable_date: firstAprilMonday, offset: 14}
-    - {name: Bunker Hill Day, fixed_date: [6, 17]}
 
 Michigan:
   _state_code: mi
@@ -454,8 +448,8 @@ Michigan:
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Christmas Eve, fixed_date: [12, 24]}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: New Year’s Eve, fixed_date: [12, 31]}
 
 Minnesota:
@@ -464,12 +458,13 @@ Minnesota:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Washington’s and Lincoln’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -479,8 +474,9 @@ Mississippi:
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=Mississippi&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Martin Luther King’s and Robert E. Lee’s Birthdays, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Confederate Memorial Day, variable_date: lastAprilMonday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -489,7 +485,6 @@ Mississippi:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Confederate Memorial Day, variable_date: lastAprilMonday}
 
 Missouri:
   _state_code: mo
@@ -497,7 +492,9 @@ Missouri:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Truman Day, fixed_date: [5, 8]}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -506,8 +503,6 @@ Missouri:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
-    - {name: Truman Day, fixed_date: [5, 8]}
 
 Montana:
   _state_code: mt
@@ -515,7 +510,7 @@ Montana:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Lincoln’s and Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -523,8 +518,8 @@ Montana:
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Christmas Eve, fixed_date: [12, 24]}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: New Year’s Eve, fixed_date: [12, 31]}
 
 Nebraska:
@@ -533,7 +528,8 @@ Nebraska:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Arbor Day, variable_date: lastAprilFriday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -542,7 +538,6 @@ Nebraska:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Arbor Day, variable_date: lastAprilFriday}
 
 Nevada:
   _state_code: nv
@@ -550,24 +545,23 @@ Nevada:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Nevada Day, variable_date: lastOctoberFriday}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Nevada Day, variable_date: lastOctoberFriday}
 
 New Hampshire:
   _state_code: nh
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=New+Hampshire&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: "Martin Luther King, Jr./ Civil Rights Day", variable_date: firstJanuaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -583,7 +577,9 @@ New Jersey:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
+    - {name: Presidents Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -592,8 +588,6 @@ New Jersey:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
-    - {name: Good Friday, variable_date: easter, offset: -2}
 
 New Mexico:
   _state_code: nm
@@ -601,12 +595,13 @@ New Mexico:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -617,6 +612,8 @@ New York:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
+    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -626,8 +623,6 @@ New York:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Lincoln’s Birthday, fixed_date: [2, 12]}
-    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
 
 North Carolina:
   _state_code: nc
@@ -635,17 +630,15 @@ North Carolina:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Christmas Eve, fixed_date: [12, 24], substitute_rule: "if friday then previous thursday if saturday,sunday then previous friday"}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 North Dakota:
   _state_code: nd
@@ -653,7 +646,7 @@ North Dakota:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -669,7 +662,7 @@ Ohio:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Washington-Lincoln Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -685,7 +678,7 @@ Oklahoma:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -701,7 +694,7 @@ Oregon:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -717,8 +710,9 @@ Pennsylvania:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
+    - {name: Flag Day, fixed_date: [6, 14]}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
@@ -726,33 +720,32 @@ Pennsylvania:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Flag Day, fixed_date: [6, 14]}
 
 Puerto Rico:
   _state_code: pr
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=Puerto+Rico&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
-    - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
-    - {name: Memorial Day, variable_date: lastMayMonday}
-    - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
-    - {name: Veterans Day, fixed_date: [11, 11]}
-    - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Año Nuevo, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Día de los Reyes Magos, fixed_date: [1, 6]}
     - {name: Natalicio de Eugenio María de Hostos, variable_date: firstJanuaryMonday, offset: 7}
+    - {name: "Natalicio de Martin Luther King, Jr.", variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Día de los Presidentes, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Natalicio de Luis Muñoz Marín, fixed_date: [2, 18]}
     - {name: Día de la Ciudadanía Americana, fixed_date: [3, 2]}
     - {name: Día de la Abolición de Esclavitud, fixed_date: [3, 22]}
     - {name: Natalicio de José de Diego, fixed_date: [4, 16]}
+    - {name: Recordación de los Muertos de la Guerra, variable_date: lastMayMonday}
+    - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Día de la Independencia, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Natalicio de Don Luis Muñoz Rivera, variable_date: firstJulyMonday, offset: 14}
     - {name: Constitución de Puerto Rico, fixed_date: [7, 25]}
     - {name: Natalicio de Dr. José Celso Barbosa, fixed_date: [7, 27]}
+    - {name: Día del Trabajador, variable_date: firstSeptemberMonday}
+    - {name: Descubrimiento de América, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Día del Veterano, fixed_date: [11, 11]}
     - {name: Día del Descubrimiento de Puerto Rico, fixed_date: [11, 19]}
+    - {name: Acción de Gracias, variable_date: firstNovemberThursday, offset: 21}
+    - {name: Navidad, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 Rhode Island:
   _state_code: ri
@@ -764,12 +757,12 @@ Rhode Island:
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Victory Day, variable_date: firstAugustMonday, offset: 7}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Victory Day, variable_date: firstAugustMonday, offset: 7}
 
 South Carolina:
   _state_code: sc
@@ -778,6 +771,7 @@ South Carolina:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Confederate Memorial Day, fixed_date: [5, 10]}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -786,7 +780,6 @@ South Carolina:
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Confederate Memorial Day, fixed_date: [5, 10]}
     - {name: Boxing Day, fixed_date: [12, 26]}
 
 South Dakota:
@@ -795,12 +788,13 @@ South Dakota:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Native American Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -811,7 +805,8 @@ Tennessee:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -819,9 +814,8 @@ Tennessee:
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Christmas Eve, fixed_date: [12, 24]}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 Texas:
   _state_code: tx
@@ -829,16 +823,16 @@ Texas:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
-    - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Emancipation Day In Texas, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday, substitute_name: Juneteenth}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Christmas Eve, fixed_date: [12, 24]}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Day after Christmas, fixed_date: [12, 26]}
 
 United States Virgin Islands:
@@ -846,23 +840,23 @@ United States Virgin Islands:
   _nominatim_url: "https://nominatim.openstreetmap.org/search?format=json&country=United+States+of+America&state=United+States+Virgin+Islands&zoom=18&addressdetails=1&limit=1&accept-language=en"
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
-    - {name: Memorial Day, variable_date: lastMayMonday}
-    - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Labor Day, variable_date: firstSeptemberMonday}
-    - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
-    - {name: Veterans Day, fixed_date: [11, 11]}
-    - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
-    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Three Kings Day, fixed_date: [1, 6]}
+    - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Transfer Day, fixed_date: [3, 31]}
     - {name: Maundy Thursday, variable_date: easter, offset: -3}
     - {name: Good Friday, variable_date: easter, offset: -2}
     - {name: Easter Monday, variable_date: easter, offset: 1}
+    - {name: Memorial Day, variable_date: lastMayMonday}
+    - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Emancipation Day, fixed_date: [7, 3]}
+    - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Hurricane Supplication Day, variable_date: firstJulyMonday, offset: 21}
+    - {name: Labour Day, variable_date: firstSeptemberMonday}
+    - {name: Virgin Islands–Puerto Rico Friendship Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Veterans Day, fixed_date: [11, 11]}
+    - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
+    - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
 
 Utah:
   _state_code: ut
@@ -870,16 +864,16 @@ Utah:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Washington and Lincoln Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Pioneer Day, fixed_date: [7, 24]}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Pioneer Day, fixed_date: [7, 24]}
 
 Vermont:
   _state_code: vt
@@ -887,17 +881,18 @@ Vermont:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Town Meeting Day, variable_date: firstMarchTuesday}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: Bennington Battle Day, variable_date: firstAugustMonday, offset: 14}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
+    - {name: Indigenous Peoples’ Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Town Meeting Day, variable_date: firstMarchTuesday}
-    - {name: Bennington Battle Day, variable_date: firstAugustMonday, offset: 14}
 
 Virginia:
   _state_code: va
@@ -905,7 +900,7 @@ Virginia:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: George Washington Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -921,7 +916,7 @@ Washington:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Presidents’ Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
@@ -937,17 +932,17 @@ West Virginia:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
+    - {name: West Virginia Day, fixed_date: [6, 20]}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
-    - {name: West Virginia Day, fixed_date: [6, 20]}
 
 Wisconsin:
   _state_code: wi
@@ -955,17 +950,17 @@ Wisconsin:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
+    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
     - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Labor Day, variable_date: firstSeptemberMonday}
+    - {name: Primary Election Day, variable_date: firstSeptemberTuesday, offset: 7}
     - {name: Columbus Day, variable_date: firstOctoberMonday, offset: 7}
     - {name: Veterans Day, fixed_date: [11, 11]}
     - {name: Thanksgiving Day, variable_date: firstNovemberThursday, offset: 21}
     - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if sunday then next monday if saturday then previous friday}
-    - {name: Susan B. Anthony Day, fixed_date: [2, 15]}
-    - {name: Primary Election Day, variable_date: firstSeptemberTuesday, offset: 7}
 
 Wyoming:
   _state_code: wy
@@ -973,7 +968,7 @@ Wyoming:
   PH:
     - {name: New Year’s Day, fixed_date: [1, 1], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Martin Luther King Jr. Day, variable_date: firstJanuaryMonday, offset: 14}
-    - {name: Washington’s Birthday, variable_date: firstFebruaryMonday, offset: 14}
+    - {name: President’s Day, variable_date: firstFebruaryMonday, offset: 14}
     - {name: Memorial Day, variable_date: lastMayMonday}
     - {name: Juneteenth, fixed_date: [6, 19], substitute_rule: if sunday then next monday if saturday then previous friday}
     - {name: Independence Day, fixed_date: [7, 4], substitute_rule: if sunday then next monday if saturday then previous friday}

@@ -10,21 +10,17 @@ _nominatim_url: "https://nominatim.openstreetmap.org/reverse?format=json&lat=41.
 PH:
   - {name: Año Nuevo, fixed_date: [1, 1]}
   - {name: Día de los Reyes Magos, fixed_date: [1, 6]}
-  - {name: Viernes Santo, variable_date: easter, offset: -2}
-  - {name: Día del Trabajador, fixed_date: [5, 1]}
-  - {name: Asunción, fixed_date: [8, 15]}
-  - {name: Fiesta Nacional de España, fixed_date: [10, 12]}
-  - {name: Todos los Santos, fixed_date: [11, 1]}
-  - {name: Día de la Constitución Española, fixed_date: [12, 6]}
-  - {name: La inmaculada concepción, fixed_date: [12, 8]}
-  - {name: Navidad, fixed_date: [12, 25], substitute_rule: if sunday then next monday}
   - {name: Día de Andalucía, fixed_date: [2, 28], substitute_rule: if sunday then next monday, only_states: [Andalucía]}
   - {name: Día de les Illes Balears, fixed_date: [3, 1], substitute_rule: if sunday then next monday, only_states: [Illes Balears]}
   - {name: San José, fixed_date: [3, 19], only_states: [Comunidad Foral de Navarra, Comunitat Valenciana, Galicia, País Vasco, Región de Murcia]}
   - {name: Jueves Santo, variable_date: easter, offset: -3, only_states: [Andalucía, Aragón, Asturias, Cantabria, Castilla y León, Castilla-La Mancha, Ceuta, Comunidad de Madrid, Comunidad Foral de Navarra, Extremadura, Galicia, Illes Balears, La Rioja, Melilla, País Vasco, Región de Murcia]}
+  - {name: Viernes Santo, variable_date: easter, offset: -2}
   - {name: Lunes de Pascua, variable_date: easter, offset: 1, only_states: [Cataluña, Comunidad Foral de Navarra, Comunitat Valenciana, Illes Balears, La Rioja, País Vasco]}
   - {name: Día de Aragón, fixed_date: [4, 23], substitute_rule: if sunday then next monday, only_states: [Aragón]}
   - {name: Fiesta de Castilla y León, fixed_date: [4, 23], substitute_rule: if sunday then next monday, only_states: [Castilla y León]}
+  - {name: Día del Trabajador, fixed_date: [5, 1], substitute_rule: if sunday then next monday, only_states: [Andalucía, Aragón, Asturias, Castilla y León, Extremadura, Región de Murcia]}
+  - {name: Día del Trabajador, fixed_date: [5, 1], only_states: [Cantabria, Castilla-La Mancha, Ceuta, Comunidad de Madrid, Comunidad Foral de Navarra, Comunitat Valenciana, Galicia, Illes Balears, Islas Canarias, La Rioja, Melilla, País Vasco]}
+  - {name: Día del Trabajador, fixed_date: [5, 1], substitute_rule: "if saturday, sunday then next monday", only_states: [Cataluña]}
   - {name: Día de la Comunidad de Madrid, fixed_date: [5, 2], shift_rule: if sunday then next monday, only_states: [Comunidad de Madrid]}
   - {name: Día de las Letras Gallegas, fixed_date: [5, 17], only_states: [Galicia]}
   - {name: Día de Castilla-La Mancha, fixed_date: [5, 31], only_states: [Castilla-La Mancha]}
@@ -36,12 +32,21 @@ PH:
   - {name: Día Nacional de Galicia, fixed_date: [7, 25], only_states: [Galicia]}
   - {name: Santiago Apóstol, fixed_date: [7, 25], only_states: [País Vasco]}
   - {name: Nuestra Señora de África, fixed_date: [8, 5], substitute_rule: if sunday then next monday, only_states: [Ceuta]}
+  - {name: Asunción, fixed_date: [8, 15], substitute_rule: if sunday then next monday, only_states: [Andalucía, Aragón, Asturias, Castilla y León]}
+  - {name: Asunción, fixed_date: [8, 15], only_states: [Cantabria, Castilla-La Mancha, Cataluña, Ceuta, Comunidad de Madrid, Comunidad Foral de Navarra, Comunitat Valenciana, Extremadura, Galicia, Illes Balears, Islas Canarias, La Rioja, Melilla, País Vasco, Región de Murcia]}
   - {name: Día de Ceuta, fixed_date: [9, 2], substitute_rule: if sunday then next monday, only_states: [Ceuta]}
   - {name: Día de Asturias, fixed_date: [9, 8], substitute_rule: if sunday then next monday, only_states: [Asturias]}
   - {name: Día de Extremadura, fixed_date: [9, 8], substitute_rule: if sunday then next monday, only_states: [Extremadura]}
   - {name: Dia de Cataluña, fixed_date: [9, 11], only_states: [Cataluña]}
   - {name: La Bien Aparecida, fixed_date: [9, 15], substitute_rule: if sunday then next monday, only_states: [Cantabria]}
   - {name: Nuestra Señora de la Merced, fixed_date: [9, 24], shift_rule: if sunday then next monday, only_states: [Cataluña]}
+  - {name: Fiesta Nacional de España, fixed_date: [10, 12]}
+  - {name: Todos los Santos, fixed_date: [11, 1], substitute_rule: if sunday then next monday, only_states: [Andalucía, Aragón, Asturias, Castilla y León, Castilla-La Mancha, Comunidad de Madrid, Comunidad Foral de Navarra, Extremadura]}
+  - {name: Todos los Santos, fixed_date: [11, 1], only_states: [Cantabria, Cataluña, Ceuta, Comunitat Valenciana, Galicia, Illes Balears, Islas Canarias, La Rioja, Melilla, País Vasco, Región de Murcia]}
+  - {name: Día de la Constitución Española, fixed_date: [12, 6], substitute_rule: if sunday then next monday, only_states: [Andalucía, Aragón, Asturias, Cantabria, Castilla y León, Comunidad de Madrid, Extremadura, La Rioja, Melilla, Región de Murcia]}
+  - {name: Día de la Constitución Española, fixed_date: [12, 6], only_states: [Castilla-La Mancha, Cataluña, Ceuta, Comunidad Foral de Navarra, Comunitat Valenciana, Galicia, Illes Balears, Islas Canarias, País Vasco]}
+  - {name: La inmaculada concepción, fixed_date: [12, 8]}
+  - {name: Navidad, fixed_date: [12, 25], substitute_rule: if sunday then next monday}
   - {name: San Esteban, fixed_date: [12, 26], only_states: [Cataluña]}
 
 Andalucía:

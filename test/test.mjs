@@ -1628,8 +1628,8 @@ test.addTest('Variable days: United States public holidays. Alabama', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Robert E. Lee/Martin Luther King Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'George Washington/Thomas Jefferson Birthday' ],
     [ '2025-04-28 00:00', '2025-04-29 00:00', false, 'Confederate Memorial Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-02 00:00', '2025-06-03 00:00', false, 'Jefferson Davis’ birthday' ],
@@ -1647,7 +1647,7 @@ test.addTest('Variable days: United States public holidays. Alaska', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-03-31 00:00', '2025-04-01 00:00', false, 'Seward’s Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -1664,8 +1664,8 @@ test.addTest('Variable days: United States public holidays. Arizona', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Dr. Martin Luther King Jr./ Civil Rights Day' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Lincoln/Washington Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -1680,8 +1680,8 @@ test.addTest('Variable days: United States public holidays. Arkansas', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Dr. Martin Luther King Jr./Robert E. Lee’s Birthdays' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'George Washington’s Birthday/Daisy Gatson Bates Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -1698,24 +1698,23 @@ test.addTest('Variable days: United States public holidays. California', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-03-31 00:00', '2025-04-01 00:00', false, 'César Chávez Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (12 + 0), 0, false, nominatim_by_loc.us_ca, 'not last test');
+], 1000 * 60 * 60 * 24 * (11 + 0), 0, false, nominatim_by_loc.us_ca, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Colorado', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington-Lincoln Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -1750,17 +1749,15 @@ test.addTest('Variable days: United States public holidays. Delaware', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (12 + 0), 0, false, nominatim_by_loc.us_de, 'not last test');
+], 1000 * 60 * 60 * 24 * (10 + 0), 0, false, nominatim_by_loc.us_de, 'not last test');
 
 test.addTest('Variable days: United States public holidays. District of Columbia', [
     'PH',
@@ -1785,23 +1782,20 @@ test.addTest('Variable days: United States public holidays. Florida', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
     [ '2025-02-15 00:00', '2025-02-16 00:00', false, 'Susan B. Anthony Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (12 + 0), 0, false, nominatim_by_loc.us_fl, 'not last test');
+], 1000 * 60 * 60 * 24 * (10 + 0), 0, false, nominatim_by_loc.us_fl, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Georgia', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-04-28 00:00', '2025-04-29 00:00', false, 'State Holiday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -1813,14 +1807,13 @@ test.addTest('Variable days: United States public holidays. Georgia', [
     [ '2025-12-24 00:00', '2025-12-25 00:00', false, 'Washington’s Birthday' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
     [ '2025-12-26 00:00', '2025-12-27 00:00', false, 'Washington’s Birthday' ],
-], 1000 * 60 * 60 * 24 * (14 + 0), 0, false, nominatim_by_loc.us_ga, 'not last test');
+], 1000 * 60 * 60 * 24 * (13 + 0), 0, false, nominatim_by_loc.us_ga, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Guam', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-03-03 00:00', '2025-03-04 00:00', false, 'Guam History and Chamorro Heritage Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -1833,14 +1826,14 @@ test.addTest('Variable days: United States public holidays. Guam', [
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-08 00:00', '2025-12-09 00:00', false, 'Our Lady of Camarin Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (15 + 0), 0, false, nominatim_by_loc.us_gu, 'not last test');
+], 1000 * 60 * 60 * 24 * (14 + 0), 0, false, nominatim_by_loc.us_gu, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Hawaii', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-03-26 00:00', '2025-03-27 00:00', false, 'Prince Jonah Kuhio Kalanianaole Day' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
@@ -1849,18 +1842,17 @@ test.addTest('Variable days: United States public holidays. Hawaii', [
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-08-15 00:00', '2025-08-16 00:00', false, 'Statehood Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (15 + 0), 0, false, nominatim_by_loc.us_hi, 'not last test');
+], 1000 * 60 * 60 * 24 * (14 + 0), 0, false, nominatim_by_loc.us_hi, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Idaho', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King, Jr./ Idaho Human Rights Day' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -1929,7 +1921,6 @@ test.addTest('Variable days: United States public holidays. Kansas', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -1938,14 +1929,13 @@ test.addTest('Variable days: United States public holidays. Kansas', [
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (11 + 0), 0, false, nominatim_by_loc.us_ks, 'not last test');
+], 1000 * 60 * 60 * 24 * (10 + 0), 0, false, nominatim_by_loc.us_ks, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Kentucky', [
     'PH',
 ], '2025-01-01 0:00', '2026-01-01 00:00', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -1956,7 +1946,7 @@ test.addTest('Variable days: United States public holidays. Kentucky', [
     [ '2025-12-24 00:00', '2025-12-25 00:00', false, 'Christmas Eve' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
     [ '2025-12-31 00:00', '2026-01-01 00:00', false, 'New Year’s Eve' ],
-], 1000 * 60 * 60 * 24 * (13 + 0), 0, false, nominatim_by_loc.us_ky, 'not last test');
+], 1000 * 60 * 60 * 24 * (12 + 0), 0, false, nominatim_by_loc.us_ky, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Louisiana', [
     'PH',
@@ -1981,7 +1971,7 @@ test.addTest('Variable days: United States public holidays. Maine', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday/President’s Day' ],
     [ '2025-04-21 00:00', '2025-04-22 00:00', false, 'Patriots’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -1998,7 +1988,7 @@ test.addTest('Variable days: United States public holidays. Maryland', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2051,7 +2041,7 @@ test.addTest('Variable days: United States public holidays. Minnesota', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s and Lincoln’s Birthday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2066,7 +2056,7 @@ test.addTest('Variable days: United States public holidays. Mississippi', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King’s and Robert E. Lee’s Birthdays' ],
     [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-04-28 00:00', '2025-04-29 00:00', false, 'Confederate Memorial Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
@@ -2102,7 +2092,7 @@ test.addTest('Variable days: United States public holidays. Montana', [
 ], '2025-01-01 0:00', '2026-01-01 00:00', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Lincoln’s and Washington’s Birthday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2120,7 +2110,7 @@ test.addTest('Variable days: United States public holidays. Nebraska', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-04-25 00:00', '2025-04-26 00:00', false, 'Arbor Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -2137,24 +2127,23 @@ test.addTest('Variable days: United States public holidays. Nevada', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
     [ '2025-10-31 00:00', '2025-11-01 00:00', false, 'Nevada Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (12 + 0), 0, false, nominatim_by_loc.us_nv, 'not last test');
+], 1000 * 60 * 60 * 24 * (11 + 0), 0, false, nominatim_by_loc.us_nv, 'not last test');
 
 test.addTest('Variable days: United States public holidays. New Hampshire', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King, Jr./ Civil Rights Day' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2171,7 +2160,7 @@ test.addTest('Variable days: United States public holidays. New Jersey', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
     [ '2025-02-12 00:00', '2025-02-13 00:00', false, 'Lincoln’s Birthday' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents Day' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -2188,7 +2177,7 @@ test.addTest('Variable days: United States public holidays. New Mexico', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2222,25 +2211,23 @@ test.addTest('Variable days: United States public holidays. North Carolina', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-24 00:00', '2025-12-25 00:00', false, 'Christmas Eve' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
-], 1000 * 60 * 60 * 24 * (13 + 0), 0, false, nominatim_by_loc.us_nc, 'not last test');
+], 1000 * 60 * 60 * 24 * (11 + 0), 0, false, nominatim_by_loc.us_nc, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Ohio', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington-Lincoln Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2256,7 +2243,7 @@ test.addTest('Variable days: United States public holidays. Oklahoma', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2272,7 +2259,7 @@ test.addTest('Variable days: United States public holidays. Oregon', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2288,7 +2275,7 @@ test.addTest('Variable days: United States public holidays. Pennsylvania', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-14 00:00', '2025-06-15 00:00', false, 'Flag Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -2303,27 +2290,27 @@ test.addTest('Variable days: United States public holidays. Pennsylvania', [
 test.addTest('Variable days: United States public holidays. Puerto Rico', [
     'PH',
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
-    [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
+    [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'Año Nuevo' ],
     [ '2025-01-06 00:00', '2025-01-07 00:00', false, 'Día de los Reyes Magos' ],
     [ '2025-01-13 00:00', '2025-01-14 00:00', false, 'Natalicio de Eugenio María de Hostos' ],
-    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Natalicio de Martin Luther King, Jr.' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Día de los Presidentes' ],
     [ '2025-02-18 00:00', '2025-02-19 00:00', false, 'Natalicio de Luis Muñoz Marín' ],
     [ '2025-03-02 00:00', '2025-03-03 00:00', false, 'Día de la Ciudadanía Americana' ],
     [ '2025-03-22 00:00', '2025-03-23 00:00', false, 'Día de la Abolición de Esclavitud' ],
     [ '2025-04-16 00:00', '2025-04-17 00:00', false, 'Natalicio de José de Diego' ],
-    [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
+    [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Recordación de los Muertos de la Guerra' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
-    [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
+    [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Día de la Independencia' ],
     [ '2025-07-21 00:00', '2025-07-22 00:00', false, 'Natalicio de Don Luis Muñoz Rivera' ],
     [ '2025-07-25 00:00', '2025-07-26 00:00', false, 'Constitución de Puerto Rico' ],
     [ '2025-07-27 00:00', '2025-07-28 00:00', false, 'Natalicio de Dr. José Celso Barbosa' ],
-    [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
-    [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
+    [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Día del Trabajador' ],
+    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Descubrimiento de América' ],
+    [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Día del Veterano' ],
     [ '2025-11-19 00:00', '2025-11-20 00:00', false, 'Día del Descubrimiento de Puerto Rico' ],
-    [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
-    [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
+    [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Acción de Gracias' ],
+    [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Navidad' ],
 ], 1000 * 60 * 60 * 24 * (21 + 0), 0, false, nominatim_by_loc.us_pr, 'not last test');
 
 test.addTest('Variable days: United States public holidays. Rhode Island', [
@@ -2366,7 +2353,7 @@ test.addTest('Variable days: United States public holidays. South Dakota', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2382,7 +2369,7 @@ test.addTest('Variable days: United States public holidays. Tennessee', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -2400,9 +2387,9 @@ test.addTest('Variable days: United States public holidays. Texas', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
-    [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
+    [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Emancipation Day In Texas' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
     [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
@@ -2419,7 +2406,7 @@ test.addTest('Variable days: United States public holidays. United States Virgin
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-06 00:00', '2025-01-07 00:00', false, 'Three Kings Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-03-31 00:00', '2025-04-01 00:00', false, 'Transfer Day' ],
     [ '2025-04-17 00:00', '2025-04-18 00:00', false, 'Maundy Thursday' ],
     [ '2025-04-18 00:00', '2025-04-19 00:00', false, 'Good Friday' ],
@@ -2429,8 +2416,8 @@ test.addTest('Variable days: United States public holidays. United States Virgin
     [ '2025-07-03 00:00', '2025-07-04 00:00', false, 'Emancipation Day' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
     [ '2025-07-28 00:00', '2025-07-29 00:00', false, 'Hurricane Supplication Day' ],
-    [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labor Day' ],
-    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Columbus Day' ],
+    [ '2025-09-01 00:00', '2025-09-02 00:00', false, 'Labour Day' ],
+    [ '2025-10-13 00:00', '2025-10-14 00:00', false, 'Virgin Islands–Puerto Rico Friendship Day' ],
     [ '2025-11-11 00:00', '2025-11-12 00:00', false, 'Veterans Day' ],
     [ '2025-11-27 00:00', '2025-11-28 00:00', false, 'Thanksgiving Day' ],
     [ '2025-12-25 00:00', '2025-12-26 00:00', false, 'Christmas Day' ],
@@ -2441,7 +2428,7 @@ test.addTest('Variable days: United States public holidays. Utah', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington and Lincoln Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2458,7 +2445,7 @@ test.addTest('Variable days: United States public holidays. Vermont', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-03-04 00:00', '2025-03-05 00:00', false, 'Town Meeting Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
@@ -2476,7 +2463,7 @@ test.addTest('Variable days: United States public holidays. Virginia', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'George Washington Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2492,7 +2479,7 @@ test.addTest('Variable days: United States public holidays. Washington', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Presidents’ Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],
@@ -2509,7 +2496,7 @@ test.addTest('Variable days: United States public holidays. West Virginia', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
     [ '2025-02-15 00:00', '2025-02-16 00:00', false, 'Susan B. Anthony Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-06-20 00:00', '2025-06-21 00:00', false, 'West Virginia Day' ],
@@ -2544,7 +2531,7 @@ test.addTest('Variable days: United States public holidays. Wyoming', [
 ], '2025-01-01 0:00', '2025-12-31 23:59', [
     [ '2025-01-01 00:00', '2025-01-02 00:00', false, 'New Year’s Day' ],
     [ '2025-01-20 00:00', '2025-01-21 00:00', false, 'Martin Luther King Jr. Day' ],
-    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'Washington’s Birthday' ],
+    [ '2025-02-17 00:00', '2025-02-18 00:00', false, 'President’s Day' ],
     [ '2025-05-26 00:00', '2025-05-27 00:00', false, 'Memorial Day' ],
     [ '2025-06-19 00:00', '2025-06-20 00:00', false, 'Juneteenth' ],
     [ '2025-07-04 00:00', '2025-07-05 00:00', false, 'Independence Day' ],

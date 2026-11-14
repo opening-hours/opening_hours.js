@@ -11,8 +11,8 @@ PH:
   - {name: Новий Рік, fixed_date: [1, 1], substitute_rule: "if saturday, sunday then next tuesday"}
   - {name: Новий Рік, fixed_date: [1, 2], substitute_rule: "if saturday, sunday then next monday"}
   - {name: Міжнародний жіночий день, fixed_date: [3, 8], substitute_rule: "if saturday, sunday then next monday"}
-  - {name: Великдень, variable_date: orthodox easter}
-  - {name: Трійця, variable_date: orthodox easter, offset: 49}
+  - {name: Великдень, variable_date: orthodox easter, substitute_rule: if sunday then next monday}
+  - {name: Трійця, variable_date: orthodox easter, offset: 49, substitute_rule: if sunday then next monday}
   - {name: День міжнародної солідарності трудящих, fixed_date: [5, 1], substitute_rule: "if saturday, sunday then next tuesday"}
   - {name: День перемоги над нацизмом у Другій світовій війні, fixed_date: [5, 9], substitute_rule: "if saturday, sunday then next monday"}
   - {name: День Конституції, fixed_date: [6, 28], substitute_rule: "if saturday, sunday then next monday"}
