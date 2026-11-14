@@ -13,7 +13,7 @@ PH:
   - {name: Easter Monday, variable_date: easter, offset: 1}
   - {name: Early May bank holiday, variable_date: firstMayMonday}
   - {name: Liberation Day, fixed_date: [5, 9]}
-  - {name: Spring bank holiday, variable_date: lastMayMonday}
-  - {name: Summer bank holiday, variable_date: lastAugustMonday}
+  - {name: Spring Bank Holiday, variable_date: lastMayMonday}
+  - {name: Summer Bank Holiday, variable_date: lastAugustMonday}
   - {name: Christmas Day, fixed_date: [12, 25], substitute_rule: if saturday then next monday if sunday then next tuesday}
   - {name: Boxing Day, fixed_date: [12, 26], substitute_rule: if saturday then next monday if sunday then next tuesday}
