@@ -127,6 +127,7 @@ All notable changes to this project will be documented in this file. See [commit
 * **site:** resolve i18next via import map 39d8b58
 * switch to standard jsdoc syntax 3502bce
 * type token rules safely d1b6d6f
+
 ## [3.14.0](https://github.com/opening-hours/opening_hours.js/compare/v3.13.0...v3.14.0) (2026-07-15)
 
 
