@@ -8,7 +8,7 @@ SPDX-License-Identifier: LGPL-3.0-only
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-## [3.16.0](///compare/v3.15.0...v3.16.0) (2026-11-16)
+## [3.16.0](https://github.com/opening-hours/opening_hours.js/compare/v3.15.0...v3.16.0) (2026-11-16)
 
 ### Features
 
@@ -138,7 +138,7 @@ All notable changes to this project will be documented in this file. See [commit
 * use camelCase for local variables in parseGroup 36081ba
 * use includes for membership checks f80d2da
 
-## [3.15.0](///compare/v3.14.0...v3.15.0) (2026-09-21)
+## [3.15.0](https://github.com/opening-hours/opening_hours.js/compare/v3.14.0...v3.15.0) (2026-09-21)
 
 ### Features
 
