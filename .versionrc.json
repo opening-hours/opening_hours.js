@@ -44,5 +44,8 @@
       "type": "ci",
       "hidden": true
     }
-  ]
+  ],
+  "commitUrlFormat": "{{repoUrl}}/commit/{{hash}}",
+  "compareUrlFormat": "{{repoUrl}}/compare/{{previousTag}}...{{currentTag}}",
+  "issueUrlFormat": "{{repoUrl}}/issues/{{id}}"
 }
