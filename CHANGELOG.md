@@ -8,7 +8,137 @@ SPDX-License-Identifier: LGPL-3.0-only
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
-## [3.15.0](///compare/v3.14.0...v3.15.0) (2026-09-21)
+## [3.16.0](https://github.com/opening-hours/opening_hours.js/compare/v3.15.0...v3.16.0) (2026-11-16)
+
+### Features
+
+* **holidays:** add Nominatim cache coverage check 5658836
+* **regex_search:** report fallback input file 6bcd3a2
+* **regex_search:** report missing input file 533b50f
+
+### Bug Fixes
+
+* avoid regex backtracking on whitespace 3bc1c27
+* **build:** regenerate CLDR layers consistently e3b7d40
+* **evaluation-tool:** increase Nominatim reverse geocode zoom to resolve sub-state regions c7ba3b9
+* **generator:** add missing type annotations 95ebfa5
+* **holidays:** type Nominatim cache checker 61e7a81
+* **holidays:** type regional PH and SH definitions d974a66
+* **interactive-testing:** add missing type annotations 9b8860a
+* **isEqualTo:** compare schedules chronologically 2ca8a6d
+* **locale-resolver:** add Polish sb alias, reject unresolved ambiguity 09c6aab
+* **npm:** list types condition first in package exports 0968328
+* **parser:** enforce open-end word boundaries 5759c78
+* **parser:** handle a.m/p.m without trailing dots 89585c9
+* **parser:** match colon separators by type 9db1293
+* **parser:** support open-ended monthday ranges 38fe784
+* **real-test:** add 'p' option to boolean flags in CLI 11574b3
+* **real-test:** process all non-ignored values 224e794
+* **real-test:** sample exactly one week 0015aca
+* **real-test:** use styleText for tag output 6e7de95
+* **regex_search:** add missing type annotations ff60673
+* **regex_search:** correct condition to check for matched results e0e05cf
+* **regex_search:** report read errors on stderr and exit with failure ae909bc
+* **regex_search:** show prompt only after the print question is answered 3e8087e
+* **regex_search:** use styleText for console output formatting a955127
+* **resolver:** add missing type annotations 776e9ca
+* **school-holidays:** validate and type input data c688c01
+* **scripts:** avoid mutating dates in PH_SH_exporter 45b0558
+* **scripts:** reject invalid Nominatim data ea70552
+* **scripts:** separate all-location exports 7d428f7
+* **spellcheck:** enhance input fields with spellcheck 87f61b2
+* **taginfo:** add missing type annotations 5535d8e
+* **taginfo:** clarify download status output 3423719
+* **taginfo:** correct typo in log message fe9ce3b
+* **taginfo:** guard missing timestamp 065725b
+* **taginfo:** handle request errors 7f7e291
+* **taginfo:** show help without a key file eecadde
+* **taginfo:** type download script responses 46f8465
+* **taginfo:** wait for dump file to finish 0d35dfd
+* **types:** correct nominatim_object lat, lon and address types ad9234e
+* **types:** narrow continue_at reassignment type c557377
+* **types:** type getStatePair rules parameter 3678131
+* **types:** type locale resolver boundary bd3fd5b
+* **types:** type rule parameter in parser helpers 6dfbfc9
+* **types:** type token map prefixes 9eb0675
+
+### Data Updates
+
+* **holidays:** refresh Nominatim cache fixtures 5da7a01
+* **PH:** add date-holidays for comparison c337aea
+* **PH:** align with date-holidays 32d46ce
+* **PH:** align with date-holidays a00607b
+* **PH:** align with date-holidays 2c60708
+* **PH:** align with date-holidays 6a265ff
+
+### Documentation
+
+* add missing newline to between changelog release entry c17c0b9
+* clarify 24/7 time selector comment in parseGroup 9bfeaea
+* **cli:** clarify region option description 9acb904
+* fix typos b6934cc
+* **parser:** document phrase correction result 56e1496
+
+### Code Refactoring
+
+* classify week token in parseWeekRange 13a9e6f
+* **cli:** modernize yargs parsing ac302dc
+* **generator:** process locales directly 9590e1d
+* **holiday-exporter:** convert script to ESM a62470e
+* **holidays:** load generated data via URL 5e2c742
+* **holidays:** mark generated data as ESM 6cf74f2
+* **holidays:** rename and clarify generator 66f5eda
+* **holidays:** resolve cache paths via URL bda0197
+* **holidays:** trim history to five years c6b47cd
+* **i18n:** simplify translation lookup and add yaml types be8a561
+* improve variable names c986a1e
+* **interactive-testing:** convert script to ESM 19b03a0
+* **interactive-testing:** simplify server setup e5ca183
+* **locales:** expand regex into literals 9cfec7f
+* **locales:** separate correction validation 2f922e3
+* **locales:** simplify ambiguity detection 442134f
+* **locales:** split literal and regex rules c886eac
+* **nominatim-cache:** convert generator to ESM 7d0c7b3
+* **parser:** check comma by token type in parseGroup 3bab2b6
+* **parser:** extract osm tag defaults module 3e74913
+* **parser:** normalize monthday token typing 264fbef
+* **parser:** simplify optional config readers a522307
+* **parser:** type parser tokens in prettify helpers 937dab1
+* **parser:** use every for selector check 96a84a1
+* **parser:** validate config values e1326b4
+* **parser:** validate numeric token access fe6f2a6
+* **real-test:** migrate script to ESM 302d1a2
+* **regex_search:** convert script to ESM aa5bd76
+* **regex_search:** improve identifier names d26c812
+* **regex_search:** use Match objects instead of tuples 3c022c2
+* rename parseGroup params to avoid shadowing 9831044
+* replace substr with slice 17cbcfd
+* **scripts:** port Nominatim cache generator to Node.js 8c77960
+* **scripts:** typecheck PH_SH_exporter 0c4eb67
+* **scripts:** use node:fs globSync instead of glob fd863b2
+* **scripts:** use padStart in PH_SH_exporter 8f881f6
+* **taginfo:** convert checker to ESM d123890
+* **taginfo:** convert generator to ESM 722ba52
+* **taginfo:** drop unused 412 handling 064c047
+* **taginfo:** set exit code without forcing exit 9001f75
+* **taginfo:** use fetch in download script c05e0dd
+* **test:** convert test runner to ESM 24c294b
+* **tokenize:** extract range token recognition b1fa777
+* **tokenize:** extract tokenizer module 34c1c84
+* **tokenize:** extract Unicode digit normalization eafc88d
+* **tokenize:** hoist phrase corrections c4c064c
+* **tokenize:** hoist single-letter guard 1f9f00a
+* **tokenize:** hoist static regexes 1157dff
+* **types:** annotate internal parser rule structures ec2cac5
+* **types:** clarify parser warning types ff58637
+* **types:** define selector result tuples 346d14c
+* **types:** share region layer contract 37ca7c2
+* **types:** simplify parseGroup and type prettifyValue 2821e2b
+* **types:** use public nominatim_object type in JSDoc b5605f6
+* use camelCase for local variables in parseGroup 36081ba
+* use includes for membership checks f80d2da
+
+## [3.15.0](https://github.com/opening-hours/opening_hours.js/compare/v3.14.0...v3.15.0) (2026-09-21)
 
 ### Features
 
@@ -127,6 +257,7 @@ All notable changes to this project will be documented in this file. See [commit
 * **site:** resolve i18next via import map 39d8b58
 * switch to standard jsdoc syntax 3502bce
 * type token rules safely d1b6d6f
+
 ## [3.14.0](https://github.com/opening-hours/opening_hours.js/compare/v3.13.0...v3.14.0) (2026-07-15)
 
 
