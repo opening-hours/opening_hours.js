@@ -645,7 +645,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /**
      * Return warnings as list {{{
-     * @param {{advance: () => boolean}|undefined} [it] Optional iterator object, if available.
+     * @param {OpeningHoursIterator} [it] Optional iterator, if available.
      * @param {boolean} [structured] If true, return structured warning objects; defaults to false.
      *     ({ type, message, value, position }) instead of formatted message strings.
      * @returns {Array<string|{type: string, message: string, value: string, position: number|null}>} Warnings as list. By default one formatted message string per element.
@@ -1479,7 +1479,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
-    // Check if period is ok. Period 0 or 1 don’t make much sense.
+    /**
+     * Check if a period is valid. Period 0 or 1 normally does not make sense.
+     * @param {number} at Token position of the period.
+     * @param {number} period Period value.
+     * @param {string} period_type Selector type for error messages.
+     * @param {string} [parm_string] Optional period variant.
+     * @returns {void}
+     */
     function checkPeriod(at, period, period_type, parm_string) {
         if (done_with_warnings)
             return;
@@ -1501,7 +1508,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @param {number} year Year.
      * @param {number} month Month number, starting with zero.
      * @param {number} weekday Weekday number, starting with zero (Sunday).
-     * @param {[number, number]} constrained_weekday Constraint number and token position.
+     * @param {[number, number?]} constrained_weekday Constraint number and optional token position.
      * @param {[number, number]} [add_days] Optional number of days to add and token count.
      * @returns {Date} Date for the constrained weekday.
      */
@@ -1592,14 +1599,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
         }
     }
 
+    /** @typedef {false|true|1} ExtendedOpenEndMode */
     /**
      * Parse time ranges such as `10:00-12:00,14:00-16:00`. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where to start.
      * @param {ParsedRule} rule Rule object to which the parsed selector is added.
-     * @param {boolean|number} [extended_open_end] Optional marker for a
-     *     combined time range with an open end. The value `1` indicates that
-     *     the range continues into the next day.
+     * @param {ExtendedOpenEndMode} extended_open_end Open-end parsing mode.
+     *     `false` parses a regular range, `true` an extended open end, and `1`
+     *     an extended open end shifted to the next day.
      * @param {number} nrule Rule number, starting with zero.
      * @returns {number|number[]} Position at which the token no longer belongs
      *     to the selector, or an additional-rule position.
@@ -2056,6 +2064,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         for (; at < tokens.length; at++) {
             if (matchTokens(tokens, at, 'weekday', '[')) {
                 // Conditional weekday (Mo[3])
+                /** @type {number[]} */
                 const numbers = [];
 
                 // Get list of constraints
@@ -4249,31 +4258,56 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     // Simple API {{{
 
+    /**
+     * @param {Date} [date] Date to inspect.
+     * @returns {boolean} Whether the facility is open.
+     */
     this.getState = function(date) {
         const it = this.getIterator(date);
         return it.getState();
     };
 
+    /**
+     * @param {Date} [date] Date to inspect.
+     * @returns {boolean} Whether the state is unknown.
+     */
     this.getUnknown = function(date) {
         const it = this.getIterator(date);
         return it.getUnknown();
     };
 
+    /**
+     * @param {Date} [date] Date to inspect.
+     * @param {boolean} [past] Whether to report a past closed state as `closed`.
+     * @returns {string} State string.
+     */
     this.getStateString = function(date, past) {
         const it = this.getIterator(date);
         return it.getStateString(past);
     };
 
+    /**
+     * @param {Date} [date] Date to inspect.
+     * @returns {string|undefined} Comment applying at the date.
+     */
     this.getComment = function(date) {
         const it = this.getIterator(date);
         return it.getComment();
     };
 
+    /**
+     * @param {Date} [date] Date to inspect.
+     * @returns {number|undefined} Matching rule index.
+     */
     this.getMatchingRule = function(date) {
         const it = this.getIterator(date);
         return it.getMatchingRule();
     };
 
+    /**
+     * @param {Date} [date] Date to inspect.
+     * @returns {{isHoliday: boolean}} Public holiday context.
+     */
     this.getPublicHolidayContext = function(date) {
         return {
             isHoliday: isPublicHoliday(date),
@@ -4531,13 +4565,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @property {(date: Date) => void} setDate - Set the iterator date.
      * @property {() => boolean} getState - Whether the facility is open.
      * @property {() => boolean} getUnknown - Whether the state is unknown.
-     * @property {(past: boolean) => string} getStateString - State as 'open'/'unknown'/'closed'.
+     * @property {(past?: boolean) => string} getStateString - State as 'open'/'unknown'/'closed'.
      * @property {() => string|undefined} getComment - Current comment.
      * @property {() => number|undefined} getMatchingRule - Matching rule.
-     * @property {(datelimit: Date) => boolean} advance - Advance to the next change.
+     * @property {(datelimit?: Date) => boolean} advance - Advance to the next change.
      */
     /**
-     * @param {Date} date - Starting date for the iterator.
+     * @param {Date} [date] - Starting date for the iterator.
      * @returns {OpeningHoursIterator} Iterator over state changes.
      */
     this.getIterator = function(date = new Date()) {
@@ -4588,7 +4622,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         /**
          * Get state string. Either 'open', 'unknown' or 'closed' {{{
-         * @param {boolean} past - Whether to report a past closed state.
+         * @param {boolean} [past] - Whether to report a past closed state.
          * @returns {string} State string.
          */
         iterator.getStateString = function(past) {
@@ -4619,7 +4653,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
         /**
          * Advances to the next position {{{
-         * @param {Date} datelimit - Date limit.
+         * @param {Date} [datelimit] - Date limit.
          * @returns {boolean} Whether the iterator advanced.
          */
         iterator.advance = function(datelimit) {
