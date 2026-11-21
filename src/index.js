@@ -994,6 +994,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
         if (pos_in_token_array !== 1 && pos_in_token_array !== 3) {
             throw formatLibraryBugMessage();
         }
+        const selector_type = tokens[selector_start][pos_in_token_array];
+        if (typeof selector_type !== 'string') {
+            throw formatLibraryBugMessage();
+        }
         selector_end = selector_start;
 
         if (pos_in_token_array === 1) {
@@ -1003,15 +1007,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (matchTokens(tokens, selector_end + 1, 'timesep'))
                 selector_end++;
 
-            return [ selector_start, selector_end, tokens[selector_start][pos_in_token_array] ];
+            return [ selector_start, selector_end, selector_type ];
         }
 
         for (selector_end++; selector_end < tokens.length ; selector_end++) {
             if (tokenIsTheBeginOfSelector(tokens, selector_end))
-                return [ selector_start, selector_end - 1, tokens[selector_start][pos_in_token_array] ];
+                return [ selector_start, selector_end - 1, selector_type ];
         }
 
-        return [ selector_start, selector_end - 1, tokens[selector_start][pos_in_token_array] ];
+        return [ selector_start, selector_end - 1, selector_type ];
     }
     /* }}} */
     /* }}} */
@@ -1262,7 +1266,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         while (at < tokens.length) {
             // console.log('Parsing at position', at +':', tokens[at]);
             if (matchTokens(tokens, at, 'weekday')) {
-                at = parseWeekdayRange(tokens, at, currentRule, undefined, ruleIndex);
+                at = parseWeekdayRange(tokens, at, currentRule, ruleIndex);
             } else if (matchTokens(tokens, at, '24/7')) {
                 currentRule.time.push(function() { return [true]; });
                 // Omitting this only works if the group has no other time selector; otherwise 24/7 would be ignored.
@@ -1429,7 +1433,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 func(number_token[0], number_token[0], at);
                 at++;
             } else {
-                throw formatWarnErrorMessage(nrule, at + matchTokens(tokens, at, '-'),
+                const errorAt = matchTokens(tokens, at, '-') ? at + 1 : at;
+                throw formatWarnErrorMessage(nrule, errorAt,
                     'Unexpected token in number range: ' + tokens[at][1]);
             }
 
@@ -2049,13 +2054,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where the weekday selector could begin.
      * @param {ParsedRule} rule Rule object to which the parsed selector is added.
-     * @param {boolean} [in_holiday_selector] Whether this call is already part
-     *     of a holiday selector. Optional.
      * @param {number} nrule Rule number, starting with zero.
+     * @param {boolean} [in_holiday_selector] Whether this call is already part
+     *     of a holiday selector.
      * @returns {number} Position at which the token no longer belongs to the
      *     selector.
      */
-    function parseWeekdayRange(tokens, at, rule, in_holiday_selector, nrule) {
+    function parseWeekdayRange(tokens, at, rule, nrule, in_holiday_selector) {
         if (!in_holiday_selector) {
             in_holiday_selector = true;
             tokens[at][3] = 'weekday';
@@ -2261,30 +2266,33 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Get the number of days by which a date should be moved, if any. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where the date-moving tokens could begin.
-     * @param {number} max_differ Maximum number of days to move.
-     * @param {string} name_key Translation key for the maximum-difference warning.
+     * @param {number} maxDifference Maximum number of days to move.
+     * @param {string} nameKey Translation key for the maximum-difference warning.
      * @returns {[number, number]} Days to add and number of tokens consumed.
      */
-    function getMoveDays(tokens, at, max_differ, name_key) {
-        const add_days = [ 0, 0 ]; // [ 'days to add', 'how many tokens' ]
-        add_days[0] = matchTokens(tokens, at, '+') || (matchTokens(tokens, at, '-') ? -1 : 0);
-        if (add_days[0] !== 0 && matchTokens(tokens, at+1, 'number', 'calcday')) {
-            // continues with '+ 5 days' or something like that
-            const days_token = getMatchingNumericParserToken(tokens, at+1);
-            if (!days_token) {
-                throw formatLibraryBugMessage();
-            }
-            if (days_token[0] > max_differ)
-                throw formatWarnErrorMessage(nrule, at+2,
-                    t('max differ', {'maxdiffer': max_differ, 'name': t(name_key)}));
-            add_days[0] *= days_token[0];
-            if (add_days[0] === 0 && !done_with_warnings)
-                parsing_warnings.push([ nrule, at+2, 'adding_0', t('adding 0') ]);
-            add_days[1] = 3;
-        } else {
-            add_days[0] = 0;
+    function getMoveDays(tokens, at, maxDifference, nameKey) {
+        const consumedTokenCount = 3;
+        const direction = matchTokens(tokens, at, '+')
+            ? 1
+            : (matchTokens(tokens, at, '-') ? -1 : 0);
+        if (direction === 0 || !matchTokens(tokens, at+1, 'number', 'calcday')) {
+            return [ 0, 0 ];
         }
-        return add_days;
+
+        const daysToken = getMatchingNumericParserToken(tokens, at+1);
+        if (!daysToken) {
+            throw formatLibraryBugMessage();
+        }
+        if (daysToken[0] > maxDifference) {
+            throw formatWarnErrorMessage(nrule, at+2,
+                t('max differ', {'maxdiffer': maxDifference, 'name': t(nameKey)}));
+        }
+
+        const days = direction * daysToken[0];
+        if (days === 0 && !done_with_warnings) {
+            parsing_warnings.push([ nrule, at+2, 'adding_0', t('adding 0') ]);
+        }
+        return [ days, consumedTokenCount ];
     }
     /* }}} */
 
@@ -2344,7 +2352,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (matchTokens(tokens, at, 'holiday')) {
                 at = parseSingleHolidayToken(tokens, at, target_array);
             } else if (matchTokens(tokens, at, 'weekday')) {
-                return parseWeekdayRange(tokens, at, rule, true, nrule);
+                return parseWeekdayRange(tokens, at, rule, nrule, true);
             } else if (matchTokens(tokens, at - 1, ',')) {
                 throw formatWarnErrorMessage(
                     nrule,
