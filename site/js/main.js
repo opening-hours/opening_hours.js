@@ -384,6 +384,7 @@ function setupEventListeners() {
 await i18next.init({
     lng: detectLanguage(),
     fallbackLng: 'en',
+    returnEmptyString: true,
     resources: resources,
     debug: false
 });
