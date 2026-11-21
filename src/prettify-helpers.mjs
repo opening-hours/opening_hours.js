@@ -12,6 +12,7 @@
 /** @typedef {Array<any>} PrettifyToken */
 /** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
 /** @typedef {Array<ParserToken>} ParserTokens */
+/** @typedef {typeof import('./locales/i18n.js').translate} TranslateFunction */
 
 /**
  * Canonical order in which selectors should appear inside a rule group.
@@ -125,27 +126,25 @@ function getLocalizedNames(conf, kind, canonicalWeekdays, canonicalMonths) {
 /**
  * Translate a single prettify token by type.
  * @param {string|number} value - Token value (index for month/weekday)
- * @param {string} token_type - Token type
+ * @param {string} tokenType - Token type
  * @param {PrettifyConf} conf - Prettify configuration
  * @param {string[]} canonicalWeekdays - Canonical weekday names
  * @param {string[]} canonicalMonths - Canonical month names
- * @param {function(string, string, string|number): (string|number)} translateFn - i18n translate function
- * @returns {string|number} Translated token output
+ * @param {TranslateFunction} translateFn - i18n translate function
+ * @returns {string} Translated token output
  */
-function translatePrettyToken(value, token_type, conf, canonicalWeekdays, canonicalMonths, translateFn) {
-    if (token_type === 'weekday') {
-        return getLocalizedNames(conf, 'weekday', canonicalWeekdays, canonicalMonths)[Number(value)];
+function translatePrettyToken(value, tokenType, conf, canonicalWeekdays, canonicalMonths, translateFn) {
+    if (tokenType === 'weekday' || tokenType === 'month') {
+        const names = getLocalizedNames(conf, tokenType, canonicalWeekdays, canonicalMonths);
+        return names[Number(value)];
     }
 
-    if (token_type === 'month') {
-        return getLocalizedNames(conf, 'month', canonicalWeekdays, canonicalMonths)[Number(value)];
+    const text = String(value);
+    if (typeof conf.locale !== 'string' || conf.locale === 'en') {
+        return text;
     }
 
-    if (typeof conf['locale'] !== 'string' || conf['locale'] === 'en') {
-        return value;
-    }
-
-    return translateFn(conf['locale'], 'pretty', value);
+    return translateFn(conf.locale, 'pretty', text);
 }
 
 /**
@@ -206,7 +205,7 @@ function shouldPreserveLeadingMalformedTimePrefix(tokens, selector_start, select
  * @param {PrettifyConf} conf - Prettify configuration
  * @param {string[]} canonicalMonths - Canonical month names
  * @param {string[]} canonicalWeekdays - Canonical weekday names
- * @param {function(string, string, string|number): (string|number)} translateFn - i18n translate function
+ * @param {TranslateFunction} translateFn - i18n translate function
  * @returns {{ value: string, advance: number }} Formatted output and token advance.
  */
 export function formatPrettifySelectorToken(
