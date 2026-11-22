@@ -323,6 +323,40 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const token = tokenList[at];
         return token && isNumericParserToken(token) ? token : undefined;
     };
+    /**
+     * @param {string} eventName Variable-time token name.
+     * @returns {number} Fallback minutes.
+     */
+    const getVariableTimeDefault = (eventName) => {
+        const minutes = VARIABLE_TIME_DEFAULTS[eventName];
+        if (typeof minutes !== 'number') {
+            throw formatLibraryBugMessage(`Unknown variable time: ${eventName}.`);
+        }
+        return minutes;
+    };
+    /**
+     * @param {ParserToken} token Variable-time parser token.
+     * @returns {string} Variable-time name.
+     */
+    const getVariableTimeName = (token) => {
+        const name = token[0];
+        if (typeof name !== 'string') {
+            throw formatLibraryBugMessage('Missing variable time name.');
+        }
+        return name;
+    };
+    /**
+     * @param {Date} date Date to resolve.
+     * @param {string} eventName Variable-time event name.
+     * @param {number} offsetMinutes Minute offset from the parsed calculation.
+     * @returns {number} Minutes since local midnight.
+     */
+    const getVariableTimeMinutesAtLocation = (date, eventName, offsetMinutes) => {
+        if (typeof lat !== 'string' || typeof lon !== 'string') {
+            throw formatLibraryBugMessage('Missing coordinates for variable time.');
+        }
+        return getVariableTimeMinutes(date, lat, lon, eventName, offsetMinutes);
+    };
 
     /** @type {ParsingWarning[]} */
     const parsing_warnings = []; // Elements are arrays [nrule, at, type, message, tokens_to_use?] fed into formatWarnErrorMessage().
@@ -1605,6 +1639,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
 
     /** @typedef {false|true|1} ExtendedOpenEndMode */
+    /** @typedef {{name: string|undefined, offset: number}} VariableTimeBoundary */
     /**
      * Parse time ranges such as `10:00-12:00,14:00-16:00`. {{{
      * @param {ParserToken[]} tokens List of token objects.
@@ -1632,20 +1667,24 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 // relying on the fact that always *one* of them is true
 
                 let is_point_in_time = false; // default no time range
-                const timevar_add    = [ 0, 0 ];
-                let timevar_string   = [];    // capture timevar string like 'sunrise' to calculate it for the current date.
+                /** @type {{from: VariableTimeBoundary, to: VariableTimeBoundary}} */
+                const variableTimes = {
+                    from: { name: undefined, offset: 0 },
+                    to: { name: undefined, offset: 0 },
+                };
                 let point_in_time_period;
 
                 // minutes_from
+                const startVariableTimeOffset = has_time_var_calc[0] ? 1 : 0;
                 if (has_normal_time[0]) {
-                    minutes_from = getMinutesByHoursMinutes(tokens, nrule, at+has_time_var_calc[0]);
+                    minutes_from = getMinutesByHoursMinutes(tokens, nrule, at + startVariableTimeOffset);
                 } else {
-                    timevar_string[0] = tokens[at+has_time_var_calc[0]][0];
-                    minutes_from = VARIABLE_TIME_DEFAULTS[timevar_string[0]];
+                    variableTimes.from.name = getVariableTimeName(tokens[at + startVariableTimeOffset]);
+                    minutes_from = getVariableTimeDefault(variableTimes.from.name);
 
                     if (has_time_var_calc[0]) {
-                        timevar_add[0] = parseTimevarCalc(tokens, at);
-                        minutes_from += timevar_add[0];
+                        variableTimes.from.offset = parseTimevarCalc(tokens, at);
+                        minutes_from += variableTimes.from.offset;
                     }
                 }
 
@@ -1670,7 +1709,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     'libraryname': library_name
                                 }));
                         } else {
-                            minutes_to = minutes_from + 1;
                             is_point_in_time = true;
                         }
                     }
@@ -1689,7 +1727,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     } else {
                         minutes_to = minutes_in_day;
                     }
-                } else if (!is_point_in_time) {
+                } else if (is_point_in_time) {
+                    minutes_to = minutes_from + 1;
+                } else {
                     has_normal_time[1] = matchTokens(tokens, at_end_time, 'number', 'timesep', 'number');
                     has_time_var_calc[1]      = matchTokens(tokens, at_end_time, '(', 'timevar');
                     if (!has_normal_time[1] && !matchTokens(tokens, at_end_time, 'timevar') && !has_time_var_calc[1]) {
@@ -1700,20 +1740,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             minutes_to = getMinutesByHoursMinutes(tokens, nrule, at_end_time);
                             warnAmbiguousSingleDigitHours(tokens, at, at_end_time, nrule);
                         } else {
-                            timevar_string[1] = tokens[at_end_time+has_time_var_calc[1]][0];
-                            minutes_to = VARIABLE_TIME_DEFAULTS[timevar_string[1]];
+                            const endVariableTimeOffset = has_time_var_calc[1] ? 1 : 0;
+                            variableTimes.to.name = getVariableTimeName(tokens[at_end_time + endVariableTimeOffset]);
+                            minutes_to = getVariableTimeDefault(variableTimes.to.name);
                         }
 
                         if (has_time_var_calc[1]) {
-                            timevar_add[1] = parseTimevarCalc(tokens, at_end_time);
-                            minutes_to += timevar_add[1];
+                            variableTimes.to.offset = parseTimevarCalc(tokens, at_end_time);
+                            minutes_to += variableTimes.to.offset;
                         }
                     }
                 }
 
-                at = at_end_time + (is_point_in_time ? -1 :
-                        (has_normal_time[1] ? 3 : (has_time_var_calc[1] ? 7 : !has_open_end))
-                    );
+                const endTimeTokenCount = has_normal_time[1] ? 3 : (has_time_var_calc[1] ? 7 : (has_open_end ? 0 : 1));
+                at = at_end_time + (is_point_in_time ? -1 : endTimeTokenCount);
 
                 if (matchTokens(tokens, at, '/', 'number')) {
                     if (matchTokens(tokens, at + 2, 'timesep', 'number')) { // /hours:minutes
@@ -1747,7 +1787,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         week_stable = false;
                     }
                 } else { // Without coordinates, keep the parser defaults above.
-                    timevar_string = [];
+                    variableTimes.from.name = undefined;
+                    variableTimes.to.name = undefined;
                 }
 
                 // Normalize minutes into range.
@@ -1773,18 +1814,18 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // take this branch to re-check the order on every date.
                     if (minutes_to > minutes_in_day ||
                             (typeof lat === 'string' && !has_open_end && !is_point_in_time &&
-                        timevar_string[0])) {
-                        rule.time.push(function(initial_from, initial_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
+                        variableTimes.from.name)) {
+                        rule.time.push(function(initial_from, initial_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
                             const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
                             // Variable times can change their order from day to day.
-                            const resolved_from = timevar_string[0]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0])
+                            const resolved_from = fromVariableTime.name
+                                ? getVariableTimeMinutesAtLocation(date, fromVariableTime.name, fromVariableTime.offset)
                                 : initial_from;
-                            let resolved_to = timevar_string[1]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[1], timevar_add[1])
+                            let resolved_to = toVariableTime.name
+                                ? getVariableTimeMinutesAtLocation(date, toVariableTime.name, toVariableTime.offset)
                                 : initial_to;
-                            if (timevar_string[1] && resolved_to <= resolved_from) {
+                            if (toVariableTime.name && resolved_to <= resolved_from) {
                                 resolved_to += minutes_in_day;
                             } else if (is_point_in_time && typeof point_in_time_period !== 'number') {
                                 resolved_to = resolved_from + 1;
@@ -1813,30 +1854,30 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
                                 if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end, extended_open_end];
-                                if (timevar_string[0]) {
+                                if (fromVariableTime.name) {
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
-                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutes(next_day, lat, lon, timevar_string[0], timevar_add[0]))];
+                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutesAtLocation(next_day, fromVariableTime.name, fromVariableTime.offset))];
                                 }
                                 return [false, dateAtDayMinutes(date, resolved_from + minutes_in_day)];
                             }
-                        }}(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
+                        }}(minutes_from, minutes_to, variableTimes.from, variableTimes.to, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
 
                         if (minutes_to - minutes_in_day > 0) {
                             if (typeof rule_infos[nrule] === 'undefined') {
                                 rule_infos[nrule] = {};
                             }
                             rule_infos[nrule]['time_wraps_over_midnight'] = true;
-                            rule.wraptime.push(function(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, point_in_time_period, extended_open_end) { return function(date) {
+                            rule.wraptime.push(function(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, point_in_time_period, extended_open_end) { return function(date) {
                                 const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                                if (timevar_string[0]) {
-                                    minutes_from = getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0]);
+                                if (fromVariableTime.name) {
+                                    minutes_from = getVariableTimeMinutesAtLocation(date, fromVariableTime.name, fromVariableTime.offset);
                                 }
-                                if (timevar_string[1]) {
-                                    minutes_to = getVariableTimeMinutes(date, lat, lon, timevar_string[1], timevar_add[1]);
+                                if (toVariableTime.name) {
+                                    minutes_to = getVariableTimeMinutesAtLocation(date, toVariableTime.name, toVariableTime.offset);
                                 }
 
-                                if (timevar_string[0] || timevar_string[1]) {
+                                if (fromVariableTime.name || toVariableTime.name) {
                                     if (minutes_to > minutes_from) {
                                         return [false, undefined];
                                     }
@@ -1857,19 +1898,19 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                         return [true, dateAtDayMinutes(date, minutes_to), has_open_end, extended_open_end];
                                 }
                                 return [false, undefined];
-                            }}(minutes_from, minutes_to > minutes_in_day ? minutes_to - minutes_in_day : minutes_to, timevar_string, timevar_add, has_open_end, point_in_time_period, extended_open_end));
+                            }}(minutes_from, minutes_to > minutes_in_day ? minutes_to - minutes_in_day : minutes_to, variableTimes.from, variableTimes.to, has_open_end, point_in_time_period, extended_open_end));
                         }
                     } else {
-                        rule.time.push(function(initial_from, initial_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period) { return function(date) {
+                        rule.time.push(function(initial_from, initial_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period) { return function(date) {
                             const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                            const resolved_from = timevar_string[0]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0])
+                            const resolved_from = fromVariableTime.name
+                                ? getVariableTimeMinutesAtLocation(date, fromVariableTime.name, fromVariableTime.offset)
                                 : initial_from;
-                            let resolved_to = timevar_string[1]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[1], timevar_add[1])
+                            let resolved_to = toVariableTime.name
+                                ? getVariableTimeMinutesAtLocation(date, toVariableTime.name, toVariableTime.offset)
                                 : initial_to;
-                            if (!timevar_string[1] && is_point_in_time && typeof point_in_time_period !== 'number') {
+                            if (!toVariableTime.name && is_point_in_time && typeof point_in_time_period !== 'number') {
                                 resolved_to = resolved_from + 1;
                             }
 
@@ -1891,17 +1932,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
                                 else if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end];
-                                else if (timevar_string[0]) {
+                                else if (fromVariableTime.name) {
                                     // The next opening is the variable time on
                                     // the following day, which drifts from day
                                     // to day, so recompute it instead of reusing
                                     // today's value shifted by 24h (#377).
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
-                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutes(next_day, lat, lon, timevar_string[0], timevar_add[0]))];
+                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutesAtLocation(next_day, fromVariableTime.name, fromVariableTime.offset))];
                                 } else
                                     return [false, dateAtDayMinutes(date, resolved_from + minutes_in_day)];
                             }
-                        }}(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period));
+                        }}(minutes_from, minutes_to, variableTimes.from, variableTimes.to, has_open_end, is_point_in_time, point_in_time_period));
                     }
                 }
 
@@ -2012,16 +2053,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Parse a time offset such as `(sunrise-01:30)`. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where the time specification could begin.
-     * @returns {number|undefined} Added or subtracted time in minutes; throws
-     *     an exception when the syntax is invalid.
+     * @returns {number} Added or subtracted time in minutes; throws when the
+     *     syntax is invalid.
      */
     function parseTimevarCalc(tokens, at) {
+        /** @type {[number, string]} */
         let error;
         if (matchTokens(tokens, at+2, '+') || matchTokens(tokens, at+2, '-')) {
             if (matchTokens(tokens, at+3, 'number', 'timesep', 'number')) {
                 if (matchTokens(tokens, at+6, ')')) {
-                    const add_or_subtract = tokens[at+2][0] === '+' ? '1' : '-1';
-                    const minutes = getMinutesByHoursMinutes(tokens, nrule, at+3) * add_or_subtract;
+                    const sign = tokens[at+2][0] === '+' ? 1 : -1;
+                    const minutes = getMinutesByHoursMinutes(tokens, nrule, at+3) * sign;
                     if (minutes === 0)
                         parsing_warnings.push([ nrule, at+5, 'zero_calculation', t('zero calculation') ]
                             );
@@ -2042,9 +2084,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
             error = [ at+2, '. ' + t('expected', {'symbol': '+" or "-'})];
         }
 
-        if (error)
-            throw formatWarnErrorMessage(nrule, error[0],
-                 t('calculation syntax')+ error[1]);
+        throw formatWarnErrorMessage(nrule, error[0],
+             t('calculation syntax')+ error[1]);
     }
     /* }}} */
     /* }}} */
