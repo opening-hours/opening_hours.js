@@ -1420,6 +1420,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
+     * Match repeating points in time such as `10:00-16:00/90`.
+     * @param {Date} date Date to inspect.
+     * @param {number} dateMinutes Minutes since midnight of `date`.
+     * @param {number} from First point in time in minutes.
+     * @param {number} to Last minute at which a new period may start.
+     * @param {number} period Period in minutes.
+     * @returns {RuleSelectorResult|undefined} Result, or `undefined` after `to`.
+     */
+    function matchPeriodicPointInTime(date, dateMinutes, from, to, period) {
+        if (dateMinutes < from)
+            return [false, dateAtDayMinutes(date, from)];
+        if (dateMinutes > to)
+            return undefined;
+        for (let cur_min = from; dateMinutes + period >= cur_min; cur_min += period) {
+            if (cur_min === dateMinutes)
+                return [true, dateAtDayMinutes(date, dateMinutes + 1)];
+            if (dateMinutes < cur_min)
+                return [false, dateAtDayMinutes(date, cur_min)];
+        }
+        return undefined;
+    }
+
+    /**
      * Move a date to the next occurrence of a specific weekday. {{{
      * @param {Date} date Date to move.
      * @param {number} weekday Weekday number, starting with zero (Sunday).
@@ -1831,18 +1854,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             }
 
                             if (typeof point_in_time_period === 'number') {
-                                if (dateMinutes < resolved_from) {
-                                    return [false, dateAtDayMinutes(date, resolved_from)];
-                                } else if (dateMinutes <= resolved_to) {
-                                    for (let cur_min = resolved_from; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                        if (cur_min === dateMinutes) {
-                                            return [true, dateAtDayMinutes(date, dateMinutes + 1)];
-                                        } else if (dateMinutes < cur_min) {
-                                            return [false, dateAtDayMinutes(date, cur_min)];
-                                        }
-                                    }
-                                }
-                                return [false, dateAtDayMinutes(date, minutes_in_day)];
+                                return matchPeriodicPointInTime(date, dateMinutes, resolved_from, resolved_to, point_in_time_period)
+                                    ?? [false, dateAtDayMinutes(date, minutes_in_day)];
                             } else {
                                 if (resolved_to > minutes_in_day) {
                                     if (dateMinutes < resolved_from)
@@ -1883,15 +1896,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                 }
 
                                 if (typeof point_in_time_period === 'number') {
-                                    if (dateMinutes <= minutes_to) {
-                                        for (let cur_min = 0; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                            if (cur_min === dateMinutes) {
-                                                return [true, dateAtDayMinutes(date, dateMinutes + 1)];
-                                            } else if (dateMinutes < cur_min) {
-                                                return [false, dateAtDayMinutes(date, cur_min)];
-                                            }
-                                        }
-                                    }
+                                    return matchPeriodicPointInTime(date, dateMinutes, 0, minutes_to, point_in_time_period)
+                                        ?? [false, undefined];
                                 } else {
                                     if (dateMinutes < minutes_to)
                                         return [true, dateAtDayMinutes(date, minutes_to), has_open_end, extended_open_end];
@@ -1910,18 +1916,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             }
 
                             if (typeof point_in_time_period === 'number') {
-                                if (dateMinutes < resolved_from) {
-                                    return [false, dateAtDayMinutes(date, resolved_from)];
-                                } else if (dateMinutes <= resolved_to) {
-                                    for (let cur_min = resolved_from; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                        if (cur_min === dateMinutes) {
-                                            return [true, dateAtDayMinutes(date, dateMinutes + 1)];
-                                        } else if (dateMinutes < cur_min) {
-                                            return [false, dateAtDayMinutes(date, cur_min)];
-                                        }
-                                    }
-                                }
-                                return [false, dateAtDayMinutes(date, minutes_in_day)];
+                                return matchPeriodicPointInTime(date, dateMinutes, resolved_from, resolved_to, point_in_time_period)
+                                    ?? [false, dateAtDayMinutes(date, minutes_in_day)];
                             } else {
                                 if (dateMinutes < resolved_from)
                                     return [false, dateAtDayMinutes(date, resolved_from)];
