@@ -323,6 +323,47 @@ export default function(value, nominatim_object, optional_conf_parm) {
         const token = tokenList[at];
         return token && isNumericParserToken(token) ? token : undefined;
     };
+    /**
+     * Position for an error marker: `at`, or the last token if the value ends before `at`.
+     * @param {ParserToken[]} tokenList Parser tokens.
+     * @param {number} at Wanted token position, at most one past the end.
+     * @returns {number} Position of an existing token.
+     */
+    const tokenOrLastIndex = (tokenList, at) => at < tokenList.length ? at : tokenList.length - 1;
+    /**
+     * @param {string} eventName Variable-time token name.
+     * @returns {number} Fallback minutes.
+     */
+    const getVariableTimeDefault = (eventName) => {
+        const minutes = VARIABLE_TIME_DEFAULTS[eventName];
+        if (typeof minutes !== 'number') {
+            throw formatLibraryBugMessage(`Unknown variable time: ${eventName}.`);
+        }
+        return minutes;
+    };
+    /**
+     * @param {ParserToken} token Variable-time parser token.
+     * @returns {string} Variable-time name.
+     */
+    const getVariableTimeName = (token) => {
+        const name = token[0];
+        if (typeof name !== 'string') {
+            throw formatLibraryBugMessage('Missing variable time name.');
+        }
+        return name;
+    };
+    /** @typedef {{name: string, offset: number}} VariableTime */
+    /**
+     * @param {Date} date Date to resolve.
+     * @param {VariableTime} variableTime Variable time to resolve at the location.
+     * @returns {number} Minutes since local midnight.
+     */
+    const resolveVariableTime = (date, variableTime) => {
+        if (typeof lat !== 'string' || typeof lon !== 'string') {
+            throw formatLibraryBugMessage('Missing coordinates for variable time.');
+        }
+        return getVariableTimeMinutes(date, lat, lon, variableTime.name, variableTime.offset);
+    };
 
     /** @type {ParsingWarning[]} */
     const parsing_warnings = []; // Elements are arrays [nrule, at, type, message, tokens_to_use?] fed into formatWarnErrorMessage().
@@ -1386,6 +1427,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
+     * Match repeating points in time such as `10:00-16:00/90`.
+     * @param {Date} date Date to inspect.
+     * @param {number} dateMinutes Minutes since midnight of `date`.
+     * @param {number} from First point in time in minutes.
+     * @param {number} to Last minute at which a new period may start.
+     * @param {number} period Period in minutes.
+     * @returns {RuleSelectorResult|undefined} Result, or `undefined` after `to`.
+     */
+    function matchPeriodicPointInTime(date, dateMinutes, from, to, period) {
+        if (dateMinutes < from)
+            return [false, dateAtDayMinutes(date, from)];
+        if (dateMinutes > to)
+            return undefined;
+        for (let cur_min = from; dateMinutes + period >= cur_min; cur_min += period) {
+            if (cur_min === dateMinutes)
+                return [true, dateAtDayMinutes(date, dateMinutes + 1)];
+            if (dateMinutes < cur_min)
+                return [false, dateAtDayMinutes(date, cur_min)];
+        }
+        return undefined;
+    }
+
+    /**
      * Move a date to the next occurrence of a specific weekday. {{{
      * @param {Date} date Date to move.
      * @param {number} weekday Weekday number, starting with zero (Sunday).
@@ -1606,6 +1670,42 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /** @typedef {false|true|1} ExtendedOpenEndMode */
     /**
+     * @typedef {object} ParsedTimeBoundary
+     * @property {'normal'|'variable'|'calculated'} kind `10:00`, `sunrise` or `(sunrise+01:00)`.
+     * @property {number} minutes Parsed minutes, using the fallback for variable times.
+     * @property {number} end Position after the boundary's last token.
+     * @property {VariableTime|undefined} variableTime Set when it must be resolved per date.
+     */
+
+    /**
+     * Parse one normal or variable time boundary.
+     * @param {ParserToken[]} tokens List of parser tokens.
+     * @param {number} at Position where the boundary begins.
+     * @param {number} nrule Rule number, starting with zero.
+     * @returns {ParsedTimeBoundary|undefined} Parsed boundary, if present.
+     */
+    function parseTimeBoundary(tokens, at, nrule) {
+        if (matchTokens(tokens, at, 'number', 'timesep', 'number')) {
+            return { kind: 'normal', minutes: getMinutesByHoursMinutes(tokens, nrule, at), end: at + 3, variableTime: undefined };
+        }
+
+        const isCalculated = matchTokens(tokens, at, '(', 'timevar');
+        if (!isCalculated && !matchTokens(tokens, at, 'timevar')) {
+            return undefined;
+        }
+
+        const name = getVariableTimeName(tokens[isCalculated ? at + 1 : at]);
+        const offset = isCalculated ? parseTimevarCalc(tokens, at) : 0;
+        return {
+            kind: isCalculated ? 'calculated' : 'variable',
+            minutes: getVariableTimeDefault(name) + offset,
+            end: at + (isCalculated ? 7 : 1),
+            // Without coordinates, the fallback minutes are final.
+            variableTime: typeof lat === 'string' ? { name, offset } : undefined,
+        };
+    }
+
+    /**
      * Parse time ranges such as `10:00-12:00,14:00-16:00`. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where to start.
@@ -1622,55 +1722,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
             tokens[at][3] = 'time';
 
         for (; at < tokens.length; at++) {
-            const has_time_var_calc = [], has_normal_time = []; // element 0: start time, 1: end time
-                has_normal_time[0]   = matchTokens(tokens, at, 'number', 'timesep', 'number');
-                has_time_var_calc[0] = matchTokens(tokens, at, '(', 'timevar');
+            const fromBoundary = parseTimeBoundary(tokens, at, nrule);
             let minutes_from,
                 minutes_to,
                 has_open_end = false; // default no open end
-            if (has_normal_time[0] || matchTokens(tokens, at, 'timevar') || has_time_var_calc[0]) {
-                // relying on the fact that always *one* of them is true
-
+            if (fromBoundary) {
+                minutes_from = fromBoundary.minutes;
                 let is_point_in_time = false; // default no time range
-                const timevar_add    = [ 0, 0 ];
-                let timevar_string   = [];    // capture timevar string like 'sunrise' to calculate it for the current date.
+                /** @type {ParsedTimeBoundary|undefined} */
+                let toBoundary;
                 let point_in_time_period;
 
-                // minutes_from
-                if (has_normal_time[0]) {
-                    minutes_from = getMinutesByHoursMinutes(tokens, nrule, at+has_time_var_calc[0]);
-                } else {
-                    timevar_string[0] = tokens[at+has_time_var_calc[0]][0];
-                    minutes_from = VARIABLE_TIME_DEFAULTS[timevar_string[0]];
-
-                    if (has_time_var_calc[0]) {
-                        timevar_add[0] = parseTimevarCalc(tokens, at);
-                        minutes_from += timevar_add[0];
-                    }
-                }
-
-                const at_end_time = at+(has_normal_time[0] ? 3 : (has_time_var_calc[0] ? 7 : 1))+1; // after '-'
-                if (!matchTokens(tokens, at_end_time - 1, '-')) { // not time range
-                    if (matchTokens(tokens, at_end_time - 1, '+')) {
+                const at_end_time = fromBoundary.end + 1; // after '-'
+                if (!matchTokens(tokens, fromBoundary.end, '-')) { // not time range
+                    if (matchTokens(tokens, fromBoundary.end, '+')) {
                         has_open_end = true;
                     } else {
                         if (oh_mode === 0) {
-                            throw formatWarnErrorMessage(nrule,
-                                at+(
-                                    has_normal_time[0] ? (
-                                        typeof tokens[at+3] === 'object' ? 3 : 2
-                                    ) : (
-                                        has_time_var_calc[0] ? 2 : (
-                                                typeof tokens[at+1] === 'object' ? 1 : 0
-                                            )
-                                    )
-                                ),
+                            throw formatWarnErrorMessage(nrule, tokenOrLastIndex(tokens, fromBoundary.end),
                                 t('point in time', {
-                                    'calc': (has_time_var_calc[0] ? t('calculation') + ' ' : ''),
+                                    'calc': (fromBoundary.kind === 'calculated' ? t('calculation') + ' ' : ''),
                                     'libraryname': library_name
                                 }));
                         } else {
-                            minutes_to = minutes_from + 1;
                             is_point_in_time = true;
                         }
                     }
@@ -1689,31 +1763,22 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     } else {
                         minutes_to = minutes_in_day;
                     }
-                } else if (!is_point_in_time) {
-                    has_normal_time[1] = matchTokens(tokens, at_end_time, 'number', 'timesep', 'number');
-                    has_time_var_calc[1]      = matchTokens(tokens, at_end_time, '(', 'timevar');
-                    if (!has_normal_time[1] && !matchTokens(tokens, at_end_time, 'timevar') && !has_time_var_calc[1]) {
-                        throw formatWarnErrorMessage(nrule, at_end_time - (typeof tokens[at_end_time] === 'object' ? 0 : 1),
+                } else if (is_point_in_time) {
+                    minutes_to = minutes_from + 1;
+                } else {
+                    toBoundary = parseTimeBoundary(tokens, at_end_time, nrule);
+                    if (!toBoundary) {
+                        throw formatWarnErrorMessage(nrule, tokenOrLastIndex(tokens, at_end_time),
                                 t('time range continue'));
-                    } else {
-                        if (has_normal_time[1]) {
-                            minutes_to = getMinutesByHoursMinutes(tokens, nrule, at_end_time);
-                            warnAmbiguousSingleDigitHours(tokens, at, at_end_time, nrule);
-                        } else {
-                            timevar_string[1] = tokens[at_end_time+has_time_var_calc[1]][0];
-                            minutes_to = VARIABLE_TIME_DEFAULTS[timevar_string[1]];
-                        }
-
-                        if (has_time_var_calc[1]) {
-                            timevar_add[1] = parseTimevarCalc(tokens, at_end_time);
-                            minutes_to += timevar_add[1];
-                        }
+                    }
+                    minutes_to = toBoundary.minutes;
+                    if (toBoundary.kind === 'normal') {
+                        warnAmbiguousSingleDigitHours(tokens, at, at_end_time, nrule);
                     }
                 }
 
-                at = at_end_time + (is_point_in_time ? -1 :
-                        (has_normal_time[1] ? 3 : (has_time_var_calc[1] ? 7 : !has_open_end))
-                    );
+                // After the range, the open end's '+', or the point in time.
+                at = toBoundary?.end ?? (has_open_end ? at_end_time : fromBoundary.end);
 
                 if (matchTokens(tokens, at, '/', 'number')) {
                     if (matchTokens(tokens, at + 2, 'timesep', 'number')) { // /hours:minutes
@@ -1743,23 +1808,24 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
 
                 if (typeof lat === 'string') { // lon will also be defined (see above)
-                    if (!has_normal_time[0] || !(has_normal_time[1] || has_open_end || is_point_in_time) ) {
+                    if (fromBoundary.kind !== 'normal' || !(toBoundary?.kind === 'normal' || has_open_end || is_point_in_time) ) {
                         week_stable = false;
                     }
-                } else { // Without coordinates, keep the parser defaults above.
-                    timevar_string = [];
                 }
+                const fromVariableTime = fromBoundary.variableTime;
+                const toVariableTime = toBoundary?.variableTime;
 
                 // Normalize minutes into range.
                 if (!extended_open_end && minutes_from >= minutes_in_day) {
                     throw formatWarnErrorMessage(nrule, at_end_time - 2,
                         t('outside current day'));
                 }
-                if (minutes_to < minutes_from || ((has_normal_time[0] && has_normal_time[1]) && minutes_from === minutes_to)) {
+                if (minutes_to < minutes_from || (fromBoundary.kind === 'normal' && toBoundary?.kind === 'normal' && minutes_from === minutes_to)) {
                     minutes_to += minutes_in_day;
                 }
                 if (minutes_to > minutes_in_day * 2) {
-                    throw formatWarnErrorMessage(nrule, at_end_time + (has_normal_time[1] ? 4 : (has_time_var_calc[1] ? 7 : 1)) - 2,
+                    const endTimeLastTokenAt = (toBoundary?.end ?? at_end_time) - 1;
+                    throw formatWarnErrorMessage(nrule, endTimeLastTokenAt,
                         t('two midnights'));
                 }
 
@@ -1772,37 +1838,22 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // constant fallback above did not wrap (#377), so also
                     // take this branch to re-check the order on every date.
                     if (minutes_to > minutes_in_day ||
-                            (typeof lat === 'string' && !has_open_end && !is_point_in_time &&
-                        timevar_string[0])) {
-                        rule.time.push(function(initial_from, initial_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
+                            (!has_open_end && !is_point_in_time && fromVariableTime)) {
+                        rule.time.push(function(initial_from, initial_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
                             const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
                             // Variable times can change their order from day to day.
-                            const resolved_from = timevar_string[0]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0])
-                                : initial_from;
-                            let resolved_to = timevar_string[1]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[1], timevar_add[1])
-                                : initial_to;
-                            if (timevar_string[1] && resolved_to <= resolved_from) {
+                            const resolved_from = fromVariableTime ? resolveVariableTime(date, fromVariableTime) : initial_from;
+                            let resolved_to = toVariableTime ? resolveVariableTime(date, toVariableTime) : initial_to;
+                            if (toVariableTime && resolved_to <= resolved_from) {
                                 resolved_to += minutes_in_day;
                             } else if (is_point_in_time && typeof point_in_time_period !== 'number') {
                                 resolved_to = resolved_from + 1;
                             }
 
                             if (typeof point_in_time_period === 'number') {
-                                if (dateMinutes < resolved_from) {
-                                    return [false, dateAtDayMinutes(date, resolved_from)];
-                                } else if (dateMinutes <= resolved_to) {
-                                    for (let cur_min = resolved_from; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                        if (cur_min === dateMinutes) {
-                                            return [true, dateAtDayMinutes(date, dateMinutes + 1)];
-                                        } else if (dateMinutes < cur_min) {
-                                            return [false, dateAtDayMinutes(date, cur_min)];
-                                        }
-                                    }
-                                }
-                                return [false, dateAtDayMinutes(date, minutes_in_day)];
+                                return matchPeriodicPointInTime(date, dateMinutes, resolved_from, resolved_to, point_in_time_period)
+                                    ?? [false, dateAtDayMinutes(date, minutes_in_day)];
                             } else {
                                 if (resolved_to > minutes_in_day) {
                                     if (dateMinutes < resolved_from)
@@ -1813,95 +1864,74 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
                                 if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end, extended_open_end];
-                                if (timevar_string[0]) {
+                                if (fromVariableTime) {
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
-                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutes(next_day, lat, lon, timevar_string[0], timevar_add[0]))];
+                                    return [false, dateAtDayMinutes(next_day, resolveVariableTime(next_day, fromVariableTime))];
                                 }
                                 return [false, dateAtDayMinutes(date, resolved_from + minutes_in_day)];
                             }
-                        }}(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
+                        }}(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
 
                         if (minutes_to - minutes_in_day > 0) {
                             if (typeof rule_infos[nrule] === 'undefined') {
                                 rule_infos[nrule] = {};
                             }
                             rule_infos[nrule]['time_wraps_over_midnight'] = true;
-                            rule.wraptime.push(function(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, point_in_time_period, extended_open_end) { return function(date) {
+                            rule.wraptime.push(function(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, point_in_time_period, extended_open_end) { return function(date) {
                                 const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                                if (timevar_string[0]) {
-                                    minutes_from = getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0]);
+                                if (fromVariableTime) {
+                                    minutes_from = resolveVariableTime(date, fromVariableTime);
                                 }
-                                if (timevar_string[1]) {
-                                    minutes_to = getVariableTimeMinutes(date, lat, lon, timevar_string[1], timevar_add[1]);
+                                if (toVariableTime) {
+                                    minutes_to = resolveVariableTime(date, toVariableTime);
                                 }
 
-                                if (timevar_string[0] || timevar_string[1]) {
+                                if (fromVariableTime || toVariableTime) {
                                     if (minutes_to > minutes_from) {
                                         return [false, undefined];
                                     }
                                 }
 
                                 if (typeof point_in_time_period === 'number') {
-                                    if (dateMinutes <= minutes_to) {
-                                        for (let cur_min = 0; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                            if (cur_min === dateMinutes) {
-                                                return [true, dateAtDayMinutes(date, dateMinutes + 1)];
-                                            } else if (dateMinutes < cur_min) {
-                                                return [false, dateAtDayMinutes(date, cur_min)];
-                                            }
-                                        }
-                                    }
+                                    return matchPeriodicPointInTime(date, dateMinutes, 0, minutes_to, point_in_time_period)
+                                        ?? [false, undefined];
                                 } else {
                                     if (dateMinutes < minutes_to)
                                         return [true, dateAtDayMinutes(date, minutes_to), has_open_end, extended_open_end];
                                 }
                                 return [false, undefined];
-                            }}(minutes_from, minutes_to > minutes_in_day ? minutes_to - minutes_in_day : minutes_to, timevar_string, timevar_add, has_open_end, point_in_time_period, extended_open_end));
+                            }}(minutes_from, minutes_to > minutes_in_day ? minutes_to - minutes_in_day : minutes_to, fromVariableTime, toVariableTime, has_open_end, point_in_time_period, extended_open_end));
                         }
                     } else {
-                        rule.time.push(function(initial_from, initial_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period) { return function(date) {
+                        rule.time.push(function(initial_from, initial_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period) { return function(date) {
                             const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                            const resolved_from = timevar_string[0]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[0], timevar_add[0])
-                                : initial_from;
-                            let resolved_to = timevar_string[1]
-                                ? getVariableTimeMinutes(date, lat, lon, timevar_string[1], timevar_add[1])
-                                : initial_to;
-                            if (!timevar_string[1] && is_point_in_time && typeof point_in_time_period !== 'number') {
+                            const resolved_from = fromVariableTime ? resolveVariableTime(date, fromVariableTime) : initial_from;
+                            let resolved_to = toVariableTime ? resolveVariableTime(date, toVariableTime) : initial_to;
+                            if (!toVariableTime && is_point_in_time && typeof point_in_time_period !== 'number') {
                                 resolved_to = resolved_from + 1;
                             }
 
                             if (typeof point_in_time_period === 'number') {
-                                if (dateMinutes < resolved_from) {
-                                    return [false, dateAtDayMinutes(date, resolved_from)];
-                                } else if (dateMinutes <= resolved_to) {
-                                    for (let cur_min = resolved_from; dateMinutes + point_in_time_period >= cur_min; cur_min += point_in_time_period) {
-                                        if (cur_min === dateMinutes) {
-                                            return [true, dateAtDayMinutes(date, dateMinutes + 1)];
-                                        } else if (dateMinutes < cur_min) {
-                                            return [false, dateAtDayMinutes(date, cur_min)];
-                                        }
-                                    }
-                                }
-                                return [false, dateAtDayMinutes(date, minutes_in_day)];
+                                return matchPeriodicPointInTime(date, dateMinutes, resolved_from, resolved_to, point_in_time_period)
+                                    ?? [false, dateAtDayMinutes(date, minutes_in_day)];
                             } else {
                                 if (dateMinutes < resolved_from)
                                     return [false, dateAtDayMinutes(date, resolved_from)];
                                 else if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end];
-                                else if (timevar_string[0]) {
+                                else if (fromVariableTime) {
                                     // The next opening is the variable time on
                                     // the following day, which drifts from day
                                     // to day, so recompute it instead of reusing
                                     // today's value shifted by 24h (#377).
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
-                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutes(next_day, lat, lon, timevar_string[0], timevar_add[0]))];
+                                    return [false, dateAtDayMinutes(next_day, resolveVariableTime(next_day, fromVariableTime))];
                                 } else
                                     return [false, dateAtDayMinutes(date, resolved_from + minutes_in_day)];
                             }
-                        }}(minutes_from, minutes_to, timevar_string, timevar_add, has_open_end, is_point_in_time, point_in_time_period));
+                        }}(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period));
                     }
                 }
 
@@ -1970,7 +2000,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (matchTokens(tokens, at, 'number', 'timesep'))
                     throw formatWarnErrorMessage(nrule, at+1, 'Missing minutes in time range after: "' + tokens[at+1][1] + '"');
                 if (matchTokens(tokens, at, 'number'))
-                    throw formatWarnErrorMessage(nrule, at + (typeof tokens[at+1] === 'object' ? 1 : 0),
+                    throw formatWarnErrorMessage(nrule, tokenOrLastIndex(tokens, at + 1),
                             'Missing time separator in time range after: "' + tokens[at][1] + '"');
                 return [ at ];
             }
@@ -2012,16 +2042,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Parse a time offset such as `(sunrise-01:30)`. {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where the time specification could begin.
-     * @returns {number|undefined} Added or subtracted time in minutes; throws
-     *     an exception when the syntax is invalid.
+     * @returns {number} Added or subtracted time in minutes; throws when the
+     *     syntax is invalid.
      */
     function parseTimevarCalc(tokens, at) {
+        /** @type {[number, string]} */
         let error;
         if (matchTokens(tokens, at+2, '+') || matchTokens(tokens, at+2, '-')) {
             if (matchTokens(tokens, at+3, 'number', 'timesep', 'number')) {
                 if (matchTokens(tokens, at+6, ')')) {
-                    const add_or_subtract = tokens[at+2][0] === '+' ? '1' : '-1';
-                    const minutes = getMinutesByHoursMinutes(tokens, nrule, at+3) * add_or_subtract;
+                    const sign = tokens[at+2][0] === '+' ? 1 : -1;
+                    const minutes = getMinutesByHoursMinutes(tokens, nrule, at+3) * sign;
                     if (minutes === 0)
                         parsing_warnings.push([ nrule, at+5, 'zero_calculation', t('zero calculation') ]
                             );
@@ -2042,9 +2073,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
             error = [ at+2, '. ' + t('expected', {'symbol': '+" or "-'})];
         }
 
-        if (error)
-            throw formatWarnErrorMessage(nrule, error[0],
-                 t('calculation syntax')+ error[1]);
+        throw formatWarnErrorMessage(nrule, error[0],
+             t('calculation syntax')+ error[1]);
     }
     /* }}} */
     /* }}} */

@@ -110,3 +110,15 @@ test('supports monthday ranges with an open end', () => {
     assert.equal(oh.getStateString(new Date(2027, 1, 15, 10)), 'unknown');
     assert.deepEqual(oh.getWarnings(), []);
 });
+
+test('time range errors mark the whole time, including calculated variable times', () => {
+    for (const marked of [
+        '10:00',
+        '(sunrise+01:00)',
+        'Mo (sunset-00:30)',
+        '10:00-49:00',
+        '10:00-(sunset+31:00)',
+    ]) {
+        assert.throws(() => new opening_hours(marked), error => error.startsWith(`${marked} <--- (`));
+    }
+});
