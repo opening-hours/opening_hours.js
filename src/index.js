@@ -324,6 +324,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return token && isNumericParserToken(token) ? token : undefined;
     };
     /**
+     * Position for an error marker: `at`, or the last token if the value ends before `at`.
+     * @param {ParserToken[]} tokenList Parser tokens.
+     * @param {number} at Wanted token position, at most one past the end.
+     * @returns {number} Position of an existing token.
+     */
+    const tokenOrLastIndex = (tokenList, at) => at < tokenList.length ? at : tokenList.length - 1;
+    /**
      * @param {string} eventName Variable-time token name.
      * @returns {number} Fallback minutes.
      */
@@ -1732,16 +1739,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         has_open_end = true;
                     } else {
                         if (oh_mode === 0) {
-                            throw formatWarnErrorMessage(nrule,
-                                at+(
-                                    fromBoundary.kind === 'normal' ? (
-                                        typeof tokens[at+3] === 'object' ? 3 : 2
-                                    ) : (
-                                        fromBoundary.kind === 'calculated' ? 2 : (
-                                                typeof tokens[at+1] === 'object' ? 1 : 0
-                                            )
-                                    )
-                                ),
+                            const pointInTimeErrorAt = fromBoundary.kind === 'calculated'
+                                ? at + 2 // after the calculation operator
+                                : tokenOrLastIndex(tokens, fromBoundary.end);
+                            throw formatWarnErrorMessage(nrule, pointInTimeErrorAt,
                                 t('point in time', {
                                     'calc': (fromBoundary.kind === 'calculated' ? t('calculation') + ' ' : ''),
                                     'libraryname': library_name
@@ -1770,7 +1771,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 } else {
                     toBoundary = parseTimeBoundary(tokens, at_end_time, nrule);
                     if (!toBoundary) {
-                        throw formatWarnErrorMessage(nrule, at_end_time - (typeof tokens[at_end_time] === 'object' ? 0 : 1),
+                        throw formatWarnErrorMessage(nrule, tokenOrLastIndex(tokens, at_end_time),
                                 t('time range continue'));
                     }
                     minutes_to = toBoundary.minutes;
@@ -1826,8 +1827,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     minutes_to += minutes_in_day;
                 }
                 if (minutes_to > minutes_in_day * 2) {
-                    const endBoundaryErrorOffset = toBoundary?.kind === 'normal' ? 4 : (toBoundary?.kind === 'calculated' ? 7 : 1);
-                    throw formatWarnErrorMessage(nrule, at_end_time + endBoundaryErrorOffset - 2,
+                    // Point at the end time's minutes; a plain variable time has none.
+                    const twoMidnightsErrorAt = toBoundary?.kind === 'normal' ? at_end_time + 2
+                        : toBoundary?.kind === 'calculated' ? at_end_time + 5
+                        : at_end_time - 1;
+                    throw formatWarnErrorMessage(nrule, twoMidnightsErrorAt,
                         t('two midnights'));
                 }
 
@@ -2002,7 +2006,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (matchTokens(tokens, at, 'number', 'timesep'))
                     throw formatWarnErrorMessage(nrule, at+1, 'Missing minutes in time range after: "' + tokens[at+1][1] + '"');
                 if (matchTokens(tokens, at, 'number'))
-                    throw formatWarnErrorMessage(nrule, at + (typeof tokens[at+1] === 'object' ? 1 : 0),
+                    throw formatWarnErrorMessage(nrule, tokenOrLastIndex(tokens, at + 1),
                             'Missing time separator in time range after: "' + tokens[at][1] + '"');
                 return [ at ];
             }
