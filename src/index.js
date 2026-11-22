@@ -1739,10 +1739,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         has_open_end = true;
                     } else {
                         if (oh_mode === 0) {
-                            const pointInTimeErrorAt = fromBoundary.kind === 'calculated'
-                                ? at + 2 // after the calculation operator
-                                : tokenOrLastIndex(tokens, fromBoundary.end);
-                            throw formatWarnErrorMessage(nrule, pointInTimeErrorAt,
+                            throw formatWarnErrorMessage(nrule, tokenOrLastIndex(tokens, fromBoundary.end),
                                 t('point in time', {
                                     'calc': (fromBoundary.kind === 'calculated' ? t('calculation') + ' ' : ''),
                                     'libraryname': library_name
@@ -1827,11 +1824,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     minutes_to += minutes_in_day;
                 }
                 if (minutes_to > minutes_in_day * 2) {
-                    // Point at the end time's minutes; a plain variable time has none.
-                    const twoMidnightsErrorAt = toBoundary?.kind === 'normal' ? at_end_time + 2
-                        : toBoundary?.kind === 'calculated' ? at_end_time + 5
-                        : at_end_time - 1;
-                    throw formatWarnErrorMessage(nrule, twoMidnightsErrorAt,
+                    const endTimeLastTokenAt = (toBoundary?.end ?? at_end_time) - 1;
+                    throw formatWarnErrorMessage(nrule, endTimeLastTokenAt,
                         t('two midnights'));
                 }
 
