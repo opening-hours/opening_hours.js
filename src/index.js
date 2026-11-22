@@ -36,6 +36,7 @@ import { tokenize, months, weekdays } from './tokenizer.mjs';
 import { translate } from './locales/i18n';
 import { compareSelectorOrder, formatPrettifySelectorToken, getRuleSeparator, matchTokens, normalizePrettifyConf, shouldSortPrettifiedGroup } from './prettify-helpers.mjs';
 import { VARIABLE_TIME_DEFAULTS, getVariableTimeMinutes } from './variable-times.mjs';
+import { selectPublicHolidays, selectSchoolHolidays } from './holidays/holiday-selection.mjs';
 
 import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-defaults.mjs';
 
@@ -2668,32 +2669,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
 
     /**
-     * Check whether a holiday definition contains named holiday items.
-     * @param {unknown} value Value to check.
-     * @returns {value is HolidayItem[]} Whether the value is a holiday list.
-     */
-    function isHolidayItemArray(value) {
-        return Array.isArray(value)
-            && value.every(item => typeof item === 'object'
-                && item !== null
-                && typeof item.name === 'string');
-    }
-
-    /**
-     * Check whether a holiday definition contains school holiday items.
-     * @param {unknown} value Value to check.
-     * @returns {value is SchoolHolidayItem[]} Whether the value is a school holiday list.
-     */
-    function isSchoolHolidayItemArray(value) {
-        return Array.isArray(value)
-            && value.every(item => typeof item === 'object'
-                && item !== null
-                && typeof item.name === 'string'
-                && Object.keys(item).some(key => key !== 'name'
-                    && Array.isArray(item[key])));
-    }
-
-    /**
      * Read holiday definitions for the country and matching state.
      * @param {HolidayType} type Holiday type to retrieve.
      * @returns {{country: unknown, state: unknown}} Raw holiday definitions.
@@ -2730,46 +2705,21 @@ export default function(value, nominatim_object, optional_conf_parm) {
      */
     function getMatchingPublicHolidays() {
         const definitions = getHolidayDefinitionsAtLocation('PH');
-        const countryHolidays = isHolidayItemArray(definitions.country)
-            ? definitions.country
-            : [];
-        if (isHolidayItemArray(definitions.state)) {
-            return definitions.state;
-        }
-
-        if (countryHolidays.length === 0) {
+        const holidays = selectPublicHolidays(definitions.country, definitions.state, location_state);
+        if (!holidays) {
             throw formatLibraryBugMessage(t('no holiday definition state', {
                 'name': 'PH',
                 'cc': location_cc,
                 'state': location_state,
             }), 'library bug PR only');
         }
-
-        const matchingHolidays = countryHolidays.filter(function(holiday) {
-            return !Array.isArray(holiday.only_states)
-                || (typeof location_state === 'string'
-                    && holiday.only_states.includes(location_state));
-        });
-        if (matchingHolidays.length === 0) {
+        if (holidays.length === 0) {
             throw formatLibraryBugMessage(t('no holiday definition', {
                 'name': 'PH',
                 'cc': location_cc,
             }), 'library bug PR only');
         }
-        return matchingHolidays;
-    }
-
-    /**
-     * Return the sortable start of a school holiday definition.
-     * @param {SchoolHolidayItem} holiday School holiday definition.
-     * @returns {[number, number]} First month and day found in the definition.
-     */
-    function getSchoolHolidaySortKey(holiday) {
-        const dates = Object.values(holiday).find(Array.isArray);
-        if (!dates || !Array.isArray(dates)) {
-            throw formatLibraryBugMessage('Missing school holiday dates.');
-        }
-        return [dates[0], dates[1]];
+        return holidays;
     }
 
     /**
@@ -2778,34 +2728,23 @@ export default function(value, nominatim_object, optional_conf_parm) {
      */
     function getMatchingSchoolHolidays() {
         const definitions = getHolidayDefinitionsAtLocation('SH');
-        const countryHolidays = isSchoolHolidayItemArray(definitions.country)
-            ? definitions.country
-            : [];
-        if (isSchoolHolidayItemArray(definitions.state)) {
-            if (countryHolidays.length === 0) {
-                return definitions.state;
+        let holidays;
+        try {
+            holidays = selectSchoolHolidays(definitions.country, definitions.state);
+        } catch (error) {
+            if (!(error instanceof TypeError)) {
+                throw error;
             }
-
-            const countryNames = new Set(countryHolidays.map(function(holiday) {
-                return holiday.name;
-            }));
-            return [...countryHolidays, ...definitions.state.filter(function(holiday) {
-                return !countryNames.has(holiday.name);
-            })].sort(function(left, right) {
-                const leftKey = getSchoolHolidaySortKey(left);
-                const rightKey = getSchoolHolidaySortKey(right);
-                return (leftKey[0] - rightKey[0]) || (leftKey[1] - rightKey[1]);
-            });
+            throw formatLibraryBugMessage('Missing school holiday dates.');
         }
-        if (countryHolidays.length > 0) {
-            return countryHolidays;
+        if (holidays.length === 0) {
+            throw formatLibraryBugMessage(t('no holiday definition state', {
+                'name': 'SH',
+                'cc': location_cc,
+                'state': location_state,
+            }), 'library bug PR only');
         }
-
-        throw formatLibraryBugMessage(t('no holiday definition state', {
-            'name': 'SH',
-            'cc': location_cc,
-            'state': location_state,
-        }), 'library bug PR only');
+        return holidays;
     }
     /* }}} */
 
