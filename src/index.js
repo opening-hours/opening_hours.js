@@ -345,17 +345,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
         }
         return name;
     };
+    /** @typedef {{name: string, offset: number}} VariableTime */
     /**
      * @param {Date} date Date to resolve.
-     * @param {string} eventName Variable-time event name.
-     * @param {number} offsetMinutes Minute offset from the parsed calculation.
+     * @param {VariableTime} variableTime Variable time to resolve at the location.
      * @returns {number} Minutes since local midnight.
      */
-    const getVariableTimeMinutesAtLocation = (date, eventName, offsetMinutes) => {
+    const resolveVariableTime = (date, variableTime) => {
         if (typeof lat !== 'string' || typeof lon !== 'string') {
             throw formatLibraryBugMessage('Missing coordinates for variable time.');
         }
-        return getVariableTimeMinutes(date, lat, lon, eventName, offsetMinutes);
+        return getVariableTimeMinutes(date, lat, lon, variableTime.name, variableTime.offset);
     };
 
     /** @type {ParsingWarning[]} */
@@ -1639,7 +1639,42 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
 
     /** @typedef {false|true|1} ExtendedOpenEndMode */
-    /** @typedef {{name: string|undefined, offset: number}} VariableTimeBoundary */
+    /**
+     * @typedef {object} ParsedTimeBoundary
+     * @property {'normal'|'variable'|'calculated'} kind `10:00`, `sunrise` or `(sunrise+01:00)`.
+     * @property {number} minutes Parsed minutes, using the fallback for variable times.
+     * @property {number} end Position after the boundary's last token.
+     * @property {VariableTime|undefined} variableTime Set when it must be resolved per date.
+     */
+
+    /**
+     * Parse one normal or variable time boundary.
+     * @param {ParserToken[]} tokens List of parser tokens.
+     * @param {number} at Position where the boundary begins.
+     * @param {number} nrule Rule number, starting with zero.
+     * @returns {ParsedTimeBoundary|undefined} Parsed boundary, if present.
+     */
+    function parseTimeBoundary(tokens, at, nrule) {
+        if (matchTokens(tokens, at, 'number', 'timesep', 'number')) {
+            return { kind: 'normal', minutes: getMinutesByHoursMinutes(tokens, nrule, at), end: at + 3, variableTime: undefined };
+        }
+
+        const isCalculated = matchTokens(tokens, at, '(', 'timevar');
+        if (!isCalculated && !matchTokens(tokens, at, 'timevar')) {
+            return undefined;
+        }
+
+        const name = getVariableTimeName(tokens[isCalculated ? at + 1 : at]);
+        const offset = isCalculated ? parseTimevarCalc(tokens, at) : 0;
+        return {
+            kind: isCalculated ? 'calculated' : 'variable',
+            minutes: getVariableTimeDefault(name) + offset,
+            end: at + (isCalculated ? 7 : 1),
+            // Without coordinates, the fallback minutes are final.
+            variableTime: typeof lat === 'string' ? { name, offset } : undefined,
+        };
+    }
+
     /**
      * Parse time ranges such as `10:00-12:00,14:00-16:00`. {{{
      * @param {ParserToken[]} tokens List of token objects.
@@ -1657,55 +1692,35 @@ export default function(value, nominatim_object, optional_conf_parm) {
             tokens[at][3] = 'time';
 
         for (; at < tokens.length; at++) {
-            const has_time_var_calc = [], has_normal_time = []; // element 0: start time, 1: end time
-                has_normal_time[0]   = matchTokens(tokens, at, 'number', 'timesep', 'number');
-                has_time_var_calc[0] = matchTokens(tokens, at, '(', 'timevar');
+            const fromBoundary = parseTimeBoundary(tokens, at, nrule);
             let minutes_from,
                 minutes_to,
                 has_open_end = false; // default no open end
-            if (has_normal_time[0] || matchTokens(tokens, at, 'timevar') || has_time_var_calc[0]) {
-                // relying on the fact that always *one* of them is true
-
+            if (fromBoundary) {
+                minutes_from = fromBoundary.minutes;
                 let is_point_in_time = false; // default no time range
-                /** @type {{from: VariableTimeBoundary, to: VariableTimeBoundary}} */
-                const variableTimes = {
-                    from: { name: undefined, offset: 0 },
-                    to: { name: undefined, offset: 0 },
-                };
+                /** @type {ParsedTimeBoundary|undefined} */
+                let toBoundary;
                 let point_in_time_period;
 
-                // minutes_from
-                const startVariableTimeOffset = has_time_var_calc[0] ? 1 : 0;
-                if (has_normal_time[0]) {
-                    minutes_from = getMinutesByHoursMinutes(tokens, nrule, at + startVariableTimeOffset);
-                } else {
-                    variableTimes.from.name = getVariableTimeName(tokens[at + startVariableTimeOffset]);
-                    minutes_from = getVariableTimeDefault(variableTimes.from.name);
-
-                    if (has_time_var_calc[0]) {
-                        variableTimes.from.offset = parseTimevarCalc(tokens, at);
-                        minutes_from += variableTimes.from.offset;
-                    }
-                }
-
-                const at_end_time = at+(has_normal_time[0] ? 3 : (has_time_var_calc[0] ? 7 : 1))+1; // after '-'
-                if (!matchTokens(tokens, at_end_time - 1, '-')) { // not time range
-                    if (matchTokens(tokens, at_end_time - 1, '+')) {
+                const at_end_time = fromBoundary.end + 1; // after '-'
+                if (!matchTokens(tokens, fromBoundary.end, '-')) { // not time range
+                    if (matchTokens(tokens, fromBoundary.end, '+')) {
                         has_open_end = true;
                     } else {
                         if (oh_mode === 0) {
                             throw formatWarnErrorMessage(nrule,
                                 at+(
-                                    has_normal_time[0] ? (
+                                    fromBoundary.kind === 'normal' ? (
                                         typeof tokens[at+3] === 'object' ? 3 : 2
                                     ) : (
-                                        has_time_var_calc[0] ? 2 : (
+                                        fromBoundary.kind === 'calculated' ? 2 : (
                                                 typeof tokens[at+1] === 'object' ? 1 : 0
                                             )
                                     )
                                 ),
                                 t('point in time', {
-                                    'calc': (has_time_var_calc[0] ? t('calculation') + ' ' : ''),
+                                    'calc': (fromBoundary.kind === 'calculated' ? t('calculation') + ' ' : ''),
                                     'libraryname': library_name
                                 }));
                         } else {
@@ -1730,30 +1745,19 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 } else if (is_point_in_time) {
                     minutes_to = minutes_from + 1;
                 } else {
-                    has_normal_time[1] = matchTokens(tokens, at_end_time, 'number', 'timesep', 'number');
-                    has_time_var_calc[1]      = matchTokens(tokens, at_end_time, '(', 'timevar');
-                    if (!has_normal_time[1] && !matchTokens(tokens, at_end_time, 'timevar') && !has_time_var_calc[1]) {
+                    toBoundary = parseTimeBoundary(tokens, at_end_time, nrule);
+                    if (!toBoundary) {
                         throw formatWarnErrorMessage(nrule, at_end_time - (typeof tokens[at_end_time] === 'object' ? 0 : 1),
                                 t('time range continue'));
-                    } else {
-                        if (has_normal_time[1]) {
-                            minutes_to = getMinutesByHoursMinutes(tokens, nrule, at_end_time);
-                            warnAmbiguousSingleDigitHours(tokens, at, at_end_time, nrule);
-                        } else {
-                            const endVariableTimeOffset = has_time_var_calc[1] ? 1 : 0;
-                            variableTimes.to.name = getVariableTimeName(tokens[at_end_time + endVariableTimeOffset]);
-                            minutes_to = getVariableTimeDefault(variableTimes.to.name);
-                        }
-
-                        if (has_time_var_calc[1]) {
-                            variableTimes.to.offset = parseTimevarCalc(tokens, at_end_time);
-                            minutes_to += variableTimes.to.offset;
-                        }
+                    }
+                    minutes_to = toBoundary.minutes;
+                    if (toBoundary.kind === 'normal') {
+                        warnAmbiguousSingleDigitHours(tokens, at, at_end_time, nrule);
                     }
                 }
 
-                const endTimeTokenCount = has_normal_time[1] ? 3 : (has_time_var_calc[1] ? 7 : (has_open_end ? 0 : 1));
-                at = at_end_time + (is_point_in_time ? -1 : endTimeTokenCount);
+                // After the range, the open end's '+', or the point in time.
+                at = toBoundary?.end ?? (has_open_end ? at_end_time : fromBoundary.end);
 
                 if (matchTokens(tokens, at, '/', 'number')) {
                     if (matchTokens(tokens, at + 2, 'timesep', 'number')) { // /hours:minutes
@@ -1783,24 +1787,24 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 }
 
                 if (typeof lat === 'string') { // lon will also be defined (see above)
-                    if (!has_normal_time[0] || !(has_normal_time[1] || has_open_end || is_point_in_time) ) {
+                    if (fromBoundary.kind !== 'normal' || !(toBoundary?.kind === 'normal' || has_open_end || is_point_in_time) ) {
                         week_stable = false;
                     }
-                } else { // Without coordinates, keep the parser defaults above.
-                    variableTimes.from.name = undefined;
-                    variableTimes.to.name = undefined;
                 }
+                const fromVariableTime = fromBoundary.variableTime;
+                const toVariableTime = toBoundary?.variableTime;
 
                 // Normalize minutes into range.
                 if (!extended_open_end && minutes_from >= minutes_in_day) {
                     throw formatWarnErrorMessage(nrule, at_end_time - 2,
                         t('outside current day'));
                 }
-                if (minutes_to < minutes_from || ((has_normal_time[0] && has_normal_time[1]) && minutes_from === minutes_to)) {
+                if (minutes_to < minutes_from || (fromBoundary.kind === 'normal' && toBoundary?.kind === 'normal' && minutes_from === minutes_to)) {
                     minutes_to += minutes_in_day;
                 }
                 if (minutes_to > minutes_in_day * 2) {
-                    throw formatWarnErrorMessage(nrule, at_end_time + (has_normal_time[1] ? 4 : (has_time_var_calc[1] ? 7 : 1)) - 2,
+                    const endBoundaryErrorOffset = toBoundary?.kind === 'normal' ? 4 : (toBoundary?.kind === 'calculated' ? 7 : 1);
+                    throw formatWarnErrorMessage(nrule, at_end_time + endBoundaryErrorOffset - 2,
                         t('two midnights'));
                 }
 
@@ -1813,19 +1817,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     // constant fallback above did not wrap (#377), so also
                     // take this branch to re-check the order on every date.
                     if (minutes_to > minutes_in_day ||
-                            (typeof lat === 'string' && !has_open_end && !is_point_in_time &&
-                        variableTimes.from.name)) {
+                            (!has_open_end && !is_point_in_time && fromVariableTime)) {
                         rule.time.push(function(initial_from, initial_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period, extended_open_end) { return function(date) {
                             const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
                             // Variable times can change their order from day to day.
-                            const resolved_from = fromVariableTime.name
-                                ? getVariableTimeMinutesAtLocation(date, fromVariableTime.name, fromVariableTime.offset)
-                                : initial_from;
-                            let resolved_to = toVariableTime.name
-                                ? getVariableTimeMinutesAtLocation(date, toVariableTime.name, toVariableTime.offset)
-                                : initial_to;
-                            if (toVariableTime.name && resolved_to <= resolved_from) {
+                            const resolved_from = fromVariableTime ? resolveVariableTime(date, fromVariableTime) : initial_from;
+                            let resolved_to = toVariableTime ? resolveVariableTime(date, toVariableTime) : initial_to;
+                            if (toVariableTime && resolved_to <= resolved_from) {
                                 resolved_to += minutes_in_day;
                             } else if (is_point_in_time && typeof point_in_time_period !== 'number') {
                                 resolved_to = resolved_from + 1;
@@ -1854,13 +1853,13 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
                                 if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end, extended_open_end];
-                                if (fromVariableTime.name) {
+                                if (fromVariableTime) {
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
-                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutesAtLocation(next_day, fromVariableTime.name, fromVariableTime.offset))];
+                                    return [false, dateAtDayMinutes(next_day, resolveVariableTime(next_day, fromVariableTime))];
                                 }
                                 return [false, dateAtDayMinutes(date, resolved_from + minutes_in_day)];
                             }
-                        }}(minutes_from, minutes_to, variableTimes.from, variableTimes.to, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
+                        }}(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period, extended_open_end));
 
                         if (minutes_to - minutes_in_day > 0) {
                             if (typeof rule_infos[nrule] === 'undefined') {
@@ -1870,14 +1869,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             rule.wraptime.push(function(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, point_in_time_period, extended_open_end) { return function(date) {
                                 const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                                if (fromVariableTime.name) {
-                                    minutes_from = getVariableTimeMinutesAtLocation(date, fromVariableTime.name, fromVariableTime.offset);
+                                if (fromVariableTime) {
+                                    minutes_from = resolveVariableTime(date, fromVariableTime);
                                 }
-                                if (toVariableTime.name) {
-                                    minutes_to = getVariableTimeMinutesAtLocation(date, toVariableTime.name, toVariableTime.offset);
+                                if (toVariableTime) {
+                                    minutes_to = resolveVariableTime(date, toVariableTime);
                                 }
 
-                                if (fromVariableTime.name || toVariableTime.name) {
+                                if (fromVariableTime || toVariableTime) {
                                     if (minutes_to > minutes_from) {
                                         return [false, undefined];
                                     }
@@ -1898,19 +1897,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                         return [true, dateAtDayMinutes(date, minutes_to), has_open_end, extended_open_end];
                                 }
                                 return [false, undefined];
-                            }}(minutes_from, minutes_to > minutes_in_day ? minutes_to - minutes_in_day : minutes_to, variableTimes.from, variableTimes.to, has_open_end, point_in_time_period, extended_open_end));
+                            }}(minutes_from, minutes_to > minutes_in_day ? minutes_to - minutes_in_day : minutes_to, fromVariableTime, toVariableTime, has_open_end, point_in_time_period, extended_open_end));
                         }
                     } else {
                         rule.time.push(function(initial_from, initial_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period) { return function(date) {
                             const dateMinutes = date.getHours() * 60 + date.getMinutes();
 
-                            const resolved_from = fromVariableTime.name
-                                ? getVariableTimeMinutesAtLocation(date, fromVariableTime.name, fromVariableTime.offset)
-                                : initial_from;
-                            let resolved_to = toVariableTime.name
-                                ? getVariableTimeMinutesAtLocation(date, toVariableTime.name, toVariableTime.offset)
-                                : initial_to;
-                            if (!toVariableTime.name && is_point_in_time && typeof point_in_time_period !== 'number') {
+                            const resolved_from = fromVariableTime ? resolveVariableTime(date, fromVariableTime) : initial_from;
+                            let resolved_to = toVariableTime ? resolveVariableTime(date, toVariableTime) : initial_to;
+                            if (!toVariableTime && is_point_in_time && typeof point_in_time_period !== 'number') {
                                 resolved_to = resolved_from + 1;
                             }
 
@@ -1932,17 +1927,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
                                     return [false, dateAtDayMinutes(date, resolved_from)];
                                 else if (dateMinutes < resolved_to)
                                     return [true, dateAtDayMinutes(date, resolved_to), has_open_end];
-                                else if (fromVariableTime.name) {
+                                else if (fromVariableTime) {
                                     // The next opening is the variable time on
                                     // the following day, which drifts from day
                                     // to day, so recompute it instead of reusing
                                     // today's value shifted by 24h (#377).
                                     const next_day = dateAtDayMinutes(date, minutes_in_day);
-                                    return [false, dateAtDayMinutes(next_day, getVariableTimeMinutesAtLocation(next_day, fromVariableTime.name, fromVariableTime.offset))];
+                                    return [false, dateAtDayMinutes(next_day, resolveVariableTime(next_day, fromVariableTime))];
                                 } else
                                     return [false, dateAtDayMinutes(date, resolved_from + minutes_in_day)];
                             }
-                        }}(minutes_from, minutes_to, variableTimes.from, variableTimes.to, has_open_end, is_point_in_time, point_in_time_period));
+                        }}(minutes_from, minutes_to, fromVariableTime, toVariableTime, has_open_end, is_point_in_time, point_in_time_period));
                     }
                 }
 
