@@ -11,6 +11,11 @@ export type HolidayItem = {
 	substitute_name?: string;
 	[key: string]: unknown;
 };
-export type HolidayDefinition = Record<string, unknown> | HolidayItem[] | string | number | boolean | null;
+export type SchoolHolidayItem = {
+	name: string;
+	default?: number[];
+	[year: string]: string | number[] | undefined;
+};
+export type HolidayDefinition = Record<string, unknown> | HolidayItem[] | SchoolHolidayItem[] | string | number | boolean | null;
 export type CountryHolidayDefinitions = Record<string, HolidayDefinition>;
 export type HolidayDefinitions = Record<string, CountryHolidayDefinitions>;
