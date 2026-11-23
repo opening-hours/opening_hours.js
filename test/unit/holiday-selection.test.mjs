@@ -5,6 +5,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 
 import {
+    isHolidayItemArray,
+    isSchoolHolidayItemArray,
     selectPublicHolidays,
     selectSchoolHolidays,
 } from '../../src/holidays/holiday-selection.mjs';
@@ -23,6 +25,23 @@ const stateSchoolHolidays = [
     { name: 'Winter', 2026: [2, 1, 2, 7] },
 ];
 
+test('holiday guards reject definitions of the wrong type', () => {
+    assert.equal(isHolidayItemArray(countrySchoolHolidays), false);
+    assert.equal(isSchoolHolidayItemArray(publicCountryHolidays), false);
+    assert.equal(isSchoolHolidayItemArray([{ name: 'Invalid', 2026: [1, 2] }]), false);
+});
+
+test('public holiday selection falls back to country data for an empty state list', () => {
+    assert.deepEqual(
+        selectPublicHolidays(publicCountryHolidays, [], 'Example state'),
+        publicCountryHolidays
+    );
+    assert.deepEqual(
+        selectPublicHolidays(publicCountryHolidays, [], 'Other state'),
+        [publicCountryHolidays[0]]
+    );
+});
+
 test('public holiday state data keeps precedence over country data', () => {
     assert.deepEqual(
         selectPublicHolidays(publicCountryHolidays, publicStateHolidays, 'Example state'),
@@ -38,6 +57,13 @@ test('public country holidays are filtered by only_states', () => {
     assert.deepEqual(
         selectPublicHolidays(publicCountryHolidays, undefined, undefined),
         [publicCountryHolidays[0]]
+    );
+});
+
+test('school holiday selection falls back to country data for an empty state list', () => {
+    assert.deepEqual(
+        selectSchoolHolidays(countrySchoolHolidays, []),
+        countrySchoolHolidays
     );
 });
 
