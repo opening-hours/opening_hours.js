@@ -37,6 +37,12 @@ import { translate } from './locales/i18n';
 import { compareSelectorOrder, formatPrettifySelectorToken, getRuleSeparator, matchTokens, normalizePrettifyConf, shouldSortPrettifiedGroup } from './prettify-helpers.mjs';
 import { VARIABLE_TIME_DEFAULTS, getVariableTimeMinutes } from './variable-times.mjs';
 import { selectPublicHolidays, selectSchoolHolidays } from './holidays/holiday-selection.mjs';
+import {
+    collectSchoolHolidayRanges,
+    getMonthDayNumber,
+    getSchoolHolidayDatesForYear,
+    sortRangesByStartDate,
+} from './holidays/holiday-ranges.mjs';
 
 import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-defaults.mjs';
 
@@ -50,7 +56,6 @@ const holidayDefinitions = holiday_definitions;
 
 /** @typedef {import('./holidays/holiday-definitions.d.ts').HolidayItem} HolidayItem */
 /** @typedef {import('./holidays/holiday-definitions.d.ts').SchoolHolidayItem} SchoolHolidayItem */
-/** @typedef {{fromMonth: number, fromDay: number, toMonth: number, toDay: number, name: string, holiday: SchoolHolidayItem}} SchoolHolidayRange */
 /** @typedef {'PH'|'SH'} HolidayType */
 /** @typedef {import('opening_hours').nominatim_object} NominatimObject */
 
@@ -2430,88 +2435,17 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * Return the school holiday definition for a specified year. {{{
      * @param {SchoolHolidayItem} schoolHoliday Holiday definition keyed by year.
      * @param {number} year Year to look up.
-     * @param {boolean} [fatal] Optional flag to throw when no definition exists.
-     * @returns {number[]|undefined} School holiday dates for the year, or
-     *     `undefined` when no definition exists and `fatal` is false.
+     * @returns {number[]|undefined} School holiday dates for the year.
      */
-    function getSHForYear(schoolHoliday, year, fatal) {
-        if (typeof fatal !== 'boolean') {
-            fatal = true;
-        }
-
-        let holiday = schoolHoliday[year];
-        if (typeof holiday === 'undefined') {
-            holiday = schoolHoliday['default']; // applies for any year without explicit definition
-            if (typeof holiday === 'undefined') {
-                if (fatal) {
-                    throw formatLibraryBugMessage(t('no SH definition', {
-                        'name': schoolHoliday.name + ' ',
-                        'year': year,
-                    }), 'library bug PR only');
-                } else {
-                    return undefined;
-                }
+    function getSchoolHolidaysForYear(schoolHoliday, year) {
+        try {
+            return getSchoolHolidayDatesForYear(schoolHoliday, year);
+        } catch (error) {
+            if (!(error instanceof TypeError)) {
+                throw error;
             }
-        }
-        if (!Array.isArray(holiday)) {
             throw formatLibraryBugMessage('Unexpected school holiday definition.');
         }
-        return holiday;
-    }
-    /* }}} */
-
-    /**
-     * Convert a month and day to a comparable number (`month * 100 + day`). {{{
-     * For example, Jan 15 becomes 115 and Dec 25 becomes 1225.
-     * @param {number} month Month number, starting with 1.
-     * @param {number} day Day of the month, starting with 1.
-     * @returns {number} Numeric value for comparing month/day pairs.
-     */
-    function getDateNumber(month, day) {
-        return (month - 1) * 100 + day;
-    }
-    /* }}} */
-
-    /**
-     * Collect all school holiday ranges for a year from multiple definitions. {{{
-     * @param {SchoolHolidayItem[]} applyingHolidays School holiday definitions to inspect.
-     * @param {number} year Year for which to collect ranges.
-     * @returns {SchoolHolidayRange[]} Holiday ranges with their start and end
-     *     dates, name, and source definition.
-     */
-    function collectSHRangesForYear(applyingHolidays, year) {
-        const allRanges = [];
-        for (const schoolHoliday of applyingHolidays) {
-            const holiday = getSHForYear(schoolHoliday, year, false);
-            if (typeof holiday === 'undefined') {
-                continue;
-            }
-            for (let index = 0; index < holiday.length; index += 4) {
-                allRanges.push({
-                    fromMonth: holiday[index],
-                    fromDay: holiday[index + 1],
-                    toMonth: holiday[index + 2],
-                    toDay: holiday[index + 3],
-                    name: schoolHoliday.name,
-                    holiday: schoolHoliday,
-                });
-            }
-        }
-        return allRanges;
-    }
-    /* }}} */
-
-    /**
-     * Sort holiday ranges chronologically by their start date. {{{
-     * @param {Array<{fromMonth: number, fromDay: number}>} ranges Ranges to sort.
-     * @returns {void} The array is sorted in-place.
-     */
-    function sortRangesByStartDate(ranges) {
-        ranges.sort((left, right) => {
-            const leftStart = getDateNumber(left.fromMonth, left.fromDay);
-            const rightStart = getDateNumber(right.fromMonth, right.fromDay);
-            return leftStart - rightStart;
-        });
     }
     /* }}} */
 
@@ -2529,17 +2463,25 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
             // Collect all holiday ranges from all holiday types for this year,
             // sorted chronologically by start date.
-            const allRanges = collectSHRangesForYear(applyingHolidays, year);
+            let allRanges;
+            try {
+                allRanges = collectSchoolHolidayRanges(applyingHolidays, year);
+            } catch (error) {
+                if (!(error instanceof TypeError)) {
+                    throw error;
+                }
+                throw formatLibraryBugMessage('Unexpected school holiday definition.');
+            }
             sortRangesByStartDate(allRanges);
 
             // Check for holidays from last year spanning into this year
             for (let index = 0; index < applyingHolidays.length; index++) {
-                const lastYearHoliday = getSHForYear(applyingHolidays[index], year - 1, false);
+                const lastYearHoliday = getSchoolHolidaysForYear(applyingHolidays[index], year - 1);
                 if (typeof lastYearHoliday === 'object') {
                     // Check the last range of this holiday type from last year
                     const lastIndex = lastYearHoliday.length - 4;
-                    const lastYearHolidayFrom = getDateNumber(lastYearHoliday[lastIndex], lastYearHoliday[lastIndex + 1]);
-                    const lastYearHolidayTo = getDateNumber(lastYearHoliday[lastIndex + 2], lastYearHoliday[lastIndex + 3]);
+                    const lastYearHolidayFrom = getMonthDayNumber(lastYearHoliday[lastIndex], lastYearHoliday[lastIndex + 1]);
+                    const lastYearHolidayTo = getMonthDayNumber(lastYearHoliday[lastIndex + 2], lastYearHoliday[lastIndex + 3]);
 
                     // If holiday spans into next year and we're still in that period
                     if (lastYearHolidayFrom > lastYearHolidayTo && dateNumber <= lastYearHolidayTo) {
@@ -2553,8 +2495,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
             // Check each holiday range
             for (const range of allRanges) {
-                const holidayFrom = getDateNumber(range.fromMonth, range.fromDay);
-                const holidayTo = getDateNumber(range.toMonth, range.toDay);
+                const holidayFrom = getMonthDayNumber(range.fromMonth, range.fromDay);
+                const holidayTo = getMonthDayNumber(range.toMonth, range.toDay);
                 const holidayEndsNextYear = holidayTo < holidayFrom;
 
                 if (dateNumber < holidayFrom) {
@@ -2571,7 +2513,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             // Date is after all holidays this year - check next year's first holiday
             const nextYearRanges = [];
             for (const schoolHoliday of applyingHolidays) {
-                const holiday = getSHForYear(schoolHoliday, year + 1, false);
+                const holiday = getSchoolHolidaysForYear(schoolHoliday, year + 1);
                 if (typeof holiday === 'undefined') {
                     continue;
                 }
