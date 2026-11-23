@@ -43,6 +43,7 @@ import {
     getSchoolHolidayDatesForYear,
     sortRangesByStartDate,
 } from './holidays/holiday-ranges.mjs';
+import { compileShiftRule } from './holidays/shift-rules.mjs';
 
 import { resolveOsmTagDefault, getKeysWithWarnForPHMissing } from './osm-tag-defaults.mjs';
 
@@ -2953,137 +2954,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return eventDate;
     }
 
-    // Shift rule support for transferable holidays. {{{
-
-    /** @type {Record<string, number>} */
-    const weekday_name_to_num = {
-        sunday: 0, monday: 1, tuesday: 2, wednesday: 3,
-        thursday: 4, friday: 5, saturday: 6,
-    };
-
-    const shift_rule_cache = Object.create(null);
-
     /**
-     * Compile a shift_rule string into a (Date) => Date shifter.
-     *
-     * A `shift_rule` field on a holiday definition moves the holiday’s date
-     * depending on the weekday it falls on. The syntax is a subset of the
-     * date-holidays DSL: chained `if … then …` clauses, first match wins,
-     * unmatched dates stay unchanged.
-     *
-     * Format:
-     *   “if <wd>[,<wd>...] then <next|previous> <wd> [if … then … <wd>]*”
-     *
-     * Collision behaviour: if the shifted date would land on another
-     * non-shifted holiday in the same year, the holiday keeps its original
-     * date instead.
-     * @param {string} rule - Shift rule expression.
+     * Compile a holiday shift rule and report invalid rules as library bugs.
+     * @param {string} rule Shift rule expression.
      * @returns {(date: Date) => Date} Date shifter.
      */
-    function compileShiftRule(rule) {
-        if (shift_rule_cache[rule]) {
-            return shift_rule_cache[rule];
-        }
-        const clauses = parseShiftRule(rule);
-        const shifter = function (date) {
-            return applyShiftClauses(clauses, date);
-        };
-        shift_rule_cache[rule] = shifter;
-        return shifter;
-    }
-
-    /** @typedef {{from_wds: number[], direction: 'next'|'previous', target_wd: number}} ShiftClause */
-
-    /**
-     * Parse a shift_rule string into a list of clause objects.
-     *
-     * Each clause has the shape:
-     *   { from_wds: [<int>, ...], direction: "next"|"previous", target_wd: <int> }
-     * where weekdays are 0–6 (Sunday–Saturday).
-     * @param {string} rule - Shift rule expression.
-     * @returns {Array<ShiftClause>} Parsed clauses.
-     */
-    function parseShiftRule(rule) {
-        /**
-         * @param {string} detail Reason the shift_rule could not be parsed.
-         * @returns {never} Always throws.
-         */
-        function fail(detail) {
-            throw formatLibraryBugMessage(
-                'shift_rule: ' + detail + ' in "' + rule + '"'
-            );
-        }
-        /**
-         * @param {string} name Raw weekday lexeme from the shift_rule regex.
-         * @returns {number} Weekday number (0 is Sunday).
-         */
-        function toWeekdayNum(name) {
-            const n = name.trim();
-            if (!(n in weekday_name_to_num)) {
-                fail('unknown weekday "' + n + '"');
+    function compileShiftRuleForParser(rule) {
+        try {
+            return compileShiftRule(rule);
+        } catch (error) {
+            if (!(error instanceof SyntaxError)) {
+                throw error;
             }
-            return weekday_name_to_num[n];
+            throw formatLibraryBugMessage(error.message);
         }
-        /**
-         * @param {string} value Raw direction lexeme from the shift_rule regex.
-         * @returns {'next'|'previous'} Validated direction literal.
-         */
-        function toDirection(value) {
-            if (value !== 'next' && value !== 'previous') {
-                fail('unknown direction "' + value + '"');
-            }
-            return value;
-        }
-
-        const clause_regex = /if\s+([a-z,\s]+?)\s+then\s+(next|previous)\s+([a-z]+)/g;
-        const clauses = [];
-        let last_end = 0;
-        let match;
-        while ((match = clause_regex.exec(rule)) !== null) {
-            // Any text before the first match or between matches must be blank.
-            if (rule.slice(last_end, match.index).trim() !== '') {
-                fail('cannot parse');
-            }
-            clauses.push({
-                from_wds:  match[1].split(',').map(toWeekdayNum),
-                direction: toDirection(match[2]),
-                target_wd: toWeekdayNum(match[3]),
-            });
-            last_end = clause_regex.lastIndex;
-        }
-        if (clauses.length === 0 || rule.slice(last_end).trim() !== '') {
-            fail('cannot parse');
-        }
-        return clauses;
-    }
-
-    /**
-     * Apply the first matching clause to `date` and return the shifted date.
-     * Returns the original date if no clause matches.
-     * @param {Array<ShiftClause>} clauses - Parsed shift clauses.
-     * @param {Date} date - Date to shift.
-     * @returns {Date} Shifted date.
-     */
-    function applyShiftClauses(clauses, date) {
-        const wd = date.getDay();
-        for (let i = 0; i < clauses.length; i++) {
-            const c = clauses[i];
-            if (!c.from_wds.includes(wd)) continue;
-
-            // Distance to the target weekday, always in the range [1, 7].
-            // The modulo alone could yield 0 when wd === target_wd, but the
-            // from_wds guard above prevents that for well-formed rules.
-            // The "|| 7" is a safety net: if it ever did produce 0 we would
-            // shift by a full week rather than silently not moving the date.
-            let diff;
-            if (c.direction === 'next') {
-                diff = ((c.target_wd - wd + 7) % 7) || 7;   // move forward
-            } else {
-                diff = -(((wd - c.target_wd + 7) % 7) || 7); // move backward
-            }
-            return new Date(date.getFullYear(), date.getMonth(), date.getDate() + diff);
-        }
-        return date;
     }
 
     /**
@@ -3154,7 +3038,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         });
         resolved.forEach(function (r) {
             if (!r.holiday.shift_rule) return;
-            const shifter = compileShiftRule(r.holiday.shift_rule);
+            const shifter = compileShiftRuleForParser(r.holiday.shift_rule);
             const shifted = shifter(r.date);
             if (shifted.getTime() === r.date.getTime()) return;
             // Keep original date on collision with a non-shifted holiday.
@@ -3177,7 +3061,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             const original = holiday_entry.holiday;
             if (!original.substitute_rule) return;
 
-            const shifter = compileShiftRule(original.substitute_rule);
+            const shifter = compileShiftRuleForParser(original.substitute_rule);
             const substitute_date = shifter(holiday_entry.date);
 
             // The rule didn't match this weekday, so no substitute is needed.
