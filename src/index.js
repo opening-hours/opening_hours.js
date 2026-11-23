@@ -2693,7 +2693,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /**
      * Return variable dates used for holiday calculation. {{{
      * @param {number} year Year for which to calculate the variable dates.
-     * @returns {Record<string, Date>} Variable dates keyed by event name.
+     * @returns {Record<string, Date|undefined>} Variable dates keyed by event name.
      */
     function getMovableEventsForYear(year) {
         /* Calculate easter {{{ */
@@ -2936,6 +2936,23 @@ export default function(value, nominatim_object, optional_conf_parm) {
     }
     /* }}} */
 
+    /**
+     * Look up one movable event and require a supported date.
+     * @param {Record<string, Date|undefined>} movableEvents Events of one year.
+     * @param {unknown} eventName Movable event name.
+     * @returns {Date} Resolved event date.
+     */
+    function requireMovableEvent(movableEvents, eventName) {
+        if (typeof eventName !== 'string') {
+            throw formatLibraryBugMessage('Invalid movable event name.');
+        }
+        const eventDate = movableEvents[eventName];
+        if (!eventDate) {
+            throw t('movable no formula', { 'name': eventName });
+        }
+        return eventDate;
+    }
+
     // Shift rule support for transferable holidays. {{{
 
     /** @type {Record<string, number>} */
@@ -3079,7 +3096,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @returns {Array<[Date, string]>} Sorted holiday dates and names.
      */
     function getApplyingHolidaysForYear(applying_holidays, year, add_days) {
-        const movableDays = getMovableEventsForYear(year);
+        const movableEvents = getMovableEventsForYear(year);
 
         /* Pass 1: resolve the base date of every holiday (no shift, no add_days). */
         const resolved = applying_holidays
@@ -3106,10 +3123,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             holiday_item.fixed_date[1]
                         );
                 } else if (typeof holiday_item.variable_date === 'string') {
-                    const selected_movableDay = movableDays[holiday_item.variable_date];
-                    if (!selected_movableDay) {
-                        throw t('movable no formula', {'name': holiday_item.name});
-                    }
+                    const selected_movableDay = requireMovableEvent(movableEvents, holiday_item.variable_date);
                     const date_offset = typeof holiday_item.offset === 'number'
                         ? holiday_item.offset
                         : 0;
@@ -3157,6 +3171,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * Day of Goodwill already covers the following Monday).
          * Example: New Year’s Day on Sunday → Jan 1 stays + extra day on Monday.
          */
+        /** @type {Array<{date: Date, holiday: HolidayItem}>} */
         const substitutes = [];
         resolved.forEach(function (holiday_entry) {
             const original = holiday_entry.holiday;
@@ -3185,6 +3200,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         resolved.push(...substitutes);
 
         /* Pass 3: apply add_days uniformly and sort. */
+        /** @type {Array<[Date, string]>} */
         let sorted_holidays = resolved.map(function (r) {
             let d = r.date;
             if (add_days[0]) {
@@ -3635,12 +3651,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 const selector = function(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday) { return function(date) {
                     const start_of_next_year = new Date(date.getFullYear() + 1, 0, 1);
 
-                    let movableDays, from_date;
+                    let from_date;
                     if (has_event[0]) {
-                        movableDays = getMovableEventsForYear(has_year[0]
+                        from_date = requireMovableEvent(getMovableEventsForYear(has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
-                            : date.getFullYear());
-                        from_date = movableDays[tokens[at+has_year[0]][0]];
+                            : date.getFullYear()), tokens[at+has_year[0]][0]);
 
                         if (typeof has_calc[0] === 'object' && has_calc[0][1]) {
                             const from_year_before_calc = from_date.getFullYear();
@@ -3673,10 +3688,9 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                     let to_date;
                     if (has_event[1]) {
-                        movableDays = getMovableEventsForYear(has_year[1]
-                                    ? asNumericParserToken(tokens[at_sec_event_or_month-1])[0]
-                                    : date.getFullYear());
-                        to_date = movableDays[tokens[at_sec_event_or_month][0]];
+                        to_date = requireMovableEvent(getMovableEventsForYear(has_year[1]
+                            ? asNumericParserToken(tokens[at_sec_event_or_month-1])[0]
+                            : date.getFullYear()), tokens[at_sec_event_or_month][0]);
 
                         if (typeof has_calc[1] === 'object' && has_calc[1][1]) {
                             const to_year_before_calc = to_date.getFullYear();
@@ -3883,10 +3897,10 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                     // console.log('enter selector with date: ' + date);
                     const year_offset = Number(has_year);
-                    const movableDays = getMovableEventsForYear((has_year ? asNumericParserToken(tokens[at])[0] : date.getFullYear()));
-                    const event_date = movableDays[tokens[at+year_offset][0]];
-                    if (!event_date)
-                        throw t('movable no formula', {'name': tokens[at+year_offset][0]});
+                    const event_date = requireMovableEvent(
+                        getMovableEventsForYear(has_year ? asNumericParserToken(tokens[at])[0] : date.getFullYear()),
+                        tokens[at+year_offset][0]
+                    );
 
                     if (Array.isArray(add_days) && add_days[0]) {
                         event_date.setDate(event_date.getDate() + add_days[0]);
