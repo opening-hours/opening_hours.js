@@ -125,6 +125,24 @@ test('monthday ranges honor year and date boundaries', () => {
     }
 });
 
+test('February ranges validate inclusive endpoints independently', () => {
+    for (const [value, date, expected] of [
+        ['Feb 28-29', new Date(2024, 1, 28, 12), true],
+        ['Feb 28-29', new Date(2024, 1, 29, 12), true],
+        ['Feb 28-29', new Date(2024, 2, 1, 12), false],
+        ['Feb 28-29', new Date(2025, 1, 28, 12), false],
+        ['Feb 27-28', new Date(2025, 1, 27, 12), true],
+        ['Feb 27-28', new Date(2025, 1, 28, 12), true],
+        ['Feb 27-28', new Date(2025, 2, 1, 12), false],
+        ['Feb 28-29,27', new Date(2024, 1, 29, 12), true],
+        ['Feb 27,28-29', new Date(2024, 1, 29, 12), true],
+        ['Feb 28-29,27', new Date(2025, 1, 28, 12), false],
+        ['Feb 27,28-29', new Date(2025, 1, 28, 12), false],
+    ]) {
+        assert.equal(new opening_hours(value).getState(date), expected, value);
+    }
+});
+
 test('periodic monthday ranges advance at each selected day boundary', () => {
     const iterator = new opening_hours('Jan 2-6/2').getIterator(new Date(2027, 0, 1, 12));
     const limit = new Date(2027, 0, 8);

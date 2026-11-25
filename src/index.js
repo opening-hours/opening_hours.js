@@ -3234,7 +3234,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 return [false];
 
             const toDate = new Date(fromDate.getFullYear(), month, rangeTo);
-            if (month === 1 && isRange && rangeTo !== toDate.getDate())
+            if (month === 1 && isRange
+                    && new Date(fromDate.getFullYear(), month, rangeTo - 1).getDate() !== rangeTo - 1)
                 return [false];
 
             if (date.getTime() < fromDate.getTime())
