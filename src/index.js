@@ -3254,6 +3254,38 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
     /**
      * @param {ParserToken[]} tokens List of token objects.
+     * @param {number} at Position where the event begins.
+     * @param {number} nrule Rule number starting with 0.
+     * @param {boolean} hasExplicitYear Whether the year was specified.
+     * @param {TokenOffset|undefined} addDays Day offset and token count.
+     * @returns {RuleSelector} Movable event selector.
+     */
+    function createMovableEventSelector(tokens, at, nrule, hasExplicitYear, addDays) {
+        return function(date) {
+            const yearOffset = Number(hasExplicitYear);
+            const eventDate = requireMovableEvent(
+                getMovableEventsForYear(hasExplicitYear ? asNumericParserToken(tokens[at])[0] : date.getFullYear()),
+                tokens[at+yearOffset][0]
+            );
+
+            if (Array.isArray(addDays) && addDays[0]) {
+                eventDate.setDate(eventDate.getDate() + addDays[0]);
+                if (date.getFullYear() !== eventDate.getFullYear())
+                    throw formatWarnErrorMessage(nrule, at+yearOffset+addDays[1], t('movable not in year', {
+                        'name': tokens[at+yearOffset][0], 'days': addDays[0]}));
+            }
+
+            if (date.getTime() < eventDate.getTime())
+                return [false, eventDate];
+            else if (eventDate.getMonth() * 100 + eventDate.getDate() === date.getMonth() * 100 + date.getDate())
+                return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
+            else
+                return [false, new Date(date.getFullYear() + 1, 0, 1)];
+        };
+    }
+
+    /**
+     * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where to start.
      * @param {number} nrule Rule number starting with 0.
      * @param {boolean} hasExplicitYear Whether the year was specified.
@@ -3546,32 +3578,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 // Only event like easter {{{
             } else if (has_event[0]) {
 
-                /** @type {RuleSelector} */
-                const selector = function(tokens, at, nrule, has_year, add_days) { return function(date) {
-
-                    // console.log('enter selector with date: ' + date);
-                    const year_offset = Number(has_year);
-                    const event_date = requireMovableEvent(
-                        getMovableEventsForYear(has_year ? asNumericParserToken(tokens[at])[0] : date.getFullYear()),
-                        tokens[at+year_offset][0]
-                    );
-
-                    if (Array.isArray(add_days) && add_days[0]) {
-                        event_date.setDate(event_date.getDate() + add_days[0]);
-                        if (date.getFullYear() !== event_date.getFullYear())
-                            throw formatWarnErrorMessage(nrule, at+year_offset+add_days[1], t('movable not in year', {
-                                'name': tokens[at+year_offset][0], 'days': add_days[0]}));
-                    }
-
-                    if (date.getTime() < event_date.getTime())
-                        return [false, event_date];
-                    // else if (date.getTime() < event_date.getTime() + msec_in_day) // does not work because of daylight saving times
-                    else if (event_date.getMonth() * 100 + event_date.getDate() === date.getMonth() * 100 + date.getDate())
-                        return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
-                    else
-                        return [false, new Date(date.getFullYear() + 1, 0, 1)];
-
-                }}(tokens, at, nrule, has_year[0], has_calc[0]);
+                const selector = createMovableEventSelector(tokens, at, nrule, has_year[0], has_calc[0]);
 
                 if (push_to_month === true)
                     rule.month.push(selector);
