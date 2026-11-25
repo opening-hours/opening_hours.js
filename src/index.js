@@ -3206,6 +3206,11 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return at;
     }
 
+    /**
+     * @param {Date} date Current date.
+     * @param {number} month Zero-based month.
+     * @returns {Date} First day of the next matching month.
+     */
     function dateAtNextMonth(date, month) {
         return new Date(date.getFullYear(), month < date.getMonth() ? month + 12 : month);
     }
@@ -3235,19 +3240,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
             /** @type {OptionalRangeValues} */
             const has_calc = [undefined, undefined];
             has_year[0]  = matchTokens(tokens, at, 'year');
-            has_month[0] = matchTokens(tokens, at+has_year[0], 'month', 'number');
-            has_event[0] = matchTokens(tokens, at+has_year[0], 'event');
+            const startYearOffset = Number(has_year[0]);
+            has_month[0] = matchTokens(tokens, at+startYearOffset, 'month', 'number');
+            has_event[0] = matchTokens(tokens, at+startYearOffset, 'event');
 
             if (has_event[0])
-                has_calc[0] = getMoveDays(tokens, at+has_year[0]+1, 200, 'max differ name event like easter');
+                has_calc[0] = getMoveDays(tokens, at+startYearOffset+1, 200, 'max differ name event like easter');
 
             let at_range_sep;
-            if (matchTokens(tokens, at+has_year[0], 'month', 'weekday', '[')) {
-                has_constrained_weekday[0] = getConstrainedWeekday(tokens, at+has_year[0]+3);
+            if (matchTokens(tokens, at+startYearOffset, 'month', 'weekday', '[')) {
+                has_constrained_weekday[0] = getConstrainedWeekday(tokens, at+startYearOffset+3);
                 has_calc[0] = getMoveDays(tokens, has_constrained_weekday[0][1], 6, 'max differ name constrained weekdays');
                 at_range_sep = has_constrained_weekday[0][1] + (typeof has_calc[0] === 'object' && has_calc[0][1] ? 3 : 0);
             } else {
-                at_range_sep = at+has_year[0]
+                at_range_sep = at+startYearOffset
                     + (has_event[0]
                         ? (typeof has_calc[0] === 'object' && has_calc[0][1] ? 4 : 1)
                         : 2);
@@ -3262,7 +3268,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     at_sec_event_or_month = at_range_sep;
                 else {
                     has_year[1] = matchTokens(tokens, at_range_sep+1, 'year');
-                    at_sec_event_or_month = at_range_sep+1+has_year[1];
+                    at_sec_event_or_month = at_range_sep+1+Number(has_year[1]);
                     has_month[1] = matchTokens(tokens, at_sec_event_or_month, 'month', 'number');
                     if (!has_month[1]) {
                         has_event[1] = matchTokens(tokens, at_sec_event_or_month, 'event');
@@ -3280,11 +3286,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
             const is_valid_monthday_range = has_open_end || (has_year[0] === has_year[1]
                 && (has_month[1] || has_event[1] || has_constrained_weekday[1]));
             if (is_valid_monthday_range) {
+                if (at_sec_event_or_month === undefined)
+                    throw formatLibraryBugMessage();
+                const endPosition = at_sec_event_or_month;
 
                 if (has_month[0])
-                    checkIfDateIsValid(asNumericParserToken(tokens[at+has_year[0]])[0], asNumericParserToken(tokens[at+has_year[0]+1])[0], nrule, at+has_year[0]+1);
+                    checkIfDateIsValid(asNumericParserToken(tokens[at+startYearOffset])[0], asNumericParserToken(tokens[at+startYearOffset+1])[0], nrule, at+startYearOffset+1);
                 if (has_month[1])
-                    checkIfDateIsValid(asNumericParserToken(tokens[at_sec_event_or_month])[0], asNumericParserToken(tokens[at_sec_event_or_month+1])[0], nrule, at_sec_event_or_month+1);
+                    checkIfDateIsValid(asNumericParserToken(tokens[endPosition])[0], asNumericParserToken(tokens[endPosition+1])[0], nrule, endPosition+1);
 
                 /** @type {RuleSelector} */
                 const selector = function(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday) { return function(date) {
@@ -3294,29 +3303,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     if (has_event[0]) {
                         from_date = requireMovableEvent(getMovableEventsForYear(has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
-                            : date.getFullYear()), tokens[at+has_year[0]][0]);
+                            : date.getFullYear()), tokens[at+startYearOffset][0]);
 
                         if (typeof has_calc[0] === 'object' && has_calc[0][1]) {
                             const from_year_before_calc = from_date.getFullYear();
                             from_date.setDate(from_date.getDate() + has_calc[0][0]);
                             if (from_year_before_calc !== from_date.getFullYear())
-                                throw formatWarnErrorMessage(nrule, at+has_year[0]+has_calc[0][1]*3,
-                                    t('movable not in year', {'name': tokens[at+has_year[0]][0], 'days': has_calc[0][0]}));
+                                throw formatWarnErrorMessage(nrule, at+startYearOffset+has_calc[0][1]*3,
+                                    t('movable not in year', {'name': tokens[at+startYearOffset][0], 'days': has_calc[0][0]}));
                         }
                     } else if (has_constrained_weekday[0]) {
                         from_date = getDateForConstrainedWeekday((has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
                             : date.getFullYear()), // year
-                            asNumericParserToken(tokens[at+has_year[0]])[0], // month
-                            asNumericParserToken(tokens[at+has_year[0]+1])[0], // weekday
+                            asNumericParserToken(tokens[at+startYearOffset])[0], // month
+                            asNumericParserToken(tokens[at+startYearOffset+1])[0], // weekday
                             has_constrained_weekday[0],
                             has_calc[0]);
                     } else {
                         from_date = new Date((has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
                             : date.getFullYear()),
-                            asNumericParserToken(tokens[at+has_year[0]])[0],
-                            asNumericParserToken(tokens[at+has_year[0]+1])[0]);
+                            asNumericParserToken(tokens[at+startYearOffset])[0],
+                            asNumericParserToken(tokens[at+startYearOffset+1])[0]);
                     }
 
                     if (has_open_end) {
@@ -3382,7 +3391,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             return [!inside, start_of_next_year];
                         }
                     }
-                }}(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday);
+                }}(tokens, at, nrule, has_year, has_event, has_calc, endPosition, has_constrained_weekday);
 
                 // An explicit-year range that has already ended is permanently inactive.
                 const [, next_change] = selector(new Date());
@@ -3390,7 +3399,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (!has_open_end && is_past_explicit_range) {
                     parsing_warnings.push([
                         nrule,
-                        has_year[1] ? at_sec_event_or_month - 1 : at,
+                        has_year[1] ? endPosition - 1 : at,
                         'date_range_past',
                         t('date range past')
                     ]);
@@ -3406,7 +3415,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 } else {
                     at = (has_constrained_weekday[1]
                         ? has_constrained_weekday[1][1]
-                        : at_sec_event_or_month + (has_event[1] ? 1 : 2))
+                        : endPosition + (has_event[1] ? 1 : 2))
                         + (typeof has_calc[1] === 'object' ? has_calc[1][1] : 0);
                 }
 
@@ -3425,7 +3434,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 const month = month_token[0];
 
                 let first_round = true;
-                let is_range;
+                let is_range = false;
 
                 do {
                     const range_from_token = tokens[at+1 + year_offset];
@@ -3563,7 +3572,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 else
                     rule.monthday.push(selector);
 
-                at += has_year[0] + has_event[0] + (typeof has_calc[0][1] === 'number' && has_calc[0][1] ? 3 : 0);
+                at += startYearOffset + 1 + (has_calc[0]?.[1] || 0);
                 /* }}} */
             } else if (has_constrained_weekday[0]) {
                 at = parseMonthRange(tokens, at);

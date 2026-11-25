@@ -111,6 +111,32 @@ test('supports monthday ranges with an open end', () => {
     assert.deepEqual(oh.getWarnings(), []);
 });
 
+test('monthday ranges honor year and date boundaries', () => {
+    for (const [value, date, expected] of [
+        ['Jan 26-Feb 2', new Date(2027, 0, 25, 12), false],
+        ['Jan 26-Feb 2', new Date(2027, 1, 2, 12), true],
+        ['Jan 26-Feb 2', new Date(2027, 1, 3, 12), false],
+        ['2027 Jan 26-2027 Feb 2', new Date(2027, 0, 26, 12), true],
+        ['2027 Jan 26-2027 Feb 2', new Date(2028, 0, 26, 12), false],
+        ['Feb 29', new Date(2024, 1, 29, 12), true],
+        ['Feb 29', new Date(2025, 2, 1, 12), false],
+    ]) {
+        assert.equal(new opening_hours(value).getState(date), expected, value);
+    }
+});
+
+test('movable event selectors consume optional day offsets', () => {
+    for (const [value, date, expected] of [
+        ['easter', new Date(2024, 2, 31, 12), true],
+        ['easter +1 day', new Date(2024, 3, 1, 12), true],
+        ['easter +1 day-Apr 3', new Date(2024, 3, 2, 12), true],
+        ['easter +1 day-Apr 3', new Date(2024, 3, 4, 12), false],
+        ['2024 easter +1 day', new Date(2024, 3, 1, 12), true],
+    ]) {
+        assert.equal(new opening_hours(value).getState(date), expected, value);
+    }
+});
+
 test('time range errors mark the whole time, including calculated variable times', () => {
     for (const marked of [
         '10:00',
