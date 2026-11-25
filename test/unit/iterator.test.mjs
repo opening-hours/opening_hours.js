@@ -140,6 +140,44 @@ test('periodic monthday ranges advance at each selected day boundary', () => {
     assert.equal(iterator.advance(limit), false);
 });
 
+test('monthday lists preserve ranges, periods and neighboring months', () => {
+    for (const [value, date, expected] of [
+        ['Jan 2-4,8,10-12/2,Feb 3', new Date(2027, 0, 3, 12), true],
+        ['Jan 2-4,8,10-12/2,Feb 3', new Date(2027, 0, 5, 12), false],
+        ['Jan 2-4,8,10-12/2,Feb 3', new Date(2027, 0, 8, 12), true],
+        ['Jan 2-4,8,10-12/2,Feb 3', new Date(2027, 0, 11, 12), false],
+        ['Jan 2-4,8,10-12/2,Feb 3', new Date(2027, 0, 12, 12), true],
+        ['Jan 2-4,8,10-12/2,Feb 3', new Date(2027, 1, 3, 12), true],
+        ['Jan,Feb 2-4', new Date(2027, 0, 20, 12), true],
+        ['Jan,Feb 2-4', new Date(2027, 1, 3, 12), true],
+        ['Jan,Feb 2-4', new Date(2027, 1, 5, 12), false],
+    ]) {
+        assert.equal(new opening_hours(value).getState(date), expected, value);
+    }
+});
+
+test('single-month day ranges respect explicit years', () => {
+    const oh = new opening_hours('2099 Jan 2-4');
+
+    assert.equal(oh.getState(new Date(2098, 0, 3, 12)), false);
+    assert.equal(oh.getState(new Date(2099, 0, 1, 12)), false);
+    assert.equal(oh.getState(new Date(2099, 0, 3, 12)), true);
+    assert.equal(oh.getState(new Date(2099, 0, 5, 12)), false);
+    assert.equal(oh.getState(new Date(2100, 0, 3, 12)), false);
+});
+
+test('month selectors followed by times are not parsed as month days', () => {
+    for (const [value, options, date, expected] of [
+        ['Jan 09:00-17:00', undefined, new Date(2027, 0, 20, 10), true],
+        ['Jan 09:00-17:00', undefined, new Date(2027, 0, 20, 18), false],
+        ['Jan 09:00-17:00', undefined, new Date(2027, 1, 20, 10), false],
+        ['Jan 09:00', 1, new Date(2027, 0, 20, 9), true],
+        ['Jan 09:00', 1, new Date(2027, 0, 20, 9, 1), false],
+    ]) {
+        assert.equal(new opening_hours(value, null, options).getState(date), expected, value);
+    }
+});
+
 test('movable event selectors consume optional day offsets', () => {
     for (const [value, date, expected] of [
         ['easter', new Date(2024, 2, 31, 12), true],
