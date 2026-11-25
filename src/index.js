@@ -2872,7 +2872,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
             if (matchTokens(tokens, at, 'year')) {
                 let is_range,
                     has_period,
-                    period;
+                    period = 0;
                 if (matchTokens(tokens, at+1, '-', 'year', '/', 'number')) {
                     is_range   = true;
                     has_period = true;
@@ -2981,8 +2981,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     throw formatWarnErrorMessage(nrule, is_range ? at+2 : at, t('week exceed'));
                 }
                 if (is_range) {
-                    period = matchTokens(tokens, at+3, '/', 'number');
-                    if (period) {
+                    const hasPeriod = matchTokens(tokens, at+3, '/', 'number');
+                    if (hasPeriod) {
                         period = asNumericParserToken(tokens[at+4])[0];
                         tokens[at+4][4] = 'positive_number';
                         if (period < 2) {
@@ -3090,7 +3090,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
         // Get first day of year
         const yearStart = new Date(d.getFullYear(),0,1);
         // Calculate full weeks to nearest Thursday
-        return Math.ceil(( ( (d - yearStart) / 86400000) + 1)/7)
+        return Math.ceil(( ( (d.getTime() - yearStart.getTime()) / 86400000) + 1)/7)
     }
 
     /**
@@ -3931,7 +3931,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
      * @param {Date} [date] Date to inspect.
      * @returns {{isHoliday: boolean}} Public holiday context.
      */
-    this.getPublicHolidayContext = function(date) {
+    this.getPublicHolidayContext = function(date = new Date()) {
         return {
             isHoliday: isPublicHoliday(date),
         };
@@ -3976,7 +3976,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
          * Basically, both functions depend on each other in some way :(
          * See done_with_selector_reordering.
          */
-        return prettifyValue(argument_hash);
+        return /** @type {string} */ (prettifyValue(argument_hash));
     };
     /* }}} */
 
