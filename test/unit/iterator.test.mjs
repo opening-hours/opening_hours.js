@@ -125,6 +125,21 @@ test('monthday ranges honor year and date boundaries', () => {
     }
 });
 
+test('periodic monthday ranges advance at each selected day boundary', () => {
+    const iterator = new opening_hours('Jan 2-6/2').getIterator(new Date(2027, 0, 1, 12));
+    const limit = new Date(2027, 0, 8);
+
+    assert.equal(iterator.getState(), false);
+    for (const [day, expected] of [
+        [2, true], [3, false], [4, true], [5, false], [6, true], [7, false],
+    ]) {
+        assert.equal(iterator.advance(limit), true);
+        assert.equal(iterator.getDate().getTime(), new Date(2027, 0, day).getTime());
+        assert.equal(iterator.getState(), expected);
+    }
+    assert.equal(iterator.advance(limit), false);
+});
+
 test('movable event selectors consume optional day offsets', () => {
     for (const [value, date, expected] of [
         ['easter', new Date(2024, 2, 31, 12), true],

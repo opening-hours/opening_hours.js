@@ -3217,6 +3217,42 @@ export default function(value, nominatim_object, optional_conf_parm) {
     /* }}} */
 
     /**
+     * @param {number} year Explicit year, if present.
+     * @param {boolean} hasExplicitYear Whether the year was specified.
+     * @param {number} month Zero-based month.
+     * @param {number} rangeFrom First day of the range.
+     * @param {number} rangeTo Exclusive end day of the range.
+     * @param {number|undefined} period Optional day interval.
+     * @param {boolean} isRange Whether an end day was specified.
+     * @returns {RuleSelector} Date selector.
+     */
+    function createMonthdaySelector(year, hasExplicitYear, month, rangeFrom, rangeTo, period, isRange) {
+        return function(date) {
+            const startOfNextYear = new Date(date.getFullYear() + 1, 0, 1);
+            const fromDate = new Date(hasExplicitYear ? year : date.getFullYear(), month, rangeFrom);
+            if (month === 1 && rangeFrom !== fromDate.getDate())
+                return [false];
+
+            const toDate = new Date(fromDate.getFullYear(), month, rangeTo);
+            if (month === 1 && isRange && rangeTo !== toDate.getDate())
+                return [false];
+
+            if (date.getTime() < fromDate.getTime())
+                return [false, fromDate];
+            else if (date.getTime() >= toDate.getTime())
+                return [false, startOfNextYear];
+            else if (!period)
+                return [true, toDate];
+
+            const daysSinceStart = Math.floor((date.getTime() - fromDate.getTime()) / msec_in_day);
+            const inPeriod = daysSinceStart % period;
+            if (inPeriod === 0)
+                return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
+            return [false, new Date(date.getFullYear(), date.getMonth(), date.getDate() + period - inPeriod)];
+        };
+    }
+
+    /**
      * Month day range parser (Jan 26-31; Jan 26-Feb 26). {{{
      * @param {ParserToken[]} tokens List of token objects.
      * @param {number} at Position where to start.
@@ -3434,7 +3470,6 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 const month = month_token[0];
 
                 let first_round = true;
-                let is_range = false;
 
                 do {
                     const range_from_token = tokens[at+1 + year_offset];
@@ -3442,15 +3477,15 @@ export default function(value, nominatim_object, optional_conf_parm) {
                         throw formatLibraryBugMessage();
                     }
                     const range_from = range_from_token[0];
-                    is_range = matchTokens(tokens, at+2+year_offset, '-', 'number');
+                    const isRange = matchTokens(tokens, at+2+year_offset, '-', 'number');
                     let period = undefined;
-                    const at_range_to = at+year_offset+(is_range ? 3 : 1); // position of the range_to token
+                    const at_range_to = at+year_offset+(isRange ? 3 : 1); // position of the range_to token
                     const range_to_token = tokens[at_range_to];
                     if (!isNumericParserToken(range_to_token)) {
                         throw formatLibraryBugMessage();
                     }
                     const range_to = range_to_token[0] + 1;
-                    if (is_range && matchTokens(tokens, at+year_offset+4, '/', 'number')) {
+                    if (isRange && matchTokens(tokens, at+year_offset+4, '/', 'number')) {
                         period = asNumericParserToken(tokens[at+year_offset+5])[0];
                         tokens[at+year_offset+5][4] = 'positive_number';
                         checkPeriod(at+year_offset+5, period, 'day');
@@ -3458,8 +3493,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                     if (first_round) {
                         const at_timesep_if_monthRange = at + year_offset + 1 // at month number
-                            + (is_range ? 2 : 0) + (period ? 2 : 0)
-                            + Number(!(is_range || period)); // if not range nor has period, add one
+                            + (isRange ? 2 : 0) + (period ? 2 : 0)
+                            + Number(!(isRange || period)); // if not range nor has period, add one
 
                         // Check for '<month> <timespan>'
                         if (matchTokens(tokens, at_timesep_if_monthRange, 'timesep', 'number')
@@ -3481,8 +3516,8 @@ export default function(value, nominatim_object, optional_conf_parm) {
 
                     // An explicit date or range that already fully elapsed.
                     if (has_explicit_year && new Date(year, month, range_to) < new Date()) {
-                        const warning_type = is_range ? 'date_range_past' : 'date_past';
-                        const warning_message = is_range ? t('date range past') : t('date past');
+                        const warning_type = isRange ? 'date_range_past' : 'date_past';
+                        const warning_message = isRange ? t('date range past') : t('date past');
                         parsing_warnings.push([
                             nrule,
                             at_range_to,
@@ -3492,44 +3527,16 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     }
                     /* }}} */
 
-                    /** @type {RuleSelector} */
-                    const selector = function(year, has_explicit_year, month, range_from, range_to, period) { return function(date) {
-                        const start_of_next_year = new Date(date.getFullYear() + 1, 0, 1);
-
-                        const from_date = new Date(has_explicit_year ? year : date.getFullYear(),
-                            month, range_from);
-                        if (month === 1 && range_from !== from_date.getDate()) // Only on leap years does this day exist.
-                            return [false]; // If day 29 does not exist,
-                                            // then the date object adds one day to date
-                                            // and this selector should not match.
-                        const to_date   = new Date(from_date.getFullYear(),
-                            month, range_to);
-                        if (month === 1 && is_range && range_to !== to_date.getDate()) // Only on leap years does this day exist.
-                            return [false];
-
-                        if (date.getTime() < from_date.getTime())
-                            return [false, from_date];
-                        else if (date.getTime() >= to_date.getTime())
-                            return [false, start_of_next_year];
-                        else if (!period)
-                            return [true, to_date];
-
-                        const nday = Math.floor((date.getTime() - from_date.getTime()) / msec_in_day);
-                        const in_period = nday % period;
-
-                        if (in_period === 0)
-                            return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
-                        else
-                            return [false, new Date(date.getFullYear(), date.getMonth(), date.getDate() + period - in_period)];
-
-                    }}(year, has_explicit_year, month, range_from, range_to, period);
+                    const selector = createMonthdaySelector(
+                        year, has_explicit_year, month, range_from, range_to, period, isRange
+                    );
 
                     if (push_to_month === true)
                         rule.month.push(selector);
                     else
                         rule.monthday.push(selector);
 
-                    at += 2 + year_offset + (is_range ? 2 : 0) + (period ? 2 : 0);
+                    at += 2 + year_offset + (isRange ? 2 : 0) + (period ? 2 : 0);
 
                     first_round = false;
                 }
