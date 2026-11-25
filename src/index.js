@@ -3206,10 +3206,163 @@ export default function(value, nominatim_object, optional_conf_parm) {
         return at;
     }
 
+    /**
+     * @param {Date} date Current date.
+     * @param {number} month Zero-based month.
+     * @returns {Date} First day of the next matching month.
+     */
     function dateAtNextMonth(date, month) {
         return new Date(date.getFullYear(), month < date.getMonth() ? month + 12 : month);
     }
     /* }}} */
+
+    /**
+     * @param {number} year Explicit year, if present.
+     * @param {boolean} hasExplicitYear Whether the year was specified.
+     * @param {number} month Zero-based month.
+     * @param {number} rangeFrom First day of the range.
+     * @param {number} rangeTo Exclusive end day of the range.
+     * @param {number|undefined} period Optional day interval.
+     * @param {boolean} isRange Whether an end day was specified.
+     * @returns {RuleSelector} Date selector.
+     */
+    function createMonthdaySelector(year, hasExplicitYear, month, rangeFrom, rangeTo, period, isRange) {
+        return function(date) {
+            const startOfNextYear = new Date(date.getFullYear() + 1, 0, 1);
+            const fromDate = new Date(hasExplicitYear ? year : date.getFullYear(), month, rangeFrom);
+            if (month === 1 && rangeFrom !== fromDate.getDate())
+                return [false];
+
+            const toDate = new Date(fromDate.getFullYear(), month, rangeTo);
+            if (month === 1 && isRange
+                    && new Date(fromDate.getFullYear(), month, rangeTo - 1).getDate() !== rangeTo - 1)
+                return [false];
+
+            if (date.getTime() < fromDate.getTime())
+                return [false, fromDate];
+            else if (date.getTime() >= toDate.getTime())
+                return [false, startOfNextYear];
+            else if (!period)
+                return [true, toDate];
+
+            const daysSinceStart = Math.floor((date.getTime() - fromDate.getTime()) / msec_in_day);
+            const inPeriod = daysSinceStart % period;
+            if (inPeriod === 0)
+                return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
+            return [false, new Date(date.getFullYear(), date.getMonth(), date.getDate() + period - inPeriod)];
+        };
+    }
+
+    /**
+     * @param {ParserToken[]} tokens List of token objects.
+     * @param {number} at Position where the event begins.
+     * @param {number} nrule Rule number starting with 0.
+     * @param {boolean} hasExplicitYear Whether the year was specified.
+     * @param {TokenOffset|undefined} addDays Day offset and token count.
+     * @returns {RuleSelector} Movable event selector.
+     */
+    function createMovableEventSelector(tokens, at, nrule, hasExplicitYear, addDays) {
+        return function(date) {
+            const yearOffset = Number(hasExplicitYear);
+            const eventDate = requireMovableEvent(
+                getMovableEventsForYear(hasExplicitYear ? asNumericParserToken(tokens[at])[0] : date.getFullYear()),
+                tokens[at+yearOffset][0]
+            );
+
+            if (Array.isArray(addDays) && addDays[0]) {
+                eventDate.setDate(eventDate.getDate() + addDays[0]);
+                if (date.getFullYear() !== eventDate.getFullYear())
+                    throw formatWarnErrorMessage(nrule, at+yearOffset+addDays[1], t('movable not in year', {
+                        'name': tokens[at+yearOffset][0], 'days': addDays[0]}));
+            }
+
+            if (date.getTime() < eventDate.getTime())
+                return [false, eventDate];
+            else if (eventDate.getMonth() * 100 + eventDate.getDate() === date.getMonth() * 100 + date.getDate())
+                return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
+            else
+                return [false, new Date(date.getFullYear() + 1, 0, 1)];
+        };
+    }
+
+    /**
+     * @param {ParserToken[]} tokens List of token objects.
+     * @param {number} at Position where to start.
+     * @param {number} nrule Rule number starting with 0.
+     * @param {boolean} hasExplicitYear Whether the year was specified.
+     * @param {boolean|undefined} pushToMonth Whether to add selectors to the month array.
+     * @returns {[number, boolean]} Next position and whether parsing was delegated to the month parser.
+     */
+    function parseDaysInMonth(tokens, at, nrule, hasExplicitYear, pushToMonth) {
+        const yearOffset = Number(hasExplicitYear);
+        const yearToken = tokens[at];
+        const monthToken = tokens[at + yearOffset];
+        if (!isNumericParserToken(yearToken) || !isNumericParserToken(monthToken)) {
+            throw formatLibraryBugMessage();
+        }
+        const year = yearToken[0];
+        const month = monthToken[0];
+        let firstRound = true;
+
+        do {
+            const rangeFromToken = tokens[at + 1 + yearOffset];
+            if (!isNumericParserToken(rangeFromToken)) {
+                throw formatLibraryBugMessage();
+            }
+            const rangeFrom = rangeFromToken[0];
+            const isRange = matchTokens(tokens, at + 2 + yearOffset, '-', 'number');
+            let period = undefined;
+            const rangeToPosition = at + yearOffset + (isRange ? 3 : 1);
+            const rangeToToken = tokens[rangeToPosition];
+            if (!isNumericParserToken(rangeToToken)) {
+                throw formatLibraryBugMessage();
+            }
+            const rangeTo = rangeToToken[0] + 1;
+            if (isRange && matchTokens(tokens, at + yearOffset + 4, '/', 'number')) {
+                period = asNumericParserToken(tokens[at + yearOffset + 5])[0];
+                tokens[at + yearOffset + 5][4] = 'positive_number';
+                checkPeriod(at + yearOffset + 5, period, 'day');
+            }
+
+            if (firstRound) {
+                const timeSeparatorPosition = at + yearOffset + 1
+                    + (isRange ? 2 : 0) + (period ? 2 : 0)
+                    + Number(!(isRange || period));
+
+                if (matchTokens(tokens, timeSeparatorPosition, 'timesep', 'number')
+                        && (matchTokens(tokens, timeSeparatorPosition + 2, '+')
+                            || matchTokens(tokens, timeSeparatorPosition + 2, '-')
+                            || oh_mode !== 0)) {
+                    return [parseMonthRange(tokens, at, true, true), true];
+                }
+            }
+
+            if (rangeTo < rangeFrom)
+                throw formatWarnErrorMessage(nrule, at + yearOffset + 3, t('day range reverse'));
+
+            checkIfDateIsValid(month, rangeFrom, nrule, at + 1 + yearOffset);
+            checkIfDateIsValid(month, rangeTo - 1, nrule, rangeToPosition);
+
+            if (hasExplicitYear && new Date(year, month, rangeTo) < new Date()) {
+                const warningType = isRange ? 'date_range_past' : 'date_past';
+                const warningMessage = isRange ? t('date range past') : t('date past');
+                parsing_warnings.push([nrule, rangeToPosition, warningType, warningMessage]);
+            }
+
+            const selector = createMonthdaySelector(
+                year, hasExplicitYear, month, rangeFrom, rangeTo, period, isRange
+            );
+            if (pushToMonth === true)
+                rule.month.push(selector);
+            else
+                rule.monthday.push(selector);
+
+            at += 2 + yearOffset + (isRange ? 2 : 0) + (period ? 2 : 0);
+            firstRound = false;
+        } while (matchTokens(tokens, at, ',', 'number'));
+
+        return [at, false];
+    }
 
     /**
      * Month day range parser (Jan 26-31; Jan 26-Feb 26). {{{
@@ -3235,19 +3388,20 @@ export default function(value, nominatim_object, optional_conf_parm) {
             /** @type {OptionalRangeValues} */
             const has_calc = [undefined, undefined];
             has_year[0]  = matchTokens(tokens, at, 'year');
-            has_month[0] = matchTokens(tokens, at+has_year[0], 'month', 'number');
-            has_event[0] = matchTokens(tokens, at+has_year[0], 'event');
+            const startYearOffset = Number(has_year[0]);
+            has_month[0] = matchTokens(tokens, at+startYearOffset, 'month', 'number');
+            has_event[0] = matchTokens(tokens, at+startYearOffset, 'event');
 
             if (has_event[0])
-                has_calc[0] = getMoveDays(tokens, at+has_year[0]+1, 200, 'max differ name event like easter');
+                has_calc[0] = getMoveDays(tokens, at+startYearOffset+1, 200, 'max differ name event like easter');
 
             let at_range_sep;
-            if (matchTokens(tokens, at+has_year[0], 'month', 'weekday', '[')) {
-                has_constrained_weekday[0] = getConstrainedWeekday(tokens, at+has_year[0]+3);
+            if (matchTokens(tokens, at+startYearOffset, 'month', 'weekday', '[')) {
+                has_constrained_weekday[0] = getConstrainedWeekday(tokens, at+startYearOffset+3);
                 has_calc[0] = getMoveDays(tokens, has_constrained_weekday[0][1], 6, 'max differ name constrained weekdays');
                 at_range_sep = has_constrained_weekday[0][1] + (typeof has_calc[0] === 'object' && has_calc[0][1] ? 3 : 0);
             } else {
-                at_range_sep = at+has_year[0]
+                at_range_sep = at+startYearOffset
                     + (has_event[0]
                         ? (typeof has_calc[0] === 'object' && has_calc[0][1] ? 4 : 1)
                         : 2);
@@ -3262,7 +3416,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     at_sec_event_or_month = at_range_sep;
                 else {
                     has_year[1] = matchTokens(tokens, at_range_sep+1, 'year');
-                    at_sec_event_or_month = at_range_sep+1+has_year[1];
+                    at_sec_event_or_month = at_range_sep+1+Number(has_year[1]);
                     has_month[1] = matchTokens(tokens, at_sec_event_or_month, 'month', 'number');
                     if (!has_month[1]) {
                         has_event[1] = matchTokens(tokens, at_sec_event_or_month, 'event');
@@ -3280,11 +3434,14 @@ export default function(value, nominatim_object, optional_conf_parm) {
             const is_valid_monthday_range = has_open_end || (has_year[0] === has_year[1]
                 && (has_month[1] || has_event[1] || has_constrained_weekday[1]));
             if (is_valid_monthday_range) {
+                if (at_sec_event_or_month === undefined)
+                    throw formatLibraryBugMessage();
+                const endPosition = at_sec_event_or_month;
 
                 if (has_month[0])
-                    checkIfDateIsValid(asNumericParserToken(tokens[at+has_year[0]])[0], asNumericParserToken(tokens[at+has_year[0]+1])[0], nrule, at+has_year[0]+1);
+                    checkIfDateIsValid(asNumericParserToken(tokens[at+startYearOffset])[0], asNumericParserToken(tokens[at+startYearOffset+1])[0], nrule, at+startYearOffset+1);
                 if (has_month[1])
-                    checkIfDateIsValid(asNumericParserToken(tokens[at_sec_event_or_month])[0], asNumericParserToken(tokens[at_sec_event_or_month+1])[0], nrule, at_sec_event_or_month+1);
+                    checkIfDateIsValid(asNumericParserToken(tokens[endPosition])[0], asNumericParserToken(tokens[endPosition+1])[0], nrule, endPosition+1);
 
                 /** @type {RuleSelector} */
                 const selector = function(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday) { return function(date) {
@@ -3294,29 +3451,29 @@ export default function(value, nominatim_object, optional_conf_parm) {
                     if (has_event[0]) {
                         from_date = requireMovableEvent(getMovableEventsForYear(has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
-                            : date.getFullYear()), tokens[at+has_year[0]][0]);
+                            : date.getFullYear()), tokens[at+startYearOffset][0]);
 
                         if (typeof has_calc[0] === 'object' && has_calc[0][1]) {
                             const from_year_before_calc = from_date.getFullYear();
                             from_date.setDate(from_date.getDate() + has_calc[0][0]);
                             if (from_year_before_calc !== from_date.getFullYear())
-                                throw formatWarnErrorMessage(nrule, at+has_year[0]+has_calc[0][1]*3,
-                                    t('movable not in year', {'name': tokens[at+has_year[0]][0], 'days': has_calc[0][0]}));
+                                throw formatWarnErrorMessage(nrule, at+startYearOffset+has_calc[0][1]*3,
+                                    t('movable not in year', {'name': tokens[at+startYearOffset][0], 'days': has_calc[0][0]}));
                         }
                     } else if (has_constrained_weekday[0]) {
                         from_date = getDateForConstrainedWeekday((has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
                             : date.getFullYear()), // year
-                            asNumericParserToken(tokens[at+has_year[0]])[0], // month
-                            asNumericParserToken(tokens[at+has_year[0]+1])[0], // weekday
+                            asNumericParserToken(tokens[at+startYearOffset])[0], // month
+                            asNumericParserToken(tokens[at+startYearOffset+1])[0], // weekday
                             has_constrained_weekday[0],
                             has_calc[0]);
                     } else {
                         from_date = new Date((has_year[0]
                             ? asNumericParserToken(tokens[at])[0]
                             : date.getFullYear()),
-                            asNumericParserToken(tokens[at+has_year[0]])[0],
-                            asNumericParserToken(tokens[at+has_year[0]+1])[0]);
+                            asNumericParserToken(tokens[at+startYearOffset])[0],
+                            asNumericParserToken(tokens[at+startYearOffset+1])[0]);
                     }
 
                     if (has_open_end) {
@@ -3382,7 +3539,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                             return [!inside, start_of_next_year];
                         }
                     }
-                }}(tokens, at, nrule, has_year, has_event, has_calc, at_sec_event_or_month, has_constrained_weekday);
+                }}(tokens, at, nrule, has_year, has_event, has_calc, endPosition, has_constrained_weekday);
 
                 // An explicit-year range that has already ended is permanently inactive.
                 const [, next_change] = selector(new Date());
@@ -3390,7 +3547,7 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 if (!has_open_end && is_past_explicit_range) {
                     parsing_warnings.push([
                         nrule,
-                        has_year[1] ? at_sec_event_or_month - 1 : at,
+                        has_year[1] ? endPosition - 1 : at,
                         'date_range_past',
                         t('date range past')
                     ]);
@@ -3406,164 +3563,30 @@ export default function(value, nominatim_object, optional_conf_parm) {
                 } else {
                     at = (has_constrained_weekday[1]
                         ? has_constrained_weekday[1][1]
-                        : at_sec_event_or_month + (has_event[1] ? 1 : 2))
+                        : endPosition + (has_event[1] ? 1 : 2))
                         + (typeof has_calc[1] === 'object' ? has_calc[1][1] : 0);
                 }
 
                 /* }}} */
                 // Monthday range like Jan 26-31 {{{
             } else if (has_month[0]) {
-
-                const has_explicit_year = has_year[0];
-                const year_offset = Number(has_explicit_year);
-                const year_token = tokens[at];
-                const month_token = tokens[at+year_offset];
-                if (!isNumericParserToken(year_token) || !isNumericParserToken(month_token)) {
-                    throw formatLibraryBugMessage();
-                }
-                const year = year_token[0]; // Could be month if has no year. Tested later.
-                const month = month_token[0];
-
-                let first_round = true;
-                let is_range;
-
-                do {
-                    const range_from_token = tokens[at+1 + year_offset];
-                    if (!isNumericParserToken(range_from_token)) {
-                        throw formatLibraryBugMessage();
-                    }
-                    const range_from = range_from_token[0];
-                    is_range = matchTokens(tokens, at+2+year_offset, '-', 'number');
-                    let period = undefined;
-                    const at_range_to = at+year_offset+(is_range ? 3 : 1); // position of the range_to token
-                    const range_to_token = tokens[at_range_to];
-                    if (!isNumericParserToken(range_to_token)) {
-                        throw formatLibraryBugMessage();
-                    }
-                    const range_to = range_to_token[0] + 1;
-                    if (is_range && matchTokens(tokens, at+year_offset+4, '/', 'number')) {
-                        period = asNumericParserToken(tokens[at+year_offset+5])[0];
-                        tokens[at+year_offset+5][4] = 'positive_number';
-                        checkPeriod(at+year_offset+5, period, 'day');
-                    }
-
-                    if (first_round) {
-                        const at_timesep_if_monthRange = at + year_offset + 1 // at month number
-                            + (is_range ? 2 : 0) + (period ? 2 : 0)
-                            + Number(!(is_range || period)); // if not range nor has period, add one
-
-                        // Check for '<month> <timespan>'
-                        if (matchTokens(tokens, at_timesep_if_monthRange, 'timesep', 'number')
-                                && (matchTokens(tokens, at_timesep_if_monthRange+2, '+')
-                                    || matchTokens(tokens, at_timesep_if_monthRange+2, '-')
-                                    || oh_mode !== 0)
-                            ) {
-                                return parseMonthRange(tokens, at, true, true);
-                        }
-                    }
-
-                    // error checking {{{
-                    if (range_to < range_from)
-                        throw formatWarnErrorMessage(nrule, at+year_offset+3, t('day range reverse'));
-
-                    checkIfDateIsValid(month, range_from, nrule, at+1 + year_offset);
-                    checkIfDateIsValid(month, range_to - 1 /* added previously */,
-                        nrule, at_range_to);
-
-                    // An explicit date or range that already fully elapsed.
-                    if (has_explicit_year && new Date(year, month, range_to) < new Date()) {
-                        const warning_type = is_range ? 'date_range_past' : 'date_past';
-                        const warning_message = is_range ? t('date range past') : t('date past');
-                        parsing_warnings.push([
-                            nrule,
-                            at_range_to,
-                            warning_type,
-                            warning_message
-                        ]);
-                    }
-                    /* }}} */
-
-                    /** @type {RuleSelector} */
-                    const selector = function(year, has_explicit_year, month, range_from, range_to, period) { return function(date) {
-                        const start_of_next_year = new Date(date.getFullYear() + 1, 0, 1);
-
-                        const from_date = new Date(has_explicit_year ? year : date.getFullYear(),
-                            month, range_from);
-                        if (month === 1 && range_from !== from_date.getDate()) // Only on leap years does this day exist.
-                            return [false]; // If day 29 does not exist,
-                                            // then the date object adds one day to date
-                                            // and this selector should not match.
-                        const to_date   = new Date(from_date.getFullYear(),
-                            month, range_to);
-                        if (month === 1 && is_range && range_to !== to_date.getDate()) // Only on leap years does this day exist.
-                            return [false];
-
-                        if (date.getTime() < from_date.getTime())
-                            return [false, from_date];
-                        else if (date.getTime() >= to_date.getTime())
-                            return [false, start_of_next_year];
-                        else if (!period)
-                            return [true, to_date];
-
-                        const nday = Math.floor((date.getTime() - from_date.getTime()) / msec_in_day);
-                        const in_period = nday % period;
-
-                        if (in_period === 0)
-                            return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
-                        else
-                            return [false, new Date(date.getFullYear(), date.getMonth(), date.getDate() + period - in_period)];
-
-                    }}(year, has_explicit_year, month, range_from, range_to, period);
-
-                    if (push_to_month === true)
-                        rule.month.push(selector);
-                    else
-                        rule.monthday.push(selector);
-
-                    at += 2 + year_offset + (is_range ? 2 : 0) + (period ? 2 : 0);
-
-                    first_round = false;
-                }
-                while (matchTokens(tokens, at, ',', 'number'))
-
+                const [nextPosition, delegated] = parseDaysInMonth(tokens, at, nrule, has_year[0], push_to_month);
+                if (delegated)
+                    return nextPosition;
+                at = nextPosition;
 
                 /* }}} */
                 // Only event like easter {{{
             } else if (has_event[0]) {
 
-                /** @type {RuleSelector} */
-                const selector = function(tokens, at, nrule, has_year, add_days) { return function(date) {
-
-                    // console.log('enter selector with date: ' + date);
-                    const year_offset = Number(has_year);
-                    const event_date = requireMovableEvent(
-                        getMovableEventsForYear(has_year ? asNumericParserToken(tokens[at])[0] : date.getFullYear()),
-                        tokens[at+year_offset][0]
-                    );
-
-                    if (Array.isArray(add_days) && add_days[0]) {
-                        event_date.setDate(event_date.getDate() + add_days[0]);
-                        if (date.getFullYear() !== event_date.getFullYear())
-                            throw formatWarnErrorMessage(nrule, at+year_offset+add_days[1], t('movable not in year', {
-                                'name': tokens[at+year_offset][0], 'days': add_days[0]}));
-                    }
-
-                    if (date.getTime() < event_date.getTime())
-                        return [false, event_date];
-                    // else if (date.getTime() < event_date.getTime() + msec_in_day) // does not work because of daylight saving times
-                    else if (event_date.getMonth() * 100 + event_date.getDate() === date.getMonth() * 100 + date.getDate())
-                        return [true, new Date(date.getFullYear(), date.getMonth(), date.getDate() + 1)];
-                    else
-                        return [false, new Date(date.getFullYear() + 1, 0, 1)];
-
-                }}(tokens, at, nrule, has_year[0], has_calc[0]);
+                const selector = createMovableEventSelector(tokens, at, nrule, has_year[0], has_calc[0]);
 
                 if (push_to_month === true)
                     rule.month.push(selector);
                 else
                     rule.monthday.push(selector);
 
-                at += has_year[0] + has_event[0] + (typeof has_calc[0][1] === 'number' && has_calc[0][1] ? 3 : 0);
+                at += startYearOffset + 1 + (has_calc[0]?.[1] || 0);
                 /* }}} */
             } else if (has_constrained_weekday[0]) {
                 at = parseMonthRange(tokens, at);
