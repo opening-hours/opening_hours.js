@@ -40,6 +40,8 @@ jobs:
         run: npm ci --ignore-scripts
       - name: Run linter tests
         run: npm run lint
+      - name: Run typecheck
+        run: npm run typecheck
 
   reuse:
     runs-on: ubuntu-latest
