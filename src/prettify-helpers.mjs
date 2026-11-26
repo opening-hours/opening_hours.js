@@ -6,11 +6,18 @@
  * None of these functions close over parser state; they are safe to import
  * and test in isolation.
  */
-// eslint-disable-next-line jsdoc/reject-any-type
-/** @typedef {Record<string, any>} PrettifyConf */
-// eslint-disable-next-line jsdoc/reject-any-type
-/** @typedef {Array<any>} PrettifyToken */
+/** @typedef {import('opening_hours').prettify_options} PrettifyOptions */
+/**
+ * @typedef {PrettifyOptions & {
+ *   day_before_month: boolean,
+ *   day_month_sep: string,
+ *   weekday_before_date: boolean,
+ *   weekday_date_sep: string
+ * }} PrettifyConf
+ */
+/** @typedef {[[number, number, string], string]} PrettifyGroupEntry */
 /** @typedef {import('./parser-token-types.d.ts').ParserToken} ParserToken */
+/** @typedef {import('./parser-token-types.d.ts').ParserTokenRule} ParserTokenRule */
 /** @typedef {Array<ParserToken>} ParserTokens */
 /** @typedef {typeof import('./locales/i18n.js').translate} TranslateFunction */
 
@@ -24,8 +31,8 @@ export const SELECTOR_ORDER = [
 
 /**
  * Sort comparator for prettified_group_value entries based on SELECTOR_ORDER.
- * @param {PrettifyToken} a - [selector_start_end_type, string] tuple
- * @param {PrettifyToken} b - [selector_start_end_type, string] tuple
+ * @param {PrettifyGroupEntry} a - [selector_start_end_type, string] tuple
+ * @param {PrettifyGroupEntry} b - [selector_start_end_type, string] tuple
  * @returns {number} Ordering difference between the two selector groups.
  */
 export function compareSelectorOrder(a, b) {
@@ -35,7 +42,7 @@ export function compareSelectorOrder(a, b) {
 /**
  * Returns true when a prettified rule group contains a comment selector.
  * Reordering the group in that case may change the semantics of the value.
- * @param {Array<PrettifyToken>} group - prettified_group_value array
+ * @param {Array<PrettifyGroupEntry>} group - prettified_group_value array
  * @returns {boolean} Whether the group contains a comment selector.
  */
 export function hasCommentSelector(group) {
@@ -47,7 +54,7 @@ const localized_name_cache = {};
 
 /**
  * Build the separator string between two rules for prettifyValue.
- * @param {PrettifyToken} ruleTokens - token list of one rule, as stored in new_tokens[nrule]
+ * @param {ParserTokenRule} ruleTokens - Token rule as stored in new_tokens[nrule].
  * @param {PrettifyConf} conf - prettify configuration object
  * @returns {string} Separator to append before the next rule.
  */
@@ -63,19 +70,15 @@ export function getRuleSeparator(ruleTokens, conf) {
 
 /**
  * Merge user prettify configuration with defaults without mutating the input.
- * @param {PrettifyConf} userConf - caller-provided prettify config
+ * @param {Partial<PrettifyOptions>} userConf - caller-provided prettify config
  * @param {PrettifyConf} defaultConf - built-in defaults
  * @returns {PrettifyConf} Normalized configuration containing every default key.
  */
 export function normalizePrettifyConf(userConf, defaultConf) {
-    /** @type {PrettifyConf} */
-    const conf = {};
-
-    Object.keys(defaultConf).forEach(function (key) {
-        conf[key] = typeof userConf[key] === 'undefined' ? defaultConf[key] : userConf[key];
-    });
-
-    return conf;
+    const overrides = Object.fromEntries(
+        Object.entries(userConf).filter(([, value]) => value !== undefined)
+    );
+    return { ...defaultConf, ...overrides };
 }
 
 /**
@@ -83,7 +86,7 @@ export function normalizePrettifyConf(userConf, defaultConf) {
  * @param {boolean} doneWithSelectorReordering - global one-way switch
  * @param {Set<number>} rulesWithoutSelectorReordering - rule indices that must keep input order
  * @param {number} ruleIndex - current rule index
- * @param {Array<PrettifyToken>} group - prettified_group_value array
+ * @param {Array<PrettifyGroupEntry>} group - prettified_group_value array
  * @returns {boolean} Whether the group can be safely reordered.
  */
 export function shouldSortPrettifiedGroup(doneWithSelectorReordering, rulesWithoutSelectorReordering, ruleIndex, group) {

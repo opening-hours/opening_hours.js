@@ -96,7 +96,8 @@ declare module 'opening_hours' {
       end_date?: Date
     ): opening_hours_equality_result
     isWeekStable(): boolean
-    prettifyValue(argument_hash?: Partial<argument_hash>): string
+    prettifyValue(argument_hash: argument_hash & { get_internals: true }): unknown
+    prettifyValue(argument_hash?: argument_hash): string
     getIterator(date?: Date): opening_hours_iterator
   }
   export default opening_hours
@@ -134,8 +135,7 @@ declare module 'opening_hours' {
     }
   }
 
-  export interface argument_hash {
-    rule_index: number | undefined
+  export interface prettify_options {
     zero_pad_hour: boolean
     one_zero_if_hour_zero: boolean
     leave_off_closed: boolean
@@ -146,7 +146,12 @@ declare module 'opening_hours' {
     sep_one_day_between: string
     zero_pad_month_and_week_numbers: boolean
     locale: string
-    date_format: Intl.DateTimeFormatOptions['weekday']
+    date_format: 'short' | 'long'
+  }
+
+  export interface argument_hash {
+    conf?: Partial<prettify_options>
+    rule_index?: number
   }
 
   export enum mode {
