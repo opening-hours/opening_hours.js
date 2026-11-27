@@ -57,7 +57,7 @@
     "test-quick": "make check",
     "test:spell": "cspell .",
     "test:unit": "npm run build && node --test test/unit/*.test.mjs",
-    "test": "npm run test:unit && make check-full",
+    "test": "npm run typecheck && npm run test:unit && make check-full",
     "lint": "eslint",
     "typecheck": "tsc --project jsconfig.json",
     "lint:fix": "eslint --fix",
